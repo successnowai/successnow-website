@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import AIChatBar from "@/components/chat/ai-chat-bar"
+import Navbar from "@/components/navigation/navbar"
 import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -30,8 +31,16 @@ export default function RootLayout({
         <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js"></script>
       </head>
       <body className={inter.className}>
+        {/* Fixed AI Chat Bar at top */}
         <AIChatBar />
-        {children}
+
+        {/* Fixed Navigation Bar below chat bar */}
+        <Navbar />
+
+        {/* Main content with proper spacing */}
+        <main className="pt-[127px]">{children}</main>
+
+        {/* Floating chat robot */}
         <FloatingChatRobot />
       </body>
     </html>

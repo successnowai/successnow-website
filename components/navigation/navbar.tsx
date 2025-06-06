@@ -46,7 +46,7 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
   }
 
   return (
-    <nav className="fixed top-[70px] left-0 right-0 z-50 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5 navbar-height">
+    <nav className="fixed top-[70px] left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5 h-[57px]">
       <div className="relative flex items-center justify-between px-4 sm:px-6 py-3 max-w-7xl mx-auto h-full">
         {/* Logo */}
         <div className="flex items-center">
@@ -89,7 +89,7 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden text-white p-1.5 z-50"
+            className="lg:hidden text-white p-1.5"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
@@ -99,7 +99,7 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
 
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-black border-b border-[#00BFFF]/10 lg:hidden shadow-xl z-40">
+          <div className="absolute top-full left-0 right-0 bg-black border-b border-[#00BFFF]/10 lg:hidden shadow-xl z-50">
             <div className="px-4 sm:px-6 py-6 space-y-4">
               {navItems.map((item) => (
                 <button

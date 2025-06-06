@@ -88,24 +88,19 @@ body {
     height: 70px;
   }
 
-  /* Adjust body padding to account for both fixed bars */
-  body {
-    padding-top: 127px; /* 70px chat bar + 57px navbar */
-  }
-
   /* Update navbar positioning */
   .navbar-height {
     height: 57px;
   }
 
-  .pt-navbar {
-    padding-top: 127px; /* 70px chat bar + 57px navbar */
-  }
-
-  /* Force navbar to always be black */
+  /* Force navbar to always be visible and black */
   nav[class*="fixed"][class*="top-[70px]"] {
     background-color: #000000 !important;
     backdrop-filter: none !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 40 !important;
   }
 }
 
@@ -356,38 +351,11 @@ body {
   }
 }
 
-/* Update sticky positioning for elements that reference navbar */
-.sticky.top-\[57px\] {
-  top: 127px; /* Account for both chat bar and navbar */
-}
-
-/* Update any references to the navbar height */
-.sticky.top-\[73px\] {
-  top: 127px;
-}
-
 /* Mobile responsiveness for chat components */
 @media (max-width: 640px) {
   .fixed-chat-bar {
     height: 60px;
     padding: 8px;
-  }
-
-  body {
-    padding-top: 117px; /* 60px chat bar + 57px navbar */
-  }
-
-  .pt-navbar {
-    padding-top: 117px; /* 60px chat bar + 57px navbar */
-  }
-
-  .sticky.top-\[57px\] {
-    top: 117px;
-  }
-
-  .fixed.bottom-6.right-6 {
-    bottom: 16px;
-    right: 16px;
   }
 
   .fixed.top-\[70px\] {
@@ -400,12 +368,17 @@ body {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    z-index: 50 !important;
+    z-index: 40 !important;
   }
 
   /* Ensure navbar height is consistent */
   .navbar-height {
     height: 57px;
     min-height: 57px;
+  }
+
+  /* Adjust main content padding for mobile */
+  main.pt-\[127px\] {
+    padding-top: 117px; /* 60px chat bar + 57px navbar */
   }
 }
