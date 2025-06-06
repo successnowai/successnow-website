@@ -4,6 +4,7 @@ import FeatureStack from "@/components/home/feature-stack"
 import LiveDemo from "@/components/home/live-demo"
 import PricingTable from "@/components/home/pricing-table"
 import CTASection from "@/components/home/cta-section"
+import AdsNowSection from "@/components/home/adsnow-section"
 import Footer from "@/components/home/footer"
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
       <IndustrySolutions />
       <FeatureStack />
       <LiveDemo />
+      <AdsNowSection />
       <PricingTable />
       <CTASection />
       <Footer />

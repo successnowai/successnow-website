@@ -1,6 +1,4 @@
 "use client"
-
-import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 
@@ -46,7 +44,7 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
   }
 
   return (
-    <nav className="fixed navbar-top left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5 navbar-height">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5">
       <div className="relative flex items-center justify-between px-4 sm:px-6 py-3 max-w-7xl mx-auto h-full">
         {/* Logo */}
         <div className="flex items-center">
@@ -78,16 +76,8 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
           ))}
         </div>
 
-        {/* Mobile Menu Button & CTA */}
-        <div className="flex items-center space-x-2 sm:space-x-3">
-          <Button
-            className="bg-gradient-to-r from-[#00BFFF] to-[#0099CC] text-white hover:from-[#0099CC] hover:to-[#00BFFF] font-bold px-3 py-1.5 sm:px-6 sm:py-2 text-xs sm:text-sm rounded-full transition-all duration-300 hover:scale-105 border border-[#00BFFF]/20 navbar-cta-button"
-            onClick={() => handleNavClick("/signup")}
-          >
-            Get AI Now
-          </Button>
-
-          {/* Mobile Menu Toggle */}
+        {/* Mobile Menu Button */}
+        <div className="flex items-center">
           <button
             className="lg:hidden text-white p-1.5 z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

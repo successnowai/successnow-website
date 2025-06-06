@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import AIChatBar from "@/components/chat/ai-chat-bar"
 import Navbar from "@/components/navigation/navbar"
 import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 
@@ -31,13 +30,10 @@ export default function RootLayout({
         <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js"></script>
       </head>
       <body className={inter.className}>
-        {/* GLOBAL: Blue AI Chat Bar - Always visible on ALL devices */}
-        <AIChatBar />
-
         {/* GLOBAL: Black Navigation Bar - Always visible on ALL devices */}
         <Navbar />
 
-        {/* Main content with proper spacing for both bars */}
+        {/* Main content with proper spacing for navbar only */}
         <main className="global-content-spacing">{children}</main>
 
         {/* Floating chat robot */}

@@ -199,6 +199,134 @@ export default function MortgageNowClientPage() {
           </div>
         </div>
 
+        {/* AdsNow Section - Embedded */}
+        <section className="py-16 px-6 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-black/40 backdrop-blur-sm rounded-2xl border border-purple-500/20 mb-12">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                <span className="text-white">Complete AI Ecosystem</span>
+              </h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                AdsNow.ai creates and optimizes your ads while SuccessNOW AI instantly engages and converts every lead
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {/* AdsNow.ai Column */}
+              <div className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm p-8 rounded-xl border border-purple-500/30">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mr-4">
+                    <span className="text-white font-bold text-xl">A</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">AdsNow.ai</h3>
+                    <p className="text-purple-300">AI Ad Creation & Optimization</p>
+                  </div>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "🎯 Creates High-Converting Ads Automatically",
+                    "📈 Optimizes Campaigns 24/7 Using 10,000+ Daily Leads Data",
+                    "⚡ Launches Across All Platforms Instantly",
+                    "🔄 Continuously Tests & Improves Performance",
+                  ].map((feature, index) => (
+                    <li key={index} className="text-gray-300 flex items-start">
+                      <span className="mr-2">{feature.split(" ")[0]}</span>
+                      <span>{feature.substring(feature.indexOf(" ") + 1)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* SuccessNOW AI Column */}
+              <div className="bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm p-8 rounded-xl border border-blue-500/30">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
+                    <span className="text-white font-bold text-xl">S</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">SuccessNOW AI</h3>
+                    <p className="text-blue-300">AI Lead Engagement & Conversion</p>
+                  </div>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "⚡ Instantly Engages Every Lead",
+                    "📅 Books Appointments Automatically",
+                    "🔄 Follows Up Always - Never Misses a Lead",
+                    "⭐ Gets Reviews & Referrals Automatically",
+                  ].map((feature, index) => (
+                    <li key={index} className="text-gray-300 flex items-start">
+                      <span className="mr-2">{feature.split(" ")[0]}</span>
+                      <span>{feature.substring(feature.indexOf(" ") + 1)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Statistics Row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                { number: "10,000+", label: "Leads Generated Daily" },
+                { number: "24/7", label: "AI Operations" },
+                { number: "500+", label: "Businesses Automated" },
+              ].map((stat, index) => (
+                <div
+                  key={index}
+                  className="text-center bg-black/40 backdrop-blur-sm p-6 rounded-xl border border-gray-700/50"
+                >
+                  <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
+                  <div className="text-gray-400">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Process Flow */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold text-center mb-8 text-white">Complete Lead-to-Sale Process</h3>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                {[
+                  { step: "1", title: "AI Creates Ads", desc: "AdsNow.ai generates high-converting campaigns" },
+                  { step: "2", title: "Launches & Optimizes", desc: "Automatically tests and improves performance" },
+                  { step: "3", title: "Instant Engagement", desc: "SuccessNOW AI engages leads immediately" },
+                  { step: "4", title: "Converts to Sales", desc: "Books appointments and closes deals" },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="text-center bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-6 rounded-xl border border-gray-700/50"
+                  >
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold">{item.step}</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-2">{item.title}</h4>
+                    <p className="text-gray-400 text-sm">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTAs */}
+            <div className="text-center">
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <Button
+                  className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-md shadow-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 hover:scale-105 text-base"
+                  onClick={() => (window.location.href = "/payment")}
+                >
+                  Get Complete AI System
+                </Button>
+                <Button
+                  variant="outline"
+                  className="px-8 py-4 border-2 border-purple-500 text-purple-400 font-semibold rounded-md hover:bg-purple-500 hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
+                  onClick={() => window.open("https://adsnow.ai", "_blank")}
+                >
+                  Learn More About AdsNow.ai
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <div className="text-center bg-[#00274D]/80 backdrop-blur-sm p-12 rounded-2xl border border-[#00BFFF]/30">
           <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Close More Loans with AI?</h3>

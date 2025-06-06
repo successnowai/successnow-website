@@ -159,6 +159,177 @@ export default function GymsNowClientPage() {
           </div>
         </div>
 
+        {/* AdsNow Section */}
+        <section className="py-16 px-4 bg-gradient-to-b from-[#0b0f1a]/80 to-[#00274D]/80 rounded-2xl mb-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="text-white">Complete AI Ecosystem: </span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
+                  AdsNow.ai + SuccessNOW
+                </span>
+              </h2>
+              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+                From ad creation to lead conversion - our AI handles your entire sales funnel 24/7
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {/* AdsNow.ai Column */}
+              <div className="bg-gradient-to-br from-purple-900/30 to-purple-600/10 p-6 rounded-xl border border-purple-500/20">
+                <div className="flex items-center mb-6">
+                  <div className="bg-purple-600/20 p-3 rounded-lg mr-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-purple-400"
+                    >
+                      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-purple-300">AdsNow.ai</h3>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <span className="text-purple-400 mr-2">✓</span>
+                    <span className="text-gray-300">Creates high-converting ads automatically</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-400 mr-2">✓</span>
+                    <span className="text-gray-300">Launches campaigns across all platforms</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-400 mr-2">✓</span>
+                    <span className="text-gray-300">Optimizes ad spend 24/7 using AI</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-400 mr-2">✓</span>
+                    <span className="text-gray-300">Uses data from 10,000+ daily leads</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* SuccessNOW Column */}
+              <div className="bg-gradient-to-br from-blue-900/30 to-blue-600/10 p-6 rounded-xl border border-blue-500/20">
+                <div className="flex items-center mb-6">
+                  <div className="bg-blue-600/20 p-3 rounded-lg mr-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-blue-400"
+                    >
+                      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-blue-300">SuccessNOW AI</h3>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <span className="text-blue-400 mr-2">✓</span>
+                    <span className="text-gray-300">Instantly engages every lead 24/7</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-400 mr-2">✓</span>
+                    <span className="text-gray-300">Books appointments automatically</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-400 mr-2">✓</span>
+                    <span className="text-gray-300">Follows-up always, never misses a lead</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-400 mr-2">✓</span>
+                    <span className="text-gray-300">Asks for referrals & gets 5-star reviews</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-4 mb-12">
+              <div className="bg-black/30 p-4 rounded-lg text-center">
+                <div className="text-3xl font-bold text-blue-400 mb-1">10,000+</div>
+                <div className="text-sm text-gray-400">Leads Generated Daily</div>
+              </div>
+              <div className="bg-black/30 p-4 rounded-lg text-center">
+                <div className="text-3xl font-bold text-blue-400 mb-1">24/7</div>
+                <div className="text-sm text-gray-400">AI Operations</div>
+              </div>
+              <div className="bg-black/30 p-4 rounded-lg text-center">
+                <div className="text-3xl font-bold text-blue-400 mb-1">500+</div>
+                <div className="text-sm text-gray-400">Businesses Automated</div>
+              </div>
+            </div>
+
+            {/* Process Flow */}
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold text-center mb-8 text-gray-300">Complete Lead-to-Client Journey</h3>
+              <div className="flex flex-col md:flex-row justify-between items-center">
+                <div className="text-center mb-6 md:mb-0">
+                  <div className="bg-purple-900/30 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span className="text-purple-400 text-xl font-bold">1</span>
+                  </div>
+                  <p className="text-gray-300 text-sm">AI Creates Ads</p>
+                </div>
+                <div className="hidden md:block text-gray-600">→</div>
+                <div className="text-center mb-6 md:mb-0">
+                  <div className="bg-purple-900/30 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span className="text-purple-400 text-xl font-bold">2</span>
+                  </div>
+                  <p className="text-gray-300 text-sm">Launches & Optimizes</p>
+                </div>
+                <div className="hidden md:block text-gray-600">→</div>
+                <div className="text-center mb-6 md:mb-0">
+                  <div className="bg-blue-900/30 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span className="text-blue-400 text-xl font-bold">3</span>
+                  </div>
+                  <p className="text-gray-300 text-sm">Instant Engagement</p>
+                </div>
+                <div className="hidden md:block text-gray-600">→</div>
+                <div className="text-center">
+                  <div className="bg-blue-900/30 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span className="text-blue-400 text-xl font-bold">4</span>
+                  </div>
+                  <p className="text-gray-300 text-sm">Converts to Sales</p>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center">
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <Button
+                  className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-md shadow-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 hover:scale-105 text-base"
+                  onClick={() => (window.location.href = "/payment")}
+                >
+                  Get Complete AI System
+                </Button>
+                <Button
+                  variant="outline"
+                  className="px-8 py-4 border-2 border-purple-500/50 text-purple-300 font-semibold rounded-md hover:bg-purple-500/20 transition-all duration-200 hover:scale-105 text-base bg-transparent"
+                  onClick={() => window.open("https://adsnow.ai", "_blank")}
+                >
+                  Learn More About AdsNow.ai
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <div className="text-center bg-[#00274D]/80 backdrop-blur-sm p-12 rounded-2xl border border-[#00BFFF]/30">
           <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Grow Your Fitness Business with AI?</h3>

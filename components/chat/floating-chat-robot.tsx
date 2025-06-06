@@ -1,23 +1,25 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { X, Minimize2, Maximize2, Video, Send, Mic, BotIcon as Robot } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { X, Mic, BotIcon as Robot, Sparkles, User, Mail, Phone, Zap, MessageCircle } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export default function FloatingChatRobot() {
+  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
-  const [isMinimized, setIsMinimized] = useState(false)
-  const [isVoiceActive, setIsVoiceActive] = useState(false)
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      text: "Hi! I'm your SuccessNOW AI Assistant. How can I help you automate your business today?",
-      isBot: true,
-      timestamp: new Date(),
-    },
-  ])
-  const [inputMessage, setInputMessage] = useState("")
-  const [isTyping, setIsTyping] = useState(false)
+  const [showLeadCapture, setShowLeadCapture] = useState(true)
+  const [showInstantDemo, setShowInstantDemo] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  })
 
   // Floating animation
   const [floatDirection, setFloatDirection] = useState(1)
@@ -29,51 +31,65 @@ export default function FloatingChatRobot() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleVoiceAI = () => {
-    setIsVoiceActive(!isVoiceActive)
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  }
 
-    if (!isVoiceActive) {
-      // If not already open, open the chat
-      if (!isOpen) {
-        setIsOpen(true)
-        setIsMinimized(false)
-      }
+  const handleSubmitLead = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
 
-      // Integrate with Vapi.ai for voice calls
-      window.open("https://vapi.ai", "_blank")
+    try {
+      // Here you would integrate with your lead capture system
+      console.log("Lead submitted:", formData)
+
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+
+      setIsSubmitting(false)
+      setShowLeadCapture(false)
+      setShowInstantDemo(true)
+    } catch (error) {
+      console.error("Error submitting lead:", error)
+      setIsSubmitting(false)
     }
   }
 
-  const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return
+  const handleInstantDemo = async () => {
+    console.log("Requesting microphone access and navigating to demo page...")
 
-    // Add user message
-    const userMessage = {
-      id: Date.now(),
-      text: inputMessage,
-      isBot: false,
-      timestamp: new Date(),
+    try {
+      // Request microphone access before navigating
+      await navigator.mediaDevices.getUserMedia({ audio: true })
+      console.log("Microphone access granted")
+
+      // Navigate to the demo page
+      router.push("/demo")
+
+      // Close the popup after navigation
+      setIsOpen(false)
+      setShowLeadCapture(true)
+      setShowInstantDemo(false)
+      setFormData({ name: "", phone: "", email: "" })
+    } catch (error) {
+      console.error("Microphone access denied:", error)
+      // Still navigate to demo page even if mic access is denied
+      router.push("/demo")
+      setIsOpen(false)
+      setShowLeadCapture(true)
+      setShowInstantDemo(false)
+      setFormData({ name: "", phone: "", email: "" })
     }
-    setMessages((prev) => [...prev, userMessage])
-    setInputMessage("")
-    setIsTyping(true)
-
-    // Simulate AI response (integrate with GetEverBots/Vapi later)
-    setTimeout(() => {
-      const botResponse = {
-        id: Date.now() + 1,
-        text: "I'd love to help you with that! Let me connect you with our AI demo or a specialist. Would you like to see a live demo or schedule a consultation?",
-        isBot: true,
-        timestamp: new Date(),
-      }
-      setMessages((prev) => [...prev, botResponse])
-      setIsTyping(false)
-    }, 2000)
   }
 
-  const handleVideoCall = () => {
-    // Integrate with video calling service
-    window.location.href = "/demo"
+  const handleClose = () => {
+    setIsOpen(false)
+    setShowLeadCapture(true)
+    setShowInstantDemo(false)
+    setFormData({ name: "", phone: "", email: "" })
   }
 
   if (!isOpen) {
@@ -81,17 +97,16 @@ export default function FloatingChatRobot() {
       <div className="fixed bottom-6 right-6 z-50">
         <Button
           onClick={() => setIsOpen(true)}
-          className="relative rounded-full w-16 h-16 shadow-2xl transition-all duration-300 hover:scale-110 border-0"
+          className="relative rounded-full w-16 h-16 shadow-2xl transition-all duration-300 hover:scale-110 border-0 group"
           style={{
             background: "linear-gradient(135deg, #0080FF, #00BFFF)",
             boxShadow:
               "0 0 20px 5px rgba(0, 128, 255, 0.7), 0 0 40px 10px rgba(0, 128, 255, 0.5), 0 0 60px 15px rgba(0, 128, 255, 0.3)",
             transform: `translateY(${floatDirection * 5}px)`,
             transition: "transform 3s ease-in-out, box-shadow 1s ease-in-out",
-            animation: "pulse-bright 2s infinite",
           }}
         >
-          <Robot className="w-8 h-8 text-white" />
+          <Robot className="w-8 h-8 text-white group-hover:animate-bounce" />
 
           {/* Notification dot */}
           <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
@@ -106,142 +121,205 @@ export default function FloatingChatRobot() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <>
+      {/* Backdrop with blur effect */}
       <div
-        className={`bg-white rounded-2xl shadow-2xl border border-gray-200 transition-all duration-300 ${
-          isMinimized ? "w-80 h-16" : "w-80 h-96"
-        }`}
-        style={{
-          boxShadow: "0 0 20px 5px rgba(0, 128, 255, 0.3)",
-        }}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#0080FF] to-[#00BFFF] text-white rounded-t-2xl">
-          <div className="flex items-center space-x-3">
-            <div className="relative">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <Robot className="w-5 h-5" />
+        className="fixed inset-0 bg-black/50 backdrop-blur-md z-[60] transition-opacity duration-300"
+        onClick={handleClose}
+      />
+
+      {/* Modal Container */}
+      <div className="fixed inset-0 flex items-center justify-center p-4 z-[60]">
+        <div
+          className="bg-white rounded-3xl shadow-2xl w-full max-w-md sm:max-w-lg p-6 sm:p-8 relative animate-in fade-in-0 zoom-in-95 duration-500 max-h-[95vh] overflow-y-auto border border-gray-100"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Close Button */}
+          <button
+            onClick={handleClose}
+            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200 p-2 hover:bg-gray-100 rounded-full"
+            aria-label="Close modal"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          {showLeadCapture && (
+            <>
+              {/* Header Section */}
+              <div className="text-center mb-8">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-[#00BFFF] to-[#0080FF] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <Robot className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
+                  <div className="absolute inset-0 rounded-full bg-white/20 animate-pulse"></div>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Meet Your SuccessNOW AI Agent</h2>
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-sm mx-auto">
+                  Enter your information and the AI agent will call you as if you are a lead and start your demo of the
+                  future!
+                </p>
               </div>
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
-            </div>
-            <div>
-              <h3 className="font-semibold text-sm">SuccessNOW AI</h3>
-              <p className="text-xs text-white/80">Online • Ready to help</p>
-            </div>
-          </div>
 
-          <div className="flex items-center space-x-2">
-            <Button
-              onClick={handleVoiceAI}
-              size="sm"
-              variant="ghost"
-              className="text-white hover:bg-white/20 p-1"
-              title="Voice Call"
-            >
-              <Mic className="w-4 h-4" />
-            </Button>
-            <Button
-              onClick={handleVideoCall}
-              size="sm"
-              variant="ghost"
-              className="text-white hover:bg-white/20 p-1"
-              title="Video Demo"
-            >
-              <Video className="w-4 h-4" />
-            </Button>
-            <Button
-              onClick={() => setIsMinimized(!isMinimized)}
-              size="sm"
-              variant="ghost"
-              className="text-white hover:bg-white/20 p-1"
-            >
-              {isMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
-            </Button>
-            <Button
-              onClick={() => setIsOpen(false)}
-              size="sm"
-              variant="ghost"
-              className="text-white hover:bg-white/20 p-1"
-            >
-              <X className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-
-        {!isMinimized && (
-          <>
-            {/* Messages */}
-            <div className="flex-1 p-4 h-64 overflow-y-auto space-y-3">
-              {messages.map((message) => (
-                <div key={message.id} className={`flex ${message.isBot ? "justify-start" : "justify-end"}`}>
-                  <div
-                    className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
-                      message.isBot
-                        ? "bg-gray-100 text-gray-800"
-                        : "bg-gradient-to-r from-[#0080FF] to-[#00BFFF] text-white"
-                    }`}
-                  >
-                    {message.text}
+              {/* Microphone Permission Notice */}
+              <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl border border-blue-200">
+                <div className="flex items-center space-x-3">
+                  <Mic className="w-5 h-5 text-blue-600" />
+                  <div>
+                    <p className="text-sm text-blue-800 font-semibold">🎤 Voice Demo Ready!</p>
+                    <p className="text-xs text-blue-600">
+                      We'll request microphone access for the live voice demonstration
+                    </p>
                   </div>
                 </div>
-              ))}
+              </div>
 
-              {isTyping && (
-                <div className="flex justify-start">
-                  <div className="bg-gray-100 px-3 py-2 rounded-lg">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce animation-delay-100"></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce animation-delay-200"></div>
+              {/* Lead Capture Form */}
+              <form onSubmit={handleSubmitLead} className="space-y-6">
+                {/* Name Field */}
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-sm font-semibold text-gray-700 flex items-center space-x-2">
+                    <User className="w-4 h-4 text-[#00BFFF]" />
+                    <span>Full Name</span>
+                  </Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Enter your full name"
+                    className="w-full py-3 sm:py-4 text-base rounded-xl border-2 border-gray-200 focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF]/20 transition-all duration-200"
+                    required
+                  />
+                </div>
+
+                {/* Phone Field */}
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-sm font-semibold text-gray-700 flex items-center space-x-2">
+                    <Phone className="w-4 h-4 text-[#00BFFF]" />
+                    <span>Phone Number</span>
+                  </Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="(555) 123-4567"
+                    className="w-full py-3 sm:py-4 text-base rounded-xl border-2 border-gray-200 focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF]/20 transition-all duration-200"
+                    required
+                  />
+                </div>
+
+                {/* Email Field */}
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm font-semibold text-gray-700 flex items-center space-x-2">
+                    <Mail className="w-4 h-4 text-[#00BFFF]" />
+                    <span>Email Address</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="your@email.com"
+                    className="w-full py-3 sm:py-4 text-base rounded-xl border-2 border-gray-200 focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF]/20 transition-all duration-200"
+                    required
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-[#00BFFF] to-[#0080FF] hover:from-[#0099FF] hover:to-[#0066CC] text-white font-bold py-4 sm:py-5 text-lg rounded-2xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl mt-8"
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center space-x-3">
+                      <Sparkles className="w-5 h-5 animate-spin" />
+                      <span>Processing...</span>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="flex items-center justify-center space-x-3">
+                      <MessageCircle className="w-5 h-5" />
+                      <span>Get AI Demo Access</span>
+                    </div>
+                  )}
+                </Button>
+              </form>
+
+              {/* Skip to Demo Button */}
+              <div className="mt-4 text-center">
+                <button
+                  type="button"
+                  onClick={handleInstantDemo}
+                  className="text-[#0080FF] hover:text-[#0066CC] font-medium underline underline-offset-2 text-sm transition-colors duration-200"
+                >
+                  Skip form and go directly to live demo →
+                </button>
+              </div>
+
+              {/* Footer Note */}
+              <div className="mt-8 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl border border-blue-100">
+                <div className="text-center">
+                  <p className="text-sm text-blue-800 font-semibold mb-1">🚀 Instant Access Guaranteed!</p>
+                  <p className="text-xs text-blue-600">
+                    Submit your info and get immediate access to our voice AI demo
+                  </p>
                 </div>
-              )}
-            </div>
+              </div>
+            </>
+          )}
 
-            {/* Input */}
-            <div className="p-4 border-t border-gray-200">
-              <div className="flex items-center space-x-2">
-                <input
-                  type="text"
-                  placeholder="Ask about SuccessNOW AI..."
-                  value={inputMessage}
-                  onChange={(e) => setInputMessage(e.target.value)}
-                  onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0080FF] focus:border-transparent text-sm"
-                />
-                <Button
-                  onClick={handleSendMessage}
-                  size="sm"
-                  className="bg-gradient-to-r from-[#0080FF] to-[#00BFFF] hover:from-[#00BFFF] hover:to-[#0080FF] text-white"
-                >
-                  <Send className="w-4 h-4" />
-                </Button>
+          {showInstantDemo && (
+            <>
+              {/* Success Header */}
+              <div className="text-center mb-8">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 text-white animate-spin" />
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Welcome, {formData.name}!</h2>
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-sm mx-auto">
+                  Your information has been submitted. Ready to experience our AI in action?
+                </p>
               </div>
 
-              {/* Quick Actions */}
-              <div className="flex flex-wrap gap-2 mt-2">
+              {/* Instant Demo Button */}
+              <div className="space-y-6">
                 <Button
-                  onClick={() => (window.location.href = "/demo")}
-                  size="sm"
-                  variant="outline"
-                  className="text-xs border-[#0080FF] text-[#0080FF] hover:bg-[#0080FF] hover:text-white"
+                  onClick={handleInstantDemo}
+                  className="w-full bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 hover:from-orange-600 hover:via-red-600 hover:to-pink-600 text-white font-bold py-6 sm:py-7 text-xl sm:text-2xl rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl relative overflow-hidden group"
                 >
-                  Live Demo
+                  <div className="flex items-center justify-center space-x-4">
+                    <Zap className="w-7 h-7 group-hover:animate-bounce" />
+                    <span>START INSTANT DEMO</span>
+                    <Mic className="w-7 h-7 group-hover:animate-pulse" />
+                  </div>
+
+                  {/* Animated background effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                 </Button>
-                <Button
-                  onClick={() => (window.location.href = "/payment")}
-                  size="sm"
-                  variant="outline"
-                  className="text-xs border-[#0080FF] text-[#0080FF] hover:bg-[#0080FF] hover:text-white"
-                >
-                  Get AI Now
-                </Button>
+
+                <div className="text-center space-y-3">
+                  <p className="text-lg font-semibold text-gray-800">🎯 Your AI Demo is Ready!</p>
+                  <p className="text-sm text-gray-600">
+                    Click above to access our live demo page with voice interaction
+                  </p>
+                </div>
               </div>
-            </div>
-          </>
-        )}
+
+              {/* Success Footer */}
+              <div className="mt-8 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border border-green-100">
+                <div className="text-center">
+                  <p className="text-sm text-green-800 font-semibold mb-1">✅ Lead Captured Successfully!</p>
+                  <p className="text-xs text-green-600">
+                    Our team will follow up with you shortly with additional resources
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }

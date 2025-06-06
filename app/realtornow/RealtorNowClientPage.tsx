@@ -7,8 +7,19 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 import Navbar from "@/components/navigation/navbar"
+import { useState, useEffect } from "react"
 
 export default function RealtorNowClientPage() {
+  const [currentText, setCurrentText] = useState(0)
+
+  const rotatingTexts = [
+    "Instantly Qualifies",
+    "Books Showings",
+    "Nurtures Leads",
+    "Gets 5 Star Reviews",
+    "Follows Up Always",
+  ]
+
   const realtorTemplates = [
     {
       id: "realtor-1",
@@ -40,31 +51,43 @@ export default function RealtorNowClientPage() {
     },
   ]
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentText((prev) => (prev + 1) % rotatingTexts.length)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#0B1426] via-[#1a2332] to-[#0B1426] text-white">
       {/* Global Navigation Bar */}
       <Navbar />
 
       {/* Hero Section */}
-      <section className="text-center py-16 px-6 md:px-10 overflow-hidden">
-        <div className="max-w-6xl mx-auto space-y-8">
+      <section className="relative text-center py-16 px-6 md:px-10 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1426]/50 to-[#0B1426]"></div>
+        <div className="relative z-10 max-w-6xl mx-auto space-y-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-            <span className="block text-white animate-fadeTextUp">RealtorNOW AI™ that converts</span>
-            <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 animate-pulse">
-              Zillow Leads
+            <span className="block text-white animate-fadeTextUp">RealtorNOW™ AI</span>
+            <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 min-h-[1.2em]">
+              {rotatingTexts[currentText]}
             </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600">into showings</span>
+            <span className="block text-white animate-fadeTextUp animation-delay-600">To Close More Deals</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-900">
-            Stop chasing unqualified leads. Our{" "}
+          <div className="bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-2xl mx-auto animate-fadeTextUp animation-delay-900">
+            <p className="text-red-300 font-bold text-lg">⚠️ 85% of real estate leads never get proper follow-up!!!</p>
+          </div>
+
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
+            Stop losing deals to slow response times and poor lead nurturing. Our{" "}
             <strong className="text-white">
-              AI pre-qualifies buyers, books showings instantly, and follows up automatically
+              AI pre-qualifies buyers, books showings instantly, and follows up 24/7
             </strong>{" "}
-            so you focus on closing deals.
+            so you focus on closing.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1200">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
               onClick={() => (window.location.href = "/payment")}
@@ -81,7 +104,7 @@ export default function RealtorNowClientPage() {
           </div>
 
           {/* Template Preview Buttons */}
-          <div className="mt-8 animate-fadeTextUp animation-delay-1500">
+          <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">🏡 Preview Realtor Website Templates</h3>
             <TemplateButtonsSimple templates={realtorTemplates} baseButtonText="" />
             <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
@@ -89,11 +112,32 @@ export default function RealtorNowClientPage() {
         </div>
       </section>
 
+      {/* Secondary Hero Section */}
+      <section className="relative text-center py-16 px-6 md:px-10 bg-black/20 backdrop-blur-sm">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1426]/80 to-black/40"></div>
+        <div className="relative z-10 max-w-6xl mx-auto space-y-8">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+            <span className="block text-white animate-fadeTextUp">You're not short on leads.</span>
+            <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 animate-pulse">
+              Just follow-through.
+            </span>
+            <span className="block text-white animate-fadeTextUp animation-delay-600">RealtorNOW fixes that.</span>
+          </h2>
+
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-900">
+            Run a more efficient, profitable real estate business without chasing unqualified leads or burning yourself
+            out. Our <strong className="text-white">AI handles 80% of lead qualification</strong> - screening,
+            nurturing, appointment setting, and more.
+          </p>
+        </div>
+      </section>
+
       {/* Demo Form Section */}
-      <section className="relative bg-black/20 backdrop-blur-sm py-16 px-6">
+      <section className="relative bg-gradient-to-b from-[#0B1426]/60 to-black/40 backdrop-blur-sm py-16 px-6">
         <div className="max-w-md mx-auto bg-[#00274D]/80 backdrop-blur-sm text-white p-8 rounded-xl shadow-2xl border border-[#00BFFF]/20">
           <h2 className="text-2xl font-bold mb-2 text-center">
-            Turn Zillow Leads into <br /> <span className="text-[#00BFFF]">Showings in Seconds</span>
+            Never Miss a Hot Lead Again – <br />{" "}
+            <span className="text-[#00BFFF]">Qualify & Book Showings Instantly</span>
           </h2>
           <p className="text-center text-sm text-gray-300 mb-6">See AI Real Estate Automation</p>
 
@@ -133,10 +177,12 @@ export default function RealtorNowClientPage() {
           <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">Real Estate Challenges We Solve</h3>
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
             {[
-              "Zillow leads ghosting after initial contact",
-              "Buyers not ready or prequalified",
-              "Long follow-up cycles with cold leads",
-              "Missing hot leads while showing properties",
+              "85% of leads never get proper follow-up due to slow response times",
+              "Zillow leads ghosting after initial contact attempts",
+              "Buyers not pre-qualified, wasting time on unqualified prospects",
+              "Missing hot leads while showing properties to other clients",
+              "Manual processes eating up time that should be spent selling",
+              "Losing deals to agents who respond faster to inquiries",
             ].map((pain, index) => (
               <Card
                 key={index}
@@ -158,10 +204,12 @@ export default function RealtorNowClientPage() {
           <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for Real Estate Agents</h3>
           <div className="grid gap-4 grid-cols-1">
             {[
-              "AI pre-qualifies leads and determines buying timeline automatically",
-              "Instant appointment setting for qualified prospects",
-              "Follow-up on autopilot with personalized messaging",
-              "Lead scoring to prioritize your hottest prospects",
+              "🏡 Every lead handled faster than any human agent could respond",
+              "📅 Instant pre-qualification and showing appointments booked automatically",
+              "🎯 Nurtures cold leads automatically until they're ready to buy or sell",
+              "💬 Handles property questions and objections instantly - no waiting",
+              "📈 Integrates seamlessly with your existing CRM and MLS system",
+              "🏆 Creates engaging, personalized conversations that build trust and urgency",
             ].map((solution, index) => (
               <Card
                 key={index}
@@ -223,6 +271,147 @@ export default function RealtorNowClientPage() {
           </div>
         </div>
       </div>
+
+      {/* AdsNow.ai Section - Embedded directly */}
+      <section className="relative py-16 px-6 md:px-10 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-[#0B1426]/40 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              <span className="text-white">Complete AI Ecosystem:</span>
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+                AdsNow.ai + SuccessNOW AI
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              The only platform that creates winning ads AND converts every lead into sales automatically
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* AdsNow.ai Column */}
+            <Card className="bg-gradient-to-br from-purple-900/40 to-purple-800/20 border-purple-500/30 backdrop-blur-sm">
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🎯</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-purple-300 mb-2">AdsNow.ai</h3>
+                  <p className="text-gray-300">AI-Powered Ad Creation & Optimization</p>
+                </div>
+                <div className="space-y-4">
+                  {[
+                    "🎯 Creates High-Converting Ads Automatically",
+                    "📈 Optimizes Campaigns 24/7 Using Real Data",
+                    "⚡ Launches Across All Platforms Instantly",
+                    "🧠 Uses Data from 10,000+ Daily Leads",
+                    "💰 Maximizes ROI with AI-Driven Insights",
+                  ].map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <span className="text-purple-400 mr-3 flex-shrink-0">✨</span>
+                      <span className="text-gray-200">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* SuccessNOW AI Column */}
+            <Card className="bg-gradient-to-br from-blue-900/40 to-blue-800/20 border-blue-500/30 backdrop-blur-sm">
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🤖</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-blue-300 mb-2">SuccessNOW AI</h3>
+                  <p className="text-gray-300">AI SuperAgent for Lead Conversion</p>
+                </div>
+                <div className="space-y-4">
+                  {[
+                    "⚡ Instantly Engages Every Lead",
+                    "📅 Books Appointments Automatically",
+                    "💬 Answers Questions & Handles Objections",
+                    "🔄 Follows Up Always - Never Misses a Lead",
+                    "⭐ Gets Reviews & Asks for Referrals",
+                  ].map((feature, index) => (
+                    <div key={index} className="flex items-start">
+                      <span className="text-blue-400 mr-3 flex-shrink-0">✨</span>
+                      <span className="text-gray-200">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Statistics Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="text-center bg-black/40 backdrop-blur-sm p-6 rounded-xl border border-white/10">
+              <div className="text-3xl font-bold text-purple-400 mb-2">10,000+</div>
+              <div className="text-gray-300">Leads Generated Daily</div>
+            </div>
+            <div className="text-center bg-black/40 backdrop-blur-sm p-6 rounded-xl border border-white/10">
+              <div className="text-3xl font-bold text-blue-400 mb-2">24/7</div>
+              <div className="text-gray-300">AI Operations</div>
+            </div>
+            <div className="text-center bg-black/40 backdrop-blur-sm p-6 rounded-xl border border-white/10">
+              <div className="text-3xl font-bold text-green-400 mb-2">500+</div>
+              <div className="text-gray-300">Businesses Automated</div>
+            </div>
+          </div>
+
+          {/* Process Flow */}
+          <div className="bg-black/40 backdrop-blur-sm p-8 rounded-2xl border border-white/10 mb-12">
+            <h3 className="text-2xl font-bold text-center mb-8 text-white">Complete Lead-to-Sale Process</h3>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {[
+                { step: "1", title: "AI Creates Ads", desc: "AdsNow.ai generates winning campaigns", color: "purple" },
+                {
+                  step: "2",
+                  title: "Launches & Optimizes",
+                  desc: "Automatically improves performance",
+                  color: "purple",
+                },
+                { step: "3", title: "Instant Engagement", desc: "SuccessNOW AI responds immediately", color: "blue" },
+                { step: "4", title: "Converts to Sales", desc: "Books appointments & closes deals", color: "blue" },
+              ].map((item, index) => (
+                <div key={index} className="text-center">
+                  <div
+                    className={`w-12 h-12 bg-${item.color}-500 rounded-full flex items-center justify-center mx-auto mb-4`}
+                  >
+                    <span className="text-white font-bold">{item.step}</span>
+                  </div>
+                  <h4 className="font-bold text-white mb-2">{item.title}</h4>
+                  <p className="text-gray-300 text-sm">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center">
+            <h3 className="text-3xl font-bold mb-6 text-white">Ready for the Complete AI Sales Machine?</h3>
+            <p className="text-xl text-gray-300 mb-8">
+              Get both AdsNow.ai and SuccessNOW AI working together to dominate your market
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button
+                className="px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-md shadow-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-200 hover:scale-105 text-base"
+                onClick={() => (window.location.href = "/payment")}
+              >
+                Get Complete AI System
+              </Button>
+              <Button
+                variant="outline"
+                className="px-8 py-4 border-2 border-purple-400 text-purple-400 font-semibold rounded-md hover:bg-purple-400 hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
+                onClick={() => window.open("https://adsnow.ai", "_blank")}
+              >
+                Learn More About AdsNow.ai
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>
