@@ -394,8 +394,18 @@ body {
     top: 60px; /* Adjust navbar position for mobile */
   }
 
-  /* Force navbar to stay black on mobile too */
+  /* Force navbar to stay visible and black on mobile */
   nav[class*="fixed"][class*="top-"] {
     background-color: #000000 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 50 !important;
+  }
+
+  /* Ensure navbar height is consistent */
+  .navbar-height {
+    height: 57px;
+    min-height: 57px;
   }
 }
