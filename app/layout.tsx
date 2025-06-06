@@ -31,14 +31,14 @@ export default function RootLayout({
         <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js"></script>
       </head>
       <body className={inter.className}>
-        {/* Fixed AI Chat Bar at top */}
+        {/* GLOBAL: Blue AI Chat Bar - Always visible on ALL devices */}
         <AIChatBar />
 
-        {/* Fixed Navigation Bar below chat bar */}
+        {/* GLOBAL: Black Navigation Bar - Always visible on ALL devices */}
         <Navbar />
 
-        {/* Main content with proper spacing */}
-        <main className="pt-[127px]">{children}</main>
+        {/* Main content with proper spacing for both bars */}
+        <main className="global-content-spacing">{children}</main>
 
         {/* Floating chat robot */}
         <FloatingChatRobot />

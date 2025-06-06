@@ -12,35 +12,27 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
   const [loading, setLoading] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
 
-  // ORIGINAL TEMPLATE URLS - These work on both desktop and mobile
+  // WORKING TEMPLATE URLS - These load the actual template sites
   const templateUrls: Record<string, string> = {
-    // Auto Dealer Templates
     "auto-1": "https://v0-autodele-now-template-site.vercel.app/",
-
-    // Medspa Templates
     "medspa-1": "https://v0-med-spa-now-client-template-1.vercel.app/",
-
-    // Realtor Templates
     "realtor-1": "https://v0-realtor-template-site-1.vercel.app/",
     "realtor-2": "https://v0-realtor-professional-template.vercel.app/",
-
-    // Lawyer Templates
     "lawyer-1": "https://v0-lawyer-now-template-1.vercel.app/",
-
-    // Mortgage Templates
     "mortgage-1": "https://v0-free-idx-api-options.vercel.app/",
+    "gym-1": "https://v0-gym-template-site.vercel.app/",
   }
 
   const templateTitles: Record<string, string> = {
-    "auto-1": "Auto Dealer Website Template - SuccessNOW",
-    "medspa-1": "Medical Spa Website Template - SuccessNOW",
-    "realtor-1": "Real Estate Website Template - SuccessNOW",
-    "realtor-2": "Realtor Professional Template - SuccessNOW",
-    "lawyer-1": "Law Firm Website Template - SuccessNOW",
-    "mortgage-1": "Mortgage Broker Template - SuccessNOW",
+    "auto-1": "Auto Dealer Website Template",
+    "medspa-1": "Medical Spa Website Template",
+    "realtor-1": "Real Estate Website Template",
+    "realtor-2": "Realtor Professional Template",
+    "lawyer-1": "Law Firm Website Template",
+    "mortgage-1": "Mortgage Broker Template",
+    "gym-1": "Gym & Fitness Template",
   }
 
-  // Detect mobile and set document title
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768)
@@ -49,8 +41,8 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
     checkMobile()
     window.addEventListener("resize", checkMobile)
 
-    const title = templateTitles[params.id] || "Website Template - SuccessNOW"
-    document.title = title
+    const title = templateTitles[params.id] || "Website Template"
+    document.title = `${title} - SuccessNOW`
     setLoading(false)
 
     return () => window.removeEventListener("resize", checkMobile)
@@ -59,7 +51,6 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
   const templateUrl = templateUrls[params.id]
 
   const handleClose = () => {
-    // Try to go back first, if that fails, close the window
     if (window.history.length > 1) {
       window.history.back()
     } else {
@@ -101,28 +92,26 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
 
   return (
     <div className="h-screen w-screen overflow-hidden relative">
-      {/* Mobile-optimized control bar */}
-      <div className={`absolute top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm ${isMobile ? "p-2" : "p-4"}`}>
+      {/* Control bar - optimized for both desktop and mobile */}
+      <div className={`absolute top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm ${isMobile ? "p-2" : "p-3"}`}>
         <div className="flex items-center justify-between">
           <div className="text-white text-sm font-medium truncate flex-1 mr-4">
             {templateTitles[params.id] || "Template Preview"}
           </div>
           <div className="flex items-center space-x-2">
-            {/* Open in new tab button - especially useful for mobile */}
             <button
               onClick={handleOpenInNewTab}
               className={`bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full transition-colors ${
-                isMobile ? "px-3 py-2 text-xs" : "px-4 py-2 text-sm"
+                isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"
               }`}
               title="Open in New Tab"
             >
               {isMobile ? "↗" : "Open in New Tab"}
             </button>
-            {/* Close button */}
             <button
               onClick={handleClose}
               className={`bg-red-500 hover:bg-red-600 text-white font-bold rounded-full transition-colors ${
-                isMobile ? "px-3 py-2 text-xs" : "px-4 py-2 text-sm"
+                isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"
               }`}
               title="Close Template"
             >
@@ -132,17 +121,16 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
         </div>
       </div>
 
-      {/* Template iframe - Optimized for mobile */}
+      {/* Template iframe - Works on both desktop and mobile */}
       <iframe
         src={templateUrl}
-        className={`w-full h-full border-0 ${isMobile ? "pt-12" : "pt-16"}`}
+        className={`w-full h-full border-0 ${isMobile ? "pt-12" : "pt-14"}`}
         title="Template Preview"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
         allowFullScreen
         loading="eager"
         style={{
           backgroundColor: "white",
-          // Ensure iframe works well on mobile
           touchAction: "manipulation",
         }}
       />

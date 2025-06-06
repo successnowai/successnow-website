@@ -46,13 +46,13 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
   }
 
   return (
-    <nav className="fixed top-[70px] left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5 h-[57px]">
+    <nav className="fixed navbar-top left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5 navbar-height">
       <div className="relative flex items-center justify-between px-4 sm:px-6 py-3 max-w-7xl mx-auto h-full">
         {/* Logo */}
         <div className="flex items-center">
           <a href="/" className="flex items-center space-x-2 group">
-            <div className="text-xl sm:text-2xl">🚀</div>
-            <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#00BFFF] to-white bg-clip-text text-transparent group-hover:from-white group-hover:to-[#00BFFF] transition-all duration-300">
+            <div className="text-lg sm:text-xl md:text-2xl">🚀</div>
+            <span className="text-base sm:text-lg md:text-xl font-bold bg-gradient-to-r from-[#00BFFF] to-white bg-clip-text text-transparent group-hover:from-white group-hover:to-[#00BFFF] transition-all duration-300">
               SuccessNOW
             </span>
           </a>
@@ -81,7 +81,7 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
         {/* Mobile Menu Button & CTA */}
         <div className="flex items-center space-x-2 sm:space-x-3">
           <Button
-            className="bg-gradient-to-r from-[#00BFFF] to-[#0099CC] text-white hover:from-[#0099CC] hover:to-[#00BFFF] font-bold px-3 sm:px-6 py-2 text-xs sm:text-sm rounded-full transition-all duration-300 hover:scale-105 border border-[#00BFFF]/20 navbar-cta-button"
+            className="bg-gradient-to-r from-[#00BFFF] to-[#0099CC] text-white hover:from-[#0099CC] hover:to-[#00BFFF] font-bold px-3 py-1.5 sm:px-6 sm:py-2 text-xs sm:text-sm rounded-full transition-all duration-300 hover:scale-105 border border-[#00BFFF]/20 navbar-cta-button"
             onClick={() => handleNavClick("/signup")}
           >
             Get AI Now
@@ -89,7 +89,7 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden text-white p-1.5"
+            className="lg:hidden text-white p-1.5 z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >

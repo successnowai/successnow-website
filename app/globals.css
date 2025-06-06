@@ -11,6 +11,27 @@ body {
     text-wrap: balance;
   }
 
+  /* UNIFIED LAYOUT SYSTEM - Both elements visible on ALL devices */
+
+  /* Chat bar heights */
+  .chat-bar-height {
+    height: 60px; /* Consistent on all devices */
+  }
+
+  /* Navbar heights and positioning */
+  .navbar-height {
+    height: 50px; /* Consistent on all devices */
+  }
+
+  .navbar-top {
+    top: 60px; /* Always below chat bar */
+  }
+
+  /* Global content spacing - accounts for both bars */
+  .global-content-spacing {
+    padding-top: 110px; /* 60px chat + 50px navbar */
+  }
+
   /* Animation utilities */
   .animate-fade-up {
     opacity: 0;
@@ -83,24 +104,12 @@ body {
     animation: blob 7s infinite;
   }
 
-  /* Fixed AI Chat Bar and Navbar Styles */
-  .fixed-chat-bar {
-    height: 70px;
-  }
-
-  /* Update navbar positioning */
-  .navbar-height {
-    height: 57px;
-  }
-
-  /* Force navbar to always be visible and black */
-  nav[class*="fixed"][class*="top-[70px]"] {
-    background-color: #000000 !important;
-    backdrop-filter: none !important;
+  /* Force both elements to always be visible */
+  nav[class*="fixed"],
+  div[class*="fixed"][class*="chat-bar"] {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    z-index: 40 !important;
   }
 }
 
@@ -351,34 +360,29 @@ body {
   }
 }
 
-/* Mobile responsiveness for chat components */
+/* RESPONSIVE ADJUSTMENTS - Maintain both elements on all devices */
 @media (max-width: 640px) {
-  .fixed-chat-bar {
-    height: 60px;
-    padding: 8px;
+  /* Slightly smaller heights on mobile for better space utilization */
+  .chat-bar-height {
+    height: 55px;
   }
 
-  .fixed.top-\[70px\] {
-    top: 60px; /* Adjust navbar position for mobile */
-  }
-
-  /* Force navbar to stay visible and black on mobile */
-  nav[class*="fixed"][class*="top-"] {
-    background-color: #000000 !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 40 !important;
-  }
-
-  /* Ensure navbar height is consistent */
   .navbar-height {
-    height: 57px;
-    min-height: 57px;
+    height: 45px;
   }
 
-  /* Adjust main content padding for mobile */
-  main.pt-\[127px\] {
-    padding-top: 117px; /* 60px chat bar + 57px navbar */
+  .navbar-top {
+    top: 55px;
   }
+
+  .global-content-spacing {
+    padding-top: 100px; /* 55px chat + 45px navbar */
+  }
+}
+
+/* Ensure template iframes work properly */
+iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
 }
