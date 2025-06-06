@@ -1,11 +1,18 @@
 "use client"
 
 import type React from "react"
-
+import { useState } from "react"
 import { useInView } from "@/hooks/use-intersection-observer"
+import { Button } from "@/components/ui/button"
+import { DemoPopup } from "@/components/ui/demo-popup"
 
 export default function LiveDemo() {
   const { ref, isInView } = useInView()
+  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+
+  const handleDemoClick = () => {
+    setIsDemoPopupOpen(true)
+  }
 
   return (
     <section
@@ -25,10 +32,18 @@ export default function LiveDemo() {
           <div className="text-center px-4">
             <div className="mb-3 sm:mb-4 text-2xl sm:text-4xl">🤖</div>
             <p className="text-gray-400 text-sm sm:text-base">Live AI Demo</p>
-            <p className="text-xs sm:text-sm text-gray-500 mt-2">Interactive demo would be embedded here</p>
+            <Button
+              onClick={handleDemoClick}
+              className="mt-4 bg-gradient-to-r from-[#00BFFF] to-[#0080FF] hover:from-[#0099FF] hover:to-[#0066CC] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:scale-105"
+            >
+              Start Voice Demo
+            </Button>
           </div>
         </div>
       </div>
+
+      {/* Demo Popup */}
+      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
     </section>
   )
 }
