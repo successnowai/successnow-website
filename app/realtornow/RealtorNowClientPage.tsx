@@ -86,24 +86,6 @@ export default function RealtorNowClientPage() {
             <TemplateButtonsSimple templates={realtorTemplates} baseButtonText="" />
             <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
           </div>
-
-          {/* Social Proof */}
-          <div className="mt-8 animate-fadeTextUp animation-delay-1800">
-            <div className="flex justify-center items-center space-x-2 mb-2">
-              <div className="flex -space-x-2">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 border-2 border-white"></div>
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-400 to-blue-500 border-2 border-white"></div>
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pink-400 to-red-500 border-2 border-white"></div>
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 border-2 border-white"></div>
-              </div>
-              <div className="flex text-yellow-400 ml-3">
-                <span>⭐️⭐️⭐️⭐️⭐️</span>
-              </div>
-            </div>
-            <p className="text-sm text-gray-400">
-              <strong className="text-white">150+</strong> top-producing agents
-            </p>
-          </div>
         </div>
       </section>
 
