@@ -2,50 +2,49 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import Image from "next/image"
 import { Play } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
+import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
+import Navbar from "@/components/navigation/navbar"
 
 export default function MedspaNowClientPage() {
+  const medspaTemplates = [
+    {
+      id: "medspa-1",
+      title: "Medspa Website 1",
+      description: "Elegant spa template with booking system and service showcase",
+    },
+    {
+      id: "medspa-2",
+      title: "MedspaNOW Website 2",
+      description: "Luxury wellness center design with treatment galleries",
+      isComingSoon: true,
+    },
+    {
+      id: "medspa-3",
+      title: "MedspaNOW Website 3",
+      description: "Modern aesthetic clinic template with before/after galleries",
+      isComingSoon: true,
+    },
+    {
+      id: "medspa-4",
+      title: "MedspaNOW Website 4",
+      description: "Holistic wellness spa with membership programs",
+      isComingSoon: true,
+    },
+    {
+      id: "medspa-5",
+      title: "MedspaNOW Website 5",
+      description: "Premium medical spa with virtual consultations",
+      isComingSoon: true,
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white">
-      {/* Navigation Bar */}
-      <nav className="relative z-10 flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-        <div className="flex items-center space-x-8">
-          <Image
-            src="/images/successnow-logo.png"
-            alt="SuccessNOW.ai"
-            width={180}
-            height={45}
-            className="h-auto w-auto max-w-[180px]"
-            priority
-          />
-          <div className="hidden md:flex items-center space-x-6 text-sm">
-            <a href="/" className="text-gray-300 hover:text-white transition-colors">
-              Home
-            </a>
-            <a href="/#features" className="text-gray-300 hover:text-white transition-colors">
-              Features
-            </a>
-            <a href="/#industries" className="text-gray-300 hover:text-white transition-colors">
-              Industries We Serve
-            </a>
-            <a href="/payment" className="text-gray-300 hover:text-white transition-colors">
-              Pricing
-            </a>
-            <a href="/#demo" className="text-gray-300 hover:text-white transition-colors">
-              Instant Demo
-            </a>
-          </div>
-        </div>
-        <Button
-          className="bg-[#00BFFF] text-[#00274D] hover:bg-[#00BFFF]/90 font-bold px-6 py-2 text-sm rounded-md transition-transform duration-200 hover:scale-105"
-          onClick={() => (window.location.href = "/payment")}
-        >
-          GET NOW!
-        </Button>
-      </nav>
+      {/* Global Navigation Bar */}
+      <Navbar />
 
       {/* Hero Section */}
       <section className="text-center py-16 px-6 md:px-10 overflow-hidden">
@@ -80,8 +79,15 @@ export default function MedspaNowClientPage() {
             </Button>
           </div>
 
-          {/* Social Proof */}
+          {/* Template Preview Buttons */}
           <div className="mt-8 animate-fadeTextUp animation-delay-1500">
+            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">💆 Preview Medspa Website Templates</h3>
+            <TemplateButtonsSimple templates={medspaTemplates} baseButtonText="" />
+            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
+          </div>
+
+          {/* Social Proof */}
+          <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <div className="flex justify-center items-center space-x-2 mb-2">
               <div className="flex -space-x-2">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 border-2 border-white"></div>

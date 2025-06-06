@@ -23,13 +23,12 @@ export default function IndustriesClientPage() {
     {
       emoji: "🚗",
       title: "Auto Dealers",
-      description:
-        "Book more test drives automatically, convert leads 24/7 without staffing, increase financing approvals by 37%",
-      features: [
-        "Book test drives & confirm appointments automatically",
-        "Follow up with cold leads until they're ready to buy",
-        "Launch paid ads in 1 click with auto-optimization",
-        "Qualify leads and route hot prospects to top salespeople",
+      rotatingFeatures: [
+        "Book Test Drives Automatically",
+        "Convert Leads 24/7",
+        "Increase Financing Approvals",
+        "Follow Up Cold Leads",
+        "Qualify Hot Prospects",
       ],
       buttonText: "See AutoDealersNOW",
       slug: "autodealersnow",
@@ -38,13 +37,12 @@ export default function IndustriesClientPage() {
     {
       emoji: "🏡",
       title: "Realtors",
-      description:
-        "Qualify buyers while you sleep, book showings without lifting a finger, never miss a hot lead again",
-      features: [
-        "AI pre-qualifies leads and determines buying timeline",
-        "Instant appointment setting for qualified prospects",
-        "Follow-up on autopilot with personalized messaging",
-        "Lead scoring to prioritize your hottest prospects",
+      rotatingFeatures: [
+        "Qualify Buyers Instantly",
+        "Book Showings Automatically",
+        "Never Miss Hot Leads",
+        "Pre-Qualify Timeline",
+        "Prioritize Best Prospects",
       ],
       buttonText: "See RealtorNOW",
       slug: "realtornow",
@@ -53,13 +51,12 @@ export default function IndustriesClientPage() {
     {
       emoji: "🏋️",
       title: "Gyms & Studios",
-      description:
-        "Fill classes without extra marketing, reduce membership cancellations by 42%, automate follow-ups for no-shows",
-      features: [
-        "AI follows up post-class or trial with personalized encouragement",
-        "Automates renewals & push offers at optimal timing",
-        "Social & SMS reminders to boost retention and attendance",
-        "Automated class booking and waitlist management",
+      rotatingFeatures: [
+        "Fill Classes Automatically",
+        "Reduce Cancellations by 42%",
+        "Automate Follow-Ups",
+        "Boost Member Retention",
+        "Manage Waitlists Smart",
       ],
       buttonText: "See GymsNOW",
       slug: "gymsnow",
@@ -68,13 +65,12 @@ export default function IndustriesClientPage() {
     {
       emoji: "🧑‍⚖️",
       title: "Lawyers",
-      description:
-        "Get more qualified clients, book consultations automatically, convert leads while competitors sleep",
-      features: [
-        "AI handles intake, booking, and follow-ups automatically",
-        "5-star reviews triggered automatically after successful cases",
-        "Ad creation and optimization specifically for legal advertising compliance",
-        "Automated consultation scheduling and reminder system",
+      rotatingFeatures: [
+        "Get Qualified Clients",
+        "Book Consultations Auto",
+        "Convert While Competitors Sleep",
+        "Handle Intake Automatically",
+        "Collect 5-Star Reviews",
       ],
       buttonText: "See LawyersNOW",
       slug: "lawyersnow",
@@ -83,13 +79,12 @@ export default function IndustriesClientPage() {
     {
       emoji: "💆",
       title: "Medspas",
-      description:
-        "Book more appointments automatically, increase treatment package sales, collect 5-star reviews effortlessly",
-      features: [
-        "AI confirms appointments and sends automated reminders",
-        "Upsells high-margin services during booking and follow-up",
-        "Collects 5-star reviews and referrals automatically",
-        "Automated post-treatment care instructions and follow-up",
+      rotatingFeatures: [
+        "Book Appointments Auto",
+        "Increase Package Sales",
+        "Collect Reviews Effortlessly",
+        "Upsell High-Margin Services",
+        "Confirm Appointments Smart",
       ],
       buttonText: "See MedspaNOW",
       slug: "medspanow",
@@ -98,13 +93,12 @@ export default function IndustriesClientPage() {
     {
       emoji: "🏦",
       title: "Mortgage Brokers",
-      description:
-        "Pre-qualify leads without manual work, close more loans with less effort, nurture leads until they're ready to buy",
-      features: [
-        "AI automates follow-up & document reminders with personalized messaging",
-        "Instant demo booking and consultation scheduling",
-        "AI explainer assistant on-site to educate prospects",
-        "Automated rate alerts and market updates to keep clients engaged",
+      rotatingFeatures: [
+        "Pre-Qualify Without Manual Work",
+        "Close More Loans Easily",
+        "Nurture Until Ready to Buy",
+        "Automate Document Reminders",
+        "Send Rate Alerts Smart",
       ],
       buttonText: "See MortgageNOW",
       slug: "mortgagenow",
@@ -368,32 +362,32 @@ export default function IndustriesClientPage() {
                   currentIsInView ? "animate-show" : ""
                 } animate-delay-${index * 100}`}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4 mb-4">
-                    <div className="text-3xl">{industry.emoji}</div>
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <h3 className="text-xl font-bold text-white">{industry.title}</h3>
-                        <CheckCircle className="h-5 w-5 text-green-400" />
-                      </div>
-                      <p className="text-gray-300 text-sm mb-4">{industry.description}</p>
+                <CardContent className="p-6 text-center">
+                  <div className="flex items-center justify-center space-x-3 mb-6">
+                    <div className="text-4xl">{industry.emoji}</div>
+                    <div className="flex items-center space-x-2">
+                      <h3 className="text-2xl font-bold text-white">{industry.title}</h3>
+                      <CheckCircle className="h-6 w-6 text-green-400" />
                     </div>
                   </div>
 
-                  <div className="space-y-2 mb-6">
-                    {industry.features.map((feature, i) => (
-                      <div key={i} className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-[#00BFFF] rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-300 text-sm">{feature}</span>
-                      </div>
-                    ))}
+                  {/* Hero-style rotating text */}
+                  <div className="mb-8 min-h-[60px] flex items-center justify-center">
+                    <h4 className="text-xl font-bold">
+                      <span className="text-white">AI that </span>
+                      <RotatingText
+                        words={industry.rotatingFeatures}
+                        className="text-[#00BFFF]"
+                        interval={3000 + index * 500}
+                      />
+                    </h4>
                   </div>
 
                   <Button
-                    className="w-full bg-[#00BFFF] text-[#00274D] hover:bg-[#00BFFF]/90 font-bold py-3 px-4 text-sm transition-transform duration-200 hover:scale-105"
+                    className="w-full bg-[#00BFFF] text-[#00274D] hover:bg-[#00BFFF]/90 font-bold py-3 px-4 text-base transition-transform duration-200 hover:scale-105"
                     onClick={() => (window.location.href = `/${industry.slug}`)}
                   >
-                    {industry.buttonText} <ArrowRight className="ml-2 h-4 w-4" />
+                    {industry.buttonText} <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </CardContent>
               </Card>

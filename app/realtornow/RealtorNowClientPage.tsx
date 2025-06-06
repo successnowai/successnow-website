@@ -2,50 +2,48 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import Image from "next/image"
 import { Play } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
+import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
+import Navbar from "@/components/navigation/navbar"
 
 export default function RealtorNowClientPage() {
+  const realtorTemplates = [
+    {
+      id: "realtor-1",
+      title: "Realtor Website 1",
+      description: "Professional realtor template with property listings and lead capture",
+    },
+    {
+      id: "realtor-2",
+      title: "RealtorNOW Website 2",
+      description: "Modern real estate template with advanced search and virtual tours",
+    },
+    {
+      id: "realtor-3",
+      title: "RealtorNOW Website 3",
+      description: "Luxury real estate template with high-end property showcase",
+      isComingSoon: true,
+    },
+    {
+      id: "realtor-4",
+      title: "RealtorNOW Website 4",
+      description: "Commercial real estate template with investment focus",
+      isComingSoon: true,
+    },
+    {
+      id: "realtor-5",
+      title: "RealtorNOW Website 5",
+      description: "New construction specialist template with builder partnerships",
+      isComingSoon: true,
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white">
-      {/* Navigation Bar */}
-      <nav className="relative z-10 flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-        <div className="flex items-center space-x-8">
-          <Image
-            src="/images/successnow-logo.png"
-            alt="SuccessNOW.ai"
-            width={180}
-            height={45}
-            className="h-auto w-auto max-w-[180px]"
-            priority
-          />
-          <div className="hidden md:flex items-center space-x-6 text-sm">
-            <a href="/" className="text-gray-300 hover:text-white transition-colors">
-              Home
-            </a>
-            <a href="/#features" className="text-gray-300 hover:text-white transition-colors">
-              Features
-            </a>
-            <a href="/#industries" className="text-gray-300 hover:text-white transition-colors">
-              Industries We Serve
-            </a>
-            <a href="/payment" className="text-gray-300 hover:text-white transition-colors">
-              Pricing
-            </a>
-            <a href="/#demo" className="text-gray-300 hover:text-white transition-colors">
-              Instant Demo
-            </a>
-          </div>
-        </div>
-        <Button
-          className="bg-[#00BFFF] text-[#00274D] hover:bg-[#00BFFF]/90 font-bold px-6 py-2 text-sm rounded-md transition-transform duration-200 hover:scale-105"
-          onClick={() => (window.location.href = "/payment")}
-        >
-          GET NOW!
-        </Button>
-      </nav>
+      {/* Global Navigation Bar */}
+      <Navbar />
 
       {/* Hero Section */}
       <section className="text-center py-16 px-6 md:px-10 overflow-hidden">
@@ -82,8 +80,15 @@ export default function RealtorNowClientPage() {
             </Button>
           </div>
 
-          {/* Social Proof */}
+          {/* Template Preview Buttons */}
           <div className="mt-8 animate-fadeTextUp animation-delay-1500">
+            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">🏡 Preview Realtor Website Templates</h3>
+            <TemplateButtonsSimple templates={realtorTemplates} baseButtonText="" />
+            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
+          </div>
+
+          {/* Social Proof */}
+          <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <div className="flex justify-center items-center space-x-2 mb-2">
               <div className="flex -space-x-2">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 border-2 border-white"></div>

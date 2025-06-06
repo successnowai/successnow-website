@@ -6,12 +6,49 @@ import { RotatingText } from "@/components/ui/rotating-text"
 import { Play } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
+import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
+import Navbar from "@/components/navigation/navbar"
 
 export default function LawyersNowClientPage() {
   const legalWords = ["Legal Leads", "Consultations", "Case Inquiries", "Client Calls", "Referrals"]
 
+  const lawyerTemplates = [
+    {
+      id: "lawyer-1",
+      title: "Legal Website 1",
+      description: "Professional law firm template with case intake and consultation booking",
+    },
+    {
+      id: "lawyer-2",
+      title: "LawyersNOW Website 2",
+      description: "Corporate law firm design with practice area showcase",
+      isComingSoon: true,
+    },
+    {
+      id: "lawyer-3",
+      title: "LawyersNOW Website 3",
+      description: "Personal injury law template with case results gallery",
+      isComingSoon: true,
+    },
+    {
+      id: "lawyer-4",
+      title: "LawyersNOW Website 4",
+      description: "Family law practice with client testimonials focus",
+      isComingSoon: true,
+    },
+    {
+      id: "lawyer-5",
+      title: "LawyersNOW Website 5",
+      description: "Criminal defense attorney with emergency contact features",
+      isComingSoon: true,
+    },
+  ]
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white pt-16">
+    <div className="min-h-screen bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white">
+      {/* Global Navigation Bar */}
+      <Navbar />
+
       {/* Hero Section */}
       <section className="text-center py-16 px-6 md:px-10 overflow-hidden">
         <div className="max-w-6xl mx-auto space-y-8">
@@ -45,8 +82,15 @@ export default function LawyersNowClientPage() {
             </Button>
           </div>
 
-          {/* Social Proof */}
+          {/* Template Preview Buttons */}
           <div className="mt-8 animate-fadeTextUp animation-delay-1500">
+            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">⚖️ Preview Legal Website Templates</h3>
+            <TemplateButtonsSimple templates={lawyerTemplates} baseButtonText="" />
+            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
+          </div>
+
+          {/* Social Proof */}
+          <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <div className="flex justify-center items-center space-x-2 mb-2">
               <div className="flex -space-x-2">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 border-2 border-white"></div>
