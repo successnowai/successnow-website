@@ -12,7 +12,7 @@ interface AnimatedSwitcherProps {
 
 export function AnimatedSwitcher({
   phrases,
-  interval = 25000,
+  interval = 3000,
   className = "text-gray-300 text-sm",
   emoji = "✨",
   scrolling = true,
@@ -28,7 +28,7 @@ export function AnimatedSwitcher({
       setTimeout(() => {
         setIndex((prev) => (prev + 1) % phrases.length)
         setFade(false)
-      }, 500)
+      }, 300) // Faster fade transition
     }, interval)
 
     return () => clearInterval(fadeTimer)
@@ -55,11 +55,8 @@ export function AnimatedSwitcher({
   }
 
   return (
-    <div
-      className={`transition-opacity duration-500 ease-in-out min-h-[3rem] flex items-center ${fade ? "opacity-0" : "opacity-100"} ${className}`}
-    >
-      <span className="mr-2">{emoji}</span>
+    <span className={`transition-opacity duration-300 ease-in-out ${fade ? "opacity-0" : "opacity-100"} ${className}`}>
       {phrases[index]}
-    </div>
+    </span>
   )
 }

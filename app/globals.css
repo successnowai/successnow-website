@@ -83,12 +83,132 @@ body {
     animation: blob 7s infinite;
   }
 
+  /* Fixed AI Chat Bar and Navbar Styles */
+  .fixed-chat-bar {
+    height: 70px;
+  }
+
+  /* Adjust body padding to account for both fixed bars */
+  body {
+    padding-top: 127px; /* 70px chat bar + 57px navbar */
+  }
+
+  /* Update navbar positioning */
   .navbar-height {
     height: 57px;
   }
 
   .pt-navbar {
-    padding-top: 57px;
+    padding-top: 127px; /* 70px chat bar + 57px navbar */
+  }
+
+  /* Force navbar to always be black */
+  nav[class*="fixed"][class*="top-[70px]"] {
+    background-color: #000000 !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* REDUCED Glowing Button Effects */
+.glow-button-reduced {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.3);
+  animation: gentle-glow 2s ease-in-out infinite alternate;
+}
+
+.glow-button-white-reduced {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.4);
+  animation: gentle-pulse-white 2s infinite;
+}
+
+.glow-button-white-reduced:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+/* NEW: Bright Green Glow Effects */
+.glow-button-green-reduced {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.6), 0 0 40px rgba(16, 185, 129, 0.4);
+  animation: gentle-pulse-green 2s infinite;
+}
+
+.glow-button-green-reduced:hover {
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.8), 0 0 60px rgba(16, 185, 129, 0.6);
+  transform: scale(1.05);
+}
+
+/* REDUCED Animations */
+@keyframes gentle-glow {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes gentle-pulse-white {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* NEW: Green Pulse Animation */
+@keyframes gentle-pulse-green {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6), 0 0 40px rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.8), 0 0 50px rgba(16, 185, 129, 0.6);
+  }
+}
+
+/* REDUCED floating chat robot glow */
+.floating-chat-robot {
+  animation: float 3s ease-in-out infinite, gentle-glow-blue 2s ease-in-out infinite alternate;
+}
+
+@keyframes gentle-glow-blue {
+  from {
+    box-shadow: 0 0 25px #0080ff, 0 0 50px #0080ff;
+  }
+  to {
+    box-shadow: 0 0 35px #00bfff, 0 0 70px #00bfff;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* REDUCED Navbar button glow */
+.navbar-cta-button {
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.5), 0 0 40px rgba(0, 191, 255, 0.3);
+  animation: gentle-pulse-blue 2s infinite;
+}
+
+.navbar-cta-button:hover {
+  box-shadow: 0 0 30px rgba(0, 191, 255, 0.7), 0 0 60px rgba(0, 191, 255, 0.5);
+  transform: scale(1.05);
+}
+
+@keyframes gentle-pulse-blue {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.5), 0 0 40px rgba(0, 191, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 191, 255, 0.7), 0 0 50px rgba(0, 191, 255, 0.5);
   }
 }
 
@@ -236,7 +356,46 @@ body {
   }
 }
 
+/* Update sticky positioning for elements that reference navbar */
+.sticky.top-\[57px\] {
+  top: 127px; /* Account for both chat bar and navbar */
+}
+
 /* Update any references to the navbar height */
 .sticky.top-\[73px\] {
-  top: 57px;
+  top: 127px;
+}
+
+/* Mobile responsiveness for chat components */
+@media (max-width: 640px) {
+  .fixed-chat-bar {
+    height: 60px;
+    padding: 8px;
+  }
+
+  body {
+    padding-top: 117px; /* 60px chat bar + 57px navbar */
+  }
+
+  .pt-navbar {
+    padding-top: 117px; /* 60px chat bar + 57px navbar */
+  }
+
+  .sticky.top-\[57px\] {
+    top: 117px;
+  }
+
+  .fixed.bottom-6.right-6 {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .fixed.top-\[70px\] {
+    top: 60px; /* Adjust navbar position for mobile */
+  }
+
+  /* Force navbar to stay black on mobile too */
+  nav[class*="fixed"][class*="top-"] {
+    background-color: #000000 !important;
+  }
 }

@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 import Navbar from "@/components/navigation/navbar"
+import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 
 export default function MedspaNowClientPage() {
   const medspaTemplates = [
@@ -45,6 +46,9 @@ export default function MedspaNowClientPage() {
     <div className="min-h-screen bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white">
       {/* Global Navigation Bar */}
       <Navbar />
+
+      {/* Industry-specific Floating Chat Robot */}
+      <FloatingChatRobot industry="medspa" primaryColor="#e91e63" assistantName="MedspaNOW AI Beauty" />
 
       {/* Hero Section */}
       <section className="text-center py-16 px-6 md:px-10 overflow-hidden">

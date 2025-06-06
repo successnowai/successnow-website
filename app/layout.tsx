@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import AIChatBar from "@/components/chat/ai-chat-bar"
+import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -9,7 +11,7 @@ export const metadata: Metadata = {
   title: "SuccessNOW – AI Superagent System",
   description:
     "Our AI Superagents convert, book, and nurture leads 24/7 — while you get back your time. Never lose a lead again.",
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -24,8 +26,14 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Open+Sans&display=swap"
           rel="stylesheet"
         />
+        {/* Vapi.ai SDK */}
+        <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js"></script>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AIChatBar />
+        {children}
+        <FloatingChatRobot />
+      </body>
     </html>
   )
 }

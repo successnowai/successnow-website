@@ -1,9 +1,6 @@
 "use client"
 
 import type React from "react"
-
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { useInView } from "@/hooks/use-intersection-observer"
 import { AnimatedSwitcher } from "@/components/ui/animated-switcher"
 
@@ -14,67 +11,79 @@ export default function IndustrySolutions() {
     {
       emoji: "🚗",
       title: "Auto Dealers",
+      checkmark: "✅",
       benefits: [
-        "Book more test drives automatically",
-        "Convert leads 24/7 without staffing",
-        "Increase financing approvals by 37%",
+        "Increase Financing Approvals",
+        "Book More Test Drives",
+        "Convert Leads 24/7",
+        "Qualify Buyers Instantly",
       ],
-      buttonText: "See the AutoDealersNOW Offer!",
+      buttonText: "See AutoDealersNOW",
       slug: "autodealersnow",
     },
     {
       emoji: "🏡",
       title: "Realtors",
+      checkmark: "✅",
       benefits: [
-        "Qualify buyers while you sleep",
-        "Book showings without lifting a finger",
-        "Never miss a hot lead again",
+        "Book Showings Automatically",
+        "Qualify Buyers While You Sleep",
+        "Never Miss Hot Leads",
+        "Close More Deals Faster",
       ],
-      buttonText: "See the RealtorNOW Offer!",
+      buttonText: "See RealtorNOW",
       slug: "realtornow",
     },
     {
       emoji: "🏋️",
       title: "Gyms & Studios",
+      checkmark: "✅",
       benefits: [
-        "Fill classes without extra marketing",
-        "Reduce membership cancellations by 42%",
-        "Automate follow-ups for no-shows",
+        "Reduce Cancellations by 42%",
+        "Fill Classes Without Marketing",
+        "Automate Follow-ups for No-shows",
+        "Boost Member Retention",
       ],
-      buttonText: "See the GymsNOW Offer!",
+      buttonText: "See GymsNOW",
       slug: "gymsnow",
     },
     {
       emoji: "🧑‍⚖️",
       title: "Lawyers",
+      checkmark: "✅",
       benefits: [
-        "Get more qualified clients",
-        "Book consultations automatically",
-        "Convert leads while competitors sleep",
+        "Book Consultations Auto",
+        "Get More Qualified Clients",
+        "Convert Leads While Competitors Sleep",
+        "Handle Intake 24/7",
       ],
-      buttonText: "See the LawyersNOW Offer!",
+      buttonText: "See LawyersNOW",
       slug: "lawyersnow",
     },
     {
       emoji: "💆",
       title: "Medspas",
+      checkmark: "✅",
       benefits: [
-        "Book more appointments automatically",
-        "Increase treatment package sales",
-        "Collect 5-star reviews effortlessly",
+        "Collect Reviews Effortlessly",
+        "Book Appointments Automatically",
+        "Increase Treatment Package Sales",
+        "Reduce No-Shows by 60%",
       ],
-      buttonText: "See the MedspaNOW Offer!",
+      buttonText: "See MedspaNOW",
       slug: "medspanow",
     },
     {
       emoji: "🏦",
       title: "Mortgage Brokers",
+      checkmark: "✅",
       benefits: [
-        "Pre-qualify leads without manual work",
-        "Close more loans with less effort",
-        "Nurture leads until they're ready to buy",
+        "Close More Loans Easily",
+        "Pre-qualify Leads Without Work",
+        "Nurture Leads Until Ready",
+        "Beat Competitors on Speed",
       ],
-      buttonText: "See the MortgageNOW Offer!",
+      buttonText: "See MortgageNOW",
       slug: "mortgagenow",
     },
   ]
@@ -86,32 +95,41 @@ export default function IndustrySolutions() {
       >
         AI-Powered Solutions for Top Industries
       </h2>
-      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {industries.map((industry, index) => (
-          <Card
+          <div
             key={index}
-            className={`bg-[#1c2230] border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,191,255,0.2)] cursor-pointer animate-fade-up ${
+            className={`bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-lg p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer animate-fade-up ${
               isInView ? "animate-show" : ""
             } animate-delay-${(index % 6) * 100}`}
           >
-            <CardContent className="p-4 sm:p-5">
-              <div className="mb-2 text-lg sm:text-xl">{industry.emoji}</div>
-              <h3 className="mb-2 font-bold text-white text-sm sm:text-base">{industry.title}</h3>
-              <AnimatedSwitcher
-                phrases={industry.benefits}
-                className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4"
-                interval={25000 + index * 2000}
-                emoji={industry.emoji}
-                scrolling={true}
-              />
-              <Button
-                className="w-full bg-[#00BFFF] text-[#00274D] hover:bg-[#00BFFF]/90 font-bold py-2 px-3 sm:px-4 text-xs sm:text-sm transition-transform duration-200 hover:scale-105"
-                onClick={() => (window.location.href = `/${industry.slug}`)}
-              >
-                {industry.buttonText}
-              </Button>
-            </CardContent>
-          </Card>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center space-x-3">
+                <span className="text-2xl">{industry.emoji}</span>
+                <h3 className="font-bold text-white text-lg">{industry.title}</h3>
+              </div>
+              <span className="text-green-400 text-xl">{industry.checkmark}</span>
+            </div>
+
+            <div className="mb-6 min-h-[60px] flex items-center">
+              <p className="text-gray-300 text-base">
+                <span className="text-white font-bold">AI that </span>
+                <AnimatedSwitcher
+                  phrases={industry.benefits}
+                  className="text-blue-400 font-bold inline"
+                  interval={3000 + index * 500}
+                  scrolling={false}
+                />
+              </p>
+            </div>
+
+            <button
+              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover:scale-105 shadow-lg"
+              onClick={() => (window.location.href = `/${industry.slug}`)}
+            >
+              {industry.buttonText} →
+            </button>
+          </div>
         ))}
       </div>
       <p

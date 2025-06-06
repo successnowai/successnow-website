@@ -46,7 +46,10 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5">
+    <nav
+      className="fixed top-[70px] left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5"
+      style={{ backgroundColor: "#000000" }}
+    >
       <div className="relative flex items-center justify-between px-6 py-3 max-w-7xl mx-auto">
         {/* Logo */}
         <div className="flex items-center">
@@ -81,7 +84,7 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
         {/* Mobile Menu Button & CTA */}
         <div className="flex items-center space-x-3">
           <Button
-            className="bg-gradient-to-r from-[#00BFFF] to-[#0099CC] text-white hover:from-[#0099CC] hover:to-[#00BFFF] font-bold px-6 py-2 text-sm rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#00BFFF]/25 border border-[#00BFFF]/20"
+            className="bg-gradient-to-r from-[#00BFFF] to-[#0099CC] text-white hover:from-[#0099CC] hover:to-[#00BFFF] font-bold px-6 py-2 text-sm rounded-full transition-all duration-300 hover:scale-105 border border-[#00BFFF]/20 navbar-cta-button"
             onClick={() => handleNavClick("/signup")}
           >
             Get AI Now
@@ -99,7 +102,10 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
 
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-[#00BFFF]/10 lg:hidden shadow-xl">
+          <div
+            className="absolute top-full left-0 right-0 bg-black border-b border-[#00BFFF]/10 lg:hidden shadow-xl"
+            style={{ backgroundColor: "#000000" }}
+          >
             <div className="px-6 py-6 space-y-4">
               {navItems.map((item) => (
                 <button

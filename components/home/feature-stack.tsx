@@ -1,9 +1,6 @@
 "use client"
 
 import type React from "react"
-
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { useInView } from "@/hooks/use-intersection-observer"
 import { AnimatedSwitcher } from "@/components/ui/animated-switcher"
 
@@ -12,60 +9,76 @@ export default function FeatureStack() {
 
   const features = [
     {
-      title: "AI Smart Website",
-      description: "Your digital storefront fully built & ready to convert traffic.",
-      benefits: [
-        "Convert visitors 24/7 without staffing",
-        "Answer questions instantly",
-        "Qualify leads while you sleep",
-      ],
       emoji: "🌐",
+      title: "AI Smart Website",
+      checkmark: "✅",
+      benefits: [
+        "Convert Visitors 24/7",
+        "Answer Questions Instantly",
+        "Qualify Leads While You Sleep",
+        "Never Miss an Opportunity",
+      ],
+      buttonText: "See AI Websites",
     },
     {
-      title: "Client App",
-      description: "Build a branded mobile experience with push, gamification, more.",
-      benefits: ["Keep clients engaged 24/7", "Send push notifications automatically", "Gamify the client experience"],
       emoji: "📱",
+      title: "Client App",
+      checkmark: "✅",
+      benefits: [
+        "Keep Clients Engaged",
+        "Send Push Notifications Auto",
+        "Gamify Client Experience",
+        "Build Stronger Relationships",
+      ],
+      buttonText: "See Client Apps",
     },
     {
-      title: "AdsNOW™ AI Ads",
-      description: "Launch ads with 1 click across every platform.",
-      benefits: [
-        "Beat competitors without hiring an agency",
-        "Optimize ad spend automatically",
-        "Generate leads at 60% lower cost",
-      ],
       emoji: "🚀",
+      title: "AdsNOW™ AI Ads",
+      checkmark: "✅",
+      benefits: [
+        "Generate Leads 60% Cheaper",
+        "Beat Competitors Without Agency",
+        "Optimize Ad Spend Automatically",
+        "Launch Ads with 1 Click",
+      ],
+      buttonText: "See AI Advertising",
     },
     {
-      title: "AI Voice Agent + Bot Army",
-      description: "Every lead followed-up, booked & closed — automatically.",
-      benefits: [
-        "Close deals while you sleep",
-        "Handle objections automatically",
-        "Book meetings without human effort",
-      ],
       emoji: "🤖",
+      title: "AI Voice Agent + Bot Army",
+      checkmark: "✅",
+      benefits: [
+        "Close Deals While You Sleep",
+        "Handle Objections Automatically",
+        "Book Meetings Without Effort",
+        "Follow-up Every Lead",
+      ],
+      buttonText: "See AI Agents",
     },
     {
-      title: "SeoNOW™ SEO",
-      description: "Dominate organic Google + local search.",
-      benefits: [
-        "Outrank competitors automatically",
-        "Get found by high-intent buyers",
-        "Generate leads while you sleep",
-      ],
       emoji: "🔍",
+      title: "SeoNOW™ SEO",
+      checkmark: "✅",
+      benefits: [
+        "Dominate Google Search",
+        "Outrank Competitors Auto",
+        "Get Found by High-Intent Buyers",
+        "Generate Leads While You Sleep",
+      ],
+      buttonText: "See AI SEO",
     },
     {
-      title: "AI Social Posting",
-      description: "On-brand social posts published for you.",
-      benefits: [
-        "Post consistently without effort",
-        "Maintain brand voice automatically",
-        "Engage followers while you sleep",
-      ],
       emoji: "📲",
+      title: "AI Social Posting",
+      checkmark: "✅",
+      benefits: [
+        "Post Consistently Auto",
+        "Maintain Brand Voice Auto",
+        "Engage Followers While You Sleep",
+        "Create Viral Content Daily",
+      ],
+      buttonText: "See AI Social",
     },
   ]
 
@@ -80,39 +93,52 @@ export default function FeatureStack() {
       >
         Your AI Super Agent Stack – Core Features
       </h2>
-      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature, index) => (
-          <Card
+          <div
             key={index}
-            className={`bg-[#1c2230] border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,191,255,0.2)] cursor-pointer animate-fade-up ${
+            className={`bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-lg p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer animate-fade-up ${
               isInView ? "animate-show" : ""
             } animate-delay-${(index % 6) * 100}`}
           >
-            <CardContent className="p-4 sm:p-5">
-              <h3 className="mb-2 font-bold text-white flex items-center text-base sm:text-lg">
-                <span className="mr-2 text-base sm:text-lg">{feature.emoji}</span>
-                {feature.title}
-              </h3>
-              <AnimatedSwitcher
-                phrases={feature.benefits}
-                className="text-gray-300 text-xs sm:text-sm"
-                interval={25000 + index * 2000}
-                emoji={feature.emoji}
-                scrolling={true}
-              />
-            </CardContent>
-          </Card>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center space-x-3">
+                <span className="text-2xl">{feature.emoji}</span>
+                <h3 className="font-bold text-white text-lg">{feature.title}</h3>
+              </div>
+              <span className="text-green-400 text-xl">{feature.checkmark}</span>
+            </div>
+
+            <div className="mb-6 min-h-[60px] flex items-center">
+              <p className="text-gray-300 text-base">
+                <span className="text-white font-bold">AI that </span>
+                <AnimatedSwitcher
+                  phrases={feature.benefits}
+                  className="text-blue-400 font-bold inline"
+                  interval={3000 + index * 500}
+                  scrolling={false}
+                />
+              </p>
+            </div>
+
+            <button
+              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover:scale-105 shadow-lg"
+              onClick={() => (window.location.href = "/features")}
+            >
+              {feature.buttonText} →
+            </button>
+          </div>
         ))}
       </div>
 
-      {/* See All Features Button */}
+      {/* See All Features Button - Changed to Bright Green */}
       <div className="mt-8 sm:mt-10 text-center px-4">
-        <Button
-          className="w-full sm:w-auto bg-[#00BFFF] text-[#00274D] hover:bg-[#00BFFF]/90 font-bold px-6 sm:px-8 py-3 text-sm sm:text-base rounded-md transition-transform duration-200 hover:scale-105"
+        <button
+          className="w-full sm:w-auto bg-gradient-to-r from-[#10B981] to-[#059669] text-white font-bold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl glow-button-green-reduced hover:from-[#059669] hover:to-[#047857]"
           onClick={() => (window.location.href = "/demo")}
         >
           Launch Instant Demo NOW
-        </Button>
+        </button>
       </div>
     </section>
   )
