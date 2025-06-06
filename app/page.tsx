@@ -11,10 +11,10 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <HeroSection />
+      <AdsNowSection />
       <IndustrySolutions />
       <FeatureStack />
       <LiveDemo />
-      <AdsNowSection />
       <PricingTable />
       <CTASection />
       <Footer />
