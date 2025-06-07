@@ -22,7 +22,7 @@ const LawyersNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  // Direct template URLs - no masking or redirection
+  // Updated with correct Template 2 and Template 3 URLs
   const lawyerTemplates = [
     {
       id: "lawyer-1",
@@ -34,13 +34,13 @@ const LawyersNowClientPage = () => {
       id: "lawyer-2",
       title: "Law Firm Template 2",
       description: "Premium layout with practice area showcase",
-      url: "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
+      url: "https://v0-lawyernow-website-template-2-git-1b6435-info-9422s-projects.vercel.app/",
     },
     {
       id: "lawyer-3",
-      title: "Law Firm Template 3",
-      description: "Feature-rich law firm website",
-      url: "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
+      title: "Law Firm Template 3 - CorpLawAI",
+      description: "Corporate legal excellence powered by AI",
+      url: "https://v0-lawyernow-website-template-3.vercel.app/",
     },
   ]
 
