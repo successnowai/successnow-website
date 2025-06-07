@@ -40,7 +40,7 @@ const RealtorNowClientPage = () => {
       id: "realtor-3",
       title: "Real Estate Template 3",
       description: "Feature-rich real estate website",
-      url: "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
+      url: "https://v0-realtor-template-3-git-realtor-te-bc3408-info-9422s-projects.vercel.app/",
     },
   ]
 
