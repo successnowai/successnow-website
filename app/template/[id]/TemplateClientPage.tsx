@@ -70,6 +70,11 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
     "mortgage-broker-2": "https://v0-free-idx-api-options.vercel.app/",
     "fitness-1": "https://v0-autodele-now-template-site.vercel.app/",
     "fitness-2": "https://v0-autodele-now-template-site.vercel.app/",
+
+    // Legacy template IDs that might still be used
+    "realtor-template-1": "https://v0-realtor-template-site-1.vercel.app/",
+    "realtor-template-2": "https://v0-realtor-professional-template.vercel.app/",
+    "realtor-template-3": "https://v0-realtor-template-site-1.vercel.app/",
   }
 
   const templateTitles: Record<string, string> = {
@@ -128,6 +133,11 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
     "mortgage-broker-2": "Mortgage Broker Template 2",
     "fitness-1": "Gym & Fitness Website Template",
     "fitness-2": "Gym & Fitness Website Template 2",
+
+    // Legacy template IDs
+    "realtor-template-1": "Real Estate Website Template",
+    "realtor-template-2": "Realtor Professional Template",
+    "realtor-template-3": "Real Estate Website Template 3",
   }
 
   useEffect(() => {
