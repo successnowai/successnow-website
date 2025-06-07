@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Volume2, VolumeX, Play, PhoneCall, Headphones, CheckCircle, AlertTriangle } from "lucide-react"
+import { Volume2, VolumeX, Play, PhoneCall, Headphones, CheckCircle, AlertTriangle, Speaker } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog"
@@ -21,17 +21,26 @@ export default function DemoPage() {
   // Audio state
   const [isMobile, setIsMobile] = useState(false)
   const [audioReady, setAudioReady] = useState(false)
-  const [audioStatus, setAudioStatus] = useState<"waiting" | "initializing" | "ready" | "failed">("waiting")
+  const [audioStatus, setAudioStatus] = useState<"waiting" | "initializing" | "testing" | "ready" | "failed">("waiting")
   const [showPlayButton, setShowPlayButton] = useState(false)
+  const [debugLog, setDebugLog] = useState<string[]>([])
 
   // Refs
   const messageQueue = useRef<string[]>([])
   const processingRef = useRef(false)
   const synth = useRef<SpeechSynthesis | null>(null)
   const selectedVoice = useRef<SpeechSynthesisVoice | null>(null)
-  const initTimeoutRef = useRef<NodeJS.Timeout | null>(null)
-  const audioInitialized = useRef(false)
-  const hasInteracted = useRef(false)
+  const audioContextRef = useRef<AudioContext | null>(null)
+  const audioUnlocked = useRef(false)
+  const speechTestPassed = useRef(false)
+
+  // Add debug logging
+  const addDebug = (message: string) => {
+    const timestamp = new Date().toLocaleTimeString()
+    const logMessage = `[${timestamp}] ${message}`
+    console.log(`[Jessica Audio]: ${logMessage}`)
+    setDebugLog((prev) => [...prev.slice(-4), logMessage])
+  }
 
   // Script content
   const demoScript = [
@@ -52,13 +61,13 @@ export default function DemoPage() {
       const mobile =
         window.innerWidth < 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
       setIsMobile(mobile)
+      addDebug(`Device detected: ${mobile ? "Mobile" : "Desktop"} - ${navigator.userAgent.substring(0, 50)}...`)
 
-      // Show play button immediately on mobile
       if (mobile) {
         setShowPlayButton(true)
       } else {
-        // On desktop, start automatically
-        initializeAudio()
+        // On desktop, try to initialize automatically
+        setTimeout(() => initializeAudio(), 1000)
       }
     }
 
@@ -71,128 +80,273 @@ export default function DemoPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       synth.current = window.speechSynthesis
+      addDebug("Speech synthesis object created")
 
-      // Function to load voices
       const loadVoices = () => {
         const availableVoices = synth.current?.getVoices() || []
+        addDebug(`Voices available: ${availableVoices.length}`)
 
-        // Select best voice
-        const bestVoice =
-          availableVoices.find((v) => v.name.includes("Samantha")) ||
-          availableVoices.find((v) => v.name.includes("Google UK English Female")) ||
-          availableVoices.find((v) => v.name.includes("Microsoft Zira")) ||
-          availableVoices.find((v) => v.lang === "en-US") ||
-          availableVoices.find((v) => v.lang === "en-GB") ||
-          availableVoices.find((v) => v.lang.startsWith("en")) ||
-          availableVoices[0]
+        if (availableVoices.length > 0) {
+          // Log first few voices for debugging
+          availableVoices.slice(0, 3).forEach((voice, index) => {
+            addDebug(`Voice ${index}: ${voice.name} (${voice.lang})`)
+          })
 
-        if (bestVoice) {
-          selectedVoice.current = bestVoice
-          console.log("Selected voice:", bestVoice.name)
+          // Select best voice with priority for mobile
+          const bestVoice = isMobile
+            ? availableVoices.find((v) => v.name.includes("Samantha")) ||
+              availableVoices.find((v) => v.name.includes("Karen")) ||
+              availableVoices.find((v) => v.lang === "en-US" && v.localService) ||
+              availableVoices.find((v) => v.lang === "en-US") ||
+              availableVoices.find((v) => v.lang.startsWith("en")) ||
+              availableVoices[0]
+            : availableVoices.find((v) => v.name.includes("Google UK English Female")) ||
+              availableVoices.find((v) => v.name.includes("Microsoft Zira")) ||
+              availableVoices.find((v) => v.lang === "en-GB") ||
+              availableVoices.find((v) => v.lang === "en-US") ||
+              availableVoices[0]
+
+          if (bestVoice) {
+            selectedVoice.current = bestVoice
+            addDebug(`Selected voice: ${bestVoice.name} (${bestVoice.lang}) - Local: ${bestVoice.localService}`)
+          }
         }
       }
 
-      // Load voices initially and when they change
       loadVoices()
       if (synth.current?.onvoiceschanged !== undefined) {
         synth.current.onvoiceschanged = loadVoices
       }
+
+      // Force voice loading after delay
+      setTimeout(loadVoices, 1000)
     }
-  }, [])
+  }, [isMobile])
 
-  // Simple audio initialization
-  const initializeAudio = () => {
-    if (audioInitialized.current) return
+  // Comprehensive mobile audio unlock
+  const unlockMobileAudio = async (): Promise<boolean> => {
+    if (audioUnlocked.current) {
+      addDebug("Audio already unlocked")
+      return true
+    }
 
-    setAudioStatus("initializing")
-    hasInteracted.current = true
-
-    // Set a timeout to prevent getting stuck
-    if (initTimeoutRef.current) clearTimeout(initTimeoutRef.current)
-    initTimeoutRef.current = setTimeout(() => {
-      // If still initializing after 5 seconds, mark as failed
-      if (audioStatus === "initializing") {
-        setAudioStatus("failed")
-        setAudioReady(true) // Still allow demo to run without audio
-      }
-    }, 5000)
+    addDebug("Starting aggressive mobile audio unlock...")
 
     try {
-      // Try to unlock audio on iOS
-      const unlockAudio = () => {
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
-
-        // Create and play a silent oscillator
-        const oscillator = audioContext.createOscillator()
-        const gainNode = audioContext.createGain()
-        gainNode.gain.value = 0.01
-        oscillator.connect(gainNode)
-        gainNode.connect(audioContext.destination)
-        oscillator.start(0)
-        oscillator.stop(0.001)
-
-        // Also try with HTML5 Audio
-        const audio = new Audio("data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAA=")
-        audio.volume = 0.01
-        audio.play().catch((e) => console.log("Silent audio play failed:", e))
+      // Strategy 1: Create AudioContext and play silent tone
+      if (!audioContextRef.current) {
+        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
+        addDebug(`AudioContext created - State: ${audioContextRef.current.state}`)
       }
 
-      unlockAudio()
+      if (audioContextRef.current.state === "suspended") {
+        await audioContextRef.current.resume()
+        addDebug(`AudioContext resumed - New state: ${audioContextRef.current.state}`)
+      }
 
-      // Test speech synthesis
-      const testSpeech = () => {
-        if (!synth.current) return false
+      // Play a very short beep to unlock audio
+      const oscillator = audioContextRef.current.createOscillator()
+      const gainNode = audioContextRef.current.createGain()
 
-        // Cancel any ongoing speech
-        synth.current.cancel()
+      oscillator.connect(gainNode)
+      gainNode.connect(audioContextRef.current.destination)
 
-        // Create a test utterance
-        const utterance = new SpeechSynthesisUtterance("Test")
-        utterance.volume = 0.01
-        utterance.onstart = () => {
-          // Speech started successfully
-          synth.current?.cancel() // Cancel immediately
-          audioInitialized.current = true
-          setAudioStatus("ready")
-          setAudioReady(true)
-          if (initTimeoutRef.current) clearTimeout(initTimeoutRef.current)
-        }
-        utterance.onerror = () => {
-          // Speech failed
-          setAudioStatus("failed")
-          setAudioReady(true) // Still allow demo to run without audio
-          if (initTimeoutRef.current) clearTimeout(initTimeoutRef.current)
-        }
+      gainNode.gain.setValueAtTime(0.1, audioContextRef.current.currentTime)
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContextRef.current.currentTime + 0.1)
 
-        // Use selected voice if available
+      oscillator.frequency.value = 440
+      oscillator.type = "sine"
+      oscillator.start(audioContextRef.current.currentTime)
+      oscillator.stop(audioContextRef.current.currentTime + 0.1)
+
+      addDebug("Played unlock beep")
+
+      // Strategy 2: HTML5 Audio with actual sound
+      const audio = new Audio()
+      audio.src =
+        "data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT"
+      audio.volume = 0.3 // Slightly audible to ensure unlock
+      audio.muted = false
+
+      try {
+        await audio.play()
+        addDebug("HTML5 audio played successfully")
+        audio.pause()
+        audio.currentTime = 0
+      } catch (e) {
+        addDebug(`HTML5 audio failed: ${e}`)
+      }
+
+      // Strategy 3: Force speech synthesis unlock
+      if (synth.current) {
+        const unlockUtterance = new SpeechSynthesisUtterance("Audio test")
+        unlockUtterance.volume = 0.5
+        unlockUtterance.rate = 2.0
+        unlockUtterance.pitch = 1.0
+
         if (selectedVoice.current) {
-          utterance.voice = selectedVoice.current
+          unlockUtterance.voice = selectedVoice.current
         }
 
-        // Speak the test utterance
-        synth.current.speak(utterance)
-
-        // Also set a timeout to ensure we don't get stuck
-        setTimeout(() => {
-          if (audioStatus === "initializing") {
-            audioInitialized.current = true
-            setAudioStatus("ready")
-            setAudioReady(true)
-          }
-        }, 2000)
+        // Speak and immediately cancel to unlock
+        synth.current.speak(unlockUtterance)
+        await new Promise((resolve) => setTimeout(resolve, 200))
+        synth.current.cancel()
+        addDebug("Speech synthesis unlock completed")
       }
 
-      // Run test after a short delay
-      setTimeout(testSpeech, 500)
+      audioUnlocked.current = true
+      addDebug("Mobile audio unlock completed successfully")
+      return true
     } catch (error) {
-      console.error("Audio initialization error:", error)
-      setAudioStatus("failed")
-      setAudioReady(true) // Still allow demo to run without audio
+      addDebug(`Audio unlock failed: ${error}`)
+      return false
     }
+  }
+
+  // Test actual speech output
+  const testSpeechOutput = async (): Promise<boolean> => {
+    addDebug("Testing actual speech output...")
+
+    if (!synth.current || !selectedVoice.current) {
+      addDebug("Speech synthesis or voice not available")
+      return false
+    }
+
+    return new Promise((resolve) => {
+      try {
+        // Cancel any ongoing speech
+        synth.current!.cancel()
+
+        const testUtterance = new SpeechSynthesisUtterance("Hello")
+        testUtterance.voice = selectedVoice.current
+        testUtterance.volume = 0.8
+        testUtterance.rate = 1.5
+        testUtterance.pitch = 1.0
+
+        let resolved = false
+        let startTimeout: NodeJS.Timeout
+        let endTimeout: NodeJS.Timeout
+
+        const resolveTest = (success: boolean, reason: string) => {
+          if (!resolved) {
+            resolved = true
+            clearTimeout(startTimeout)
+            clearTimeout(endTimeout)
+            addDebug(`Speech test ${success ? "passed" : "failed"}: ${reason}`)
+            resolve(success)
+          }
+        }
+
+        testUtterance.onstart = () => {
+          resolveTest(true, "Speech started successfully")
+          // Cancel after confirming it started
+          setTimeout(() => {
+            if (synth.current) synth.current.cancel()
+          }, 300)
+        }
+
+        testUtterance.onend = () => {
+          if (!resolved) {
+            resolveTest(true, "Speech completed")
+          }
+        }
+
+        testUtterance.onerror = (event) => {
+          resolveTest(false, `Speech error: ${event.error}`)
+        }
+
+        // Safety timeouts
+        startTimeout = setTimeout(() => {
+          resolveTest(false, "Speech failed to start within 3 seconds")
+        }, 3000)
+
+        endTimeout = setTimeout(() => {
+          if (synth.current) synth.current.cancel()
+          if (!resolved) {
+            resolveTest(false, "Speech test timeout")
+          }
+        }, 5000)
+
+        synth.current.speak(testUtterance)
+        addDebug("Speech test utterance queued")
+      } catch (error) {
+        addDebug(`Speech test error: ${error}`)
+        resolve(false)
+      }
+    })
+  }
+
+  // Initialize audio with comprehensive testing
+  const initializeAudio = async () => {
+    setAudioStatus("initializing")
+    addDebug("Starting comprehensive audio initialization...")
+
+    try {
+      // Step 1: Unlock mobile audio
+      addDebug("Step 1: Unlocking mobile audio...")
+      const unlocked = await unlockMobileAudio()
+      if (!unlocked) {
+        throw new Error("Failed to unlock mobile audio")
+      }
+
+      // Step 2: Wait for voices to be available
+      addDebug("Step 2: Ensuring voices are loaded...")
+      let voiceAttempts = 0
+      while ((!synth.current?.getVoices().length || !selectedVoice.current) && voiceAttempts < 10) {
+        await new Promise((resolve) => setTimeout(resolve, 200))
+        const voices = synth.current?.getVoices() || []
+        if (voices.length > 0 && !selectedVoice.current) {
+          const bestVoice = voices.find((v) => v.lang.startsWith("en")) || voices[0]
+          if (bestVoice) {
+            selectedVoice.current = bestVoice
+            addDebug(`Voice selected on attempt ${voiceAttempts + 1}: ${bestVoice.name}`)
+          }
+        }
+        voiceAttempts++
+      }
+
+      if (!selectedVoice.current) {
+        throw new Error("No voice available after waiting")
+      }
+
+      // Step 3: Test actual speech output
+      setAudioStatus("testing")
+      addDebug("Step 3: Testing actual speech output...")
+      const speechWorks = await testSpeechOutput()
+
+      if (speechWorks) {
+        speechTestPassed.current = true
+        setAudioStatus("ready")
+        setAudioReady(true)
+        addDebug("Audio initialization completed successfully!")
+      } else {
+        throw new Error("Speech test failed")
+      }
+    } catch (error) {
+      addDebug(`Audio initialization failed: ${error}`)
+      setAudioStatus("failed")
+      setAudioReady(true) // Still allow demo to run
+    }
+  }
+
+  // Handle play button click with immediate audio unlock
+  const handlePlayClick = async () => {
+    addDebug("Play button clicked - starting immediate audio initialization")
+
+    // Start initialization immediately
+    await initializeAudio()
+
+    // Start demo after brief delay
+    setTimeout(() => {
+      setShowPlayButton(false)
+      startDemo()
+    }, 500)
   }
 
   // Start the demo
   const startDemo = () => {
+    addDebug("Starting demo with voice")
     setIsVoiceActive(true)
     setCurrentStep(0)
 
@@ -209,8 +363,9 @@ export default function DemoPage() {
   }
 
   // Add message to queue
-  const addToQueue = (message) => {
+  const addToQueue = (message: string) => {
     messageQueue.current.push(message)
+    addDebug(`Added to queue: "${message.substring(0, 30)}..." (Queue: ${messageQueue.current.length})`)
     if (!processingRef.current) {
       processQueue()
     }
@@ -220,20 +375,24 @@ export default function DemoPage() {
   const processQueue = () => {
     if (messageQueue.current.length === 0) {
       processingRef.current = false
+      addDebug("Queue processing completed")
       return
     }
 
     processingRef.current = true
-    const nextMessage = messageQueue.current.shift()
+    const nextMessage = messageQueue.current.shift()!
 
+    addDebug(`Processing: "${nextMessage.substring(0, 30)}..."`)
     setCurrentMessage(nextMessage)
     setIsProcessing(true)
 
-    if (!isMuted && isVoiceActive && audioInitialized.current && audioStatus === "ready") {
+    if (!isMuted && isVoiceActive && speechTestPassed.current && audioStatus === "ready") {
       speakMessage(nextMessage)
     } else {
-      // If muted or audio not ready, still show the message but don't speak
-      // Add a delay to simulate speaking time
+      addDebug(
+        `Skipping speech - Muted: ${isMuted}, Active: ${isVoiceActive}, TestPassed: ${speechTestPassed.current}, Status: ${audioStatus}`,
+      )
+      // Show message without speech
       setTimeout(() => {
         setIsProcessing(false)
         processQueue()
@@ -241,68 +400,103 @@ export default function DemoPage() {
     }
   }
 
-  // Speak the message
-  const speakMessage = (text) => {
-    if (!synth.current || !audioInitialized.current) return
-
-    // Cancel any ongoing speech
-    synth.current.cancel()
-
-    const utterance = new SpeechSynthesisUtterance(text)
-
-    // Use selected voice if available
-    if (selectedVoice.current) {
-      utterance.voice = selectedVoice.current
-    }
-
-    // Set properties for a friendly, natural voice
-    utterance.rate = isMobile ? 0.9 : 1.0 // Slightly slower on mobile
-    utterance.pitch = 1.1 // Slightly higher pitch for female voice
-    utterance.volume = 1.0
-
-    // Handle speech events
-    utterance.onstart = () => {
-      setIsPlaying(true)
-    }
-
-    utterance.onend = () => {
-      setIsPlaying(false)
-      setIsProcessing(false)
-      // Small delay between messages for natural conversation flow
+  // Speak the message with enhanced mobile support
+  const speakMessage = (text: string) => {
+    if (!synth.current || !selectedVoice.current || !speechTestPassed.current) {
+      addDebug("Speech not available - missing requirements")
       setTimeout(() => {
+        setIsProcessing(false)
         processQueue()
-      }, 800)
+      }, 2000)
+      return
     }
 
-    utterance.onerror = () => {
-      setIsPlaying(false)
-      setIsProcessing(false)
-      setTimeout(() => {
-        processQueue()
-      }, 800)
-    }
+    addDebug(`Speaking: "${text.substring(0, 30)}..." with voice: ${selectedVoice.current.name}`)
 
-    // Start speaking
+    // Cancel any ongoing speech with multiple attempts for mobile
     try {
-      synth.current.speak(utterance)
-    } catch (error) {
-      console.error("Failed to speak:", error)
-      setIsProcessing(false)
-      setTimeout(() => {
-        processQueue()
-      }, 800)
+      synth.current.cancel()
+      if (isMobile) {
+        setTimeout(() => synth.current?.cancel(), 10)
+        setTimeout(() => synth.current?.cancel(), 50)
+        setTimeout(() => synth.current?.cancel(), 100)
+      }
+    } catch (e) {
+      addDebug(`Error canceling speech: ${e}`)
     }
-  }
 
-  // Handle play button click
-  const handlePlayClick = () => {
-    initializeAudio()
+    // Delay for mobile to ensure proper cancellation
+    const delay = isMobile ? 400 : 100
 
-    // Start demo after a short delay
     setTimeout(() => {
-      setShowPlayButton(false)
-      startDemo()
-    }, 1000)
+      try {
+        const utterance = new SpeechSynthesisUtterance(text)
+        utterance.voice = selectedVoice.current
+        utterance.rate = isMobile ? 0.85 : 0.95
+        utterance.pitch = 1.1
+        utterance.volume = 1.0
+
+        let hasStarted = false
+        let hasEnded = false
+
+        utterance.onstart = () => {
+          if (!hasStarted) {
+            hasStarted = true
+            addDebug("✅ Speech started successfully")
+            setIsPlaying(true)
+          }
+        }
+
+        utterance.onend = () => {
+          if (!hasEnded) {
+            hasEnded = true
+            addDebug("✅ Speech ended normally")
+            setIsPlaying(false)
+            setIsProcessing(false)
+            setTimeout(
+              () => {
+                processQueue()
+              },
+              isMobile ? 1000 : 600,
+            )
+          }
+        }
+
+        utterance.onerror = (event) => {
+          if (!hasEnded) {
+            hasEnded = true
+            addDebug(`❌ Speech error: ${event.error}`)
+            setIsPlaying(false)
+            setIsProcessing(false)
+            setTimeout(() => {
+              processQueue()
+            }, 500)
+          }
+        }
+
+        // Safety timeout
+        setTimeout(
+          () => {
+            if (!hasEnded) {
+              addDebug("⏰ Speech timeout - forcing end")
+              synth.current?.cancel()
+              setIsPlaying(false)
+              setIsProcessing(false)
+              processQueue()
+            }
+          },
+          text.length * 120 + 8000,
+        )
+
+        synth.current.speak(utterance)
+        addDebug("🎤 Speech utterance queued for playback")
+      } catch (error) {
+        addDebug(`❌ Speech creation failed: ${error}`)
+        setIsPlaying(false)
+        setIsProcessing(false)
+        processQueue()
+      }
+    }, delay)
   }
 
   // Handle live transfer
@@ -318,7 +512,6 @@ export default function DemoPage() {
     addToQueue(`Great! I'll transfer you to ${name} right away. Please hold while I connect you.`)
     setShowTransferDialog(false)
 
-    // Simulate transfer completion after message is spoken
     setTimeout(() => {
       setIsAgentActive(false)
       addToQueue(`You've been successfully transferred to ${name}. They will assist you shortly.`)
@@ -327,6 +520,7 @@ export default function DemoPage() {
 
   // Restart demo
   const restartDemo = () => {
+    addDebug("Restarting demo")
     if (synth.current) synth.current.cancel()
     messageQueue.current = []
     processingRef.current = false
@@ -336,7 +530,6 @@ export default function DemoPage() {
     setIsAgentActive(true)
     setCurrentStep(0)
 
-    // Restart after brief delay
     setTimeout(() => {
       startDemo()
     }, 500)
@@ -345,6 +538,7 @@ export default function DemoPage() {
   // Toggle mute
   const toggleMute = () => {
     setIsMuted(!isMuted)
+    addDebug(`Audio ${!isMuted ? "muted" : "unmuted"}`)
     if (!isMuted && synth.current) {
       synth.current.cancel()
       setIsPlaying(false)
@@ -366,9 +560,6 @@ export default function DemoPage() {
     return () => {
       if (synth.current) {
         synth.current.cancel()
-      }
-      if (initTimeoutRef.current) {
-        clearTimeout(initTimeoutRef.current)
       }
     }
   }, [])
@@ -392,11 +583,14 @@ export default function DemoPage() {
             <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <Headphones className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Start Jessica's Demo</h3>
-            <p className="text-blue-100 mb-4">Tap the button below to start the demo and hear Jessica speak.</p>
+            <h3 className="text-xl font-bold text-white mb-2">Start Jessica's Voice Demo</h3>
+            <p className="text-blue-100 mb-4">
+              Tap below to unlock audio and hear Jessica speak. This will play a brief audio test to ensure your device
+              is ready.
+            </p>
             <Button
               onClick={handlePlayClick}
-              disabled={audioStatus === "initializing"}
+              disabled={audioStatus === "initializing" || audioStatus === "testing"}
               className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg font-bold text-lg min-h-[44px]"
             >
               {audioStatus === "initializing" ? (
@@ -406,12 +600,17 @@ export default function DemoPage() {
                     <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce animation-delay-100"></div>
                     <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce animation-delay-200"></div>
                   </div>
-                  Initializing...
+                  Initializing Audio...
+                </>
+              ) : audioStatus === "testing" ? (
+                <>
+                  <Speaker className="w-5 h-5 mr-2 animate-pulse" />
+                  Testing Voice...
                 </>
               ) : (
                 <>
                   <Play className="w-5 h-5 mr-2" />
-                  Start Demo
+                  Start Voice Demo
                 </>
               )}
             </Button>
@@ -420,13 +619,27 @@ export default function DemoPage() {
             {audioStatus === "ready" && (
               <div className="mt-4 flex items-center justify-center space-x-2 text-green-300">
                 <CheckCircle className="w-5 h-5" />
-                <span>Audio ready! Jessica will speak during the demo.</span>
+                <span>✅ Voice test passed! Jessica will speak during the demo.</span>
               </div>
             )}
             {audioStatus === "failed" && (
               <div className="mt-4 flex items-center justify-center space-x-2 text-yellow-300">
                 <AlertTriangle className="w-5 h-5" />
-                <span>Audio not available. Demo will continue with text only.</span>
+                <span>⚠️ Voice not available. Demo will continue with text only.</span>
+              </div>
+            )}
+
+            {/* Debug Info for troubleshooting */}
+            {debugLog.length > 0 && (
+              <div className="mt-4 p-3 bg-black/30 rounded-lg text-left">
+                <h4 className="text-sm font-bold mb-2 text-white">Audio Debug:</h4>
+                <div className="space-y-1 max-h-24 overflow-y-auto">
+                  {debugLog.map((log, index) => (
+                    <div key={index} className="text-xs text-gray-300 font-mono">
+                      {log}
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -445,8 +658,11 @@ export default function DemoPage() {
                 <h3 className="text-xl font-semibold text-white">Jessica - SuccessNOW AI SuperAgent</h3>
               </div>
               <div className="flex space-x-2">
-                {audioStatus === "ready" && (
-                  <div className="px-2 py-1 bg-green-500 rounded text-white text-xs">Audio On</div>
+                {audioStatus === "ready" && speechTestPassed.current && (
+                  <div className="px-2 py-1 bg-green-500 rounded text-white text-xs flex items-center">
+                    <Volume2 className="w-3 h-3 mr-1" />
+                    Voice On
+                  </div>
                 )}
                 {audioStatus === "failed" && (
                   <div className="px-2 py-1 bg-yellow-500 rounded text-white text-xs">Text Only</div>
@@ -469,15 +685,20 @@ export default function DemoPage() {
                     <div className="w-24 h-24 bg-purple-400 rounded-full mx-auto mb-4 flex items-center justify-center relative">
                       <span className="text-4xl">🤖</span>
                       {isPlaying && (
-                        <div className="absolute inset-0 rounded-full bg-pink-400 animate-ping opacity-30"></div>
+                        <>
+                          <div className="absolute inset-0 rounded-full bg-pink-400 animate-ping opacity-30"></div>
+                          <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                          </div>
+                        </>
                       )}
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-2">
-                      {isPlaying ? "Jessica is Speaking" : "Jessica is Ready"}
+                      {isPlaying ? "🎤 Jessica is Speaking" : "Jessica is Ready"}
                     </h3>
                     <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-500 text-white text-sm">
                       <span className={`w-2 h-2 bg-white rounded-full mr-2 ${isPlaying ? "animate-pulse" : ""}`}></span>
-                      {isPlaying ? "Speaking" : "AI SuperAgent Active"}
+                      {isPlaying ? "Speaking Now" : "AI SuperAgent Active"}
                     </div>
                   </div>
                 ) : (
