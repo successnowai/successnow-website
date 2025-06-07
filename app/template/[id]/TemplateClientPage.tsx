@@ -44,14 +44,17 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
       const title = templateTitles[params.id] || "Website Template"
       document.title = `${title} - SuccessNOW`
 
-      setTimeout(() => setLoading(false), 500)
+      // Add a small delay for mobile to ensure proper loading
+      const loadDelay = isMobile ? 1000 : 500
+      setTimeout(() => setLoading(false), loadDelay)
 
       return () => window.removeEventListener("resize", checkMobile)
     } catch (err) {
+      console.error("Template loading error:", err)
       setError(true)
       setLoading(false)
     }
-  }, [params.id])
+  }, [params.id, isMobile])
 
   const templateUrl = templateUrls[params.id] || templateUrls["auto-1"]
   const templateTitle = templateTitles[params.id] || "Website Template"
