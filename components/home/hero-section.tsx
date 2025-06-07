@@ -37,14 +37,8 @@ export default function HeroSection() {
             appointments, and reply to client inquiries—24/7.
           </p>
 
-          {/* Button Pair */}
-          <div className="flex flex-col gap-3 sm:gap-4 mt-6 sm:mt-8 animate-fadeTextUp animation-delay-1200 px-4">
-            <Button
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-sm sm:text-base"
-              onClick={() => (window.location.href = "/payment")}
-            >
-              SIGN ME UP →
-            </Button>
+          {/* Single Button - NO GREEN BUTTON */}
+          <div className="flex justify-center mt-6 sm:mt-8 animate-fadeTextUp animation-delay-1200 px-4">
             <Button
               variant="outline"
               className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-sm sm:text-base bg-transparent"
@@ -122,7 +116,7 @@ export default function HeroSection() {
       <section className="relative py-12 sm:py-16 px-4 sm:px-6">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl font-bold text-white">
-            Meet the AI Business System That Never Sleeps
+            Try Our AI Agent Live – See It, Hear It, Test It
           </h2>
           <p className="mx-auto mb-6 sm:mb-8 max-w-2xl text-base sm:text-lg text-gray-300 px-2">
             Our AI Superagents convert, book, and nurture leads 24/7 — while you get back your time. Never lose a lead
@@ -160,14 +154,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 sm:gap-4 px-4">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-[#00BFFF] text-[#00274D] hover:bg-[#00BFFF]/90 font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg transition-transform duration-200 hover:scale-105"
-              onClick={handleDemoClick}
-            >
-              Launch Instant Demo NOW
-            </Button>
+          <div className="flex justify-center px-4">
             <Button
               size="lg"
               className="w-full sm:w-auto bg-transparent border-2 border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-white font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg transition-all duration-200 hover:scale-105"

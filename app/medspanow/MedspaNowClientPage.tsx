@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Play } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
@@ -9,9 +8,17 @@ import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 import Navbar from "@/components/navigation/navbar"
 import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 import { useState, useEffect } from "react"
+import { DemoPopup } from "@/components/ui/demo-popup"
+import { InstantDemoCTA } from "@/components/ui/instant-demo-cta"
+import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
 export default function MedspaNowClientPage() {
   const [currentText, setCurrentText] = useState(0)
+  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+
+  const handleDemoClick = () => {
+    setIsDemoPopupOpen(true)
+  }
 
   const rotatingTexts = [
     "Instantly Books",
@@ -95,14 +102,14 @@ export default function MedspaNowClientPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={() => (window.location.href = "/payment")}
+              onClick={handleDemoClick}
             >
               GET MEDSPANOW →
             </Button>
             <Button
               variant="outline"
               className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={() => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={handleDemoClick}
             >
               Launch Instant Demo NOW
             </Button>
@@ -137,42 +144,10 @@ export default function MedspaNowClientPage() {
         </div>
       </section>
 
-      {/* Demo Form Section */}
-      <section className="relative bg-gradient-to-b from-[#0B1426]/60 to-black/40 backdrop-blur-sm py-16 px-6">
-        <div className="max-w-md mx-auto bg-[#00274D]/80 backdrop-blur-sm text-white p-8 rounded-xl shadow-2xl border border-[#00BFFF]/20">
-          <h2 className="text-2xl font-bold mb-2 text-center">
-            Never Miss Revenue Again – <br /> <span className="text-[#00BFFF]">Automate Bookings & Upsells</span>
-          </h2>
-          <p className="text-center text-sm text-gray-300 mb-6">See AI Medspa Automation</p>
+      {/* Instant Demo CTA */}
+      <InstantDemoCTA onClick={handleDemoClick} />
 
-          <form className="space-y-4">
-            <Input
-              type="text"
-              placeholder="Your Name"
-              className="w-full p-4 rounded-md bg-white/10 backdrop-blur-sm text-white placeholder-gray-400 border border-white/20 focus:border-[#00BFFF] focus:outline-none"
-              required
-            />
-            <Input
-              type="tel"
-              placeholder="Phone Number"
-              className="w-full p-4 rounded-md bg-white/10 backdrop-blur-sm text-white placeholder-gray-400 border border-white/20 focus:border-[#00BFFF] focus:outline-none"
-              required
-            />
-            <Input
-              type="email"
-              placeholder="Email Address"
-              className="w-full p-4 rounded-md bg-white/10 backdrop-blur-sm text-white placeholder-gray-400 border border-white/20 focus:border-[#00BFFF] focus:outline-none"
-              required
-            />
-            <Button
-              type="submit"
-              className="w-full bg-[#00BFFF] text-[#00274D] font-bold py-4 px-4 rounded-md hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105"
-            >
-              💆 Get My Medspa AI Demo
-            </Button>
-          </form>
-        </div>
-      </section>
+      <AdsSuccessEcosystem onDemoClick={handleDemoClick} />
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-5 py-15">
@@ -217,7 +192,7 @@ export default function MedspaNowClientPage() {
             ].map((solution, index) => (
               <Card
                 key={index}
-                className="bg-black/40 backdrop-blur-sm border-[#00BFFF]/20 hover:border-[#00BFFF]/40 transition-all duration-300"
+                className="bg-black/40 backdrop-blur-sm border-[#0BFFF]/20 hover:border-[#00BFFF]/40 transition-all duration-300"
               >
                 <CardContent className="p-4 sm:p-6">
                   <div className="flex items-start">
@@ -261,14 +236,14 @@ export default function MedspaNowClientPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={() => (window.location.href = "/payment")}
+              onClick={handleDemoClick}
             >
               Get AI NOW
             </Button>
             <Button
               variant="outline"
               className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={() => (window.location.href = "/")}
+              onClick={handleDemoClick}
             >
               BACK TO HOME
             </Button>
@@ -276,168 +251,8 @@ export default function MedspaNowClientPage() {
         </div>
       </div>
 
-      {/* AdsNow.ai Section - Embedded directly to avoid import issues */}
-      <section className="relative py-16 px-6 md:px-10 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-purple-900/20 backdrop-blur-sm">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1426]/60 to-black/40"></div>
-        <div className="relative z-10 max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-white">Complete AI Ecosystem:</span>
-              <br />
-              <span className="text-purple-400">AdsNow.ai</span>
-              <span className="text-white"> + </span>
-              <span className="text-[#00BFFF]">SuccessNOW AI</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              From ad creation to client conversion - our AI handles your entire sales funnel 24/7
-            </p>
-          </div>
-
-          {/* Two-Column Feature Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {/* AdsNow.ai Column */}
-            <div className="bg-gradient-to-br from-purple-900/30 to-purple-700/20 backdrop-blur-sm rounded-xl p-8 border border-purple-500/30">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mr-4">
-                  <span className="text-white font-bold text-xl">A</span>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-purple-400">AdsNow.ai</h3>
-                  <p className="text-purple-300">AI Superagents</p>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {[
-                  "🎯 Creates High-Converting Ads Automatically",
-                  "📈 Optimizes Campaigns 24/7 Using 10,000+ Daily Lead Data",
-                  "⚡ Launches Across All Platforms Instantly",
-                  "🧠 Uses AI to Test 15+ Ad Variations Per Week",
-                  "💰 Maximizes ROI with Data-Driven Decisions",
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-start">
-                    <span className="text-purple-400 mr-3 flex-shrink-0">✨</span>
-                    <span className="text-gray-300">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* SuccessNOW AI Column */}
-            <div className="bg-gradient-to-br from-blue-900/30 to-blue-700/20 backdrop-blur-sm rounded-xl p-8 border border-blue-500/30">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-[#00BFFF] rounded-lg flex items-center justify-center mr-4">
-                  <span className="text-white font-bold text-xl">S</span>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-[#00BFFF]">SuccessNOW AI</h3>
-                  <p className="text-blue-300">Lead Conversion Superagent</p>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {[
-                  "⚡ Instantly Engages Every Lead - Never Miss an Opportunity",
-                  "📅 Books Appointments Automatically 24/7",
-                  "💬 Answers Questions & Handles Objections",
-                  "🔄 Follows Up Always - Never Lets Leads Go Cold",
-                  "⭐ Gets Reviews & Referrals Automatically",
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-start">
-                    <span className="text-[#00BFFF] mr-3 flex-shrink-0">🚀</span>
-                    <span className="text-gray-300">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Statistics Row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {[
-              { number: "10,000+", label: "Leads Generated Daily", icon: "📊" },
-              { number: "24/7", label: "AI Operations", icon: "🤖" },
-              { number: "500+", label: "Businesses Automated", icon: "🏢" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="text-center bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-white/10"
-              >
-                <div className="text-4xl mb-2">{stat.icon}</div>
-                <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
-                <div className="text-gray-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Process Flow */}
-          <div className="bg-black/40 backdrop-blur-sm rounded-xl p-8 border border-white/10 mb-12">
-            <h3 className="text-2xl font-bold text-center mb-8 text-white">Complete Lead-to-Sale Process</h3>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {[
-                {
-                  step: "1",
-                  title: "AI Creates Ads",
-                  desc: "AdsNow.ai generates high-converting campaigns",
-                  color: "purple",
-                },
-                {
-                  step: "2",
-                  title: "Launches & Optimizes",
-                  desc: "Automatically tests and improves performance",
-                  color: "purple",
-                },
-                {
-                  step: "3",
-                  title: "Instant Engagement",
-                  desc: "SuccessNOW AI responds to every lead immediately",
-                  color: "blue",
-                },
-                {
-                  step: "4",
-                  title: "Converts to Sales",
-                  desc: "Books appointments and closes deals 24/7",
-                  color: "blue",
-                },
-              ].map((item, index) => (
-                <div key={index} className="text-center">
-                  <div
-                    className={`w-12 h-12 rounded-full ${item.color === "purple" ? "bg-purple-600" : "bg-[#00BFFF]"} flex items-center justify-center mx-auto mb-4`}
-                  >
-                    <span className="text-white font-bold">{item.step}</span>
-                  </div>
-                  <h4 className="font-bold text-white mb-2">{item.title}</h4>
-                  <p className="text-gray-400 text-sm">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="text-center">
-            <h3 className="text-3xl font-bold mb-6 text-white">Ready for the Complete AI Sales Machine?</h3>
-            <p className="text-gray-300 mb-8 text-lg">
-              Get both AdsNow.ai and SuccessNOW AI working together to maximize your revenue
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-[#00BFFF] text-white font-semibold rounded-md shadow-lg hover:from-purple-700 hover:to-blue-600 transition-all duration-200 hover:scale-105 text-base"
-                onClick={() => (window.location.href = "/payment")}
-              >
-                Get Complete AI System
-              </Button>
-              <Button
-                variant="outline"
-                className="px-8 py-4 border-2 border-purple-500 text-purple-400 font-semibold rounded-md hover:bg-purple-500 hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-                onClick={() => window.open("https://adsnow.ai", "_blank")}
-              >
-                Learn More About AdsNow.ai
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Demo Popup */}
+      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
 
       <Footer />
     </div>

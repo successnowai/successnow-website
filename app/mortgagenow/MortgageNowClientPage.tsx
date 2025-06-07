@@ -1,12 +1,15 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Play } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 import Navbar from "@/components/navigation/navbar"
+import { DemoPopup } from "@/components/ui/demo-popup"
+import { useState } from "react"
+import { InstantDemoCTA } from "@/components/ui/instant-demo-cta"
+import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
 export default function MortgageNowClientPage() {
   const mortgageTemplates = [
@@ -41,6 +44,12 @@ export default function MortgageNowClientPage() {
     },
   ]
 
+  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+
+  const handleDemoClick = () => {
+    setIsDemoPopupOpen(true)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white">
       {/* Global Navigation Bar */}
@@ -64,14 +73,14 @@ export default function MortgageNowClientPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1200">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={() => (window.location.href = "/payment")}
+              onClick={handleDemoClick}
             >
               GET MORTGAGENOW →
             </Button>
             <Button
               variant="outline"
               className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={() => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={handleDemoClick}
             >
               Launch Instant Demo NOW
             </Button>
@@ -86,42 +95,10 @@ export default function MortgageNowClientPage() {
         </div>
       </section>
 
-      {/* Demo Form Section */}
-      <section className="relative bg-black/20 backdrop-blur-sm py-16 px-6">
-        <div className="max-w-md mx-auto bg-[#00274D]/80 backdrop-blur-sm text-white p-8 rounded-xl shadow-2xl border border-[#00BFFF]/20">
-          <h2 className="text-2xl font-bold mb-2 text-center">
-            Qualify & Convert <br /> <span className="text-[#00BFFF]">Borrowers 24/7 with AI</span>
-          </h2>
-          <p className="text-center text-sm text-gray-300 mb-6">See AI Mortgage Automation</p>
+      {/* Instant Demo CTA */}
+      <InstantDemoCTA onClick={handleDemoClick} />
 
-          <form className="space-y-4">
-            <Input
-              type="text"
-              placeholder="Your Name"
-              className="w-full p-4 rounded-md bg-white/10 backdrop-blur-sm text-white placeholder-gray-400 border border-white/20 focus:border-[#00BFFF] focus:outline-none"
-              required
-            />
-            <Input
-              type="tel"
-              placeholder="Phone Number"
-              className="w-full p-4 rounded-md bg-white/10 backdrop-blur-sm text-white placeholder-gray-400 border border-white/20 focus:border-[#00BFFF] focus:outline-none"
-              required
-            />
-            <Input
-              type="email"
-              placeholder="Email Address"
-              className="w-full p-4 rounded-md bg-white/10 backdrop-blur-sm text-white placeholder-gray-400 border border-white/20 focus:border-[#00BFFF] focus:outline-none"
-              required
-            />
-            <Button
-              type="submit"
-              className="w-full bg-[#00BFFF] text-[#00274D] font-bold py-4 px-4 rounded-md hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105"
-            >
-              🏦 Get My Mortgage AI Demo
-            </Button>
-          </form>
-        </div>
-      </section>
+      <AdsSuccessEcosystem onDemoClick={handleDemoClick} />
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-5 py-15">
@@ -311,7 +288,7 @@ export default function MortgageNowClientPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button
                   className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-md shadow-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 hover:scale-105 text-base"
-                  onClick={() => (window.location.href = "/payment")}
+                  onClick={handleDemoClick}
                 >
                   Get Complete AI System
                 </Button>
@@ -336,20 +313,23 @@ export default function MortgageNowClientPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={() => (window.location.href = "/payment")}
+              onClick={handleDemoClick}
             >
               Get AI NOW
             </Button>
             <Button
               variant="outline"
               className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={() => (window.location.href = "/")}
+              onClick={handleDemoClick}
             >
               BACK TO HOME
             </Button>
           </div>
         </div>
       </div>
+
+      {/* Demo Popup */}
+      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
 
       <Footer />
     </div>

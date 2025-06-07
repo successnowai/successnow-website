@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Play } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
@@ -9,9 +8,13 @@ import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 import Navbar from "@/components/navigation/navbar"
 import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 import { useState, useEffect } from "react"
+import { DemoPopup } from "@/components/ui/demo-popup"
+import { InstantDemoCTA } from "@/components/ui/instant-demo-cta"
+import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
 export default function LawyersNowClientPage() {
   const [currentText, setCurrentText] = useState(0)
+  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
   const rotatingTexts = [
     "Instantly Qualifies",
@@ -60,6 +63,10 @@ export default function LawyersNowClientPage() {
     return () => clearInterval(interval)
   }, [])
 
+  const handleDemoClick = () => {
+    setIsDemoPopupOpen(true)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0B1426] via-[#1a2332] to-[#0B1426] text-white">
       {/* Global Navigation Bar */}
@@ -93,14 +100,14 @@ export default function LawyersNowClientPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={() => (window.location.href = "/payment")}
+              onClick={handleDemoClick}
             >
               GET LAWYERSNOW →
             </Button>
             <Button
               variant="outline"
               className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={() => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={handleDemoClick}
             >
               Launch Instant Demo NOW
             </Button>
@@ -135,43 +142,11 @@ export default function LawyersNowClientPage() {
         </div>
       </section>
 
-      {/* Demo Form Section */}
-      <section className="relative bg-gradient-to-b from-[#0B1426]/60 to-black/40 backdrop-blur-sm py-16 px-6">
-        <div className="max-w-md mx-auto bg-[#00274D]/80 backdrop-blur-sm text-white p-8 rounded-xl shadow-2xl border border-[#00BFFF]/20">
-          <h2 className="text-2xl font-bold mb-2 text-center">
-            Never Miss a Case Again – <br />{" "}
-            <span className="text-[#00BFFF]">Automate Legal Intake & Consultations</span>
-          </h2>
-          <p className="text-center text-sm text-gray-300 mb-6">See AI Legal Automation in Action</p>
+      {/* Instant Demo CTA */}
+      <InstantDemoCTA onClick={handleDemoClick} />
 
-          <form className="space-y-4">
-            <Input
-              type="text"
-              placeholder="Your Name"
-              className="w-full p-4 rounded-md bg-white/10 backdrop-blur-sm text-white placeholder-gray-400 border border-white/20 focus:border-[#00BFFF] focus:outline-none"
-              required
-            />
-            <Input
-              type="tel"
-              placeholder="Phone Number"
-              className="w-full p-4 rounded-md bg-white/10 backdrop-blur-sm text-white placeholder-gray-400 border border-white/20 focus:border-[#00BFFF] focus:outline-none"
-              required
-            />
-            <Input
-              type="email"
-              placeholder="Email Address"
-              className="w-full p-4 rounded-md bg-white/10 backdrop-blur-sm text-white placeholder-gray-400 border border-white/20 focus:border-[#00BFFF] focus:outline-none"
-              required
-            />
-            <Button
-              type="submit"
-              className="w-full bg-[#00BFFF] text-[#00274D] font-bold py-4 px-4 rounded-md hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105"
-            >
-              🚀 Get My Legal AI Demo
-            </Button>
-          </form>
-        </div>
-      </section>
+      {/* AdsNow Section */}
+      <AdsSuccessEcosystem onDemoClick={handleDemoClick} />
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-5 sm:py-15">
@@ -260,7 +235,7 @@ export default function LawyersNowClientPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={() => (window.location.href = "/payment")}
+              onClick={handleDemoClick}
             >
               Get AI NOW
             </Button>
@@ -275,199 +250,8 @@ export default function LawyersNowClientPage() {
         </div>
       </div>
 
-      {/* AdsNow Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-[#1a0b33] via-[#0d1a33] to-[#0B1426]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
-                Complete AI Ecosystem
-              </span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              From ad creation to lead conversion - our AI handles everything 24/7
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {/* AdsNow.ai Column */}
-            <div className="bg-gradient-to-br from-purple-900/30 to-purple-800/10 p-6 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-              <div className="flex items-center mb-6">
-                <div className="bg-purple-600/20 p-3 rounded-lg mr-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-purple-400"
-                  >
-                    <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
-                    <path d="M7 7h.01" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-purple-300">AdsNow.ai</h3>
-              </div>
-
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="text-purple-400 mr-2">✓</span>
-                  <span className="text-gray-300">Creates high-converting ads automatically</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-purple-400 mr-2">✓</span>
-                  <span className="text-gray-300">Optimizes campaigns 24/7 based on 10,000+ daily leads</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-purple-400 mr-2">✓</span>
-                  <span className="text-gray-300">Launches across Google, Meta, and other platforms</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-purple-400 mr-2">✓</span>
-                  <span className="text-gray-300">Tests 15+ new ad variations weekly</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-purple-400 mr-2">✓</span>
-                  <span className="text-gray-300">Analyzes competitor strategies</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* SuccessNOW AI Column */}
-            <div className="bg-gradient-to-br from-blue-900/30 to-blue-800/10 p-6 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
-              <div className="flex items-center mb-6">
-                <div className="bg-blue-600/20 p-3 rounded-lg mr-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-blue-400"
-                  >
-                    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" />
-                    <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-blue-300">SuccessNOW AI</h3>
-              </div>
-
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="text-blue-400 mr-2">✓</span>
-                  <span className="text-gray-300">Instantly engages every lead 24/7/365</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-400 mr-2">✓</span>
-                  <span className="text-gray-300">Books appointments & consultations automatically</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-400 mr-2">✓</span>
-                  <span className="text-gray-300">Follows up always - never misses a lead</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-400 mr-2">✓</span>
-                  <span className="text-gray-300">Asks for referrals & collects 5-star reviews</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-400 mr-2">✓</span>
-                  <span className="text-gray-300">Answers nurturing questions & builds relationships</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Stats Section */}
-          <div className="grid grid-cols-3 gap-4 mb-12">
-            <div className="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-purple-500/20 text-center">
-              <div className="text-4xl font-bold text-purple-300 mb-2">10,000+</div>
-              <div className="text-gray-400">Leads Generated Daily</div>
-            </div>
-            <div className="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-blue-500/20 text-center">
-              <div className="text-4xl font-bold text-blue-300 mb-2">24/7</div>
-              <div className="text-gray-400">AI Operations</div>
-            </div>
-            <div className="bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-green-500/20 text-center">
-              <div className="text-4xl font-bold text-green-300 mb-2">500+</div>
-              <div className="text-gray-400">Businesses Automated</div>
-            </div>
-          </div>
-
-          {/* Process Flow */}
-          <div className="mb-12">
-            <h3 className="text-2xl font-bold text-center mb-8 text-gray-200">Complete Lead-to-Client Process</h3>
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="text-center mb-8 md:mb-0">
-                <div className="bg-purple-900/30 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-purple-300 text-xl font-bold">1</span>
-                </div>
-                <h4 className="text-lg font-semibold text-purple-300">AI Creates Ads</h4>
-                <p className="text-gray-400 text-sm">AdsNow.ai</p>
-              </div>
-
-              <div className="hidden md:block text-gray-600">→</div>
-
-              <div className="text-center mb-8 md:mb-0">
-                <div className="bg-purple-900/30 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-purple-300 text-xl font-bold">2</span>
-                </div>
-                <h4 className="text-lg font-semibold text-purple-300">Launches & Optimizes</h4>
-                <p className="text-gray-400 text-sm">AdsNow.ai</p>
-              </div>
-
-              <div className="hidden md:block text-gray-600">→</div>
-
-              <div className="text-center mb-8 md:mb-0">
-                <div className="bg-blue-900/30 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-blue-300 text-xl font-bold">3</span>
-                </div>
-                <h4 className="text-lg font-semibold text-blue-300">Instant Engagement</h4>
-                <p className="text-gray-400 text-sm">SuccessNOW AI</p>
-              </div>
-
-              <div className="hidden md:block text-gray-600">→</div>
-
-              <div className="text-center">
-                <div className="bg-blue-900/30 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-blue-300 text-xl font-bold">4</span>
-                </div>
-                <h4 className="text-lg font-semibold text-blue-300">Converts to Sales</h4>
-                <p className="text-gray-400 text-sm">SuccessNOW AI</p>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="text-center">
-            <h3 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-blue-300">
-              Get the Complete AI System
-            </h3>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-md shadow-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 hover:scale-105 text-base"
-                onClick={() => (window.location.href = "/payment")}
-              >
-                Get Complete AI System
-              </Button>
-              <Button
-                variant="outline"
-                className="px-8 py-4 border-2 border-purple-500 text-purple-400 font-semibold rounded-md hover:bg-purple-900/20 transition-all duration-200 hover:scale-105 text-base bg-transparent"
-                onClick={() => window.open("https://adsnow.ai", "_blank")}
-              >
-                Learn More About AdsNow.ai
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Demo Popup */}
+      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
 
       <Footer />
     </div>
