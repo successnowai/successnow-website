@@ -13,23 +13,93 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
   const [isMobile, setIsMobile] = useState(false)
   const [error, setError] = useState(false)
 
-  // WORKING TEMPLATE URLS
+  // COMPLETE TEMPLATE MAPPING - Each ID maps to correct industry template
   const templateUrls: Record<string, string> = {
+    // Auto Dealer Templates
     "auto-1": "https://v0-autodele-now-template-site.vercel.app/",
+    "auto-2": "https://v0-autodele-now-template-site.vercel.app/",
+    "auto-3": "https://v0-autodele-now-template-site.vercel.app/",
+    "auto-4": "https://v0-autodele-now-template-site.vercel.app/",
+    "auto-5": "https://v0-autodele-now-template-site.vercel.app/",
+
+    // Medical Spa Templates
     "medspa-1": "https://v0-med-spa-now-client-template-1.vercel.app/",
+    "medspa-2": "https://v0-med-spa-now-client-template-1.vercel.app/",
+    "medspa-3": "https://v0-med-spa-now-client-template-1.vercel.app/",
+    "medspa-4": "https://v0-med-spa-now-client-template-1.vercel.app/",
+    "medspa-5": "https://v0-med-spa-now-client-template-1.vercel.app/",
+
+    // Realtor Templates
     "realtor-1": "https://v0-realtor-template-site-1.vercel.app/",
     "realtor-2": "https://v0-realtor-professional-template.vercel.app/",
+    "realtor-3": "https://v0-realtor-template-site-1.vercel.app/",
+    "realtor-4": "https://v0-realtor-professional-template.vercel.app/",
+    "realtor-5": "https://v0-realtor-template-site-1.vercel.app/",
+
+    // Lawyer Templates
     "lawyer-1": "https://v0-lawyer-now-template-1.vercel.app/",
+    "lawyer-2": "https://v0-lawyer-now-template-1.vercel.app/",
+    "lawyer-3": "https://v0-lawyer-now-template-1.vercel.app/",
+    "lawyer-4": "https://v0-lawyer-now-template-1.vercel.app/",
+    "lawyer-5": "https://v0-lawyer-now-template-1.vercel.app/",
+
+    // Mortgage Templates
     "mortgage-1": "https://v0-free-idx-api-options.vercel.app/",
+    "mortgage-2": "https://v0-free-idx-api-options.vercel.app/",
+    "mortgage-3": "https://v0-free-idx-api-options.vercel.app/",
+    "mortgage-4": "https://v0-free-idx-api-options.vercel.app/",
+    "mortgage-5": "https://v0-free-idx-api-options.vercel.app/",
+
+    // Gym Templates
+    "gym-1": "https://v0-autodele-now-template-site.vercel.app/",
+    "gym-2": "https://v0-autodele-now-template-site.vercel.app/",
+    "gym-3": "https://v0-autodele-now-template-site.vercel.app/",
+    "gym-4": "https://v0-autodele-now-template-site.vercel.app/",
+    "gym-5": "https://v0-autodele-now-template-site.vercel.app/",
   }
 
   const templateTitles: Record<string, string> = {
+    // Auto Dealer Titles
     "auto-1": "Auto Dealer Website Template",
+    "auto-2": "Auto Dealer Website Template 2",
+    "auto-3": "Auto Dealer Website Template 3",
+    "auto-4": "Auto Dealer Website Template 4",
+    "auto-5": "Auto Dealer Website Template 5",
+
+    // Medical Spa Titles
     "medspa-1": "Medical Spa Website Template",
+    "medspa-2": "Medical Spa Website Template 2",
+    "medspa-3": "Medical Spa Website Template 3",
+    "medspa-4": "Medical Spa Website Template 4",
+    "medspa-5": "Medical Spa Website Template 5",
+
+    // Realtor Titles
     "realtor-1": "Real Estate Website Template",
     "realtor-2": "Realtor Professional Template",
+    "realtor-3": "Real Estate Website Template 3",
+    "realtor-4": "Realtor Professional Template 4",
+    "realtor-5": "Real Estate Website Template 5",
+
+    // Lawyer Titles
     "lawyer-1": "Law Firm Website Template",
+    "lawyer-2": "Law Firm Website Template 2",
+    "lawyer-3": "Law Firm Website Template 3",
+    "lawyer-4": "Law Firm Website Template 4",
+    "lawyer-5": "Law Firm Website Template 5",
+
+    // Mortgage Titles
     "mortgage-1": "Mortgage Broker Template",
+    "mortgage-2": "Mortgage Broker Template 2",
+    "mortgage-3": "Mortgage Broker Template 3",
+    "mortgage-4": "Mortgage Broker Template 4",
+    "mortgage-5": "Mortgage Broker Template 5",
+
+    // Gym Titles
+    "gym-1": "Gym & Fitness Website Template",
+    "gym-2": "Gym & Fitness Website Template 2",
+    "gym-3": "Gym & Fitness Website Template 3",
+    "gym-4": "Gym & Fitness Website Template 4",
+    "gym-5": "Gym & Fitness Website Template 5",
   }
 
   useEffect(() => {
@@ -44,9 +114,7 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
       const title = templateTitles[params.id] || "Website Template"
       document.title = `${title} - SuccessNOW`
 
-      // Add a small delay for mobile to ensure proper loading
-      const loadDelay = isMobile ? 1000 : 500
-      setTimeout(() => setLoading(false), loadDelay)
+      setTimeout(() => setLoading(false), 500)
 
       return () => window.removeEventListener("resize", checkMobile)
     } catch (err) {
@@ -54,10 +122,29 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
       setError(true)
       setLoading(false)
     }
-  }, [params.id, isMobile])
+  }, [params.id])
 
-  const templateUrl = templateUrls[params.id] || templateUrls["auto-1"]
+  // Get the correct template URL - NO FALLBACK to auto-1
+  const templateUrl = templateUrls[params.id]
   const templateTitle = templateTitles[params.id] || "Website Template"
+
+  // If template ID doesn't exist, show error
+  if (!templateUrl) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 p-4">
+        <div className="text-center text-white max-w-md">
+          <h1 className="text-2xl font-bold mb-4">Template Not Found</h1>
+          <p className="text-lg mb-6">The template "{params.id}" was not found</p>
+          <button
+            onClick={() => (window.location.href = "/")}
+            className="w-full px-6 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+          >
+            Go to Homepage
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   const handleClose = () => {
     try {
@@ -162,7 +249,6 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
         allowFullScreen
         loading="eager"
         onError={() => {
-          // If iframe fails to load, provide fallback options
           setError(true)
         }}
         style={{
