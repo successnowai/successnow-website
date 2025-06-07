@@ -16,13 +16,22 @@ interface TemplateButtonsSimpleProps {
 
 export function TemplateButtonsSimple({ templates, baseButtonText = "Preview" }: TemplateButtonsSimpleProps) {
   const handleTemplateClick = (templateId: string, isComingSoon?: boolean) => {
+    // Log for debugging - IDENTICAL FOR DESKTOP AND MOBILE
+    console.log("Template button clicked:", templateId)
+    console.log("Is coming soon:", isComingSoon)
+    console.log("User agent:", navigator.userAgent)
+
     if (isComingSoon) {
       alert("This template is coming soon! Join our newsletter to be notified when it's available.")
       return
     }
 
-    // Use the proper template route that handles URL masking and page titles
-    window.open(`/template/${templateId}`, "_blank")
+    // EXACT SAME URL GENERATION FOR DESKTOP AND MOBILE
+    const templateUrl = `/template/${templateId}`
+    console.log("Generated URL:", templateUrl)
+
+    // Use window.open - IDENTICAL BEHAVIOR
+    window.open(templateUrl, "_blank")
   }
 
   return (
@@ -37,6 +46,8 @@ export function TemplateButtonsSimple({ templates, baseButtonText = "Preview" }:
               ? "bg-gray-500 text-gray-300 cursor-not-allowed opacity-60"
               : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 hover:scale-105 active:scale-95 shadow-md"
           }`}
+          // Add touch-specific attributes for mobile
+          style={{ touchAction: "manipulation" }}
         >
           {template.isComingSoon ? "🚧 Coming Soon" : `${baseButtonText} ${index + 1}`}
         </Button>

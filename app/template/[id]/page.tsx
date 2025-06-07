@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import TemplateClientPage from "./TemplateClientPage"
 
 interface TemplatePageProps {
@@ -7,24 +6,26 @@ interface TemplatePageProps {
   }
 }
 
-export async function generateMetadata({ params }: TemplatePageProps): Promise<Metadata> {
-  const templateTitles: Record<string, string> = {
-    "auto-1": "Auto Dealer Website Template - SuccessNOW",
-    "medspa-1": "Medical Spa Website Template - SuccessNOW",
-    "realtor-1": "Real Estate Website Template - SuccessNOW",
-    "realtor-2": "Realtor Professional Template - SuccessNOW",
-    "lawyer-1": "Law Firm Website Template - SuccessNOW",
-    "mortgage-1": "Mortgage Broker Template - SuccessNOW",
-  }
-
-  const title = templateTitles[params.id] || "Website Template - SuccessNOW"
-
-  return {
-    title,
-    description: "Professional website template preview",
-  }
-}
-
+// EXACT SAME SERVER COMPONENT FOR DESKTOP AND MOBILE
 export default function TemplatePage({ params }: TemplatePageProps) {
   return <TemplateClientPage params={params} />
+}
+
+// EXACT SAME METADATA GENERATION
+export async function generateMetadata({ params }: TemplatePageProps) {
+  const templateTitles: Record<string, string> = {
+    "auto-1": "Auto Dealer Website Template",
+    "medspa-1": "Medical Spa Website Template",
+    "realtor-1": "Real Estate Website Template",
+    "realtor-2": "Realtor Professional Template",
+    "lawyer-1": "Law Firm Website Template",
+    "mortgage-1": "Mortgage Broker Template",
+  }
+
+  const title = templateTitles[params.id] || "Website Template"
+
+  return {
+    title: `${title} - SuccessNOW`,
+    description: `Preview the ${title} designed for your business needs.`,
+  }
 }
