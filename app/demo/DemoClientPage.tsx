@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -36,6 +36,7 @@ import {
 } from "lucide-react"
 
 export default function DemoClientPage() {
+  // State variables
   const [isVoiceActive, setIsVoiceActive] = useState(false)
   const [demoStep, setDemoStep] = useState(0)
   const [isMuted, setIsMuted] = useState(false)
@@ -50,13 +51,27 @@ export default function DemoClientPage() {
   const [transferTarget, setTransferTarget] = useState("")
   const [isTransferDialogOpen, setIsTransferDialogOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [audioInitialized, setAudioInitialized] = useState(false)
+  const [audioUnlocked, setAudioUnlocked] = useState(false)
+  const [debugInfo, setDebugInfo] = useState<string[]>([])
 
+  // Refs
   const speechRef = useRef<SpeechSynthesisUtterance | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const isSpeakingRef = useRef(false)
   const speechQueueRef = useRef<string[]>([])
   const isProcessingQueueRef = useRef(false)
   const audioContextRef = useRef<AudioContext | null>(null)
+  const hasUserInteractedRef = useRef(false)
+  const selectedVoiceRef = useRef<SpeechSynthesisVoice | null>(null)
+  const retryCountRef = useRef(0)
+  const maxRetries = 3
+
+  // Add debug info
+  const addDebug = (message: string) => {
+    console.log(`[Jessica Debug]: ${message}`)
+    setDebugInfo((prev) => [...prev.slice(-9), message])
+  }
 
   // Detect mobile device
   useEffect(() => {
@@ -64,6 +79,7 @@ export default function DemoClientPage() {
       const mobile =
         window.innerWidth < 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
       setIsMobile(mobile)
+      addDebug(`Device detected: ${mobile ? "Mobile" : "Desktop"}`)
     }
 
     checkMobile()
@@ -71,6 +87,7 @@ export default function DemoClientPage() {
     return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
+  // Jessica's script
   const jessicaScript = [
     {
       title: "AI Agent Introduction",
@@ -121,52 +138,119 @@ export default function DemoClientPage() {
     },
   ]
 
-  // Enhanced mobile audio initialization
-  const initializeMobileAudio = async () => {
-    if (isMobile) {
-      try {
-        // Create AudioContext for mobile audio unlock
-        if (!audioContextRef.current) {
-          audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
-        }
+  // Unlock audio on iOS/Android
+  const unlockAudioForMobile = useCallback(async () => {
+    if (audioUnlocked) return true
 
-        // Resume AudioContext if suspended (common on mobile)
-        if (audioContextRef.current.state === "suspended") {
-          await audioContextRef.current.resume()
-        }
+    try {
+      // Create and play a silent audio element (works on iOS)
+      const silentAudio = new Audio(
+        "data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjI5LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABIADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV6urq6urq6urq6urq6urq6urq6urq6urq6v////////////////////////////////8AAAAATGF2YzU4LjU0AAAAAAAAAAAAAAAAJAAAAAAAAAAAASDs90hvAAAAAAAAAAAAAAAAAAAA//MUZAAAAAGkAAAAAAAAA0gAAAAATEFN//MUZAMAAAGkAAAAAAAAA0gAAAAARTMu//MUZAYAAAGkAAAAAAAAA0gAAAAAOTku//MUZAkAAAGkAAAAAAAAA0gAAAAANVVV",
+      )
+      silentAudio.volume = 0.01
+      await silentAudio.play()
+      silentAudio.pause()
 
-        // Test speech synthesis on mobile
-        const testUtterance = new SpeechSynthesisUtterance("")
-        window.speechSynthesis.speak(testUtterance)
-        window.speechSynthesis.cancel()
-
-        console.log("Mobile audio initialized successfully")
-      } catch (error) {
-        console.log("Mobile audio initialization failed:", error)
+      // Create AudioContext (works on most browsers)
+      if (!audioContextRef.current) {
+        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
       }
+
+      if (audioContextRef.current.state === "suspended") {
+        await audioContextRef.current.resume()
+      }
+
+      // Create and play a silent oscillator
+      const oscillator = audioContextRef.current.createOscillator()
+      oscillator.frequency.value = 1
+      oscillator.connect(audioContextRef.current.destination)
+      oscillator.start(0)
+      oscillator.stop(0.001)
+
+      // Test speech synthesis with a silent utterance
+      const testUtterance = new SpeechSynthesisUtterance(" ")
+      testUtterance.volume = 0
+      testUtterance.rate = 1
+      window.speechSynthesis.speak(testUtterance)
+
+      // Wait a moment then cancel
+      await new Promise((resolve) => setTimeout(resolve, 100))
+      window.speechSynthesis.cancel()
+
+      setAudioUnlocked(true)
+      addDebug("Mobile audio unlocked successfully")
+      return true
+    } catch (error) {
+      addDebug(`Audio unlock error: ${error}`)
+      return false
     }
-  }
+  }, [audioUnlocked])
+
+  // Initialize mobile audio
+  const initializeMobileAudio = useCallback(async () => {
+    if (!hasUserInteractedRef.current) {
+      addDebug("Waiting for user interaction before initializing audio")
+      return false
+    }
+
+    try {
+      // First unlock audio
+      await unlockAudioForMobile()
+
+      // Load and cache voices
+      const voices = window.speechSynthesis.getVoices()
+      if (voices.length > 0) {
+        // Find and select the best voice for mobile
+        const preferredVoices = [
+          // iOS voices
+          voices.find((v) => v.name.includes("Samantha")),
+          voices.find((v) => v.name.includes("Karen")),
+          // Android voices
+          voices.find((v) => v.name.includes("female") && v.lang === "en-US"),
+          // Any English female voice
+          voices.find((v) => v.name.toLowerCase().includes("female") && v.lang.startsWith("en")),
+          // Any English voice
+          voices.find((v) => v.lang === "en-US"),
+          voices.find((v) => v.lang === "en-GB"),
+          voices.find((v) => v.lang.startsWith("en")),
+          // Fallback to any voice
+          voices[0],
+        ]
+
+        const selectedVoice = preferredVoices.find((v) => v !== undefined)
+        if (selectedVoice) {
+          selectedVoiceRef.current = selectedVoice
+          addDebug(`Selected voice: ${selectedVoice.name}`)
+        }
+      }
+
+      setAudioInitialized(true)
+      addDebug("Mobile audio initialized successfully")
+      return true
+    } catch (error) {
+      addDebug(`Mobile audio initialization failed: ${error}`)
+      return false
+    }
+  }, [unlockAudioForMobile])
 
   // Load voices and check speech synthesis support
   useEffect(() => {
     const checkSpeechSupport = () => {
       const speechSupport = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window
       setSpeechSupported(speechSupport)
+      addDebug(`Speech synthesis supported: ${speechSupport}`)
 
       if (speechSupport) {
         const loadVoices = () => {
           const voices = window.speechSynthesis.getVoices()
           if (voices.length > 0) {
             setVoicesLoaded(true)
-            console.log("Available voices:", voices.length)
+            addDebug(`Voices loaded: ${voices.length} voices available`)
           }
         }
 
         loadVoices()
         window.speechSynthesis.addEventListener("voiceschanged", loadVoices)
-
-        // Initialize mobile audio
-        initializeMobileAudio()
 
         return () => {
           window.speechSynthesis.removeEventListener("voiceschanged", loadVoices)
@@ -175,7 +259,7 @@ export default function DemoClientPage() {
     }
 
     checkSpeechSupport()
-  }, [isMobile])
+  }, [])
 
   // Check audio and microphone permissions on page load
   useEffect(() => {
@@ -186,9 +270,10 @@ export default function DemoClientPage() {
             const micPermission = await navigator.permissions.query({ name: "microphone" as PermissionName })
             if (micPermission.state === "granted") {
               setMicrophoneAccess(true)
+              addDebug("Microphone permission already granted")
             }
           } catch (error) {
-            console.log("Microphone permission check failed:", error)
+            addDebug(`Microphone permission check failed: ${error}`)
           }
         }
 
@@ -200,7 +285,7 @@ export default function DemoClientPage() {
           setIsInitializing(false)
         }, 2000)
       } catch (error) {
-        console.error("Error checking permissions:", error)
+        addDebug(`Error checking permissions: ${error}`)
         setPermissionState("prompt")
         setCurrentMessage("Click below to enable audio for Jessica's voice demo.")
         setIsInitializing(false)
@@ -210,7 +295,7 @@ export default function DemoClientPage() {
     checkPermissions()
   }, [])
 
-  // Enhanced mobile speech processing
+  // Process text for speech
   const processTextForSpeech = (text: string): string => {
     return text
       .replace(/[🎙️🎯✅📝🔁✨📞👋⏸️]/gu, "")
@@ -219,177 +304,243 @@ export default function DemoClientPage() {
       .trim()
   }
 
-  // Mobile-optimized speech synthesis
-  const speakTextSynchronized = (text: string, onComplete?: () => void) => {
-    if (!speechSupported || isMuted || !text.trim()) {
-      console.log("Speech not available or muted")
-      onComplete?.()
-      return
-    }
-
-    // Mobile audio unlock on first user interaction
-    if (isMobile && audioContextRef.current?.state === "suspended") {
-      initializeMobileAudio()
-    }
-
-    speechQueueRef.current.push(text)
-    processNextSpeech(onComplete)
-  }
-
-  const processNextSpeech = (onComplete?: () => void) => {
-    if (isProcessingQueueRef.current || speechQueueRef.current.length === 0) {
-      return
-    }
-
-    isProcessingQueueRef.current = true
-    const textToSpeak = speechQueueRef.current.shift()!
-    const cleanText = processTextForSpeech(textToSpeak)
-
-    if (!cleanText) {
-      isProcessingQueueRef.current = false
-      onComplete?.()
-      return
-    }
-
-    try {
-      // Enhanced mobile speech cancellation
-      try {
-        window.speechSynthesis.cancel()
-        // Additional mobile-specific cancellation
-        if (isMobile) {
-          setTimeout(() => window.speechSynthesis.cancel(), 10)
-        }
-      } catch (error) {
-        console.log("Error canceling speech:", error)
+  // Speak text with robust error handling
+  const speakTextSynchronized = useCallback(
+    (text: string, onComplete?: () => void) => {
+      if (!speechSupported || isMuted || !text.trim()) {
+        addDebug("Speech skipped: not supported, muted, or empty text")
+        onComplete?.()
+        return
       }
 
-      // Longer delay for mobile devices
-      const delay = isMobile ? 150 : 50
-
-      setTimeout(() => {
-        try {
-          const utterance = new SpeechSynthesisUtterance(cleanText)
-
-          // Mobile-optimized voice settings
-          utterance.rate = isMobile ? 0.95 : 1.05
-          utterance.pitch = 1.15
-          utterance.volume = 0.9
-
-          // Enhanced voice selection for mobile
-          const voices = window.speechSynthesis.getVoices()
-          let selectedVoice = null
-
-          if (isMobile) {
-            // Mobile-specific voice selection
-            selectedVoice =
-              voices.find((voice) => voice.lang === "en-US" && voice.name.toLowerCase().includes("female")) ||
-              voices.find((voice) => voice.lang === "en-GB") ||
-              voices.find((voice) => voice.lang.startsWith("en") && !voice.name.toLowerCase().includes("male")) ||
-              voices.find((voice) => voice.lang.startsWith("en"))
+      // Ensure audio is initialized on mobile
+      if (isMobile && !audioInitialized && hasUserInteractedRef.current) {
+        addDebug("Initializing mobile audio before speaking")
+        initializeMobileAudio().then((success) => {
+          if (success) {
+            addDebug("Audio initialized, now speaking")
+            speakTextSynchronized(text, onComplete)
           } else {
-            // Desktop voice selection
-            selectedVoice =
-              voices.find((voice) => voice.name.toLowerCase().includes("female") && voice.lang.startsWith("en")) ||
-              voices.find((voice) => voice.lang === "en-GB" && !voice.name.toLowerCase().includes("male")) ||
-              voices.find(
-                (voice) =>
-                  voice.lang.startsWith("en") &&
-                  ["samantha", "victoria", "karen", "moira", "tessa", "fiona", "veena"].some((name) =>
-                    voice.name.toLowerCase().includes(name),
-                  ),
-              ) ||
-              voices.find((voice) => voice.lang.startsWith("en"))
-          }
-
-          if (selectedVoice) {
-            utterance.voice = selectedVoice
-            console.log("Selected voice:", selectedVoice.name)
-          }
-
-          utterance.onstart = () => {
-            console.log("Speech started:", cleanText.substring(0, 50))
-            setIsPlaying(true)
-            isSpeakingRef.current = true
-          }
-
-          utterance.onend = () => {
-            console.log("Speech ended")
-            setIsPlaying(false)
-            isSpeakingRef.current = false
-            isProcessingQueueRef.current = false
-
-            if (speechQueueRef.current.length > 0) {
-              setTimeout(() => processNextSpeech(), isMobile ? 200 : 100)
-            } else {
-              onComplete?.()
-            }
-          }
-
-          utterance.onerror = (event) => {
-            console.log("Speech error:", event.error)
-            setIsPlaying(false)
-            isSpeakingRef.current = false
-            isProcessingQueueRef.current = false
+            addDebug("Failed to initialize audio, skipping speech")
             onComplete?.()
           }
+        })
+        return
+      }
 
-          speechRef.current = utterance
-          window.speechSynthesis.speak(utterance)
+      // Add to speech queue
+      speechQueueRef.current.push(text)
+      addDebug(`Added to speech queue: "${text.substring(0, 20)}..."`)
 
-          // Mobile-specific timeout
-          if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current)
+      // Process queue if not already processing
+      if (!isProcessingQueueRef.current) {
+        processNextSpeech(onComplete)
+      } else {
+        addDebug("Queue is already being processed")
+      }
+    },
+    [speechSupported, isMuted, isMobile, audioInitialized, initializeMobileAudio],
+  )
+
+  // Process next speech in queue
+  const processNextSpeech = useCallback(
+    (onComplete?: () => void) => {
+      if (isProcessingQueueRef.current || speechQueueRef.current.length === 0) {
+        if (speechQueueRef.current.length === 0) {
+          addDebug("Speech queue is empty")
+        }
+        return
+      }
+
+      isProcessingQueueRef.current = true
+      const textToSpeak = speechQueueRef.current.shift()!
+      const cleanText = processTextForSpeech(textToSpeak)
+      addDebug(`Processing speech: "${cleanText.substring(0, 20)}..."`)
+
+      if (!cleanText) {
+        isProcessingQueueRef.current = false
+        onComplete?.()
+        return
+      }
+
+      // Reset retry count for new speech
+      retryCountRef.current = 0
+
+      const attemptSpeech = () => {
+        try {
+          // Cancel any ongoing speech
+          try {
+            window.speechSynthesis.cancel()
+            if (isMobile) {
+              // Multiple cancellation attempts for mobile
+              setTimeout(() => window.speechSynthesis.cancel(), 10)
+              setTimeout(() => window.speechSynthesis.cancel(), 50)
+            }
+          } catch (error) {
+            addDebug(`Error canceling speech: ${error}`)
           }
 
-          timeoutRef.current = setTimeout(
-            () => {
-              if (isSpeakingRef.current) {
-                console.log("Speech timeout - resetting")
+          // Delay before speaking (longer on mobile)
+          const delay = isMobile ? 300 : 100
+
+          setTimeout(() => {
+            try {
+              const utterance = new SpeechSynthesisUtterance(cleanText)
+
+              // Voice settings
+              utterance.rate = isMobile ? 0.9 : 1.0
+              utterance.pitch = 1.1
+              utterance.volume = 1.0
+
+              // Use cached voice if available
+              if (selectedVoiceRef.current) {
+                utterance.voice = selectedVoiceRef.current
+              } else {
+                // Select voice
+                const voices = window.speechSynthesis.getVoices()
+                let selectedVoice = null
+
+                if (isMobile) {
+                  // Mobile voice selection with multiple fallbacks
+                  selectedVoice =
+                    voices.find((v) => v.name.includes("Samantha")) || // iOS
+                    voices.find((v) => v.name.includes("Karen")) || // iOS
+                    voices.find((v) => v.lang === "en-US" && v.name.toLowerCase().includes("female")) ||
+                    voices.find((v) => v.lang === "en-US") ||
+                    voices.find((v) => v.lang === "en-GB") ||
+                    voices.find((v) => v.lang.startsWith("en")) ||
+                    voices[0] // Fallback to first voice
+                } else {
+                  // Desktop voice selection
+                  selectedVoice =
+                    voices.find((v) => v.name.toLowerCase().includes("female") && v.lang.startsWith("en")) ||
+                    voices.find((v) => v.lang === "en-GB" && !v.name.toLowerCase().includes("male")) ||
+                    voices.find((v) => v.lang.startsWith("en")) ||
+                    voices[0]
+                }
+
+                if (selectedVoice) {
+                  utterance.voice = selectedVoice
+                  selectedVoiceRef.current = selectedVoice
+                  addDebug(`Selected voice: ${selectedVoice.name}`)
+                }
+              }
+
+              // Speech events
+              utterance.onstart = () => {
+                addDebug("Speech started")
+                setIsPlaying(true)
+                isSpeakingRef.current = true
+              }
+
+              utterance.onend = () => {
+                addDebug("Speech ended normally")
                 setIsPlaying(false)
                 isSpeakingRef.current = false
                 isProcessingQueueRef.current = false
-                onComplete?.()
+
+                // Process next item in queue
+                if (speechQueueRef.current.length > 0) {
+                  setTimeout(() => processNextSpeech(), isMobile ? 500 : 200)
+                } else {
+                  onComplete?.()
+                }
               }
-            },
-            isMobile ? 20000 : 15000,
-          )
+
+              utterance.onerror = (event) => {
+                addDebug(`Speech error: ${event.error}`)
+                setIsPlaying(false)
+                isSpeakingRef.current = false
+
+                // Retry logic for mobile
+                if (retryCountRef.current < maxRetries) {
+                  retryCountRef.current++
+                  addDebug(`Retrying speech (attempt ${retryCountRef.current}/${maxRetries})`)
+
+                  // Unlock audio again and retry
+                  unlockAudioForMobile().then(() => {
+                    setTimeout(attemptSpeech, 500)
+                  })
+                } else {
+                  addDebug(`Max retries (${maxRetries}) reached, giving up`)
+                  isProcessingQueueRef.current = false
+                  onComplete?.()
+                }
+              }
+
+              speechRef.current = utterance
+
+              // Speak with timeout protection
+              window.speechSynthesis.speak(utterance)
+              addDebug("Speech synthesis started")
+
+              // Safety timeout
+              if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current)
+              }
+
+              timeoutRef.current = setTimeout(
+                () => {
+                  if (isSpeakingRef.current) {
+                    addDebug("Speech timeout - resetting")
+                    window.speechSynthesis.cancel()
+                    setIsPlaying(false)
+                    isSpeakingRef.current = false
+                    isProcessingQueueRef.current = false
+                    onComplete?.()
+                  }
+                },
+                isMobile ? 30000 : 15000, // Longer timeout for mobile
+              )
+            } catch (error) {
+              addDebug(`Error creating utterance: ${error}`)
+              setIsPlaying(false)
+              isSpeakingRef.current = false
+              isProcessingQueueRef.current = false
+              onComplete?.()
+            }
+          }, delay)
         } catch (error) {
-          console.error("Error creating utterance:", error)
+          addDebug(`Error in speech processing: ${error}`)
           setIsPlaying(false)
           isSpeakingRef.current = false
           isProcessingQueueRef.current = false
           onComplete?.()
         }
-      }, delay)
-    } catch (error) {
-      console.error("Error in speech processing:", error)
-      setIsPlaying(false)
-      isSpeakingRef.current = false
-      isProcessingQueueRef.current = false
-      onComplete?.()
-    }
-  }
+      }
 
-  // Perfect synchronization function for message updates
-  const updateMessageWithPerfectSync = (message: string, audioText?: string, onSpeechComplete?: () => void) => {
-    setCurrentMessage(message)
+      // Start speech attempt
+      attemptSpeech()
+    },
+    [isMobile, unlockAudioForMobile],
+  )
 
-    if (speechSupported && voicesLoaded && !isMuted && isVoiceActive) {
-      const textToSpeak = audioText || message
-      speakTextSynchronized(textToSpeak, onSpeechComplete)
-    } else {
-      onSpeechComplete?.()
-    }
-  }
+  // Update message with synchronized speech
+  const updateMessageWithPerfectSync = useCallback(
+    (message: string, audioText?: string, onSpeechComplete?: () => void) => {
+      setCurrentMessage(message)
+      addDebug(`Message updated: "${message.substring(0, 20)}..."`)
 
-  // Progress through Jessica's script with perfect timing
+      if (speechSupported && voicesLoaded && !isMuted && isVoiceActive) {
+        const textToSpeak = audioText || message
+        speakTextSynchronized(textToSpeak, onSpeechComplete)
+      } else {
+        addDebug("Speech skipped due to conditions not met")
+        onSpeechComplete?.()
+      }
+    },
+    [speechSupported, voicesLoaded, isMuted, isVoiceActive, speakTextSynchronized],
+  )
+
+  // Progress through Jessica's script
   useEffect(() => {
     if (isVoiceActive && !isInitializing && audioPermission) {
       const currentStep = jessicaScript[demoStep]
       if (!currentStep) return
 
-      // 3-second delay only for initial autostart
-      const initialDelay = demoStep === 0 ? 3000 : isMobile ? 300 : 200
+      // Longer initial delay for first step, especially on mobile
+      const initialDelay = demoStep === 0 ? (isMobile ? 5000 : 3000) : isMobile ? 1000 : 300
+      addDebug(`Starting step ${demoStep} with delay ${initialDelay}ms`)
 
       const timer = setTimeout(() => {
         updateMessageWithPerfectSync(currentStep.message, currentStep.audioText, () => {
@@ -399,23 +550,26 @@ export default function DemoClientPage() {
                 "⏸️ (Waiting for your response... Click 'Continue Demo' when ready)",
                 "Waiting for your response. Click Continue Demo when ready.",
               )
-            }, 500)
+            }, 800)
             return
           }
 
+          // Longer delay between steps on mobile
           setTimeout(
             () => {
               const nextStep = demoStep + 1
               if (nextStep < jessicaScript.length) {
+                addDebug(`Advancing to step ${nextStep}`)
                 setDemoStep(nextStep)
               } else {
+                addDebug("Demo complete")
                 updateMessageWithPerfectSync(
                   "✨ Demo complete! Jessica is ready to handle your real leads 24/7. Would you like to see a live transfer demonstration?",
                   "Demo complete! Jessica is ready to handle your real leads 24/7. Would you like to see a live transfer demonstration?",
                 )
               }
             },
-            isMobile ? 1000 : 800,
+            isMobile ? 2000 : 1000, // Much longer delay on mobile to prevent flashing
           )
         })
       }, initialDelay)
@@ -424,17 +578,35 @@ export default function DemoClientPage() {
         clearTimeout(timer)
       }
     }
-  }, [isVoiceActive, isInitializing, demoStep, audioPermission, isMuted, speechSupported, voicesLoaded, isMobile])
+  }, [
+    isVoiceActive,
+    isInitializing,
+    demoStep,
+    audioPermission,
+    isMuted,
+    speechSupported,
+    voicesLoaded,
+    isMobile,
+    updateMessageWithPerfectSync,
+  ])
 
+  // Request microphone permissions
   const requestPermissions = async () => {
+    hasUserInteractedRef.current = true
+    addDebug("User interaction detected - requesting permissions")
+
     try {
       updateMessageWithPerfectSync("🎤 Requesting microphone permissions...", "Requesting microphone permissions")
 
       // Initialize mobile audio on user interaction
-      await initializeMobileAudio()
+      if (isMobile) {
+        await unlockAudioForMobile()
+        await initializeMobileAudio()
+      }
 
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       setMicrophoneAccess(true)
+      addDebug("Microphone access granted")
       stream.getTracks().forEach((track) => track.stop())
 
       setAudioPermission(true)
@@ -448,7 +620,7 @@ export default function DemoClientPage() {
         setIsInitializing(false)
       }, 1500)
     } catch (error) {
-      console.error("Permission denied:", error)
+      addDebug(`Permission denied: ${error}`)
       setPermissionState("denied")
       updateMessageWithPerfectSync(
         "❌ Microphone access was denied. You can still experience Jessica's demo with text only.",
@@ -457,14 +629,22 @@ export default function DemoClientPage() {
     }
   }
 
+  // Start Jessica demo
   const startJessicaDemo = async () => {
+    hasUserInteractedRef.current = true
+    addDebug("User started demo - initializing")
+
     // Initialize mobile audio on user interaction
-    await initializeMobileAudio()
+    if (isMobile) {
+      await unlockAudioForMobile()
+      await initializeMobileAudio()
+    }
 
     if (speechSupported && !voicesLoaded) {
       const voices = window.speechSynthesis.getVoices()
       if (voices.length > 0) {
         setVoicesLoaded(true)
+        addDebug(`Loaded ${voices.length} voices`)
       }
     }
 
@@ -474,7 +654,9 @@ export default function DemoClientPage() {
     updateMessageWithPerfectSync("Initializing Jessica AI...", "Initializing Jessica AI")
   }
 
+  // Stop demo
   const handleStopDemo = () => {
+    addDebug("Demo stopped by user")
     setIsVoiceActive(false)
     setDemoStep(0)
     setIsPlaying(false)
@@ -485,7 +667,7 @@ export default function DemoClientPage() {
     try {
       window.speechSynthesis.cancel()
     } catch (error) {
-      console.log("Error canceling speech:", error)
+      addDebug(`Error canceling speech: ${error}`)
     }
 
     if (timeoutRef.current) {
@@ -498,8 +680,10 @@ export default function DemoClientPage() {
     )
   }
 
+  // Continue demo after user input
   const handleContinueDemo = () => {
     if (jessicaScript[demoStep]?.waitForInput) {
+      addDebug("User continued demo after input step")
       const nextStep = demoStep + 1
       if (nextStep < jessicaScript.length) {
         setDemoStep(nextStep)
@@ -512,12 +696,14 @@ export default function DemoClientPage() {
     }
   }
 
+  // Handle live transfer
   const handleLiveTransfer = () => {
     if (!transferTarget.trim()) {
       setIsTransferDialogOpen(true)
       return
     }
 
+    addDebug(`Live transfer initiated to: ${transferTarget}`)
     const transferMessage = `Jessica is now connecting you to ${transferTarget}... Please hold while I transfer you.`
     updateMessageWithPerfectSync("📞 " + transferMessage, transferMessage)
 
@@ -529,15 +715,20 @@ export default function DemoClientPage() {
     setIsTransferDialogOpen(false)
   }
 
+  // Submit transfer target
   const handleTransferSubmit = () => {
     if (transferTarget.trim()) {
       handleLiveTransfer()
     }
   }
 
+  // Toggle mute
   const toggleMute = () => {
-    setIsMuted(!isMuted)
-    if (!isMuted) {
+    const newMuteState = !isMuted
+    setIsMuted(newMuteState)
+    addDebug(`Audio ${newMuteState ? "muted" : "unmuted"} by user`)
+
+    if (!newMuteState) {
       try {
         window.speechSynthesis.cancel()
         setIsPlaying(false)
@@ -545,7 +736,7 @@ export default function DemoClientPage() {
         isProcessingQueueRef.current = false
         speechQueueRef.current = []
       } catch (error) {
-        console.log("Error canceling speech:", error)
+        addDebug(`Error canceling speech: ${error}`)
       }
     }
   }
@@ -559,7 +750,7 @@ export default function DemoClientPage() {
       try {
         window.speechSynthesis.cancel()
       } catch (error) {
-        console.log("Cleanup error:", error)
+        addDebug(`Cleanup error: ${error}`)
       }
       isSpeakingRef.current = false
       isProcessingQueueRef.current = false
@@ -616,6 +807,23 @@ export default function DemoClientPage() {
                 <p className="text-sm text-yellow-200 mt-1">
                   Your browser doesn't support text-to-speech. Please use Chrome, Firefox, Safari, or Edge for the full
                   voice experience.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Mobile Audio Status */}
+        {isMobile && (
+          <div className="mb-4 sm:mb-6 bg-blue-900/30 border border-blue-500/50 rounded-lg p-3 sm:p-4">
+            <div className="flex items-start space-x-3">
+              <Speaker className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-base sm:text-lg font-semibold text-blue-300">Mobile Audio Optimized</h3>
+                <p className="text-sm text-blue-200 mt-1">
+                  {audioInitialized
+                    ? "✅ Mobile audio is ready! Jessica will speak clearly on your device."
+                    : "🎤 Tap any button to enable audio for the best experience."}
                 </p>
               </div>
             </div>
@@ -717,7 +925,7 @@ export default function DemoClientPage() {
                         <div className="space-y-3 sm:space-y-4">
                           <Button
                             onClick={requestPermissions}
-                            className="bg-pink-600 hover:bg-pink-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg shadow-lg w-full sm:w-auto"
+                            className="bg-pink-600 hover:bg-pink-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg shadow-lg w-full sm:w-auto min-h-[44px]"
                           >
                             🎤 Enable Microphone
                           </Button>
@@ -729,7 +937,7 @@ export default function DemoClientPage() {
 
                           <Button
                             onClick={startJessicaDemo}
-                            className="bg-purple-600 hover:bg-purple-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg w-full sm:w-auto"
+                            className="bg-purple-600 hover:bg-purple-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg w-full sm:w-auto min-h-[44px]"
                           >
                             Start Demo
                           </Button>
@@ -810,7 +1018,7 @@ export default function DemoClientPage() {
                       {!isVoiceActive ? (
                         <Button
                           onClick={startJessicaDemo}
-                          className="bg-pink-600 hover:bg-pink-700 text-white flex items-center justify-center space-x-2 py-3 text-sm sm:text-base"
+                          className="bg-pink-600 hover:bg-pink-700 text-white flex items-center justify-center space-x-2 py-3 text-sm sm:text-base min-h-[44px]"
                         >
                           <Play className="w-4 h-4 sm:w-5 sm:h-5" />
                           <span>Start Jessica Demo</span>
@@ -819,7 +1027,7 @@ export default function DemoClientPage() {
                         <Button
                           onClick={handleStopDemo}
                           variant="destructive"
-                          className="flex items-center justify-center space-x-2 py-3 text-sm sm:text-base"
+                          className="flex items-center justify-center space-x-2 py-3 text-sm sm:text-base min-h-[44px]"
                         >
                           <Pause className="w-4 h-4 sm:w-5 sm:h-5" />
                           <span>Stop Demo</span>
@@ -829,7 +1037,7 @@ export default function DemoClientPage() {
                       {jessicaScript[demoStep]?.waitForInput && (
                         <Button
                           onClick={handleContinueDemo}
-                          className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center space-x-2 py-3 text-sm sm:text-base"
+                          className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center space-x-2 py-3 text-sm sm:text-base min-h-[44px]"
                         >
                           <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
                           <span>Continue Demo</span>
@@ -839,7 +1047,7 @@ export default function DemoClientPage() {
                       {speechSupported && (
                         <Button
                           onClick={toggleMute}
-                          className="flex items-center justify-center space-x-2 bg-black text-white hover:bg-gray-800 border border-gray-600 py-3 text-sm sm:text-base"
+                          className="flex items-center justify-center space-x-2 bg-black text-white hover:bg-gray-800 border border-gray-600 py-3 text-sm sm:text-base min-h-[44px]"
                         >
                           {isMuted ? (
                             <VolumeX className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -853,7 +1061,7 @@ export default function DemoClientPage() {
                       {demoStep >= 2 && (
                         <Button
                           onClick={() => setIsTransferDialogOpen(true)}
-                          className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white flex items-center justify-center space-x-2 py-3 text-sm sm:text-base"
+                          className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white flex items-center justify-center space-x-2 py-3 text-sm sm:text-base min-h-[44px]"
                         >
                           <PhoneCall className="w-4 h-4 sm:w-5 sm:h-5" />
                           <span>Live Transfer</span>
@@ -871,6 +1079,7 @@ export default function DemoClientPage() {
                             <p className="text-xs text-gray-300 mt-1">
                               Jessica's speech is perfectly synchronized with text display.{" "}
                               {isMuted ? "Currently muted." : "Speaking with natural timing."}
+                              {isMobile && audioInitialized && " Mobile audio optimized."}
                             </p>
                           </div>
                         </div>
@@ -951,23 +1160,44 @@ export default function DemoClientPage() {
                 <div className="grid gap-2 sm:gap-3">
                   <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-pink-900/30 rounded-lg border border-pink-400/30">
                     <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-pink-400 flex-shrink-0" />
-                    <span className="font-medium text-white text-xs sm:text-sm">24/7 lead engagement</span>
+                    <span className="font-medium text-white text-xs sm:text-sm">24/7 Lead Engagement</span>
                   </div>
                   <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-purple-900/30 rounded-lg border border-purple-400/30">
                     <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0" />
-                    <span className="font-medium text-white text-xs sm:text-sm">Perfect speech synchronization</span>
+                    <span className="font-medium text-white text-xs sm:text-sm">Intelligent Conversations</span>
                   </div>
                   <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-blue-900/30 rounded-lg border border-blue-400/30">
-                    <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400 flex-shrink-0" />
-                    <span className="font-medium text-white text-xs sm:text-sm">Lead qualification & scoring</span>
+                    <Users className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400 flex-shrink-0" />
+                    <span className="font-medium text-white text-xs sm:text-sm">Live Transfer to Team</span>
                   </div>
-                  <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-orange-900/30 rounded-lg border border-orange-400/30">
-                    <PhoneCall className="w-3 h-3 sm:w-4 sm:h-4 text-orange-400 flex-shrink-0" />
-                    <span className="font-medium text-white text-xs sm:text-sm">Custom live transfers</span>
+                  <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-green-900/30 rounded-lg border border-green-400/30">
+                    <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" />
+                    <span className="font-medium text-white text-xs sm:text-sm">Conversion Optimization</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
+
+            {/* Mobile Debug Info (only show if there are debug messages) */}
+            {debugInfo.length > 0 && (
+              <Card className="shadow-xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600">
+                <CardHeader className="p-3 sm:p-4">
+                  <CardTitle className="flex items-center space-x-2 text-white text-sm">
+                    <AlertCircle className="w-4 h-4 text-yellow-400" />
+                    <span>Debug Info</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-3 sm:p-4 pt-0">
+                  <div className="space-y-1 max-h-32 overflow-y-auto">
+                    {debugInfo.slice(-5).map((info, index) => (
+                      <div key={index} className="text-xs text-gray-400 font-mono">
+                        {info}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </div>
         </div>
       </div>
