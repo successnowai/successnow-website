@@ -6,12 +6,36 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import Navbar from "@/components/navigation/navbar"
 import { DemoPopup } from "@/components/ui/demo-popup"
-import { useState } from "react"
 import { InstantDemoCTA } from "@/components/ui/instant-demo-cta"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import TemplateButtonsSimple from "@/components/ui/template-buttons-simple"
+import { useState } from "react"
 
 export default function GymsNowClientPage() {
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState("overview")
+
+  // Direct template URLs - no masking or redirection
+  const gymTemplates = [
+    {
+      id: "gym-1",
+      title: "Gym & Fitness Template 1",
+      description: "Dynamic design for fitness centers",
+      url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/", // Using auto dealer as fallback
+    },
+    {
+      id: "gym-2",
+      title: "Gym & Fitness Template 2",
+      description: "Premium layout with class schedule showcase",
+      url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/", // Using auto dealer as fallback
+    },
+    {
+      id: "gym-3",
+      title: "Gym & Fitness Template 3",
+      description: "Feature-rich fitness center website",
+      url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/", // Using auto dealer as fallback
+    },
+  ]
 
   const handleDemoClick = () => {
     setIsDemoPopupOpen(true)
@@ -134,6 +158,12 @@ export default function GymsNowClientPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Gym Templates */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-6 text-center">Gym & Fitness Templates</h2>
+          <TemplateButtonsSimple templates={gymTemplates} baseButtonText="Preview Template" />
         </div>
 
         {/* CTA Section */}

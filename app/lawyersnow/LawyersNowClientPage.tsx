@@ -1,124 +1,46 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import Footer from "@/components/home/footer"
-import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
-import { DemoPopup } from "@/components/ui/demo-popup"
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import TemplateButtonsSimple from "@/components/ui/template-buttons-simple"
 
-const LawyersNowClientPage = () => {
-  const [currentText, setCurrentText] = useState(0)
-  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+export default function LawyersNowClientPage() {
+  const [activeTab, setActiveTab] = useState("overview")
 
-  const rotatingTexts = [
-    "Instantly Engages",
-    "Converts Leads",
-    "Books Consultations",
-    "Gets 5 Star Reviews",
-    "Follows Up Always",
-  ]
-
-  // EXACT TEMPLATE IDS THAT WORK ON DESKTOP
+  // Direct template URLs - no masking or redirection
   const lawyerTemplates = [
     {
       id: "lawyer-1",
-      title: "Law Firm Website 1",
-      description: "Professional law firm template with consultation booking",
+      title: "Law Firm Template 1",
+      description: "Professional design for law firms",
+      url: "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
     },
     {
       id: "lawyer-2",
-      title: "Law Firm Website 2",
-      description: "Modern legal practice design with case showcase",
-      isComingSoon: true,
+      title: "Law Firm Template 2",
+      description: "Premium layout with practice area showcase",
+      url: "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
     },
     {
       id: "lawyer-3",
-      title: "Law Firm Website 3",
-      description: "High-performance legal template",
-      isComingSoon: true,
-    },
-    {
-      id: "lawyer-4",
-      title: "Law Firm Website 4",
-      description: "Premium law firm template with client portal",
-      isComingSoon: true,
-    },
-    {
-      id: "lawyer-5",
-      title: "Law Firm Website 5",
-      description: "Advanced legal practice template",
-      isComingSoon: true,
+      title: "Law Firm Template 3",
+      description: "Feature-rich law firm website",
+      url: "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
     },
   ]
 
-  const handleDemoClick = () => {
-    setIsDemoPopupOpen(true)
-  }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentText((prev) => (prev + 1) % rotatingTexts.length)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0B1426] via-[#1a2332] to-[#0B1426] text-white">
-      {/* Hero Section */}
-      <section className="relative text-center py-16 px-6 md:px-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1426]/50 to-[#0B1426]"></div>
-        <div className="relative z-10 max-w-6xl mx-auto space-y-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-            <span className="block text-white animate-fadeTextUp">LawyersNOW™ AI</span>
-            <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 min-h-[1.2em]">
-              {rotatingTexts[currentText]}
-            </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600">To Skyrocket Your Results</span>
-          </h1>
+    <div className="container mx-auto px-4 py-12">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4">Lawyers NOW</h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Specialized AI solutions for law firms to generate leads, showcase expertise, and grow your practice.
+        </p>
+      </div>
 
-          <div className="bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-2xl mx-auto animate-fadeTextUp animation-delay-900">
-            <p className="text-red-300 font-bold text-lg">⚠️ 77% of Leads are lost due to poor handling!!!</p>
-          </div>
-
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
-            Stop losing clients to no-shows and forgotten follow-ups. Our{" "}
-            <strong className="text-white">
-              AI books consultations, confirms appointments, and nurtures every lead
-            </strong>{" "}
-            until they retain your services.
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
-            <Button
-              className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={handleDemoClick}
-            >
-              GET LAWYERSNOW →
-            </Button>
-            <Button
-              variant="outline"
-              className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={handleDemoClick}
-            >
-              Launch Instant Demo NOW
-            </Button>
-          </div>
-
-          {/* Template Preview Buttons */}
-          <div className="mt-8 animate-fadeTextUp animation-delay-1800">
-            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">⚖️ Preview Law Firm Website Templates</h3>
-            <TemplateButtonsSimple templates={lawyerTemplates} baseButtonText="Preview" />
-            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Demo Popup */}
-      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
-
-      <Footer />
+      <div className="mb-12">
+        <h2 className="text-2xl font-bold mb-6 text-center">Law Firm Templates</h2>
+        <TemplateButtonsSimple templates={lawyerTemplates} baseButtonText="Preview Template" />
+      </div>
     </div>
   )
 }
-
-export default LawyersNowClientPage

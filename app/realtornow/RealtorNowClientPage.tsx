@@ -1,125 +1,47 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import Footer from "@/components/home/footer"
-import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
-import { DemoPopup } from "@/components/ui/demo-popup"
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import TemplateButtonsSimple from "@/components/ui/template-buttons-simple"
 
-const RealtorNowClientPage = () => {
-  const [currentText, setCurrentText] = useState(0)
-  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+export default function RealtorNowClientPage() {
+  const [activeTab, setActiveTab] = useState("overview")
 
-  const rotatingTexts = [
-    "Instantly Engages",
-    "Converts Leads",
-    "Books Appointments",
-    "Gets 5 Star Reviews",
-    "Follows Up Always",
-  ]
-
-  // EXACT TEMPLATE IDS - IDENTICAL TO DESKTOP MAPPING
+  // Direct template URLs - no masking or redirection
   const realtorTemplates = [
     {
       id: "realtor-1",
-      title: "Realtor Website 1",
-      description: "Professional real estate template",
+      title: "Real Estate Template 1",
+      description: "Modern design for real estate professionals",
+      url: "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
     },
     {
       id: "realtor-2",
-      title: "Realtor Website 2",
-      description: "Modern luxury real estate design",
+      title: "Realtor Professional Template",
+      description: "Premium layout with property showcase",
+      url: "https://v0-realtor-professional-template-git-a80c78-info-9422s-projects.vercel.app/",
     },
     {
       id: "realtor-3",
-      title: "Realtor Website 3",
-      description: "High-performance real estate template",
-      isComingSoon: true,
-    },
-    {
-      id: "realtor-4",
-      title: "Realtor Website 4",
-      description: "Family-friendly realtor template",
-      isComingSoon: true,
-    },
-    {
-      id: "realtor-5",
-      title: "Realtor Website 5",
-      description: "Premium realtor template",
-      isComingSoon: true,
+      title: "Real Estate Template 3",
+      description: "Feature-rich real estate website",
+      url: "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
     },
   ]
 
-  const handleDemoClick = () => {
-    setIsDemoPopupOpen(true)
-  }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentText((prev) => (prev + 1) % rotatingTexts.length)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
-
-  // LOG TEMPLATE IDS FOR DEBUGGING
-  useEffect(() => {
-    console.log(
-      "RealtorNow template IDs:",
-      realtorTemplates.map((t) => t.id),
-    )
-  }, [])
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0B1426] via-[#1a2332] to-[#0B1426] text-white">
-      {/* Hero Section */}
-      <section className="relative text-center py-16 px-6 md:px-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1426]/50 to-[#0B1426]"></div>
-        <div className="relative z-10 max-w-6xl mx-auto space-y-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-            <span className="block text-white">RealtorNOW™ AI</span>
-            <span className="block text-[#00BFFF] min-h-[1.2em]">{rotatingTexts[currentText]}</span>
-            <span className="block text-white">To Skyrocket Your Results</span>
-          </h1>
+    <div className="container mx-auto px-4 py-12">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4">Realtor NOW</h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Specialized AI solutions for real estate professionals to generate leads, engage clients, and close more
+          deals.
+        </p>
+      </div>
 
-          <div className="bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-2xl mx-auto">
-            <p className="text-red-300 font-bold text-lg">⚠️ 77% of Leads are lost due to poor handling!!!</p>
-          </div>
-
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-            Stop losing sales to no-shows and forgotten follow-ups. Our{" "}
-            <strong className="text-white">AI books showings, confirms appointments, and nurtures every lead</strong>{" "}
-            until they buy.
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-            <Button
-              className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={handleDemoClick}
-            >
-              GET REALTORNOW →
-            </Button>
-            <Button
-              variant="outline"
-              className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={handleDemoClick}
-            >
-              Launch Instant Demo NOW
-            </Button>
-          </div>
-
-          {/* IDENTICAL TEMPLATE BUTTONS IMPLEMENTATION */}
-          <div className="mt-8">
-            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">🏠 Preview Real Estate Website Templates</h3>
-            <TemplateButtonsSimple templates={realtorTemplates} baseButtonText="Preview" />
-            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
-          </div>
-        </div>
-      </section>
-
-      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
-      <Footer />
+      <div className="mb-12">
+        <h2 className="text-2xl font-bold mb-6 text-center">Realtor Templates</h2>
+        <TemplateButtonsSimple templates={realtorTemplates} baseButtonText="Preview Template" />
+      </div>
     </div>
   )
 }
-
-export default RealtorNowClientPage

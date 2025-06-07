@@ -13,38 +13,49 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
   const [isMobile, setIsMobile] = useState(false)
   const [error, setError] = useState(false)
 
-  // EXACT SAME TEMPLATE MAPPING - NO MOBILE/DESKTOP DIFFERENCES
+  // CORRECT TEMPLATE URLS - UPDATED WITH WORKING URLS
   const templateUrls: Record<string, string> = {
-    "auto-1": "https://v0-autodele-now-template-site.vercel.app/",
-    "auto-2": "https://v0-autodele-now-template-site.vercel.app/",
-    "auto-3": "https://v0-autodele-now-template-site.vercel.app/",
-    "auto-4": "https://v0-autodele-now-template-site.vercel.app/",
-    "auto-5": "https://v0-autodele-now-template-site.vercel.app/",
-    "medspa-1": "https://v0-med-spa-now-client-template-1.vercel.app/",
-    "medspa-2": "https://v0-med-spa-now-client-template-1.vercel.app/",
-    "medspa-3": "https://v0-med-spa-now-client-template-1.vercel.app/",
-    "medspa-4": "https://v0-med-spa-now-client-template-1.vercel.app/",
-    "medspa-5": "https://v0-med-spa-now-client-template-1.vercel.app/",
-    "realtor-1": "https://v0-realtor-template-site-1.vercel.app/",
-    "realtor-2": "https://v0-realtor-professional-template.vercel.app/",
-    "realtor-3": "https://v0-realtor-template-site-1.vercel.app/",
-    "realtor-4": "https://v0-realtor-professional-template.vercel.app/",
-    "realtor-5": "https://v0-realtor-template-site-1.vercel.app/",
-    "lawyer-1": "https://v0-lawyer-now-template-1.vercel.app/",
-    "lawyer-2": "https://v0-lawyer-now-template-1.vercel.app/",
-    "lawyer-3": "https://v0-lawyer-now-template-1.vercel.app/",
-    "lawyer-4": "https://v0-lawyer-now-template-1.vercel.app/",
-    "lawyer-5": "https://v0-lawyer-now-template-1.vercel.app/",
-    "mortgage-1": "https://v0-free-idx-api-options.vercel.app/",
-    "mortgage-2": "https://v0-free-idx-api-options.vercel.app/",
-    "mortgage-3": "https://v0-free-idx-api-options.vercel.app/",
-    "mortgage-4": "https://v0-free-idx-api-options.vercel.app/",
-    "mortgage-5": "https://v0-free-idx-api-options.vercel.app/",
-    "gym-1": "https://v0-autodele-now-template-site.vercel.app/",
-    "gym-2": "https://v0-autodele-now-template-site.vercel.app/",
-    "gym-3": "https://v0-autodele-now-template-site.vercel.app/",
-    "gym-4": "https://v0-autodele-now-template-site.vercel.app/",
-    "gym-5": "https://v0-autodele-now-template-site.vercel.app/",
+    // Auto Dealer Templates
+    "auto-1": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+    "auto-2": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+    "auto-3": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+    "auto-4": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+    "auto-5": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+
+    // Realtor Templates
+    "realtor-1": "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
+    "realtor-2": "https://v0-realtor-professional-template-git-a80c78-info-9422s-projects.vercel.app/",
+    "realtor-3": "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
+    "realtor-4": "https://v0-realtor-professional-template-git-a80c78-info-9422s-projects.vercel.app/",
+    "realtor-5": "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
+
+    // Mortgage Templates
+    "mortgage-1": "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
+    "mortgage-2": "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
+    "mortgage-3": "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
+    "mortgage-4": "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
+    "mortgage-5": "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
+
+    // Medical Spa Templates
+    "medspa-1": "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
+    "medspa-2": "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
+    "medspa-3": "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
+    "medspa-4": "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
+    "medspa-5": "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
+
+    // Lawyer Templates
+    "lawyer-1": "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
+    "lawyer-2": "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
+    "lawyer-3": "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
+    "lawyer-4": "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
+    "lawyer-5": "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
+
+    // Gym Templates (using auto dealer as fallback)
+    "gym-1": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+    "gym-2": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+    "gym-3": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+    "gym-4": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+    "gym-5": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
   }
 
   const templateTitles: Record<string, string> = {
@@ -53,26 +64,26 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
     "auto-3": "Auto Dealer Website Template 3",
     "auto-4": "Auto Dealer Website Template 4",
     "auto-5": "Auto Dealer Website Template 5",
-    "medspa-1": "Medical Spa Website Template",
-    "medspa-2": "Medical Spa Website Template 2",
-    "medspa-3": "Medical Spa Website Template 3",
-    "medspa-4": "Medical Spa Website Template 4",
-    "medspa-5": "Medical Spa Website Template 5",
     "realtor-1": "Real Estate Website Template",
     "realtor-2": "Realtor Professional Template",
     "realtor-3": "Real Estate Website Template 3",
     "realtor-4": "Realtor Professional Template 4",
     "realtor-5": "Real Estate Website Template 5",
-    "lawyer-1": "Law Firm Website Template",
-    "lawyer-2": "Law Firm Website Template 2",
-    "lawyer-3": "Law Firm Website Template 3",
-    "lawyer-4": "Law Firm Website Template 4",
-    "lawyer-5": "Law Firm Website Template 5",
     "mortgage-1": "Mortgage Broker Template",
     "mortgage-2": "Mortgage Broker Template 2",
     "mortgage-3": "Mortgage Broker Template 3",
     "mortgage-4": "Mortgage Broker Template 4",
     "mortgage-5": "Mortgage Broker Template 5",
+    "medspa-1": "Medical Spa Website Template",
+    "medspa-2": "Medical Spa Website Template 2",
+    "medspa-3": "Medical Spa Website Template 3",
+    "medspa-4": "Medical Spa Website Template 4",
+    "medspa-5": "Medical Spa Website Template 5",
+    "lawyer-1": "Law Firm Website Template",
+    "lawyer-2": "Law Firm Website Template 2",
+    "lawyer-3": "Law Firm Website Template 3",
+    "lawyer-4": "Law Firm Website Template 4",
+    "lawyer-5": "Law Firm Website Template 5",
     "gym-1": "Gym & Fitness Website Template",
     "gym-2": "Gym & Fitness Website Template 2",
     "gym-3": "Gym & Fitness Website Template 3",
@@ -81,40 +92,32 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
   }
 
   useEffect(() => {
-    // IDENTICAL MOBILE DETECTION FOR DESKTOP AND MOBILE
     const checkMobile = () => {
-      const isMobileDevice = window.innerWidth <= 768
-      setIsMobile(isMobileDevice)
+      setIsMobile(window.innerWidth <= 768)
     }
 
     checkMobile()
     window.addEventListener("resize", checkMobile)
 
-    // IDENTICAL TITLE SETTING
     const title = templateTitles[params.id] || "Website Template"
     document.title = `${title} - SuccessNOW`
 
-    // COMPREHENSIVE LOGGING FOR DEBUGGING
+    // Enhanced logging with correct URLs
     console.log("=== TEMPLATE LOADING DEBUG ===")
-    console.log("Template ID received:", params.id)
-    console.log("Template URL found:", templateUrls[params.id])
-    console.log("Template title:", title)
-    console.log("Is mobile device:", window.innerWidth <= 768)
-    console.log("User agent:", navigator.userAgent)
-    console.log("Available template IDs:", Object.keys(templateUrls))
+    console.log("Template ID:", params.id)
+    console.log("Template URL:", templateUrls[params.id])
+    console.log("Is Mobile:", window.innerWidth <= 768)
+    console.log("All available templates:", Object.keys(templateUrls))
     console.log("================================")
 
-    // IDENTICAL LOADING DELAY
     setTimeout(() => setLoading(false), 500)
 
     return () => window.removeEventListener("resize", checkMobile)
   }, [params.id])
 
-  // EXACT SAME TEMPLATE URL RETRIEVAL
   const templateUrl = templateUrls[params.id]
   const templateTitle = templateTitles[params.id] || "Website Template"
 
-  // IDENTICAL ERROR HANDLING
   if (!templateUrl) {
     console.error("Template not found for ID:", params.id)
     return (
@@ -123,7 +126,7 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
           <h1 className="text-2xl font-bold mb-4">Template Not Found</h1>
           <p className="text-lg mb-4">Template ID: "{params.id}"</p>
           <p className="text-sm mb-2">Device: {isMobile ? "Mobile" : "Desktop"}</p>
-          <p className="text-sm mb-6">Available: {Object.keys(templateUrls).slice(0, 5).join(", ")}</p>
+          <p className="text-sm mb-6">Available: auto-1, realtor-1, realtor-2, mortgage-1, medspa-1, lawyer-1</p>
           <button
             onClick={() => (window.location.href = "/")}
             className="w-full px-6 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-colors"
@@ -135,7 +138,6 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
     )
   }
 
-  // IDENTICAL HANDLER FUNCTIONS
   const handleClose = () => {
     if (window.history.length > 1) {
       window.history.back()
@@ -152,7 +154,32 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
     window.location.href = "/"
   }
 
-  // IDENTICAL LOADING STATE
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 p-4">
+        <div className="text-center text-white max-w-md">
+          <h1 className="text-2xl font-bold mb-4">Loading Error</h1>
+          <p className="text-lg mb-2">Failed to load template</p>
+          <p className="text-sm mb-6">Template URL: {templateUrl}</p>
+          <div className="space-y-3">
+            <button
+              onClick={handleOpenInNewTab}
+              className="w-full px-6 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+            >
+              Open Template in New Tab
+            </button>
+            <button
+              onClick={handleGoHome}
+              className="w-full px-6 py-3 bg-gray-600 text-white rounded-full font-semibold hover:bg-gray-700 transition-colors"
+            >
+              Go to Homepage
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600">
@@ -160,15 +187,15 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mb-4 mx-auto"></div>
           <p className="text-lg">Loading {templateTitle}...</p>
           <p className="text-sm mt-2 opacity-80">{isMobile ? "Mobile" : "Desktop"} Device</p>
+          <p className="text-xs mt-1 opacity-60">URL: {templateUrl}</p>
         </div>
       </div>
     )
   }
 
-  // IDENTICAL RENDERING - NO MOBILE/DESKTOP DIFFERENCES
   return (
     <div className="h-screen w-screen overflow-hidden relative">
-      {/* IDENTICAL CONTROL BAR */}
+      {/* Control bar */}
       <div className={`absolute top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm ${isMobile ? "p-2" : "p-3"}`}>
         <div className="flex items-center justify-between">
           <div className="text-white text-sm font-medium truncate flex-1 mr-4">{templateTitle}</div>
@@ -201,7 +228,7 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
         </div>
       </div>
 
-      {/* IDENTICAL IFRAME - EXACT SAME ATTRIBUTES AND STYLING */}
+      {/* Template iframe with enhanced error handling */}
       <iframe
         src={templateUrl}
         className={`w-full h-full border-0 ${isMobile ? "pt-12" : "pt-14"}`}
@@ -210,10 +237,10 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
         allowFullScreen
         loading="eager"
         onLoad={() => {
-          console.log("Template iframe loaded successfully:", templateUrl)
+          console.log("✅ Template loaded successfully:", templateUrl)
         }}
         onError={(e) => {
-          console.error("Template iframe failed to load:", templateUrl, e)
+          console.error("❌ Template failed to load:", templateUrl, e)
           setError(true)
         }}
         style={{

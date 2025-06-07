@@ -22,35 +22,25 @@ const AutoDealersNowClient = () => {
     "Follows Up Always",
   ]
 
+  // Direct template URLs - no masking or redirection
   const autoTemplates = [
     {
       id: "auto-1",
-      title: "AutoDealer Website 1",
-      description: "Professional automotive dealership template with lead capture",
+      title: "Auto Dealer Template 1",
+      description: "Modern design for auto dealerships",
+      url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
     },
     {
       id: "auto-2",
-      title: "AutoDealerNOW Website 2",
-      description: "Modern luxury car dealership design with inventory showcase",
-      isComingSoon: true,
+      title: "Auto Dealer Template 2",
+      description: "Professional layout with inventory focus",
+      url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
     },
     {
       id: "auto-3",
-      title: "AutoDealerNOW Website 3",
-      description: "High-performance sports car dealership template",
-      isComingSoon: true,
-    },
-    {
-      id: "auto-4",
-      title: "AutoDealerNOW Website 4",
-      description: "Family-friendly dealership with financing focus",
-      isComingSoon: true,
-    },
-    {
-      id: "auto-5",
-      title: "AutoDealerNOW Website 5",
-      description: "Premium dealership template with virtual showroom",
-      isComingSoon: true,
+      title: "Auto Dealer Template 3",
+      description: "Feature-rich dealership website",
+      url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
     },
   ]
 
@@ -69,7 +59,6 @@ const AutoDealersNowClient = () => {
     <div className="min-h-screen bg-gradient-to-br from-[#0B1426] via-[#1a2332] to-[#0B1426] text-white">
       {/* Hero Section */}
       <section className="relative text-center py-16 px-6 md:px-10 overflow-hidden">
-        {/* Add gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1426]/50 to-[#0B1426]"></div>
         <div className="relative z-10 max-w-6xl mx-auto space-y-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
@@ -109,7 +98,7 @@ const AutoDealersNowClient = () => {
           {/* Template Preview Buttons */}
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">🚗 Preview Auto Dealer Website Templates</h3>
-            <TemplateButtonsSimple templates={autoTemplates} baseButtonText="Preview" />
+            <TemplateButtonsSimple templates={autoTemplates} baseButtonText="Preview Template" />
             <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
           </div>
         </div>

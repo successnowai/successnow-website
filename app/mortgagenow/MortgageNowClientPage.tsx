@@ -1,124 +1,46 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import Footer from "@/components/home/footer"
-import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
-import { DemoPopup } from "@/components/ui/demo-popup"
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import TemplateButtonsSimple from "@/components/ui/template-buttons-simple"
 
-const MortgageNowClientPage = () => {
-  const [currentText, setCurrentText] = useState(0)
-  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+export default function MortgageNowClientPage() {
+  const [activeTab, setActiveTab] = useState("overview")
 
-  const rotatingTexts = [
-    "Instantly Engages",
-    "Converts Leads",
-    "Books Consultations",
-    "Gets 5 Star Reviews",
-    "Follows Up Always",
-  ]
-
-  // EXACT TEMPLATE IDS THAT WORK ON DESKTOP
+  // Direct template URLs - no masking or redirection
   const mortgageTemplates = [
     {
       id: "mortgage-1",
-      title: "Mortgage Broker Website 1",
-      description: "Professional mortgage broker template with loan calculator",
+      title: "Mortgage Broker Template 1",
+      description: "Professional design for mortgage brokers",
+      url: "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
     },
     {
       id: "mortgage-2",
-      title: "Mortgage Broker Website 2",
-      description: "Modern lending design with rate showcase",
-      isComingSoon: true,
+      title: "Mortgage Broker Template 2",
+      description: "Premium layout with loan options showcase",
+      url: "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
     },
     {
       id: "mortgage-3",
-      title: "Mortgage Broker Website 3",
-      description: "High-performance mortgage template",
-      isComingSoon: true,
-    },
-    {
-      id: "mortgage-4",
-      title: "Mortgage Broker Website 4",
-      description: "Premium mortgage template with application portal",
-      isComingSoon: true,
-    },
-    {
-      id: "mortgage-5",
-      title: "Mortgage Broker Website 5",
-      description: "Advanced lending practice template",
-      isComingSoon: true,
+      title: "Mortgage Broker Template 3",
+      description: "Feature-rich mortgage broker website",
+      url: "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
     },
   ]
 
-  const handleDemoClick = () => {
-    setIsDemoPopupOpen(true)
-  }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentText((prev) => (prev + 1) % rotatingTexts.length)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0B1426] via-[#1a2332] to-[#0B1426] text-white">
-      {/* Hero Section */}
-      <section className="relative text-center py-16 px-6 md:px-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1426]/50 to-[#0B1426]"></div>
-        <div className="relative z-10 max-w-6xl mx-auto space-y-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-            <span className="block text-white animate-fadeTextUp">MortgageNOW™ AI</span>
-            <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 min-h-[1.2em]">
-              {rotatingTexts[currentText]}
-            </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600">To Skyrocket Your Results</span>
-          </h1>
+    <div className="container mx-auto px-4 py-12">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4">Mortgage NOW</h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Specialized AI solutions for mortgage brokers to generate leads, showcase loan options, and close more deals.
+        </p>
+      </div>
 
-          <div className="bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-2xl mx-auto animate-fadeTextUp animation-delay-900">
-            <p className="text-red-300 font-bold text-lg">⚠️ 77% of Leads are lost due to poor handling!!!</p>
-          </div>
-
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
-            Stop losing clients to no-shows and forgotten follow-ups. Our{" "}
-            <strong className="text-white">
-              AI books consultations, confirms appointments, and nurtures every lead
-            </strong>{" "}
-            until they close their loan.
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
-            <Button
-              className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={handleDemoClick}
-            >
-              GET MORTGAGENOW →
-            </Button>
-            <Button
-              variant="outline"
-              className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={handleDemoClick}
-            >
-              Launch Instant Demo NOW
-            </Button>
-          </div>
-
-          {/* Template Preview Buttons */}
-          <div className="mt-8 animate-fadeTextUp animation-delay-1800">
-            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">🏦 Preview Mortgage Broker Website Templates</h3>
-            <TemplateButtonsSimple templates={mortgageTemplates} baseButtonText="Preview" />
-            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Demo Popup */}
-      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
-
-      <Footer />
+      <div className="mb-12">
+        <h2 className="text-2xl font-bold mb-6 text-center">Mortgage Broker Templates</h2>
+        <TemplateButtonsSimple templates={mortgageTemplates} baseButtonText="Preview Template" />
+      </div>
     </div>
   )
 }
-
-export default MortgageNowClientPage
