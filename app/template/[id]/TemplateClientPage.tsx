@@ -15,91 +15,34 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
 
   // COMPLETE TEMPLATE MAPPING - Each ID maps to correct industry template
   const templateUrls: Record<string, string> = {
-    // Auto Dealer Templates
+    // Auto Dealer Templates (from AutoDealersNowClient)
     "auto-1": "https://v0-autodele-now-template-site.vercel.app/",
-    "auto-2": "https://v0-autodele-now-template-site.vercel.app/",
-    "auto-3": "https://v0-autodele-now-template-site.vercel.app/",
-    "auto-4": "https://v0-autodele-now-template-site.vercel.app/",
-    "auto-5": "https://v0-autodele-now-template-site.vercel.app/",
 
-    // Medical Spa Templates
+    // Medical Spa Templates (from MedspaNowClientPage)
     "medspa-1": "https://v0-med-spa-now-client-template-1.vercel.app/",
-    "medspa-2": "https://v0-med-spa-now-client-template-1.vercel.app/",
-    "medspa-3": "https://v0-med-spa-now-client-template-1.vercel.app/",
-    "medspa-4": "https://v0-med-spa-now-client-template-1.vercel.app/",
-    "medspa-5": "https://v0-med-spa-now-client-template-1.vercel.app/",
 
-    // Realtor Templates
+    // Realtor Templates (from RealtorNowClientPage)
     "realtor-1": "https://v0-realtor-template-site-1.vercel.app/",
     "realtor-2": "https://v0-realtor-professional-template.vercel.app/",
-    "realtor-3": "https://v0-realtor-template-site-1.vercel.app/",
-    "realtor-4": "https://v0-realtor-professional-template.vercel.app/",
-    "realtor-5": "https://v0-realtor-template-site-1.vercel.app/",
 
-    // Lawyer Templates
+    // Lawyer Templates (from LawyersNowClientPage)
     "lawyer-1": "https://v0-lawyer-now-template-1.vercel.app/",
-    "lawyer-2": "https://v0-lawyer-now-template-1.vercel.app/",
-    "lawyer-3": "https://v0-lawyer-now-template-1.vercel.app/",
-    "lawyer-4": "https://v0-lawyer-now-template-1.vercel.app/",
-    "lawyer-5": "https://v0-lawyer-now-template-1.vercel.app/",
 
-    // Mortgage Templates
+    // Mortgage Templates (from MortgageNowClientPage)
     "mortgage-1": "https://v0-free-idx-api-options.vercel.app/",
-    "mortgage-2": "https://v0-free-idx-api-options.vercel.app/",
-    "mortgage-3": "https://v0-free-idx-api-options.vercel.app/",
-    "mortgage-4": "https://v0-free-idx-api-options.vercel.app/",
-    "mortgage-5": "https://v0-free-idx-api-options.vercel.app/",
 
-    // Gym Templates
+    // Gym Templates (from GymsNowClientPage) - using auto template as placeholder
     "gym-1": "https://v0-autodele-now-template-site.vercel.app/",
-    "gym-2": "https://v0-autodele-now-template-site.vercel.app/",
-    "gym-3": "https://v0-autodele-now-template-site.vercel.app/",
-    "gym-4": "https://v0-autodele-now-template-site.vercel.app/",
-    "gym-5": "https://v0-autodele-now-template-site.vercel.app/",
   }
 
   const templateTitles: Record<string, string> = {
-    // Auto Dealer Titles
     "auto-1": "Auto Dealer Website Template",
-    "auto-2": "Auto Dealer Website Template 2",
-    "auto-3": "Auto Dealer Website Template 3",
-    "auto-4": "Auto Dealer Website Template 4",
-    "auto-5": "Auto Dealer Website Template 5",
-
-    // Medical Spa Titles
     "medspa-1": "Medical Spa Website Template",
-    "medspa-2": "Medical Spa Website Template 2",
-    "medspa-3": "Medical Spa Website Template 3",
-    "medspa-4": "Medical Spa Website Template 4",
-    "medspa-5": "Medical Spa Website Template 5",
-
-    // Realtor Titles
     "realtor-1": "Real Estate Website Template",
     "realtor-2": "Realtor Professional Template",
-    "realtor-3": "Real Estate Website Template 3",
-    "realtor-4": "Realtor Professional Template 4",
-    "realtor-5": "Real Estate Website Template 5",
-
-    // Lawyer Titles
     "lawyer-1": "Law Firm Website Template",
-    "lawyer-2": "Law Firm Website Template 2",
-    "lawyer-3": "Law Firm Website Template 3",
-    "lawyer-4": "Law Firm Website Template 4",
-    "lawyer-5": "Law Firm Website Template 5",
-
-    // Mortgage Titles
     "mortgage-1": "Mortgage Broker Template",
-    "mortgage-2": "Mortgage Broker Template 2",
-    "mortgage-3": "Mortgage Broker Template 3",
-    "mortgage-4": "Mortgage Broker Template 4",
-    "mortgage-5": "Mortgage Broker Template 5",
-
-    // Gym Titles
     "gym-1": "Gym & Fitness Website Template",
-    "gym-2": "Gym & Fitness Website Template 2",
-    "gym-3": "Gym & Fitness Website Template 3",
-    "gym-4": "Gym & Fitness Website Template 4",
-    "gym-5": "Gym & Fitness Website Template 5",
   }
 
   useEffect(() => {
