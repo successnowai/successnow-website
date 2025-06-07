@@ -55,7 +55,7 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5">
+      <nav className="fixed top-0 left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5 navbar-height">
         <div className="relative flex items-center justify-between px-4 sm:px-6 py-3 max-w-7xl mx-auto h-full">
           {/* Logo */}
           <div className="flex items-center">
@@ -90,7 +90,7 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
           {/* Mobile Menu Button */}
           <div className="flex items-center">
             <button
-              className="lg:hidden text-white p-1.5 z-50"
+              className="lg:hidden text-white p-1.5 z-50 min-h-[44px] min-w-[44px] flex items-center justify-center"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -106,7 +106,7 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.href, item.id)}
-                    className={`block w-full text-left py-3 text-base font-medium transition-all duration-300 hover:text-[#00BFFF] hover:translate-x-2 ${
+                    className={`block w-full text-left py-3 text-base font-medium transition-all duration-300 hover:text-[#00BFFF] hover:translate-x-2 min-h-[44px] ${
                       activePage === item.id ? "text-[#00BFFF]" : "text-gray-300"
                     }`}
                   >

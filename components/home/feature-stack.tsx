@@ -93,24 +93,24 @@ export default function FeatureStack() {
       >
         Your AI Super Agent Stack – Core Features
       </h2>
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature, index) => (
           <div
             key={index}
-            className={`bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-lg p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer animate-fade-up ${
+            className={`bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer animate-fade-up ${
               isInView ? "animate-show" : ""
             } animate-delay-${(index % 6) * 100}`}
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-3">
                 <span className="text-2xl">{feature.emoji}</span>
-                <h3 className="font-bold text-white text-lg">{feature.title}</h3>
+                <h3 className="font-bold text-white text-base sm:text-lg">{feature.title}</h3>
               </div>
               <span className="text-green-400 text-xl">{feature.checkmark}</span>
             </div>
 
             <div className="mb-6 min-h-[60px] flex items-center">
-              <p className="text-gray-300 text-base">
+              <p className="text-gray-300 text-sm sm:text-base">
                 <span className="text-white font-bold">AI that </span>
                 <AnimatedSwitcher
                   phrases={feature.benefits}
@@ -122,7 +122,7 @@ export default function FeatureStack() {
             </div>
 
             <button
-              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover:scale-105 shadow-lg"
+              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover:scale-105 shadow-lg text-sm sm:text-base min-h-[44px]"
               onClick={() => (window.location.href = "/features")}
             >
               {feature.buttonText} →

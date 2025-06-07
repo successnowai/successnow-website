@@ -21,9 +21,9 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <section className="relative text-center py-12 sm:py-20 px-4 sm:px-6 md:px-10 overflow-hidden pt-20">
-        <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
+        <div className="max-w-6xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
           {/* Main Headline with Rotating Text Animation */}
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
             <span className="block text-white animate-fadeTextUp">SuccessNOW AI™ that converts</span>
             <span className="block animate-fadeTextUp animation-delay-300">
               <RotatingText words={rotatingWords} className="text-[#00BFFF]" interval={2500} />
@@ -41,7 +41,7 @@ export default function HeroSection() {
           <div className="flex justify-center mt-6 sm:mt-8 animate-fadeTextUp animation-delay-1200 px-4">
             <Button
               variant="outline"
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-sm sm:text-base bg-transparent"
+              className="w-full sm:w-auto px-4 sm:px-6 py-3 sm:py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 text-sm sm:text-base bg-transparent min-h-[44px]"
               onClick={handleDemoClick}
             >
               Launch Instant Demo NOW
