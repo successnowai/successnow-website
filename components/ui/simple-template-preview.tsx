@@ -16,55 +16,71 @@ interface SimpleTemplatePreviewProps {
 }
 
 export function SimpleTemplatePreview({ template, buttonText, buttonClassName }: SimpleTemplatePreviewProps) {
-  const openTemplate = () => {
+  const handleClick = () => {
     if (template.isComingSoon) {
       alert("This template is coming soon! Join our newsletter to be notified when it's available.")
       return
     }
 
-    // Use our proxy page instead of API route
-    const proxyUrl = `/template/${template.id}`
+    // Direct template URL mapping - same as desktop
+    const templateUrls: Record<string, string> = {
+      // Auto Dealer Templates
+      "auto-1": "https://v0-autodele-now-template-site.vercel.app/",
+      "auto-2": "https://v0-autodele-now-template-site.vercel.app/",
+      "auto-3": "https://v0-autodele-now-template-site.vercel.app/",
+      "auto-4": "https://v0-autodele-now-template-site.vercel.app/",
+      "auto-5": "https://v0-autodele-now-template-site.vercel.app/",
 
-    // Open in new window with minimal browser UI
-    const newWindow = window.open(
-      proxyUrl,
-      "_blank",
-      "width=" +
-        screen.width +
-        ",height=" +
-        screen.height +
-        ",fullscreen=yes,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no",
-    )
+      // Medspa Templates
+      "medspa-1": "https://v0-med-spa-now-client-template-1.vercel.app/",
+      "medspa-2": "https://v0-med-spa-now-client-template-1.vercel.app/",
+      "medspa-3": "https://v0-med-spa-now-client-template-1.vercel.app/",
+      "medspa-4": "https://v0-med-spa-now-client-template-1.vercel.app/",
+      "medspa-5": "https://v0-med-spa-now-client-template-1.vercel.app/",
 
-    if (newWindow) {
-      newWindow.focus()
+      // Realtor Templates
+      "realtor-1": "https://v0-realtor-template-site-1.vercel.app/",
+      "realtor-2": "https://v0-realtor-professional-template.vercel.app/",
+      "realtor-3": "https://v0-realtor-template-site-1.vercel.app/",
+      "realtor-4": "https://v0-realtor-professional-template.vercel.app/",
+      "realtor-5": "https://v0-realtor-template-site-1.vercel.app/",
 
-      // Try to make it fullscreen after a brief delay
-      setTimeout(() => {
-        try {
-          if (newWindow.document && newWindow.document.documentElement) {
-            if (newWindow.document.documentElement.requestFullscreen) {
-              newWindow.document.documentElement.requestFullscreen()
-            }
-          }
-        } catch (e) {
-          // Fullscreen might not be supported or allowed
-          console.log("Fullscreen not available")
-        }
-      }, 1000)
+      // Lawyer Templates
+      "lawyer-1": "https://v0-lawyer-now-template-1.vercel.app/",
+      "lawyer-2": "https://v0-lawyer-now-template-1.vercel.app/",
+      "lawyer-3": "https://v0-lawyer-now-template-1.vercel.app/",
+      "lawyer-4": "https://v0-lawyer-now-template-1.vercel.app/",
+      "lawyer-5": "https://v0-lawyer-now-template-1.vercel.app/",
+
+      // Mortgage Templates
+      "mortgage-1": "https://v0-free-idx-api-options.vercel.app/",
+      "mortgage-2": "https://v0-free-idx-api-options.vercel.app/",
+      "mortgage-3": "https://v0-free-idx-api-options.vercel.app/",
+      "mortgage-4": "https://v0-free-idx-api-options.vercel.app/",
+      "mortgage-5": "https://v0-free-idx-api-options.vercel.app/",
+
+      // Gym Templates
+      "gym-1": "https://v0-autodele-now-template-site.vercel.app/",
+      "gym-2": "https://v0-autodele-now-template-site.vercel.app/",
+      "gym-3": "https://v0-autodele-now-template-site.vercel.app/",
+      "gym-4": "https://v0-autodele-now-template-site.vercel.app/",
+      "gym-5": "https://v0-autodele-now-template-site.vercel.app/",
+    }
+
+    const templateUrl = templateUrls[template.id]
+
+    if (templateUrl) {
+      // Open directly to the template URL, bypassing the /template/[id] route
+      window.open(templateUrl, "_blank", "noopener,noreferrer")
+    } else {
+      // Fallback to the route-based system if URL not found
+      window.open(`/template/${template.id}`, "_blank", "noopener,noreferrer")
     }
   }
 
   return (
-    <Button
-      onClick={openTemplate}
-      disabled={template.isComingSoon}
-      className={
-        buttonClassName ||
-        "px-6 py-3 bg-[#00BFFF] text-[#00274D] font-semibold rounded-md hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-      }
-    >
-      {template.isComingSoon ? "🚧 Coming Soon" : buttonText}
+    <Button onClick={handleClick} disabled={template.isComingSoon} className={buttonClassName}>
+      {buttonText}
     </Button>
   )
 }
