@@ -141,17 +141,6 @@ export default function IndustriesClientPage() {
       ],
     },
     {
-      emoji: "✨",
-      title: "Beauty Spas",
-      description: "Upsell automation, loyalty campaigns, review management.",
-      features: [
-        "Automated upselling of beauty packages",
-        "Loyalty program management and rewards",
-        "Review collection and reputation management",
-        "Seasonal promotion campaigns",
-      ],
-    },
-    {
       emoji: "🧘",
       title: "Wellness Studios",
       description: "Class reminders, content nurturing, studio ads.",
@@ -160,17 +149,6 @@ export default function IndustriesClientPage() {
         "Wellness content nurturing sequences",
         "Targeted studio advertising campaigns",
         "Membership retention and engagement",
-      ],
-    },
-    {
-      emoji: "💪",
-      title: "Personal Trainers",
-      description: "Accountability tracking, auto-booking, client motivation.",
-      features: [
-        "Client accountability and progress tracking",
-        "Automated session booking and scheduling",
-        "Motivational messaging and check-ins",
-        "Nutrition and workout plan delivery",
       ],
     },
     {
@@ -204,17 +182,6 @@ export default function IndustriesClientPage() {
         "Automated service reminders and follow-ups",
         "Repeat business and loyalty automation",
         "Local marketing and reputation management",
-      ],
-    },
-    {
-      emoji: "🏥",
-      title: "Medical Practices",
-      description: "AI-patient follow-ups, compliance, reputation management.",
-      features: [
-        "HIPAA-compliant patient follow-up systems",
-        "Automated compliance monitoring and reporting",
-        "Medical reputation management",
-        "Appointment scheduling and reminder automation",
       ],
     },
     {
