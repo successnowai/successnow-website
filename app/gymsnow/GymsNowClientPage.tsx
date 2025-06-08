@@ -8,32 +8,31 @@ import Navbar from "@/components/navigation/navbar"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { InstantDemoCTA } from "@/components/ui/instant-demo-cta"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
-import TemplateButtonsSimple from "@/components/ui/template-buttons-simple"
+import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 import { useState } from "react"
 
 export default function GymsNowClientPage() {
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState("overview")
 
-  // Direct template URLs - no masking or redirection
+  // All templates now use the martial arts template URL
   const gymTemplates = [
     {
-      id: "gym-1",
-      title: "Gym & Fitness Template 1",
-      description: "Dynamic design for fitness centers",
-      url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/", // Using auto dealer as fallback
+      id: "martial-arts-1",
+      title: "Martial Arts Gym Template 1",
+      description: "Dynamic design for martial arts studios",
+      url: "https://v0-martialarts-website-git-martialar-474cdd-info-9422s-projects.vercel.app/",
     },
     {
-      id: "gym-2",
-      title: "Gym & Fitness Template 2",
+      id: "martial-arts-2",
+      title: "Martial Arts Gym Template 2",
       description: "Premium layout with class schedule showcase",
-      url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/", // Using auto dealer as fallback
+      url: "https://v0-martialarts-website-git-martialar-474cdd-info-9422s-projects.vercel.app/",
     },
     {
-      id: "gym-3",
-      title: "Gym & Fitness Template 3",
+      id: "martial-arts-3",
+      title: "Martial Arts Gym Template 3",
       description: "Feature-rich fitness center website",
-      url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/", // Using auto dealer as fallback
+      url: "https://v0-martialarts-website-git-martialar-474cdd-info-9422s-projects.vercel.app/",
     },
   ]
 
@@ -160,9 +159,12 @@ export default function GymsNowClientPage() {
           </div>
         </div>
 
-        {/* Gym Templates */}
+        {/* Gym Templates Section */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-center">Gym & Fitness Templates</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center text-[#00BFFF]">Gym & Fitness Templates</h2>
+          <p className="text-center text-gray-300 mb-8">
+            Choose from our professionally designed templates for gyms and fitness studios
+          </p>
           <TemplateButtonsSimple templates={gymTemplates} baseButtonText="Preview Template" />
         </div>
 
