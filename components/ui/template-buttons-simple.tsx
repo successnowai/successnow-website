@@ -24,14 +24,10 @@ export function TemplateButtonsSimple({
 }: TemplateButtonsSimpleProps) {
   const [loading, setLoading] = useState<string | null>(null)
 
-  // Direct template opening function - no masking or redirection
   const handleTemplateClick = (template: Template) => {
     console.log(`Opening template directly: ${template.title} - ${template.url}`)
     setLoading(template.id)
-
-    // Open template URL directly in a new tab
     window.open(template.url, "_blank")
-
     setTimeout(() => {
       setLoading(null)
     }, 500)
@@ -45,7 +41,9 @@ export function TemplateButtonsSimple({
           className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
         >
           {template.imageUrl && (
-            <div className="relative h-40 overflow-hidden">
+            <div className="relative h-40 sm:h-48 overflow-hidden">
+              {" "}
+              {/* Adjusted height for mobile */}
               <img
                 src={template.imageUrl || "/placeholder.svg"}
                 alt={template.title}
@@ -54,9 +52,15 @@ export function TemplateButtonsSimple({
             </div>
           )}
           <div className="p-4">
-            <h3 className="text-lg font-semibold mb-2 text-gray-900">{template.title}</h3>
-            {template.description && <p className="text-gray-600 text-sm mb-4">{template.description}</p>}
-            <Button onClick={() => handleTemplateClick(template)} disabled={loading === template.id} className="w-full">
+            <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2 text-gray-900">{template.title}</h3>
+            {template.description && (
+              <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">{template.description}</p>
+            )}
+            <Button
+              onClick={() => handleTemplateClick(template)}
+              disabled={loading === template.id}
+              className="w-full text-sm py-2.5 sm:py-2" /* Adjusted button padding for mobile */
+            >
               {loading === template.id ? (
                 <>
                   <span className="animate-spin mr-2">⏳</span> Opening...
@@ -72,5 +76,4 @@ export function TemplateButtonsSimple({
   )
 }
 
-// Export as default to satisfy deployment requirements
 export default TemplateButtonsSimple
