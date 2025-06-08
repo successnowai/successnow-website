@@ -22,25 +22,28 @@ const MedspaNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  // Direct template URLs - no masking or redirection
-  const medspaTemplates = [
+  // Medical Spa Inspirations with screenshots
+  const medspaInspiration = [
     {
-      id: "medspa-1",
-      title: "Medical Spa Template 1",
+      id: "medspa-inspiration-1",
+      title: "Medical Spa Inspiration 1",
       description: "Elegant design for medical spas",
       url: "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/medspa-inspiration-1.png",
     },
     {
-      id: "medspa-2",
-      title: "Medical Spa Template 2",
+      id: "medspa-inspiration-2",
+      title: "Medical Spa Inspiration 2",
       description: "Premium layout with treatment showcase",
       url: "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/medspa-inspiration-1.png",
     },
     {
-      id: "medspa-3",
-      title: "Medical Spa Template 3",
-      description: "Feature-rich medical spa website",
+      id: "medspa-inspiration-3",
+      title: "Medical Spa Inspiration 3",
+      description: "Feature-rich medical spa experience",
       url: "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/medspa-inspiration-1.png",
     },
   ]
 
@@ -97,11 +100,21 @@ const MedspaNowClientPage = () => {
             </Button>
           </div>
 
-          {/* Template Preview Buttons */}
+          {/* Design Inspiration Section */}
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
-            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">💆 Preview Medical Spa Website Templates</h3>
-            <TemplateButtonsSimple templates={medspaTemplates} baseButtonText="Preview Template" />
-            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
+            <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🎨 Who Wants a Reused Template?!</h3>
+              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
+                <strong className="text-white">All of our sites are 100% custom-built for YOUR medical spa.</strong> But
+                here's some inspiration of what's possible when you combine elegant design with AI that actually books
+                high-value treatments:
+              </p>
+              <TemplateButtonsSimple templates={medspaInspiration} baseButtonText="View Inspiration" />
+              <p className="text-xs sm:text-sm text-gray-400 mt-3 italic">
+                💡 <strong className="text-[#00BFFF]">Your custom design journey starts the moment you sign up!</strong>{" "}
+                No cookie-cutter templates here.
+              </p>
+            </div>
           </div>
         </div>
       </section>

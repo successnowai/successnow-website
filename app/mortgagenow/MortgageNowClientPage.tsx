@@ -22,25 +22,28 @@ const MortgageNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  // Direct template URLs - no masking or redirection
-  const mortgageTemplates = [
+  // Mortgage Broker Inspirations with screenshots
+  const mortgageInspiration = [
     {
-      id: "mortgage-1",
-      title: "Mortgage Broker Template 1",
+      id: "mortgage-inspiration-1",
+      title: "Mortgage Broker Inspiration 1",
       description: "Professional design for mortgage brokers",
       url: "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/mortgage-inspiration-1.png",
     },
     {
-      id: "mortgage-2",
-      title: "Mortgage Broker Template 2",
+      id: "mortgage-inspiration-2",
+      title: "Mortgage Broker Inspiration 2",
       description: "Premium layout with loan options showcase",
       url: "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/mortgage-inspiration-1.png",
     },
     {
-      id: "mortgage-3",
-      title: "Mortgage Broker Template 3",
-      description: "Feature-rich mortgage broker website",
+      id: "mortgage-inspiration-3",
+      title: "Mortgage Broker Inspiration 3",
+      description: "Feature-rich mortgage broker experience",
       url: "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/mortgage-inspiration-1.png",
     },
   ]
 
@@ -97,11 +100,23 @@ const MortgageNowClientPage = () => {
             </Button>
           </div>
 
-          {/* Template Preview Buttons */}
+          {/* Design Inspiration Section */}
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
-            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">🏦 Preview Mortgage Broker Website Templates</h3>
-            <TemplateButtonsSimple templates={mortgageTemplates} baseButtonText="Preview Template" />
-            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
+            <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🎨 Who Wants a Reused Template?!</h3>
+              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
+                <strong className="text-white">
+                  All of our sites are 100% custom-built for YOUR mortgage business.
+                </strong>{" "}
+                But here's some inspiration of what's possible when you combine trustworthy design with AI that actually
+                closes loans:
+              </p>
+              <TemplateButtonsSimple templates={mortgageInspiration} baseButtonText="View Inspiration" />
+              <p className="text-xs sm:text-sm text-gray-400 mt-3 italic">
+                💡 <strong className="text-[#00BFFF]">Your custom design journey starts the moment you sign up!</strong>{" "}
+                No cookie-cutter templates here.
+              </p>
+            </div>
           </div>
         </div>
       </section>

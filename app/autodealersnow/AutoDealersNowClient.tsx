@@ -22,25 +22,28 @@ const AutoDealersNowClient = () => {
     "Follows Up Always",
   ]
 
-  // Direct template URLs - no masking or redirection
-  const autoTemplates = [
+  // Auto Dealer Inspirations with screenshots
+  const autoInspiration = [
     {
-      id: "auto-1",
-      title: "Auto Dealer Template 1",
-      description: "Modern design for auto dealerships",
+      id: "auto-inspiration-1",
+      title: "Auto Dealer Inspiration 1",
+      description: "Modern dealership design with inventory showcase",
       url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/auto-dealer-inspiration-1.png",
     },
     {
-      id: "auto-2",
-      title: "Auto Dealer Template 2",
-      description: "Professional layout with inventory focus",
+      id: "auto-inspiration-2",
+      title: "Auto Dealer Inspiration 2",
+      description: "Professional layout with service focus",
       url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/auto-dealer-inspiration-1.png",
     },
     {
-      id: "auto-3",
-      title: "Auto Dealer Template 3",
-      description: "Feature-rich dealership website",
+      id: "auto-inspiration-3",
+      title: "Auto Dealer Inspiration 3",
+      description: "Feature-rich dealership experience",
       url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/auto-dealer-inspiration-1.png",
     },
   ]
 
@@ -95,11 +98,21 @@ const AutoDealersNowClient = () => {
             </Button>
           </div>
 
-          {/* Template Preview Buttons */}
+          {/* Design Inspiration Section */}
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
-            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">🚗 Preview Auto Dealer Website Templates</h3>
-            <TemplateButtonsSimple templates={autoTemplates} baseButtonText="Preview Template" />
-            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
+            <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🎨 Who Wants a Reused Template?!</h3>
+              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
+                <strong className="text-white">All of our sites are 100% custom-built for YOUR dealership.</strong> But
+                here's some inspiration of what's possible when you combine killer design with AI that actually sells
+                cars:
+              </p>
+              <TemplateButtonsSimple templates={autoInspiration} baseButtonText="View Inspiration" />
+              <p className="text-xs sm:text-sm text-gray-400 mt-3 italic">
+                💡 <strong className="text-[#00BFFF]">Your custom design journey starts the moment you sign up!</strong>{" "}
+                No cookie-cutter templates here.
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -22,25 +22,28 @@ const RealtorNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  // Direct template URLs - no masking or redirection
-  const realtorTemplates = [
+  // Real Estate Inspirations with screenshots
+  const realtorInspiration = [
     {
-      id: "realtor-1",
-      title: "Real Estate Template 1",
+      id: "realtor-inspiration-1",
+      title: "Real Estate Inspiration 1",
       description: "Modern design for real estate professionals",
       url: "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/realtor-inspiration-1.png",
     },
     {
-      id: "realtor-2",
-      title: "Realtor Professional Template",
+      id: "realtor-inspiration-2",
+      title: "Real Estate Inspiration 2",
       description: "Premium layout with property showcase",
       url: "https://v0-realtor-professional-template-git-a80c78-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/realtor-inspiration-1.png",
     },
     {
-      id: "realtor-3",
-      title: "Real Estate Template 3",
-      description: "Feature-rich real estate website",
+      id: "realtor-inspiration-3",
+      title: "Real Estate Inspiration 3",
+      description: "Feature-rich real estate experience",
       url: "https://v0-realtor-template-3-git-realtor-te-bc3408-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/realtor-inspiration-1.png",
     },
   ]
 
@@ -95,11 +98,23 @@ const RealtorNowClientPage = () => {
             </Button>
           </div>
 
-          {/* Template Preview Buttons */}
+          {/* Design Inspiration Section */}
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
-            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">🏠 Preview Real Estate Website Templates</h3>
-            <TemplateButtonsSimple templates={realtorTemplates} baseButtonText="Preview Template" />
-            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
+            <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🎨 Who Wants a Reused Template?!</h3>
+              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
+                <strong className="text-white">
+                  All of our sites are 100% custom-built for YOUR real estate business.
+                </strong>{" "}
+                But here's some inspiration of what's possible when you combine stunning design with AI that actually
+                closes deals:
+              </p>
+              <TemplateButtonsSimple templates={realtorInspiration} baseButtonText="View Inspiration" />
+              <p className="text-xs sm:text-sm text-gray-400 mt-3 italic">
+                💡 <strong className="text-[#00BFFF]">Your custom design journey starts the moment you sign up!</strong>{" "}
+                No cookie-cutter templates here.
+              </p>
+            </div>
           </div>
         </div>
       </section>

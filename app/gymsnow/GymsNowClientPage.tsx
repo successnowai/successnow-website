@@ -17,27 +17,35 @@ export default function GymsNowClientPage() {
 
   const rotatingTexts = ["Boosts Retention", "Automates Renewals", "Engages Members", "Fills Classes", "Never Sleeps"]
 
-  const gymTemplates = [
+  // Gym & Fitness Inspirations with screenshots
+  const gymInspiration = [
     {
-      id: "martial-arts-1",
-      title: "Martial Arts Gym Template 1",
+      id: "martial-arts-inspiration-1",
+      title: "Martial Arts Inspiration 1",
       description: "Dynamic design for martial arts studios",
       url: "https://v0-martialarts-website-git-martialar-474cdd-info-9422s-projects.vercel.app/",
-      imageUrl: "/placeholder.svg?width=400&height=200",
+      imageUrl: "/images/martial-arts-inspiration-1.png",
     },
     {
-      id: "yoga-studio-1",
-      title: "Yoga Studio Template 1",
+      id: "yoga-inspiration-1",
+      title: "Yoga Studio Inspiration 1",
       description: "Serene and calming design for yoga studios",
       url: "https://v0-yoga-studio-webiste-1-git-yoga-we-9f2cdf-info-9422s-projects.vercel.app/",
-      imageUrl: "/placeholder.svg?width=400&height=200",
+      imageUrl: "/images/yoga-inspiration-1.png",
     },
     {
-      id: "pilates-studio-1",
-      title: "Pilates Studio Template 1",
+      id: "pilates-inspiration-1",
+      title: "Pilates Studio Inspiration 1",
       description: "Elegant and modern design for Pilates studios",
       url: "https://v0-pilates-website-1-git-pilates-website-1-info-9422s-projects.vercel.app/",
-      imageUrl: "/placeholder.svg?width=400&height=200",
+      imageUrl: "/images/pilates-inspiration-1.png",
+    },
+    {
+      id: "solo-instructor-inspiration-1",
+      title: "Solo Instructor Inspiration 1",
+      description: "Perfect for yoga/pilates instructors with online & private sessions",
+      url: "https://v0-zsofika-website-template.vercel.app/",
+      imageUrl: "/images/solo-instructor-inspiration-1.png",
     },
   ]
 
@@ -92,17 +100,28 @@ export default function GymsNowClientPage() {
             </Button>
           </div>
 
+          {/* Design Inspiration Section */}
           <div className="mt-10 md:mt-12 animate-fadeTextUp animation-delay-1800">
-            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center text-[#00BFFF]">
-              🏋️ Preview Gym & Fitness Templates
-            </h3>
-            <p className="text-center text-sm sm:text-base text-gray-300 mb-6 md:mb-8">
-              Choose from our professionally designed templates for various fitness studios.
-            </p>
-            <TemplateButtonsSimple templates={gymTemplates} baseButtonText="Preview Template" />
-            <p className="text-xs sm:text-sm text-gray-400 mt-2 text-center">
-              Click any template to view it fullscreen in a new window
-            </p>
+            <div className="bg-gradient-to-r from-[#00BFFF]/10 to-purple-500/10 rounded-2xl p-6 sm:p-8 border border-[#00BFFF]/20">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-center text-[#00BFFF]">
+                🎨 Who Wants a Reused Template?!
+              </h3>
+              <p className="text-center text-sm sm:text-base text-gray-300 mb-2">
+                <strong className="text-white">All of our sites are 100% custom-built</strong> for YOUR fitness
+                business, but here's some inspiration of what's possible:
+              </p>
+              <p className="text-center text-xs sm:text-sm text-[#00BFFF] mb-6 font-semibold">
+                ✨ Your custom design journey starts the moment you sign up! ✨
+              </p>
+
+              <TemplateButtonsSimple templates={gymInspiration} baseButtonText="View Inspiration" />
+
+              <div className="mt-4 text-center">
+                <p className="text-xs sm:text-sm text-gray-400">
+                  These are just examples - your site will be uniquely yours!
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

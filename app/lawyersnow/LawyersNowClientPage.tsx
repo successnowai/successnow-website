@@ -22,25 +22,28 @@ const LawyersNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  // Updated with correct Template 2 and Template 3 URLs
-  const lawyerTemplates = [
+  // Law Firm Inspirations with screenshots
+  const lawyerInspiration = [
     {
-      id: "lawyer-1",
-      title: "Law Firm Template 1",
+      id: "lawyer-inspiration-1",
+      title: "Law Firm Inspiration 1",
       description: "Professional design for law firms",
       url: "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/lawyer-inspiration-1.png",
     },
     {
-      id: "lawyer-2",
-      title: "Law Firm Template 2",
+      id: "lawyer-inspiration-2",
+      title: "Law Firm Inspiration 2",
       description: "Premium layout with practice area showcase",
       url: "https://v0-lawyernow-website-template-2-git-1b6435-info-9422s-projects.vercel.app/",
+      imageUrl: "/images/lawyer-inspiration-1.png",
     },
     {
-      id: "lawyer-3",
-      title: "Law Firm Template 3 - CorpLawAI",
+      id: "lawyer-inspiration-3",
+      title: "Corporate Law Inspiration 3",
       description: "Corporate legal excellence powered by AI",
       url: "https://v0-lawyernow-website-template-3.vercel.app/",
+      imageUrl: "/images/lawyer-inspiration-1.png",
     },
   ]
 
@@ -97,11 +100,21 @@ const LawyersNowClientPage = () => {
             </Button>
           </div>
 
-          {/* Template Preview Buttons */}
+          {/* Design Inspiration Section */}
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
-            <h3 className="text-xl font-bold mb-4 text-[#00BFFF]">⚖️ Preview Law Firm Website Templates</h3>
-            <TemplateButtonsSimple templates={lawyerTemplates} baseButtonText="Preview Template" />
-            <p className="text-sm text-gray-400 mt-2">Click any template to view it fullscreen in a new window</p>
+            <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🎨 Who Wants a Reused Template?!</h3>
+              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
+                <strong className="text-white">All of our sites are 100% custom-built for YOUR law practice.</strong>{" "}
+                But here's some inspiration of what's possible when you combine professional design with AI that
+                actually converts prospects into clients:
+              </p>
+              <TemplateButtonsSimple templates={lawyerInspiration} baseButtonText="View Inspiration" />
+              <p className="text-xs sm:text-sm text-gray-400 mt-3 italic">
+                💡 <strong className="text-[#00BFFF]">Your custom design journey starts the moment you sign up!</strong>{" "}
+                No cookie-cutter templates here.
+              </p>
+            </div>
           </div>
         </div>
       </section>
