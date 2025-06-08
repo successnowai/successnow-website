@@ -217,7 +217,7 @@ export default function FeaturesClientPage() {
             <Button
               variant="outline"
               className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-sm sm:text-base bg-transparent"
-              onClick={() => (window.location.href = "/payment")}
+              onClick={() => (window.location.href = "/signup")}
             >
               Get AI NOW
             </Button>
@@ -391,7 +391,7 @@ export default function FeaturesClientPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={() => (window.location.href = "/payment")}
+              onClick={() => (window.location.href = "/signup")}
             >
               Get AI NOW <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
