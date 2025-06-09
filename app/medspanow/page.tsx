@@ -1,11 +1,30 @@
+import type { Metadata } from "next"
 import MedspaNowClientPage from "./MedspaNowClientPage"
 
-export const metadata = {
-  title: "AI for Medspas - Boost Bookings, Get Reviews, and Automate Upsells | SuccessNOW",
+export const metadata: Metadata = {
+  title: "MedSpaNOW - AI-Powered Medical Spa Solutions | SuccessNOW",
   description:
-    "Fill your calendar while you sleep. AI booking for medspas that confirms appointments, upsells services, and collects 5-star reviews automatically.",
+    "Transform your medical spa with AI that books consultations, confirms appointments, and nurtures every lead until they book treatments. Boost bookings with MedSpaNOW.",
 }
 
+const templates = [
+  {
+    id: "medspa-1",
+    name: "Medical Spa Template 1",
+    url: "https://example.com/medspa-template-1",
+  },
+  {
+    id: "medspa-2",
+    name: "Medical Spa Template 2",
+    url: "https://example.com/medspa-template-2",
+  },
+  {
+    id: "medspa-3",
+    name: "Medical Spa Template 3",
+    url: "https://example.com/medspa-template-3",
+  },
+]
+
 export default function MedspaNowPage() {
-  return <MedspaNowClientPage />
+  return <MedspaNowClientPage templates={templates} />
 }

@@ -22,7 +22,7 @@ const LawyersNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  // Law Firm Inspirations with screenshots
+  // Law Firm Inspirations with correct deployed URLs
   const lawyerInspiration = [
     {
       id: "lawyer-inspiration-1",
@@ -40,7 +40,7 @@ const LawyersNowClientPage = () => {
     },
     {
       id: "lawyer-inspiration-3",
-      title: "Corporate Law Inspiration 3",
+      title: "Law Firm Inspiration 3",
       description: "Corporate legal excellence powered by AI",
       url: "https://v0-lawyernow-website-template-3.vercel.app/",
       imageUrl: "/images/lawyer-inspiration-1.png",

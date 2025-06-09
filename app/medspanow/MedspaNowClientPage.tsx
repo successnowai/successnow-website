@@ -22,26 +22,12 @@ const MedspaNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  // Medical Spa Inspirations with screenshots
+  // Medical Spa Inspirations with correct deployed URLs
   const medspaInspiration = [
     {
       id: "medspa-inspiration-1",
       title: "Medical Spa Inspiration 1",
       description: "Elegant design for medical spas",
-      url: "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/medspa-inspiration-1.png",
-    },
-    {
-      id: "medspa-inspiration-2",
-      title: "Medical Spa Inspiration 2",
-      description: "Premium layout with treatment showcase",
-      url: "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/medspa-inspiration-1.png",
-    },
-    {
-      id: "medspa-inspiration-3",
-      title: "Medical Spa Inspiration 3",
-      description: "Feature-rich medical spa experience",
       url: "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
       imageUrl: "/images/medspa-inspiration-1.png",
     },

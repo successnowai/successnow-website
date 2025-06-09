@@ -22,26 +22,12 @@ const MortgageNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  // Mortgage Broker Inspirations with screenshots
+  // Mortgage Broker Inspirations with correct deployed URLs
   const mortgageInspiration = [
     {
       id: "mortgage-inspiration-1",
       title: "Mortgage Broker Inspiration 1",
       description: "Professional design for mortgage brokers",
-      url: "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/mortgage-inspiration-1.png",
-    },
-    {
-      id: "mortgage-inspiration-2",
-      title: "Mortgage Broker Inspiration 2",
-      description: "Premium layout with loan options showcase",
-      url: "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/mortgage-inspiration-1.png",
-    },
-    {
-      id: "mortgage-inspiration-3",
-      title: "Mortgage Broker Inspiration 3",
-      description: "Feature-rich mortgage broker experience",
       url: "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
       imageUrl: "/images/mortgage-inspiration-1.png",
     },

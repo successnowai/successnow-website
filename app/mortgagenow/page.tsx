@@ -1,11 +1,30 @@
+import type { Metadata } from "next"
 import MortgageNowClientPage from "./MortgageNowClientPage"
 
-export const metadata = {
-  title: "AI for Mortgage Brokers - Turn Prequalifications into Signed Deals on Autopilot | SuccessNOW",
+export const metadata: Metadata = {
+  title: "MortgageNOW - AI-Powered Mortgage Broker Solutions | SuccessNOW",
   description:
-    "Qualify & convert borrowers 24/7 with AI. Automate follow-up, document reminders, and instant demo booking for mortgage professionals.",
+    "Transform your mortgage business with AI that books consultations, confirms appointments, and nurtures every lead until they close their loan. Boost closings with MortgageNOW.",
 }
 
+const templates = [
+  {
+    id: "mortgage-1",
+    name: "Mortgage Broker Template 1",
+    url: "https://example.com/mortgage-template-1",
+  },
+  {
+    id: "mortgage-2",
+    name: "Mortgage Broker Template 2",
+    url: "https://example.com/mortgage-template-2",
+  },
+  {
+    id: "mortgage-3",
+    name: "Mortgage Broker Template 3",
+    url: "https://example.com/mortgage-template-3",
+  },
+]
+
 export default function MortgageNowPage() {
-  return <MortgageNowClientPage />
+  return <MortgageNowClientPage templates={templates} />
 }

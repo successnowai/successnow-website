@@ -11,197 +11,120 @@ interface TemplatePageProps {
 export default function TemplateClientPage({ params }: TemplatePageProps) {
   const [loading, setLoading] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  // CORRECT TEMPLATE URLS - UPDATED WITH WORKING URLS
+  // Simplified masked URLs
   const templateUrls: Record<string, string> = {
-    // Auto Dealer Templates
-    "auto-1": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
-    "auto-2": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
-    "auto-3": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
-    "auto-4": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
-    "auto-5": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
-
-    // Realtor Templates
-    "realtor-1": "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
-    "realtor-2": "https://v0-realtor-professional-template-git-a80c78-info-9422s-projects.vercel.app/",
-    "realtor-3": "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
-    "realtor-4": "https://v0-realtor-professional-template-git-a80c78-info-9422s-projects.vercel.app/",
-    "realtor-5": "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
-
-    // Mortgage Templates
-    "mortgage-1": "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
-    "mortgage-2": "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
-    "mortgage-3": "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
-    "mortgage-4": "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
-    "mortgage-5": "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
-
-    // Medical Spa Templates
-    "medspa-1": "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
-    "medspa-2": "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
-    "medspa-3": "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
-    "medspa-4": "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
-    "medspa-5": "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
-
-    // Lawyer Templates
-    "lawyer-1": "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
-    "lawyer-2": "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
-    "lawyer-3": "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
-    "lawyer-4": "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
-    "lawyer-5": "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
-
-    // Gym Templates (using auto dealer as fallback)
-    "gym-1": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
-    "gym-2": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
-    "gym-3": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
-    "gym-4": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
-    "gym-5": "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
+    "auto-1": "/api/proxy/auto-1",
+    "auto-2": "/api/proxy/auto-2",
+    "auto-3": "/api/proxy/auto-3",
+    "realtor-1": "/api/proxy/realtor-1",
+    "realtor-2": "/api/proxy/realtor-2",
+    "realtor-3": "/api/proxy/realtor-3",
+    "mortgage-1": "/api/proxy/mortgage-1",
+    "mortgage-2": "/api/proxy/mortgage-2",
+    "mortgage-3": "/api/proxy/mortgage-3",
+    "medspa-1": "/api/proxy/medspa-1",
+    "medspa-2": "/api/proxy/medspa-2",
+    "medspa-3": "/api/proxy/medspa-3",
+    "lawyer-1": "/api/proxy/lawyer-1",
+    "lawyer-2": "/api/proxy/lawyer-2",
+    "lawyer-3": "/api/proxy/lawyer-3",
+    "gym-1": "/api/proxy/gym-1",
+    "gym-2": "/api/proxy/gym-2",
+    "gym-3": "/api/proxy/gym-3",
   }
 
   const templateTitles: Record<string, string> = {
-    "auto-1": "Auto Dealer Website Template",
-    "auto-2": "Auto Dealer Website Template 2",
-    "auto-3": "Auto Dealer Website Template 3",
-    "auto-4": "Auto Dealer Website Template 4",
-    "auto-5": "Auto Dealer Website Template 5",
-    "realtor-1": "Real Estate Website Template",
+    "auto-1": "Auto Dealer Template",
+    "auto-2": "Auto Dealer Template 2",
+    "auto-3": "Auto Dealer Template 3",
+    "realtor-1": "Real Estate Template",
     "realtor-2": "Realtor Professional Template",
-    "realtor-3": "Real Estate Website Template 3",
-    "realtor-4": "Realtor Professional Template 4",
-    "realtor-5": "Real Estate Website Template 5",
+    "realtor-3": "Real Estate Template 3",
     "mortgage-1": "Mortgage Broker Template",
     "mortgage-2": "Mortgage Broker Template 2",
     "mortgage-3": "Mortgage Broker Template 3",
-    "mortgage-4": "Mortgage Broker Template 4",
-    "mortgage-5": "Mortgage Broker Template 5",
-    "medspa-1": "Medical Spa Website Template",
-    "medspa-2": "Medical Spa Website Template 2",
-    "medspa-3": "Medical Spa Website Template 3",
-    "medspa-4": "Medical Spa Website Template 4",
-    "medspa-5": "Medical Spa Website Template 5",
-    "lawyer-1": "Law Firm Website Template",
-    "lawyer-2": "Law Firm Website Template 2",
-    "lawyer-3": "Law Firm Website Template 3",
-    "lawyer-4": "Law Firm Website Template 4",
-    "lawyer-5": "Law Firm Website Template 5",
-    "gym-1": "Gym & Fitness Website Template",
-    "gym-2": "Gym & Fitness Website Template 2",
-    "gym-3": "Gym & Fitness Website Template 3",
-    "gym-4": "Gym & Fitness Website Template 4",
-    "gym-5": "Gym & Fitness Website Template 5",
+    "medspa-1": "Medical Spa Template",
+    "medspa-2": "Medical Spa Template 2",
+    "medspa-3": "Medical Spa Template 3",
+    "lawyer-1": "Law Firm Template",
+    "lawyer-2": "Law Firm Template 2",
+    "lawyer-3": "Law Firm Template 3",
+    "gym-1": "Martial Arts Gym Template",
+    "gym-2": "Yoga Studio Template",
+    "gym-3": "Fitness Center Template",
   }
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768)
-    }
-
+    // Mobile detection
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768)
     checkMobile()
     window.addEventListener("resize", checkMobile)
 
+    // Set page title
     const title = templateTitles[params.id] || "Website Template"
     document.title = `${title} - SuccessNOW`
 
-    // Enhanced logging with correct URLs
-    console.log("=== TEMPLATE LOADING DEBUG ===")
-    console.log("Template ID:", params.id)
-    console.log("Template URL:", templateUrls[params.id])
-    console.log("Is Mobile:", window.innerWidth <= 768)
-    console.log("All available templates:", Object.keys(templateUrls))
-    console.log("================================")
+    // Loading delay
+    const timer = setTimeout(() => setLoading(false), 800)
 
-    setTimeout(() => setLoading(false), 500)
-
-    return () => window.removeEventListener("resize", checkMobile)
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+      clearTimeout(timer)
+    }
   }, [params.id])
 
   const templateUrl = templateUrls[params.id]
   const templateTitle = templateTitles[params.id] || "Website Template"
 
+  // Template not found
   if (!templateUrl) {
-    console.error("Template not found for ID:", params.id)
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 p-4">
         <div className="text-center text-white max-w-md">
-          <h1 className="text-2xl font-bold mb-4">Template Not Found</h1>
-          <p className="text-lg mb-4">Template ID: "{params.id}"</p>
-          <p className="text-sm mb-2">Device: {isMobile ? "Mobile" : "Desktop"}</p>
-          <p className="text-sm mb-6">Available: auto-1, realtor-1, realtor-2, mortgage-1, medspa-1, lawyer-1</p>
+          <h1 className="text-2xl font-bold mb-4">Template Not Available</h1>
+          <p className="text-lg mb-4">Template "{params.id}" could not be found.</p>
           <button
             onClick={() => (window.location.href = "/")}
-            className="w-full px-6 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+            className="px-6 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-colors"
           >
-            Go to Homepage
+            Return Home
           </button>
         </div>
       </div>
     )
   }
 
-  const handleClose = () => {
-    if (window.history.length > 1) {
-      window.history.back()
-    } else {
-      window.location.href = "/"
-    }
-  }
-
-  const handleOpenInNewTab = () => {
-    window.open(templateUrl, "_blank")
-  }
-
-  const handleGoHome = () => {
-    window.location.href = "/"
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 p-4">
-        <div className="text-center text-white max-w-md">
-          <h1 className="text-2xl font-bold mb-4">Loading Error</h1>
-          <p className="text-lg mb-2">Failed to load template</p>
-          <p className="text-sm mb-6">Template URL: {templateUrl}</p>
-          <div className="space-y-3">
-            <button
-              onClick={handleOpenInNewTab}
-              className="w-full px-6 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Open Template in New Tab
-            </button>
-            <button
-              onClick={handleGoHome}
-              className="w-full px-6 py-3 bg-gray-600 text-white rounded-full font-semibold hover:bg-gray-700 transition-colors"
-            >
-              Go to Homepage
-            </button>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
+  // Loading screen
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600">
         <div className="text-center text-white">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mb-4 mx-auto"></div>
-          <p className="text-lg">Loading {templateTitle}...</p>
-          <p className="text-sm mt-2 opacity-80">{isMobile ? "Mobile" : "Desktop"} Device</p>
-          <p className="text-xs mt-1 opacity-60">URL: {templateUrl}</p>
+          <p className="text-lg font-medium">{templateTitle}</p>
+          <p className="text-sm mt-2 opacity-80">Loading on {isMobile ? "Mobile" : "Desktop"}</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="h-screen w-screen overflow-hidden relative">
-      {/* Control bar */}
-      <div className={`absolute top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm ${isMobile ? "p-2" : "p-3"}`}>
+    <div className="h-screen w-screen overflow-hidden relative bg-white">
+      {/* Mobile-optimized control bar */}
+      <div className={`absolute top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm ${isMobile ? "p-2" : "p-3"}`}>
         <div className="flex items-center justify-between">
-          <div className="text-white text-sm font-medium truncate flex-1 mr-4">{templateTitle}</div>
-          <div className="flex items-center space-x-2">
+          <div
+            className="text-white font-medium truncate flex-1 mr-3"
+            style={{
+              fontSize: isMobile ? "14px" : "16px",
+            }}
+          >
+            {templateTitle}
+          </div>
+          <div className="flex items-center gap-2">
             <button
-              onClick={handleGoHome}
+              onClick={() => (window.location.href = "/")}
               className={`bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-full transition-colors ${
                 isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"
               }`}
@@ -209,7 +132,7 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
               {isMobile ? "🏠" : "Home"}
             </button>
             <button
-              onClick={handleOpenInNewTab}
+              onClick={() => window.open(templateUrl, "_blank")}
               className={`bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full transition-colors ${
                 isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"
               }`}
@@ -217,7 +140,7 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
               {isMobile ? "↗" : "New Tab"}
             </button>
             <button
-              onClick={handleClose}
+              onClick={() => (window.history.length > 1 ? window.history.back() : (window.location.href = "/"))}
               className={`bg-red-500 hover:bg-red-600 text-white font-bold rounded-full transition-colors ${
                 isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"
               }`}
@@ -228,28 +151,57 @@ export default function TemplateClientPage({ params }: TemplatePageProps) {
         </div>
       </div>
 
-      {/* Template iframe with enhanced error handling */}
+      {/* Template iframe - mobile optimized */}
       <iframe
         src={templateUrl}
         className={`w-full h-full border-0 ${isMobile ? "pt-12" : "pt-14"}`}
-        title="Template Preview"
+        title={templateTitle}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
         allowFullScreen
         loading="eager"
         onLoad={() => {
-          console.log("✅ Template loaded successfully:", templateUrl)
+          console.log("✅ Template loaded:", templateUrl)
+          setError(null)
         }}
-        onError={(e) => {
-          console.error("❌ Template failed to load:", templateUrl, e)
-          setError(true)
+        onError={() => {
+          console.error("❌ Template load error:", templateUrl)
+          setError("Failed to load template")
         }}
         style={{
           backgroundColor: "white",
-          touchAction: "manipulation",
           border: "none",
           outline: "none",
+          // Mobile-specific optimizations
+          ...(isMobile && {
+            touchAction: "manipulation",
+            WebkitOverflowScrolling: "touch",
+          }),
         }}
       />
+
+      {/* Error overlay */}
+      {error && (
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-purple-600 flex items-center justify-center p-4 z-40">
+          <div className="text-center text-white max-w-md">
+            <h2 className="text-xl font-bold mb-4">Loading Error</h2>
+            <p className="mb-6">{error}</p>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => window.location.reload()}
+                className="px-6 py-3 bg-white text-red-600 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+              >
+                Try Again
+              </button>
+              <button
+                onClick={() => (window.location.href = "/")}
+                className="px-6 py-3 bg-gray-600 text-white rounded-full font-semibold hover:bg-gray-700 transition-colors"
+              >
+                Go Home
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -22,7 +22,7 @@ const RealtorNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  // Real Estate Inspirations with screenshots
+  // Real Estate Inspirations with correct deployed URLs
   const realtorInspiration = [
     {
       id: "realtor-inspiration-1",
