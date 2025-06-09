@@ -43,7 +43,7 @@ export default function DiamondApplicationForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Handle application submission
-    console.log("Diamond Class Application:", formData)
+    console.log("AI Domination Program Application:", formData)
     // Redirect to payment page
     window.location.href = formData.paymentOption === "full" ? "/diamond/payment/full" : "/diamond/payment/plan"
   }
@@ -54,16 +54,16 @@ export default function DiamondApplicationForm() {
         {/* Back Button */}
         <Button variant="ghost" className="mb-8 text-gray-300 hover:text-white" onClick={() => window.history.back()}>
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Diamond Class
+          Back to AI Domination Program
         </Button>
 
         {/* Header */}
         <div className="text-center mb-12">
           <Badge className="bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300 text-black text-lg px-6 py-2 font-bold shadow-2xl border border-gray-300/50 mb-6">
-            💎 DIAMOND CLUB APPLICATION
+            🚀 AI DOMINATION PROGRAM APPLICATION
           </Badge>
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent">
-            Apply for Diamond Club
+            Apply for the AI Domination Program
           </h1>
           <p className="text-xl text-gray-300 mb-6">
             Spaces are limited! We only accept people who are committed to success.
@@ -95,11 +95,11 @@ export default function DiamondApplicationForm() {
           <CardHeader>
             <CardTitle className="text-2xl text-white flex items-center">
               <Star className="h-6 w-6 mr-2 text-[#00BFFF]" />
-              Diamond Club Application Form
+              AI Domination Program Application Form
             </CardTitle>
             <p className="text-gray-300">
-              Please provide detailed information about yourself and your business. This helps us ensure Diamond Club is
-              the right fit for your success journey.
+              Please provide detailed information about yourself and your business. This helps us ensure the AI
+              Domination Program is the right fit for your success journey.
             </p>
           </CardHeader>
           <CardContent>
@@ -316,7 +316,7 @@ export default function DiamondApplicationForm() {
 
                 <div>
                   <Label htmlFor="whyDiamond" className="text-gray-300">
-                    Why do you want to join Diamond Club? What specific results are you looking for? *
+                    Why do you want to join the AI Domination Program? What specific results are you looking for? *
                   </Label>
                   <Textarea
                     id="whyDiamond"
@@ -495,9 +495,10 @@ export default function DiamondApplicationForm() {
                   Commitment to Success
                 </h4>
                 <p className="text-gray-300 text-sm mb-4">
-                  By submitting this application, I understand that Diamond Club is an exclusive program for serious
-                  business owners who are committed to implementing proven strategies and achieving extraordinary
-                  results. I am ready to invest the time, energy, and resources necessary to transform my business.
+                  By submitting this application, I understand that the AI Domination Program is an exclusive program
+                  for serious business owners who are committed to implementing proven strategies and achieving
+                  extraordinary results. I am ready to invest the time, energy, and resources necessary to transform my
+                  business.
                 </p>
                 <p className="text-gray-300 text-sm mb-4">
                   I understand that if my application is not accepted, I will receive a 100% refund. If at any time

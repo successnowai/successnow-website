@@ -50,7 +50,7 @@ export default function DiamondPayFullSignup() {
         {/* Back Button */}
         <Button variant="ghost" className="mb-8 text-gray-300 hover:text-white" onClick={() => window.history.back()}>
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Diamond Club
+          Back to AI Domination Program
         </Button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -59,7 +59,7 @@ export default function DiamondPayFullSignup() {
             <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-gray-300/30 shadow-2xl">
               <CardHeader>
                 <CardTitle className="text-2xl bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent">
-                  Diamond Club - Pay in Full
+                  AI Domination Program - Pay in Full
                 </CardTitle>
                 <Badge className="bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300 text-black font-bold w-fit">
                   💎 BEST VALUE - 40% OFF
@@ -107,7 +107,7 @@ export default function DiamondPayFullSignup() {
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="h-4 w-4 text-green-400 mr-2" />
-                      Diamond Class Mastermind ($19,977)
+                      AI Domination Program Mastermind ($19,977)
                     </li>
                   </ul>
                 </div>
@@ -132,7 +132,7 @@ export default function DiamondPayFullSignup() {
               <CardHeader>
                 <CardTitle className="text-2xl text-white flex items-center">
                   <CreditCard className="h-6 w-6 mr-2 text-[#00BFFF]" />
-                  Secure Your Diamond Club Spot
+                  Secure Your AI Domination Program Spot
                 </CardTitle>
                 <p className="text-gray-300">Complete your information to proceed with payment</p>
               </CardHeader>

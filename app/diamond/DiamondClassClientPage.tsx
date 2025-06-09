@@ -103,12 +103,12 @@ const DiamondClassClientPage = () => {
               <div className="absolute inset-0 bg-[#00BFFF] blur-xl opacity-60 animate-pulse rounded-full scale-110"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-[#00BFFF]/40 via-[#00BFFF]/60 to-[#00BFFF]/40 blur-lg rounded-full scale-105"></div>
               <Badge className="relative bg-gradient-to-r from-gray-900 via-black to-gray-900 text-[#00BFFF] text-lg px-6 py-2 font-bold shadow-2xl border border-[#00BFFF]/50 backdrop-blur-sm">
-                💎 DIAMOND CLUB - LIMITED TO 5 PEOPLE PER INDUSTRY - ONLY 1 PER GEOGRAPHICAL AREA!
+                🚀 AI DOMINATION PROGRAM - LIMITED TO 5 PEOPLE PER INDUSTRY - ONLY 1 PER GEOGRAPHICAL AREA!
               </Badge>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent drop-shadow-2xl">
-              SuccessNOW Diamond Club
+              SuccessNOW AI Domination Program
             </h1>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-8">
@@ -133,7 +133,7 @@ const DiamondClassClientPage = () => {
                 <h3 className="text-2xl font-bold text-green-400">EXCLUSIVE DIAMOND TIER AFFILIATE PROGRAM</h3>
               </div>
               <p className="text-lg text-gray-300 mb-2">
-                Diamond Club members automatically get enrolled in our Diamond Tier Affiliate Partner Program
+                AI Domination Program members automatically get enrolled in our Diamond Tier Affiliate Partner Program
               </p>
               <p className="text-xl font-bold text-green-400">
                 Earn 50% Recurring MRR from every person you refer to SuccessNOW!
@@ -167,7 +167,7 @@ const DiamondClassClientPage = () => {
         <section className="py-20 bg-gradient-to-b from-black via-gray-950 to-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-[#00BFFF] to-gray-200 bg-clip-text text-transparent">
-              What's Included in Diamond Club
+              What's Included in the AI Domination Program
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -222,7 +222,7 @@ const DiamondClassClientPage = () => {
               </div>
               <p className="text-xl text-gray-300 mb-8">
                 This isn't just a program - it's your competitive advantage. We limit access to ensure you dominate your
-                market without internal competition from other Diamond Club members in your area!
+                market without internal competition from other AI Domination Program members in your area!
               </p>
             </div>
           </div>
@@ -232,7 +232,7 @@ const DiamondClassClientPage = () => {
         <section className="py-20 bg-black">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <h2 className="text-4xl font-bold text-center mb-16 text-white">
-              Why Diamond Club Will Transform Your Business
+              Why the AI Domination Program Will Transform Your Business
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -294,7 +294,7 @@ const DiamondClassClientPage = () => {
                 className="w-full bg-gradient-to-r from-[#00BFFF] via-blue-500 to-[#00BFFF] hover:from-blue-600 hover:via-[#00BFFF] hover:to-blue-600 text-white font-bold shadow-2xl border border-[#00BFFF]/50"
                 onClick={() => (window.location.href = "/diamond/apply")}
               >
-                Apply to Join Diamond Club NOW!
+                Apply to Join AI Domination Program NOW!
               </Button>
             </CardContent>
           </Card>
@@ -333,14 +333,14 @@ const DiamondClassClientPage = () => {
                 className="w-full bg-gradient-to-r from-[#00BFFF] via-blue-500 to-[#00BFFF] hover:from-blue-600 hover:via-[#00BFFF] hover:to-blue-600 text-white font-bold shadow-2xl border border-[#00BFFF]/50"
                 onClick={() => (window.location.href = "/diamond/apply")}
               >
-                Apply to Join Diamond Club NOW!
+                Apply to Join AI Domination Program NOW!
               </Button>
             </CardContent>
           </Card>
         </div>
 
         <footer className="text-center mt-16 text-gray-500">
-          <p>&copy; 2024 Diamond Club. All rights reserved.</p>
+          <p>&copy; 2024 SuccessNOW AI Domination Program. All rights reserved.</p>
         </footer>
       </div>
     </div>

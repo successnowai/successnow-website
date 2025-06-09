@@ -319,7 +319,7 @@ export default function DiamondPaymentFull() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
-                  <span className="text-gray-300">Diamond Class Package</span>
+                  <span className="text-gray-300">AI Domination Program Package</span>
                   <span className="text-white font-bold">$35,888</span>
                 </div>
                 <div className="flex justify-between">
