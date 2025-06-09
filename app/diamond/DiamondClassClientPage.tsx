@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { useState, useEffect } from "react"
-import { CheckCircle, Star, Clock, Users, Zap, Target, TrendingUp } from "lucide-react"
+import { CheckCircle, Star, Clock, Users, Zap, Target, TrendingUp, DollarSign } from "lucide-react"
 import { RotatingText } from "@/components/ui/rotating-text"
 
 const DiamondClassClientPage = () => {
@@ -73,6 +73,13 @@ const DiamondClassClientPage = () => {
       value: "$11,964",
     },
     {
+      icon: <DollarSign className="h-6 w-6 text-green-400" />,
+      title: "Diamond Tier Affiliate Partner Program",
+      description:
+        "Automatic enrollment in our exclusive Diamond Tier Affiliate Program! Earn 50% recurring MRR from every person you refer to SuccessNOW. Turn your network into a passive income goldmine!",
+      value: "UNLIMITED",
+    },
+    {
       icon: <Star className="h-6 w-6 text-yellow-400" />,
       title: "Complete Done-For-You AI Revolution",
       description:
@@ -96,12 +103,12 @@ const DiamondClassClientPage = () => {
               <div className="absolute inset-0 bg-[#00BFFF] blur-xl opacity-60 animate-pulse rounded-full scale-110"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-[#00BFFF]/40 via-[#00BFFF]/60 to-[#00BFFF]/40 blur-lg rounded-full scale-105"></div>
               <Badge className="relative bg-gradient-to-r from-gray-900 via-black to-gray-900 text-[#00BFFF] text-lg px-6 py-2 font-bold shadow-2xl border border-[#00BFFF]/50 backdrop-blur-sm">
-                💎 DIAMOND CLASS - LIMITED TO 5 PEOPLE PER INDUSTRY - ONLY 1 PER GEOGRAPHICAL AREA!
+                💎 DIAMOND CLUB - LIMITED TO 5 PEOPLE PER INDUSTRY - ONLY 1 PER GEOGRAPHICAL AREA!
               </Badge>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent drop-shadow-2xl">
-              SuccessNOW Diamond Class
+              SuccessNOW Diamond Club
             </h1>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-8">
@@ -118,6 +125,23 @@ const DiamondClassClientPage = () => {
               The most exclusive, comprehensive business transformation program ever created. Limited to 5 people per
               industry every 6 months - Only 1 per geographical area to make sure you dominate!
             </p>
+
+            {/* New Affiliate Benefit Highlight */}
+            <div className="bg-gradient-to-r from-green-500/10 via-green-400/20 to-green-500/10 rounded-2xl p-6 mb-8 border border-green-400/30 max-w-4xl mx-auto">
+              <div className="flex items-center justify-center mb-4">
+                <DollarSign className="h-8 w-8 text-green-400 mr-3" />
+                <h3 className="text-2xl font-bold text-green-400">EXCLUSIVE DIAMOND TIER AFFILIATE PROGRAM</h3>
+              </div>
+              <p className="text-lg text-gray-300 mb-2">
+                Diamond Club members automatically get enrolled in our Diamond Tier Affiliate Partner Program
+              </p>
+              <p className="text-xl font-bold text-green-400">
+                Earn 50% Recurring MRR from every person you refer to SuccessNOW!
+              </p>
+              <p className="text-gray-300 text-sm mt-2">
+                Turn your network into a passive income goldmine while helping others transform their businesses
+              </p>
+            </div>
 
             {/* Countdown Timer */}
             <div className="mb-12">
@@ -143,7 +167,7 @@ const DiamondClassClientPage = () => {
         <section className="py-20 bg-gradient-to-b from-black via-gray-950 to-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-[#00BFFF] to-gray-200 bg-clip-text text-transparent">
-              What's Included in Diamond Class
+              What's Included in Diamond Club
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -151,7 +175,7 @@ const DiamondClassClientPage = () => {
                 <Card
                   key={index}
                   className={`bg-gradient-to-br from-black via-gray-900 to-black border-gray-300/30 hover:border-gray-200/50 transition-all duration-300 hover:scale-105 shadow-2xl backdrop-blur-sm ${
-                    index === 5 ? "border-yellow-400/80" : ""
+                    index === 5 ? "border-green-400/80" : index === 6 ? "border-yellow-400/80" : ""
                   }`}
                 >
                   <CardContent className="p-6">
@@ -160,7 +184,11 @@ const DiamondClassClientPage = () => {
                       <h3 className="text-xl font-bold ml-3 text-white">{item.title}</h3>
                     </div>
                     <p className="text-gray-300 mb-4">{item.description}</p>
-                    <div className={`font-bold text-lg ${index === 5 ? "text-yellow-400" : "text-[#00BFFF]"}`}>
+                    <div
+                      className={`font-bold text-lg ${
+                        index === 5 ? "text-green-400" : index === 6 ? "text-yellow-400" : "text-[#00BFFF]"
+                      }`}
+                    >
                       Value: {item.value}
                     </div>
                   </CardContent>
@@ -194,7 +222,7 @@ const DiamondClassClientPage = () => {
               </div>
               <p className="text-xl text-gray-300 mb-8">
                 This isn't just a program - it's your competitive advantage. We limit access to ensure you dominate your
-                market without internal competition from other Diamond Class members in your area!
+                market without internal competition from other Diamond Club members in your area!
               </p>
             </div>
           </div>
@@ -204,7 +232,7 @@ const DiamondClassClientPage = () => {
         <section className="py-20 bg-black">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <h2 className="text-4xl font-bold text-center mb-16 text-white">
-              Why Diamond Class Will Transform Your Business
+              Why Diamond Club Will Transform Your Business
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -216,10 +244,16 @@ const DiamondClassClientPage = () => {
                   "2x weekly accountability to ensure your success",
                   "Access to the latest tools, ads, and AI technology",
                   "Fully automated business systems within 6 months",
+                  "50% recurring MRR from every referral you make",
+                  "Diamond Tier Affiliate Partner status included",
                 ].map((benefit, index) => (
                   <div key={index} className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-green-400 mt-1 flex-shrink-0" />
-                    <p className="text-lg text-gray-300">{benefit}</p>
+                    <CheckCircle
+                      className={`h-6 w-6 mt-1 flex-shrink-0 ${index >= 6 ? "text-green-400" : "text-green-400"}`}
+                    />
+                    <p className={`text-lg ${index >= 6 ? "text-green-300 font-semibold" : "text-gray-300"}`}>
+                      {benefit}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -249,15 +283,18 @@ const DiamondClassClientPage = () => {
               <div className="bg-[#00BFFF]/10 border border-[#00BFFF]/30 rounded-lg p-3 mb-4">
                 <p className="text-[#00BFFF] font-bold">Total: $44,882</p>
               </div>
-              <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-3 mb-6">
+              <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-3 mb-4">
                 <p className="text-orange-400 font-bold">💰 Save $8,994 with Pay in Full!</p>
+              </div>
+              <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 mb-6">
+                <p className="text-green-400 font-bold">💎 Includes Diamond Tier Affiliate Program!</p>
               </div>
               <Button
                 size="lg"
                 className="w-full bg-gradient-to-r from-[#00BFFF] via-blue-500 to-[#00BFFF] hover:from-blue-600 hover:via-[#00BFFF] hover:to-blue-600 text-white font-bold shadow-2xl border border-[#00BFFF]/50"
                 onClick={() => (window.location.href = "/diamond/apply")}
               >
-                Apply to Join Diamond Class NOW!
+                Apply to Join Diamond Club NOW!
               </Button>
             </CardContent>
           </Card>
@@ -281,6 +318,9 @@ const DiamondClassClientPage = () => {
                 <p className="text-green-400 font-bold text-lg">💰 SAVE $8,994!</p>
                 <p className="text-gray-300 text-sm">vs Payment Plan ($44,882)</p>
               </div>
+              <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 mb-4">
+                <p className="text-green-400 font-bold">💎 Includes Diamond Tier Affiliate Program!</p>
+              </div>
               <Badge className="bg-red-500 text-white mb-4 animate-pulse">Only 5 Available Total!</Badge>
               <div className="text-sm text-gray-300 mb-6">
                 <p className="font-bold mb-2">30-Day Payment Option Available:</p>
@@ -293,14 +333,14 @@ const DiamondClassClientPage = () => {
                 className="w-full bg-gradient-to-r from-[#00BFFF] via-blue-500 to-[#00BFFF] hover:from-blue-600 hover:via-[#00BFFF] hover:to-blue-600 text-white font-bold shadow-2xl border border-[#00BFFF]/50"
                 onClick={() => (window.location.href = "/diamond/apply")}
               >
-                Apply to Join Diamond Class NOW!
+                Apply to Join Diamond Club NOW!
               </Button>
             </CardContent>
           </Card>
         </div>
 
         <footer className="text-center mt-16 text-gray-500">
-          <p>&copy; 2024 Diamond Class. All rights reserved.</p>
+          <p>&copy; 2024 Diamond Club. All rights reserved.</p>
         </footer>
       </div>
     </div>

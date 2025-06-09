@@ -17,10 +17,10 @@ export default function DiamondConfirmation() {
             Payment Successful!
           </h1>
           <p className="text-xl text-gray-300 mb-8">
-            Your Diamond Class application has been submitted and your payment has been processed.
+            Your Diamond Club application has been submitted and your payment has been processed.
           </p>
           <Badge className="bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300 text-black text-lg px-6 py-2 font-bold shadow-2xl border border-gray-300/50 mb-6">
-            💎 DIAMOND CLASS - APPLICATION UNDER REVIEW
+            💎 DIAMOND CLUB - APPLICATION UNDER REVIEW
           </Badge>
         </div>
 
@@ -38,7 +38,7 @@ export default function DiamondConfirmation() {
                   <h3 className="text-lg font-bold text-white">Application Review</h3>
                   <p className="text-gray-300">
                     Our team will review your application within 24 hours to ensure you're a good fit for the Diamond
-                    Class program.
+                    Club program.
                   </p>
                 </div>
               </div>
@@ -92,6 +92,7 @@ export default function DiamondConfirmation() {
           Return to Homepage
         </Button>
       </div>
+      <p className="text-center text-gray-500 mt-8">&copy; 2024 Diamond Club. All rights reserved.</p>
     </div>
   )
 }
