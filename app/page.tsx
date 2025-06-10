@@ -1,3 +1,4 @@
+import StarryBackground from "@/components/ui/starry-background"
 import HeroSection from "@/components/home/hero-section"
 import IndustrySolutions from "@/components/home/industry-solutions"
 import FeatureStack from "@/components/home/feature-stack"
@@ -10,16 +11,22 @@ import Footer from "@/components/home/footer"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <HeroSection />
-      <AdsNowSection />
-      <IndustrySolutions />
-      <FeatureStack />
-      <LiveDemo />
-      <PricingTable />
-      <CTASection />
-      <PartnerProgramSection />
-      <Footer />
+    <div className="min-h-screen bg-black text-white relative">
+      {/* Starry Universe Background */}
+      <StarryBackground />
+
+      {/* All your existing content with proper z-index */}
+      <div className="relative z-10">
+        <HeroSection />
+        <AdsNowSection />
+        <IndustrySolutions />
+        <FeatureStack />
+        <LiveDemo />
+        <PricingTable />
+        <CTASection />
+        <PartnerProgramSection />
+        <Footer />
+      </div>
     </div>
   )
 }

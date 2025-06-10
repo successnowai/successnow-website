@@ -181,6 +181,48 @@ body {
   }
 }
 
+/* Shooting star animations */
+.shooting-star {
+  position: absolute;
+  top: 10%;
+  right: -10%;
+  width: 2px;
+  height: 2px;
+  background: linear-gradient(45deg, #00bfff, #ffffff);
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
+  animation: shootingStar 8s linear infinite;
+  opacity: 0;
+}
+
+.shooting-star::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00bfff, transparent);
+  transform: translateY(-50%);
+}
+
+@keyframes shootingStar {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(0) rotate(45deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-1000px) translateY(500px) rotate(45deg);
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -269,6 +311,11 @@ body {
   h6 {
     font-family: "Montserrat", sans-serif;
   }
+}
+
+/* Radial gradient utility */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
 }
 
 /* RESPONSIVE ADJUSTMENTS - Navbar only */
