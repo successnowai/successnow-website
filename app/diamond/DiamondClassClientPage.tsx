@@ -334,7 +334,7 @@ const DiamondClassClientPage = () => {
               </div>
               <p className="text-gray-300 mb-4"> </p>
               <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 mb-4">
-                <p className="text-green-400 font-bold text-lg">💰 SAVE $4,882!</p>
+                <p className="text-green-400 font-bold">💰 SAVE $8,994!</p>
                 <p className="text-gray-300 text-sm">vs Payment Plan ($44,882)</p>
               </div>
               <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 mb-4">
