@@ -309,11 +309,12 @@ export default function DiamondPayFullSignup() {
                     <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/20">
                       <h4 className="font-bold text-green-400 mb-2">Sezzle Payment Plan:</h4>
                       <ul className="text-sm text-gray-300 space-y-1">
-                        <li>• Today: $8,972 (25%)</li>
-                        <li>• 2 weeks: $8,972</li>
-                        <li>• 4 weeks: $8,972</li>
-                        <li>• 6 weeks: $8,972</li>
-                        <li className="font-bold text-green-400">• Total: $35,888 (40% OFF)</li>
+                        <li>• Today: $9,888 deposit</li>
+                        <li>• 2 weeks: $6,500</li>
+                        <li>• 4 weeks: $6,500</li>
+                        <li>• 6 weeks: $6,500</li>
+                        <li>• 8 weeks: $6,500</li>
+                        <li className="font-bold text-green-400">• Total: $35,888 (still considered 'paid upfront')</li>
                       </ul>
                     </div>
                   )}
@@ -325,7 +326,7 @@ export default function DiamondPayFullSignup() {
                   >
                     {formData.paymentMethod === "sezzle" ? (
                       <>
-                        Continue with Sezzle ($35,888)
+                        Continue with Sezzle ($9,888 deposit)
                         <ExternalLink className="h-4 w-4 ml-2" />
                       </>
                     ) : (

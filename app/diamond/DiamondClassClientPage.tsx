@@ -308,14 +308,17 @@ const DiamondClassClientPage = () => {
             </div>
             <CardContent className="p-0 relative">
               <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent">
-                Pay in Full
+                30-Day Payment Plan
               </h3>
               <div className="text-4xl font-bold mb-2 bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent">
-                $35,888
+                $9,888 deposit now
               </div>
-              <p className="text-gray-300 mb-4">One-time payment</p>
+              <div className="text-xl font-bold mb-2 bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent">
+                4 payments of $6,500 over 30 days
+              </div>
+              <p className="text-gray-300 mb-4"> </p>
               <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 mb-4">
-                <p className="text-green-400 font-bold text-lg">💰 SAVE $8,994!</p>
+                <p className="text-green-400 font-bold text-lg">💰 SAVE $4,882!</p>
                 <p className="text-gray-300 text-sm">vs Payment Plan ($44,882)</p>
               </div>
               <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 mb-4">
@@ -323,17 +326,17 @@ const DiamondClassClientPage = () => {
               </div>
               <Badge className="bg-red-500 text-white mb-4 animate-pulse">Only 5 Available Total!</Badge>
               <div className="text-sm text-gray-300 mb-6">
-                <p className="font-bold mb-2">30-Day Payment Option Available:</p>
-                <p>• $5,888 deposit now</p>
-                <p>• 4 payments of $7,500 over 30 days</p>
-                <p>• Still considered "paid upfront"!</p>
+                <p className="font-bold mb-2"> </p>
+                <p>• $9,888 deposit now</p>
+                <p>• 4 payments of $6,500 over 30 days</p>
+                <p>• Still considered 'paid upfront'!</p>
               </div>
               <Button
                 size="lg"
                 className="w-full bg-gradient-to-r from-[#00BFFF] via-blue-500 to-[#00BFFF] hover:from-blue-600 hover:via-[#00BFFF] hover:to-blue-600 text-white font-bold shadow-2xl border border-[#00BFFF]/50"
                 onClick={() => (window.location.href = "/diamond/apply")}
               >
-                Apply to Join AI Domination Program NOW!
+                Apply for 30-Day Payment Plan
               </Button>
             </CardContent>
           </Card>

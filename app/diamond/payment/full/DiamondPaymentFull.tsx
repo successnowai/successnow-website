@@ -62,7 +62,7 @@ export default function DiamondPaymentFull() {
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent">
             Complete Your Payment
           </h1>
-          <p className="text-xl text-gray-300 mb-6">Pay in Full: $35,888 (SAVE $8,994!)</p>
+          <p className="text-xl text-gray-300 mb-6">30-Day Payment Plan: $9,888 + 4 × $6,500</p>
           <div className="bg-gradient-to-br from-[#00BFFF]/10 to-green-400/10 rounded-lg p-4 max-w-2xl mx-auto">
             <div className="flex items-center justify-center mb-2">
               <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
@@ -128,8 +128,8 @@ export default function DiamondPaymentFull() {
                   30-Day Payment Plan
                 </Label>
               </div>
-              <p className="text-gray-300 mb-2">Start with $5,888 deposit, then 4 payments of $7,500 over 30 days</p>
-              <div className="text-lg text-white">Deposit: $5,888 + 4 x $7,500</div>
+              <p className="text-gray-300 mb-2">Start with $9,888 deposit, then 4 payments of $6,500 over 30 days</p>
+              <div className="text-lg text-white">$9,888 + 4 × $6,500</div>
               <p className="text-xs text-gray-400 mt-2">
                 This payment plan is still considered "paid upfront" for program purposes.
               </p>
@@ -299,11 +299,11 @@ export default function DiamondPaymentFull() {
                       size="lg"
                       className="w-full bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 hover:from-gray-400 hover:via-gray-300 hover:to-gray-400 text-black font-bold shadow-2xl border border-gray-300/50"
                     >
-                      {paymentInfo.paymentMethod === "plan" ? "Pay $5,888 Deposit Now" : "Pay $35,888 Now"}
+                      {paymentInfo.paymentMethod === "plan" ? "Pay $9,888 Deposit Now" : "Pay $35,888 Now"}
                     </Button>
                     <p className="text-xs text-gray-400 text-center mt-2">
                       {paymentInfo.paymentMethod === "plan"
-                        ? "Your card will be charged a deposit of $5,888 today."
+                        ? "Your card will be charged a deposit of $9,888 today."
                         : "Your card will be charged the full amount of $35,888."}
                     </p>
                   </div>
@@ -340,7 +340,7 @@ export default function DiamondPaymentFull() {
                       {paymentInfo.paymentMethod === "plan" ? "30-Day Payment Plan" : "Today's Payment"}
                     </span>
                     <span className="text-white">
-                      {paymentInfo.paymentMethod === "plan" ? "Deposit: $5,888 + 4 × $7,500" : "$35,888"}
+                      {paymentInfo.paymentMethod === "plan" ? "Deposit: $9,888 + 4 × $6,500" : "$35,888"}
                     </span>
                   </div>
                 </div>
