@@ -181,45 +181,110 @@ body {
   }
 }
 
-/* Shooting star animations */
-.shooting-star {
-  position: absolute;
-  top: 10%;
-  right: -10%;
-  width: 2px;
-  height: 2px;
-  background: linear-gradient(45deg, #00bfff, #ffffff);
-  border-radius: 50%;
-  box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
-  animation: shootingStar 8s linear infinite;
-  opacity: 0;
+/* Enhanced star pulsing animation */
+@keyframes starPulse {
+  0% {
+    opacity: calc(var(--base-opacity) * 0.3);
+    transform: scale(0.8);
+  }
+  25% {
+    opacity: calc(var(--base-opacity) * 0.6);
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: calc(var(--base-opacity) * var(--pulse-intensity));
+    transform: scale(1.2);
+  }
+  75% {
+    opacity: calc(var(--base-opacity) * 0.8);
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: calc(var(--base-opacity) * 0.3);
+    transform: scale(0.8);
+  }
 }
 
-.shooting-star::before {
+/* Enhanced shooting star animation for non-hero sections */
+.shooting-star-enhanced {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle, #00bfff 0%, #ffffff 50%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0;
+  left: var(--start-x);
+  top: var(--start-y);
+}
+
+.shooting-star-enhanced::before {
   content: "";
   position: absolute;
   top: 50%;
-  right: 0;
-  width: 100px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #00bfff, transparent);
-  transform: translateY(-50%);
+  left: 50%;
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00bfff, #ffffff, transparent);
+  transform: translate(-50%, -50%) rotate(-30deg);
+  box-shadow: 0 0 20px #00bfff, 0 0 40px #00bfff, 0 0 60px #00bfff;
 }
 
-@keyframes shootingStar {
+.shooting-star-enhanced::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  transform: translate(-50%, -50%) rotate(-30deg);
+  box-shadow: 0 0 10px #ffffff;
+}
+
+@keyframes shootingStarEnhanced {
   0% {
     opacity: 0;
-    transform: translateX(0) translateY(0) rotate(45deg);
+    left: var(--start-x);
+    top: var(--start-y);
+    transform: scale(0.5);
   }
-  10% {
+  15% {
     opacity: 1;
+    transform: scale(1);
   }
-  90% {
+  85% {
     opacity: 1;
+    transform: scale(1);
   }
   100% {
     opacity: 0;
-    transform: translateX(-1000px) translateY(500px) rotate(45deg);
+    left: var(--end-x);
+    top: var(--end-y);
+    transform: scale(0.5);
+  }
+}
+
+/* Star pulse class for individual control */
+.star-pulse {
+  will-change: opacity, transform;
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .star-pulse,
+  .shooting-star-enhanced {
+    animation: none !important;
+  }
+}
+
+/* Mobile performance optimization */
+@media (max-width: 768px) {
+  .shooting-star-enhanced::before {
+    width: 100px;
+  }
+
+  .shooting-star-enhanced::after {
+    width: 50px;
   }
 }
 
