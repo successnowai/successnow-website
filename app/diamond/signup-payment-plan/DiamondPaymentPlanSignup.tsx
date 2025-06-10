@@ -42,7 +42,7 @@ export default function DiamondPaymentPlanSignup() {
         {/* Back Button */}
         <Button variant="ghost" className="mb-8 text-gray-300 hover:text-white" onClick={() => window.history.back()}>
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to AI Domination Program
+          Back to SuccessNOW JED-AI Program
         </Button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -51,8 +51,16 @@ export default function DiamondPaymentPlanSignup() {
             <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border-gray-300/30 shadow-2xl">
               <CardHeader>
                 <CardTitle className="text-2xl bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent">
-                  AI Domination Program Payment Plan
+                  SuccessNOW JED-AI Program Payment Plan
                 </CardTitle>
+                <div className="mb-4">
+                  <p className="text-sm font-bold text-red-400 mb-1">
+                    THE AI revolution isn't coming, IT's Already here!
+                  </p>
+                  <p className="text-sm font-bold text-[#00BFFF]">
+                    Become a JED-AI MASTER and Master AI before AI becomes your MASTER
+                  </p>
+                </div>
                 <Badge className="bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300 text-black font-bold w-fit">
                   💎 EXCLUSIVE OFFER
                 </Badge>
@@ -114,7 +122,7 @@ export default function DiamondPaymentPlanSignup() {
               <CardHeader>
                 <CardTitle className="text-2xl text-white flex items-center">
                   <CreditCard className="h-6 w-6 mr-2 text-[#00BFFF]" />
-                  Secure Your AI Domination Program Spot
+                  Secure Your SuccessNOW JED-AI Program Spot
                 </CardTitle>
                 <p className="text-gray-300">Complete your information to proceed with payment plan</p>
               </CardHeader>

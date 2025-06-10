@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Calendar, Clock } from "lucide-react"
 
 export default function DiamondConfirmation() {
@@ -14,14 +13,11 @@ export default function DiamondConfirmation() {
             <CheckCircle className="h-12 w-12 text-green-400" />
           </div>
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent">
-            Your AI Domination Program application has been submitted and your payment has been processed.
+            Your SuccessNOW JED-AI Program application has been submitted and your payment has been processed.
           </h1>
           <p className="text-xl text-gray-300 mb-8">
-            Your Diamond Club application has been submitted and your payment has been processed.
+            Your SuccessNOW JED-AI Program application has been submitted and your payment has been processed.
           </p>
-          <Badge className="bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300 text-black text-lg px-6 py-2 font-bold shadow-2xl border border-gray-300/50 mb-6">
-            🚀 AI DOMINATION PROGRAM - APPLICATION UNDER REVIEW
-          </Badge>
         </div>
 
         <Card className="bg-gradient-to-br from-black via-gray-900 to-black border-gray-300/30 shadow-2xl mb-12">
@@ -37,8 +33,8 @@ export default function DiamondConfirmation() {
                 <div>
                   <h3 className="text-lg font-bold text-white">Application Review</h3>
                   <p className="text-gray-300">
-                    Our team will review your application within 24 hours to ensure you're a good fit for the AI
-                    Domination Program.
+                    Our team will review your application within 24 hours to ensure you're a good fit for the SuccessNOW
+                    JED-AI Program.
                   </p>
                 </div>
               </div>
@@ -72,15 +68,24 @@ export default function DiamondConfirmation() {
           </CardContent>
         </Card>
 
-        <div className="bg-gradient-to-br from-[#00BFFF]/10 to-green-400/10 rounded-2xl p-8 border border-[#00BFFF]/20 mb-12">
-          <h3 className="text-2xl font-bold mb-4 text-[#00BFFF]">100% Satisfaction Guarantee</h3>
-          <p className="text-gray-300 mb-6">
-            If your application is not accepted, you'll receive a 100% refund. If at any time during the 6 months you're
-            not fully satisfied, you'll get a 100% refund of your investment. Even if we remove you from the program for
-            not taking it seriously, you'll still get a 100% refund - no questions asked!
-          </p>
-          <div className="bg-gradient-to-r from-green-400/20 to-[#00BFFF]/20 rounded-lg p-4">
-            <p className="text-green-400 font-bold text-center">🎯 Your Success is Our Success</p>
+        <div className="bg-gradient-to-br from-green-900/40 to-green-800/40 rounded-2xl p-8 border border-green-400/50 mb-12 relative overflow-hidden lightsaber-glow-box">
+          {/* Green glow effect behind the box */}
+          <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 blur-xl animate-pulse"></div>
+          <div className="relative z-10">
+            <h3 className="text-3xl font-bold mb-4 text-green-400 text-center">
+              💎 EXCLUSIVE DIAMOND TIER AFFILIATE PROGRAM
+            </h3>
+            <p className="text-gray-300 mb-6 text-center text-lg">
+              SuccessNOW JED-AI Program members automatically get enrolled in our Diamond Tier Affiliate Partner Program
+            </p>
+            <div className="text-center">
+              <h4 className="text-2xl font-bold text-green-400 mb-4">
+                Earn 50% Recurring MRR from every person you refer to SuccessNOW!
+              </h4>
+              <p className="text-gray-300">
+                Turn your network into a passive income goldmine while helping others transform their businesses
+              </p>
+            </div>
           </div>
         </div>
 
@@ -92,9 +97,34 @@ export default function DiamondConfirmation() {
           Return to Homepage
         </Button>
       </div>
-      <p className="text-center text-gray-500 mt-8">
-        &copy; 2024 SuccessNOW AI Domination Program. All rights reserved.
-      </p>
+      <p className="text-center text-gray-500 mt-8">&copy; 2024 SuccessNOW JED-AI Program. All rights reserved.</p>
+      <style jsx>{`
+        .lightsaber-glow-box {
+          box-shadow: 
+            0 0 30px rgba(34, 197, 94, 0.6),
+            0 0 60px rgba(34, 197, 94, 0.4),
+            0 0 90px rgba(34, 197, 94, 0.3),
+            inset 0 0 30px rgba(34, 197, 94, 0.1);
+          animation: lightsaber-pulse 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes lightsaber-pulse {
+          from {
+            box-shadow: 
+              0 0 30px rgba(34, 197, 94, 0.6),
+              0 0 60px rgba(34, 197, 94, 0.4),
+              0 0 90px rgba(34, 197, 94, 0.3),
+              inset 0 0 30px rgba(34, 197, 94, 0.1);
+          }
+          to {
+            box-shadow: 
+              0 0 50px rgba(34, 197, 94, 0.8),
+              0 0 80px rgba(34, 197, 94, 0.6),
+              0 0 120px rgba(34, 197, 94, 0.4),
+              inset 0 0 40px rgba(34, 197, 94, 0.2);
+          }
+        }
+      `}</style>
     </div>
   )
 }

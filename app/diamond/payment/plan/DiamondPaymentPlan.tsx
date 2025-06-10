@@ -50,11 +50,17 @@ export default function DiamondPaymentPlan() {
         {/* Header */}
         <div className="text-center mb-12">
           <Badge className="bg-gradient-to-r from-gray-300 via-gray-100 to-gray-300 text-black text-lg px-6 py-2 font-bold shadow-2xl border border-gray-300/50 mb-6">
-            💎 AI DOMINATION PROGRAM PAYMENT
+            💎 SUCCESSNOW JED-AI PROGRAM PAYMENT
           </Badge>
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent">
             Complete Your Payment
           </h1>
+          <div className="mb-6">
+            <p className="text-lg font-bold text-red-400 mb-2">THE AI revolution isn't coming, IT's Already here!</p>
+            <p className="text-base font-bold text-[#00BFFF] mb-2">
+              Become a JED-AI MASTER and Master AI before AI becomes your MASTER
+            </p>
+          </div>
           <p className="text-xl text-gray-300 mb-6">Payment Plan: $9,997 setup + 5 payments of $6,977/month</p>
           <div className="bg-gradient-to-br from-[#00BFFF]/10 to-green-400/10 rounded-lg p-4 max-w-2xl mx-auto">
             <div className="flex items-center justify-center mb-2">

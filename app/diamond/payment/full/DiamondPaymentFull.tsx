@@ -57,11 +57,17 @@ export default function DiamondPaymentFull() {
         {/* Header */}
         <div className="text-center mb-12">
           <Badge className="bg-gradient-to-r from-red-500 via-red-400 to-red-500 text-white text-lg px-6 py-2 font-bold shadow-2xl border border-red-500/50 mb-6 animate-pulse">
-            💎 UNREAL DEAL - ONLY 5 AVAILABLE TOTAL!
+            💎 SUCCESSNOW JED-AI PROGRAM - ONLY 5 AVAILABLE TOTAL!
           </Badge>
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-300 via-gray-100 to-gray-200 bg-clip-text text-transparent">
             Complete Your Payment
           </h1>
+          <div className="mb-6">
+            <p className="text-lg font-bold text-red-400 mb-2">THE AI revolution isn't coming, IT's Already here!</p>
+            <p className="text-base font-bold text-[#00BFFF] mb-2">
+              Become a JED-AI MASTER and Master AI before AI becomes your MASTER
+            </p>
+          </div>
           <p className="text-xl text-gray-300 mb-6">30-Day Payment Plan: $9,888 + 4 × $6,500</p>
           <div className="bg-gradient-to-br from-[#00BFFF]/10 to-green-400/10 rounded-lg p-4 max-w-2xl mx-auto">
             <div className="flex items-center justify-center mb-2">
@@ -319,7 +325,7 @@ export default function DiamondPaymentFull() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
-                  <span className="text-gray-300">AI Domination Program Package</span>
+                  <span className="text-gray-300">SuccessNOW JED-AI Program Package</span>
                   <span className="text-white font-bold">$35,888</span>
                 </div>
                 <div className="flex justify-between">
