@@ -26,6 +26,9 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Open+Sans&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         {/* Vapi.ai SDK */}
         <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js"></script>
       </head>
