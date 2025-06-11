@@ -17,7 +17,7 @@ export default function IndustriesClientPage() {
   const { ref: comingSoonRef, isInView: comingSoonIsInView } = useInView()
   const { ref: ctaRef, isInView: ctaIsInView } = useInView()
 
-  const rotatingWords = ["Industries", "Businesses", "Sectors", "Markets", "Niches"]
+  const rotatingWords = ["Industry", "Business", "Sector", "Market", "Niche"] // Corrected words
 
   const currentIndustries = [
     {
