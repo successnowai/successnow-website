@@ -1,208 +1,49 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import type React from "react"
+import { useState } from "react"
+import { useInView } from "@/hooks/use-intersection-observer"
 import { Button } from "@/components/ui/button"
-
-const platformFeatures = [
-  {
-    id: 1,
-    title: "Smart AI Website with Live Chat Agent",
-    subtitle: "Every visitor becomes a conversation. Every conversation becomes an opportunity.",
-    description:
-      "Your high-converting website is designed by our WebDev Bot and includes a Live AI Agent who instantly engages every visitor—converting them into leads and clients on autopilot.",
-    icon: "🤖",
-    gradient: "from-blue-500 to-cyan-500",
-    bgGradient: "from-blue-500/10 to-cyan-500/10",
-  },
-  {
-    id: 2,
-    title: "Paid Ads Created & Managed by AdsNOW.ai",
-    subtitle: "No experience needed. AI handles it like a pro.",
-    description:
-      "Let our Ads SuperAgent create, launch, and optimize winning ads across Google, Facebook, Instagram, YouTube, and TikTok—24/7.",
-    icon: "📈",
-    gradient: "from-purple-500 to-pink-500",
-    bgGradient: "from-purple-500/10 to-pink-500/10",
-  },
-  {
-    id: 3,
-    title: "AI SuperAgents That Act Like a Full Business Team",
-    subtitle: "It's like having a sales, support, and admin team—all in one AI-powered engine.",
-    description:
-      "Call, text, email, and DM every lead and client instantly. Book appointments directly into your calendar. Make CRM notes on every interaction. Never drop the ball on a follow-up.",
-    icon: "⚡",
-    gradient: "from-green-500 to-emerald-500",
-    bgGradient: "from-green-500/10 to-emerald-500/10",
-  },
-  {
-    id: 4,
-    title: "Nurture Clients & Drive Repeat Business",
-    subtitle: "Keep your clients engaged and educated automatically.",
-    description: "The Nurturing Bot keeps your clients engaged and educated, driving loyalty and consistent sales.",
-    icon: "💎",
-    gradient: "from-yellow-500 to-orange-500",
-    bgGradient: "from-yellow-500/10 to-orange-500/10",
-  },
-  {
-    id: 5,
-    title: "Get Referrals & 5-Star Reviews on Autopilot",
-    subtitle: "Turn customer satisfaction into lead generation—automatically.",
-    description:
-      "The Review Bot and Referral Bot ensure your happiest clients leave great reviews and send referrals without being asked.",
-    icon: "⭐",
-    gradient: "from-red-500 to-rose-500",
-    bgGradient: "from-red-500/10 to-rose-500/10",
-  },
-  {
-    id: 6,
-    title: "Dominate Search with AI-Powered SEO",
-    subtitle: "Combines AI speed with expert precision for top search visibility.",
-    description:
-      "The SEO Bot improves your Google & Maps rankings using keyword optimization, backlink strategies, and content automation.",
-    icon: "🎯",
-    gradient: "from-indigo-500 to-blue-500",
-    bgGradient: "from-indigo-500/10 to-blue-500/10",
-  },
-  {
-    id: 7,
-    title: "Enjoy True Freedom: Only Handle Booked Appointments",
-    subtitle: "You show up. The AI & experts do the rest.",
-    description: "Everything else—from ads to engagement to reminders—is handled for you.",
-    icon: "🚀",
-    gradient: "from-teal-500 to-cyan-500",
-    bgGradient: "from-teal-500/10 to-cyan-500/10",
-  },
-]
+import { DemoPopup } from "@/components/ui/demo-popup"
 
 export default function LiveDemo() {
-  const [currentFeature, setCurrentFeature] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const { ref, isInView } = useInView()
+  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-    const interval = setInterval(() => {
-      setIsAnimating(true)
-      setTimeout(() => {
-        setCurrentFeature((prev) => (prev + 1) % platformFeatures.length)
-        setIsAnimating(false)
-      }, 300)
-    }, 4000)
-
-    return () => clearInterval(interval)
-  }, [])
-
-  if (!mounted) {
-    return (
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-5 sm:py-15">
-        <div className="h-96 bg-gray-800 rounded-lg animate-pulse"></div>
-      </section>
-    )
+  const handleDemoClick = () => {
+    setIsDemoPopupOpen(true)
   }
 
-  const feature = platformFeatures[currentFeature]
-
   return (
-    <section id="demo" className="mx-auto max-w-6xl px-4 py-12 sm:px-5 sm:py-15">
-      <h2 className="mb-4 sm:mb-6 text-center text-xl sm:text-2xl md:text-3xl font-bold text-white">
-        The New SuccessNOW Platform Offer
+    <section
+      id="demo"
+      ref={ref as React.RefObject<HTMLDivElement>}
+      className="mx-auto max-w-6xl px-4 py-12 sm:px-5 sm:py-15"
+    >
+      <h2
+        className={`mb-4 sm:mb-6 text-center text-xl sm:text-2xl md:text-3xl font-bold text-white animate-fade-up ${isInView ? "animate-show" : ""}`}
+      >
+        Try Our AI Agent Live – See It, Hear It, Test It
       </h2>
-
-      <div className="mx-auto max-w-4xl text-center">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full px-6 py-2 mb-4 border border-blue-500/30">
-            <span className="text-xl">⚡</span>
-            <span className="text-blue-300 font-medium">Powered by AI SuperAgents</span>
+      <div
+        className={`mx-auto max-w-4xl text-center animate-fade-up ${isInView ? "animate-show" : ""} animate-delay-200`}
+      >
+        <div className="aspect-video w-full rounded-lg bg-[#1c2230] border border-gray-700 flex items-center justify-center">
+          <div className="text-center px-4">
+            <div className="mb-3 sm:mb-4 text-2xl sm:text-4xl">🤖</div>
+            <p className="text-gray-400 text-sm sm:text-base">Live AI Demo</p>
+            <Button
+              onClick={handleDemoClick}
+              className="mt-4 bg-gradient-to-r from-[#00BFFF] to-[#0080FF] hover:from-[#0099FF] hover:to-[#0066CC] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:scale-105"
+            >
+              Start Voice Demo
+            </Button>
           </div>
-          <p className="text-lg text-gray-300">Backed by Human Experts for Next-Level Results</p>
-        </div>
-
-        {/* Progress Indicators */}
-        <div className="flex justify-center mb-6 gap-2">
-          {platformFeatures.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentFeature(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentFeature ? `bg-gradient-to-r ${feature.gradient}` : "bg-gray-600 hover:bg-gray-500"
-              }`}
-              aria-label={`View feature ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Feature Card */}
-        <div
-          className={`relative overflow-hidden rounded-lg bg-gradient-to-br ${feature.bgGradient} backdrop-blur-sm transition-all duration-500 p-6 md:p-8 border border-gray-700 ${
-            isAnimating ? "scale-95 opacity-70" : "scale-100 opacity-100"
-          }`}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-
-          <div className="relative z-10">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              {/* Content */}
-              <div className="space-y-6 text-left">
-                <div className="flex items-center gap-4">
-                  <div className={`text-5xl p-3 rounded-xl bg-gradient-to-br ${feature.gradient} bg-opacity-20`}>
-                    {feature.icon}
-                  </div>
-                  <div
-                    className={`text-xl font-bold bg-gradient-to-r ${feature.gradient} bg-clip-text text-transparent`}
-                  >
-                    Step {feature.id}/7
-                  </div>
-                </div>
-
-                <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight">{feature.title}</h3>
-
-                <div className={`p-3 rounded-lg bg-gradient-to-r ${feature.bgGradient} border border-white/10`}>
-                  <p className="text-base md:text-lg text-gray-200 italic">"{feature.subtitle}"</p>
-                </div>
-
-                <p className="text-gray-300 text-base md:text-lg leading-relaxed">{feature.description}</p>
-              </div>
-
-              {/* Visual Element */}
-              <div className="relative">
-                <div
-                  className={`w-full h-64 rounded-xl bg-gradient-to-br ${feature.gradient} opacity-20 relative overflow-hidden`}
-                >
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent_70%)]" />
-                  <div className="absolute inset-4 border border-white/20 rounded-xl" />
-
-                  {/* Animated Elements */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <div className="text-7xl opacity-30 animate-pulse">{feature.icon}</div>
-                  </div>
-
-                  {/* Floating Particles */}
-                  <div className="absolute top-4 right-4 w-2 h-2 bg-white/40 rounded-full animate-ping" />
-                  <div
-                    className="absolute bottom-6 left-6 w-1 h-1 bg-white/60 rounded-full animate-ping"
-                    style={{ animationDelay: "1s" }}
-                  />
-                  <div
-                    className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-white/50 rounded-full animate-ping"
-                    style={{ animationDelay: "2s" }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-8">
-          <Button
-            size="lg"
-            className={`bg-gradient-to-r ${feature.gradient} hover:opacity-90 text-white font-semibold px-6 py-3 text-base md:text-lg rounded-full transition-all duration-300 transform hover:scale-105`}
-          >
-            Get Started with Step {feature.id}
-          </Button>
         </div>
       </div>
+
+      {/* Demo Popup */}
+      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
     </section>
   )
 }

@@ -1,11 +1,20 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Montserrat, Open_Sans } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/navigation/navbar"
 import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["600", "800"],
+  variable: "--font-montserrat",
+})
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-open-sans",
+})
 
 export const metadata: Metadata = {
   title: "SuccessNOW – AI Superagent System",
@@ -22,19 +31,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Open+Sans&display=swap"
-          rel="stylesheet"
-        />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#00BFFF" />
         {/* Vapi.ai SDK */}
-        <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js" async></script>
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${montserrat.variable} ${openSans.variable} font-sans`}>
         {/* GLOBAL: Black Navigation Bar - Always visible on ALL devices */}
         <Navbar />
 
