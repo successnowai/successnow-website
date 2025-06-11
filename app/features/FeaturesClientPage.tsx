@@ -232,6 +232,261 @@ export default function FeaturesClientPage() {
         </div>
       </section>
 
+      {/* Platform Offer Infographic */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-r from-[#00274D] to-[#0b0f1a]">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">The New SuccessNOW Platform Offer</h2>
+            <div className="flex items-center justify-center gap-2 text-lg sm:text-xl text-[#00BFFF] mb-6">
+              <span>⚡</span>
+              <span>Powered by AI SuperAgents — Backed by Human Experts for Next-Level Results</span>
+            </div>
+            <div className="text-2xl font-semibold text-white mb-8">🧠 What You Get</div>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid gap-6 mb-12">
+            {/* Feature 1 */}
+            <div className="bg-[#1c2230] rounded-xl p-6 border border-[#00BFFF]/20">
+              <div className="flex items-start gap-4">
+                <div className="text-2xl">🔹</div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-3">1. Smart AI Website with Live Chat Agent</h3>
+                  <p className="text-gray-300 mb-4">
+                    Your high-converting website is designed by our WebDev Bot and includes a Live AI Agent who
+                    instantly engages every visitor—converting them into leads and clients on autopilot.
+                  </p>
+                  <div className="bg-[#00BFFF]/10 border-l-4 border-[#00BFFF] p-4 rounded">
+                    <p className="text-[#00BFFF] italic">
+                      "Every visitor becomes a conversation. Every conversation becomes an opportunity."
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="bg-[#1c2230] rounded-xl p-6 border border-[#00BFFF]/20">
+              <div className="flex items-start gap-4">
+                <div className="text-2xl">🔹</div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-3">2. Paid Ads Created & Managed by AdsNOW.ai</h3>
+                  <p className="text-gray-300 mb-4">
+                    Let our Ads SuperAgent create, launch, and optimize winning ads across Google, Facebook, Instagram,
+                    YouTube, and TikTok—24/7.
+                  </p>
+                  <p className="text-[#00BFFF] font-semibold mb-4">No experience needed. AI handles it like a pro.</p>
+                  <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span>✅</span>
+                      <span className="text-green-400 font-semibold">Optional Add-On: Human Expert Ads Manager</span>
+                    </div>
+                    <p className="text-gray-300 text-sm">
+                      A certified ads expert will monitor performance, adjust strategy, and scale ad results using
+                      real-time AI analytics from AdsNOW.ai.
+                    </p>
+                    <p className="text-green-400 text-sm mt-2">
+                      Ideal for businesses spending $1,000+/month on ads and ready to scale fast.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="bg-[#1c2230] rounded-xl p-6 border border-[#00BFFF]/20">
+              <div className="flex items-start gap-4">
+                <div className="text-2xl">🔹</div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    3. AI SuperAgents That Act Like a Full Business Team
+                  </h3>
+                  <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                    <div className="flex items-center gap-2 text-gray-300">
+                      <span className="text-[#00BFFF]">•</span>
+                      <span>Call, text, email, and DM every lead and client instantly</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-300">
+                      <span className="text-[#00BFFF]">•</span>
+                      <span>Book appointments directly into your calendar</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-300">
+                      <span className="text-[#00BFFF]">•</span>
+                      <span>Make CRM notes on every interaction</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-300">
+                      <span className="text-[#00BFFF]">•</span>
+                      <span>Never drop the ball on a follow-up</span>
+                    </div>
+                  </div>
+                  <p className="text-[#00BFFF] italic">
+                    It's like having a sales, support, and admin team—all in one AI-powered engine.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Features 4-7 in a 2x2 grid */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              {/* Feature 4 */}
+              <div className="bg-[#1c2230] rounded-xl p-6 border border-[#00BFFF]/20">
+                <div className="flex items-start gap-4">
+                  <div className="text-2xl">🔹</div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white mb-3">4. Nurture Clients & Drive Repeat Business</h3>
+                    <p className="text-gray-300 text-sm">
+                      The Nurturing Bot keeps your clients engaged and educated, driving loyalty and consistent sales.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature 5 */}
+              <div className="bg-[#1c2230] rounded-xl p-6 border border-[#00BFFF]/20">
+                <div className="flex items-start gap-4">
+                  <div className="text-2xl">🔹</div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white mb-3">
+                      5. Get Referrals & 5-Star Reviews on Autopilot
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-2">
+                      The Review Bot and Referral Bot ensure your happiest clients leave great reviews and send
+                      referrals without being asked.
+                    </p>
+                    <p className="text-[#00BFFF] text-sm italic">
+                      Turn customer satisfaction into lead generation—automatically.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature 6 */}
+              <div className="bg-[#1c2230] rounded-xl p-6 border border-[#00BFFF]/20">
+                <div className="flex items-start gap-4">
+                  <div className="text-2xl">🔹</div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white mb-3">6. Dominate Search with AI-Powered SEO</h3>
+                    <p className="text-gray-300 text-sm mb-3">
+                      The SEO Bot improves your Google & Maps rankings using keyword optimization, backlink strategies,
+                      and content automation.
+                    </p>
+                    <div className="bg-green-900/20 border border-green-500/30 rounded p-3">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs">✅</span>
+                        <span className="text-green-400 font-semibold text-sm">
+                          Optional Add-On: Human SEO Strategist
+                        </span>
+                      </div>
+                      <p className="text-gray-300 text-xs">
+                        Work with a real expert who leverages our AI SEO suite to create a tailored content and ranking
+                        strategy for your business.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature 7 */}
+              <div className="bg-[#1c2230] rounded-xl p-6 border border-[#00BFFF]/20">
+                <div className="flex items-start gap-4">
+                  <div className="text-2xl">🔹</div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white mb-3">
+                      7. Enjoy True Freedom: Only Handle Booked Appointments
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-2">
+                      Everything else—from ads to engagement to reminders—is handled for you.
+                    </p>
+                    <p className="text-[#00BFFF] font-semibold text-sm">You show up. The AI & experts do the rest.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Pricing Section */}
+          <div className="bg-gradient-to-r from-yellow-600/20 to-orange-600/20 rounded-2xl p-8 border-2 border-yellow-500/30 mb-8">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">🏷️ No-Brainer Offer</h3>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-8 mb-6">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-yellow-400 mb-2">Setup Fee: $997</div>
+                <div className="text-gray-300 line-through">normally $9,977</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-yellow-400 mb-2">Monthly Fee: $997/month</div>
+                <div className="text-gray-300 line-through">normally $1,994/month</div>
+              </div>
+            </div>
+
+            <div className="bg-black/30 rounded-lg p-6 mb-6">
+              <h4 className="text-lg font-bold text-white mb-4">Includes:</h4>
+              <div className="grid sm:grid-cols-2 gap-2">
+                <div className="flex items-center gap-2 text-gray-300 text-sm">
+                  <span className="text-green-400">✓</span>
+                  <span>AI-powered smart website with live chat</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-300 text-sm">
+                  <span className="text-green-400">✓</span>
+                  <span>AdsNOW.ai SuperAgent for paid ads</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-300 text-sm">
+                  <span className="text-green-400">✓</span>
+                  <span>All core AI SuperAgents: Speed to Lead, SalesBot, Follow-Up</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-300 text-sm">
+                  <span className="text-green-400">✓</span>
+                  <span>Nurturing, Reviews, Referrals</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-300 text-sm">
+                  <span className="text-green-400">✓</span>
+                  <span>AI-powered SEO with automated optimization</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-300 text-sm">
+                  <span className="text-green-400">✓</span>
+                  <span>Onboarding, automation setup, and support</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4 mb-6">
+              <div className="bg-green-900/30 border border-green-500/30 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <span>✅</span>
+                  <span className="text-green-400 font-semibold">Optional Add-Ons:</span>
+                </div>
+                <div className="text-gray-300 text-sm space-y-1">
+                  <div>• Human Ads Manager – Advanced strategy & scaling</div>
+                  <div>• Human SEO Expert – Custom ranking plans using AI insights</div>
+                </div>
+              </div>
+
+              <div className="bg-purple-900/30 border border-purple-500/30 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <span>💰</span>
+                  <span className="text-purple-400 font-semibold">Affiliate Program (Optional)</span>
+                </div>
+                <p className="text-gray-300 text-sm">
+                  Refer others and earn commissions with zero overhead. We fulfill. You get paid.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <Button
+                className="px-8 py-4 bg-[#00BFFF] text-white font-bold rounded-lg hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105 text-lg"
+                onClick={() => (window.location.href = "/signup")}
+              >
+                Get Started with SuccessNOW Platform →
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Category Navigation */}
       <div className="sticky top-[73px] z-20 bg-black/80 backdrop-blur-md border-b border-[#00BFFF]/20 py-2 sm:py-3">
         <div className="max-w-6xl mx-auto px-4 flex items-center justify-between overflow-x-auto">

@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Shield, CheckCircle, Lock } from "lucide-react"
 import Link from "next/link"
 
-export default function DiamondPaymentFull() {
+export default function PaymentFullPage() {
   const [formData, setFormData] = useState({
     nameOnCard: "",
     cardNumber: "",

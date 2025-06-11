@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, CheckCircle, CreditCard, Lock } from "lucide-react"
 
-export default function DiamondPaymentPlan() {
+export default function PaymentPlanPage() {
   const [paymentInfo, setPaymentInfo] = useState({
     cardName: "",
     cardNumber: "",
@@ -208,7 +208,6 @@ export default function DiamondPaymentPlan() {
                           <option value="CA">Canada</option>
                           <option value="UK">United Kingdom</option>
                           <option value="AU">Australia</option>
-                          <option value="Other">Other</option>
                         </select>
                       </div>
                     </div>
@@ -218,7 +217,7 @@ export default function DiamondPaymentPlan() {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 hover:from-gray-400 hover:via-gray-300 hover:to-gray-400 text-black font-bold shadow-2xl border border-gray-300/50"
+                      className="w-full bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 hover:from-gray-400 hover:via-gray-300 hover:to-gray-400 text-black font-bold shadow-2xl"
                     >
                       Pay $9,997 Now
                     </Button>

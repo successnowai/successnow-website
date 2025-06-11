@@ -1,5 +1,5 @@
-import DiamondPaymentFull from "./DiamondPaymentFull"
+import PaymentFullPage from "./PaymentFullPage"
 
-export default function DiamondPaymentFullPage() {
-  return <DiamondPaymentFull />
+export default function Page() {
+  return <PaymentFullPage />
 }

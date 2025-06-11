@@ -1,5 +1,5 @@
-import DiamondClassClientPage from "./DiamondClassClientPage"
+import DiamondPage from "./DiamondPage"
 
-export default function DiamondClassPage() {
-  return <DiamondClassClientPage />
+export default function Page() {
+  return <DiamondPage />
 }
