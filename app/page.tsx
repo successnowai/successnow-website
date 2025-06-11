@@ -1,7 +1,7 @@
 import StarryBackground from "@/components/ui/starry-background"
 import HeroSection from "@/components/home/hero-section"
 import IndustrySolutions from "@/components/home/industry-solutions"
-import FeatureStack from "@/components/home/feature-stack"
+import PlatformShowcaseSection from "@/components/home/platform-showcase-section"
 import LiveDemo from "@/components/home/live-demo"
 import PricingTable from "@/components/home/pricing-table"
 import CTASection from "@/components/home/cta-section"
@@ -20,7 +20,7 @@ export default function HomePage() {
         <HeroSection />
         <AdsNowSection />
         <IndustrySolutions />
-        <FeatureStack />
+        <PlatformShowcaseSection />
         <LiveDemo />
         <PricingTable />
         <CTASection />

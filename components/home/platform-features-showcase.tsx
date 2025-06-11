@@ -74,13 +74,14 @@ const platformFeatures = [
   },
 ]
 
-export default function LiveDemo() {
+export default function PlatformFeaturesShowcase() {
   const [currentFeature, setCurrentFeature] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+
     const interval = setInterval(() => {
       setIsAnimating(true)
       setTimeout(() => {
@@ -93,11 +94,7 @@ export default function LiveDemo() {
   }, [])
 
   if (!mounted) {
-    return (
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-5 sm:py-15">
-        <div className="h-96 bg-gray-800 rounded-lg animate-pulse"></div>
-      </section>
-    )
+    return <div className="h-[600px] bg-gray-900 rounded-lg animate-pulse"></div>
   }
 
   const feature = platformFeatures[currentFeature]
@@ -108,18 +105,21 @@ export default function LiveDemo() {
         The New SuccessNOW Platform Offer
       </h2>
 
-      <div className="mx-auto max-w-4xl text-center">
+      {/* Animated Background */}
+      <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20 p-1">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
+
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 pt-8">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full px-6 py-2 mb-4 border border-blue-500/30">
             <span className="text-xl">⚡</span>
             <span className="text-blue-300 font-medium">Powered by AI SuperAgents</span>
           </div>
-          <p className="text-lg text-gray-300">Backed by Human Experts for Next-Level Results</p>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">Backed by Human Experts for Next-Level Results</p>
         </div>
 
         {/* Progress Indicators */}
-        <div className="flex justify-center mb-6 gap-2">
+        <div className="flex justify-center mb-6 gap-2 px-4">
           {platformFeatures.map((_, index) => (
             <button
               key={index}
@@ -134,7 +134,7 @@ export default function LiveDemo() {
 
         {/* Feature Card */}
         <div
-          className={`relative overflow-hidden rounded-lg bg-gradient-to-br ${feature.bgGradient} backdrop-blur-sm transition-all duration-500 p-6 md:p-8 border border-gray-700 ${
+          className={`relative overflow-hidden rounded-lg bg-gradient-to-br ${feature.bgGradient} backdrop-blur-sm transition-all duration-500 p-6 md:p-8 ${
             isAnimating ? "scale-95 opacity-70" : "scale-100 opacity-100"
           }`}
         >
@@ -143,7 +143,7 @@ export default function LiveDemo() {
           <div className="relative z-10">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Content */}
-              <div className="space-y-6 text-left">
+              <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className={`text-5xl p-3 rounded-xl bg-gradient-to-br ${feature.gradient} bg-opacity-20`}>
                     {feature.icon}
@@ -151,7 +151,7 @@ export default function LiveDemo() {
                   <div
                     className={`text-xl font-bold bg-gradient-to-r ${feature.gradient} bg-clip-text text-transparent`}
                   >
-                    Step {feature.id}/7
+                    Feature {feature.id}/7
                   </div>
                 </div>
 
@@ -165,16 +165,17 @@ export default function LiveDemo() {
               </div>
 
               {/* Visual Element */}
-              <div className="relative">
+              <div className="relative hidden md:block">
                 <div
                   className={`w-full h-64 rounded-xl bg-gradient-to-br ${feature.gradient} opacity-20 relative overflow-hidden`}
                 >
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent_70%)]" />
                   <div className="absolute inset-4 border border-white/20 rounded-xl" />
+                  <div className="absolute inset-8 border border-white/10 rounded-lg" />
 
                   {/* Animated Elements */}
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <div className="text-7xl opacity-30 animate-pulse">{feature.icon}</div>
+                    <div className={`text-7xl opacity-30 animate-pulse`}>{feature.icon}</div>
                   </div>
 
                   {/* Floating Particles */}
@@ -194,15 +195,25 @@ export default function LiveDemo() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-8">
+        <div className="text-center my-8 pb-4">
           <Button
             size="lg"
             className={`bg-gradient-to-r ${feature.gradient} hover:opacity-90 text-white font-semibold px-6 py-3 text-base md:text-lg rounded-full transition-all duration-300 transform hover:scale-105`}
           >
-            Get Started with Step {feature.id}
+            Learn More About Our Platform
           </Button>
         </div>
       </div>
+
+      {/* Decorative Elements */}
+      <div
+        className="absolute top-20 left-10 w-16 h-16 border border-blue-500/20 rounded-full animate-spin"
+        style={{ animationDuration: "20s" }}
+      />
+      <div
+        className="absolute bottom-20 right-10 w-12 h-12 border border-purple-500/20 rounded-full animate-spin"
+        style={{ animationDuration: "15s", animationDirection: "reverse" }}
+      />
     </section>
   )
 }
