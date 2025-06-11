@@ -4,15 +4,17 @@ import { Button } from "@/components/ui/button"
 import { RotatingText } from "@/components/ui/rotating-text"
 import { Play, Sparkles } from "lucide-react"
 import { useState } from "react"
-import { DemoPopup } from "@/components/ui/demo-popup"
 
 export default function HeroSection() {
   const rotatingWords = ["Leads", "Conversations", "Inquiries", "Website Clicks", "Cold Prospects"]
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+  const [isVideoVisible, setIsVideoVisible] = useState(false)
 
   const handleDemoClick = () => {
     setIsDemoPopupOpen(true)
   }
+
+  const youtubeVideoId = "3D0CjjB9EIA"
 
   return (
     <div className="relative bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white overflow-hidden">
@@ -129,34 +131,42 @@ export default function HeroSection() {
             again.
           </p>
 
-          {/* Video Placeholder */}
+          {/* Video Container */}
           <div className="mb-8 sm:mb-10 mx-auto max-w-2xl px-4">
-            <div
-              className="relative aspect-video bg-black/40 backdrop-blur-sm rounded-lg sm:rounded-xl border-2 border-[#00BFFF]/30 overflow-hidden group cursor-pointer hover:border-[#00BFFF] transition-colors duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(0,191,255,0.3)]"
-              onClick={handleDemoClick}
-            >
-              {/* Video Placeholder Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#00274D]/50 to-black/50"></div>
+            <div className="relative aspect-video bg-black/40 backdrop-blur-sm rounded-lg sm:rounded-xl border-2 border-[#00BFFF]/30 overflow-hidden shadow-lg">
+              {!isVideoVisible ? (
+                <div
+                  className="absolute inset-0 group cursor-pointer hover:border-[#00BFFF] transition-colors duration-300"
+                  onClick={() => setIsVideoVisible(true)}
+                >
+                  {/* Video Placeholder Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00274D]/50 to-black/50"></div>
 
-              {/* Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-[#00BFFF] rounded-full p-4 sm:p-5 shadow-lg group-hover:scale-110 transition-transform duration-300 hover:shadow-[0_0_20px_rgba(0,191,255,0.6)]">
-                  <Play className="w-6 h-6 sm:w-8 sm:h-8 text-white fill-white ml-1" />
+                  {/* Play Button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-[#00BFFF] rounded-full p-4 sm:p-5 shadow-lg group-hover:scale-110 transition-transform duration-300 hover:shadow-[0_0_20px_rgba(0,191,255,0.6)]">
+                      <Play className="w-6 h-6 sm:w-8 sm:h-8 text-white fill-white ml-1" />
+                    </div>
+                  </div>
+
+                  {/* Video Title Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
+                    <h4 className="text-white font-semibold text-sm sm:text-base md:text-lg">
+                      SuccessNOW Video Explainer
+                    </h4>
+                    <p className="text-gray-200 text-xs sm:text-sm">See how AI transforms businesses</p>
+                  </div>
                 </div>
-              </div>
-
-              {/* Video Title Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
-                <h4 className="text-white font-semibold text-sm sm:text-base md:text-lg">SuccessNOW Video Explainer</h4>
-                <p className="text-gray-200 text-xs sm:text-sm">See how AI transforms businesses</p>
-              </div>
-
-              {/* Coming Soon Badge */}
-              <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
-                <span className="bg-[#00BFFF] text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
-                  Coming Soon
-                </span>
-              </div>
+              ) : (
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0`}
+                  title="SuccessNOW Video Explainer"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              )}
             </div>
           </div>
 
@@ -180,8 +190,8 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* Demo Popup */}
-      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
+      {/* Demo Popup - Temporarily commented out for diagnosis */}
+      {/* <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} /> */}
     </div>
   )
 }
