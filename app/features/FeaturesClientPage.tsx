@@ -254,8 +254,9 @@ export default function FeaturesClientPage() {
                 <div>
                   <h3 className="text-xl font-bold text-white mb-3">1. Smart AI Website with Live Chat Agent</h3>
                   <p className="text-gray-300 mb-4">
-                    Your high-converting website is designed by our WebDev Bot and includes a Live AI Agent who
-                    instantly engages every visitor—converting them into leads and clients on autopilot.
+                    Every smart AI high-converting website, landing page, and funnel is custom-built for your brand on
+                    setup. Includes a Live AI Agent who instantly engages every visitor—converting them into leads and
+                    clients on autopilot.
                   </p>
                   <div className="bg-[#00BFFF]/10 border-l-4 border-[#00BFFF] p-4 rounded">
                     <p className="text-[#00BFFF] italic">
