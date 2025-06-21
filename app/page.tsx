@@ -1,5 +1,5 @@
 import StarryBackground from "@/components/ui/starry-background"
-import HeroSection from "@/components/home/hero-section"
+import MainHeroSection from "@/components/home/main-hero-section"
 import IndustrySolutions from "@/components/home/industry-solutions"
 import LiveDemo from "@/components/home/live-demo"
 import PricingTable from "@/components/home/pricing-table"
@@ -14,7 +14,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-black text-white relative">
       <StarryBackground />
       <div className="relative z-10">
-        <HeroSection />
+        <MainHeroSection />
         <PlatformShowcaseSection />
         <AdsNowSection />
         <IndustrySolutions />

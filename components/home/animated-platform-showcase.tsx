@@ -189,8 +189,8 @@ export function AnimatedPlatformShowcase() {
                 </span>
               </div>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">{feature.title}</h3>
-              <p className="text-gray-300 mb-6">{feature.description}</p>
-              <div className="relative italic text-gray-200 border-l-4 border-blue-400 pl-4 py-2 mb-6">
+              <p className="text-gray-100 mb-6">{feature.description}</p>
+              <div className="relative italic text-white border-l-4 border-blue-400 pl-4 py-2 mb-6">
                 {feature.quote}
               </div>
               <Button size="lg" className={cn("bg-gradient-to-r text-white", feature.color)}>
@@ -227,7 +227,7 @@ export function AnimatedPlatformShowcase() {
               onClick={() => handleDotClick(index)}
               className={cn(
                 "w-3 h-3 rounded-full transition-all duration-300",
-                currentFeatureIndex === index ? "bg-blue-400 w-6" : "bg-gray-600 hover:bg-gray-400",
+                currentFeatureIndex === index ? "bg-blue-300 w-6" : "bg-gray-400 hover:bg-gray-300",
               )}
               aria-label={`Go to step ${index + 1}`}
             />

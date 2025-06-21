@@ -205,85 +205,62 @@ body {
   }
 }
 
-/* Enhanced shooting star animation for non-hero sections */
-.shooting-star-enhanced {
+/* SHOOTING STAR STYLES - ENHANCED AND VISIBLE */
+.shooting-star {
   position: absolute;
-  width: var(--size);
-  height: var(--size);
-  background: radial-gradient(circle, #00bfff 0%, #ffffff 50%, transparent 100%);
+  background: white;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   opacity: 0;
-  left: var(--start-x);
-  top: var(--start-y);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
+  z-index: 1;
 }
 
-.shooting-star-enhanced::before {
+.shooting-star::before {
   content: "";
   position: absolute;
   top: 50%;
-  left: 50%;
-  width: 150px;
+  transform: translateY(-50%);
+  width: 100px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #00bfff, #ffffff, transparent);
-  transform: translate(-50%, -50%) rotate(-30deg);
-  box-shadow: 0 0 20px #00bfff, 0 0 40px #00bfff, 0 0 60px #00bfff;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.7));
+  border-radius: 100%;
+  z-index: -1;
 }
 
-.shooting-star-enhanced::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #ffffff, transparent);
-  transform: translate(-50%, -50%) rotate(-30deg);
-  box-shadow: 0 0 10px #ffffff;
-}
-
-@keyframes shootingStarEnhanced {
+@keyframes shootingStar {
   0% {
     opacity: 0;
-    left: var(--start-x);
-    top: var(--start-y);
-    transform: scale(0.5);
+    transform: translate(0, 0) rotate(-35deg) scale(0.5);
   }
-  15% {
+  5% {
     opacity: 1;
-    transform: scale(1);
   }
-  85% {
+  20% {
+    transform: translate(-20vw, 20vh) rotate(-35deg) scale(1);
     opacity: 1;
-    transform: scale(1);
+  }
+  30% {
+    opacity: 0;
   }
   100% {
     opacity: 0;
-    left: var(--end-x);
-    top: var(--end-y);
-    transform: scale(0.5);
+    transform: translate(-50vw, 50vh) rotate(-35deg) scale(0.5);
   }
-}
-
-/* Star pulse class for individual control */
-.star-pulse {
-  will-change: opacity, transform;
 }
 
 /* Performance optimizations */
 @media (prefers-reduced-motion: reduce) {
   .star-pulse,
-  .shooting-star-enhanced {
+  .shooting-star {
     animation: none !important;
   }
 }
 
 /* Mobile performance optimization */
 @media (max-width: 768px) {
-  .shooting-star-enhanced::before {
-    width: 100px;
-  }
-
-  .shooting-star-enhanced::after {
+  .shooting-star::before {
     width: 50px;
   }
 }

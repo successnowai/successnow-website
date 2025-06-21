@@ -30,6 +30,7 @@ export function RotatingText({ words, className = "", interval = 3000 }: Rotatin
       className={`inline-block transition-all duration-500 ease-in-out ${
         isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform -translate-y-2"
       } ${className}`}
+      aria-live="polite"
     >
       {words[currentIndex]}
     </span>

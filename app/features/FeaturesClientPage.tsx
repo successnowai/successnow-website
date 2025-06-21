@@ -192,9 +192,16 @@ export default function FeaturesClientPage() {
       <Navbar currentPage="features" />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="text-center py-12 sm:py-16 px-4 sm:px-6 md:px-10 overflow-hidden pt-20">
+      <section
+        ref={heroRef}
+        aria-labelledby="hero-heading"
+        className="text-center py-12 sm:py-16 px-4 sm:px-6 md:px-10 overflow-hidden pt-20"
+      >
         <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
+          <h1
+            id="hero-heading"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight"
+          >
             <span className="block text-white animate-fadeTextUp">All SuccessNOW AI™</span>
             <span className="block animate-fadeTextUp animation-delay-300">
               <RotatingText words={rotatingWords} className="text-[#00BFFF]" interval={2500} />
@@ -512,7 +519,7 @@ export default function FeaturesClientPage() {
       </div>
 
       {/* All Features Section */}
-      <section ref={featuresRef} className="py-12 sm:py-16 px-4 sm:px-6">
+      <section ref={featuresRef} aria-label="All Features" className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {categories.map((category, categoryIndex) => (
             <div
@@ -536,10 +543,17 @@ export default function FeaturesClientPage() {
                       className={`bg-[#1c2230] border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,191,255,0.2)] cursor-pointer animate-fade-up ${
                         featuresIsInView ? "animate-show" : ""
                       } animate-delay-${(index % 6) * 100 + categoryIndex * 100}`}
+                      role="article"
+                      aria-labelledby={`feature-${feature.title.toLowerCase().replace(/\s+/g, "-")}`}
                     >
                       <CardContent className="p-4 sm:p-6">
                         <div className="mb-3 sm:mb-4 text-xl sm:text-2xl">{feature.emoji}</div>
-                        <h3 className="mb-2 font-bold text-white text-base sm:text-lg">{feature.title}</h3>
+                        <h3
+                          id={`feature-${feature.title.toLowerCase().replace(/\s+/g, "-")}`}
+                          className="mb-2 font-bold text-white text-base sm:text-lg"
+                        >
+                          {feature.title}
+                        </h3>
                         <p className="text-gray-300 text-sm mb-3 sm:mb-4">{feature.description}</p>
                         <ul className="space-y-1 sm:space-y-2">
                           {feature.benefits.map((benefit, i) => (

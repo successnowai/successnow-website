@@ -88,70 +88,111 @@ export default function GHLForm({ formType, className = "" }: GHLFormProps) {
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <label htmlFor="firstName" className="sr-only">
+            First Name
+          </label>
+          <Input
+            id="firstName"
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={formData.firstName}
+            onChange={handleInputChange}
+            required
+            aria-required="true"
+            className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 focus:ring-offset-black"
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="lastName" className="sr-only">
+            Last Name
+          </label>
+          <Input
+            id="lastName"
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={formData.lastName}
+            onChange={handleInputChange}
+            required
+            aria-required="true"
+            className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 focus:ring-offset-black"
+          />
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <label htmlFor="email" className="sr-only">
+          Email Address
+        </label>
         <Input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={formData.firstName}
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          value={formData.email}
           onChange={handleInputChange}
           required
-          className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00BFFF]"
-        />
-        <Input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
-          onChange={handleInputChange}
-          required
-          className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00BFFF]"
+          aria-required="true"
+          className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 focus:ring-offset-black"
         />
       </div>
 
-      <Input
-        type="email"
-        name="email"
-        placeholder="Email Address"
-        value={formData.email}
-        onChange={handleInputChange}
-        required
-        className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00BFFF]"
-      />
+      <div className="space-y-2">
+        <label htmlFor="phone" className="sr-only">
+          Phone Number
+        </label>
+        <Input
+          id="phone"
+          type="tel"
+          name="phone"
+          placeholder="Phone Number"
+          value={formData.phone}
+          onChange={handleInputChange}
+          required
+          aria-required="true"
+          className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 focus:ring-offset-black"
+        />
+      </div>
 
-      <Input
-        type="tel"
-        name="phone"
-        placeholder="Phone Number"
-        value={formData.phone}
-        onChange={handleInputChange}
-        required
-        className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00BFFF]"
-      />
+      <div className="space-y-2">
+        <label htmlFor="company" className="sr-only">
+          Company Name
+        </label>
+        <Input
+          id="company"
+          type="text"
+          name="company"
+          placeholder="Company Name"
+          value={formData.company}
+          onChange={handleInputChange}
+          className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 focus:ring-offset-black"
+        />
+      </div>
 
-      <Input
-        type="text"
-        name="company"
-        placeholder="Company Name"
-        value={formData.company}
-        onChange={handleInputChange}
-        className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00BFFF]"
-      />
-
-      <select
-        name="industry"
-        value={formData.industry}
-        onChange={handleInputChange}
-        className="w-full p-3 rounded-md bg-white/10 border border-white/20 text-white focus:border-[#00BFFF] focus:outline-none"
-      >
-        <option value="">Select Your Industry</option>
-        <option value="legal">Legal / Law Firms</option>
-        <option value="realestate">Real Estate</option>
-        <option value="automotive">Auto Dealers</option>
-        <option value="mortgage">Mortgage Brokers</option>
-        <option value="fitness">Gyms & Studios</option>
-        <option value="medspa">Medspas</option>
-        <option value="other">Other</option>
-      </select>
+      <div className="space-y-2">
+        <label htmlFor="industry" className="sr-only">
+          Industry
+        </label>
+        <select
+          id="industry"
+          name="industry"
+          value={formData.industry}
+          onChange={handleInputChange}
+          className="w-full p-3 rounded-md bg-white/10 border border-white/20 text-white focus:border-[#00BFFF] focus:outline-none focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 focus:ring-offset-black"
+          aria-label="Select Your Industry"
+        >
+          <option value="">Select Your Industry</option>
+          <option value="legal">Legal / Law Firms</option>
+          <option value="realestate">Real Estate</option>
+          <option value="automotive">Auto Dealers</option>
+          <option value="mortgage">Mortgage Brokers</option>
+          <option value="fitness">Gyms & Studios</option>
+          <option value="medspa">Medspas</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
 
       {formType === "contact" && (
         <textarea

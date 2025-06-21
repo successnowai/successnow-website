@@ -89,8 +89,13 @@ export default function IndustrySolutions() {
   ]
 
   return (
-    <section ref={ref as React.RefObject<HTMLDivElement>} className="mx-auto max-w-6xl px-4 sm:px-5 py-12 sm:py-15">
+    <section
+      ref={ref as React.RefObject<HTMLDivElement>}
+      className="mx-auto max-w-6xl px-4 sm:px-5 py-12 sm:py-15"
+      aria-labelledby="industry-solutions-title"
+    >
       <h2
+        id="industry-solutions-title"
         className={`mb-6 sm:mb-8 text-center text-2xl sm:text-3xl font-bold text-white animate-fade-up ${isInView ? "animate-show" : ""}`}
       >
         AI-Powered Solutions for Top Industries
@@ -99,9 +104,12 @@ export default function IndustrySolutions() {
         {industries.map((industry, index) => (
           <div
             key={index}
-            className={`bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer animate-fade-up ${
+            className={`bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 focus-within:-translate-y-1 hover:shadow-xl focus-within:shadow-xl cursor-pointer animate-fade-up ${
               isInView ? "animate-show" : ""
             } animate-delay-${(index % 6) * 100}`}
+            tabIndex={0}
+            role="region"
+            aria-label={`${industry.title} industry solution`}
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-3">
@@ -124,8 +132,9 @@ export default function IndustrySolutions() {
             </div>
 
             <button
-              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover:scale-105 shadow-lg text-sm sm:text-base min-h-[44px]"
+              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 focus:from-blue-600 focus:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 hover:scale-105 focus:scale-105 shadow-lg text-sm sm:text-base min-h-[44px]"
               onClick={() => (window.location.href = `/${industry.slug}`)}
+              aria-label={`View ${industry.title} industry solution`}
             >
               {industry.buttonText} →
             </button>

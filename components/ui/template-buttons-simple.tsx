@@ -37,7 +37,7 @@ export function TemplateButtonsSimple({
       {templates.map((template) => (
         <Card
           key={template.id}
-          className="group relative overflow-hidden bg-gradient-to-br from-slate-900/90 to-slate-800/90 border-slate-700/50 hover:border-[#00BFFF]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#00BFFF]/20"
+          className="group relative overflow-hidden bg-gradient-to-br from-slate-900/90 to-slate-800/90 border-slate-700/50 hover:border-[#00BFFF]/50 focus-within:border-[#00BFFF]/50 transition-all duration-500 hover:scale-105 focus-within:scale-105 hover:shadow-2xl focus-within:shadow-2xl hover:shadow-[#00BFFF]/20 focus-within:shadow-[#00BFFF]/20"
           onMouseEnter={() => setHoveredTemplate(template.id)}
           onMouseLeave={() => setHoveredTemplate(null)}
         >
@@ -61,7 +61,7 @@ export function TemplateButtonsSimple({
               <h3 className="text-lg font-bold text-white group-hover:text-[#00BFFF] transition-colors duration-300">
                 {template.title}
               </h3>
-              <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+              <p className="text-sm text-gray-300 group-hover:text-white group-focus-within:text-white transition-colors duration-300">
                 {template.description}
               </p>
             </div>
@@ -69,7 +69,8 @@ export function TemplateButtonsSimple({
             {/* Glowing button */}
             <Button
               onClick={() => handleTemplateClick(template.url)}
-              className="relative w-full bg-gradient-to-r from-[#00BFFF] to-purple-500 hover:from-[#00BFFF]/90 hover:to-purple-500/90 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 group/btn overflow-hidden"
+              className="relative w-full bg-gradient-to-r from-[#00BFFF] to-purple-500 hover:from-[#00BFFF]/90 hover:to-purple-500/90 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 group/btn overflow-hidden"
+              aria-label={`View ${template.title} template`}
             >
               {/* Button glow effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#00BFFF] to-purple-500 opacity-0 group-hover/btn:opacity-30 transition-opacity duration-300 blur-lg" />

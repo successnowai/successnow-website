@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Menu, X } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { DemoPopup } from "@/components/ui/demo-popup"
@@ -13,11 +13,48 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activePage, setActivePage] = useState(currentPage)
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const firstFocusableElementRef = useRef<HTMLButtonElement>(null)
+  const lastFocusableElementRef = useRef<HTMLButtonElement>(null)
 
   // Update active page when currentPage prop changes
   useEffect(() => {
     setActivePage(currentPage)
   }, [currentPage])
+
+  // Handle keyboard navigation for mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isMobileMenuOpen) return
+
+      if (e.key === "Escape") {
+        setIsMobileMenuOpen(false)
+        menuButtonRef.current?.focus()
+      }
+
+      // Trap focus within mobile menu
+      if (e.key === "Tab") {
+        if (e.shiftKey && document.activeElement === firstFocusableElementRef.current) {
+          e.preventDefault()
+          lastFocusableElementRef.current?.focus()
+        } else if (!e.shiftKey && document.activeElement === lastFocusableElementRef.current) {
+          e.preventDefault()
+          firstFocusableElementRef.current?.focus()
+        }
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [isMobileMenuOpen])
+
+  // Focus management for mobile menu
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      firstFocusableElementRef.current?.focus()
+    }
+  }, [isMobileMenuOpen])
 
   const navItems = [
     { name: "Home", href: "/", id: "home" },
@@ -55,12 +92,18 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5 navbar-height">
+      <nav
+        className="fixed top-0 left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5 navbar-height"
+        role="navigation"
+        aria-label="Main navigation"
+      >
         <div className="relative flex items-center justify-between px-4 sm:px-6 py-3 max-w-7xl mx-auto h-full">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="/" className="flex items-center space-x-2 group">
-              <div className="text-lg sm:text-xl md:text-2xl">🚀</div>
+            <a href="/" className="flex items-center space-x-2 group" aria-label="SuccessNOW Home">
+              <div className="text-lg sm:text-xl md:text-2xl" aria-hidden="true">
+                🚀
+              </div>
               <span className="text-base sm:text-lg md:text-xl font-bold bg-gradient-to-r from-[#00BFFF] to-white bg-clip-text text-transparent group-hover:from-white group-hover:to-[#00BFFF] transition-all duration-300">
                 SuccessNOW
               </span>
@@ -68,20 +111,23 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8" role="menubar" aria-label="Desktop navigation menu">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.href, item.id)}
-                className={`relative text-sm font-medium transition-all duration-300 hover:text-[#00BFFF] group ${
+                className={`relative text-sm font-medium transition-all duration-300 hover:text-[#00BFFF] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00BFFF] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-md px-2 py-1 ${
                   activePage === item.id ? "text-[#00BFFF]" : "text-gray-300"
                 }`}
+                aria-current={activePage === item.id ? "page" : undefined}
+                role="menuitem"
               >
                 {item.name}
                 <span
                   className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#00BFFF] to-transparent transition-all duration-300 group-hover:w-full ${
                     activePage === item.id ? "w-full" : ""
                   }`}
+                  aria-hidden="true"
                 ></span>
               </button>
             ))}
@@ -90,9 +136,12 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
           {/* Mobile Menu Button */}
           <div className="flex items-center">
             <button
-              className="lg:hidden text-white p-1.5 z-50 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              ref={menuButtonRef}
+              className="lg:hidden text-white p-1.5 z-50 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 focus:ring-offset-black rounded-md"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle mobile menu"
+              aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
             </button>
@@ -100,15 +149,30 @@ export default function Navbar({ currentPage = "home" }: NavbarProps) {
 
           {/* Mobile Menu Overlay */}
           {isMobileMenuOpen && (
-            <div className="absolute top-full left-0 right-0 bg-black border-b border-[#00BFFF]/10 lg:hidden shadow-xl z-50">
+            <div
+              id="mobile-menu"
+              ref={mobileMenuRef}
+              className="absolute top-full left-0 right-0 bg-black border-b border-[#00BFFF]/10 lg:hidden shadow-xl z-50"
+              role="menu"
+              aria-label="Mobile navigation menu"
+            >
               <div className="px-4 sm:px-6 py-6 space-y-4">
-                {navItems.map((item) => (
+                {navItems.map((item, index) => (
                   <button
                     key={item.id}
+                    ref={
+                      index === 0
+                        ? firstFocusableElementRef
+                        : index === navItems.length - 1
+                          ? lastFocusableElementRef
+                          : null
+                    }
                     onClick={() => handleNavClick(item.href, item.id)}
-                    className={`block w-full text-left py-3 text-base font-medium transition-all duration-300 hover:text-[#00BFFF] hover:translate-x-2 min-h-[44px] ${
+                    className={`block w-full text-left py-3 text-base font-medium transition-all duration-300 hover:text-[#00BFFF] hover:translate-x-2 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 focus:ring-offset-black rounded-md ${
                       activePage === item.id ? "text-[#00BFFF]" : "text-gray-300"
                     }`}
+                    role="menuitem"
+                    aria-current={activePage === item.id ? "page" : undefined}
                   >
                     {item.name}
                   </button>

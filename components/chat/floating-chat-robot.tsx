@@ -1,124 +1,67 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { BotIcon as Robot } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { DemoPopup } from "@/components/ui/demo-popup"
+import { MessageSquare, X } from "lucide-react"
 
-export default function FloatingChatRobot() {
-  const router = useRouter()
+const FloatingChatRobot = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [showLeadCapture, setShowLeadCapture] = useState(true)
-  const [showInstantDemo, setShowInstantDemo] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-  })
 
-  // Floating animation
-  const [floatDirection, setFloatDirection] = useState(1)
+  const toggleChat = () => {
+    setIsOpen(!isOpen)
+  }
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setFloatDirection((prev) => prev * -1)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const handleSubmitLead = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    try {
-      // Here you would integrate with your lead capture system
-      console.log("Lead submitted:", formData)
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
-      setIsSubmitting(false)
-      setShowLeadCapture(false)
-      setShowInstantDemo(true)
-    } catch (error) {
-      console.error("Error submitting lead:", error)
-      setIsSubmitting(false)
+    if (isOpen) {
+      // Check microphone permissions when chat opens
+      if (typeof navigator !== "undefined" && navigator.permissions) {
+        navigator.permissions
+          .query({ name: "microphone" as PermissionName })
+          .then((result) => {
+            if (result.state === "granted") {
+              console.log("Microphone access already granted")
+            } else if (result.state === "prompt") {
+              console.log("User will be prompted for microphone access")
+            }
+          })
+          .catch((err) => {
+            console.log("Permission query not supported:", err)
+          })
+      }
     }
-  }
-
-  const handleInstantDemo = async () => {
-    console.log("Requesting microphone access and navigating to demo page...")
-
-    try {
-      // Request microphone access before navigating
-      await navigator.mediaDevices.getUserMedia({ audio: true })
-      console.log("Microphone access granted")
-
-      // Navigate to the demo page
-      router.push("/demo")
-
-      // Close the popup after navigation
-      setIsOpen(false)
-      setShowLeadCapture(true)
-      setShowInstantDemo(false)
-      setFormData({ name: "", phone: "", email: "" })
-    } catch (error) {
-      console.error("Microphone access denied:", error)
-      // Still navigate to demo page even if mic access is denied
-      router.push("/demo")
-      setIsOpen(false)
-      setShowLeadCapture(true)
-      setShowInstantDemo(false)
-      setFormData({ name: "", phone: "", email: "" })
-    }
-  }
-
-  const handleClose = () => {
-    setIsOpen(false)
-    setShowLeadCapture(true)
-    setShowInstantDemo(false)
-    setFormData({ name: "", phone: "", email: "" })
-  }
+  }, [isOpen])
 
   return (
-    <>
-      <div className="fixed bottom-6 right-6 z-50">
-        <Button
-          onClick={() => setIsOpen(true)}
-          className="relative rounded-full w-16 h-16 shadow-2xl transition-all duration-300 hover:scale-110 border-0 group"
-          style={{
-            background: "linear-gradient(135deg, #0080FF, #00BFFF)",
-            boxShadow:
-              "0 0 20px 5px rgba(0, 128, 255, 0.7), 0 0 40px 10px rgba(0, 128, 255, 0.5), 0 0 60px 15px rgba(0, 128, 255, 0.3)",
-            transform: `translateY(${floatDirection * 5}px)`,
-            transition: "transform 3s ease-in-out, box-shadow 1s ease-in-out",
-          }}
+    <div className="fixed bottom-4 right-4 z-50">
+      {isOpen && (
+        <div
+          id="chat-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-label="AI Chat Assistant"
+          className="bg-white rounded-lg shadow-lg w-96 h-80 flex flex-col overflow-hidden mb-4"
         >
-          <Robot className="w-8 h-8 text-white group-hover:animate-bounce" />
-
-          {/* Notification dot */}
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
-            <span className="text-white text-xs font-bold">1</span>
+          <div className="flex justify-center items-center h-full">
+            <iframe
+              src="https://iframes.ai/o/1750493608926x366840044583387140?color=c540ea&icon=bot"
+              allow="microphone"
+              className="w-full h-full border-none"
+              id="assistantFrame"
+              title="AI Assistant"
+            />
           </div>
-
-          {/* Ripple effect */}
-          <div className="absolute inset-0 rounded-full bg-[#0080FF] animate-ping opacity-30"></div>
-        </Button>
-      </div>
-
-      {/* Demo Popup */}
-      <DemoPopup isOpen={isOpen} onClose={() => setIsOpen(false)} />
-    </>
+        </div>
+      )}
+      <button
+        onClick={toggleChat}
+        className="bg-[#00BFFF] hover:bg-[#00BFFF]/90 text-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#00BFFF]"
+        aria-label={isOpen ? "Close chat assistant" : "Open chat assistant"}
+        aria-expanded={isOpen}
+        aria-controls="chat-panel"
+      >
+        {isOpen ? <X className="h-6 w-6" /> : <MessageSquare className="h-6 w-6" />}
+      </button>
+    </div>
   )
 }
+
+export default FloatingChatRobot
