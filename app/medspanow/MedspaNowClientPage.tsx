@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 import { DemoPopup } from "@/components/ui/demo-popup"
-import { InstantDemoCTA } from "@/components/ui/instant-demo-cta"
+// import { InstantDemoCTA } from "@/components/ui/instant-demo-cta" // Removed
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
@@ -125,8 +125,8 @@ const MedspaNowClientPage = () => {
         </div>
       </section>
 
-      {/* Instant Demo CTA */}
-      <InstantDemoCTA onClick={handleDemoClick} />
+      {/* Instant Demo CTA Removed */}
+      {/* <InstantDemoCTA onClick={handleDemoClick} /> */}
 
       <AdsSuccessEcosystem onDemoClick={handleDemoClick} />
 
