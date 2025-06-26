@@ -30,7 +30,7 @@ export default function PricingTable() {
     },
     {
       icon: "💎",
-      text: "Access to Voice AI at $0.0014/sec",
+      text: "Access to Voice AI at $0.0000233/second",
     },
     {
       icon: "⚡",
