@@ -1,23 +1,59 @@
+import type React from "react"
 import StarryBackground from "@/components/ui/starry-background"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Rocket, Diamond, Users, MapPin, DollarSign } from "lucide-react"
+import {
+  CheckCircle,
+  Rocket,
+  Diamond,
+  DollarSign,
+  Sparkles,
+  Package,
+  Megaphone,
+  Search,
+  UserCheck,
+  Lock,
+  BrainCircuit,
+  Wallet,
+} from "lucide-react"
 import Link from "next/link"
 import { Checkbox } from "@/components/ui/checkbox"
+
+const FeatureCard = ({
+  icon: Icon,
+  title,
+  value,
+  children,
+}: { icon: React.ElementType; title: string; value: string; children: React.ReactNode }) => (
+  <Card className="bg-black/50 backdrop-blur-lg border border-gray-700/80 h-full">
+    <CardHeader>
+      <div className="flex items-center gap-4">
+        <div className="bg-gradient-to-br from-blue-500 to-cyan-400 p-3 rounded-lg">
+          <Icon className="w-6 h-6 text-white" />
+        </div>
+        <div>
+          <CardTitle className="text-xl font-bold text-white">{title}</CardTitle>
+          <p className="text-cyan-400 font-semibold">Value: {value}</p>
+        </div>
+      </div>
+    </CardHeader>
+    <CardContent className="text-gray-300 space-y-2">{children}</CardContent>
+  </Card>
+)
 
 export default function ApplyPage() {
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <StarryBackground />
 
-      <div className="relative z-10 pt-20">
+      <div className="relative z-10 pt-12 md:pt-20">
         {/* Header Banner */}
         <div className="container mx-auto px-4 mb-8">
           <div className="text-center">
-            <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 text-sm font-bold rounded-full mb-8">
+            <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 text-sm font-bold rounded-full mb-8 shadow-lg shadow-cyan-500/20">
               🚀 SUCCESSNOW JED-AI PROGRAM - LIMITED TO 5 PEOPLE PER INDUSTRY - ONLY 1 PER GEOGRAPHICAL AREA!
             </Badge>
           </div>
@@ -27,98 +63,66 @@ export default function ApplyPage() {
           {/* Hero Section */}
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
                 SuccessNOW JED-AI Program
               </span>
             </h1>
-
-            <div className="space-y-4 mb-8">
-              <p className="text-2xl md:text-3xl font-bold text-red-400">
-                THE AI revolution isn't coming, IT's Already here!
-              </p>
-              <p className="text-xl md:text-2xl font-bold text-cyan-400">
-                Become a JED-AI MASTER and Master AI before AI becomes your MASTER
-              </p>
-              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-                Join this Program to be a part of the revolution not a victim of it!
-              </p>
-            </div>
-
-            {/* Path to Growth Section */}
-            <div className="mb-12">
-              <h2 className="text-4xl font-bold mb-6">
-                Your Path To <span className="text-cyan-400">Explosive Growth</span>
-              </h2>
-              <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                The most exclusive, comprehensive AI Domination with SuccessNOW business transformation program ever
-                created. Limited to 5 people per industry every 6 months - Only 1 per geographical area to make sure you
-                dominate!
-              </p>
-            </div>
-
-            {/* Diamond Tier Highlight */}
-            <Card className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 border border-green-500/30 max-w-4xl mx-auto mb-12">
-              <CardContent className="p-8">
-                <div className="flex items-center justify-center mb-4">
-                  <DollarSign className="w-8 h-8 text-green-400 mr-3" />
-                  <h3 className="text-2xl font-bold text-green-400">EXCLUSIVE DIAMOND TIER AFFILIATE PROGRAM</h3>
-                </div>
-                <p className="text-lg text-gray-200 mb-4">
-                  AI Domination Program members automatically get enrolled in our Diamond Tier Affiliate Partner Program
-                </p>
-                <p className="text-xl font-bold text-green-400">
-                  Earn 50% Recurring MRR from every person you refer to SuccessNOW!
-                </p>
-              </CardContent>
-            </Card>
+            <p className="text-xl md:text-2xl font-bold text-cyan-400 max-w-4xl mx-auto">
+              Become a JED-AI MASTER and Master AI before AI becomes your MASTER. Join the revolution, don't become a
+              victim of it.
+            </p>
           </div>
 
-          {/* Application Form */}
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Application & Value Stack Section */}
+          <div className="max-w-7xl mx-auto mb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
               {/* Form */}
-              <Card className="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50">
+              <Card className="lg:col-span-3 bg-black/50 backdrop-blur-lg border border-gray-700/80 shadow-2xl shadow-blue-500/10">
+                <CardHeader>
+                  <CardTitle className="text-3xl font-bold text-center text-white">
+                    Apply for the JED-AI Program
+                  </CardTitle>
+                  <p className="text-gray-300 text-center">Complete your application to secure your exclusive spot.</p>
+                </CardHeader>
                 <CardContent className="p-8">
-                  <h3 className="text-3xl font-bold mb-6 text-center">Apply for JED-AI Program</h3>
-                  <p className="text-gray-300 text-center mb-8">
-                    Complete your application to secure your exclusive spot in the most advanced AI business
-                    transformation program.
-                  </p>
-
-                  {/* GHL Form Placeholder */}
                   <div className="space-y-6">
-                    <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-lg p-6 border border-blue-500/20">
-                      <h4 className="text-lg font-semibold text-blue-400 mb-3">📋 Application Form</h4>
-                      <p className="text-gray-300 text-sm mb-4">
-                        Our system integrates directly with your business. This form will collect:
-                      </p>
-                      <ul className="text-sm text-gray-400 space-y-1">
-                        <li>• Personal Information</li>
-                        <li>• Business Details</li>
-                        <li>• Industry & Territory</li>
-                        <li>• Revenue Goals</li>
-                        <li>• AI Experience Level</li>
-                      </ul>
-                    </div>
-
                     {/* Temporary Form Fields for Demo */}
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <Input placeholder="First Name" className="bg-gray-800 border-gray-700 text-white" />
-                        <Input placeholder="Last Name" className="bg-gray-800 border-gray-700 text-white" />
+                        <Input
+                          placeholder="First Name"
+                          className="bg-gray-800/80 border-gray-700 text-white placeholder:text-gray-400 focus:ring-cyan-500 focus:border-cyan-500"
+                        />
+                        <Input
+                          placeholder="Last Name"
+                          className="bg-gray-800/80 border-gray-700 text-white placeholder:text-gray-400 focus:ring-cyan-500 focus:border-cyan-500"
+                        />
                       </div>
                       <Input
                         placeholder="Email Address"
                         type="email"
-                        className="bg-gray-800 border-gray-700 text-white"
+                        className="bg-gray-800/80 border-gray-700 text-white placeholder:text-gray-400 focus:ring-cyan-500 focus:border-cyan-500"
                       />
-                      <Input placeholder="Phone Number" type="tel" className="bg-gray-800 border-gray-700 text-white" />
-                      <Input placeholder="Business Name" className="bg-gray-800 border-gray-700 text-white" />
-                      <Input placeholder="Industry" className="bg-gray-800 border-gray-700 text-white" />
-                      <Input placeholder="City, State" className="bg-gray-800 border-gray-700 text-white" />
+                      <Input
+                        placeholder="Phone Number"
+                        type="tel"
+                        className="bg-gray-800/80 border-gray-700 text-white placeholder:text-gray-400 focus:ring-cyan-500 focus:border-cyan-500"
+                      />
+                      <Input
+                        placeholder="Business Name"
+                        className="bg-gray-800/80 border-gray-700 text-white placeholder:text-gray-400 focus:ring-cyan-500 focus:border-cyan-500"
+                      />
+                      <Input
+                        placeholder="Industry"
+                        className="bg-gray-800/80 border-gray-700 text-white placeholder:text-gray-400 focus:ring-cyan-500 focus:border-cyan-500"
+                      />
+                      <Input
+                        placeholder="City, State"
+                        className="bg-gray-800/80 border-gray-700 text-white placeholder:text-gray-400 focus:ring-cyan-500 focus:border-cyan-500"
+                      />
                       <Textarea
-                        placeholder="Tell us about your business goals and why you want to join the JED-AI Program..."
-                        className="bg-gray-800 border-gray-700 text-white min-h-[120px]"
+                        placeholder="Tell us about your business goals..."
+                        className="bg-gray-800/80 border-gray-700 text-white min-h-[120px] placeholder:text-gray-400 focus:ring-cyan-500 focus:border-cyan-500"
                       />
                     </div>
 
@@ -136,7 +140,7 @@ export default function ApplyPage() {
                     </div>
 
                     <Link href="/dominate-checkout">
-                      <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 text-lg">
+                      <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 text-lg shadow-lg shadow-cyan-500/30">
                         Submit Application & Continue to Payment
                       </Button>
                     </Link>
@@ -144,76 +148,205 @@ export default function ApplyPage() {
                 </CardContent>
               </Card>
 
-              {/* Program Benefits */}
-              <div className="space-y-6">
-                <Card className="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50">
-                  <CardContent className="p-6">
-                    <h4 className="text-xl font-bold mb-4 flex items-center">
-                      <Rocket className="w-6 h-6 text-cyan-400 mr-2" />
-                      Program Value: $100,000+
+              {/* Total Value Stacked */}
+              <Card className="lg:col-span-2 bg-gradient-to-br from-purple-900/60 via-blue-900/50 to-cyan-900/60 backdrop-blur-lg border-2 border-purple-400 shadow-2xl shadow-purple-500/20 flex flex-col">
+                <CardHeader>
+                  <div className="text-center">
+                    <h4 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-3">
+                      <Sparkles className="w-8 h-8 text-purple-300" />
+                      TOTAL VALUE STACKED
                     </h4>
-                    <ul className="space-y-3 text-gray-300">
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Complete AI business transformation system
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Custom AI agents for your specific industry
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                        24/7 AI-powered lead generation & conversion
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Automated appointment booking & follow-up
-                      </li>
-                      <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                        AI-driven customer service & support
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50">
-                  <CardContent className="p-6">
-                    <h4 className="text-xl font-bold mb-4 flex items-center">
-                      <Users className="w-6 h-6 text-purple-400 mr-2" />
-                      Exclusivity Benefits
-                    </h4>
-                    <ul className="space-y-3 text-gray-300">
-                      <li className="flex items-start">
-                        <MapPin className="w-5 h-5 text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Only 1 business per geographical area
-                      </li>
-                      <li className="flex items-start">
-                        <Users className="w-5 h-5 text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Maximum 5 businesses per industry
-                      </li>
-                      <li className="flex items-start">
-                        <Diamond className="w-5 h-5 text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
-                        Diamond Tier Affiliate status included
-                      </li>
-                      <li className="flex items-start">
-                        <DollarSign className="w-5 h-5 text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
-                        50% recurring commission on referrals
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-r from-red-900/30 to-orange-900/30 border border-red-500/30">
-                  <CardContent className="p-6 text-center">
-                    <h4 className="text-xl font-bold text-red-400 mb-2">⚠️ Limited Time Offer</h4>
-                    <p className="text-gray-200">
-                      Only <span className="font-bold text-red-400">5 spots available</span> per industry. Secure your
-                      exclusive territory now!
+                    <p className="text-lg font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                      YOUR PATH TO TOTAL DOMINATION
                     </p>
-                  </CardContent>
-                </Card>
-              </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6 flex-grow flex flex-col justify-center">
+                  <div className="space-y-2 text-gray-300 mb-6 text-md">
+                    <div className="flex justify-between">
+                      <span>Custom Build:</span> <span className="font-semibold text-white">$60,000+</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Ads Management:</span> <span className="font-semibold text-white">$11,982</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>SEO Domination:</span> <span className="font-semibold text-white">$14,994</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>1-on-1 Coaching:</span> <span className="font-semibold text-white">$11,964</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Affiliate Tier Access:</span>{" "}
+                      <span className="font-semibold text-purple-400">UNLIMITED</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Lockout & Vault Access:</span>{" "}
+                      <span className="font-semibold text-purple-400">EXCLUSIVE</span>
+                    </div>
+                  </div>
+                  <hr className="border-gray-700 my-4" />
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="font-semibold text-gray-200 text-lg">GRAND TOTAL VALUE:</span>
+                      <span className="font-bold text-2xl text-white">$98,940+</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-cyan-400 flex items-center font-semibold text-md">
+                        <Rocket className="w-5 h-5 mr-2" /> Your Investment:
+                      </span>
+                      <span className="font-bold text-xl text-cyan-400">Starting at $9,888</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-green-400 flex items-center font-semibold text-md">
+                        <DollarSign className="w-5 h-5 mr-2" /> Savings:
+                      </span>
+                      <span className="font-bold text-xl text-green-400">$8,994</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Offer Breakdown Section */}
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-12 text-white">Here's Everything You Get...</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <FeatureCard icon={Package} title="Custom AI Website, Funnels & Agents" value="$60,000+">
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Full branded website & funnel design
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Speed to Lead Bot, SalesBot, & more
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  AI-driven lead capture & booking
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Offer strategy, video scripts, ad hooks
+                </p>
+              </FeatureCard>
+
+              <FeatureCard icon={Megaphone} title="6 Months Paid Ads Management" value="$11,982">
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Ads for 2 platforms (Google, FB, etc.)
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Managed via AdsNOW.ai + real team
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  A/B testing, copywriting, targeting
+                </p>
+                <p className="text-xs text-gray-400">🔔 Min. $2,500/mo ad spend recommended</p>
+              </FeatureCard>
+
+              <FeatureCard icon={Search} title="6 Months Local SEO Domination" value="$14,994">
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Full SEO audit, setup, & optimization
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  SEO Bot + expert content strategy
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Google Business Profile optimization
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Backlink strategy & ranking acceleration
+                </p>
+              </FeatureCard>
+
+              <FeatureCard icon={UserCheck} title="1-on-1 Performance Coaching" value="$11,964">
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Private 1-on-1 coaching calls (2x weekly)
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Strategy, clarity, systems, & focus
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Hosted by JED-AI certified coaches
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Access to private support thread
+                </p>
+              </FeatureCard>
+
+              <FeatureCard icon={Diamond} title="Diamond Tier Affiliate Program" value="UNLIMITED">
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Earn 50% recurring revenue on referrals
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Done-for-you funnels & swipe copy
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  High-converting, exclusive assets
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Invite-only tier with scaling potential
+                </p>
+              </FeatureCard>
+
+              <FeatureCard icon={Lock} title="Territory & Industry Lockout" value="EXCLUSIVE">
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Only 5 per industry per 6-month cycle
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Only 1 per local area (geo-lockout)
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Competitors denied after your approval
+                </p>
+                <p className="text-red-400 font-bold">Guaranteed Exclusivity!</p>
+              </FeatureCard>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+              <FeatureCard icon={BrainCircuit} title="Lifetime Access: Dominate Content Vault" value="Included">
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Full SuccessNOW AI Prompt Vault
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Lead magnet templates, funnel copy
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Evergreen ad examples & breakdowns
+                </p>
+                <p>
+                  <CheckCircle className="w-4 h-4 inline mr-2 text-green-400" />
+                  Early access to SuccessNOW Bot updates
+                </p>
+              </FeatureCard>
+              <FeatureCard icon={Wallet} title="Payment Plan Options" value="Flexible">
+                <p className="font-semibold text-white">Standard Plan:</p>
+                <p>$9,997 setup + 5 x $6,977/mo</p>
+                <p className="font-semibold text-white mt-2">30-Day Accelerated Plan:</p>
+                <p>$9,888 deposit + 4 x $6,500 (weekly)</p>
+                <p className="text-green-400 font-bold">You Save: $8,994 with Accelerated</p>
+              </FeatureCard>
             </div>
           </div>
 
