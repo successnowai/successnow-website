@@ -1,190 +1,94 @@
 "use client"
-import { useState, useEffect, useRef } from "react"
+
+import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Menu, X } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { DemoPopup } from "@/components/ui/demo-popup"
+import { Button } from "@/components/ui/button"
 
 interface NavbarProps {
   currentPage?: string
 }
 
-export default function Navbar({ currentPage = "home" }: NavbarProps) {
-  const router = useRouter()
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activePage, setActivePage] = useState(currentPage)
-  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
-  const mobileMenuRef = useRef<HTMLDivElement>(null)
-  const menuButtonRef = useRef<HTMLButtonElement>(null)
-  const firstFocusableElementRef = useRef<HTMLButtonElement>(null)
-  const lastFocusableElementRef = useRef<HTMLButtonElement>(null)
+export default function Navbar({ currentPage }: NavbarProps) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
-  // Update active page when currentPage prop changes
   useEffect(() => {
-    setActivePage(currentPage)
-  }, [currentPage])
+    setMounted(true)
+  }, [])
 
-  // Handle keyboard navigation for mobile menu
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isMobileMenuOpen) return
-
-      if (e.key === "Escape") {
-        setIsMobileMenuOpen(false)
-        menuButtonRef.current?.focus()
-      }
-
-      // Trap focus within mobile menu
-      if (e.key === "Tab") {
-        if (e.shiftKey && document.activeElement === firstFocusableElementRef.current) {
-          e.preventDefault()
-          lastFocusableElementRef.current?.focus()
-        } else if (!e.shiftKey && document.activeElement === lastFocusableElementRef.current) {
-          e.preventDefault()
-          firstFocusableElementRef.current?.focus()
-        }
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown)
-    return () => document.removeEventListener("keydown", handleKeyDown)
-  }, [isMobileMenuOpen])
-
-  // Focus management for mobile menu
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      firstFocusableElementRef.current?.focus()
-    }
-  }, [isMobileMenuOpen])
-
-  const navItems = [
-    { name: "Home", href: "/", id: "home" },
-    { name: "Features", href: "/features", id: "features" },
-    { name: "Industries", href: "/industries", id: "industries" },
-    { name: "Pricing", href: "/signup", id: "pricing" },
-    { name: "Demo", href: "/demo", id: "demo" },
-  ]
-
-  const handleNavClick = (href: string, id: string) => {
-    setIsMobileMenuOpen(false)
-
-    // If it's the demo link, show the popup instead of direct navigation
-    if (id === "demo") {
-      setIsDemoPopupOpen(true)
-      return
-    }
-
-    if (href.startsWith("/#")) {
-      // Handle anchor links
-      const sectionId = href.substring(2)
-      if (window.location.pathname !== "/") {
-        window.location.href = href
-      } else {
-        const element = document.getElementById(sectionId)
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" })
-        }
-      }
-    } else {
-      // Handle regular page navigation
-      window.location.href = href
-    }
+  if (!mounted) {
+    return null
   }
 
+  const navItems = [
+    { name: "Home", href: "/" },
+    { name: "Industries", href: "/industries" },
+    { name: "Pricing", href: "/signup" },
+    { name: "Dominate", href: "/apply" },
+    { name: "Demo", href: "/demo" },
+  ]
+
   return (
-    <>
-      <nav
-        className="fixed top-0 left-0 right-0 z-40 bg-black border-b border-[#00BFFF]/10 shadow-lg shadow-[#00BFFF]/5 navbar-height"
-        role="navigation"
-        aria-label="Main navigation"
-      >
-        <div className="relative flex items-center justify-between px-4 sm:px-6 py-3 max-w-7xl mx-auto h-full">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center">
-            <a href="/" className="flex items-center space-x-2 group" aria-label="SuccessNOW Home">
-              <div className="text-lg sm:text-xl md:text-2xl" aria-hidden="true">
-                🚀
-              </div>
-              <span className="text-base sm:text-lg md:text-xl font-bold bg-gradient-to-r from-[#00BFFF] to-white bg-clip-text text-transparent group-hover:from-white group-hover:to-[#00BFFF] transition-all duration-300">
-                SuccessNOW
-              </span>
-            </a>
-          </div>
+          <Link href="/" className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-[#00BFFF] to-cyan-400 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">🚀</span>
+            </div>
+            <span className="text-white font-bold text-xl">SuccessNOW</span>
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8" role="menubar" aria-label="Desktop navigation menu">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.href, item.id)}
-                className={`relative text-sm font-medium transition-all duration-300 hover:text-[#00BFFF] group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00BFFF] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-md px-2 py-1 ${
-                  activePage === item.id ? "text-[#00BFFF]" : "text-gray-300"
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  currentPage === item.name.toLowerCase() ? "text-[#00BFFF]" : "text-gray-300 hover:text-white"
                 }`}
-                aria-current={activePage === item.id ? "page" : undefined}
-                role="menuitem"
               >
                 {item.name}
-                <span
-                  className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#00BFFF] to-transparent transition-all duration-300 group-hover:w-full ${
-                    activePage === item.id ? "w-full" : ""
-                  }`}
-                  aria-hidden="true"
-                ></span>
-              </button>
+              </Link>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center">
-            <button
-              ref={menuButtonRef}
-              className="lg:hidden text-white p-1.5 z-50 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 focus:ring-offset-black rounded-md"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-300 hover:text-white"
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
-            </button>
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
           </div>
-
-          {/* Mobile Menu Overlay */}
-          {isMobileMenuOpen && (
-            <div
-              id="mobile-menu"
-              ref={mobileMenuRef}
-              className="absolute top-full left-0 right-0 bg-black border-b border-[#00BFFF]/10 lg:hidden shadow-xl z-50"
-              role="menu"
-              aria-label="Mobile navigation menu"
-            >
-              <div className="px-4 sm:px-6 py-6 space-y-4">
-                {navItems.map((item, index) => (
-                  <button
-                    key={item.id}
-                    ref={
-                      index === 0
-                        ? firstFocusableElementRef
-                        : index === navItems.length - 1
-                          ? lastFocusableElementRef
-                          : null
-                    }
-                    onClick={() => handleNavClick(item.href, item.id)}
-                    className={`block w-full text-left py-3 text-base font-medium transition-all duration-300 hover:text-[#00BFFF] hover:translate-x-2 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-[#00BFFF] focus:ring-offset-2 focus:ring-offset-black rounded-md ${
-                      activePage === item.id ? "text-[#00BFFF]" : "text-gray-300"
-                    }`}
-                    role="menuitem"
-                    aria-current={activePage === item.id ? "page" : undefined}
-                  >
-                    {item.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
-      </nav>
 
-      {/* Demo Popup */}
-      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
-    </>
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-black/95 backdrop-blur-sm border-t border-gray-800">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                    currentPage === item.name.toLowerCase() ? "text-[#00BFFF]" : "text-gray-300 hover:text-white"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
   )
 }

@@ -123,7 +123,7 @@ export default function FeatureStack() {
 
             <button
               className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover:scale-105 shadow-lg text-sm sm:text-base min-h-[44px]"
-              onClick={() => (window.location.href = "/features")}
+              onClick={() => (window.location.href = "/demo")}
             >
               {feature.buttonText} →
             </button>

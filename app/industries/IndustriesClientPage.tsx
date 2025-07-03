@@ -1,25 +1,22 @@
 "use client"
 
-import type React from "react"
-
 import Navbar from "@/components/navigation/navbar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { RotatingText } from "@/components/ui/rotating-text"
 import { useInView } from "@/hooks/use-intersection-observer"
-import { ArrowRight, Clock, CheckCircle } from "lucide-react"
+import { ArrowRight, CheckCircle } from "lucide-react"
 import Footer from "@/components/home/footer"
-import { useState } from "react"
+import StarryBackground from "@/components/ui/starry-background"
 
 export default function IndustriesClientPage() {
-  const { ref: heroRef, isInView: heroIsInView } = useInView()
-  const { ref: currentRef, isInView: currentIsInView } = useInView()
-  const { ref: comingSoonRef, isInView: comingSoonIsInView } = useInView()
+  const { ref: heroRef } = useInView()
+  const { ref: industriesRef, isInView: industriesAreInView } = useInView()
   const { ref: ctaRef, isInView: ctaIsInView } = useInView()
 
   const rotatingWords = ["Industries", "Businesses", "Sectors", "Markets", "Niches"]
 
-  const currentIndustries = [
+  const allIndustries = [
     {
       emoji: "🚗",
       title: "Auto Dealers",
@@ -32,7 +29,6 @@ export default function IndustriesClientPage() {
       ],
       buttonText: "See AutoDealersNOW",
       slug: "autodealersnow",
-      status: "available",
     },
     {
       emoji: "🏡",
@@ -46,7 +42,6 @@ export default function IndustriesClientPage() {
       ],
       buttonText: "See RealtorNOW",
       slug: "realtornow",
-      status: "available",
     },
     {
       emoji: "🏋️",
@@ -60,7 +55,6 @@ export default function IndustriesClientPage() {
       ],
       buttonText: "See GymsNOW",
       slug: "gymsnow",
-      status: "available",
     },
     {
       emoji: "🧑‍⚖️",
@@ -74,7 +68,6 @@ export default function IndustriesClientPage() {
       ],
       buttonText: "See LawyersNOW",
       slug: "lawyersnow",
-      status: "available",
     },
     {
       emoji: "💆",
@@ -88,7 +81,6 @@ export default function IndustriesClientPage() {
       ],
       buttonText: "See MedspaNOW",
       slug: "medspanow",
-      status: "available",
     },
     {
       emoji: "🏦",
@@ -102,166 +94,129 @@ export default function IndustriesClientPage() {
       ],
       buttonText: "See MortgageNOW",
       slug: "mortgagenow",
-      status: "available",
     },
-  ]
-
-  const comingSoonIndustries = [
     {
-      emoji: "🛡️",
-      title: "Insurance Agencies",
-      description: "Quote automation, policy renewals, lead nurturing.",
-      features: [
-        "Automated quote generation and comparison",
-        "Policy renewal reminders and upselling",
-        "Lead nurturing campaigns for different insurance types",
-        "Claims follow-up and customer satisfaction tracking",
+      emoji: "🦷",
+      title: "Dentists",
+      rotatingFeatures: [
+        "Book Appointments 24/7",
+        "Reduce No-Shows",
+        "Automate Patient Recall",
+        "Generate 5-Star Reviews",
+        "Fill Your Schedule",
       ],
+      buttonText: "See DentistsNOW",
+      slug: "dentistsnow",
     },
     {
       emoji: "🦴",
       title: "Chiropractors",
-      description: "Appointment booking, follow-ups, review generation.",
-      features: [
-        "Automated appointment scheduling and confirmations",
-        "Post-treatment follow-up and care instructions",
-        "Review generation after successful treatments",
-        "Wellness program enrollment automation",
+      rotatingFeatures: [
+        "Automate Appointment Booking",
+        "Follow-Up Post-Treatment",
+        "Generate Positive Reviews",
+        "Enroll in Wellness Programs",
+        "Reduce No-Shows",
       ],
+      buttonText: "See ChiropractorsNOW",
+      slug: "chiropractorsnow",
     },
     {
-      emoji: "🦷",
-      title: "Dental Services",
-      description: "Cleaning reminders, SEO for local search, patient education.",
-      features: [
-        "Automated cleaning and checkup reminders",
-        "Local SEO optimization for dental practices",
-        "Patient education content delivery",
-        "Insurance verification and billing automation",
+      emoji: "☀️",
+      title: "Solar Companies",
+      rotatingFeatures: [
+        "Generate Qualified Leads",
+        "Automate Consultation Booking",
+        "Nurture Prospects Long-Term",
+        "Streamline Project Updates",
+        "Increase Installation Rate",
       ],
+      buttonText: "See SolarNOW",
+      slug: "solarnow",
     },
     {
-      emoji: "🧘",
-      title: "Wellness Studios",
-      description: "Class reminders, content nurturing, studio ads.",
-      features: [
-        "Yoga, Pilates, and meditation class reminders",
-        "Wellness content nurturing sequences",
-        "Targeted studio advertising campaigns",
-        "Membership retention and engagement",
+      emoji: "🏠",
+      title: "Roofers",
+      rotatingFeatures: [
+        "Automate Quote Requests",
+        "Schedule Inspections 24/7",
+        "Follow-Up on Estimates",
+        "Generate Customer Reviews",
+        "Win More Bids",
       ],
+      buttonText: "See RoofersNOW",
+      slug: "roofersnow",
     },
     {
-      emoji: "🎯",
-      title: "Coaches & Consultants",
-      description: "Funnel-based onboarding, course management, automation.",
-      features: [
-        "Automated client onboarding funnels",
-        "Course and program management",
-        "Client progress tracking and accountability",
-        "Upselling and program expansion automation",
+      emoji: "🔧",
+      title: "Plumbers",
+      rotatingFeatures: [
+        "Book Emergency Calls Instantly",
+        "Automate Service Reminders",
+        "Dispatch Technicians Faster",
+        "Collect Payments & Reviews",
+        "Increase Repeat Business",
       ],
+      buttonText: "See PlumbersNOW",
+      slug: "plumbersnow",
     },
     {
-      emoji: "🛒",
-      title: "E-commerce & Retail",
-      description: "Upsell bots, review generation, cart abandonment recovery.",
-      features: [
-        "Intelligent upselling and cross-selling bots",
-        "Automated review generation campaigns",
-        "Cart abandonment recovery sequences",
-        "Customer lifetime value optimization",
+      emoji: "💨",
+      title: "HVAC Companies",
+      rotatingFeatures: [
+        "Schedule Maintenance Calls",
+        "Automate Tune-Up Reminders",
+        "Provide Instant Quotes",
+        "Manage Technician Schedules",
+        "Boost Service Contracts",
       ],
+      buttonText: "See HVACNOW",
+      slug: "hvacnow",
     },
     {
-      emoji: "🏪",
-      title: "Local Service Businesses",
-      description: "Salons, cleaners, barbershops — appointment bots, reminders, repeat business automation.",
-      features: [
-        "Multi-service appointment booking systems",
-        "Automated service reminders and follow-ups",
-        "Repeat business and loyalty automation",
-        "Local marketing and reputation management",
+      emoji: "👷",
+      title: "Contractors",
+      rotatingFeatures: [
+        "Qualify New Project Leads",
+        "Automate Bid Follow-Ups",
+        "Schedule Client Meetings",
+        "Streamline Project Communication",
+        "Build a 5-Star Reputation",
       ],
+      buttonText: "See ContractorsNOW",
+      slug: "contractorsnow",
     },
     {
-      emoji: "💉",
-      title: "Medispas",
-      description: "High-trust booking automation, package selling, client nurturing.",
-      features: [
-        "High-trust consultation booking automation",
-        "Treatment package selling and upselling",
-        "Long-term client nurturing campaigns",
-        "Post-treatment care and follow-up",
+      emoji: "🍽️",
+      title: "Restaurants",
+      rotatingFeatures: [
+        "Automate Table Reservations",
+        "Manage Waitlists Intelligently",
+        "Promote Daily Specials",
+        "Drive Repeat Customers",
+        "Boost Online Orders",
       ],
+      buttonText: "See RestaurantsNOW",
+      slug: "restaurantsnow",
     },
     {
-      emoji: "🏃",
-      title: "Fitness Trainers & Influencers",
-      description: "Funnels for online coaching, AI content planners, offer bots.",
-      features: [
-        "Online coaching funnel automation",
-        "AI-powered content planning and scheduling",
-        "Automated offer and program promotion",
-        "Community building and engagement",
+      emoji: "🛠️",
+      title: "Custom Build",
+      rotatingFeatures: [
+        "Build Custom AI Solutions",
+        "Tailor to Your Business",
+        "Unique Industry Requirements",
+        "Personalized Development",
+        "Complete Custom Automation",
       ],
-    },
-    {
-      emoji: "💅",
-      title: "Spa & Salon Services",
-      description: "AI-driven booking, reactivation campaigns, upsells.",
-      features: [
-        "Intelligent booking and scheduling systems",
-        "Client reactivation and win-back campaigns",
-        "Service upselling and package promotion",
-        "Seasonal and holiday campaign automation",
-      ],
+      buttonText: "See CustomBuildNOW",
+      slug: "custombuildnow",
     },
   ]
 
-  const [showWaitlistPopup, setShowWaitlistPopup] = useState(false)
-  const [selectedIndustry, setSelectedIndustry] = useState<string>("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState("")
-
-  const handleWaitlistClick = (industryTitle: string) => {
-    setSelectedIndustry(industryTitle)
-    setShowWaitlistPopup(true)
-  }
-
-  const handleWaitlistSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    const formData = new FormData(e.currentTarget)
-    const email = formData.get("email") as string
-    const name = formData.get("name") as string
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
-    setSubmitMessage(`Thanks ${name}! You've been added to the ${selectedIndustry} waitlist.`)
-    setIsSubmitting(false)
-
-    // Close popup after 2 seconds
-    setTimeout(() => {
-      setShowWaitlistPopup(false)
-      setSubmitMessage("")
-    }, 2000)
-  }
-
-  const handleAIAgentClick = () => {
-    // Initialize AI voice agent
-    if (typeof window !== "undefined") {
-      // This would integrate with your AI voice agent service
-      console.log("Launching AI Voice Agent...")
-      alert("AI Voice Agent feature coming soon! For now, please use our demo page.")
-      window.location.href = "/demo"
-    }
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white">
+      <StarryBackground />
       <Navbar currentPage="industries" />
 
       {/* Hero Section */}
@@ -283,7 +238,7 @@ export default function IndustriesClientPage() {
           <div className="flex flex-col gap-3 sm:gap-4 mt-6 sm:mt-8 animate-fadeTextUp animation-delay-1200 px-4">
             <Button
               className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-sm sm:text-base"
-              onClick={() => document.getElementById("current-industries")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => document.getElementById("available-industries")?.scrollIntoView({ behavior: "smooth" })}
             >
               EXPLORE AVAILABLE SOLUTIONS →
             </Button>
@@ -305,28 +260,28 @@ export default function IndustriesClientPage() {
         </div>
       </section>
 
-      {/* Current Industries Section */}
-      <section id="current-industries" ref={currentRef} className="py-12 sm:py-16 px-4 sm:px-6">
+      {/* All Industries Section */}
+      <section id="available-industries" ref={industriesRef} className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 sm:mb-12">
             <h2
-              className={`text-2xl sm:text-3xl font-bold mb-4 text-white animate-fade-up ${currentIsInView ? "animate-show" : ""}`}
+              className={`text-2xl sm:text-3xl font-bold mb-4 text-white animate-fade-up ${industriesAreInView ? "animate-show" : ""}`}
             >
-              🚀 Available Now - Industry-Specific AI Solutions
+              🚀 Industry-Specific AI Solutions
             </h2>
             <p
-              className={`text-gray-300 text-lg max-w-2xl mx-auto animate-fade-up ${currentIsInView ? "animate-show" : ""} animate-delay-100`}
+              className={`text-gray-300 text-lg max-w-2xl mx-auto animate-fade-up ${industriesAreInView ? "animate-show" : ""} animate-delay-100`}
             >
-              Ready-to-deploy AI systems tailored for your industry's unique needs
+              Ready-to-deploy AI systems tailored for your industry's unique needs.
             </p>
           </div>
 
           <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
-            {currentIndustries.map((industry, index) => (
+            {allIndustries.map((industry, index) => (
               <Card
                 key={industry.title}
                 className={`bg-[#1c2230] border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,191,255,0.2)] animate-fade-up ${
-                  currentIsInView ? "animate-show" : ""
+                  industriesAreInView ? "animate-show" : ""
                 } animate-delay-${index * 100}`}
               >
                 <CardContent className="p-6 text-center">
@@ -338,14 +293,13 @@ export default function IndustriesClientPage() {
                     </div>
                   </div>
 
-                  {/* Hero-style rotating text */}
                   <div className="mb-8 min-h-[60px] flex items-center justify-center">
                     <h4 className="text-xl font-bold">
                       <span className="text-white">AI that </span>
                       <RotatingText
                         words={industry.rotatingFeatures}
                         className="text-[#00BFFF]"
-                        interval={3000 + index * 500}
+                        interval={3000 + index * 100}
                       />
                     </h4>
                   </div>
@@ -360,79 +314,10 @@ export default function IndustriesClientPage() {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Coming Soon Section */}
-      <section ref={comingSoonRef} className="py-12 sm:py-16 px-4 sm:px-6 bg-black/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12">
-            <h2
-              className={`text-2xl sm:text-3xl font-bold mb-4 text-white animate-fade-up ${comingSoonIsInView ? "animate-show" : ""}`}
-            >
-              🔮 Coming Soon - Expanding Our AI Solutions
-            </h2>
-            <p
-              className={`text-gray-300 text-lg max-w-2xl mx-auto animate-fade-up ${comingSoonIsInView ? "animate-show" : ""} animate-delay-100`}
-            >
-              We're developing AI automation solutions for these industries. Want early access? Contact us!
-            </p>
-          </div>
-
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {comingSoonIndustries.map((industry, index) => (
-              <Card
-                key={industry.title}
-                className={`bg-[#1c2230]/60 border-gray-700/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,191,255,0.1)] animate-fade-up ${
-                  comingSoonIsInView ? "animate-show" : ""
-                } animate-delay-${index * 50}`}
-              >
-                <CardContent className="p-5">
-                  <div className="flex items-start space-x-3 mb-3">
-                    <div className="text-2xl opacity-70">{industry.emoji}</div>
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <h3 className="text-lg font-bold text-white/80">{industry.title}</h3>
-                        <Clock className="h-4 w-4 text-yellow-400" />
-                      </div>
-                      <p className="text-gray-400 text-sm mb-3">{industry.description}</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-1.5 mb-4">
-                    {industry.features.slice(0, 2).map((feature, i) => (
-                      <div key={i} className="flex items-start space-x-2">
-                        <div className="w-1 h-1 bg-gray-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-400 text-xs">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-2">
-                    <Button
-                      size="sm"
-                      className="flex-1 bg-[#00BFFF] text-white hover:bg-[#00BFFF]/90 font-semibold text-xs transition-all duration-200 hover:scale-105"
-                      onClick={() => handleWaitlistClick(industry.title)}
-                    >
-                      Join Waitlist
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="flex-1 border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-white font-semibold text-xs transition-all duration-200 hover:scale-105 bg-transparent"
-                      onClick={handleAIAgentClick}
-                    >
-                      Ask AI Agent
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <p className="text-gray-400 text-sm mb-4">
-              Don't see your industry? Our AI demo will adapt to your business needs.
+          <div className="text-center mt-12">
+            <p className="text-gray-400 text-lg mb-4">
+              Don't see your industry? Our AI demo can adapt to any business need.
             </p>
             <Button
               variant="outline"
@@ -476,97 +361,6 @@ export default function IndustriesClientPage() {
       </section>
 
       <Footer />
-      {/* Waitlist Popup */}
-      {showWaitlistPopup && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#1c2230] border border-gray-700 rounded-2xl p-8 max-w-md w-full mx-4 relative">
-            <button
-              onClick={() => setShowWaitlistPopup(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-            >
-              ✕
-            </button>
-
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-white mb-2">Join the Waitlist</h3>
-              <p className="text-gray-300 text-sm">
-                Be the first to know when <strong className="text-[#00BFFF]">{selectedIndustry}</strong> AI solutions
-                are available!
-              </p>
-            </div>
-
-            {submitMessage ? (
-              <div className="text-center">
-                <div className="text-green-400 text-lg font-semibold mb-4">✅ {submitMessage}</div>
-              </div>
-            ) : (
-              <form onSubmit={handleWaitlistSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 bg-[#0b0f1a] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 bg-[#0b0f1a] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent"
-                    placeholder="Enter your email address"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="business" className="block text-sm font-medium text-gray-300 mb-2">
-                    Business Name (Optional)
-                  </label>
-                  <input
-                    type="text"
-                    id="business"
-                    name="business"
-                    className="w-full px-4 py-3 bg-[#0b0f1a] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent"
-                    placeholder="Enter your business name"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-[#00BFFF] text-white hover:bg-[#00BFFF]/90 font-semibold py-3 px-4 rounded-lg transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Joining Waitlist...
-                    </div>
-                  ) : (
-                    "Join Waitlist"
-                  )}
-                </Button>
-              </form>
-            )}
-
-            <div className="mt-6 text-center">
-              <p className="text-gray-400 text-xs">
-                We'll notify you as soon as {selectedIndustry} solutions are ready. No spam, ever.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

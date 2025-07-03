@@ -329,58 +329,25 @@ export default function SignupPage() {
           </div>
         </section>
 
-        <h2 className="text-2xl font-semibold mb-6 text-center">Create Your Account</h2>
+        <section className="px-4 py-12 max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-br from-[#00274D]/80 to-[#001A33]/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-[#00BFFF]/30">
+            <h3 className="text-3xl md:text-4xl font-bold text-[#00BFFF] mb-4">Find Your Industry Solution</h3>
+            <p className="text-gray-300 text-lg mb-8">
+              We have tailored solutions for various industries. Find yours to get started!
+            </p>
 
-        {formError && <div className="text-red-500 mb-4">{formError}</div>}
-        {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}
+            <a
+              href="https://devnow.ai/industries"
+              className="inline-block bg-[#00BFFF] text-[#00274D] font-bold py-6 px-12 text-xl rounded-xl shadow-lg hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105"
+            >
+              Explore Industry Solutions
+            </a>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block text-gray-300 text-sm font-bold mb-2">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 text-white"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <div className="mt-6">
+              <p className="text-sm text-gray-400">30-day money-back guarantee • Cancel anytime • Instant access</p>
+            </div>
           </div>
-          <div>
-            <label htmlFor="password" className="block text-gray-300 text-sm font-bold mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 text-white"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="confirmPassword" className="block text-gray-300 text-sm font-bold mb-2">
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 text-white"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-          >
-            Sign Up
-          </button>
-        </form>
+        </section>
       </div>
     </div>
   )

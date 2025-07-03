@@ -1,5 +1,5 @@
-import DemoPage from "./DemoPage"
+import DemoClientPage from "./DemoClientPage"
 
-export default function Page() {
-  return <DemoPage />
+export default function DemoPage() {
+  return <DemoClientPage />
 }

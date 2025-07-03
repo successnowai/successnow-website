@@ -128,9 +128,12 @@ export default function PricingTable() {
 
         {/* CTA Button */}
         <div className={`text-center mt-12 animate-fade-up ${isInView ? "animate-show" : ""} animate-delay-600`}>
-          <button className="bg-[#00BFFF] hover:bg-[#0099CC] text-white font-bold text-xl px-12 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <a
+            href="/industries"
+            className="bg-[#00BFFF] hover:bg-[#0099CC] text-white font-bold text-xl px-12 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
             Start My SuccessNOW Platform Build →
-          </button>
+          </a>
 
           {/* Security badges */}
           <div className="flex justify-center items-center mt-6 space-x-6 text-sm text-gray-400">

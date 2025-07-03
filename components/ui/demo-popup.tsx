@@ -11,10 +11,12 @@ interface DemoPopupProps {
 
 export function DemoPopup({ isOpen, onClose }: DemoPopupProps) {
   const router = useRouter()
+  const [showComplianceForm, setShowComplianceForm] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
+    agreeToSMS: false,
   })
 
   // Refs for focus management
@@ -23,9 +25,10 @@ export function DemoPopup({ isOpen, onClose }: DemoPopupProps) {
   const previousActiveElement = useRef<Element | null>(null)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, type, checked, value } = e.target
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: type === "checkbox" ? checked : value,
     })
   }
 
@@ -34,14 +37,20 @@ export function DemoPopup({ isOpen, onClose }: DemoPopupProps) {
     console.log("Lead submitted:", formData)
 
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
     // Navigate to the demo page
     router.push("/demo")
 
     // Close the popup after navigation
     onClose()
-    setFormData({ name: "", phone: "", email: "" })
+    setFormData({ name: "", phone: "", email: "", agreeToSMS: false })
+  }
+
+  const handleDirectDemo = () => {
+    // Direct navigation to demo page
+    router.push("/demo")
+    onClose()
   }
 
   // Lock body scroll when popup is open
@@ -102,32 +111,6 @@ export function DemoPopup({ isOpen, onClose }: DemoPopupProps) {
     return () => document.removeEventListener("keydown", handleKeyDown)
   }, [isOpen, onClose])
 
-  // Handle microphone permissions when iframe loads
-  useEffect(() => {
-    if (isOpen) {
-      const handleIframeLoad = () => {
-        if (typeof navigator !== "undefined" && navigator.permissions) {
-          navigator.permissions
-            .query({ name: "microphone" as PermissionName })
-            .then((result) => {
-              if (result.state === "granted") {
-                console.log("Microphone access already granted")
-              } else if (result.state === "prompt") {
-                console.log("User will be prompted for microphone access")
-              }
-            })
-            .catch((err) => {
-              console.log("Permission query not supported:", err)
-            })
-        }
-      }
-
-      // Add a small delay to ensure iframe is rendered
-      const timer = setTimeout(handleIframeLoad, 500)
-      return () => clearTimeout(timer)
-    }
-  }, [isOpen])
-
   if (!isOpen) return null
 
   return (
@@ -146,7 +129,7 @@ export function DemoPopup({ isOpen, onClose }: DemoPopupProps) {
         aria-modal="true"
         aria-labelledby="modal-title"
       >
-        <div className="w-full max-w-2xl mx-auto">
+        <div className="w-full max-w-md mx-auto">
           <div
             ref={popupRef}
             className="relative bg-white rounded-xl shadow-2xl border border-gray-100 animate-in fade-in-0 zoom-in-95 duration-500 overflow-hidden"
@@ -159,7 +142,7 @@ export function DemoPopup({ isOpen, onClose }: DemoPopupProps) {
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <h2 id="modal-title" className="text-xl font-bold text-white">
-                  SuccessNOW AI Demo
+                  Get Your Free AI Demo
                 </h2>
               </div>
               <button
@@ -172,30 +155,124 @@ export function DemoPopup({ isOpen, onClose }: DemoPopupProps) {
               </button>
             </div>
 
-            {/* AI Assistant Iframe */}
-            <div className="p-0">
-              <div className="flex justify-center items-center bg-gray-50">
-                <iframe
-                  src="https://iframes.ai/o/1750494450055x405489352949366800?color=dd3ae6&icon=mic"
-                  allow="microphone"
-                  className="w-full h-96 border-none"
-                  id="assistantFrame"
-                  title="SuccessNOW AI Assistant Demo"
-                  loading="eager"
-                />
-              </div>
-            </div>
+            {/* Content */}
+            <div className="p-6">
+              {!showComplianceForm ? (
+                // Option Selection
+                <div className="text-center space-y-6">
+                  <div className="mb-6">
+                    <img
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jul%202%2C%202025%2C%2001_46_23%20PM-1fr6ntExnlXvoD2Ty7xAxXTek0VuVx.png"
+                      alt="SuccessNOW.ai Demo Options"
+                      className="w-full max-w-sm mx-auto rounded-lg shadow-lg"
+                    />
+                  </div>
 
-            {/* Footer with instructions */}
-            <div className="bg-gray-50 p-4 border-t border-gray-200">
-              <div className="text-center">
-                <p className="text-sm text-gray-600 mb-2">
-                  🎤 <strong>Voice-enabled AI Demo</strong> - Speak naturally with our AI assistant
-                </p>
-                <p className="text-xs text-gray-500">
-                  Your browser may request microphone permission for the best experience
-                </p>
-              </div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4">Choose Your Demo Experience</h3>
+
+                  <div className="space-y-4">
+                    <button
+                      onClick={handleDirectDemo}
+                      className="w-full bg-gradient-to-r from-[#dd3ae6] to-[#c540ea] text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                    >
+                      🎤 Voice & Text AI Demo
+                    </button>
+
+                    <button
+                      onClick={() => setShowComplianceForm(true)}
+                      className="w-full border-2 border-[#dd3ae6] text-[#dd3ae6] py-3 px-6 rounded-lg font-semibold hover:bg-[#dd3ae6] hover:text-white transition-all duration-300"
+                    >
+                      📋 Compliance Form Demo
+                    </button>
+                  </div>
+
+                  <p className="text-sm text-gray-600 mt-4">
+                    Experience our AI assistant with voice interaction or see our compliance-ready form system
+                  </p>
+                </div>
+              ) : (
+                // Compliance Form
+                <form onSubmit={handleSubmitLead} className="space-y-4">
+                  <div className="text-center mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-r from-[#dd3ae6] to-[#c540ea] rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl text-white">🏢</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800">Get Your Free AI Demo!</h3>
+                  </div>
+
+                  <div>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dd3ae6] focus:border-transparent"
+                    />
+                  </div>
+
+                  <div>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dd3ae6] focus:border-transparent"
+                    />
+                  </div>
+
+                  <div>
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#dd3ae6] focus:border-transparent"
+                    />
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <input
+                      type="checkbox"
+                      name="agreeToSMS"
+                      checked={formData.agreeToSMS}
+                      onChange={handleInputChange}
+                      required
+                      className="mt-1 w-4 h-4 text-[#dd3ae6] border-gray-300 rounded focus:ring-[#dd3ae6]"
+                    />
+                    <label className="text-sm text-gray-600 leading-relaxed">
+                      By submitting this form, you agree to receive recurring SMS messages from SuccessNOW.ai. Reply
+                      STOP to unsubscribe. Msg & data rates may apply.
+                    </label>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={!formData.agreeToSMS}
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Start Now
+                  </button>
+
+                  <div className="text-center text-sm text-gray-600 space-y-1">
+                    <p>https://successnow.ai</p>
+                    <p>+1 (888) 468-0707</p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setShowComplianceForm(false)}
+                    className="w-full text-[#dd3ae6] py-2 text-sm hover:underline"
+                  >
+                    ← Back to Demo Options
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
