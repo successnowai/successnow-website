@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { DemoPopup } from "@/components/ui/demo-popup"
+import { Bot } from "lucide-react"
 
 export function AnimatedBot() {
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
@@ -35,7 +36,7 @@ export function AnimatedBot() {
           >
             {/* Outer Shell */}
             <motion.div
-              className="absolute inset-0 rounded-full border-2 border-gray-700 bg-gradient-to-b from-gray-800 to-gray-900 shadow-lg"
+              className="absolute inset-0 rounded-full border-2 border-cyan-700 bg-gradient-to-b from-cyan-900 to-blue-900 shadow-lg"
               variants={{
                 initial: { scale: 1, rotate: 0 },
                 hover: { scale: 1.05, rotate: 5 },
@@ -46,7 +47,7 @@ export function AnimatedBot() {
 
             {/* Inner Glowing Core */}
             <motion.div
-              className="absolute inset-[20%] rounded-full bg-[#4DA6FF] shadow-[0_0_20px_#4DA6FF,0_0_30px_#4DA6FF]"
+              className="absolute inset-[20%] rounded-full bg-[#00BFFF] shadow-[0_0_20px_#00BFFF,0_0_30px_#00BFFF]"
               variants={{
                 initial: { scale: 1, opacity: 0.7 },
                 hover: { scale: 1.1, opacity: 1 },
@@ -59,6 +60,17 @@ export function AnimatedBot() {
               />
             </motion.div>
 
+            {/* Robot Icon */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center"
+              variants={{
+                initial: { scale: 1, opacity: 0.8 },
+                hover: { scale: 1.1, opacity: 1 },
+              }}
+            >
+              <Bot className="w-1/2 h-1/2 text-white/90" />
+            </motion.div>
+
             {/* Animated Circuitry Arcs */}
             {[0, 90, 180, 270].map((rotation) => (
               <motion.div
@@ -67,7 +79,7 @@ export function AnimatedBot() {
                 variants={{ initial: { rotate: rotation }, hover: { rotate: rotation + 45 } }}
               >
                 <motion.div
-                  className="absolute w-full h-full rounded-full border-2 border-transparent border-t-[#4DA6FF]/80"
+                  className="absolute w-full h-full rounded-full border-2 border-transparent border-t-[#00BFFF]/80"
                   style={{ clipPath: "polygon(50% 0, 100% 0, 100% 50%, 50% 50%)" }}
                   animate={{ rotate: [0, -90, -90, 0] }}
                   transition={{
@@ -89,7 +101,7 @@ export function AnimatedBot() {
               hover: { scale: 1.2, opacity: 0.8 },
             }}
           >
-            <div className="w-full h-full rounded-full bg-[#4DA6FF]/30 blur-3xl" />
+            <div className="w-full h-full rounded-full bg-[#00BFFF]/30 blur-3xl" />
           </motion.div>
         </motion.button>
       </div>
