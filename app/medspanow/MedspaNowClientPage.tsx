@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
-import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
@@ -83,12 +82,35 @@ const MedspaNowClientPage = () => {
 
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🎨 Custom Site, Not a Template</h3>
-              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
-                <strong className="text-white">All of our sites are 100% custom-built for YOUR medical spa.</strong>{" "}
-                Here's some inspiration:
-              </p>
-              <TemplateButtonsSimple templates={medspaInspiration} baseButtonText="View Inspiration" />
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">
+                💆 Custom Built for YOUR Medical Spa
+              </h3>
+              <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
+                <p>
+                  <strong className="text-white">Custom Website:</strong> Branded to your spa's luxury experience and
+                  aesthetic services
+                </p>
+                <p>
+                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your treatment packages
+                  and consultation booking
+                </p>
+                <p>
+                  <strong className="text-white">Custom AI Agent:</strong> Trained on your aesthetic procedures,
+                  treatment protocols, and client care standards
+                </p>
+                <p>
+                  <strong className="text-white">Never Miss Anything:</strong> AI agents that never miss a consultation
+                  request, never miss treatment follow-ups, makes notes and transcripts of every client interaction
+                </p>
+                <p className="text-[#00BFFF] font-semibold">
+                  It's like having the best spa concierge using all the best AI tools. Save countless money on staff
+                  that make excuses, call in sick, aren't motivated, or don't follow client service protocols.
+                </p>
+                <p className="text-white font-bold text-center mt-4">
+                  🚀 Our custom-built agents never miss. Dominate your aesthetic market with the best AI agents in the
+                  Galaxy!
+                </p>
+              </div>
             </div>
           </div>
         </div>

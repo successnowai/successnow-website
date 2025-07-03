@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
-import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
@@ -81,12 +80,49 @@ const AutoDealersNowClient = () => {
 
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🎨 Custom Site, Not a Template</h3>
-              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
-                <strong className="text-white">All of our sites are 100% custom-built for YOUR dealership.</strong> But
-                here's some inspiration of what's possible:
-              </p>
-              <TemplateButtonsSimple templates={autoInspiration} baseButtonText="View Inspiration" />
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">
+                🚀 100% Custom Built for YOUR Dealership
+              </h3>
+              <div className="space-y-4">
+                <div className="bg-black/20 p-4 rounded-lg border border-[#00BFFF]/20">
+                  <h4 className="text-lg font-semibold text-white mb-2">🎨 Custom Website to Your Brand & Vision</h4>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Every website is built from scratch to match your dealership's unique brand, colors, and vision. No
+                    templates, no cookie-cutter designs.
+                  </p>
+                </div>
+
+                <div className="bg-black/20 p-4 rounded-lg border border-[#00BFFF]/20">
+                  <h4 className="text-lg font-semibold text-white mb-2">🎯 Custom AI Smart Funnels to Your Offers</h4>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Tailored conversion funnels designed specifically for your inventory, financing options, and special
+                    promotions.
+                  </p>
+                </div>
+
+                <div className="bg-black/20 p-4 rounded-lg border border-[#00BFFF]/20">
+                  <h4 className="text-lg font-semibold text-white mb-2">🤖 Custom AI Agent Trained on YOUR Business</h4>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    AI agents that know your inventory, pricing, financing options, and dealership policies inside and
+                    out.
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-r from-[#00BFFF]/10 to-[#1a2332]/10 p-4 rounded-lg border border-[#00BFFF]/30">
+                  <h4 className="text-lg font-semibold text-[#00BFFF] mb-2">⚡ AI Agents That Never Miss</h4>
+                  <ul className="text-gray-300 text-sm space-y-1">
+                    <li>• Never miss a lead or follow-up</li>
+                    <li>• Makes detailed notes and transcripts of every call</li>
+                    <li>• Like having the best team member using all the best AI tools</li>
+                    <li>• Save countless money on staff that make excuses, call in sick, aren't motivated</li>
+                    <li>• No more employees who don't follow the process</li>
+                  </ul>
+                </div>
+
+                <div className="text-center bg-gradient-to-r from-[#00BFFF]/20 to-[#1a2332]/20 p-4 rounded-lg border border-[#00BFFF]/40">
+                  <p className="text-white font-bold text-lg">🌟 Dominate NOW with the Best Agents in the Galaxy! 🌟</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

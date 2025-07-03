@@ -6,7 +6,6 @@ import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
-import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 
 const RoofersNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -81,12 +80,35 @@ const RoofersNowClientPage = () => {
 
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🎨 Custom Site, Not a Template</h3>
-              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
-                <strong className="text-white">Your site is 100% custom-built for YOUR roofing company.</strong> Here's
-                some inspiration:
-              </p>
-              <TemplateButtonsSimple templates={rooferInspiration} baseButtonText="View Inspiration" />
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">
+                🔨 Custom Built for YOUR Roofing Company
+              </h3>
+              <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
+                <p>
+                  <strong className="text-white">Custom Website:</strong> Branded to your roofing expertise and quality
+                  craftsmanship
+                </p>
+                <p>
+                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your roofing services and
+                  estimate processes
+                </p>
+                <p>
+                  <strong className="text-white">Custom AI Agent:</strong> Trained on your roofing materials,
+                  installation methods, and warranty programs
+                </p>
+                <p>
+                  <strong className="text-white">Never Miss Anything:</strong> AI agents that never miss a storm damage
+                  inquiry, never miss estimate follow-ups, makes notes and transcripts of every homeowner interaction
+                </p>
+                <p className="text-[#00BFFF] font-semibold">
+                  It's like having the best roofing sales rep using all the best AI tools. Save countless money on staff
+                  that make excuses, call in sick, aren't motivated, or don't follow sales protocols.
+                </p>
+                <p className="text-white font-bold text-center mt-4">
+                  🚀 Our custom-built agents never miss. Dominate your roofing market with the best AI agents in the
+                  Galaxy!
+                </p>
+              </div>
             </div>
           </div>
         </div>

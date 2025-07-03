@@ -6,7 +6,6 @@ import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
-import { TemplateButtonsSimple } from "@/components/ui/template-buttons-simple"
 
 const SolarNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -83,12 +82,35 @@ const SolarNowClientPage = () => {
 
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🎨 Custom Site, Not a Template</h3>
-              <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
-                <strong className="text-white">Your site is 100% custom-built for YOUR solar company.</strong> Here's
-                some inspiration:
-              </p>
-              <TemplateButtonsSimple templates={solarInspiration} baseButtonText="View Inspiration" />
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">
+                ☀️ Custom Built for YOUR Solar Company
+              </h3>
+              <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
+                <p>
+                  <strong className="text-white">Custom Website:</strong> Branded to your solar expertise and
+                  sustainability mission
+                </p>
+                <p>
+                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your solar packages and
+                  installation processes
+                </p>
+                <p>
+                  <strong className="text-white">Custom AI Agent:</strong> Trained on your solar technology, financing
+                  options, and installation procedures
+                </p>
+                <p>
+                  <strong className="text-white">Never Miss Anything:</strong> AI agents that never miss a homeowner
+                  inquiry, never miss installation follow-ups, makes notes and transcripts of every solar consultation
+                </p>
+                <p className="text-[#00BFFF] font-semibold">
+                  It's like having the best solar consultant using all the best AI tools. Save countless money on staff
+                  that make excuses, call in sick, aren't motivated, or don't follow sales protocols.
+                </p>
+                <p className="text-white font-bold text-center mt-4">
+                  🚀 Our custom-built agents never miss. Dominate your solar market with the best AI agents in the
+                  Galaxy!
+                </p>
+              </div>
             </div>
           </div>
         </div>
