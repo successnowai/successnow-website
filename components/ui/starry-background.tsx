@@ -2,15 +2,13 @@
 
 import { useEffect, useState } from "react"
 
-export default function StarryBackground() {
+function StarryBackground() {
   const [shootingStars, setShootingStars] = useState<number[]>([])
 
   useEffect(() => {
-    // Create 10 shooting stars with random delays
     const stars = Array.from({ length: 10 }, (_, i) => i)
     setShootingStars(stars)
 
-    // Regenerate shooting stars every 30 seconds
     const interval = setInterval(() => {
       setShootingStars([...stars].sort(() => Math.random() - 0.5))
     }, 30000)
@@ -62,3 +60,6 @@ export default function StarryBackground() {
     </div>
   )
 }
+
+export { StarryBackground }
+export default StarryBackground
