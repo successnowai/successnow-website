@@ -1,5 +1,6 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -20,6 +21,13 @@ import {
   Clock,
   DollarSign,
 } from "lucide-react"
+
+/**
+ * The full UI lives in AdsNowClientInner.
+ * We turn off server-side rendering so nothing runs while Next.js is
+ * prerendering the page during `next build`.
+ */
+const AdsNowClientInner = dynamic(() => import("./AdsNowClientInner"), { ssr: false, loading: () => null })
 
 export default function AdsNowClientPage() {
   const [showDemo, setShowDemo] = useState(false)
