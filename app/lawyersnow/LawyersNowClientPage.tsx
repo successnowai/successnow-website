@@ -19,16 +19,6 @@ const LawyersNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  const lawyerInspiration = [
-    {
-      id: "lawyer-inspiration-1",
-      title: "Law Firm Inspiration 1",
-      description: "Professional design for law firms",
-      url: "https://v0-lawyer-now-template-1-git-lawyer-ad1b08-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/lawyer-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/lawyersnow/signup")
 

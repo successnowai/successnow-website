@@ -19,23 +19,6 @@ const GymsNowClientPage = () => {
     "Automates Renewals",
   ]
 
-  const gymInspiration = [
-    {
-      id: "gym-inspiration-1",
-      title: "Martial Arts Studio",
-      description: "Professional martial arts studio design",
-      url: "https://v0-martialarts-website-git-martialar-474cdd-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/gym-inspiration-1.png",
-    },
-    {
-      id: "gym-inspiration-2",
-      title: "Yoga Studio",
-      description: "Serene yoga studio layout",
-      url: "https://v0-yoga-studio-webiste-1-git-yoga-we-9f2cdf-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/gym-inspiration-2.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/gymsnow/signup")
 

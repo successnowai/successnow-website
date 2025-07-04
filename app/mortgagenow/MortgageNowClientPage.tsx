@@ -19,16 +19,6 @@ const MortgageNowClientPage = () => {
     "Closes More Loans",
   ]
 
-  const mortgageInspiration = [
-    {
-      id: "mortgage-inspiration-1",
-      title: "Mortgage Broker Inspiration 1",
-      description: "Professional design for mortgage brokers",
-      url: "https://v0-free-idx-api-options-git-mortgage-1364af-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/mortgage-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/mortgagenow/signup")
 

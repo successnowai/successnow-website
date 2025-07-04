@@ -19,16 +19,6 @@ const RoofersNowClientPage = () => {
     "Closes More Jobs",
   ]
 
-  const rooferInspiration = [
-    {
-      id: "roofer-inspiration-1",
-      title: "Modern Roofing Co.",
-      description: "Professional design for roofing contractors.",
-      url: "https://v0-roofer-template-1-git-main-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/roofer-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/roofersnow/signup")
 

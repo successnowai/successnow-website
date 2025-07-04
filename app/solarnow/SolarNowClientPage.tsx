@@ -19,16 +19,6 @@ const SolarNowClientPage = () => {
     "Closes More Deals",
   ]
 
-  const solarInspiration = [
-    {
-      id: "solar-inspiration-1",
-      title: "Solar Company Site",
-      description: "Clean, professional design for solar installers.",
-      url: "https://v0-solar-template-1-git-main-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/solar-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/solarnow/signup")
 

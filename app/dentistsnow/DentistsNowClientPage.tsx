@@ -19,16 +19,6 @@ const DentistsNowClientPage = () => {
     "Automates Recalls",
   ]
 
-  const dentistInspiration = [
-    {
-      id: "dentist-inspiration-1",
-      title: "Modern Dental Practice",
-      description: "Clean, professional design for dental clinics.",
-      url: "https://v0-dental-template-1-git-main-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/dentist-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/dentistsnow/signup")
 

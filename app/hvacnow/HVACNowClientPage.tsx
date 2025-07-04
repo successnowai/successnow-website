@@ -19,16 +19,6 @@ const HVACNowClientPage = () => {
     "Never Misses a Call",
   ]
 
-  const hvacInspiration = [
-    {
-      id: "hvac-inspiration-1",
-      title: "Comfort Solutions HVAC",
-      description: "Reliable and professional design for HVAC companies.",
-      url: "https://v0-hvac-template-1-git-main-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/hvac-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/hvacnow/signup")
 

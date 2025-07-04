@@ -19,16 +19,6 @@ const ChiropractorsNowClientPage = () => {
     "Boosts Retention",
   ]
 
-  const chiroInspiration = [
-    {
-      id: "chiro-inspiration-1",
-      title: "Modern Chiro Clinic",
-      description: "Professional design for chiropractic clinics.",
-      url: "https://v0-chiro-template-1-git-main-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/chiro-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/chiropractorsnow/signup")
 

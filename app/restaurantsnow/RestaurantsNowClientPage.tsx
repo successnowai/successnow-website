@@ -19,16 +19,6 @@ const RestaurantsNowClientPage = () => {
     "Drives Repeat Diners",
   ]
 
-  const restaurantInspiration = [
-    {
-      id: "restaurant-inspiration-1",
-      title: "Modern Eatery",
-      description: "Sleek design for a modern restaurant.",
-      url: "https://v0-restaurant-template-1-git-main-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/restaurant-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/restaurantsnow/signup")
 

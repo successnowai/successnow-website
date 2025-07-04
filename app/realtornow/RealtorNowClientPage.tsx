@@ -19,16 +19,6 @@ const RealtorNowClientPage = () => {
     "Follows Up Always",
   ]
 
-  const realtorInspiration = [
-    {
-      id: "realtor-inspiration-1",
-      title: "Real Estate Inspiration 1",
-      description: "Modern design for real estate professionals",
-      url: "https://v0-realtor-template-site-1-git-realt-b5dc49-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/realtor-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/realtornow/signup")
 

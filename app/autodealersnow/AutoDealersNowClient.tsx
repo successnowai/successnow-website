@@ -19,16 +19,6 @@ const AutoDealersNowClient = () => {
     "Follows Up Always",
   ]
 
-  const autoInspiration = [
-    {
-      id: "auto-inspiration-1",
-      title: "Auto Dealer Inspiration 1",
-      description: "Modern dealership design with inventory showcase",
-      url: "https://v0-autodele-now-template-site-git-au-67d13d-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/auto-dealer-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/autodealersnow/signup")
 

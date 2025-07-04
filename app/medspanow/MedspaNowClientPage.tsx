@@ -19,16 +19,6 @@ const MedspaNowClientPage = () => {
     "Nurtures Clients",
   ]
 
-  const medspaInspiration = [
-    {
-      id: "medspa-inspiration-1",
-      title: "Medical Spa Inspiration 1",
-      description: "Elegant design for medical spas",
-      url: "https://v0-med-spa-now-client-template-1-git-2ad733-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/medspa-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/medspanow/signup")
 

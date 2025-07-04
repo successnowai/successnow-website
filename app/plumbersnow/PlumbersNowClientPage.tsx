@@ -19,16 +19,6 @@ const PlumbersNowClientPage = () => {
     "Automates Quotes",
   ]
 
-  const plumberInspiration = [
-    {
-      id: "plumber-inspiration-1",
-      title: "Pro Plumbing Services",
-      description: "Clean, trustworthy design for plumbing businesses.",
-      url: "https://v0-plumber-template-1-git-main-info-9422s-projects.vercel.app/",
-      imageUrl: "/images/plumber-inspiration-1.png",
-    },
-  ]
-
   const handleDemoClick = () => setIsDemoPopupOpen(true)
   const handleSignupClick = () => (window.location.href = "/plumbersnow/signup")
 
