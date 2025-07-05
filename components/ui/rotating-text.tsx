@@ -13,6 +13,7 @@ export function RotatingText({ words, className = "", interval = 3000 }: Rotatin
   const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
+    if (words.length === 0) return
     const timer = setInterval(() => {
       setIsVisible(false)
 
@@ -23,7 +24,11 @@ export function RotatingText({ words, className = "", interval = 3000 }: Rotatin
     }, interval)
 
     return () => clearInterval(timer)
-  }, [words.length, interval])
+  }, [words, interval])
+
+  if (words.length === 0) {
+    return null
+  }
 
   return (
     <span

@@ -1,5 +1,8 @@
 import type { Metadata } from "next"
-import AdsNowClientPage from "./AdsNowClientPage"
+import AdsNowShell from "./AdsNowShell"
+
+// Disable static prerendering so the page is built on-demand.
+export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   title: "AdsNOW Super Agent - Revolutionary AI Ad Creation | SuccessNOW",
@@ -8,5 +11,5 @@ export const metadata: Metadata = {
 }
 
 export default function AdsNowPage() {
-  return <AdsNowClientPage />
+  return <AdsNowShell />
 }
