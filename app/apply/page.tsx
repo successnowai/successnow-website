@@ -45,6 +45,10 @@ const FeatureCard = ({
 )
 
 export default function ApplyPage() {
+  const totalValue = 98940
+  const investment = 35888 // Accelerated Plan Cost
+  const totalSavings = totalValue - investment
+
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <StarryBackground />
@@ -148,63 +152,69 @@ export default function ApplyPage() {
                 </CardContent>
               </Card>
 
-              {/* Total Value Stacked */}
-              <Card className="lg:col-span-2 bg-gradient-to-br from-purple-900/60 via-blue-900/50 to-cyan-900/60 backdrop-blur-lg border-2 border-purple-400 shadow-2xl shadow-purple-500/20 flex flex-col">
-                <CardHeader>
-                  <div className="text-center">
-                    <h4 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-3">
-                      <Sparkles className="w-8 h-8 text-purple-300" />
-                      TOTAL VALUE STACKED
-                    </h4>
-                    <p className="text-lg font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                      YOUR PATH TO TOTAL DOMINATION
-                    </p>
+              {/* Total Value Stacked - REDESIGNED */}
+              <div className="lg:col-span-2 bg-black/80 backdrop-blur-sm border-2 border-yellow-400 shadow-2xl shadow-yellow-500/30 rounded-xl flex flex-col p-6 text-center">
+                <div className="mb-4">
+                  <h4 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-3">
+                    <Sparkles className="w-8 h-8 text-yellow-300" />
+                    TOTAL VALUE STACKED
+                  </h4>
+                  <p className="text-lg font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                    YOUR PATH TO TOTAL DOMINATION
+                  </p>
+                </div>
+
+                <div className="space-y-2 text-gray-300 mb-6 text-md flex-grow">
+                  <div className="flex justify-between">
+                    <span>Custom Build:</span> <span className="font-semibold text-white">$60,000+</span>
                   </div>
-                </CardHeader>
-                <CardContent className="p-6 flex-grow flex flex-col justify-center">
-                  <div className="space-y-2 text-gray-300 mb-6 text-md">
-                    <div className="flex justify-between">
-                      <span>Custom Build:</span> <span className="font-semibold text-white">$60,000+</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Ads Management:</span> <span className="font-semibold text-white">$11,982</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>SEO Domination:</span> <span className="font-semibold text-white">$14,994</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>1-on-1 Coaching:</span> <span className="font-semibold text-white">$11,964</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Affiliate Tier Access:</span>{" "}
-                      <span className="font-semibold text-purple-400">UNLIMITED</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Lockout & Vault Access:</span>{" "}
-                      <span className="font-semibold text-purple-400">EXCLUSIVE</span>
-                    </div>
+                  <div className="flex justify-between">
+                    <span>Ads Management:</span> <span className="font-semibold text-white">$11,982</span>
                   </div>
-                  <hr className="border-gray-700 my-4" />
-                  <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span>SEO Domination:</span> <span className="font-semibold text-white">$14,994</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>1-on-1 Coaching:</span> <span className="font-semibold text-white">$11,964</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Affiliate Tier Access:</span> <span className="font-semibold text-purple-400">UNLIMITED</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Lockout & Vault Access:</span>{" "}
+                    <span className="font-semibold text-purple-400">EXCLUSIVE</span>
+                  </div>
+                </div>
+
+                <hr className="border-gray-700 my-4" />
+
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="font-semibold text-gray-200 text-lg">GRAND TOTAL VALUE:</span>
+                    <span className="font-bold text-2xl text-white">${totalValue.toLocaleString()}+</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-cyan-400 flex items-center font-semibold text-md">
+                      <Rocket className="w-5 h-5 mr-2" /> Your Investment:
+                    </span>
+                    <span className="font-bold text-xl text-cyan-400">${investment.toLocaleString()}</span>
+                  </div>
+                  {/* SAVINGS SECTION - REDESIGNED FOR CLARITY */}
+                  <div className="bg-yellow-400/10 border-2 border-yellow-400 rounded-lg p-4 mt-4">
                     <div className="flex justify-between items-center">
-                      <span className="font-semibold text-gray-200 text-lg">GRAND TOTAL VALUE:</span>
-                      <span className="font-bold text-2xl text-white">$98,940+</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-cyan-400 flex items-center font-semibold text-md">
-                        <Rocket className="w-5 h-5 mr-2" /> Your Investment:
+                      <span className="text-yellow-300 flex items-center font-bold text-xl">
+                        <DollarSign className="w-6 h-6 mr-2" /> TOTAL SAVINGS:
                       </span>
-                      <span className="font-bold text-xl text-cyan-400">Starting at $9,888</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-green-400 flex items-center font-semibold text-md">
-                        <DollarSign className="w-5 h-5 mr-2" /> Savings:
+                      <span
+                        className="font-black text-4xl md:text-5xl text-yellow-300"
+                        style={{ textShadow: "0 0 15px rgba(253, 224, 71, 0.7)" }}
+                      >
+                        ${totalSavings.toLocaleString()}
                       </span>
-                      <span className="font-bold text-xl text-green-400">$8,994</span>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
           </div>
 
