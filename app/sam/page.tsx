@@ -7,6 +7,7 @@ import { PlatformSteps } from "@/components/ui/platform-steps"
 import { Star, Sparkles } from "lucide-react"
 import { VoiceDemoModal } from "@/components/ui/voice-demo-modal"
 import { GlowingOrbCta } from "@/components/ui/glowing-orb-cta"
+import { AffiliateEcosystemSection } from "@/components/ui/affiliate-ecosystem-section"
 
 const rotatingWords = [
   "Real Estate Agents",
@@ -101,6 +102,9 @@ export default function SamPlatformPage() {
               <GlowingOrbCta label="Experience the AI Demo Now" />
             </div>
           </div>
+
+          {/* New Ecosystem Section */}
+          <AffiliateEcosystemSection />
 
           {/* Platform Steps */}
           <div className="py-8 sm:py-12 w-full">
