@@ -1,19 +1,15 @@
 "use client"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { DemoPopup } from "@/components/ui/demo-popup"
+import { GlowingOrbCta } from "@/components/ui/glowing-orb-cta"
 import { RotatingText } from "@/components/ui/rotating-text"
-import { AnimatedBot } from "@/components/ui/animated-bot"
-import { VoiceDemoModal } from "@/components/ui/voice-demo-modal"
 
 export default function MainHeroSection() {
   const rotatingWords = ["Leads", "Cold Prospects", "Conversations", "Website Clicks", "Inquiries"]
-  const [isVoiceDemoOpen, setIsVoiceDemoOpen] = useState(false)
 
   return (
     <section className="relative bg-black text-white min-h-[90vh] flex items-center" aria-labelledby="hero-heading">
       <div className="container mx-auto px-4 py-20 md:py-32">
         <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
-          <AnimatedBot onEngageDemo={() => setIsVoiceDemoOpen(true)} />
           <h1
             id="hero-heading"
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight"
@@ -32,19 +28,12 @@ export default function MainHeroSection() {
             client inquiries—24/7.
           </p>
 
-          <Button
-            onClick={() => setIsVoiceDemoOpen(true)}
-            className="bg-transparent hover:bg-[#4DA6FF]/20 text-[#4DA6FF] border-2 border-[#4DA6FF] rounded-full px-8 py-6 text-lg font-medium transition-all"
-            aria-label="Launch instant demo now"
-          >
-            Launch Instant Demo NOW
-          </Button>
+          <DemoPopup trigger={<GlowingOrbCta label="Launch Instant Demo NOW" />} />
         </div>
       </div>
 
       {/* Blue line at the bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#4DA6FF]/30"></div>
-      <VoiceDemoModal isOpen={isVoiceDemoOpen} onClose={() => setIsVoiceDemoOpen(false)} />
     </section>
   )
 }

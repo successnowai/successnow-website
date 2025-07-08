@@ -4,6 +4,7 @@ import { DemoPopup } from "@/components/ui/demo-popup"
 import { cn } from "@/lib/utils"
 import { Sparkles, Star, Zap, AlertCircle, TrendingUp, Crown } from "lucide-react"
 import { useEffect, useState } from "react"
+import { GlowingOrbCta } from "@/components/ui/glowing-orb-cta"
 
 export default function DominatePage() {
   const [isClient, setIsClient] = useState(false)
@@ -188,7 +189,7 @@ export default function DominatePage() {
           <div className="glass-card rounded-2xl p-12 text-center">
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Dominate Your Market?</h3>
             <div className="flex justify-center">
-              <DemoPopup triggerLabel="🎯 Experience the AI Demo Now" />
+              <DemoPopup trigger={<GlowingOrbCta />} />
             </div>
           </div>
         </section>

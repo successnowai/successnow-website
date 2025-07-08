@@ -1,7 +1,9 @@
 import PartnerOptinForm from "@/components/forms/PartnerOptinForm"
 import StarryBackground from "@/components/ui/starry-background"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Handshake, Target, Rocket } from "lucide-react"
+import { DemoPopup } from "@/components/ui/demo-popup"
+import { GlowingOrbCta } from "@/components/ui/glowing-orb-cta"
 
 export default function PartnerSignupPage() {
   return (
@@ -10,13 +12,16 @@ export default function PartnerSignupPage() {
       <main className="relative z-10 container mx-auto px-4 py-24">
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-6xl font-bold mb-4">Become a SuccessNOW.ai Partner</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
             Join our partner program to bring cutting-edge AI solutions to your clients and earn recurring revenue.
           </p>
+          <div className="flex justify-center">
+            <DemoPopup trigger={<GlowingOrbCta label="See The AI in Action" />} />
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
-          <div className="lg:col-span-2 space-y-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
             <Card className="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50">
               <CardContent className="p-6">
                 <div className="flex items-center mb-3">
@@ -58,13 +63,15 @@ export default function PartnerSignupPage() {
               </CardContent>
             </Card>
           </div>
-          <div className="lg:col-span-3">
-            <Card className="bg-white overflow-hidden">
-              <CardContent className="p-0">
-                <PartnerOptinForm />
-              </CardContent>
-            </Card>
-          </div>
+
+          <Card className="bg-white overflow-hidden">
+            <CardHeader>
+              <CardTitle className="text-3xl font-bold text-center text-gray-800">Apply to Become a Partner</CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <PartnerOptinForm />
+            </CardContent>
+          </Card>
         </div>
       </main>
     </div>
