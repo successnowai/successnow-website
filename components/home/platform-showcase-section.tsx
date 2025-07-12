@@ -1,9 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { AnimatedPlatformShowcase } from "./animated-platform-showcase" // Ensure this is the correct import
+import { RotatingText } from "@/components/ui/rotating-text"
+import { AnimatedPlatformShowcase } from "./animated-platform-showcase"
 
-// This is the version WITHOUT the static header "The All-In-One SuccessNOW Platform"
 export function PlatformShowcaseSection() {
   const [isLoading, setIsLoading] = useState(true)
   const [showLoadingSkeleton, setShowLoadingSkeleton] = useState(true)
@@ -65,5 +65,36 @@ export function PlatformShowcaseSection() {
     )
   }
 
-  return <AnimatedPlatformShowcase />
+  return (
+    <div className="relative">
+      {/* New hero headline with two-line layout */}
+      <div className="text-center mb-12 px-4">
+        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
+          {/* First line - static white text */}
+          <div className="text-white mb-2">THE BEST AI AGENTS THAT</div>
+          {/* Second line - dynamic blue text */}
+          <div className="text-[#4DA6FF]">
+            <RotatingText
+              words={[
+                "OPTIMIZE WEBSITES",
+                "ENGAGE LEADS",
+                "LAUNCH PAID ADS",
+                "OPTIMIZE FOR AI SEARCH",
+                "FOREVER FOLLOW UP",
+                "GET 5 STAR REVIEWS",
+                "REACTIVATE OLD LEADS",
+                "WORK 24/7 ON AUTOPILOT",
+                "NEVER CALL IN SICK",
+              ]}
+              interval={2500}
+              className="font-extrabold"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Existing cascading cards / animated showcase */}
+      <AnimatedPlatformShowcase />
+    </div>
+  )
 }

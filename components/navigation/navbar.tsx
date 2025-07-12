@@ -84,6 +84,14 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 )}
               </Link>
             ))}
+
+            {/* Call Now Button */}
+            <a
+              href="tel:+18666125353"
+              className="bg-gradient-to-r from-[#00BFFF] to-cyan-400 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:from-[#00BFFF]/90 hover:to-cyan-400/90 shadow-lg hover:shadow-[#00BFFF]/25 glow-blue"
+            >
+              Call Now
+            </a>
           </div>
 
           {/* Mobile menu button - Always visible */}
@@ -118,6 +126,15 @@ export default function Navbar({ currentPage }: NavbarProps) {
                   {item.name}
                 </Link>
               ))}
+
+              {/* Mobile Call Now Button */}
+              <a
+                href="tel:+18666125353"
+                className="block mx-4 mt-2 bg-gradient-to-r from-[#00BFFF] to-cyan-400 text-white px-4 py-3 rounded-md text-base font-medium transition-all duration-200 hover:from-[#00BFFF]/90 hover:to-cyan-400/90 shadow-lg hover:shadow-[#00BFFF]/25 text-center glow-blue"
+                onClick={() => setIsOpen(false)}
+              >
+                Call Now
+              </a>
             </div>
           </div>
         )}
