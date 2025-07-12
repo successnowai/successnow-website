@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Users, MessageSquare, Target, BarChart3, Zap, Shield, Trophy } from "lucide-react"
+import Link from "next/link"
 
 const steps = [
   {
@@ -219,6 +220,16 @@ export function PlatformSteps() {
                   </div>
                 </div>
               ))}
+            </div>
+            {/* CTA Button */}
+            <div className="mt-10">
+              <Link href="/signup">
+                <button
+                  className={`inline-block px-8 py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r ${currentStepData.color} hover:scale-105 transition-transform duration-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-white/50`}
+                >
+                  Get Started with Step {currentStepData.id}
+                </button>
+              </Link>
             </div>
           </div>
 
