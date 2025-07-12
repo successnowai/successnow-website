@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Bot, Megaphone, Sparkles, HeartHandshake, Star, Search, Rocket, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 const platformFeatures = [
   {
@@ -157,90 +158,103 @@ export function AnimatedPlatformShowcase() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="w-full max-w-5xl h-[550px] md:h-[480px] relative overflow-hidden">
-        <AnimatePresence initial={false} custom={direction}>
-          <motion.div
-            key={currentFeatureIndex}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.2 },
-            }}
-            className={cn(
-              "absolute inset-0 p-8 rounded-2xl border flex flex-col md:flex-row items-center gap-8",
-              feature.bgColor,
-              feature.borderColor,
-            )}
-          >
-            <div className="md:w-1/2 text-center md:text-left">
-              <div
-                className={cn(
-                  "inline-flex items-center gap-3 rounded-full px-4 py-1 mb-4 text-white bg-gradient-to-r",
-                  feature.color,
-                )}
-              >
-                <Icon className="w-5 h-5" />
-                <span className="font-semibold">
-                  Step {feature.step}/{platformFeatures.length}
-                </span>
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">{feature.title}</h3>
-              <p className="text-gray-100 mb-6">{feature.description}</p>
-              <div className="relative italic text-white border-l-4 border-blue-400 pl-4 py-2 mb-6">
-                {feature.quote}
-              </div>
-              <Button size="lg" className={cn("bg-gradient-to-r text-white", feature.color)}>
-                {feature.cta}
-              </Button>
-            </div>
-            <div className="md:w-1/2 h-64 md:h-full flex items-center justify-center">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-sm">
-                <Icon
-                  className={cn(
-                    "w-32 h-32 md:w-40 md:h-40 bg-clip-text text-transparent bg-gradient-to-r",
-                    feature.color,
-                  )}
-                />
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      <div className="flex items-center justify-center mt-8 gap-4">
+      {/* Carousel with side navigation */}
+      <div className="flex items-center gap-6 w-full max-w-6xl">
+        {/* Left Navigation Button */}
         <Button
           variant="outline"
           size="icon"
           onClick={handlePrev}
-          className="bg-transparent text-white hover:bg-white/10"
+          className="bg-transparent text-white hover:bg-white/10 flex-shrink-0 w-12 h-12"
         >
           <ChevronLeft className="w-6 h-6" />
         </Button>
-        <div className="flex items-center gap-2">
-          {platformFeatures.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleDotClick(index)}
+
+        {/* Carousel Content */}
+        <div className="w-full h-[550px] md:h-[480px] relative overflow-hidden">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={currentFeatureIndex}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 },
+              }}
               className={cn(
-                "w-3 h-3 rounded-full transition-all duration-300",
-                currentFeatureIndex === index ? "bg-blue-300 w-6" : "bg-gray-400 hover:bg-gray-300",
+                "absolute inset-0 p-8 rounded-2xl border flex flex-col md:flex-row items-center gap-8",
+                feature.bgColor,
+                feature.borderColor,
               )}
-              aria-label={`Go to step ${index + 1}`}
-            />
-          ))}
+            >
+              <div className="md:w-1/2 text-center md:text-left">
+                <div
+                  className={cn(
+                    "inline-flex items-center gap-3 rounded-full px-4 py-1 mb-4 text-white bg-gradient-to-r",
+                    feature.color,
+                  )}
+                >
+                  <Icon className="w-5 h-5" />
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">{feature.title}</h3>
+                <p className="text-gray-100 mb-6">{feature.description}</p>
+                <div className="relative italic text-white border-l-4 border-blue-400 pl-4 py-2 mb-6">
+                  {feature.quote}
+                </div>
+              </div>
+              <div className="md:w-1/2 h-64 md:h-full flex items-center justify-center">
+                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-sm">
+                  <Icon
+                    className={cn(
+                      "w-32 h-32 md:w-40 md:h-40 bg-clip-text text-transparent bg-gradient-to-r",
+                      feature.color,
+                    )}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
+
+        {/* Right Navigation Button */}
         <Button
           variant="outline"
           size="icon"
           onClick={handleNext}
-          className="bg-transparent text-white hover:bg-white/10"
+          className="bg-transparent text-white hover:bg-white/10 flex-shrink-0 w-12 h-12"
         >
           <ChevronRight className="w-6 h-6" />
         </Button>
+      </div>
+
+      {/* Dot indicators */}
+      <div className="flex items-center gap-2 mt-6">
+        {platformFeatures.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handleDotClick(index)}
+            className={cn(
+              "w-3 h-3 rounded-full transition-all duration-300",
+              currentFeatureIndex === index ? "bg-blue-300 w-6" : "bg-gray-400 hover:bg-gray-300",
+            )}
+            aria-label={`Go to step ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Single CTA Button */}
+      <div className="mt-8">
+        <Link href="/signup">
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 px-8 py-4 text-lg font-semibold"
+          >
+            GET STARTED NOW
+          </Button>
+        </Link>
       </div>
     </div>
   )
