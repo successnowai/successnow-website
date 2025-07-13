@@ -1,287 +1,227 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useState } from "react"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Star, Users, TrendingUp, DollarSign, Award } from "lucide-react"
+import { Check, Users, DollarSign, TrendingUp, Star, Crown } from "lucide-react"
 import Link from "next/link"
 
 export default function AffiliateClientPage() {
-  const generalCommissionTiers = [
-    { range: "1-10 Active Referrals", commission: "20%", color: "bg-blue-500/10 text-blue-600" },
-    { range: "11-25 Active Referrals", commission: "25%", color: "bg-green-500/10 text-green-600" },
-    { range: "26-50 Active Referrals", commission: "30%", color: "bg-orange-500/10 text-orange-600" },
-    { range: "51+ Active Referrals", commission: "35%", color: "bg-purple-500/10 text-purple-600" },
-  ]
-
-  const incomeExample = [
-    { month: "Month 1", subscribers: 2, income: "$398.80" },
-    { month: "Month 2", subscribers: 4, income: "$797.60" },
-    { month: "Month 3", subscribers: 6, income: "$1,196.40" },
-    { month: "Month 4", subscribers: 8, income: "$1,595.20" },
-    { month: "Month 5", subscribers: 10, income: "$1,994.00" },
-    { month: "Month 6", subscribers: 12, income: "$2,991.00" },
-  ]
-
-  const longTermProjections = [
-    { period: "Month 12", subscribers: 24, commission: "25%", income: "$5,982.00/month" },
-    { period: "Month 24", subscribers: 48, commission: "30%", income: "$14,359.20/month" },
-    { period: "Month 36", subscribers: 72, commission: "35%", income: "$25,100.40/month" },
-  ]
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      {/* Hero Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl text-center">
-          <Badge className="mb-6 bg-blue-500/20 text-blue-300 border-blue-500/30">Affiliate Program</Badge>
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* Starry Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-black">
+        <div className="absolute inset-0 bg-[radial-gradient(white_1px,transparent_1px)] [background-size:50px_50px] opacity-20"></div>
+        <div className="absolute top-10 left-10 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+        <div className="absolute top-32 right-20 w-1 h-1 bg-cyan-300 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute top-64 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse delay-2000"></div>
+        <div className="absolute bottom-32 right-1/3 w-1 h-1 bg-blue-300 rounded-full animate-pulse delay-3000"></div>
+        <div className="absolute bottom-64 left-1/2 w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-500"></div>
+      </div>
+
+      <div className="relative z-10 container mx-auto px-4 py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            SuccessNOW.ai
-            <span className="block text-blue-400">Affiliate Program</span>
+            Join Our{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+              Affiliate Program
+            </span>
           </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Join our affiliate program and earn up to 40% commission on recurring revenue. Two-tier program designed to
-            reward your success generously.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Partner with SuccessNOW and earn recurring commissions by referring businesses to our AI-powered solutions.
+            Build your passive income stream today.
           </p>
-          <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg glow-blue">
-            <Link href="/apply">Apply Now</Link>
-          </Button>
         </div>
-      </section>
 
-      {/* Program Overview */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Standard Affiliate */}
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 text-white">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-4">
-                  <Users className="h-8 w-8 text-blue-400" />
-                  <CardTitle className="text-2xl">General Affiliates</CardTitle>
-                </div>
-                <CardDescription className="text-gray-300">
-                  Perfect for individuals and businesses looking to earn recurring commissions
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <h4 className="font-semibold text-lg mb-3">Commission Structure:</h4>
-                {generalCommissionTiers.map((tier, index) => (
-                  <div key={index} className="flex justify-between items-center p-3 rounded-lg bg-white/5">
-                    <span className="text-sm">{tier.range}</span>
-                    <Badge className={tier.color}>{tier.commission} MRR</Badge>
-                  </div>
-                ))}
-                <div className="pt-4 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-400" />
-                    <span className="text-sm">Unique 15% off setup code</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-400" />
-                    <span className="text-sm">Personalized landing page</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-400" />
-                    <span className="text-sm">Affiliate portal access</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Platinum Affiliate */}
-            <Card className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 backdrop-blur-sm border-yellow-500/20 text-white relative overflow-hidden">
-              <div className="absolute top-4 right-4">
-                <Star className="h-6 w-6 text-yellow-400 fill-current" />
+        {/* General Affiliates Card */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <Card
+            className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300"
+            onMouseEnter={() => setHoveredCard("general")}
+            onMouseLeave={() => setHoveredCard(null)}
+          >
+            <CardContent className="p-8">
+              <div className="flex items-center mb-6">
+                <Users className="h-8 w-8 text-cyan-400 mr-3" />
+                <h2 className="text-3xl font-bold text-white">General Affiliates</h2>
               </div>
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-4">
-                  <Award className="h-8 w-8 text-yellow-400" />
-                  <CardTitle className="text-2xl">Trusted Platinum Partners</CardTitle>
-                </div>
-                <CardDescription className="text-gray-300">
-                  Elite program for top performers - Limited to 5 partners globally per niche
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
-                  <div className="flex justify-between items-center">
-                    <span className="font-semibold">50+ Active Referrals</span>
-                    <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">40% MRR</Badge>
-                  </div>
-                </div>
-                <h4 className="font-semibold text-lg">Requirements & Benefits:</h4>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-400" />
-                    <span className="text-sm">Complete full training program</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-400" />
-                    <span className="text-sm">Focus on single niche specialization</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-400" />
-                    <span className="text-sm">Build and manage your own team</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-400" />
-                    <span className="text-sm">Retain commission difference from team</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-400" />
-                    <span className="text-sm">Group calls & training support</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+              <p className="text-gray-300 text-lg mb-8">
+                Perfect for individuals and businesses looking to earn recurring commissions
+              </p>
 
-      {/* Income Growth Example */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Affiliate Income Growth Example</h2>
-            <p className="text-gray-300 text-lg">
-              Conservative scenario: Just 2 new subscribers per month at $997/month
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* First 6 Months */}
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 text-white">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="h-6 w-6 text-blue-400" />
-                  First 6 Months Growth
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {incomeExample.map((item, index) => (
-                    <div key={index} className="flex justify-between items-center p-3 rounded-lg bg-white/5">
-                      <div>
-                        <span className="font-medium">{item.month}</span>
-                        <span className="text-sm text-gray-400 ml-2">({item.subscribers} subscribers)</span>
-                      </div>
-                      <span className="font-bold text-green-400">{item.income}</span>
-                    </div>
-                  ))}
-                  <div className="pt-4 border-t border-white/10">
-                    <div className="flex justify-between items-center">
-                      <span className="font-semibold">Total by Month 6:</span>
-                      <span className="font-bold text-xl text-green-400">$8,973.00 MRR</span>
-                    </div>
+              <div className="mb-8">
+                <h3 className="text-xl font-semibold text-white mb-6">Commission Structure:</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <div className="text-white font-medium mb-2">1-10 Active Referrals</div>
+                    <div className="text-blue-400 text-xl font-bold">20% MRR</div>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <div className="text-white font-medium mb-2">11-25 Active Referrals</div>
+                    <div className="text-green-400 text-xl font-bold">25% MRR</div>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <div className="text-white font-medium mb-2">26-50 Active Referrals</div>
+                    <div className="text-orange-400 text-xl font-bold">30% MRR</div>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <div className="text-white font-medium mb-2">51+ Active Referrals</div>
+                    <div className="text-purple-400 text-xl font-bold">35% MRR</div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
 
-            {/* Long-term Projections */}
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 text-white">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="h-6 w-6 text-green-400" />
-                  Long-term Projections
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {longTermProjections.map((item, index) => (
-                    <div
-                      key={index}
-                      className="p-4 rounded-lg bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20"
-                    >
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="font-semibold text-lg">{item.period}</span>
-                        <Badge className="bg-green-500/20 text-green-300">{item.commission}</Badge>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-400">{item.subscribers} subscribers</span>
-                        <span className="font-bold text-xl text-green-400">{item.income}</span>
-                      </div>
-                    </div>
-                  ))}
-                  <div className="mt-6 p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
-                    <p className="text-center text-yellow-300 font-medium">
-                      This is recurring income, growing each month!
-                    </p>
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center">
+                  <DollarSign className="h-12 w-12 text-green-400 mx-auto mb-3" />
+                  <h4 className="text-white font-semibold mb-2">Recurring Revenue</h4>
+                  <p className="text-gray-300">Earn monthly commissions for as long as your referrals stay active</p>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+                <div className="text-center">
+                  <TrendingUp className="h-12 w-12 text-blue-400 mx-auto mb-3" />
+                  <h4 className="text-white font-semibold mb-2">Scaling Rewards</h4>
+                  <p className="text-gray-300">Higher commission rates as you refer more businesses</p>
+                </div>
+                <div className="text-center">
+                  <Users className="h-12 w-12 text-purple-400 mx-auto mb-3" />
+                  <h4 className="text-white font-semibold mb-2">Full Support</h4>
+                  <p className="text-gray-300">Marketing materials, training, and dedicated support team</p>
+                </div>
+              </div>
 
-      {/* Key Points */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <Card className="bg-white/5 backdrop-blur-sm border-white/10 text-white">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Important Information</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Commissions calculated on total active subscriptions at month-end</span>
+              <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-lg p-6 border border-cyan-500/20">
+                <h4 className="text-white font-semibold mb-3">Income Examples:</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div className="text-gray-300">
+                    <span className="text-cyan-400 font-medium">10 referrals at $997/month:</span> $1,994/month
+                    recurring
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Earnings are recurring monthly based on active subscribers</span>
+                  <div className="text-gray-300">
+                    <span className="text-green-400 font-medium">25 referrals at $997/month:</span> $6,231/month
+                    recurring
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Higher referrals automatically upgrade your commission tier</span>
+                  <div className="text-gray-300">
+                    <span className="text-orange-400 font-medium">50 referrals at $997/month:</span> $14,955/month
+                    recurring
                   </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">All affiliates must apply and be approved</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Unique 15% setup discount code for all affiliates</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Personalized landing pages and portal access included</span>
+                  <div className="text-gray-300">
+                    <span className="text-purple-400 font-medium">100 referrals at $997/month:</span> $34,895/month
+                    recurring
                   </div>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Start Earning?</h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Your effort compounds into true freedom. Start referring today and watch your earnings grow with
-            SuccessNOW.ai!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg glow-blue">
-              <Link href="/apply">Apply for General Affiliate</Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-yellow-500/50 text-yellow-300 hover:bg-yellow-500/10 px-8 py-4 text-lg bg-transparent"
-            >
-              <Link href="/apply">Apply for Platinum Program</Link>
-            </Button>
+        {/* Key Benefits */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <h3 className="text-2xl font-bold text-white text-center mb-8">Why Join Our Affiliate Program?</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              "High-converting AI solutions that businesses actually need",
+              "Comprehensive marketing materials and sales support",
+              "Real-time tracking dashboard for all your referrals",
+              "Monthly payouts with transparent reporting",
+              "Dedicated affiliate manager for top performers",
+              "Exclusive training sessions and webinars",
+            ].map((benefit, index) => (
+              <div key={index} className="flex items-start space-x-3">
+                <Check className="h-6 w-6 text-green-400 mt-0.5 flex-shrink-0" />
+                <span className="text-gray-300">{benefit}</span>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+
+        {/* Trusted Platinum Partners Card - Now at bottom */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <Card
+            className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
+            onMouseEnter={() => setHoveredCard("platinum")}
+            onMouseLeave={() => setHoveredCard(null)}
+          >
+            <div className="absolute top-4 right-4">
+              <Star className="h-6 w-6 text-yellow-400 fill-current" />
+            </div>
+            <CardContent className="p-8">
+              <div className="flex items-center mb-6">
+                <Crown className="h-8 w-8 text-yellow-400 mr-3" />
+                <h2 className="text-3xl font-bold text-white">Trusted Platinum Partners</h2>
+                <Badge className="ml-4 bg-yellow-400/20 text-yellow-400 border-yellow-400/30">ELITE</Badge>
+              </div>
+              <p className="text-gray-300 text-lg mb-8">
+                Elite program for top performers - Limited to 5 partners globally per niche
+              </p>
+
+              <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg p-6 border border-yellow-500/20 mb-8">
+                <div className="text-center">
+                  <div className="text-yellow-400 text-2xl font-bold mb-2">
+                    EARN unlimited monthly recurring revenue
+                  </div>
+                  <div className="text-gray-300">Exclusive territory rights and premium commission structure</div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  {[
+                    "Exclusive territory protection",
+                    "Premium 40% commission rate",
+                    "Direct access to C-level executives",
+                    "Custom marketing campaigns",
+                    "Priority technical support",
+                  ].map((feature, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <Check className="h-5 w-5 text-yellow-400" />
+                      <span className="text-white">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-3">
+                  {[
+                    "Quarterly business reviews",
+                    "Co-branded marketing materials",
+                    "Joint webinar opportunities",
+                    "Advanced analytics dashboard",
+                    "Dedicated account manager",
+                  ].map((feature, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <Check className="h-5 w-5 text-yellow-400" />
+                      <span className="text-white">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center">
+          <h3 className="text-3xl font-bold text-white mb-6">Ready to Start Earning?</h3>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Join thousands of affiliates who are already earning recurring commissions with SuccessNOW AI solutions.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/affiliate/apply?program=General"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg"
+            >
+              Apply for General Program
+            </Link>
+            <Link
+              href="/affiliate/apply?program=Platinum"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-yellow-400 bg-transparent border-2 border-yellow-400 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 hover:scale-105 shadow-lg"
+            >
+              Apply for Platinum Program
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

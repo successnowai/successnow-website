@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 
 export default function Footer() {
   const [isPartnerHovered, setIsPartnerHovered] = useState(false)
@@ -13,14 +14,15 @@ export default function Footer() {
           <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Refer Businesses &{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              Earn 3 Tiers of Monthly Recurring Revenue Forever
+              Earn Monthly Recurring Revenue Forever
             </span>
           </h3>
           <p className="text-gray-300 text-base sm:text-lg mb-6 max-w-2xl mx-auto">
             Join our referral program and build passive income streams with multi-tier recurring commissions from
             businesses and agencies using SuccessNOW AI solutions.
           </p>
-          <button
+          <Link
+            href="/affiliate"
             onMouseEnter={() => setIsPartnerHovered(true)}
             onMouseLeave={() => setIsPartnerHovered(false)}
             className={`
@@ -38,7 +40,7 @@ export default function Footer() {
           >
             <span className="mr-2">🤝</span>
             Start Referring Today
-          </button>
+          </Link>
         </div>
       </div>
 

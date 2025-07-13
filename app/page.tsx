@@ -5,7 +5,6 @@ import LiveDemo from "@/components/home/live-demo"
 import PricingTable from "@/components/home/pricing-table"
 import CtaSection from "@/components/home/cta-section"
 import AdsNowSection from "@/components/home/adsnow-section"
-import PartnerProgramSection from "@/components/home/partner-program-section"
 import Footer from "@/components/home/footer"
 import { PlatformShowcaseSection } from "@/components/home/platform-showcase-section"
 
@@ -20,7 +19,6 @@ export default function HomePage() {
         <IndustrySolutions />
         <LiveDemo />
         <PricingTable />
-        <PartnerProgramSection />
         <CtaSection />
         <Footer />
       </div>
