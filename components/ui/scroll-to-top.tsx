@@ -11,12 +11,8 @@ export default function ScrollToTop() {
     window.scrollTo(0, 0)
 
     // Also try to scroll the document element to top
-    if (document.documentElement) {
+    if (typeof document !== "undefined") {
       document.documentElement.scrollTop = 0
-    }
-
-    // And the body element
-    if (document.body) {
       document.body.scrollTop = 0
     }
   }, [pathname])
