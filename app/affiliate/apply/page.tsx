@@ -1,11 +1,12 @@
-import type { Metadata } from "next"
+import { Suspense } from "react"
 import AffiliateApplicationPage from "./AffiliateApplicationPage"
 
-export const metadata: Metadata = {
-  title: "Apply - Affiliate Program | SuccessNOW",
-  description: "Apply to join our affiliate program and start earning recurring commissions.",
-}
-
 export default function Page() {
-  return <AffiliateApplicationPage />
+  return (
+    <Suspense
+      fallback={<div className="min-h-screen bg-black flex items-center justify-center text-white">Loading...</div>}
+    >
+      <AffiliateApplicationPage />
+    </Suspense>
+  )
 }

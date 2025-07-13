@@ -1,18 +1,22 @@
 "use client"
 
-import { usePathname } from "next/navigation"
 import { useEffect } from "react"
+import { usePathname } from "next/navigation"
 
 export default function ScrollToTop() {
   const pathname = usePathname()
 
   useEffect(() => {
-    // Scroll to top immediately when route changes
+    // Scroll to top when route changes
     window.scrollTo(0, 0)
 
-    // Also try to scroll the document element to top for better browser compatibility
-    if (typeof document !== "undefined") {
+    // Also try to scroll the document element to top
+    if (document.documentElement) {
       document.documentElement.scrollTop = 0
+    }
+
+    // And the body element
+    if (document.body) {
       document.body.scrollTop = 0
     }
   }, [pathname])

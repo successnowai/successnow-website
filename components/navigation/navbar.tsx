@@ -34,7 +34,6 @@ export default function Navbar({ currentPage }: NavbarProps) {
               <div className="w-20 h-4 bg-gray-700 rounded animate-pulse"></div>
               <div className="w-20 h-4 bg-gray-700 rounded animate-pulse"></div>
               <div className="w-20 h-4 bg-gray-700 rounded animate-pulse"></div>
-              <div className="w-20 h-4 bg-gray-700 rounded animate-pulse"></div>
             </div>
           </div>
         </div>
@@ -46,7 +45,6 @@ export default function Navbar({ currentPage }: NavbarProps) {
     { name: "Home", href: "/" },
     { name: "Industries", href: "/industries" },
     { name: "Pricing", href: "/signup" },
-    { name: "Dominate", href: "/apply" },
     { name: "Demo", href: "/demo" },
   ]
 
