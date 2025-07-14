@@ -46,7 +46,7 @@ export default function AffiliateClientPage() {
             <CardContent className="p-8">
               <div className="flex items-center mb-6">
                 <Users className="h-8 w-8 text-cyan-400 mr-3" />
-                <h2 className="text-3xl font-bold text-white">General Affiliates</h2>
+                <h2 className="text-3xl font-bold text-white">Affiliates</h2>
               </div>
               <p className="text-gray-300 text-lg mb-8">
                 Perfect for individuals and businesses looking to earn recurring commissions
@@ -54,22 +54,18 @@ export default function AffiliateClientPage() {
 
               <div className="mb-8">
                 <h3 className="text-xl font-semibold text-white mb-6">Commission Structure:</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-white font-medium mb-2">1-10 Active Referrals</div>
+                    <div className="text-white font-medium mb-2">1-9 Active Referrals</div>
                     <div className="text-blue-400 text-xl font-bold">20% MRR</div>
                   </div>
                   <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-white font-medium mb-2">11-25 Active Referrals</div>
+                    <div className="text-white font-medium mb-2">10-24 Active Referrals</div>
                     <div className="text-green-400 text-xl font-bold">25% MRR</div>
                   </div>
                   <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-white font-medium mb-2">26-50 Active Referrals</div>
+                    <div className="text-white font-medium mb-2">25+ Active Referrals</div>
                     <div className="text-orange-400 text-xl font-bold">30% MRR</div>
-                  </div>
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-white font-medium mb-2">51+ Active Referrals</div>
-                    <div className="text-purple-400 text-xl font-bold">35% MRR</div>
                   </div>
                 </div>
               </div>
@@ -94,21 +90,16 @@ export default function AffiliateClientPage() {
 
               <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-lg p-6 border border-cyan-500/20">
                 <h4 className="text-white font-semibold mb-3">Income Examples:</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                   <div className="text-gray-300">
-                    <span className="text-cyan-400 font-medium">10 referrals at $997/month:</span> $1,994/month
+                    <span className="text-blue-400 font-medium">5 referrals at $997/month:</span> $997/month recurring
+                  </div>
+                  <div className="text-gray-300">
+                    <span className="text-green-400 font-medium">15 referrals at $997/month:</span> $3,738/month
                     recurring
                   </div>
                   <div className="text-gray-300">
-                    <span className="text-green-400 font-medium">25 referrals at $997/month:</span> $6,231/month
-                    recurring
-                  </div>
-                  <div className="text-gray-300">
-                    <span className="text-orange-400 font-medium">50 referrals at $997/month:</span> $14,955/month
-                    recurring
-                  </div>
-                  <div className="text-gray-300">
-                    <span className="text-purple-400 font-medium">100 referrals at $997/month:</span> $34,895/month
+                    <span className="text-orange-400 font-medium">30 referrals at $997/month:</span> $8,973/month
                     recurring
                   </div>
                 </div>
@@ -137,7 +128,7 @@ export default function AffiliateClientPage() {
           </div>
         </div>
 
-        {/* Trusted Platinum Partners Card - Now at bottom */}
+        {/* Trusted Platinum Partners Card */}
         <div className="max-w-6xl mx-auto mb-16">
           <Card
             className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
@@ -159,9 +150,7 @@ export default function AffiliateClientPage() {
 
               <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg p-6 border border-yellow-500/20 mb-8">
                 <div className="text-center">
-                  <div className="text-yellow-400 text-2xl font-bold mb-2">
-                    EARN unlimited monthly recurring revenue
-                  </div>
+                  <div className="text-yellow-400 text-2xl font-bold mb-2">40% Monthly Recurring Revenue</div>
                   <div className="text-gray-300">Exclusive territory rights and premium commission structure</div>
                 </div>
               </div>
@@ -206,20 +195,12 @@ export default function AffiliateClientPage() {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Join thousands of affiliates who are already earning recurring commissions with SuccessNOW AI solutions.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/affiliate/apply?program=General"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg"
-            >
-              Apply for General Program
-            </Link>
-            <Link
-              href="/affiliate/apply?program=Platinum"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-yellow-400 bg-transparent border-2 border-yellow-400 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 hover:scale-105 shadow-lg"
-            >
-              Apply for Platinum Program
-            </Link>
-          </div>
+          <Link
+            href="/affiliate/apply"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg"
+          >
+            Apply for Affiliate Program
+          </Link>
         </div>
       </div>
     </div>
