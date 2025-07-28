@@ -1,0 +1,34 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "SuccessNOW AI",
+  "url": "https://successnow.ai",
+  "description": "AI Superagent System that converts leads into sales 24/7. Never lose a lead again with our AI-powered automation platform.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "SuccessNOW"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://successnow.ai/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "mainEntity": {
+    "@type": "SoftwareApplication",
+    "name": "SuccessNOW AI Platform",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web-based",
+    "description": "AI-powered lead conversion and customer engagement platform",
+    "offers": {
+      "@type": "Offer",
+      "price": "997",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "997",
+        "priceCurrency": "USD",
+        "billingDuration": "P1M"
+      }
+    }
+  }
+}

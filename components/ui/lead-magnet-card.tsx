@@ -1,20 +1,23 @@
 "use client"
 
-import type { ReactNode } from "react"
+import type React from "react"
+
+import { useState } from "react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogDescription,
 } from "@/components/ui/dialog"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 interface LeadMagnetCardProps {
   title: string
   description: string
-  formContent: ReactNode
+  formContent: React.ReactNode
   dialogTitle: string
   dialogDescription: string
 }
@@ -26,29 +29,29 @@ export function LeadMagnetCard({
   dialogTitle,
   dialogDescription,
 }: LeadMagnetCardProps) {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Card className="group w-full max-w-xs md:w-64 h-48 bg-white/5 backdrop-blur-sm border border-purple-400/30 rounded-xl cursor-pointer transition-all duration-300 hover:border-purple-300/70 hover:bg-white/10 animate-pulse-glow flex flex-col justify-center">
-          <CardHeader>
-            <CardTitle className="text-lg font-bold text-purple-300 group-hover:text-white transition-colors duration-300">
-              {title}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-gray-300 group-hover:text-gray-100 transition-colors duration-300">
-              {description}
-            </p>
-          </CardContent>
-        </Card>
-      </DialogTrigger>
-      <DialogContent className="bg-gray-900/80 backdrop-blur-md border-purple-500 text-white">
-        <DialogHeader>
-          <DialogTitle>{dialogTitle}</DialogTitle>
-          <DialogDescription className="text-gray-400">{dialogDescription}</DialogDescription>
-        </DialogHeader>
-        {formContent}
-      </DialogContent>
-    </Dialog>
+    <Card className="bg-gray-900/50 border-gray-700 hover:border-[#4DA6FF]/50 transition-all duration-300 w-full max-w-sm">
+      <CardContent className="p-6 text-center">
+        <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>
+        <p className="text-gray-300 mb-4 text-sm leading-relaxed">{description}</p>
+
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+          <DialogTrigger asChild>
+            <Button className="w-full bg-[#4DA6FF] hover:bg-[#3d8bff] text-white font-semibold py-2 px-4 rounded-md transition-colors duration-200">
+              Get Free Guide
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl w-[90vw] max-h-[95vh] overflow-y-auto bg-white p-0">
+            <DialogHeader className="p-6 pb-2">
+              <DialogTitle className="text-2xl font-bold text-gray-900">{dialogTitle}</DialogTitle>
+              <DialogDescription className="text-gray-600">{dialogDescription}</DialogDescription>
+            </DialogHeader>
+            <div className="px-6 pb-6">{formContent}</div>
+          </DialogContent>
+        </Dialog>
+      </CardContent>
+    </Card>
   )
 }

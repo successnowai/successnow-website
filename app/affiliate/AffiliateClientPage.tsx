@@ -1,208 +1,307 @@
 "use client"
 
 import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Check, Users, DollarSign, TrendingUp, Star, Crown } from "lucide-react"
 import Link from "next/link"
+import { motion } from "framer-motion"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { CheckCircle, Users, TrendingUp, Star, Crown } from "lucide-react"
 
 export default function AffiliateClientPage() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
 
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
-      {/* Starry Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-black">
-        <div className="absolute inset-0 bg-[radial-gradient(white_1px,transparent_1px)] [background-size:50px_50px] opacity-20"></div>
-        <div className="absolute top-10 left-10 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-        <div className="absolute top-32 right-20 w-1 h-1 bg-cyan-300 rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute top-64 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse delay-2000"></div>
-        <div className="absolute bottom-32 right-1/3 w-1 h-1 bg-blue-300 rounded-full animate-pulse delay-3000"></div>
-        <div className="absolute bottom-64 left-1/2 w-2 h-2 bg-cyan-400 rounded-full animate-pulse delay-500"></div>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 py-16">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Join Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              Affiliate Program
-            </span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Partner with SuccessNOW and earn recurring commissions by referring businesses to our AI-powered solutions.
-            Build your passive income stream today.
-          </p>
-        </div>
-
-        {/* General Affiliates Card */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <Card
-            className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300"
-            onMouseEnter={() => setHoveredCard("general")}
-            onMouseLeave={() => setHoveredCard(null)}
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-cyan-900/20" />
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
           >
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <Users className="h-8 w-8 text-cyan-400 mr-3" />
-                <h2 className="text-3xl font-bold text-white">Affiliates</h2>
-              </div>
-              <p className="text-gray-300 text-lg mb-8">
-                Perfect for individuals and businesses looking to earn recurring commissions
-              </p>
-
-              <div className="mb-8">
-                <h3 className="text-xl font-semibold text-white mb-6">Commission Structure:</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-white font-medium mb-2">1-9 Active Referrals</div>
-                    <div className="text-blue-400 text-xl font-bold">20% MRR</div>
-                  </div>
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-white font-medium mb-2">10-24 Active Referrals</div>
-                    <div className="text-green-400 text-xl font-bold">25% MRR</div>
-                  </div>
-                  <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <div className="text-white font-medium mb-2">25+ Active Referrals</div>
-                    <div className="text-orange-400 text-xl font-bold">30% MRR</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="text-center">
-                  <DollarSign className="h-12 w-12 text-green-400 mx-auto mb-3" />
-                  <h4 className="text-white font-semibold mb-2">Recurring Revenue</h4>
-                  <p className="text-gray-300">Earn monthly commissions for as long as your referrals stay active</p>
-                </div>
-                <div className="text-center">
-                  <TrendingUp className="h-12 w-12 text-blue-400 mx-auto mb-3" />
-                  <h4 className="text-white font-semibold mb-2">Scaling Rewards</h4>
-                  <p className="text-gray-300">Higher commission rates as you refer more businesses</p>
-                </div>
-                <div className="text-center">
-                  <Users className="h-12 w-12 text-purple-400 mx-auto mb-3" />
-                  <h4 className="text-white font-semibold mb-2">Full Support</h4>
-                  <p className="text-gray-300">Marketing materials, training, and dedicated support team</p>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-lg p-6 border border-cyan-500/20">
-                <h4 className="text-white font-semibold mb-3">Income Examples:</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                  <div className="text-gray-300">
-                    <span className="text-blue-400 font-medium">5 referrals at $997/month:</span> $997/month recurring
-                  </div>
-                  <div className="text-gray-300">
-                    <span className="text-green-400 font-medium">15 referrals at $997/month:</span> $3,738/month
-                    recurring
-                  </div>
-                  <div className="text-gray-300">
-                    <span className="text-orange-400 font-medium">30 referrals at $997/month:</span> $8,973/month
-                    recurring
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+            <Badge className="mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0">
+              💰 Affiliate Program
+            </Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent">
+              Earn Recurring Commissions
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+              Partner with SuccessNOW and earn recurring commissions by referring businesses to our AI-powered
+              solutions. Build your passive income stream today.
+            </p>
+          </motion.div>
         </div>
+      </section>
 
-        {/* Key Benefits */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h3 className="text-2xl font-bold text-white text-center mb-8">Why Join Our Affiliate Program?</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              "High-converting AI solutions that businesses actually need",
-              "Comprehensive marketing materials and sales support",
-              "Real-time tracking dashboard for all your referrals",
-              "Monthly payouts with transparent reporting",
-              "Dedicated affiliate manager for top performers",
-              "Exclusive training sessions and webinars",
-            ].map((benefit, index) => (
-              <div key={index} className="flex items-start space-x-3">
-                <Check className="h-6 w-6 text-green-400 mt-0.5 flex-shrink-0" />
-                <span className="text-gray-300">{benefit}</span>
+      {/* Commission Structure Section */}
+      <section className="py-20 bg-gray-900/50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <div className="flex items-center justify-center mb-6">
+              <Users className="h-8 w-8 text-cyan-400 mr-3" />
+              <h2 className="text-3xl md:text-4xl font-bold text-white">Affiliates</h2>
+            </div>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Perfect for individuals and businesses looking to earn recurring commissions
+            </p>
+          </motion.div>
+
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold text-white mb-8 text-center">Commission Structure:</h3>
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {[
+                {
+                  tier: "1-9 Active Referrals",
+                  rate: "20% MRR",
+                  color: "from-blue-500 to-cyan-500",
+                  example: "5 referrals × $997 × 20% = $997/month",
+                },
+                {
+                  tier: "10-24 Active Referrals",
+                  rate: "25% MRR",
+                  color: "from-green-500 to-emerald-500",
+                  example: "15 referrals × $997 × 25% = $3,738/month",
+                },
+                {
+                  tier: "25+ Active Referrals",
+                  rate: "30% MRR",
+                  color: "from-orange-500 to-red-500",
+                  example: "30 referrals × $997 × 30% = $8,973/month",
+                },
+              ].map((tier, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  onHoverStart={() => setHoveredCard(tier.tier)}
+                  onHoverEnd={() => setHoveredCard(null)}
+                  className="relative"
+                >
+                  <Card
+                    className={`bg-gray-800/50 border-gray-700 transition-all duration-300 ${
+                      hoveredCard === tier.tier ? "scale-105 shadow-2xl" : ""
+                    }`}
+                  >
+                    <CardContent className="p-6 text-center">
+                      <h4 className="text-lg font-semibold text-white mb-2">{tier.tier}</h4>
+                      <div
+                        className={`text-3xl font-bold bg-gradient-to-r ${tier.color} bg-clip-text text-transparent mb-4`}
+                      >
+                        {tier.rate}
+                      </div>
+                      <p className="text-sm text-gray-400">Example: {tier.example}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <Link href="/affiliate/apply">
+              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105">
+                Apply for Affiliate Program
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Trusted Platinum Partners Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
+          >
+            <Card className="bg-gradient-to-br from-yellow-900/30 to-orange-900/30 border-yellow-500/30 relative overflow-hidden">
+              <div className="absolute top-4 right-4">
+                <Crown className="h-8 w-8 text-yellow-400" />
               </div>
+              <CardContent className="p-8">
+                <div className="text-center mb-8">
+                  <Badge className="mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold">
+                    EXCLUSIVE PROGRAM
+                  </Badge>
+                  <h3 className="text-3xl font-bold text-white mb-4">Trusted Platinum Partners</h3>
+                  <p className="text-gray-300 text-lg">
+                    Elite program for top performers - Limited to 5 partners globally per niche
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg p-6 mb-8">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-yellow-400 mb-2">
+                      EARN unlimited monthly recurring revenue
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                  <div className="space-y-4">
+                    {["40% Monthly Recurring Revenue", "Exclusive territory rights", "Priority support & training"].map(
+                      (benefit, index) => (
+                        <div key={index} className="flex items-center">
+                          <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
+                          <span className="text-gray-300">{benefit}</span>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                  <div className="space-y-4">
+                    {["Co-marketing opportunities", "Custom commission structures"].map((benefit, index) => (
+                      <div key={index} className="flex items-center">
+                        <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
+                        <span className="text-gray-300">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <Link href="/affiliate/apply?program=Platinum">
+                    <Button className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-black font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105">
+                      Apply for Platinum Program
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Key Benefits Section */}
+      <section className="py-20 bg-gray-900/50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Why Partner With Us?</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Join a program that's designed for your success with industry-leading support and resources
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                icon: <TrendingUp className="h-8 w-8" />,
+                title: "Recurring Revenue",
+                description: "Earn monthly commissions for as long as your referrals remain active clients",
+              },
+              {
+                icon: <Users className="h-8 w-8" />,
+                title: "Dedicated Support",
+                description: "Personal account manager and dedicated support team to help you succeed",
+              },
+              {
+                icon: <Star className="h-8 w-8" />,
+                title: "Marketing Materials",
+                description: "Professional marketing assets, landing pages, and sales materials provided",
+              },
+            ].map((benefit, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-cyan-400">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-4">{benefit.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{benefit.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Trusted Platinum Partners Card */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <Card
-            className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
-            onMouseEnter={() => setHoveredCard("platinum")}
-            onMouseLeave={() => setHoveredCard(null)}
-          >
-            <div className="absolute top-4 right-4">
-              <Star className="h-6 w-6 text-yellow-400 fill-current" />
-            </div>
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <Crown className="h-8 w-8 text-yellow-400 mr-3" />
-                <h2 className="text-3xl font-bold text-white">Trusted Platinum Partners</h2>
-                <Badge className="ml-4 bg-yellow-400/20 text-yellow-400 border-yellow-400/30">ELITE</Badge>
-              </div>
-              <p className="text-gray-300 text-lg mb-8">
-                Elite program for top performers - Limited to 5 partners globally per niche
-              </p>
+      {/* Schedule a Consultation Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <Card className="overflow-hidden border-0 bg-gradient-to-r from-purple-900 to-blue-900">
+              <CardContent className="p-0">
+                <div className="grid md:grid-cols-2 min-h-[400px]">
+                  {/* Left side - Content */}
+                  <div className="bg-gradient-to-br from-purple-800 to-pink-800 p-8 md:p-12 flex flex-col justify-center">
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Discuss Your Case?</h2>
+                      <p className="text-lg text-white/90 leading-relaxed">
+                        Contact us today for a confidential consultation. Our team is here to listen and provide the
+                        guidance you need. Fill out the form, and we'll get back to you promptly.
+                      </p>
+                    </motion.div>
+                  </div>
 
-              <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg p-6 border border-yellow-500/20 mb-8">
-                <div className="text-center">
-                  <div className="text-yellow-400 text-2xl font-bold mb-2">40% Monthly Recurring Revenue</div>
-                  <div className="text-gray-300">Exclusive territory rights and premium commission structure</div>
+                  {/* Right side - Form */}
+                  <div className="bg-white p-8 md:p-12 flex flex-col justify-center">
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">Schedule a Consultation</h3>
+                      <form className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Select a Service / Type of Law
+                          </label>
+                          <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Choose a service...</option>
+                            <option value="ai-automation">AI Automation</option>
+                            <option value="lead-generation">Lead Generation</option>
+                            <option value="affiliate-program">Affiliate Program</option>
+                            <option value="custom-solution">Custom Solution</option>
+                          </select>
+                        </div>
+                        <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 text-lg font-semibold rounded-lg transition-all duration-300">
+                          Schedule Consultation →
+                        </Button>
+                      </form>
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-3">
-                  {[
-                    "Exclusive territory protection",
-                    "Premium 40% commission rate",
-                    "Direct access to C-level executives",
-                    "Custom marketing campaigns",
-                    "Priority technical support",
-                  ].map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <Check className="h-5 w-5 text-yellow-400" />
-                      <span className="text-white">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="space-y-3">
-                  {[
-                    "Quarterly business reviews",
-                    "Co-branded marketing materials",
-                    "Joint webinar opportunities",
-                    "Advanced analytics dashboard",
-                    "Dedicated account manager",
-                  ].map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <Check className="h-5 w-5 text-yellow-400" />
-                      <span className="text-white">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         </div>
-
-        {/* CTA Section */}
-        <div className="text-center">
-          <h3 className="text-3xl font-bold text-white mb-6">Ready to Start Earning?</h3>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of affiliates who are already earning recurring commissions with SuccessNOW AI solutions.
-          </p>
-          <Link
-            href="/affiliate/apply"
-            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg hover:from-cyan-500 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg"
-          >
-            Apply for Affiliate Program
-          </Link>
-        </div>
-      </div>
+      </section>
     </div>
   )
 }

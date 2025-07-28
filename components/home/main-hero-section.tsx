@@ -2,28 +2,11 @@
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { GlowingOrbCta } from "@/components/ui/glowing-orb-cta"
 import { RotatingText } from "@/components/ui/rotating-text"
-import { LeadMagnetCard } from "@/components/ui/lead-magnet-card"
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
 export default function MainHeroSection() {
   const rotatingWords = ["Leads", "Cold Prospects", "Conversations", "Website Clicks", "Inquiries"]
-
-  const aiGuideForm = (
-    <div>
-      {/* Placeholder for the contact form */}
-      <div className="text-center mt-4 p-8 border border-dashed border-gray-500 rounded-md bg-black/20">
-        <p className="text-gray-300">Your Contact Form will be embedded here.</p>
-      </div>
-    </div>
-  )
-
-  const websiteReportForm = (
-    <div>
-      {/* Placeholder for the embed code form */}
-      <div className="text-center mt-4 p-8 border border-dashed border-gray-500 rounded-md bg-black/20">
-        <p className="text-gray-300">Your Website Report Form will be embedded here.</p>
-      </div>
-    </div>
-  )
 
   return (
     <section className="relative bg-black text-white min-h-[90vh] flex items-center" aria-labelledby="hero-heading">
@@ -48,25 +31,49 @@ export default function MainHeroSection() {
           </p>
 
           <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 w-full">
-            <LeadMagnetCard
-              title="AI Implementation Guide"
-              description="The step-by-step guide on how to implement AI in your business and dominate on autopilot."
-              formContent={aiGuideForm}
-              dialogTitle="Get Your Free AI Guide"
-              dialogDescription="Enter your details to get the step-by-step guide delivered to your inbox."
-            />
+            {/* AI Implementation Guide Card */}
+            <Card className="bg-gray-900/50 border-gray-700 hover:border-[#4DA6FF]/50 transition-all duration-300 w-full max-w-sm">
+              <CardContent className="p-6 text-center">
+                <h3 className="text-xl font-bold mb-3 text-white">AI Implementation Guide</h3>
+                <p className="text-gray-300 mb-6 text-sm leading-relaxed">
+                  The step-by-step guide on how to implement AI in your business and dominate on autopilot.
+                </p>
+                <a
+                  href="https://link.successnow.ai/widget/form/eNiVmHYoP0ZwvrZoqYsr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block w-full"
+                >
+                  <Button className="w-full bg-[#4DA6FF] hover:bg-[#3d8bff] text-white font-semibold py-3 px-4 rounded-md transition-colors duration-200">
+                    Get Free Guide
+                  </Button>
+                </a>
+              </CardContent>
+            </Card>
 
             <div className="my-4 lg:my-0">
               <DemoPopup trigger={<GlowingOrbCta label="Launch Instant Demo NOW" />} />
             </div>
 
-            <LeadMagnetCard
-              title="Free Website Report"
-              description="Analyse how to improve your website to show in AI search and convert more leads."
-              formContent={websiteReportForm}
-              dialogTitle="Get Your Free Website Report"
-              dialogDescription="Enter your website URL to get your free, personalized report."
-            />
+            {/* Free Website Report Card */}
+            <Card className="bg-gray-900/50 border-gray-700 hover:border-[#4DA6FF]/50 transition-all duration-300 w-full max-w-sm">
+              <CardContent className="p-6 text-center">
+                <h3 className="text-xl font-bold mb-3 text-white">Free Website Report</h3>
+                <p className="text-gray-300 mb-6 text-sm leading-relaxed">
+                  Analyse how to improve your website to show in AI search and convert more leads.
+                </p>
+                <a
+                  href="https://link.successnow.ai/widget/form/B5gmoacOWVRmbN1aIHtl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block w-full"
+                >
+                  <Button className="w-full bg-[#4DA6FF] hover:bg-[#3d8bff] text-white font-semibold py-3 px-4 rounded-md transition-colors duration-200">
+                    Get Free Report
+                  </Button>
+                </a>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
