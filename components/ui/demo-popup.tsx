@@ -101,3 +101,5 @@ export function DemoPopup({ isOpen: controlledIsOpen, onClose, trigger }: DemoPo
     </>
   )
 }
+
+export default DemoPopup

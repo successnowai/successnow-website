@@ -1,54 +1,122 @@
 "use client"
-import { motion } from "framer-motion"
-import { Bot } from "lucide-react"
-import { useState } from "react"
 
-const FloatingChatRobot = () => {
+import { useState, useEffect } from "react"
+import { Bot, X } from "lucide-react"
+
+export default function FloatingChatRobot() {
+  const [isVisible, setIsVisible] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
 
-  return (
-    <div className="fixed bottom-4 right-4 z-50">
-      {isExpanded && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          className="mb-4 bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden"
-          style={{ width: "350px", height: "200px" }}
-        >
-          <div className="flex justify-between items-center p-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-            <h3 className="font-semibold text-sm">AI Voice Assistant</h3>
-            <button onClick={() => setIsExpanded(false)} className="text-white hover:text-gray-200 transition-colors">
-              ✕
-            </button>
-          </div>
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "calc(100% - 48px)" }}>
-            <iframe
-              src="https://iframes.ai/o/1753831620452x607403809624031200?color=ed10cc&icon=bot"
-              allow="microphone"
-              style={{ width: "100%", height: "100%", border: "none" }}
-              id="assistantFrame"
-            />
-          </div>
-        </motion.div>
-      )}
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true)
+    }, 3000)
 
-      <motion.div
-        className="group cursor-pointer"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        <div className="relative w-16 h-16">
-          <div className="absolute inset-0 bg-purple-600 rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300 animate-pulse" />
-          <div className="absolute inset-0 bg-purple-500 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-          <div className="relative w-full h-full flex items-center justify-center bg-black/50 rounded-full border-2 border-purple-400/80 group-hover:border-purple-300 transition-colors duration-300 shadow-lg">
-            <Bot className="w-7 h-7 text-purple-300 group-hover:text-white transition-colors duration-300" />
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (!isVisible) return null
+
+  return (
+    <>
+      {/* Floating Chat Robot */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {isExpanded ? (
+          <div
+            className="mb-4 bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden"
+            style={{ width: "350px", height: "400px" }}
+          >
+            <div className="flex justify-between items-center p-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+              <h3 className="font-semibold text-sm">AI Business Consultant</h3>
+              <button onClick={() => setIsExpanded(false)} className="text-white hover:text-gray-200 transition-colors">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <div
+              style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "calc(100% - 48px)" }}
+            >
+              <iframe
+                src="https://iframes.ai/o/1750493608926x366840044583387140?color=00BFFF&icon=bot"
+                allow="microphone"
+                style={{ width: "100%", height: "100%", border: "none" }}
+                title="AI Business Consultant"
+              />
+            </div>
           </div>
+        ) : null}
+
+        <div className="group cursor-pointer flex flex-col items-center" onClick={() => setIsExpanded(!isExpanded)}>
+          <div className="relative w-16 h-16 mb-2">
+            {/* Outer glow effect - slowest */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+              style={{
+                animation: "slowPulse 6s ease-in-out infinite alternate",
+              }}
+            ></div>
+
+            {/* Middle glow effect - medium */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500"
+              style={{
+                animation: "slowPulse 4.5s ease-in-out infinite alternate-reverse",
+              }}
+            ></div>
+
+            {/* Inner glow effect */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-500"
+              style={{
+                animation: "slowPulse 3s ease-in-out infinite alternate",
+              }}
+            ></div>
+
+            <div
+              className="relative w-full h-full flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-2xl group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110"
+              style={{
+                animation: "slowGlow 4s ease-in-out infinite alternate",
+              }}
+            >
+              <Bot className="w-8 h-8 text-white" />
+
+              {/* Slow pulsing rings */}
+              <div
+                className="absolute inset-0 rounded-full border-2 border-purple-400/30"
+                style={{
+                  animation: "slowRing 5s ease-in-out infinite",
+                }}
+              ></div>
+              <div
+                className="absolute inset-0 rounded-full border-2 border-pink-400/20"
+                style={{
+                  animation: "slowRing 5s ease-in-out infinite 1.5s",
+                }}
+              ></div>
+            </div>
+          </div>
+          <span className="text-xs font-semibold text-white bg-black/50 px-2 py-1 rounded backdrop-blur-sm group-hover:text-purple-200 transition-colors duration-300 text-center">
+            Click Here, Talk to AI
+          </span>
         </div>
-      </motion.div>
-    </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes slowGlow {
+          0% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.3), 0 0 40px rgba(236, 72, 153, 0.2); }
+          100% { box-shadow: 0 0 30px rgba(147, 51, 234, 0.5), 0 0 60px rgba(236, 72, 153, 0.3); }
+        }
+        
+        @keyframes slowPulse {
+          0% { opacity: 0.3; transform: scale(1); }
+          100% { opacity: 0.6; transform: scale(1.05); }
+        }
+        
+        @keyframes slowRing {
+          0% { opacity: 0; transform: scale(1); }
+          50% { opacity: 0.3; transform: scale(1.1); }
+          100% { opacity: 0; transform: scale(1.2); }
+        }
+      `}</style>
+    </>
   )
 }
-
-export default FloatingChatRobot
