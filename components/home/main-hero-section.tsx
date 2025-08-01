@@ -4,10 +4,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { GlowingOrbCta } from "@/components/ui/glowing-orb-cta"
+import { RotatingText } from "@/components/ui/rotating-text"
 import { Bot, Globe, Target, ArrowRight, Star } from "lucide-react"
 import Link from "next/link"
 
 export default function MainHeroSection() {
+  const rotatingWords = ["Leads", "Conversations", "Inquiries", "Website Clicks", "Cold Prospects", "Traffic", "Sales"]
+
   return (
     <div className="relative bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white overflow-hidden min-h-screen">
       {/* Animated Border */}
@@ -18,22 +21,21 @@ export default function MainHeroSection() {
         <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8 md:space-y-10">
           {/* Badge */}
           <Badge className="bg-[#00BFFF]/20 text-[#00BFFF] border-[#00BFFF]/30 px-4 py-2 text-sm font-semibold">
-            🚀 AI-Powered Business Transformation
+            AI Agents for websites
           </Badge>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight px-2">
-            <span className="block text-white animate-fadeTextUp">Transform Your Business with</span>
-            <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300">SuccessNOW.ai</span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-              AI Super Agents & Smart Websites
+            <span className="block text-white animate-fadeTextUp">AI that converts</span>
+            <span className="block animate-fadeTextUp animation-delay-300">
+              <RotatingText words={rotatingWords} className="text-[#00BFFF]" interval={2500} />
             </span>
+            <span className="block text-white animate-fadeTextUp animation-delay-600">into sales</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto animate-fadeTextUp animation-delay-900 px-4 sm:px-6 leading-relaxed">
-            Get AI-powered websites that convert, automated lead generation, and AI agents that work 24/7 to grow your
-            business while you sleep.
+            Get AI-powered websites that convert visitors into customers using AI optimization
           </p>
 
           {/* AI Demo CTA */}
