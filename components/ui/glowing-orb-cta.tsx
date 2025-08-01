@@ -1,132 +1,68 @@
 "use client"
 
 import { useState } from "react"
-import { Bot } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Bot, MessageCircle } from "lucide-react"
 
 interface GlowingOrbCtaProps {
   label?: string
   size?: "sm" | "md" | "lg"
-  className?: string
+  onClick?: () => void
 }
 
-export function GlowingOrbCta({ label = "Click Here, Talk to AI", size = "md", className = "" }: GlowingOrbCtaProps) {
-  const [showPopup, setShowPopup] = useState(false)
+export function GlowingOrbCta({ label = "Talk to AI", size = "md", onClick }: GlowingOrbCtaProps) {
+  const [isHovered, setIsHovered] = useState(false)
 
   const sizeClasses = {
-    sm: "w-16 h-16",
-    md: "w-20 h-20",
-    lg: "w-24 h-24",
+    sm: "w-12 h-12 text-sm",
+    md: "w-16 h-16 text-base",
+    lg: "w-20 h-20 text-lg",
   }
 
-  const iconSizes = {
-    sm: "w-6 h-6",
-    md: "w-8 h-8",
-    lg: "w-10 h-10",
-  }
-
-  const textSizeClasses = {
-    sm: "text-sm",
-    md: "text-base",
-    lg: "text-lg",
+  const buttonSizeClasses = {
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base",
+    lg: "px-8 py-4 text-lg",
   }
 
   return (
-    <>
-      <div className={`w-full flex flex-col items-center ${className}`}>
-        <button
-          onClick={() => setShowPopup(true)}
-          className={`group relative ${sizeClasses[size]} bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-110 mb-3`}
-          aria-label="Launch AI Demo"
-          style={{
-            animation: "slowGlow 4s ease-in-out infinite alternate",
-          }}
-        >
-          {/* Outer glow effect - slowest */}
-          <div
-            className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"
-            style={{
-              animation: "slowPulse 6s ease-in-out infinite alternate",
-            }}
-          ></div>
+    <div className="flex flex-col items-center gap-4">
+      {/* Glowing Orb */}
+      <div
+        className={`relative ${sizeClasses[size]} cursor-pointer transition-all duration-300 ${
+          isHovered ? "scale-110" : "scale-100"
+        }`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={onClick}
+      >
+        {/* Outer glow */}
+        <div className="absolute inset-0 rounded-full bg-[#00BFFF] opacity-20 blur-xl animate-pulse"></div>
 
-          {/* Middle glow effect - medium */}
-          <div
-            className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500"
-            style={{
-              animation: "slowPulse 4.5s ease-in-out infinite alternate-reverse",
-            }}
-          ></div>
+        {/* Middle glow */}
+        <div className="absolute inset-2 rounded-full bg-[#00BFFF] opacity-40 blur-lg animate-pulse animation-delay-500"></div>
 
-          {/* Inner glow effect - fastest but still slow */}
-          <div
-            className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-500"
-            style={{
-              animation: "slowPulse 3s ease-in-out infinite alternate",
-            }}
-          ></div>
+        {/* Inner orb */}
+        <div className="relative w-full h-full rounded-full bg-gradient-to-br from-[#00BFFF] to-[#0080FF] flex items-center justify-center shadow-lg">
+          <Bot className="w-1/2 h-1/2 text-white animate-bounce" />
+        </div>
 
-          {/* Bot icon */}
-          <Bot className={`relative z-10 text-white ${iconSizes[size]}`} />
-
-          {/* Slow pulsing rings - like voice waves */}
-          <div
-            className="absolute inset-0 rounded-full border-2 border-purple-400/30"
-            style={{
-              animation: "slowRing 5s ease-in-out infinite",
-            }}
-          ></div>
-          <div
-            className="absolute inset-0 rounded-full border-2 border-pink-400/20"
-            style={{
-              animation: "slowRing 5s ease-in-out infinite 1.5s",
-            }}
-          ></div>
-        </button>
-
-        <span className={`text-white font-medium text-center ${textSizeClasses[size]}`}>{label}</span>
+        {/* Rotating ring */}
+        <div
+          className="absolute inset-0 rounded-full border-2 border-[#00BFFF] opacity-30 animate-spin"
+          style={{ animationDuration: "3s" }}
+        ></div>
       </div>
 
-      {/* Inline popup */}
-      {showPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-          <div className="w-full max-w-md mx-4 bg-gradient-to-br from-gray-900 to-black border border-purple-500/30 shadow-2xl rounded-lg p-6">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-white">AI Voice Assistant</h2>
-              <button onClick={() => setShowPopup(false)} className="text-gray-400 hover:text-white transition-colors">
-                ✕
-              </button>
-            </div>
-
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "200px" }}>
-              <iframe
-                src="https://iframes.ai/o/1753831620452x607403809624031200?color=ed10cc&icon=bot"
-                allow="microphone"
-                style={{ width: "100%", height: "100%", border: "none" }}
-                title="AI Voice Assistant"
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
-      <style jsx>{`
-        @keyframes slowGlow {
-          0% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.3), 0 0 40px rgba(236, 72, 153, 0.2); }
-          100% { box-shadow: 0 0 30px rgba(147, 51, 234, 0.5), 0 0 60px rgba(236, 72, 153, 0.3); }
-        }
-        
-        @keyframes slowPulse {
-          0% { opacity: 0.3; transform: scale(1); }
-          100% { opacity: 0.6; transform: scale(1.05); }
-        }
-        
-        @keyframes slowRing {
-          0% { opacity: 0; transform: scale(1); }
-          50% { opacity: 0.3; transform: scale(1.1); }
-          100% { opacity: 0; transform: scale(1.2); }
-        }
-      `}</style>
-    </>
+      {/* CTA Button */}
+      <Button
+        className={`bg-[#00BFFF] hover:bg-[#00A3D9] text-white font-semibold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(0,191,255,0.5)] transition-all duration-300 ${buttonSizeClasses[size]}`}
+        onClick={onClick}
+      >
+        <MessageCircle className="w-4 h-4 mr-2" />
+        {label}
+      </Button>
+    </div>
   )
 }
 

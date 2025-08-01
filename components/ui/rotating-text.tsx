@@ -2,22 +2,22 @@
 
 import { useState, useEffect } from "react"
 
-interface RotatingTextProps {
-  words: string[]
-  className?: string
-  interval?: number
-}
+const texts = ["Your Industry", "Local Business", "Online Sales", "Lead Generation", "Customer Service"]
 
-export function RotatingText({ words, className = "", interval = 3000 }: RotatingTextProps) {
+export default function RotatingText() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % words.length)
-    }, interval)
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % texts.length)
+    }, 2000)
 
-    return () => clearInterval(timer)
-  }, [words.length, interval])
+    return () => clearInterval(interval)
+  }, [])
 
-  return <span className={`inline-block transition-all duration-500 ${className}`}>{words[currentIndex]}</span>
+  return (
+    <span className="inline-block min-w-[200px] text-left">
+      <span className="animate-fadeInUp">{texts[currentIndex]}</span>
+    </span>
+  )
 }
