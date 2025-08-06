@@ -147,7 +147,7 @@ export default function SignupPage() {
                 </p>
 
                 <a
-                  href="https://devnow.ai/signup"
+                  href="https://signup.successnow.ai"
                   className="inline-block bg-[#00BFFF] text-[#00274D] font-bold py-6 px-12 text-xl rounded-xl shadow-lg hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105"
                 >
                   🎯 Start My SuccessNOW Platform Build - $3,488
@@ -167,7 +167,7 @@ export default function SignupPage() {
                 </p>
 
                 <a
-                  href="https://devnow.ai/industries"
+                  href="https://www.successnow.ai/industries"
                   className="inline-block bg-[#00BFFF] text-[#00274D] font-bold py-6 px-12 text-xl rounded-xl shadow-lg hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105"
                 >
                   Explore Industry Solutions

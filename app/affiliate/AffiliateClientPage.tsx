@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, Users, TrendingUp, Star, Crown } from "lucide-react"
+import { CheckCircle, Users, TrendingUp, Star, Crown } from 'lucide-react'
 
 export default function AffiliateClientPage() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
@@ -114,13 +114,20 @@ export default function AffiliateClientPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center mt-12 mb-8"
           >
-            <Link href="/affiliate/apply">
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 hover:scale-105">
-                Apply for Affiliate Program
-              </Button>
-            </Link>
+            <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl p-8 border border-cyan-500/20 backdrop-blur-sm">
+              <h3 className="text-2xl font-bold text-white mb-4">Ready to Start Earning?</h3>
+              <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+                Join thousands of affiliates already earning recurring commissions with our proven system. 
+                Apply now and start building your passive income stream.
+              </p>
+              <Link href="/affiliate/apply">
+                <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-12 py-4 text-xl font-semibold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/25">
+                  Apply for Affiliate Program →
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -135,22 +142,32 @@ export default function AffiliateClientPage() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto"
           >
-            <Card className="bg-gradient-to-br from-yellow-900/30 to-orange-900/30 border-yellow-500/30 relative overflow-hidden">
-              <div className="absolute top-4 right-4">
+            <Card className="relative overflow-hidden border border-white/10 bg-black/40 backdrop-blur-xl">
+              {/* Animated gold border */}
+              <div className="absolute inset-0 rounded-lg">
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 animate-pulse" />
+                <div className="absolute inset-[1px] rounded-lg bg-black/60 backdrop-blur-xl" />
+              </div>
+              
+              {/* Gold glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 via-orange-500/30 to-yellow-400/30 rounded-lg blur-sm opacity-75" />
+              
+              <div className="absolute top-4 right-4 z-10">
                 <Crown className="h-8 w-8 text-yellow-400" />
               </div>
-              <CardContent className="p-8">
+              
+              <CardContent className="relative z-10 p-8">
                 <div className="text-center mb-8">
                   <Badge className="mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold">
                     EXCLUSIVE PROGRAM
                   </Badge>
                   <h3 className="text-3xl font-bold text-white mb-4">Trusted Platinum Partners</h3>
-                  <p className="text-gray-300 text-lg">
+                  <p className="text-gray-200 text-lg">
                     Elite program for top performers - Limited to 5 partners globally per niche
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg p-6 mb-8">
+                <div className="bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-yellow-500/20 rounded-lg p-6 mb-8 border border-yellow-400/20 backdrop-blur-sm">
                   <div className="text-center">
                     <div className="text-4xl font-bold text-yellow-400 mb-2">
                       EARN unlimited monthly recurring revenue
@@ -164,7 +181,7 @@ export default function AffiliateClientPage() {
                       (benefit, index) => (
                         <div key={index} className="flex items-center">
                           <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
-                          <span className="text-gray-300">{benefit}</span>
+                          <span className="text-gray-200">{benefit}</span>
                         </div>
                       ),
                     )}
@@ -173,7 +190,7 @@ export default function AffiliateClientPage() {
                     {["Co-marketing opportunities", "Custom commission structures"].map((benefit, index) => (
                       <div key={index} className="flex items-center">
                         <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
-                        <span className="text-gray-300">{benefit}</span>
+                        <span className="text-gray-200">{benefit}</span>
                       </div>
                     ))}
                   </div>
