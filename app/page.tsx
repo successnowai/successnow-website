@@ -5,23 +5,19 @@ import LiveDemo from "@/components/home/live-demo"
 import PricingTable from "@/components/home/pricing-table"
 import CtaSection from "@/components/home/cta-section"
 import AdsNowSection from "@/components/home/adsnow-section"
-import Footer from "@/components/home/footer"
 import { PlatformShowcaseSection } from "@/components/home/platform-showcase-section"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-black text-white relative">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <StarryBackground />
-      <div className="relative z-10">
-        <MainHeroSection />
-        <PlatformShowcaseSection />
-        <AdsNowSection />
-        <IndustrySolutions />
-        <LiveDemo />
-        <PricingTable />
-        <CtaSection />
-        <Footer />
-      </div>
+      <MainHeroSection />
+      <IndustrySolutions />
+      <LiveDemo />
+      <PricingTable />
+      <PlatformShowcaseSection />
+      <AdsNowSection />
+      <CtaSection />
     </div>
   )
 }

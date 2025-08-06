@@ -1,8 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Montserrat, Open_Sans } from "next/font/google"
+import { Inter, Montserrat, Open_Sans } from 'next/font/google'
 import "./globals.css"
 import Navbar from "@/components/navigation/navbar"
+import Footer from "@/components/home/footer"
 import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 import StarryBackground from "@/components/ui/starry-background"
 import ScrollToTop from "@/components/ui/scroll-to-top"
@@ -88,6 +89,8 @@ export default function RootLayout({
         <main id="main-content" className="global-content-spacing">
           {children}
         </main>
+        {/* Global Footer - Now appears on every page */}
+        <Footer />
         {/* Floating chat robot */}
         <FloatingChatRobot />
       </body>
