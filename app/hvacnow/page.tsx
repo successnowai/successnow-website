@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { HVACNowClientPage } from "./HVACNowClientPage"
+import HVACNowClientPage from "./HVACNowClientPage"
 
 export const metadata: Metadata = {
   title: "HVACNOW - AI-Powered HVAC Business Solutions | SuccessNOW",

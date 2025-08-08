@@ -2,86 +2,158 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Play, MessageCircle, Bot, Zap, Star, Users, TrendingUp } from 'lucide-react'
 import { VoiceDemoModal } from "@/components/ui/voice-demo-modal"
-import { Bot, Play } from 'lucide-react'
 
-export function LiveDemo() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+export default function LiveDemo() {
+  const [showVoiceDemo, setShowVoiceDemo] = useState(false)
+
+  const demoFeatures = [
+    {
+      icon: Bot,
+      title: "AI Voice Assistant",
+      description: "Experience our advanced voice AI that sounds completely human",
+      color: "from-blue-500 to-cyan-500"
+    },
+    {
+      icon: MessageCircle,
+      title: "Natural Conversations",
+      description: "Handles complex inquiries with perfect understanding",
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: Zap,
+      title: "Instant Responses",
+      description: "Never keeps customers waiting - responds in milliseconds",
+      color: "from-green-500 to-teal-500"
+    }
+  ]
+
+  const stats = [
+    { number: "98%", label: "Customer Satisfaction", icon: Star },
+    { number: "24/7", label: "Always Available", icon: Zap },
+    { number: "10K+", label: "Conversations Daily", icon: Users },
+    { number: "300%", label: "Lead Conversion Increase", icon: TrendingUp }
+  ]
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(147,51,234,0.1),transparent_50%)]"></div>
+    <section id="live-demo" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent"></div>
       
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          {/* Left side - Title and Button */}
-          <div className="flex-1 text-left">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              AI Conversation Demo
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl">
-              Experience the power of our AI assistant. Click to start an interactive voice conversation 
-              and see how our technology can transform your business communications.
-            </p>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              size="lg"
-              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              <Play className="w-5 h-5 mr-2" />
-              Start Demo
-            </Button>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-blue-400/30 mb-6">
+            <Play className="w-4 h-4 text-blue-400" />
+            <span className="text-sm font-medium text-blue-300">Live Demo</span>
           </div>
+          
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              Experience Our
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              AI Voice Assistant
+            </span>
+          </h2>
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            Try our revolutionary AI voice technology that handles customer inquiries, 
+            books appointments, and converts leads with human-like conversations.
+          </p>
 
-          {/* Right side - Glassmorphic Orb */}
-          <div className="flex-1 flex justify-center items-center">
-            <div className="relative">
-              {/* Main glassmorphic orb */}
-              <div 
-                className="relative w-80 h-80 cursor-pointer group"
-                onClick={() => setIsModalOpen(true)}
-              >
-                {/* Outer glow rings */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-3xl animate-pulse"></div>
-                <div className="absolute inset-4 rounded-full bg-gradient-to-r from-purple-400/30 to-pink-400/30 blur-2xl animate-pulse delay-75"></div>
-                <div className="absolute inset-8 rounded-full bg-gradient-to-r from-purple-300/40 to-pink-300/40 blur-xl animate-pulse delay-150"></div>
-                
-                {/* Main orb with glassmorphic effect */}
-                <div className="absolute inset-12 rounded-full bg-gradient-to-br from-purple-500/30 to-pink-500/30 backdrop-blur-xl border border-purple-400/30 shadow-2xl group-hover:scale-105 transition-all duration-500">
-                  {/* Inner glow */}
-                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-purple-400/20 to-pink-400/20 backdrop-blur-lg"></div>
-                  
-                  {/* Center dot with icon */}
-                  <div className="absolute inset-1/2 w-16 h-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
-                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                      <Bot className="w-6 h-6 text-white animate-pulse" />
-                    </div>
-                  </div>
-                  
-                  {/* Pulsing center dot */}
-                  <div className="absolute inset-1/2 w-4 h-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/60 animate-ping"></div>
+          <Button
+            size="lg"
+            onClick={() => setShowVoiceDemo(true)}
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-lg"
+          >
+            <Play className="w-6 h-6 mr-2" />
+            Start Voice Demo
+          </Button>
+        </div>
+
+        {/* Demo Features */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {demoFeatures.map((feature, index) => (
+            <Card
+              key={index}
+              className="group bg-gray-900/50 backdrop-blur-md border border-gray-700/50 hover:border-blue-400/50 transition-all duration-500 hover:scale-105"
+            >
+              <CardContent className="p-8 text-center">
+                <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <feature.icon className="w-8 h-8 text-white" />
                 </div>
                 
-                {/* Hover effect rings */}
-                <div className="absolute inset-0 rounded-full border-2 border-purple-400/0 group-hover:border-purple-400/50 transition-all duration-500 group-hover:scale-110"></div>
-                <div className="absolute inset-6 rounded-full border border-pink-400/0 group-hover:border-pink-400/30 transition-all duration-700 group-hover:scale-105"></div>
-              </div>
-              
-              {/* Click instruction text */}
-              <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 text-center">
-                <p className="text-purple-300 font-medium text-lg animate-pulse">
-                  Click here for AI demo
+                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-300 transition-colors">
+                  {feature.title}
+                </h3>
+                
+                <p className="text-gray-300 leading-relaxed">
+                  {feature.description}
                 </p>
-                <div className="w-2 h-2 bg-purple-400 rounded-full mx-auto mt-2 animate-bounce"></div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Statistics */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          {stats.map((stat, index) => (
+            <Card
+              key={index}
+              className="bg-black/40 backdrop-blur-sm border border-blue-400/20 hover:border-blue-400/40 transition-all duration-300"
+            >
+              <CardContent className="p-6 text-center">
+                <stat.icon className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+                <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
+                <div className="text-gray-300 text-sm">{stat.label}</div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* How It Works */}
+        <div className="bg-gradient-to-r from-gray-900/50 to-black/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
+          <h3 className="text-3xl font-bold text-center text-white mb-8">How Our AI Voice Assistant Works</h3>
+          
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { step: "1", title: "Customer Contacts", desc: "Visitor starts web-based voice chat" },
+              { step: "2", title: "AI Responds", desc: "Natural conversation begins instantly" },
+              { step: "3", title: "Qualifies Lead", desc: "Gathers information and assesses needs" },
+              { step: "4", title: "Books Appointment", desc: "Schedules meeting or closes sale" }
+            ].map((process, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
+                  {process.step}
+                </div>
+                <h4 className="text-lg font-bold text-white mb-2">{process.title}</h4>
+                <p className="text-gray-300 text-sm">{process.desc}</p>
               </div>
-            </div>
+            ))}
           </div>
+        </div>
+
+        {/* Final CTA */}
+        <div className="text-center mt-12">
+          <p className="text-lg text-gray-300 mb-6">
+            Ready to see how our AI can transform your business?
+          </p>
+          <Button
+            size="lg"
+            onClick={() => setShowVoiceDemo(true)}
+            className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            Try Voice Demo Now
+          </Button>
         </div>
       </div>
 
       <VoiceDemoModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+        isOpen={showVoiceDemo} 
+        onClose={() => setShowVoiceDemo(false)} 
       />
     </section>
   )

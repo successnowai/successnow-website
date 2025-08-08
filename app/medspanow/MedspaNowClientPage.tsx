@@ -2,22 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Footer } from "@/components/home/footer"
+import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
-interface Template {
-  id: string
-  name: string
-  url: string
-}
-
-interface MedspaNowClientPageProps {
-  templates: Template[]
-}
-
-export function MedspaNowClientPage({ templates }: MedspaNowClientPageProps) {
+const MedspaNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
@@ -197,3 +187,5 @@ export function MedspaNowClientPage({ templates }: MedspaNowClientPageProps) {
     </div>
   )
 }
+
+export default MedspaNowClientPage

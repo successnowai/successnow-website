@@ -1,107 +1,157 @@
 "use client"
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ArrowRight, Building, Stethoscope, Hammer, Utensils, Home, Car, Dumbbell, Briefcase } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
+import type React from "react"
+import { useInView } from "@/hooks/use-intersection-observer"
+import { AnimatedSwitcher } from "@/components/ui/animated-switcher"
 
-const industries = [
-  { name: 'Real Estate', icon: Home, image: '/realtor-showing-house.png', href: '/realtornow' },
-  { name: 'Healthcare', icon: Stethoscope, image: '/doctor-office.png', href: '/medspanow' },
-  { name: 'Construction', icon: Hammer, image: '/construction-site.png', href: '/contractorsnow' },
-  { name: 'Restaurants', icon: Utensils, image: '/modern-restaurant-interior.png', href: '/restaurantsnow' },
-  { name: 'Auto Dealers', icon: Car, image: '/modern-car-dealership.png', href: '/autodealersnow' },
-  { name: 'Gyms', icon: Dumbbell, image: '/modern-gym.png', href: '/gymsnow' },
-  { name: 'Law Firms', icon: Briefcase, image: '/classic-law-office.png', href: '/lawyersnow' },
-]
+export default function IndustrySolutions() {
+  const { ref, isInView } = useInView({ threshold: 0.1 })
 
-export function IndustrySolutions() {
-  const [hoveredIndustry, setHoveredIndustry] = useState(industries[0])
+  const industries = [
+    {
+      emoji: "🚗",
+      title: "Auto Dealers",
+      checkmark: "✅",
+      benefits: [
+        "Increase Financing Approvals",
+        "Book More Test Drives",
+        "Convert Leads 24/7",
+        "Qualify Buyers Instantly",
+      ],
+      buttonText: "See AutoDealersNOW",
+      slug: "autodealersnow",
+    },
+    {
+      emoji: "🏡",
+      title: "Realtors",
+      checkmark: "✅",
+      benefits: [
+        "Book Showings Automatically",
+        "Qualify Buyers While You Sleep",
+        "Never Miss Hot Leads",
+        "Close More Deals Faster",
+      ],
+      buttonText: "See RealtorNOW",
+      slug: "realtornow",
+    },
+    {
+      emoji: "🏋️",
+      title: "Gyms & Studios",
+      checkmark: "✅",
+      benefits: [
+        "Reduce Cancellations by 42%",
+        "Fill Classes Without Marketing",
+        "Automate Follow-ups for No-shows",
+        "Boost Member Retention",
+      ],
+      buttonText: "See GymsNOW",
+      slug: "gymsnow",
+    },
+    {
+      emoji: "🧑‍⚖️",
+      title: "Lawyers",
+      checkmark: "✅",
+      benefits: [
+        "Book Consultations Auto",
+        "Get More Qualified Clients",
+        "Convert Leads While Competitors Sleep",
+        "Handle Intake 24/7",
+      ],
+      buttonText: "See LawyersNOW",
+      slug: "lawyersnow",
+    },
+    {
+      emoji: "💆",
+      title: "Medspas",
+      checkmark: "✅",
+      benefits: [
+        "Collect Reviews Effortlessly",
+        "Book Appointments Automatically",
+        "Increase Treatment Package Sales",
+        "Reduce No-Shows by 60%",
+      ],
+      buttonText: "See MedspaNOW",
+      slug: "medspanow",
+    },
+    {
+      emoji: "🏦",
+      title: "Mortgage Brokers",
+      checkmark: "✅",
+      benefits: [
+        "Close More Loans Easily",
+        "Pre-qualify Leads Without Work",
+        "Nurture Leads Until Ready",
+        "Beat Competitors on Speed",
+      ],
+      buttonText: "See MortgageNOW",
+      slug: "mortgagenow",
+    },
+  ]
 
   return (
-    <section className="py-20 sm:py-32 bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Tailored AI Solutions for
-            <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent"> Your Industry</span>
-          </h2>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            SuccessNOW AI is not a one-size-fits-all solution. We provide specialized AI models and workflows trained for the unique challenges of your industry.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
-          <motion.div
-            className="relative w-full h-96 rounded-2xl overflow-hidden border border-purple-500/30"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+    <section
+      ref={ref as React.RefObject<HTMLDivElement>}
+      className="mx-auto max-w-6xl px-4 sm:px-5 py-12 sm:py-15"
+      aria-labelledby="industry-solutions-title"
+    >
+      <h2
+        id="industry-solutions-title"
+        className={`mb-6 sm:mb-8 text-center text-2xl sm:text-3xl font-bold text-white transition-all duration-700 ${
+          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
+      >
+        AI-Powered Solutions for Top Industries
+      </h2>
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {industries.map((industry, index) => (
+          <div
+            key={index}
+            className={`bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 transition-all duration-700 hover:-translate-y-1 focus-within:-translate-y-1 hover:shadow-xl focus-within:shadow-xl cursor-pointer ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+            style={{ transitionDelay: `${index * 100}ms` }}
+            tabIndex={0}
+            role="region"
+            aria-label={`${industry.title} industry solution`}
           >
-            <AnimatePresence>
-              <motion.div
-                key={hoveredIndustry.name}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={hoveredIndustry.image || "/placeholder.svg"}
-                  alt={hoveredIndustry.name}
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-            <div className="absolute bottom-6 left-6">
-              <h3 className="text-3xl font-bold text-white">{hoveredIndustry.name}</h3>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center space-x-3">
+                <span className="text-2xl">{industry.emoji}</span>
+                <h3 className="font-bold text-white text-base sm:text-lg">{industry.title}</h3>
+              </div>
+              <span className="text-green-400 text-xl">{industry.checkmark}</span>
             </div>
-          </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {industries.map((industry) => (
-              <Link href={industry.href} key={industry.name}>
-                <Card
-                  onMouseEnter={() => setHoveredIndustry(industry)}
-                  className={`text-center h-full p-6 cursor-pointer transition-all duration-300 border backdrop-blur-sm flex flex-col items-center justify-center ${
-                    hoveredIndustry.name === industry.name
-                      ? 'bg-purple-900/30 border-purple-500/50 scale-105'
-                      : 'bg-gray-900/20 border-gray-800 hover:border-purple-700/30'
-                  }`}
-                >
-                  <CardContent className="p-0">
-                    <industry.icon className="w-8 h-8 mb-3 text-purple-400 mx-auto" />
-                    <span className="font-semibold text-white">{industry.name}</span>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-            <Link href="/industries">
-              <Card className="text-center h-full p-6 cursor-pointer transition-all duration-300 border bg-gray-900/20 border-gray-800 hover:border-purple-700/30 flex flex-col items-center justify-center">
-                <CardContent className="p-0">
-                  <Building className="w-8 h-8 mb-3 text-gray-500 mx-auto" />
-                  <span className="font-semibold text-gray-400">And more...</span>
-                </CardContent>
-              </Card>
-            </Link>
+            <div className="mb-6 min-h-[60px] flex items-center">
+              <p className="text-gray-300 text-sm sm:text-base">
+                <span className="text-white font-bold">AI that </span>
+                <AnimatedSwitcher
+                  phrases={industry.benefits}
+                  className="text-blue-400 font-bold inline"
+                  interval={3000 + index * 500}
+                  scrolling={false}
+                />
+              </p>
+            </div>
+
+            <button
+              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 focus:from-blue-600 focus:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 hover:scale-105 focus:scale-105 shadow-lg text-sm sm:text-base min-h-[44px]"
+              onClick={() => (window.location.href = `/${industry.slug}`)}
+              aria-label={`View ${industry.title} industry solution`}
+            >
+              {industry.buttonText} →
+            </button>
           </div>
-        </div>
-
-        <div className="text-center mt-16">
-          <Link href="/industries">
-            <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/20">
-              Explore All Industries
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-          </Link>
-        </div>
+        ))}
       </div>
+      <p
+        className={`mt-6 sm:mt-8 text-center text-gray-300 transition-all duration-700 text-sm sm:text-base px-4 ${
+          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
+        style={{ transitionDelay: "500ms" }}
+      >
+        {"Don't see your industry? Our AI demo will adapt. A Custom Dev Agent will follow up after your live test."}
+      </p>
     </section>
   )
 }

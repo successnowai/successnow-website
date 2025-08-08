@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ContractorsNowClientPage } from "./ContractorsNowClientPage"
+import ContractorsNowClientPage from "./ContractorsNowClientPage"
 
 export const metadata: Metadata = {
   title: "ContractorsNOW - AI-Powered General Contractor Solutions | SuccessNOW",

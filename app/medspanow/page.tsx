@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { MedspaNowClientPage } from "./MedspaNowClientPage"
+import MedspaNowClientPage from "./MedspaNowClientPage"
 
 export const metadata: Metadata = {
   title: "MedSpaNOW - AI-Powered Medical Spa Solutions | SuccessNOW",

@@ -2,12 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Footer } from "@/components/home/footer"
+import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
-export function AutoDealersNowClient() {
+const AutoDealersNowClient = () => {
   const [currentText, setCurrentText] = useState(0)
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
@@ -35,15 +35,15 @@ export function AutoDealersNowClient() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1426]/50 to-[#0B1426]"></div>
         <div className="relative z-10 max-w-6xl mx-auto space-y-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-            <span className="block text-white animate-fadeTextUp">AutoDealersNOW™ AI</span>
+            <span className="block text-white animate-fadeTextUp">AutoDealerNOW™ AI</span>
             <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 min-h-[1.2em]">
               {rotatingTexts[currentText]}
             </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600">To Skyrocket Your Sales</span>
+            <span className="block text-white animate-fadeTextUp animation-delay-600">To Skyrocket Your Results</span>
           </h1>
 
           <div className="bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-2xl mx-auto animate-fadeTextUp animation-delay-900">
-            <p className="text-red-300 font-bold text-lg">⚠️ 80% of Leads are lost due to poor handling!</p>
+            <p className="text-red-300 font-bold text-lg">⚠️ 77% of Leads are lost due to poor handling!</p>
           </div>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
@@ -71,33 +71,47 @@ export function AutoDealersNowClient() {
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
               <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">
-                🚗 Custom Built for YOUR Dealership
+                🚀 100% Custom Built for YOUR Dealership
               </h3>
-              <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
-                <p>
-                  <strong className="text-white">Custom Website:</strong> Branded to your dealership's vision and
-                  customer experience
-                </p>
-                <p>
-                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your inventory and sales
-                  process
-                </p>
-                <p>
-                  <strong className="text-white">Custom AI Agent:</strong> Trained on your dealership protocols,
-                  inventory, and financing options
-                </p>
-                <p>
-                  <strong className="text-white">Never Miss Anything:</strong> AI agents that never miss a lead, never
-                  miss follow-ups, makes notes and transcripts of every customer interaction
-                </p>
-                <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best BDC agent using all the best AI tools. Save countless money on staff that
-                  make excuses, call in sick, aren't motivated, or don't follow protocols.
-                </p>
-                <p className="text-white font-bold text-center mt-4">
-                  🚀 Our custom-built agents never miss. Dominate your local market with the best AI agents in the
-                  Galaxy!
-                </p>
+              <div className="space-y-4">
+                <div className="bg-black/20 p-4 rounded-lg border border-[#00BFFF]/20">
+                  <h4 className="text-lg font-semibold text-white mb-2">🎨 Custom Website to Your Brand & Vision</h4>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Every website is built from scratch to match your dealership's unique brand, colors, and vision. No
+                    templates, no cookie-cutter designs.
+                  </p>
+                </div>
+
+                <div className="bg-black/20 p-4 rounded-lg border border-[#00BFFF]/20">
+                  <h4 className="text-lg font-semibold text-white mb-2">🎯 Custom AI Smart Funnels to Your Offers</h4>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Tailored conversion funnels designed specifically for your inventory, financing options, and special
+                    promotions.
+                  </p>
+                </div>
+
+                <div className="bg-black/20 p-4 rounded-lg border border-[#00BFFF]/20">
+                  <h4 className="text-lg font-semibold text-white mb-2">🤖 Custom AI Agent Trained on YOUR Business</h4>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    AI agents that know your inventory, pricing, financing options, and dealership policies inside and
+                    out.
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-r from-[#00BFFF]/10 to-[#1a2332]/10 p-4 rounded-lg border border-[#00BFFF]/30">
+                  <h4 className="text-lg font-semibold text-[#00BFFF] mb-2">⚡ AI Agents That Never Miss</h4>
+                  <ul className="text-gray-300 text-sm space-y-1">
+                    <li>• Never miss a lead or follow-up</li>
+                    <li>• Makes detailed notes and transcripts of every call</li>
+                    <li>• Like having the best team member using all the best AI tools</li>
+                    <li>• Save countless money on staff that make excuses, call in sick, aren't motivated</li>
+                    <li>• No more employees who don't follow the process</li>
+                  </ul>
+                </div>
+
+                <div className="text-center bg-gradient-to-r from-[#00BFFF]/20 to-[#1a2332]/20 p-4 rounded-lg border border-[#00BFFF]/40">
+                  <p className="text-white font-bold text-lg">🌟 Dominate NOW with the Best Agents in the Galaxy! 🌟</p>
+                </div>
               </div>
             </div>
           </div>
@@ -108,15 +122,15 @@ export function AutoDealersNowClient() {
 
       <div className="mx-auto max-w-4xl px-5 py-15">
         <div className="mb-12">
-          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">Dealership Challenges We Solve</h3>
+          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">Auto Dealership Challenges We Solve</h3>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              "Phones ringing off the hook, but appointments aren't set",
-              "Sales team spending hours on follow-up instead of selling",
-              "High no-show rates for test drives hurting your sales",
-              "Losing leads to other dealerships that respond 24/7",
-              "Struggling to get consistent 5-star reviews online",
-              "Lead nurturing is manual and ineffective",
+              "Losing leads to competitors with faster response times",
+              "Sales team is too busy to follow up with every online lead",
+              "High no-show rates for test drive appointments",
+              "Inconsistent communication with potential buyers",
+              "Struggling to get positive reviews to build trust",
+              "Manually managing leads from multiple sources is chaotic",
             ].map((pain, index) => (
               <Card
                 key={index}
@@ -137,12 +151,12 @@ export function AutoDealersNowClient() {
           <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for Auto Dealers</h3>
           <div className="grid gap-4 sm:grid-cols-1">
             {[
-              "🚗 24/7 AI BDC agent that never misses a call or lead",
-              "📅 Smart test drive booking and confirmation via text and voice",
-              "🎯 Automated lead nurturing sequences to keep leads hot",
-              "💬 Answers common vehicle questions instantly, any time of day",
-              "📈 Seamless integration with your existing CRM and inventory management",
-              "🏆 Automatically requests and follows up for 5-star Google reviews",
+              "🚗 24/7 AI assistant to engage and qualify every lead instantly",
+              "📅 Smart test drive booking with automated confirmations & reminders",
+              "🎯 Long-term nurturing sequences for leads not ready to buy today",
+              "💬 Answers common vehicle and financing questions automatically",
+              "📈 Integrates with your CRM for a seamless sales process",
+              "🏆 Automatically requests reviews from happy car buyers",
             ].map((solution, index) => (
               <Card
                 key={index}
@@ -161,7 +175,7 @@ export function AutoDealersNowClient() {
 
         <div className="text-center bg-[#00274D]/80 backdrop-blur-sm p-12 rounded-2xl border border-[#00BFFF]/30">
           <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Sell More Cars with AI?</h3>
-          <p className="text-gray-300 mb-8 text-lg">Join top dealerships using AI to boost sales</p>
+          <p className="text-gray-300 mb-8 text-lg">Join successful dealerships already using AI to boost sales</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
@@ -185,3 +199,5 @@ export function AutoDealersNowClient() {
     </div>
   )
 }
+
+export default AutoDealersNowClient

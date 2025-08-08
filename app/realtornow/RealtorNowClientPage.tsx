@@ -2,23 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Footer } from "@/components/home/footer"
+import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
-interface Template {
-  id: string
-  name: string
-  url: string
-  thumbnailUrl: string
-}
-
-interface RealtorNowClientPageProps {
-  templates: Template[]
-}
-
-export function RealtorNowClientPage({ templates }: RealtorNowClientPageProps) {
+const RealtorNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
@@ -196,3 +185,5 @@ export function RealtorNowClientPage({ templates }: RealtorNowClientPageProps) {
     </div>
   )
 }
+
+export default RealtorNowClientPage

@@ -1,191 +1,258 @@
 "use client"
-
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Footer } from "@/components/home/footer"
-import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import Link from "next/link"
+import { ArrowRight, CheckCircle, Star, Users, TrendingUp, Zap, Clock, Shield, Headphones } from "lucide-react"
+import { StarryBackground } from "@/components/ui/starry-background"
 
-export function CustomBuildNowClientPage() {
-  const [currentText, setCurrentText] = useState(0)
-  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
-
-  const rotatingTexts = [
-    "Builds Your Vision",
-    "Automates Your Process",
-    "Solves Unique Problems",
-    "Gets 5 Star Reviews",
-    "Is Built For You",
-  ]
-
-  const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/custombuildnow/signup")
+export default function CustomBuildNowClientPage() {
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentText((prev) => (prev + 1) % rotatingTexts.length)
-    }, 2000)
-    return () => clearInterval(interval)
+    setMounted(true)
   }, [])
 
+  if (!mounted) {
+    return null
+  }
+
+  const painPoints = [
+    "Struggling with generic solutions that don't fit your unique business model",
+    "Wasting time on manual processes that could be automated",
+    "Missing out on leads because you can't respond fast enough",
+    "Competitors are getting ahead with better technology",
+    "Your current systems don't talk to each other",
+    "You need something specific that doesn't exist in the market",
+  ]
+
+  const solutions = [
+    "Custom AI chatbots tailored to your exact business needs",
+    "Automated workflows designed around your unique processes",
+    "Integration with your existing tools and platforms",
+    "Industry-specific features that generic solutions can't provide",
+    "Scalable architecture that grows with your business",
+    "Dedicated support throughout development and beyond",
+  ]
+
+  const features = [
+    {
+      icon: <Zap className="w-6 h-6" />,
+      title: "Custom Development",
+      description: "Built from scratch to match your exact requirements",
+    },
+    {
+      icon: <Shield className="w-6 h-6" />,
+      title: "Enterprise Security",
+      description: "Bank-level security and compliance standards",
+    },
+    {
+      icon: <Users className="w-6 h-6" />,
+      title: "Dedicated Team",
+      description: "Your own development team working exclusively on your project",
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      title: "Fast Delivery",
+      description: "Rapid development with regular progress updates",
+    },
+    {
+      icon: <TrendingUp className="w-6 h-6" />,
+      title: "Scalable Solution",
+      description: "Built to handle growth and evolving business needs",
+    },
+    {
+      icon: <Headphones className="w-6 h-6" />,
+      title: "Ongoing Support",
+      description: "Continuous maintenance and feature updates",
+    },
+  ]
+
+  const testimonials = [
+    {
+      name: "Sarah Johnson",
+      business: "Custom Manufacturing",
+      text: "SuccessNOW built us a completely custom solution that automated our entire quote-to-delivery process. Nothing like this existed in the market.",
+      rating: 5,
+    },
+    {
+      name: "Mike Rodriguez",
+      business: "Specialty Services",
+      text: "They understood our unique business model and created an AI system that perfectly fits our workflow. Incredible results!",
+      rating: 5,
+    },
+    {
+      name: "Lisa Chen",
+      business: "Niche Consulting",
+      text: "The custom build approach was exactly what we needed. They delivered a solution that no off-the-shelf product could match.",
+      rating: 5,
+    },
+  ]
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0B1426] via-[#1a2332] to-[#0B1426] text-white">
-      <section className="relative text-center py-16 px-6 md:px-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1426]/50 to-[#0B1426]"></div>
-        <div className="relative z-10 max-w-6xl mx-auto space-y-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-            <span className="block text-white animate-fadeTextUp">CustomBuildNOW™ AI</span>
-            <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 min-h-[1.2em]">
-              {rotatingTexts[currentText]}
-            </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600">To Power Your Business</span>
-          </h1>
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      <StarryBackground />
 
-          <div className="bg-green-600/20 border border-green-500 rounded-lg p-4 max-w-2xl mx-auto animate-fadeTextUp animation-delay-900">
-            <p className="text-green-300 font-bold text-lg">✅ Your business is unique. Your AI should be too.</p>
-          </div>
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section className="py-16 sm:py-24 relative z-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 mb-8">
+                <span className="text-4xl mr-2">🛠️</span>
+                <span className="text-sm font-medium text-gray-300">Custom AI Development</span>
+              </div>
 
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
-            Don't settle for one-size-fits-all solutions. We provide a{" "}
-            <strong className="text-white">
-              fully custom-built website, AI smart funnels, and a dedicated AI agent
-            </strong>
-            , all tailored to your exact business processes.
-          </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                Don't See Your Business?{" "}
+                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  We'll Build It Custom
+                </span>
+              </h1>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
-            <Button
-              className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={handleSignupClick}
-            >
-              GET YOUR CUSTOM BUILD →
-            </Button>
-            <Button
-              variant="outline"
-              className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={handleDemoClick}
-            >
-              Launch Instant Demo NOW
-            </Button>
-          </div>
+              <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Every business is unique. If our existing solutions don't fit your specific needs, our expert team will
+                design and develop a completely custom AI automation system tailored exactly to your business.
+              </p>
 
-          <div className="mt-8 animate-fadeTextUp animation-delay-1800">
-            <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">
-                🛠️ Custom Built for YOUR Unique Business
-              </h3>
-              <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
-                <p>
-                  <strong className="text-white">Custom Website:</strong> Branded to your vision, mission, and values.
-                </p>
-                <p>
-                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your specific sales
-                  cycle, lead qualification, and customer journey.
-                </p>
-                <p>
-                  <strong className="text-white">Custom AI Agent:</strong> Trained on your proprietary knowledge,
-                  internal processes, and customer service standards.
-                </p>
-                <p>
-                  <strong className="text-white">Never Miss Anything:</strong> AI agents that handle any task you need,
-                  from lead intake to customer support, with perfect recall and execution.
-                </p>
-                <p className="text-[#00BFFF] font-semibold">
-                  This is your unfair advantage. Get an entire AI-powered system built just for you, saving you
-                  countless hours and money on inefficient staff and systems.
-                </p>
-                <p className="text-white font-bold text-center mt-4">
-                  🚀 Our custom-built agents never miss. Dominate your market with the best AI agents in the Galaxy!
-                </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                <Link href="/custombuildnow/signup">
+                  <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105">
+                    Start Custom Build
+                    <ArrowRight className="w-5 h-5 ml-2 inline" />
+                  </button>
+                </Link>
+                <Link href="/demo">
+                  <button className="border border-gray-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">
+                    See Demo First
+                  </button>
+                </Link>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm text-gray-400">
+                <div className="flex items-center">
+                  <Users className="w-4 h-4 mr-2 text-purple-400" />
+                  <span>500+ Custom Solutions Built</span>
+                </div>
+                <div className="flex items-center">
+                  <TrendingUp className="w-4 h-4 mr-2 text-green-400" />
+                  <span>Average 400% ROI</span>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="w-4 h-4 mr-2 text-blue-400" />
+                  <span>4-6 Week Delivery</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <AdsSuccessEcosystem onDemoClick={handleDemoClick} />
+        {/* Pain Points Section */}
+        <section className="py-16 relative z-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-bold mb-8">Tired of One-Size-Fits-All Solutions?</h2>
+                <div className="space-y-4">
+                  {painPoints.map((point, index) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-red-500 rounded-full mt-3 flex-shrink-0"></div>
+                      <p className="text-gray-300 leading-relaxed">{point}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-      <div className="mx-auto max-w-4xl px-5 py-15">
-        <div className="mb-12">
-          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">
-            Off-the-Shelf Software Problems We Solve
-          </h3>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              "Generic software doesn't fit your specific workflow",
-              "Paying for features you never use",
-              "Lack of personalization turns customers away",
-              "Inability to integrate with your existing tools",
-              "Wasting time on manual tasks that could be automated",
-              "Your unique business challenges are not being addressed",
-            ].map((pain, index) => (
-              <Card
-                key={index}
-                className="bg-black/40 backdrop-blur-sm border-[#00BFFF]/20 hover:border-[#00BFFF]/40 transition-all duration-300"
-              >
-                <CardContent className="p-4 sm:p-6">
-                  <div className="flex items-start">
-                    <span className="text-red-400 mr-3 flex-shrink-0 text-lg">❌</span>
-                    <span className="text-gray-300 text-base">{pain}</span>
+              <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
+                <h3 className="text-2xl font-bold mb-6 text-purple-400">Our Custom Approach</h3>
+                <div className="space-y-4">
+                  {solutions.map((solution, index) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 leading-relaxed">{solution}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Grid */}
+        <section className="py-16 relative z-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">Why Choose Custom Development?</h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Get exactly what you need, built specifically for your business processes and goals.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105"
+                >
+                  <div className="text-purple-400 mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+                  <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="py-16 relative z-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">Success Stories from Custom Builds</h2>
+              <p className="text-xl text-gray-300">See how custom solutions transformed these unique businesses</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
+                  <div className="flex mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-12">
-          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">Our Custom AI Solutions</h3>
-          <div className="grid gap-4 sm:grid-cols-1">
-            {[
-              "🛠️ A 24/7 AI agent trained on your business's knowledge base",
-              "📅 Custom booking and scheduling systems for any service",
-              "🎯 Bespoke lead nurturing and sales automation sequences",
-              "💬 An AI that can answer complex, industry-specific questions",
-              "📈 Custom integrations with any API or third-party software",
-              "🏆 Automated processes for whatever you need to scale",
-            ].map((solution, index) => (
-              <Card
-                key={index}
-                className="bg-black/40 backdrop-blur-sm border-[#00BFFF]/20 hover:border-[#00BFFF]/40 transition-all duration-300"
-              >
-                <CardContent className="p-4 sm:p-6">
-                  <div className="flex items-start">
-                    <span className="text-green-400 mr-3 flex-shrink-0 text-lg">✅</span>
-                    <span className="text-gray-300 text-base">{solution}</span>
+                  <p className="text-gray-300 mb-6 leading-relaxed">"{testimonial.text}"</p>
+                  <div>
+                    <p className="font-semibold">{testimonial.name}</p>
+                    <p className="text-sm text-gray-400">{testimonial.business}</p>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className="text-center bg-[#00274D]/80 backdrop-blur-sm p-12 rounded-2xl border border-[#00BFFF]/30">
-          <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready for a Solution That Just Works?</h3>
-          <p className="text-gray-300 mb-8 text-lg">
-            Let's build the perfect AI-powered system for your business.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button
-              className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={handleSignupClick}
-            >
-              Start Your Custom Build
-            </Button>
-            <Button
-              variant="outline"
-              className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={() => (window.location.href = "/")}
-            >
-              BACK TO HOME
-            </Button>
+        {/* CTA Section */}
+        <section className="py-20 relative z-10">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-3xl p-12 border border-purple-500/20">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready for Your Custom Solution?</h2>
+              <p className="text-xl text-gray-300 mb-8">
+                Let's discuss your unique requirements and build something amazing together.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/custombuildnow/signup">
+                  <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105">
+                    Start Your Custom Build
+                    <ArrowRight className="w-5 h-5 ml-2 inline" />
+                  </button>
+                </Link>
+                <Link href="/demo">
+                  <button className="border border-gray-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">
+                    See Our Capabilities
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
-      <Footer />
+        </section>
+      </main>
     </div>
   )
 }

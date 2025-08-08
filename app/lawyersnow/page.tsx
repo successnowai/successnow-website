@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { LawyersNowClientPage } from "./LawyersNowClientPage"
+import LawyersNowClientPage from "./LawyersNowClientPage"
 
 export const metadata: Metadata = {
   title: "LawyersNOW - AI-Powered Legal Practice Solutions | SuccessNOW",
@@ -7,7 +7,6 @@ export const metadata: Metadata = {
     "Transform your law practice with AI that books consultations, confirms appointments, and nurtures every lead until they retain your services. Boost client acquisition with LawyersNOW.",
 }
 
-// This is a placeholder. In a real app, you'd fetch this from a CMS or database.
 const templates = [
   {
     id: "lawyer-1",

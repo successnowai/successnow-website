@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { MortgageNowClientPage } from "./MortgageNowClientPage"
+import MortgageNowClientPage from "./MortgageNowClientPage"
 
 export const metadata: Metadata = {
   title: "MortgageNOW - AI-Powered Mortgage Broker Solutions | SuccessNOW",
