@@ -1,5 +1,6 @@
 import StarryBackground from "@/components/ui/starry-background"
 import { NewTopHeroSection } from "@/components/home/new-top-hero-section"
+import { GlassmorphicProblemsSection } from "@/components/home/glassmorphic-problems-section"
 import MainHeroSection from "@/components/home/main-hero-section"
 import IndustrySolutions from "@/components/home/industry-solutions"
 import LiveDemo from "@/components/home/live-demo"
@@ -13,6 +14,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <StarryBackground />
       <NewTopHeroSection />
+      <GlassmorphicProblemsSection />
       <MainHeroSection />
       <IndustrySolutions />
       <LiveDemo />

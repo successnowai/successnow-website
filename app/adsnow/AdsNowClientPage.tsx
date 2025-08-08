@@ -7,21 +7,9 @@ import StarryBackground from "@/components/ui/starry-background"
 import { RotatingText } from "@/components/ui/rotating-text"
 import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 import DemoPopup from "@/components/ui/demo-popup"
-import {
-  Bot,
-  Sparkles,
-  Target,
-  MessageCircle,
-  Star,
-  Zap,
-  BarChart3,
-  CheckCircle,
-  Smartphone,
-  Clock,
-  DollarSign,
-} from "lucide-react"
+import { Bot, Sparkles, Target, MessageCircle, Star, Zap, BarChart3, CheckCircle, Smartphone, Clock, DollarSign } from 'lucide-react'
 
-export default function AdsNowClientPage() {
+export function AdsNowClientPage() {
   const [showDemo, setShowDemo] = useState(false)
 
   const rotatingTexts = [
