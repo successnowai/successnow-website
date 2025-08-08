@@ -93,16 +93,48 @@ body {
   }
 }
 
-.glow-blue {
-  box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
-  animation: glow-blue-pulse 2s ease-in-out infinite alternate;
+/* Global content spacing to account for navbar */
+.global-content-spacing {
+  padding-top: 0;
 }
 
-@keyframes glow-blue-pulse {
-  from {
-    box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+/* Ensure all text is visible by default */
+.animate-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation delays */
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+.animate-delay-500 { animation-delay: 500ms; }
+
+/* Scroll animation for text */
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0);
   }
-  to {
-    box-shadow: 0 0 30px rgba(0, 191, 255, 0.6);
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+/* Ensure content is always visible */
+.animate-show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Fix for hidden content */
+[class*="animate-fade"] {
+  opacity: 1;
+}
+
+/* Responsive fixes */
+@media (max-width: 640px) {
+  .global-content-spacing {
+    padding-top: 0;
   }
 }

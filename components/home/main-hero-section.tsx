@@ -1,120 +1,114 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { GlowingOrbCta } from "@/components/ui/glowing-orb-cta"
-import { RotatingText } from "@/components/ui/rotating-text"
-import { Bot, Globe, Target, ArrowRight, Star } from "lucide-react"
-import Link from "next/link"
+import { Phone, MessageSquare, Zap, ArrowRight, Play } from 'lucide-react'
+import GlowingOrbCta from "@/components/ui/glowing-orb-cta"
 
 export default function MainHeroSection() {
-  const rotatingWords = ["Leads", "Conversations", "Inquiries", "Website Clicks", "Cold Prospects", "Traffic", "Sales"]
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    // Ensure content is visible on mount
+    setIsVisible(true)
+  }, [])
+
+  const benefits = [
+    {
+      icon: Phone,
+      title: "24/7 Lead Capture",
+      description: "Never miss a potential customer again with AI that works around the clock"
+    },
+    {
+      icon: MessageSquare,
+      title: "Instant Qualification",
+      description: "AI pre-qualifies leads automatically, saving you time and increasing conversions"
+    },
+    {
+      icon: Zap,
+      title: "Perfect Consistency",
+      description: "Every interaction follows your exact sales process with zero human error"
+    }
+  ]
 
   return (
-    <div className="relative bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white overflow-hidden min-h-screen">
-      {/* Animated Border */}
-      <div className="absolute top-0 left-0 w-full h-[5px] bg-gradient-to-r from-[#00BFFF] via-[#007BFF] to-[#00BFFF] bg-[length:200%_100%] animate-[scroll-border_5s_linear_infinite]"></div>
-
-      {/* Hero Content */}
-      <section className="relative text-center py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-10 overflow-hidden pt-24 sm:pt-28">
-        <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8 md:space-y-10">
-          {/* Badge */}
-          <Badge className="bg-[#00BFFF]/20 text-[#00BFFF] border-[#00BFFF]/30 px-4 py-2 text-sm font-semibold">
-            AI Agents for websites
-          </Badge>
-
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight px-2">
-            <span className="block text-white animate-fadeTextUp">AI that converts</span>
-            <span className="block animate-fadeTextUp animation-delay-300">
-              <RotatingText words={rotatingWords} className="text-[#00BFFF]" interval={2500} />
+    <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+      <div className="max-w-6xl mx-auto text-center">
+        {/* Main Headline */}
+        <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+            <span className="text-white">AI that converts </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+              leads into sales
             </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600">into sales</span>
           </h1>
-
-          {/* Subheadline */}
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto animate-fadeTextUp animation-delay-900 px-4 sm:px-6 leading-relaxed">
-            Get AI-powered websites that convert visitors into customers using AI optimization
+          
+          <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+            Get AI-powered websites that convert visitors into customers using AI optimization, 
+            voice agents, and automated follow-up systems.
           </p>
+        </div>
 
-          {/* AI Demo CTA */}
-          <div className="animate-fadeTextUp animation-delay-1200 py-8">
-            <GlowingOrbCta label="Click Here, Talk to AI" size="lg" />
-            <p className="text-gray-400 text-sm mt-4">
-              ↑ Ask our AI how SuccessNOW.ai can transform your specific business
-            </p>
-          </div>
-
-          {/* Key Benefits */}
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto animate-fadeTextUp animation-delay-1500">
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
-              <CardContent className="p-6 text-center">
-                <Globe className="w-8 h-8 text-[#00BFFF] mx-auto mb-3" />
-                <h3 className="text-white font-semibold mb-2">AI-Powered Websites</h3>
-                <p className="text-gray-300 text-sm">
-                  Custom websites that convert visitors into customers using AI optimization
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
-              <CardContent className="p-6 text-center">
-                <Bot className="w-8 h-8 text-[#00BFFF] mx-auto mb-3" />
-                <h3 className="text-white font-semibold mb-2">24/7 AI Agents</h3>
-                <p className="text-gray-300 text-sm">
-                  AI agents that qualify leads, book appointments, and nurture prospects
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
-              <CardContent className="p-6 text-center">
-                <Target className="w-8 h-8 text-[#00BFFF] mx-auto mb-3" />
-                <h3 className="text-white font-semibold mb-2">Automated Ads</h3>
-                <p className="text-gray-300 text-sm">
-                  AI creates, manages, and optimizes paid ads to drive quality traffic
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeTextUp animation-delay-1800 px-4">
-            <Link href="/signup">
-              <Button className="bg-[#00BFFF] hover:bg-[#00A3D9] text-white px-8 py-4 text-lg font-semibold min-h-[52px] shadow-lg hover:shadow-[0_0_20px_rgba(0,191,255,0.5)]">
-                Get Started Now
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/demo">
-              <Button
-                variant="outline"
-                className="border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-white px-8 py-4 text-lg min-h-[52px] bg-transparent"
-              >
-                Try Live Demo
-              </Button>
-            </Link>
-          </div>
-
-          {/* Social Proof */}
-          <div className="flex items-center justify-center gap-2 animate-fadeTextUp animation-delay-2100">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-              ))}
-            </div>
-            <span className="text-gray-300 text-sm">Trusted by 1000+ businesses</span>
+        {/* Primary CTA */}
+        <div className={`mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <GlowingOrbCta />
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              onClick={() => window.location.href = '/demo'}
+            >
+              <Play className="mr-2 h-5 w-5" />
+              Try Live Demo
+            </Button>
+            
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-black px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105"
+              onClick={() => window.location.href = '/signup'}
+            >
+              Get Started Now
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
           </div>
         </div>
 
-        {/* Background Effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00BFFF] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
+        {/* Benefits Cards */}
+        <div className={`grid md:grid-cols-3 gap-6 max-w-5xl mx-auto transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {benefits.map((benefit, index) => (
+            <Card 
+              key={index} 
+              className="bg-gray-900/50 backdrop-blur-sm border-gray-700 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+            >
+              <CardContent className="p-6 text-center">
+                <div className="mb-4 flex justify-center">
+                  <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full">
+                    <benefit.icon className="h-6 w-6 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{benefit.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-      </section>
-    </div>
+
+        {/* Trust Indicators */}
+        <div className={`mt-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-gray-400 text-sm mb-4">Trusted by businesses across 15+ industries</p>
+          <div className="flex justify-center items-center space-x-8 opacity-60">
+            <div className="text-2xl">🚗</div>
+            <div className="text-2xl">🏡</div>
+            <div className="text-2xl">🏋️</div>
+            <div className="text-2xl">⚖️</div>
+            <div className="text-2xl">💆</div>
+            <div className="text-2xl">🏦</div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

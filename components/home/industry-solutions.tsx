@@ -5,7 +5,7 @@ import { useInView } from "@/hooks/use-intersection-observer"
 import { AnimatedSwitcher } from "@/components/ui/animated-switcher"
 
 export default function IndustrySolutions() {
-  const { ref, isInView } = useInView()
+  const { ref, isInView } = useInView({ threshold: 0.1 })
 
   const industries = [
     {
@@ -96,7 +96,9 @@ export default function IndustrySolutions() {
     >
       <h2
         id="industry-solutions-title"
-        className={`mb-6 sm:mb-8 text-center text-2xl sm:text-3xl font-bold text-white animate-fade-up ${isInView ? "animate-show" : ""}`}
+        className={`mb-6 sm:mb-8 text-center text-2xl sm:text-3xl font-bold text-white transition-all duration-700 ${
+          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
       >
         AI-Powered Solutions for Top Industries
       </h2>
@@ -104,9 +106,10 @@ export default function IndustrySolutions() {
         {industries.map((industry, index) => (
           <div
             key={index}
-            className={`bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 focus-within:-translate-y-1 hover:shadow-xl focus-within:shadow-xl cursor-pointer animate-fade-up ${
-              isInView ? "animate-show" : ""
-            } animate-delay-${(index % 6) * 100}`}
+            className={`bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 transition-all duration-700 hover:-translate-y-1 focus-within:-translate-y-1 hover:shadow-xl focus-within:shadow-xl cursor-pointer ${
+              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+            style={{ transitionDelay: `${index * 100}ms` }}
             tabIndex={0}
             role="region"
             aria-label={`${industry.title} industry solution`}
@@ -142,7 +145,10 @@ export default function IndustrySolutions() {
         ))}
       </div>
       <p
-        className={`mt-6 sm:mt-8 text-center text-gray-300 animate-fade-up ${isInView ? "animate-show" : ""} animate-delay-500 text-sm sm:text-base px-4`}
+        className={`mt-6 sm:mt-8 text-center text-gray-300 transition-all duration-700 text-sm sm:text-base px-4 ${
+          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
+        style={{ transitionDelay: "500ms" }}
       >
         {"Don't see your industry? Our AI demo will adapt. A Custom Dev Agent will follow up after your live test."}
       </p>

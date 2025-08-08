@@ -2,32 +2,53 @@
 
 import { useEffect, useRef, useState } from "react"
 
-export function useInView(options = {}) {
-  const ref = useRef<HTMLElement | null>(null)
+interface UseInViewOptions {
+  threshold?: number
+  rootMargin?: string
+  triggerOnce?: boolean
+}
+
+export function useInView(options: UseInViewOptions = {}) {
+  const { threshold = 0.1, rootMargin = "0px", triggerOnce = true } = options
   const [isInView, setIsInView] = useState(false)
+  const [hasTriggered, setHasTriggered] = useState(false)
+  const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    if (!ref.current) return
+    const element = ref.current
+    if (!element) return
+
+    // Fallback for environments without IntersectionObserver
+    if (typeof window === "undefined" || !window.IntersectionObserver) {
+      setIsInView(true)
+      return
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting)
+        const inView = entry.isIntersecting
+        
+        if (inView && !hasTriggered) {
+          setIsInView(true)
+          if (triggerOnce) {
+            setHasTriggered(true)
+          }
+        } else if (!triggerOnce) {
+          setIsInView(inView)
+        }
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
-        ...options,
-      },
+        threshold,
+        rootMargin,
+      }
     )
 
-    observer.observe(ref.current)
+    observer.observe(element)
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current)
-      }
+      observer.unobserve(element)
     }
-  }, [options])
+  }, [threshold, rootMargin, triggerOnce, hasTriggered])
 
   return { ref, isInView }
 }
