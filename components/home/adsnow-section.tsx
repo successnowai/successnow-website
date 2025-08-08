@@ -1,244 +1,201 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Target, Zap, TrendingUp, MessageCircle, Calendar, Star, Users, BarChart3, Bot, Sparkles } from "lucide-react"
+import { GlowingOrbCta } from "@/components/ui/glowing-orb-cta"
+import { Megaphone, Target, TrendingUp, Zap, ArrowRight, CheckCircle, DollarSign, Users, BarChart3 } from 'lucide-react'
+import Image from "next/image"
+import Link from "next/link"
 
-export default function AdsNowSection() {
+export function AdsNowSection() {
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
+
+  const adsFeatures = [
+    {
+      icon: Target,
+      title: "AI-Powered Targeting",
+      description: "Smart audience identification and precision targeting",
+      stat: "300% Better ROI",
+      color: "from-blue-400 to-cyan-500"
+    },
+    {
+      icon: TrendingUp,
+      title: "Real-Time Optimization",
+      description: "Continuous campaign improvement with AI insights",
+      stat: "50% Lower CPA",
+      color: "from-green-400 to-teal-500"
+    },
+    {
+      icon: BarChart3,
+      title: "Advanced Analytics",
+      description: "Deep insights into campaign performance and ROI",
+      stat: "24/7 Monitoring",
+      color: "from-purple-400 to-pink-500"
+    }
+  ]
+
+  const handleGetStarted = () => {
+    window.open('https://signup.successnow.ai', '_blank')
+  }
+
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-[#00274D]/40 backdrop-blur-sm">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/40"></div>
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-900/20 via-red-900/10 to-black"></div>
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-white">Complete AI Ecosystem:</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-sm border border-orange-400/30 mb-6">
+            <Megaphone className="w-4 h-4 text-orange-400" />
+            <span className="text-sm font-medium text-orange-300">AdsNOW Platform</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              AI-Powered
+            </span>
             <br />
-            <span className="text-purple-400">AdsNow.ai</span>
-            <span className="text-white"> + </span>
-            <span className="text-[#00BFFF]">SuccessNOW AI</span>
+            <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+              Advertising Revolution
+            </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto">
-            The only platform that creates high-converting ads AND instantly converts every lead into customers using
-            data from <strong className="text-[#00BFFF]">10,000+ leads generated daily</strong>
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Transform your advertising with AI that creates, optimizes, and scales your campaigns 
+            automatically. Get better results with less effort and lower costs.
           </p>
         </div>
 
-        {/* Revolutionary Feature Section */}
-        <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 backdrop-blur-sm rounded-3xl p-8 mb-16 border border-purple-500/30 relative overflow-hidden">
-          <div className="absolute top-4 right-4">
-            <div className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 px-4 py-2 rounded-full">
-              <Sparkles className="w-4 h-4 text-white" />
-              <span className="text-white font-bold text-sm">REVOLUTIONARY</span>
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="space-y-8">
+            <div className="space-y-6">
+              {adsFeatures.map((feature, index) => (
+                <Card
+                  key={index}
+                  className={`group cursor-pointer transition-all duration-500 backdrop-blur-md border ${
+                    hoveredFeature === index
+                      ? 'bg-gradient-to-br from-orange-900/30 to-red-900/30 border-orange-400/50 scale-105'
+                      : 'bg-gray-900/30 border-gray-700/30 hover:border-orange-400/30'
+                  }`}
+                  onMouseEnter={() => setHoveredFeature(index)}
+                  onMouseLeave={() => setHoveredFeature(null)}
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                        <feature.icon className="w-6 h-6 text-white" />
+                      </div>
+                      
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between mb-2">
+                          <h3 className="text-xl font-bold text-white group-hover:text-orange-300 transition-colors">
+                            {feature.title}
+                          </h3>
+                          <span className={`text-sm font-bold bg-gradient-to-r ${feature.color} bg-clip-text text-transparent`}>
+                            {feature.stat}
+                          </span>
+                        </div>
+                        
+                        <p className="text-gray-300 text-sm">
+                          {feature.description}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
+
+            <Card className="bg-gradient-to-br from-orange-900/20 to-red-900/20 backdrop-blur-md border border-orange-500/30">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-orange-400" />
+                  Why Choose AdsNOW?
+                </h3>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    "300% Better ROI",
+                    "50% Lower Costs",
+                    "24/7 Optimization",
+                    "AI-Driven Insights"
+                  ].map((benefit, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <span className="text-gray-300 text-sm">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <Bot className="w-8 h-8 text-purple-400" />
-              <h3 className="text-3xl md:text-4xl font-bold text-white">AdsNOW Super Agent</h3>
-            </div>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Simply text your AI AdsNOW Super Agent and watch the magic happen!
+          <div className="relative">
+            <Card className="bg-gray-900/50 backdrop-blur-md border border-gray-800/50 shadow-2xl overflow-hidden">
+              <CardContent className="p-0">
+                <div className="relative h-96">
+                  <Image
+                    src="/ai-ad-creation-interface.png"
+                    alt="AdsNOW AI Interface"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="bg-black/50 backdrop-blur-sm rounded-lg p-3 text-center">
+                        <DollarSign className="w-6 h-6 text-green-400 mx-auto mb-1" />
+                        <div className="text-lg font-bold text-white">$2.3M</div>
+                        <div className="text-xs text-gray-300">Revenue Generated</div>
+                      </div>
+                      
+                      <div className="bg-black/50 backdrop-blur-sm rounded-lg p-3 text-center">
+                        <Users className="w-6 h-6 text-blue-400 mx-auto mb-1" />
+                        <div className="text-lg font-bold text-white">150K</div>
+                        <div className="text-xs text-gray-300">Leads Generated</div>
+                      </div>
+                      
+                      <div className="bg-black/50 backdrop-blur-sm rounded-lg p-3 text-center">
+                        <TrendingUp className="w-6 h-6 text-orange-400 mx-auto mb-1" />
+                        <div className="text-lg font-bold text-white">300%</div>
+                        <div className="text-xs text-gray-300">ROI Increase</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <div className="text-center space-y-8">
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-3xl font-bold text-white mb-4">
+              Ready to Revolutionize Your Advertising?
+            </h3>
+            <p className="text-gray-300 mb-8">
+              Experience the power of AI-driven advertising. Talk to our AdsNOW specialist 
+              and see how we can transform your marketing ROI in just 30 days.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            {[
-              {
-                step: "1",
-                title: "Create Ads",
-                desc: "Agent creates ads for your review",
-                icon: Target,
-                color: "from-purple-600 to-purple-700",
-              },
-              {
-                step: "2",
-                title: "Send Copy",
-                desc: "Sends you copy to review",
-                icon: MessageCircle,
-                color: "from-pink-600 to-pink-700",
-              },
-              {
-                step: "3",
-                title: "Choose & Edit",
-                desc: "Choose 1 ad or all, make edits",
-                icon: Star,
-                color: "from-blue-600 to-blue-700",
-              },
-              {
-                step: "4",
-                title: "Launch Ads",
-                desc: "Set budget and launch instantly",
-                icon: Zap,
-                color: "from-green-600 to-green-700",
-              },
-            ].map((process, index) => (
-              <div key={index} className="text-center">
-                <div
-                  className={`w-16 h-16 rounded-full bg-gradient-to-r ${process.color} flex items-center justify-center text-white font-bold text-xl mx-auto mb-4 shadow-lg`}
-                >
-                  {process.step}
-                </div>
-                <process.icon className="w-6 h-6 text-purple-400 mx-auto mb-2" />
-                <h4 className="text-lg font-bold text-white mb-2">{process.title}</h4>
-                <p className="text-gray-300 text-sm">{process.desc}</p>
-              </div>
-            ))}
+          <div className="flex justify-center mb-8">
+            <GlowingOrbCta 
+              size="lg" 
+              label="Talk to AdsNOW Specialist"
+              className="transform hover:scale-105 transition-all duration-500"
+            />
           </div>
 
-          <div className="text-center">
-            <p className="text-2xl font-bold text-white mb-4">No more logging into software!</p>
-            <p className="text-xl text-purple-300 mb-6">The future of ads has arrived NOW with AdsNOW Super Agent!</p>
-          </div>
-        </div>
-
-        {/* Two-Column Feature Comparison */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {/* AdsNow.ai Column */}
-          <div className="bg-gradient-to-br from-purple-900/30 to-purple-700/20 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-3 bg-purple-600/20 px-6 py-3 rounded-full border border-purple-500/30 mb-4">
-                <Target className="w-6 h-6 text-purple-400" />
-                <span className="text-2xl font-bold text-purple-400">AdsNow.ai</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-2">AI Ad Creation & Optimization</h3>
-              <p className="text-gray-300">Creates, launches, and optimizes ads 24/7</p>
-            </div>
-
-            <div className="space-y-4">
-              {[
-                { icon: Target, text: "Creates High-Converting Ads Automatically" },
-                { icon: TrendingUp, text: "Optimizes Campaigns 24/7 for Best ROI" },
-                { icon: Zap, text: "Launches Across All Platforms Instantly" },
-                { icon: BarChart3, text: "Uses Data from 10,000+ Daily Leads" },
-              ].map((feature, index) => (
-                <Card
-                  key={index}
-                  className="bg-purple-800/20 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300"
-                >
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-3">
-                      <feature.icon className="w-5 h-5 text-purple-400 flex-shrink-0" />
-                      <span className="text-gray-200">{feature.text}</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* SuccessNOW AI Column */}
-          <div className="bg-gradient-to-br from-blue-900/30 to-[#00274D]/20 backdrop-blur-sm rounded-2xl p-8 border border-[#00BFFF]/30">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-3 bg-[#00BFFF]/20 px-6 py-3 rounded-full border border-[#00BFFF]/30 mb-4">
-                <MessageCircle className="w-6 h-6 text-[#00BFFF]" />
-                <span className="text-2xl font-bold text-[#00BFFF]">SuccessNOW AI</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-2">AI Lead Engagement & Conversion</h3>
-              <p className="text-gray-300">Instantly converts every lead into customers</p>
-            </div>
-
-            <div className="space-y-4">
-              {[
-                { icon: Zap, text: "Instantly Engages Every Lead 24/7" },
-                { icon: Calendar, text: "Books Appointments Automatically" },
-                { icon: MessageCircle, text: "Follows Up Always, Never Misses a Lead" },
-                { icon: Star, text: "Gets Reviews & Referrals Automatically" },
-              ].map((feature, index) => (
-                <Card
-                  key={index}
-                  className="bg-[#00274D]/20 border-[#00BFFF]/30 hover:border-[#00BFFF]/50 transition-all duration-300"
-                >
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-3">
-                      <feature.icon className="w-5 h-5 text-[#00BFFF] flex-shrink-0" />
-                      <span className="text-gray-200">{feature.text}</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Statistics Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {[
-            { number: "10,000+", label: "Leads Generated Daily", icon: Users },
-            { number: "24/7", label: "AI Operations", icon: Zap },
-            { number: "500+", label: "Businesses Automated", icon: TrendingUp },
-          ].map((stat, index) => (
-            <Card
-              key={index}
-              className="bg-black/40 backdrop-blur-sm border-[#00BFFF]/20 hover:border-[#00BFFF]/40 transition-all duration-300"
+          <div className="flex justify-center">
+            <Button 
+              size="lg" 
+              onClick={handleGetStarted}
+              className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              <CardContent className="p-6 text-center">
-                <stat.icon className="w-8 h-8 text-[#00BFFF] mx-auto mb-3" />
-                <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
-                <div className="text-gray-300">{stat.label}</div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Process Flow */}
-        <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-8 border border-[#00BFFF]/20 mb-12">
-          <h3 className="text-3xl font-bold text-center text-white mb-8">Complete Sales Automation Process</h3>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              { step: "1", title: "AI Creates Ads", desc: "AdsNow.ai generates high-converting ads", color: "purple" },
-              {
-                step: "2",
-                title: "Launches & Optimizes",
-                desc: "Deploys across platforms and optimizes 24/7",
-                color: "purple",
-              },
-              {
-                step: "3",
-                title: "Instant Engagement",
-                desc: "SuccessNOW AI engages every lead immediately",
-                color: "blue",
-              },
-              {
-                step: "4",
-                title: "Converts to Sales",
-                desc: "Books appointments and closes deals automatically",
-                color: "blue",
-              },
-            ].map((process, index) => (
-              <div key={index} className="text-center">
-                <div
-                  className={`w-16 h-16 rounded-full ${process.color === "purple" ? "bg-purple-600" : "bg-[#00BFFF]"} flex items-center justify-center text-white font-bold text-xl mx-auto mb-4`}
-                >
-                  {process.step}
-                </div>
-                <h4 className="text-lg font-bold text-white mb-2">{process.title}</h4>
-                <p className="text-gray-300 text-sm">{process.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center">
-          <h3 className="text-3xl font-bold text-white mb-4">Ready for Complete AI Automation?</h3>
-          <p className="text-xl text-gray-300 mb-8">
-            Get both AdsNow.ai and SuccessNOW AI working together to dominate your market
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-[#00BFFF] text-white font-semibold rounded-md shadow-lg hover:from-purple-700 hover:to-blue-600 transition-all duration-200 hover:scale-105 text-base"
-              onClick={() => (window.location.href = "/payment")}
-            >
-              Get Complete AI System →
-            </Button>
-            <Button
-              variant="outline"
-              className="px-8 py-4 border-2 border-purple-500 text-purple-400 font-semibold rounded-md hover:bg-purple-500 hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
-              onClick={() => window.open("https://adsnow.ai", "_blank")}
-            >
-              Learn More About AdsNow.ai
+              <Megaphone className="w-5 h-5 mr-2" />
+              Get Started Now
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </div>
         </div>

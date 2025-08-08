@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Volume2, VolumeX, Play, PhoneCall, Headphones, CheckCircle, AlertTriangle, Speaker } from "lucide-react"
+import { Volume2, VolumeX, Play, PhoneCall, Headphones, CheckCircle, AlertTriangle, Speaker } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog"

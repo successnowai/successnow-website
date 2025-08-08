@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import ChiropractorsNowClientPage from "./ChiropractorsNowClientPage"
+import { ChiropractorsNowClientPage } from "./ChiropractorsNowClientPage"
 
 export const metadata: Metadata = {
   title: "ChiropractorsNOW - AI-Powered Chiropractic Practice Solutions | SuccessNOW",

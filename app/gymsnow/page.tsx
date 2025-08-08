@@ -1,6 +1,7 @@
-import GymsNowClientPage from "./GymsNowClientPage"
+import type { Metadata } from "next"
+import { GymsNowClientPage } from "./GymsNowClientPage"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "AI for Gyms & Studios - Boost Memberships, Automate Engagement, and Reduce Churn | SuccessNOW",
   description:
     "Fill your classes and keep members engaged automatically. AI follows up post-class, automates renewals, and boosts retention for gyms and studios.",

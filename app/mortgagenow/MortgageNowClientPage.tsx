@@ -2,12 +2,22 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import Footer from "@/components/home/footer"
+import { Footer } from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
-const MortgageNowClientPage = () => {
+interface Template {
+  id: string
+  name: string
+  url: string
+}
+
+interface MortgageNowClientPageProps {
+  templates: Template[]
+}
+
+export function MortgageNowClientPage({ templates }: MortgageNowClientPageProps) {
   const [currentText, setCurrentText] = useState(0)
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
@@ -189,5 +199,3 @@ const MortgageNowClientPage = () => {
     </div>
   )
 }
-
-export default MortgageNowClientPage

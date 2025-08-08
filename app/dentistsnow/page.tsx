@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import DentistsNowClientPage from "./DentistsNowClientPage"
+import { DentistsNowClientPage } from "./DentistsNowClientPage"
 
 export const metadata: Metadata = {
   title: "DentistsNOW - AI-Powered Dental Practice Solutions | SuccessNOW",

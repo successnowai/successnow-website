@@ -2,21 +2,21 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import Footer from "@/components/home/footer"
+import { Footer } from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
-const RestaurantsNowClientPage = () => {
+export function RestaurantsNowClientPage() {
   const [currentText, setCurrentText] = useState(0)
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
   const rotatingTexts = [
     "Takes Reservations 24/7",
-    "Manages Waitlists",
-    "Promotes Specials",
+    "Manages Your Waitlist",
+    "Promotes Daily Specials",
     "Gets 5 Star Reviews",
-    "Drives Repeat Diners",
+    "Fills Empty Tables",
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
@@ -39,19 +39,19 @@ const RestaurantsNowClientPage = () => {
             <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 min-h-[1.2em]">
               {rotatingTexts[currentText]}
             </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600">To Fill Every Table</span>
+            <span className="block text-white animate-fadeTextUp animation-delay-600">To Boost Your Bookings</span>
           </h1>
 
           <div className="bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-2xl mx-auto animate-fadeTextUp animation-delay-900">
-            <p className="text-red-300 font-bold text-lg">⚠️ An unanswered phone is an empty table later.</p>
+            <p className="text-red-300 font-bold text-lg">⚠️ Answering phones means ignoring guests. Stop juggling.</p>
           </div>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
-            Stop missing reservations because your host is busy or it's after hours. Our{" "}
+            Stop losing diners to busy signals and full waitlists. Our{" "}
             <strong className="text-white">
-              AI takes reservations, manages your waitlist, and promotes specials 24/7
+              AI takes reservations, manages your waitlist, and answers questions 24/7
             </strong>
-            , keeping your restaurant buzzing.
+            , so your staff can focus on providing amazing service.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
@@ -72,27 +72,29 @@ const RestaurantsNowClientPage = () => {
 
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🍽️ Custom Built for YOUR Restaurant</h3>
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">
+                🍽️ Custom Built for YOUR Restaurant
+              </h3>
               <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="text-white">Custom Website:</strong> Branded to your culinary vision and dining
-                  experience
+                  <strong className="text-white">Custom Website:</strong> Branded to your restaurant's ambiance and
+                  culinary vision
                 </p>
                 <p>
-                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your menu, reservations,
-                  and special events
+                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your reservation system,
+                  menu, and special events
                 </p>
                 <p>
                   <strong className="text-white">Custom AI Agent:</strong> Trained on your menu items, dietary
-                  restrictions, and service standards
+                  information, and reservation policies
                 </p>
                 <p>
                   <strong className="text-white">Never Miss Anything:</strong> AI agents that never miss a reservation
-                  request, never miss special event bookings, makes notes and transcripts of every customer interaction
+                  call, never miss event inquiries, makes notes and transcripts of every customer interaction
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best maître d' using all the best AI tools. Save countless money on staff that
-                  make excuses, call in sick, aren't motivated, or don't follow service protocols.
+                  It's like having the best host using all the best AI tools. Save countless money on staff that make
+                  excuses, call in sick, aren't motivated, or don't follow service standards.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
                   🚀 Our custom-built agents never miss. Dominate your local dining scene with the best AI agents in the
@@ -112,11 +114,11 @@ const RestaurantsNowClientPage = () => {
           <div className="grid gap-4 sm:grid-cols-2">
             {[
               "Missing reservation calls during peak dinner service",
-              "Inaccurate wait time quotes leading to frustrated customers",
-              "No-shows for large party reservations",
-              "Struggling to promote daily specials or events effectively",
-              "Difficulty getting diners to come back for another meal",
-              "Not enough positive online reviews to attract new customers",
+              "No-shows for large party reservations costing you money",
+              "Staff spending too much time answering basic questions",
+              "Losing customers to other restaurants with online booking",
+              "Struggling to promote events and specials effectively",
+              "Difficulty getting reviews on Google, Yelp, and TripAdvisor",
             ].map((pain, index) => (
               <Card
                 key={index}
@@ -137,11 +139,11 @@ const RestaurantsNowClientPage = () => {
           <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for Restaurants</h3>
           <div className="grid gap-4 sm:grid-cols-1">
             {[
-              "🍽️ 24/7 AI host to take reservations and answer questions",
-              "📅 Smart waitlist management with accurate text message updates",
-              "🎯 Automated reservation confirmations and reminders to reduce no-shows",
-              "💬 Broadcast daily specials and promotions via text to your customers",
-              "📈 Loyalty campaigns to drive repeat business and increase customer LTV",
+              "🍽️ 24/7 AI host to take reservations and manage your waitlist",
+              "📅 Smart, automated reservation confirmations and reminders",
+              "🎯 AI-powered promotion of daily specials and upcoming events",
+              "💬 Answers questions about your menu, hours, and location",
+              "📈 Seamless integration with your existing POS and reservation systems",
               "🏆 Automatically requests reviews from happy diners",
             ].map((solution, index) => (
               <Card
@@ -160,9 +162,9 @@ const RestaurantsNowClientPage = () => {
         </div>
 
         <div className="text-center bg-[#00274D]/80 backdrop-blur-sm p-12 rounded-2xl border border-[#00BFFF]/30">
-          <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Fill Your Restaurant with AI?</h3>
+          <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Fill More Tables with AI?</h3>
           <p className="text-gray-300 mb-8 text-lg">
-            Join successful restaurants using AI to increase bookings and delight diners.
+            Join successful restaurants already using AI to boost bookings.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
@@ -187,5 +189,3 @@ const RestaurantsNowClientPage = () => {
     </div>
   )
 }
-
-export default RestaurantsNowClientPage

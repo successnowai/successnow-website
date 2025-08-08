@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import RealtorNowClientPage from "./RealtorNowClientPage"
+import { RealtorNowClientPage } from "./RealtorNowClientPage"
 
 export const metadata: Metadata = {
   title: "RealtorNOW - AI-Powered Real Estate Solutions | SuccessNOW",

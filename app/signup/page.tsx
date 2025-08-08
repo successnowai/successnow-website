@@ -1,361 +1,233 @@
 "use client"
-import { useState } from "react"
+
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Check, Star, Clock, AlertCircle, Zap, Target, DollarSign, Play, Calendar } from 'lucide-react'
+import { RotatingText } from '@/components/ui/rotating-text'
+
+const rotatingWords = [
+  "captures",
+  "converts", 
+  "qualifies",
+  "books",
+  "closes",
+  "nurtures",
+  "follows up",
+  "engages"
+]
 
 export default function SignupPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [formError, setFormError] = useState("")
-  const [successMessage, setSuccessMessage] = useState("")
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-
-    if (password !== confirmPassword) {
-      setFormError("Passwords do not match")
-      return
-    }
-
-    setFormError("") // Clear any previous errors
-    setSuccessMessage("") // Clear any previous success messages
-
-    try {
-      const response = await fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setSuccessMessage(data.message)
-      } else {
-        setFormError(data.error || "Signup failed")
-      }
-    } catch (error) {
-      console.error("Signup error:", error)
-      setFormError("An unexpected error occurred")
-    }
+  const handleStartPlatform = () => {
+    window.location.href = "https://signup.successnow.ai"
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 text-white py-12 sm:py-16 md:py-20 px-4">
-      <div className="bg-gray-800 bg-opacity-30 backdrop-blur-md rounded-2xl shadow-2xl p-8 md:p-12 max-w-7xl w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-x-12">
-          {/* Left Column */}
-          <div className="lg:col-span-3">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center px-6 py-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full text-white font-semibold mb-6">
-                🔥 90% OFF - LIMITED TIME
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">The SUCCESSNOW Platform Project</h1>
-              <p className="text-xl text-blue-300 mb-6">Your All-In-One Digital Foundation</p>
-              <p className="text-gray-300 max-w-3xl mx-auto mb-8">
-                Get your custom website, smart funnel, and platform strategy built as a single, cohesive project. This
-                is the complete package to dominate your industry, powered by AI and custom-coded by experts.
-              </p>
-            </div>
-
-            <div className="text-center mb-12">
-              <div className="text-2xl text-gray-400 line-through mb-2">$35,000</div>
-              <div className="text-6xl font-bold text-blue-400 mb-4">$3,488</div>
-              <div className="text-2xl font-bold text-yellow-400">SAVE OVER $30,000 TODAY!</div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-blue-900/30 rounded-lg p-6 border border-blue-500/30">
-                <div className="flex items-center mb-3">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">📈</div>
-                  <h4 className="font-semibold text-white">BONUS: 50% OFF Platform Fees</h4>
-                </div>
-                <p className="text-gray-300 text-sm mb-2">Regular $1,994/month for all AI tools</p>
-                <p className="text-green-400 font-semibold">Only $997/month</p>
-              </div>
-
-              <div className="bg-blue-900/30 rounded-lg p-6 border border-blue-500/30">
-                <div className="flex items-center mb-3">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">📞</div>
-                  <h4 className="font-semibold text-white">BONUS: 50% OFF AI Voice Usage</h4>
-                </div>
-                <p className="text-gray-300 text-sm mb-2">Regular $0.28/minute for calls</p>
-                <p className="text-green-400 font-semibold">Only $0.14/minute</p>
-              </div>
-            </div>
-
-            <div className="bg-gray-800/50 rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-semibold text-white mb-6">Payment Information</h3>
-
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-3 border-b border-gray-700">
-                  <span className="text-gray-300">Platform Project (90% OFF)</span>
-                  <div className="text-right">
-                    <div className="text-sm text-gray-400 line-through">$35,000</div>
-                    <div className="text-xl font-bold text-blue-400">$3,488</div>
-                  </div>
-                </div>
-
-                <div className="flex justify-between items-center py-3 border-b border-gray-700">
-                  <span className="text-gray-300">Monthly Platform Access (50% OFF)</span>
-                  <div className="text-right">
-                    <div className="text-sm text-gray-400 line-through">$1,994/mo</div>
-                    <div className="text-lg font-semibold text-green-400">$997/mo</div>
-                  </div>
-                </div>
-
-                <div className="flex justify-between items-center py-4 text-xl font-bold">
-                  <span className="text-white">Total Today</span>
-                  <span className="text-blue-400">$3,488</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-12 bg-[#00274D]/80 backdrop-blur-sm text-center py-12 px-6 rounded-2xl shadow-2xl border border-[#00BFFF]/30">
-              <h3 className="text-3xl md:text-4xl font-bold text-[#00BFFF] mb-8 animate-fadeTextUp">
-                🎯 THE NO-BRAINER DEAL (LIMITED TIME OFFER)
-              </h3>
-
-              <div className="grid gap-8 max-w-4xl mx-auto mb-12">
-                <div className="bg-black/40 backdrop-blur-sm p-6 md:p-8 rounded-xl border border-gray-700">
-                  <h4 className="text-xl md:text-2xl font-bold text-white mb-6">✅ Regular Price:</h4>
-                  <div className="text-gray-300 space-y-3 text-base md:text-lg">
-                    <div className="line-through">$35,000 Setup</div>
-                    <div className="line-through">$1,994/month</div>
-                    <div className="line-through">$0.28/minute (billed by millisecond)</div>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-[#00BFFF]/20 to-[#007BFF]/20 backdrop-blur-sm p-6 md:p-8 rounded-xl border-2 border-[#00BFFF] shadow-lg">
-                  <h4 className="text-xl md:text-2xl font-bold text-[#00BFFF] mb-6">🔥 Today's Offer:</h4>
-                  <div className="text-white space-y-3 font-semibold text-base md:text-lg">
-                    <div className="text-[#00BFFF] text-xl">$3,488 Setup (Over 90% OFF)</div>
-                    <div className="text-[#00BFFF] text-xl">$997/month (50% OFF)</div>
-                    <div className="text-[#00BFFF] text-xl">$0.14/minute (50% OFF)</div>
-                    <div className="text-sm md:text-base text-gray-300 mt-4">**FOR A LIMITED TIME</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <section className="py-12 text-center">
-              <div className="bg-gradient-to-br from-[#00274D]/80 to-[#001A33]/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-[#00BFFF]/30">
-                <h3 className="text-3xl md:text-4xl font-bold text-[#00BFFF] mb-4">🚀 Ready to Get Started?</h3>
-                <p className="text-gray-300 text-lg mb-8">
-                  Join thousands of successful businesses already using SuccessNOW
+    <div className="bg-black text-white min-h-screen py-20 sm:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-cyan-900/20"></div>
+      <div className="absolute inset-0 bg-[url('/images/neon-cyberpunk-bg.png')] opacity-5 bg-cover bg-center"></div>
+      
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Hero Section */}
+        <div className="text-center mb-20">
+          <div className="max-w-5xl mx-auto">
+            <Card className="bg-gradient-to-br from-gray-900/60 to-gray-800/60 backdrop-blur-xl border border-gray-700/50 shadow-2xl shadow-cyan-500/10 overflow-hidden">
+              <CardContent className="p-12">
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+                  AI Systems with the best AI<br />
+                  agents that{' '}
+                  <RotatingText 
+                    words={rotatingWords}
+                    className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+                  />
+                </h1>
+                
+                <p className="text-xl sm:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+                  Let our AI Superagents and AI bots close leads, book appointments, and reply to 
+                  client inquiries—24/7. <span className="font-bold text-white">Never lose a lead again.</span>
                 </p>
-
-                <a
-                  href="https://signup.successnow.ai"
-                  className="inline-block bg-[#00BFFF] text-[#00274D] font-bold py-6 px-12 text-xl rounded-xl shadow-lg hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105"
-                >
-                  🎯 Start My SuccessNOW Platform Build - $3,488
-                </a>
-
-                <div className="mt-6">
-                  <p className="text-sm text-gray-400">30-day money-back guarantee • Cancel anytime • Instant access</p>
-                </div>
-              </div>
-            </section>
-
-            <section className="py-12 text-center">
-              <div className="bg-gradient-to-br from-[#00274D]/80 to-[#001A33]/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-[#00BFFF]/30">
-                <h3 className="text-3xl md:text-4xl font-bold text-[#00BFFF] mb-4">Find Your Industry Solution</h3>
-                <p className="text-gray-300 text-lg mb-8">
-                  We have tailored solutions for various industries. Find yours to get started!
-                </p>
-
-                <a
-                  href="https://www.successnow.ai/industries"
-                  className="inline-block bg-[#00BFFF] text-[#00274D] font-bold py-6 px-12 text-xl rounded-xl shadow-lg hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105"
-                >
-                  Explore Industry Solutions
-                </a>
-
-                <div className="mt-6">
-                  <p className="text-sm text-gray-400">30-day money-back guarantee • Cancel anytime • Instant access</p>
-                </div>
-              </div>
-            </section>
-          </div>
-
-          {/* Right Column */}
-          <div className="lg:col-span-2">
-            <div className="sticky top-12">
-              <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center mb-6 sm:mb-8 text-white animate-fadeTextUp">
-                🚀 The SuccessNOW Core Offer
-              </h2>
-
-              <div className="space-y-3 sm:space-y-4 max-h-[150vh] overflow-y-auto pr-4 custom-scrollbar">
-                {[
-                  {
-                    number: "1",
-                    title: "Done-For-You AI Smart Website with AI Voice Agent",
-                    description:
-                      "Your digital storefront, fully built and branded to convert traffic into booked leads, sales, and appointments—all on autopilot.",
-                    features: [
-                      "💬 Includes our AI Super Voice Agent to greet, guide, and book visitors in real-time like your best salesperson, 24/7.",
-                    ],
-                    value: "$15,998",
-                  },
-                  {
-                    number: "2",
-                    title: "AI Powered Self-Selling, Self-Booking Funnels",
-                    description:
-                      "Storytelling meets automation. Your funnel captures attention, builds trust, and drives instant action—whether it's a consult, booking, or direct sale.",
-                    features: [],
-                    value: "$7,500",
-                  },
-                  {
-                    number: "3",
-                    title: "EXPERT DESIGNED AND BUILT No-Brainer Offers + Prebuilt Lead Magnets",
-                    description:
-                      "Turn clicks into clients with irresistible offers designed for your niche. Includes lead magnets, upsells, and one-time offers built to convert fast.",
-                    features: [],
-                    value: "$3,000",
-                  },
-                  {
-                    number: "4",
-                    title: "Client-Facing White-Labeled App",
-                    description: "Deliver your brand in the palm of your client's hand:",
-                    features: [
-                      "• Build a community",
-                      "• Gamify with contests & rewards",
-                      "• Send push notifications",
-                      "• Sell courses, webinars, guides & more",
-                    ],
-                    value: "$4,997",
-                  },
-                  {
-                    number: "5",
-                    title: "AdsNOW™ Paid Traffic Engine",
-                    description: "Instantly CREATE, launch, test, and scale ads using:",
-                    features: [
-                      "• Done-for-you templates",
-                      "• Custom AI ad generator",
-                      "• Auto-optimization for Google, Facebook, TikTok & more",
-                    ],
-                    value: "$5,000",
-                  },
-                  {
-                    number: "6",
-                    title: "SeoNOW™ Organic Traffic Engine",
-                    description: "Outrank the competition with AI-driven SEO:",
-                    features: ["• On-page optimization", "• Local dominance", "• Optional human expert enhancements"],
-                    value: "$3,000",
-                  },
-                  {
-                    number: "7",
-                    title: "AI Agent + Army of Bots (Your 24/7 AI Employees)",
-                    description: "Every lead is followed up, nurtured, and closed—without fail.",
-                    features: [
-                      "• Respond instantly",
-                      "• Book appointments",
-                      "• Retarget cold leads",
-                      "• Convert while you sleep",
-                    ],
-                    value: "$15,998",
-                  },
-                  {
-                    number: "8",
-                    title: "Integrated Calendar, Booking & Follow-Up System",
-                    description: "Your AI agents manage:",
-                    features: ["• Bookings", "• Confirmations", "• Automated reminders", "• Smart retargeting"],
-                    value: "$2,500",
-                  },
-                  {
-                    number: "9",
-                    title: "AI Social Media Generator + Scheduler",
-                    description: "Your brand stays top of mind with:",
-                    features: ["• Auto-written, on-brand posts", "• Automated scheduling across all major platforms"],
-                    value: "$2,000",
-                  },
-                  {
-                    number: "10",
-                    title: "AI-Powered Instant Onboarding & Training",
-                    description:
-                      "No more waiting weeks. Get launched fast with our intelligent onboarding assistant and AI-guided training system.",
-                    features: [],
-                    value: "Priceless",
-                  },
-                  {
-                    number: "11",
-                    title: "AI Accountability Coach",
-                    description:
-                      "A built-in SuccessNOW AI that holds you accountable to only what requires your human touch.",
-                    features: [],
-                    value: "$2,000",
-                  },
-                  {
-                    number: "12",
-                    title: "Lifetime Access to SuccessNOW Resources",
-                    description: "Get our full vault of tools:",
-                    features: ["• Lead magnets", "• Templates", "• Swipe files", "• Courses & Funnels"],
-                    value: "$2,997",
-                  },
-                  {
-                    number: "13",
-                    title: "NEW: AI Reviews & AI Referrals System",
-                    description:
-                      "Reviews and referrals are gold—but most teams don't ask. Your AI agents are trained to spot happy customers and trigger review requests and referral offers at exactly the right moment—automatically.",
-                    features: [],
-                    value: "$3,000",
-                  },
-                ].map((item, i) => (
-                  <div
-                    className="bg-black/40 backdrop-blur-sm p-4 md:p-6 rounded-xl border border-[#00BFFF]/20 hover:border-[#00BFFF]/40 transition-all duration-300"
-                    key={i}
+                
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                  <Button 
+                    size="lg" 
+                    className="bg-cyan-500 hover:bg-cyan-600 text-white font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-cyan-500/20"
                   >
-                    <div className="flex flex-col space-y-3">
-                      <div className="flex items-start space-x-3">
-                        <span className="bg-[#00BFFF] text-[#00274D] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">
-                          {item.number}
-                        </span>
-                        <h3 className="text-lg md:text-xl font-bold text-[#00BFFF] leading-tight flex-1">
-                          {item.title}
-                        </h3>
-                      </div>
-
-                      <div className="text-center md:text-right">
-                        <span className="inline-block bg-[#00274D]/80 backdrop-blur-sm text-[#00BFFF] font-bold text-sm md:text-base px-4 py-2 rounded-full border border-[#00BFFF]/30">
-                          📈 Setup Value: {item.value}
-                        </span>
-                      </div>
-
-                      <p className="text-gray-300 text-sm md:text-base leading-relaxed">{item.description}</p>
-
-                      {item.features.length > 0 && (
-                        <div className="text-gray-300 text-sm space-y-1">
-                          {item.features.map((feature, idx) => (
-                            <div key={idx}>{feature}</div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                    <Play className="w-5 h-5 mr-2" />
+                    LIVE DEMO
+                  </Button>
+                  
+                  <Link href="/book">
+                    <Button 
+                      size="lg" 
+                      className="bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-bold px-8 py-4 text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-pink-500/20"
+                    >
+                      <Calendar className="w-5 h-5 mr-2" />
+                      Book an AI Consult
+                    </Button>
+                  </Link>
+                </div>
+                
+                {/* Promotional Box */}
+                <div className="bg-gradient-to-r from-gray-800/80 to-gray-700/80 backdrop-blur-md rounded-2xl p-8 border border-gray-600/50 max-w-3xl mx-auto">
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <span className="text-2xl">🔥</span>
+                    <span className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                      LIMITED TIME: 90% OFF
+                    </span>
+                    <span className="text-2xl">🔥</span>
                   </div>
-                ))}
+                  
+                  <p className="text-xl text-gray-200 mb-4">
+                    The SuccessNOW AI Systems - Usually $35,000, Now Just <span className="font-bold text-cyan-400">$3,488</span>
+                  </p>
+                  
+                  <p className="text-lg font-bold text-green-400">
+                    + 2 MONTHS FREE AI Systems Access (Save $1,994)
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Existing Pricing Section */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            The <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">SuccessNOW AI Systems</span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Your All-In-One Digital Foundation. Get your complete AI-powered business system built as a single, cohesive project.
+          </p>
+        </div>
+
+        <div className="flex justify-center">
+          <Card className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-md border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 overflow-hidden max-w-2xl w-full">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-500"></div>
+            <div className="absolute -top-3 right-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+              <Star className="w-4 h-4" />
+              90% OFF LIMITED TIME
+            </div>
+            
+            <CardHeader className="pt-12 pb-4 text-center">
+              <CardTitle className="text-3xl font-bold text-white">Complete AI Systems Build</CardTitle>
+              <CardDescription className="text-gray-400 pt-2">Your entire AI-powered business system, built and optimized by our experts.</CardDescription>
+            </CardHeader>
+            
+            <CardContent className="p-8">
+              <div className="space-y-4 mb-8">
+                <div className="text-center">
+                  <div className="text-sm text-gray-400 mb-2">AI Systems Build (90% OFF)</div>
+                  <div className="flex items-center justify-center gap-4">
+                    <span className="text-2xl text-gray-500 line-through">$35,000</span>
+                    <span className="text-5xl font-bold text-cyan-400">$3,488</span>
+                  </div>
+                </div>
+                
+                <div className="text-center">
+                  <div className="text-sm text-gray-400 mb-2">📱 Monthly AI Systems Access (50% OFF)</div>
+                  <div className="flex items-center justify-center gap-4">
+                    <span className="text-lg text-gray-500 line-through">$1,994/mo</span>
+                    <span className="text-3xl font-bold text-purple-400">$997/mo</span>
+                  </div>
+                </div>
+                
+                <div className="text-center">
+                  <div className="text-sm text-gray-400 mb-2">📞 AI Voice Usage (50% OFF)</div>
+                  <div className="flex items-center justify-center gap-4">
+                    <span className="text-lg text-gray-500 line-through">$0.28/min</span>
+                    <span className="text-2xl font-bold text-pink-400">$0.14/min</span>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1">Billed by millisecond</p>
+                </div>
               </div>
 
-              {/* Total Value */}
-              <div className="mt-12 bg-gradient-to-r from-[#00274D]/80 to-[#001A33]/80 backdrop-blur-sm text-center py-12 px-6 rounded-2xl shadow-2xl border border-[#00BFFF]/30">
-                <h3 className="text-3xl md:text-5xl font-bold text-[#00BFFF] mb-6 animate-pulse">
-                  💥 TOTAL VALUE STACK
-                </h3>
-                <div className="text-white text-xl md:text-2xl font-semibold mb-6 space-y-3">
-                  <div>
-                    💰 Setup Total: <span className="text-[#00BFFF]">Over $60,000</span>
+              <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-xl p-6 border border-green-500/20 mb-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <Zap className="w-5 h-5 text-green-400" />
+                  <span className="font-bold text-green-300">THE NO-BRAINER DEAL</span>
+                </div>
+                <p className="text-green-200 font-semibold">LIMITED TIME: Get 2 Months AI Systems Access FREE!</p>
+                <p className="text-sm text-green-300">(Save $1,994 - You don't pay for 2 months)</p>
+              </div>
+
+              <div className="text-center mb-6">
+                <div className="text-lg font-bold text-green-400 mb-2">Total Today: $3,488 (+ 2 FREE months)</div>
+                <div className="text-sm text-gray-400">Total Value: $69,990</div>
+              </div>
+
+              <div className="mb-8">
+                <h4 className="font-bold text-white mb-4 text-center">What You Get (Complete Package):</h4>
+                <div className="grid grid-cols-1 gap-3">
+                  {[
+                    "Done-For-You AI Smart Website",
+                    "AI Voice & Chat Agents",
+                    "Self-Selling, Self-Booking Funnels",
+                    "AdsNOW™ & SeoNOW™ Traffic Engines",
+                    "Client-Facing White-Labeled App",
+                    "AI Social Media & Review Management",
+                    "AI Agent + Army of Bots (24/7 AI Employees)",
+                    "Integrated Calendar & Booking System",
+                    "AI Accountability Coach",
+                    "Lifetime Access to SuccessNOW Resources",
+                  ].map((feature, index) => (
+                    <div key={index} className="flex items-center gap-3">
+                      <Check className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                      <span className="text-gray-200">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Button 
+                onClick={handleStartPlatform}
+                size="lg" 
+                className="w-full font-bold transition-all duration-300 transform hover:scale-105 h-14 text-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg shadow-cyan-500/20"
+              >
+                <Target className="w-5 h-5 mr-2" />
+                Start My SuccessNOW AI Systems Build
+              </Button>
+
+              <div className="mt-6 space-y-2 text-center text-sm text-gray-400">
+                <div className="flex items-center justify-center gap-2">
+                  <Clock className="w-4 h-4 text-orange-400" />
+                  <span>Only 47 spots available this month</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <DollarSign className="w-4 h-4 text-green-400" />
+                  <span>AI Systems access returns to $1,994/month after promotion</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <Zap className="w-4 h-4 text-cyan-400" />
+                  <span>Implementation starts within 24 hours</span>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 bg-cyan-900/20 rounded-lg border border-cyan-700/30">
+                <h4 className="font-bold text-cyan-300 mb-2">30-Day Money-Back Guarantee</h4>
+                <p className="text-sm text-gray-300">If you don't see a 300% increase in qualified leads within 30 days, we'll refund every penny.</p>
+              </div>
+
+              <div className="mt-6 p-4 bg-gradient-to-r from-orange-900/30 to-red-900/30 rounded-lg border border-orange-500/30">
+                <h4 className="font-bold text-orange-300 mb-2">🎁 Exclusive Bonuses (Limited Time)</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-green-400" />
+                    <span className="text-gray-300">Premium AI Training ($500 value)</span>
                   </div>
-                  <div>
-                    🛠️ Monthly Tools, AI Systems & Support: <span className="text-[#00BFFF]">$1,994/mo</span>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-green-400" />
+                    <span className="text-gray-300">Priority Support for 90 Days ($300 value)</span>
                   </div>
-                  <div>
-                    💼 Real-World Cost if Built Separately: <span className="text-[#00BFFF]">Easily $60K+</span>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-green-400" />
+                    <span className="text-gray-300">Custom Industry Systems ($2200 value)</span>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

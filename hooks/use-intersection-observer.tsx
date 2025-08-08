@@ -1,54 +1,45 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useState, useEffect, useRef } from 'react'
 
 interface UseInViewOptions {
-  threshold?: number
+  threshold?: number | number[]
+  root?: Element | null
   rootMargin?: string
-  triggerOnce?: boolean
+  once?: boolean
 }
 
 export function useInView(options: UseInViewOptions = {}) {
-  const { threshold = 0.1, rootMargin = "0px", triggerOnce = true } = options
+  const { threshold = 0, root = null, rootMargin = '0px', once = true } = options
   const [isInView, setIsInView] = useState(false)
-  const [hasTriggered, setHasTriggered] = useState(false)
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<Element>(null)
 
   useEffect(() => {
     const element = ref.current
     if (!element) return
 
-    // Fallback for environments without IntersectionObserver
-    if (typeof window === "undefined" || !window.IntersectionObserver) {
-      setIsInView(true)
-      return
-    }
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const inView = entry.isIntersecting
-        
-        if (inView && !hasTriggered) {
+        if (entry.isIntersecting) {
           setIsInView(true)
-          if (triggerOnce) {
-            setHasTriggered(true)
+          if (once) {
+            observer.unobserve(element)
           }
-        } else if (!triggerOnce) {
-          setIsInView(inView)
+        } else {
+          if (!once) {
+            setIsInView(false)
+          }
         }
       },
-      {
-        threshold,
-        rootMargin,
-      }
+      { threshold, root, rootMargin }
     )
 
     observer.observe(element)
 
     return () => {
-      observer.unobserve(element)
+      observer.disconnect()
     }
-  }, [threshold, rootMargin, triggerOnce, hasTriggered])
+  }, [threshold, root, rootMargin, once])
 
   return { ref, isInView }
 }

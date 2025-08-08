@@ -2,19 +2,19 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import Footer from "@/components/home/footer"
+import { Footer } from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
-const SolarNowClientPage = () => {
+export function SolarNowClientPage() {
   const [currentText, setCurrentText] = useState(0)
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
   const rotatingTexts = [
-    "Qualifies Homeowners",
+    "Qualifies Homeowners 24/7",
     "Books Consultations",
-    "Nurtures Prospects",
+    "Nurtures Every Lead",
     "Gets 5 Star Reviews",
     "Closes More Deals",
   ]
@@ -39,19 +39,19 @@ const SolarNowClientPage = () => {
             <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 min-h-[1.2em]">
               {rotatingTexts[currentText]}
             </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600">To Power Your Growth</span>
+            <span className="block text-white animate-fadeTextUp animation-delay-600">To Power Your Sales</span>
           </h1>
 
           <div className="bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-2xl mx-auto animate-fadeTextUp animation-delay-900">
-            <p className="text-red-300 font-bold text-lg">⚠️ Unqualified solar leads are burning your budget.</p>
+            <p className="text-red-300 font-bold text-lg">⚠️ Wasting money on unqualified leads is killing your ROI.</p>
           </div>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
-            Stop wasting time on unqualified homeowners and losing deals to slow follow-up. Our{" "}
+            Stop letting hot leads go cold. Our{" "}
             <strong className="text-white">
-              AI qualifies leads 24/7, books consultations, and nurtures every prospect
-            </strong>{" "}
-            until they're ready to go solar.
+              AI qualifies homeowners, books consultations, and nurtures every prospect
+            </strong>
+            , so your sales team can focus on closing deals.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
@@ -77,24 +77,24 @@ const SolarNowClientPage = () => {
               </h3>
               <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="text-white">Custom Website:</strong> Branded to your solar expertise and
-                  sustainability mission
+                  <strong className="text-white">Custom Website:</strong> Branded to your solar expertise and commitment
+                  to clean energy
                 </p>
                 <p>
-                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your solar packages and
-                  installation processes
+                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your qualification
+                  criteria, consultation process, and financing options
                 </p>
                 <p>
-                  <strong className="text-white">Custom AI Agent:</strong> Trained on your solar technology, financing
-                  options, and installation procedures
+                  <strong className="text-white">Custom AI Agent:</strong> Trained on your solar products, installation
+                  process, and savings calculations
                 </p>
                 <p>
                   <strong className="text-white">Never Miss Anything:</strong> AI agents that never miss a homeowner
-                  inquiry, never miss installation follow-ups, makes notes and transcripts of every solar consultation
+                  inquiry, never miss consultation follow-ups, makes notes and transcripts of every lead interaction
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best solar consultant using all the best AI tools. Save countless money on staff
-                  that make excuses, call in sick, aren't motivated, or don't follow sales protocols.
+                  It's like having the best appointment setter using all the best AI tools. Save countless money on
+                  callers that make excuses, call in sick, aren't motivated, or don't qualify leads correctly.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
                   🚀 Our custom-built agents never miss. Dominate your solar market with the best AI agents in the
@@ -110,15 +110,15 @@ const SolarNowClientPage = () => {
 
       <div className="mx-auto max-w-4xl px-5 py-15">
         <div className="mb-12">
-          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">Solar Company Challenges We Solve</h3>
+          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">Solar Sales Challenges We Solve</h3>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              "Sales team spending hours chasing unqualified leads",
-              "Losing deals to competitors who respond faster",
-              "High no-show rates for scheduled solar consultations",
-              "Inconsistent follow-up with long-term, high-potential leads",
-              "Struggling to educate homeowners and build trust at scale",
+              "Sales reps spending too much time on unqualified homeowners",
+              "Losing leads to competitors with faster follow-up",
+              "High no-show rates for scheduled consultations",
+              "Inconsistent nurturing of long-term prospects",
               "Manually scheduling and confirming every appointment",
+              "Struggling to get reviews from happy solar customers",
             ].map((pain, index) => (
               <Card
                 key={index}
@@ -136,15 +136,15 @@ const SolarNowClientPage = () => {
         </div>
 
         <div className="mb-12">
-          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for Solar Companies</h3>
+          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for Solar Sales</h3>
           <div className="grid gap-4 sm:grid-cols-1">
             {[
-              "☀️ 24/7 AI lead qualification based on roof type, credit, and utility bills",
-              "📅 Automated consultation booking directly into your sales team's calendars",
-              "🎯 Long-term educational nurturing campaigns to build value",
-              "💬 Answers common questions about incentives, panels, and process",
-              "📈 Integrates with your CRM to streamline your sales pipeline",
-              "🏆 Automatically requests reviews from happy customers post-installation",
+              "☀️ 24/7 AI assistant to pre-qualify leads based on your criteria",
+              "📅 Automated consultation booking that syncs with your sales team's calendars",
+              "🎯 Long-term, automated follow-up campaigns to nurture leads",
+              "💬 Answers common questions about solar, saving your team time",
+              "📈 Integrates with your CRM for a seamless sales process",
+              "🏆 Automatically requests reviews after a successful installation",
             ].map((solution, index) => (
               <Card
                 key={index}
@@ -162,8 +162,8 @@ const SolarNowClientPage = () => {
         </div>
 
         <div className="text-center bg-[#00274D]/80 backdrop-blur-sm p-12 rounded-2xl border border-[#00BFFF]/30">
-          <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Boost Your Installations with AI?</h3>
-          <p className="text-gray-300 mb-8 text-lg">Join leading solar companies using AI to close more deals.</p>
+          <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Close More Solar Deals?</h3>
+          <p className="text-gray-300 mb-8 text-lg">Join top solar companies using AI to boost their sales.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
@@ -187,5 +187,3 @@ const SolarNowClientPage = () => {
     </div>
   )
 }
-
-export default SolarNowClientPage

@@ -2,12 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import Footer from "@/components/home/footer"
+import { Footer } from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
 import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
-const ChiropractorsNowClientPage = () => {
+export function ChiropractorsNowClientPage() {
   const [currentText, setCurrentText] = useState(0)
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
@@ -191,5 +191,3 @@ const ChiropractorsNowClientPage = () => {
     </div>
   )
 }
-
-export default ChiropractorsNowClientPage
