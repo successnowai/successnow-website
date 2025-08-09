@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
-import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Menu, X, ChevronDown } from "lucide-react"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,65 +22,56 @@ export default function Navbar() {
     { name: "Auto Dealers", href: "/autodealersnow" },
     { name: "Chiropractors", href: "/chiropractorsnow" },
     { name: "Contractors", href: "/contractorsnow" },
-    { name: "Custom Builders", href: "/custombuildnow" },
     { name: "Dentists", href: "/dentistsnow" },
     { name: "Gyms & Fitness", href: "/gymsnow" },
     { name: "HVAC", href: "/hvacnow" },
     { name: "Lawyers", href: "/lawyersnow" },
-    { name: "Med Spas", href: "/medspanow" },
+    { name: "Medspas", href: "/medspanow" },
     { name: "Mortgage", href: "/mortgagenow" },
     { name: "Plumbers", href: "/plumbersnow" },
     { name: "Real Estate", href: "/realtornow" },
     { name: "Restaurants", href: "/restaurantsnow" },
     { name: "Roofers", href: "/roofersnow" },
     { name: "Solar", href: "/solarnow" },
+    { name: "Custom Build", href: "/custombuildnow" },
   ]
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10" : "bg-transparent"
+        isScrolled ? "bg-[#0B1426]/95 backdrop-blur-md border-b border-white/10" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <Image
-              src="/images/successnow-logo.png"
-              alt="SuccessNOW"
-              width={32}
-              height={32}
-              className="h-8 w-auto mr-3"
-              priority
-            />
-            <span className="text-xl font-bold text-white cyber-text-glow">SuccessNOW</span>
+          <Link href="/" className="flex items-center space-x-2">
+            <div className="text-2xl font-bold text-white">
+              Success<span className="text-[#00BFFF]">NOW</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-200 hover:text-cyan-400 transition-colors font-medium">
+            <Link href="/" className="text-white hover:text-[#00BFFF] transition-colors">
               Home
-            </Link>
-            <Link href="/demo" className="text-gray-200 hover:text-cyan-400 transition-colors font-medium">
-              Live Demo
             </Link>
 
             {/* Industries Dropdown */}
             <div className="relative">
               <Link
                 href="/industries"
-                className="text-gray-200 hover:text-cyan-400 transition-colors font-medium flex items-center gap-1 touch-target"
+                className="flex items-center text-white hover:text-[#00BFFF] transition-colors"
                 onMouseEnter={() => setIsIndustriesOpen(true)}
                 onMouseLeave={() => setIsIndustriesOpen(false)}
               >
                 Industries
-                <ChevronDown className={`h-4 w-4 transition-transform ${isIndustriesOpen ? "rotate-180" : ""}`} />
+                <ChevronDown className="ml-1 h-4 w-4" />
               </Link>
 
               {isIndustriesOpen && (
                 <div
-                  className="absolute top-full left-0 mt-2 w-64 bg-black/90 backdrop-blur-md rounded-lg border border-white/10 shadow-xl z-50"
+                  className="absolute top-full left-0 mt-2 w-64 bg-[#0B1426]/95 backdrop-blur-md border border-white/10 rounded-lg shadow-xl z-50"
                   onMouseEnter={() => setIsIndustriesOpen(true)}
                   onMouseLeave={() => setIsIndustriesOpen(false)}
                 >
@@ -90,8 +80,7 @@ export default function Navbar() {
                       <Link
                         key={industry.name}
                         href={industry.href}
-                        className="text-gray-200 hover:text-cyan-400 hover:bg-white/5 transition-colors px-3 py-2 rounded text-sm touch-target"
-                        onClick={() => setIsIndustriesOpen(false)}
+                        className="block px-4 py-2 text-sm text-white hover:text-[#00BFFF] hover:bg-white/5 rounded transition-colors"
                       >
                         {industry.name}
                       </Link>
@@ -101,103 +90,82 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link href="/signup" className="text-gray-200 hover:text-cyan-400 transition-colors font-medium">
+            <Link href="/pricing" className="text-white hover:text-[#00BFFF] transition-colors">
               Pricing
             </Link>
-
+            <Link href="/community" className="text-white hover:text-[#00BFFF] transition-colors">
+              Community
+            </Link>
             <Button
               asChild
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
+              className="bg-[#00BFFF] hover:bg-[#0099CC] text-white px-6 py-2 rounded-md transition-colors"
             >
-              <Link href="/book">Book Consult</Link>
+              <Link href="https://signup.successnow.ai">Get Started</Link>
             </Button>
           </div>
 
           {/* Mobile menu button */}
-          <button
-            className="md:hidden text-white hover:text-cyan-400 transition-colors touch-target"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-expanded={isOpen}
-            aria-label="Toggle mobile menu"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-white hover:text-[#00BFFF] transition-colors">
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10 rounded-b-lg">
-            <div className="px-4 py-4 space-y-4">
+          <div className="md:hidden bg-[#0B1426]/95 backdrop-blur-md border-t border-white/10">
+            <div className="px-2 pt-2 pb-3 space-y-1">
               <Link
                 href="/"
-                className="block text-gray-200 hover:text-cyan-400 transition-colors font-medium py-2 touch-target"
+                className="block px-3 py-2 text-white hover:text-[#00BFFF] transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Home
               </Link>
-              <Link
-                href="/demo"
-                className="block text-gray-200 hover:text-cyan-400 transition-colors font-medium py-2 touch-target"
-                onClick={() => setIsOpen(false)}
-              >
-                Live Demo
-              </Link>
 
               {/* Mobile Industries */}
-              <div>
+              <div className="px-3 py-2">
                 <Link
                   href="/industries"
-                  className="text-gray-200 hover:text-cyan-400 transition-colors font-medium flex items-center gap-1 py-2 touch-target"
-                  onClick={() => {
-                    setIsOpen(false)
-                    setIsIndustriesOpen(false)
-                  }}
+                  className="text-white hover:text-[#00BFFF] transition-colors font-medium"
+                  onClick={() => setIsOpen(false)}
                 >
                   Industries
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform ${isIndustriesOpen ? "rotate-180" : ""}`}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      setIsIndustriesOpen(!isIndustriesOpen)
-                    }}
-                  />
                 </Link>
-
-                {isIndustriesOpen && (
-                  <div className="ml-4 mt-2 space-y-2">
-                    {industries.map((industry) => (
-                      <Link
-                        key={industry.name}
-                        href={industry.href}
-                        className="block text-gray-300 hover:text-cyan-400 transition-colors text-sm py-1 touch-target"
-                        onClick={() => {
-                          setIsOpen(false)
-                          setIsIndustriesOpen(false)
-                        }}
-                      >
-                        {industry.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                <div className="mt-2 ml-4 space-y-1">
+                  {industries.map((industry) => (
+                    <Link
+                      key={industry.name}
+                      href={industry.href}
+                      className="block py-1 text-sm text-gray-300 hover:text-[#00BFFF] transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {industry.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
 
               <Link
-                href="/signup"
-                className="block text-gray-200 hover:text-cyan-400 transition-colors font-medium py-2 touch-target"
+                href="/pricing"
+                className="block px-3 py-2 text-white hover:text-[#00BFFF] transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Pricing
               </Link>
-
-              <Button
-                asChild
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 rounded-full transition-all duration-300 shadow-lg mt-4"
+              <Link
+                href="/community"
+                className="block px-3 py-2 text-white hover:text-[#00BFFF] transition-colors"
+                onClick={() => setIsOpen(false)}
               >
-                <Link href="/book" onClick={() => setIsOpen(false)}>
-                  Book Consult
-                </Link>
-              </Button>
+                Community
+              </Link>
+              <div className="px-3 py-2">
+                <Button asChild className="w-full bg-[#00BFFF] hover:bg-[#0099CC] text-white">
+                  <Link href="https://signup.successnow.ai">Get Started</Link>
+                </Button>
+              </div>
             </div>
           </div>
         )}

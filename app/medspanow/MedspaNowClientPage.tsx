@@ -5,18 +5,18 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
+import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
 const MedspaNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
   const rotatingTexts = [
-    "Books Consultations",
-    "Upsells Packages",
+    "Books Appointments",
     "Reduces No-Shows",
+    "Upsells Services",
     "Gets 5 Star Reviews",
-    "Nurtures Clients",
+    "Boosts Retention",
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
@@ -35,23 +35,21 @@ const MedspaNowClientPage = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1426]/50 to-[#0B1426]"></div>
         <div className="relative z-10 max-w-6xl mx-auto space-y-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-            <span className="block text-white animate-fadeTextUp">MedSpaNOW™ AI</span>
+            <span className="block text-white animate-fadeTextUp">MedspaNOW™ AI</span>
             <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 min-h-[1.2em]">
               {rotatingTexts[currentText]}
             </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600">To Boost Your Bookings</span>
+            <span className="block text-white animate-fadeTextUp animation-delay-600">To Grow Your Practice</span>
           </h1>
 
           <div className="bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-2xl mx-auto animate-fadeTextUp animation-delay-900">
-            <p className="text-red-300 font-bold text-lg">⚠️ Unbooked appointments are lost revenue.</p>
+            <p className="text-red-300 font-bold text-lg">⚠️ Empty treatment rooms mean lost revenue.</p>
           </div>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
-            Stop losing high-value clients to missed calls and poor follow-up. Our{" "}
-            <strong className="text-white">
-              AI books consultations, confirms appointments, and nurtures every lead
-            </strong>{" "}
-            until they book a treatment.
+            Stop losing clients to missed calls and forgotten appointments. Our{" "}
+            <strong className="text-white">AI books treatments, confirms appointments, and upsells services</strong> so
+            you can focus on providing exceptional care.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
@@ -72,33 +70,31 @@ const MedspaNowClientPage = () => {
 
           <div className="mt-8 animate-fadeTextUp animation-delay-1800">
             <div className="bg-gradient-to-r from-[#00274D]/80 to-[#1a2332]/80 backdrop-blur-sm p-6 rounded-xl border border-[#00BFFF]/30">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">
-                💆 Custom Built for YOUR Medical Spa
-              </h3>
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">💆 Custom Built for YOUR Medspa</h3>
               <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="text-white">Custom Website:</strong> Branded to your spa's luxury experience and
-                  aesthetic services
+                  <strong className="text-white">Custom Website:</strong> Branded to your aesthetic vision and client
+                  experience
                 </p>
                 <p>
-                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your treatment packages
-                  and consultation booking
+                  <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your treatments and
+                  appointment booking
                 </p>
                 <p>
-                  <strong className="text-white">Custom AI Agent:</strong> Trained on your aesthetic procedures,
-                  treatment protocols, and client care standards
+                  <strong className="text-white">Custom AI Agent:</strong> Trained on your services, pricing, and
+                  treatment protocols
                 </p>
                 <p>
-                  <strong className="text-white">Never Miss Anything:</strong> AI agents that never miss a consultation
-                  request, never miss treatment follow-ups, makes notes and transcripts of every client interaction
+                  <strong className="text-white">Never Miss Anything:</strong> AI agents that never miss a client call,
+                  never miss follow-up appointments, makes notes and transcripts of every client interaction
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best spa concierge using all the best AI tools. Save countless money on staff
-                  that make excuses, call in sick, aren't motivated, or don't follow client service protocols.
+                  It's like having the best spa receptionist using all the best AI tools. Save countless money on staff
+                  that make excuses, call in sick, aren't motivated, or don't follow protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
-                  🚀 Our custom-built agents never miss. Dominate your aesthetic market with the best AI agents in the
-                  Galaxy!
+                  🚀 Our custom-built agents never miss. Dominate your local aesthetic market with the best AI agents in
+                  the Galaxy!
                 </p>
               </div>
             </div>
@@ -110,15 +106,15 @@ const MedspaNowClientPage = () => {
 
       <div className="mx-auto max-w-4xl px-5 py-15">
         <div className="mb-12">
-          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">Medical Spa Challenges We Solve</h3>
+          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">Medspa Challenges We Solve</h3>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              "Losing leads who call after hours or when your front desk is busy",
-              "High no-show rates for consultations and treatments",
-              "Staff spending too much time on appointment reminders",
-              "Difficulty upselling treatment packages effectively",
-              "Forgetting to follow up with past clients for new treatments",
-              "Struggling to generate a steady stream of 5-star reviews",
+              "Missing consultation calls during treatment sessions",
+              "High no-show rates for expensive treatments",
+              "Difficulty upselling additional services",
+              "Inconsistent follow-up for treatment packages",
+              "Struggling to get positive reviews online",
+              "Manual appointment reminders are time-consuming",
             ].map((pain, index) => (
               <Card
                 key={index}
@@ -136,15 +132,15 @@ const MedspaNowClientPage = () => {
         </div>
 
         <div className="mb-12">
-          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for Medical Spas</h3>
+          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for Medspas</h3>
           <div className="grid gap-4 sm:grid-cols-1">
             {[
-              "💆 24/7 AI concierge to book appointments and answer questions",
-              "📅 Smart, automated appointment confirmations and reminders",
-              "🎯 AI-powered upsell sequences for treatment packages",
-              "💬 Personalized client nurturing and reactivation campaigns",
-              "📈 Seamless integration with your existing booking software",
-              "🏆 Automatically requests reviews to build trust and social proof",
+              "💆 24/7 AI receptionist to book consultations and treatments",
+              "📅 Smart appointment booking with automated confirmations",
+              "🎯 Intelligent upselling of complementary treatments",
+              "💬 Answers questions about procedures, pricing, and aftercare",
+              "📈 Integrates with your practice management software",
+              "🏆 Automatically requests reviews from satisfied clients",
             ].map((solution, index) => (
               <Card
                 key={index}
@@ -162,8 +158,10 @@ const MedspaNowClientPage = () => {
         </div>
 
         <div className="text-center bg-[#00274D]/80 backdrop-blur-sm p-12 rounded-2xl border border-[#00BFFF]/30">
-          <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Grow Your Medical Spa with AI?</h3>
-          <p className="text-gray-300 mb-8 text-lg">Join successful medical spas already using AI to boost bookings</p>
+          <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Enhance Your Practice with AI?</h3>
+          <p className="text-gray-300 mb-8 text-lg">
+            Join successful medspas using AI to boost bookings and client satisfaction.
+          </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"

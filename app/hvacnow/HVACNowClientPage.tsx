@@ -5,18 +5,18 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
+import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
 
 const HVACNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
   const rotatingTexts = [
-    "Books Service Calls",
-    "Schedules Tune-Ups",
-    "Automates Quotes",
+    "Never Miss a Call",
+    "Books Service Jobs",
+    "Dispatches Techs",
     "Gets 5 Star Reviews",
-    "Never Misses a Call",
+    "Automates Quotes",
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
@@ -39,19 +39,19 @@ const HVACNowClientPage = () => {
             <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300 min-h-[1.2em]">
               {rotatingTexts[currentText]}
             </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600">To Heat Up Your Sales</span>
+            <span className="block text-white animate-fadeTextUp animation-delay-600">To Keep Your Business Cool</span>
           </h1>
 
           <div className="bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-2xl mx-auto animate-fadeTextUp animation-delay-900">
-            <p className="text-red-300 font-bold text-lg">
-              ⚠️ A broken AC is an emergency. A missed call is lost profit.
-            </p>
+            <p className="text-red-300 font-bold text-lg">⚠️ A missed emergency call is a job lost forever.</p>
           </div>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
-            Stop losing service calls and installation jobs to voicemail. Our{" "}
-            <strong className="text-white">AI answers calls 24/7, books appointments, and follows up on quotes</strong>,
-            ensuring your schedule is always full.
+            Stop losing profitable jobs to voicemail. Our{" "}
+            <strong className="text-white">
+              AI answers calls 24/7, books service appointments, and dispatches your techs
+            </strong>
+            , so you can dominate your local market.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
@@ -77,28 +77,27 @@ const HVACNowClientPage = () => {
               </h3>
               <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="text-white">Custom Website:</strong> Branded to your HVAC expertise and comfort
-                  solutions
+                  <strong className="text-white">Custom Website:</strong> Branded to your HVAC expertise and emergency
+                  services
                 </p>
                 <p>
                   <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your HVAC services and
-                  maintenance programs
+                  emergency dispatch
                 </p>
                 <p>
-                  <strong className="text-white">Custom AI Agent:</strong> Trained on your HVAC systems, seasonal
-                  services, and installation processes
+                  <strong className="text-white">Custom AI Agent:</strong> Trained on your HVAC solutions, pricing, and
+                  service protocols
                 </p>
                 <p>
                   <strong className="text-white">Never Miss Anything:</strong> AI agents that never miss an emergency
-                  service call, never miss maintenance follow-ups, makes notes and transcripts of every customer
-                  interaction
+                  call, never miss service follow-ups, makes notes and transcripts of every customer interaction
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
                   It's like having the best HVAC dispatcher using all the best AI tools. Save countless money on staff
                   that make excuses, call in sick, aren't motivated, or don't follow service protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
-                  🚀 Our custom-built agents never miss. Dominate your HVAC market with the best AI agents in the
+                  🚀 Our custom-built agents never miss. Dominate your local HVAC market with the best AI agents in the
                   Galaxy!
                 </p>
               </div>
@@ -114,12 +113,12 @@ const HVACNowClientPage = () => {
           <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">HVAC Business Challenges We Solve</h3>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              "Missing emergency service calls during extreme weather",
-              "Forgetting to remind customers about seasonal tune-ups",
-              "Losing installation quotes to competitors with better follow-up",
-              "Manually scheduling and dispatching technicians is chaotic",
-              "Struggling to get reviews that build local trust",
-              "No system to manage and upsell maintenance agreements",
+              "Missing emergency calls after hours and on weekends",
+              "Forgetting to follow up on quotes you've sent out",
+              "No-shows for scheduled maintenance appointments",
+              "Struggling to get reviews from satisfied customers",
+              "Manually scheduling and dispatching technicians is inefficient",
+              "Losing repeat business from past customers",
             ].map((pain, index) => (
               <Card
                 key={index}
@@ -137,15 +136,15 @@ const HVACNowClientPage = () => {
         </div>
 
         <div className="mb-12">
-          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for HVAC Contractors</h3>
+          <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for HVAC Companies</h3>
           <div className="grid gap-4 sm:grid-cols-1">
             {[
               "❄️ 24/7 AI dispatcher that never misses an emergency call",
-              "📅 Automated booking for tune-ups, repairs, and sales consultations",
-              "🎯 Relentless follow-up on all open quotes to maximize closing rates",
-              "💬 Automated seasonal service reminders to generate recurring revenue",
-              "📈 Upsell maintenance agreements and new systems with targeted campaigns",
-              "🏆 Automatically requests reviews after every successful service call",
+              "📅 Smart scheduling system for service calls and estimates",
+              "🎯 Automated quote follow-up to increase your closing rate",
+              "💬 Answers common questions about services and pricing",
+              "📈 Service reminders and maintenance plan upsells",
+              "🏆 Automatically requests reviews to build trust in your community",
             ].map((solution, index) => (
               <Card
                 key={index}
@@ -163,10 +162,8 @@ const HVACNowClientPage = () => {
         </div>
 
         <div className="text-center bg-[#00274D]/80 backdrop-blur-sm p-12 rounded-2xl border border-[#00BFFF]/30">
-          <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Book More HVAC Jobs?</h3>
-          <p className="text-gray-300 mb-8 text-lg">
-            Join top HVAC companies using AI to grow their business year-round.
-          </p>
+          <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Heat Up Your Business Growth?</h3>
+          <p className="text-gray-300 mb-8 text-lg">Join top HVAC companies using AI to book more jobs.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
