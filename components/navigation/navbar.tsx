@@ -3,12 +3,11 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isIndustriesOpen, setIsIndustriesOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,38 +56,10 @@ export default function Navbar() {
               Home
             </Link>
 
-            {/* Industries Dropdown */}
-            <div className="relative">
-              <Link
-                href="/industries"
-                className="flex items-center text-white hover:text-[#00BFFF] transition-colors"
-                onMouseEnter={() => setIsIndustriesOpen(true)}
-                onMouseLeave={() => setIsIndustriesOpen(false)}
-              >
-                Industries
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </Link>
-
-              {isIndustriesOpen && (
-                <div
-                  className="absolute top-full left-0 mt-2 w-64 bg-[#0B1426]/95 backdrop-blur-md border border-white/10 rounded-lg shadow-xl z-50"
-                  onMouseEnter={() => setIsIndustriesOpen(true)}
-                  onMouseLeave={() => setIsIndustriesOpen(false)}
-                >
-                  <div className="grid grid-cols-1 gap-1 p-2">
-                    {industries.map((industry) => (
-                      <Link
-                        key={industry.name}
-                        href={industry.href}
-                        className="block px-4 py-2 text-sm text-white hover:text-[#00BFFF] hover:bg-white/5 rounded transition-colors"
-                      >
-                        {industry.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+            {/* Industries Link */}
+            <Link href="/industries" className="text-white hover:text-[#00BFFF] transition-colors">
+              Industries
+            </Link>
 
             <Link href="/pricing" className="text-white hover:text-[#00BFFF] transition-colors">
               Pricing
@@ -125,27 +96,13 @@ export default function Navbar() {
               </Link>
 
               {/* Mobile Industries */}
-              <div className="px-3 py-2">
-                <Link
-                  href="/industries"
-                  className="text-white hover:text-[#00BFFF] transition-colors font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Industries
-                </Link>
-                <div className="mt-2 ml-4 space-y-1">
-                  {industries.map((industry) => (
-                    <Link
-                      key={industry.name}
-                      href={industry.href}
-                      className="block py-1 text-sm text-gray-300 hover:text-[#00BFFF] transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {industry.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+              <Link
+                href="/industries"
+                className="block px-3 py-2 text-white hover:text-[#00BFFF] transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Industries
+              </Link>
 
               <Link
                 href="/pricing"
