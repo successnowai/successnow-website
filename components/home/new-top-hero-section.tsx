@@ -4,14 +4,19 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-const dynamicWords = ["qualifies", "converts", "nurtures", "closes", "books"]
+const dynamicWords = ["Close", "Book", "Qualify", "Convert"]
 
 export function NewTopHeroSection() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentWordIndex((prev) => (prev + 1) % dynamicWords.length)
+      setIsVisible(false)
+      setTimeout(() => {
+        setCurrentWordIndex((prev) => (prev + 1) % dynamicWords.length)
+        setIsVisible(true)
+      }, 300)
     }, 2000)
     return () => clearInterval(interval)
   }, [])
@@ -45,13 +50,15 @@ export function NewTopHeroSection() {
         {/* Main Headline */}
         <div className="mb-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
-            AI Systems with the best AI
+            AI Systems With The Best AI
           </h1>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">agents that</h1>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">Agents That</h1>
           <div className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
             <span
               key={currentWordIndex}
-              className="inline-block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-pulse"
+              className={`inline-block neon-text-glow transition-all duration-300 ${
+                isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              }`}
             >
               {dynamicWords[currentWordIndex]}
             </span>
@@ -61,8 +68,8 @@ export function NewTopHeroSection() {
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-          Let our AI Superagents and AI bots close leads, book appointments, and reply to client inquiries—24/7.{" "}
-          <span className="text-white font-semibold">Never lose a lead again.</span>
+          Let Our AI Superagents And AI Bots Close Leads, Book Appointments, And Reply To Client Inquiries—24/7.{" "}
+          <span className="text-white font-semibold">Never Lose A Lead Again.</span>
         </p>
 
         {/* CTA Buttons */}
@@ -80,7 +87,7 @@ export function NewTopHeroSection() {
               size="lg"
               className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
-              📅 Book an AI Consult
+              📅 Book An AI Consult
             </Button>
           </Link>
         </div>
@@ -96,8 +103,7 @@ export function NewTopHeroSection() {
           </div>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-4">
-            The SUCCESSNOW Platform Project - Usually <span className="line-through text-gray-500">$35,000</span>, Now
-            Just
+            The SuccessNOW AI Systems - Usually <span className="line-through text-gray-500">$35,000</span>, Now Just
           </p>
           <p className="text-3xl md:text-4xl font-bold text-white mb-4">$3,488</p>
 

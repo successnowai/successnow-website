@@ -74,7 +74,7 @@ export function DemoPopup({ isOpen: controlledIsOpen, onClose, trigger }: DemoPo
             >
               {/* Header */}
               <div className="flex justify-between items-center p-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-                <h3 className="font-semibold text-lg">AI Voice Assistant</h3>
+                <h3 className="font-semibold text-lg">AI Voice Agent</h3>
                 <button
                   onClick={handleClose}
                   className="text-white hover:text-gray-200 transition-colors p-1 rounded-full hover:bg-white/10"
@@ -91,7 +91,7 @@ export function DemoPopup({ isOpen: controlledIsOpen, onClose, trigger }: DemoPo
                   allow="microphone"
                   style={{ width: "100%", height: "100%", border: "none" }}
                   id="assistantFrameDemo"
-                  title="AI Voice Assistant Demo"
+                  title="AI Voice Agent Demo"
                 />
               </div>
             </motion.div>

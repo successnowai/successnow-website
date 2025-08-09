@@ -23,7 +23,7 @@ export function VoiceDemoModal({ isOpen, onClose }: VoiceDemoModalProps) {
 
       const frame = iframeRef.current
       const handleLoad = () => {
-        navigator.permissions.query({ name: "microphone" }).then((result) => {
+        navigator.permissions.query({ name: "microphone" as PermissionName }).then((result) => {
           if (result.state === "granted") {
             console.log("Microphone access already granted")
           } else if (result.state === "prompt") {
@@ -77,7 +77,7 @@ export function VoiceDemoModal({ isOpen, onClose }: VoiceDemoModalProps) {
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <h2 id="modal-title" className="text-xl font-bold text-white">
-                  AI Assistant Demo
+                  AI Voice Agent Demo
                 </h2>
               </div>
               <button

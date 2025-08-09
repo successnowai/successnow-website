@@ -7,7 +7,7 @@ import { ArrowLeft, Bot, MessageSquare, Globe, Zap, Target, TrendingUp, Users, C
 import Link from "next/link"
 import { useEffect } from "react"
 
-function AiAssistantFrame() {
+function AiVoiceAgentFrame() {
   useEffect(() => {
     const frame = document.getElementById("assistantFrame")
     const handleLoad = () => {
@@ -45,7 +45,7 @@ function AiAssistantFrame() {
         allow="microphone"
         className="w-full h-full border-none rounded-lg"
         id="assistantFrame"
-        title="AI Assistant"
+        title="AI Voice Agent"
       />
     </div>
   )
@@ -82,8 +82,8 @@ export default function DemoClientPage() {
               <span className="block text-[#00BFFF] mt-2">AI Business Demo</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Talk to our AI Assistant about your business and discover how SuccessNOW.ai can transform your operations
-              with AI-powered websites, lead generation, and automated marketing systems.
+              Talk to our AI Voice Agent about your business and discover how SuccessNOW.ai can transform your
+              operations with AI-powered websites, lead generation, and automated marketing systems.
             </p>
           </div>
         </section>
@@ -103,8 +103,8 @@ export default function DemoClientPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-300">
-                    Click the AI assistant below and start by telling it what type of business you run. For example: "I
-                    own a dental practice" or "I run a construction company."
+                    Click the AI agent below and start by telling it what type of business you run. For example: "I own
+                    a dental practice" or "I run a construction company."
                   </p>
                 </CardContent>
               </Card>
@@ -167,7 +167,7 @@ export default function DemoClientPage() {
           </div>
         </section>
 
-        {/* AI Assistant Demo */}
+        {/* AI Agent Demo */}
         <section className="py-12 px-4 sm:px-6 md:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 shadow-2xl rounded-xl overflow-hidden">
@@ -178,7 +178,7 @@ export default function DemoClientPage() {
                 </p>
               </div>
               <div className="h-[500px]">
-                <AiAssistantFrame />
+                <AiVoiceAgentFrame />
               </div>
             </div>
           </div>
@@ -301,7 +301,7 @@ export default function DemoClientPage() {
             <div className="bg-gradient-to-r from-[#00BFFF]/20 to-[#00A3D9]/20 rounded-xl p-8 border border-[#00BFFF]/30">
               <h2 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
               <p className="text-xl text-gray-300 mb-8">
-                After talking with our AI assistant, take the next step and get a custom SuccessNOW.ai solution for your
+                After talking with our AI agent, take the next step and get a custom SuccessNOW.ai solution for your
                 business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
