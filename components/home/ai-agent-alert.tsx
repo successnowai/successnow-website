@@ -15,7 +15,13 @@ export default function AiAgentAlert() {
   return (
     <section className="py-12 px-4">
       <div className="max-w-5xl mx-auto">
-        <div className="relative rounded-2xl bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 border border-blue-500/30 shadow-2xl shadow-blue-500/10 overflow-hidden">
+        <div className="relative rounded-2xl bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 border border-pink-500/50 shadow-2xl shadow-pink-500/20 overflow-hidden neon-pink-glow">
+          {/* Animated neon pink tracer border */}
+          <div className="absolute inset-0 rounded-2xl">
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-pink-500 via-fuchsia-500 to-pink-500 bg-[length:200%_200%] animate-border-trace opacity-80"></div>
+            <div className="absolute inset-[2px] rounded-2xl bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900"></div>
+          </div>
+
           <div className="absolute inset-0 bg-[url('/abstract-neural-network-background.png')] bg-cover opacity-5"></div>
           <div className="relative p-8 md:p-12">
             <div className="text-center mb-8">
