@@ -91,7 +91,7 @@ export function GlowingOrbCta({ label = "Click Here, Talk to AI", size = "md", c
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
           <div className="w-full max-w-md mx-4 bg-gradient-to-br from-gray-900 to-black border border-purple-500/30 shadow-2xl rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-white">AI Voice Assistant</h2>
+              <h2 className="text-2xl font-bold text-white">AI Voice Agent</h2>
               <button onClick={() => setShowPopup(false)} className="text-gray-400 hover:text-white transition-colors">
                 ✕
               </button>
@@ -102,7 +102,7 @@ export function GlowingOrbCta({ label = "Click Here, Talk to AI", size = "md", c
                 src="https://iframes.ai/o/1753831620452x607403809624031200?color=ed10cc&icon=bot"
                 allow="microphone"
                 style={{ width: "100%", height: "100%", border: "none" }}
-                title="AI Voice Assistant"
+                title="AI Voice Agent"
               />
             </div>
           </div>

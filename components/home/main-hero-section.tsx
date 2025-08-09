@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Phone, MessageSquare, Zap, ArrowRight, Play } from "lucide-react"
 import GlowingOrbCta from "@/components/ui/glowing-orb-cta"
-import { RotatingText } from "@/components/ui/rotating-text"
+import RotatingText from "@/components/ui/rotating-text"
 
 export default function MainHeroSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -38,20 +38,30 @@ export default function MainHeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
       <div className="max-w-6xl mx-auto text-center">
-        {/* Main Headline */}
+        {/* Main Headline - 3 Lines Structure */}
         <div
           className={`mb-8 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
-            <span className="text-white">AI That </span>
-            <RotatingText
-              words={actionWords}
-              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 neon-text-glow"
-              interval={2000}
-            />
-            <span className="text-white"> Leads Into Sales</span>
-          </h1>
+          {/* First Line */}
+          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
+            <span className="text-white">AI That</span>
+          </div>
 
+          {/* Second Line - Dynamic Text with Fixed Height */}
+          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight min-h-[1.2em] flex items-center justify-center">
+            <RotatingText words={actionWords} className="neon-text-glow" interval={2000} />
+          </div>
+
+          {/* Third Line */}
+          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
+            <span className="text-white">Leads Into Sales</span>
+          </div>
+        </div>
+
+        {/* Subtitle */}
+        <div
+          className={`mb-8 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
           <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
             Get AI-Powered Websites That Convert Visitors Into Customers Using AI Optimization, Voice Agents, And
             Automated Follow-Up Systems.
