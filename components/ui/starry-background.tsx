@@ -18,7 +18,7 @@ interface ShootingStar {
   animationDelay: number
 }
 
-const StarryBackground = () => {
+export const StarryBackground = () => {
   const [stars, setStars] = useState<Star[]>([])
   const [shootingStars, setShootingStars] = useState<ShootingStar[]>([])
 

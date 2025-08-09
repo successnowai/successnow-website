@@ -1,432 +1,377 @@
 "use client"
+
 import { useState } from "react"
+import { StarryBackground } from "@/components/ui/starry-background"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import {
+  CheckCircle,
+  Zap,
+  Target,
+  Rocket,
+  Phone,
+  MessageSquare,
+  Calendar,
+  BarChart3,
+  Users,
+  Shield,
+  Headphones,
+  Globe,
+  Smartphone,
+  Bot,
+  Brain,
+  TrendingUp,
+} from "lucide-react"
 
 export default function SignupPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [formError, setFormError] = useState("")
-  const [successMessage, setSuccessMessage] = useState("")
+  const [isAnnual, setIsAnnual] = useState(true)
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
+  return (
+    <div className="min-h-screen bg-[#0A0A0F] text-white relative overflow-hidden">
+      <StarryBackground />
 
-    if (password !== confirmPassword) {
-      setFormError("Passwords do not match")
-      return
-    }
+      <div className="relative z-10 container mx-auto px-4 py-12">
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <Badge className="mb-4 bg-gradient-to-r from-[#00BFFF] to-[#00FF88] text-black font-bold px-6 py-2">
+            🔥 LIMITED TIME: 90% OFF
+          </Badge>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#00BFFF] via-white to-[#00FF88] bg-clip-text text-transparent">
+            The SuccessNOW AI Systems & AI Agents Platform
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
+            Transform your business with AI-powered voice agents, automated lead qualification, and 24/7 customer
+            service
+          </p>
 
-    setFormError("") // Clear any previous errors
-    setSuccessMessage("") // Clear any previous success messages
+          {/* First Pulsating Button - Top of Page */}
+          <div className="mb-12">
+            <Button
+              size="lg"
+              className="relative overflow-hidden bg-gradient-to-r from-[#00BFFF] via-[#0080FF] to-[#00BFFF] text-white font-bold px-12 py-6 text-xl rounded-xl border-2 border-[#00BFFF] shadow-[0_0_20px_#00BFFF,0_0_40px_#00BFFF,0_0_60px_#00BFFF] animate-pulse hover:scale-105 hover:shadow-[0_0_30px_#00BFFF,0_0_60px_#00BFFF,0_0_90px_#00BFFF] transition-all duration-300 transform hover:skew-x-1"
+              style={{
+                animation: "pulse-glow 2s ease-in-out infinite alternate",
+                boxShadow:
+                  "0 0 20px #00BFFF, 0 0 40px #00BFFF, 0 0 60px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.2)",
+              }}
+            >
+              <span className="relative z-10 flex items-center gap-3">
+                <Rocket className="w-6 h-6" />🚀 GET AI NOW - $3,488
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
+            </Button>
+          </div>
+        </div>
 
-    try {
-      const response = await fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      })
+        {/* Pricing Toggle */}
+        <div className="flex justify-center mb-12">
+          <div className="bg-[#0A0A0F]/80 backdrop-blur-xl border border-[#00BFFF]/30 rounded-xl p-2 flex">
+            <button
+              onClick={() => setIsAnnual(false)}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                !isAnnual
+                  ? "bg-gradient-to-r from-[#00BFFF] to-[#00FF88] text-black shadow-lg"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setIsAnnual(true)}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                isAnnual
+                  ? "bg-gradient-to-r from-[#00BFFF] to-[#00FF88] text-black shadow-lg"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
+              Annual (Save 20%)
+            </button>
+          </div>
+        </div>
 
-      const data = await response.json()
+        {/* Main Pricing Card */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <Card className="bg-[#0A0A0F]/80 backdrop-blur-xl border-2 border-[#00BFFF]/30 shadow-[0_0_30px_rgba(0,191,255,0.3)] hover:shadow-[0_0_50px_rgba(0,191,255,0.5)] transition-all duration-300 hover:border-[#00BFFF]/50 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#00BFFF]/5 via-transparent to-[#00FF88]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <CardHeader className="text-center relative z-10">
+              <Badge className="mx-auto mb-4 bg-gradient-to-r from-[#00FF88] to-[#00BFFF] text-black font-bold">
+                Most Popular
+              </Badge>
+              <CardTitle className="text-3xl md:text-4xl font-bold text-[#00BFFF] mb-2">
+                Enterprise AI Platform
+              </CardTitle>
+              <div className="text-5xl md:text-6xl font-bold mb-4">
+                <span className="text-[#00FF88]">${isAnnual ? "4,970" : "497"}</span>
+                <span className="text-xl text-gray-400 ml-2">{isAnnual ? "/year" : "/month"}</span>
+              </div>
+              {isAnnual && (
+                <Badge className="bg-[#00FF88]/20 text-[#00FF88] border border-[#00FF88]/30">Save $994 annually</Badge>
+              )}
+            </CardHeader>
+            <CardContent className="relative z-10">
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <h4 className="text-xl font-bold text-[#00BFFF] mb-4 flex items-center gap-2">
+                    <Bot className="w-5 h-5" />
+                    AI Voice Agents
+                  </h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#00FF88]" />
+                      <span>Unlimited AI Voice Agents</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#00FF88]" />
+                      <span>Advanced Lead Qualification</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#00FF88]" />
+                      <span>24/7 Customer Service</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#00FF88]" />
+                      <span>Appointment Scheduling</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-[#00BFFF] mb-4 flex items-center gap-2">
+                    <Brain className="w-5 h-5" />
+                    Platform Features
+                  </h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#00FF88]" />
+                      <span>Custom CRM Integration</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#00FF88]" />
+                      <span>Real-time Analytics</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#00FF88]" />
+                      <span>White-label Options</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#00FF88]" />
+                      <span>API Access & Webhooks</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-      if (response.ok) {
-        setSuccessMessage(data.message)
-      } else {
-        setFormError(data.error || "Signup failed")
-      }
-    } catch (error) {
-      console.error("Signup error:", error)
-      setFormError("An unexpected error occurred")
-    }
-  }
+              {/* Bonus Cards */}
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <Card className="bg-gradient-to-br from-[#00BFFF]/10 to-[#0080FF]/5 border border-[#00BFFF]/30 hover:border-[#00BFFF]/50 transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-[#00BFFF]/20 rounded-full flex items-center justify-center">
+                        <TrendingUp className="w-6 h-6 text-[#00BFFF]" />
+                      </div>
+                      <h4 className="text-lg font-bold text-white">BONUS: 50% OFF Platform Fees</h4>
+                    </div>
+                    <p className="text-gray-400 mb-2">Regular $1,994/month for all AI tools</p>
+                    <p className="text-2xl font-bold text-[#00FF88]">Only $997/month</p>
+                  </CardContent>
+                </Card>
 
-  const PulsatingButton = ({ children, className = "", href = "https://signup.successnow.ai" }) => (
-    <a
-      href={href}
-      className={`inline-block relative overflow-hidden bg-gradient-to-r from-[#00BFFF] via-[#007BFF] to-[#00BFFF] text-[#0A0A0F] font-bold py-4 px-8 text-lg rounded-xl shadow-lg transition-all duration-300 hover:scale-105 border-2 border-[#00BFFF] group ${className}`}
-      style={{
-        animation: "pulse-glow 2s ease-in-out infinite alternate",
-        boxShadow: "0 0 20px rgba(0, 191, 255, 0.5), 0 0 40px rgba(0, 191, 255, 0.3), 0 0 60px rgba(0, 191, 255, 0.1)",
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-      <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
+                <Card className="bg-gradient-to-br from-[#00BFFF]/10 to-[#0080FF]/5 border border-[#00BFFF]/30 hover:border-[#00BFFF]/50 transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-[#00BFFF]/20 rounded-full flex items-center justify-center">
+                        <Phone className="w-6 h-6 text-[#00BFFF]" />
+                      </div>
+                      <h4 className="text-lg font-bold text-white">BONUS: 50% OFF AI Voice Usage</h4>
+                    </div>
+                    <p className="text-gray-400 mb-2">Regular $0.28/minute for calls</p>
+                    <p className="text-2xl font-bold text-[#00FF88]">Only $0.14/minute</p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="text-center">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-[#00BFFF] to-[#00FF88] text-black font-bold px-8 py-4 text-lg rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(0,191,255,0.5)]"
+                >
+                  Start Your AI Transformation
+                </Button>
+                <p className="text-sm text-gray-400 mt-4">
+                  30-day money-back guarantee • No setup fees • Cancel anytime
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Total Value Card */}
+        <div className="max-w-2xl mx-auto mb-8">
+          <Card className="bg-[#0A0A0F]/80 backdrop-blur-xl border-2 border-[#00FF88]/30 shadow-[0_0_30px_rgba(0,255,136,0.3)] hover:shadow-[0_0_50px_rgba(0,255,136,0.5)] transition-all duration-300 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#00FF88]/5 via-transparent to-[#00BFFF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <CardHeader className="text-center relative z-10">
+              <CardTitle className="text-2xl font-bold text-[#00FF88] mb-4">Total Value Today</CardTitle>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span>AI Platform Setup (Usually $15,000)</span>
+                  <span className="text-[#00FF88] font-bold">FREE</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>Custom AI Training (Usually $8,000)</span>
+                  <span className="text-[#00FF88] font-bold">FREE</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>Integration & Support (Usually $5,000)</span>
+                  <span className="text-[#00FF88] font-bold">FREE</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>Ongoing Platform Access (Usually $7,000)</span>
+                  <span className="text-[#00FF88] font-bold">FREE</span>
+                </div>
+                <hr className="border-[#00BFFF]/30 my-4" />
+                <div className="flex justify-between items-center text-xl font-bold">
+                  <span>Total Value:</span>
+                  <span className="text-gray-400 line-through">$35,000</span>
+                </div>
+                <div className="flex justify-between items-center text-2xl font-bold">
+                  <span className="text-[#00BFFF]">Your Price Today:</span>
+                  <span className="text-[#00FF88]">$3,488</span>
+                </div>
+              </div>
+            </CardHeader>
+          </Card>
+        </div>
+
+        {/* Second Pulsating Button - After Total Today Card */}
+        <div className="text-center mb-12">
+          <Button
+            size="lg"
+            className="relative overflow-hidden bg-gradient-to-r from-[#00FF88] via-[#00BFFF] to-[#00FF88] text-black font-bold px-12 py-6 text-xl rounded-xl border-2 border-[#00FF88] shadow-[0_0_20px_#00FF88,0_0_40px_#00FF88,0_0_60px_#00FF88] animate-pulse hover:scale-105 hover:shadow-[0_0_30px_#00FF88,0_0_60px_#00FF88,0_0_90px_#00FF88] transition-all duration-300 transform hover:skew-x-1"
+            style={{
+              animation: "pulse-glow 2s ease-in-out infinite alternate",
+              boxShadow: "0 0 20px #00FF88, 0 0 40px #00FF88, 0 0 60px #00FF88, inset 0 0 20px rgba(0, 255, 136, 0.2)",
+            }}
+          >
+            <span className="relative z-10 flex items-center gap-3">
+              <Zap className="w-6 h-6" />⚡ SECURE YOUR AI SYSTEMS NOW - $3,488
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
+          </Button>
+        </div>
+
+        {/* No-Brainer Offer */}
+        <div className="max-w-3xl mx-auto mb-12">
+          <Card className="bg-gradient-to-br from-[#FF6B35]/10 via-[#0A0A0F]/80 to-[#00FF88]/10 backdrop-blur-xl border-2 border-[#FF6B35]/50 shadow-[0_0_40px_rgba(255,107,53,0.4)] hover:shadow-[0_0_60px_rgba(255,107,53,0.6)] transition-all duration-300 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B35]/10 via-transparent to-[#00FF88]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <CardHeader className="text-center relative z-10">
+              <Badge className="mx-auto mb-4 bg-gradient-to-r from-[#FF6B35] to-[#FF8C42] text-white font-bold px-6 py-2 text-lg">
+                🔥 NO-BRAINER OFFER
+              </Badge>
+              <CardTitle className="text-3xl font-bold text-white mb-4">This Is A Complete No-Brainer</CardTitle>
+              <p className="text-xl text-gray-300 mb-6">
+                You're getting $35,000 worth of AI systems for just $3,488. That's a savings of $31,512!
+              </p>
+
+              {/* Third Pulsating Button - In No-Brainer Card */}
+              <div className="mb-6">
+                <Button
+                  size="lg"
+                  className="relative overflow-hidden bg-gradient-to-r from-[#FF6B35] via-[#FF8C42] to-[#FF6B35] text-white font-bold px-16 py-8 text-2xl rounded-2xl border-2 border-[#FF6B35] shadow-[0_0_25px_#FF6B35,0_0_50px_#FF6B35,0_0_75px_#FF6B35] animate-pulse hover:scale-110 hover:shadow-[0_0_40px_#FF6B35,0_0_80px_#FF6B35,0_0_120px_#FF6B35] transition-all duration-300 transform hover:skew-x-2"
+                  style={{
+                    animation: "pulse-glow 1.5s ease-in-out infinite alternate",
+                    boxShadow:
+                      "0 0 25px #FF6B35, 0 0 50px #FF6B35, 0 0 75px #FF6B35, inset 0 0 25px rgba(255, 107, 53, 0.3)",
+                  }}
+                >
+                  <span className="relative z-10 flex items-center gap-4">
+                    <Target className="w-8 h-8" />🎯 CLAIM THIS DEAL NOW - SAVE $31,512!
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
+                </Button>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-4 text-center">
+                <div className="bg-[#0A0A0F]/60 rounded-lg p-4 border border-[#00BFFF]/30">
+                  <div className="text-2xl font-bold text-[#00FF88]">90%</div>
+                  <div className="text-sm text-gray-400">Savings</div>
+                </div>
+                <div className="bg-[#0A0A0F]/60 rounded-lg p-4 border border-[#00BFFF]/30">
+                  <div className="text-2xl font-bold text-[#00FF88]">$31,512</div>
+                  <div className="text-sm text-gray-400">You Save</div>
+                </div>
+                <div className="bg-[#0A0A0F]/60 rounded-lg p-4 border border-[#00BFFF]/30">
+                  <div className="text-2xl font-bold text-[#00FF88]">24/7</div>
+                  <div className="text-sm text-gray-400">AI Support</div>
+                </div>
+              </div>
+            </CardHeader>
+          </Card>
+        </div>
+
+        {/* What You Get */}
+        <div className="max-w-6xl mx-auto mb-12">
+          <h2 className="text-3xl font-bold text-center text-[#00BFFF] mb-8">Everything You Get Today</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: Phone, title: "AI Voice Agents", desc: "Unlimited intelligent voice assistants" },
+              { icon: MessageSquare, title: "AI Chat Support", desc: "24/7 automated customer service" },
+              { icon: Calendar, title: "Smart Scheduling", desc: "Automated appointment booking" },
+              { icon: BarChart3, title: "Advanced Analytics", desc: "Real-time performance insights" },
+              { icon: Users, title: "Lead Management", desc: "Intelligent lead qualification" },
+              { icon: Shield, title: "Enterprise Security", desc: "Bank-level data protection" },
+              { icon: Headphones, title: "Priority Support", desc: "Dedicated success manager" },
+              { icon: Globe, title: "Multi-Channel", desc: "Phone, web, social integration" },
+              { icon: Smartphone, title: "Mobile Apps", desc: "iOS & Android management apps" },
+            ].map((feature, index) => (
+              <Card
+                key={index}
+                className="bg-[#0A0A0F]/80 backdrop-blur-xl border border-[#00BFFF]/30 hover:border-[#00BFFF]/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,191,255,0.3)] group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-[#00BFFF]/5 via-transparent to-[#00FF88]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
+                <CardContent className="p-6 relative z-10">
+                  <feature.icon className="w-12 h-12 text-[#00BFFF] mb-4" />
+                  <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
+                  <p className="text-gray-400">{feature.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Final CTA */}
+        <div className="text-center">
+          <Card className="max-w-2xl mx-auto bg-gradient-to-br from-[#00BFFF]/10 via-[#0A0A0F]/80 to-[#00FF88]/10 backdrop-blur-xl border-2 border-[#00BFFF]/50 shadow-[0_0_40px_rgba(0,191,255,0.4)]">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h3>
+              <p className="text-gray-300 mb-6">
+                Join thousands of businesses already using AI to increase revenue and reduce costs.
+              </p>
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-[#00BFFF] to-[#00FF88] text-black font-bold px-8 py-4 text-lg rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(0,191,255,0.5)] mb-4"
+              >
+                Get Started Now - $3,488
+              </Button>
+              <p className="text-sm text-gray-400">
+                ✅ 30-day money-back guarantee
+                <br />✅ No setup fees or hidden costs
+                <br />✅ Cancel anytime
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
       <style jsx>{`
         @keyframes pulse-glow {
           0% {
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5), 0 0 40px rgba(0, 191, 255, 0.3), 0 0 60px rgba(0, 191, 255, 0.1);
-            border-color: rgba(0, 191, 255, 0.8);
+            box-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
           }
           100% {
-            box-shadow: 0 0 30px rgba(0, 191, 255, 0.8), 0 0 60px rgba(0, 191, 255, 0.5), 0 0 90px rgba(0, 191, 255, 0.3);
-            border-color: rgba(0, 191, 255, 1);
+            box-shadow: 0 0 30px currentColor, 0 0 60px currentColor, 0 0 90px currentColor;
           }
         }
       `}</style>
-    </a>
-  )
-
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 text-white py-12 sm:py-16 md:py-20 px-4">
-      <div className="bg-[#0A0A0F]/95 backdrop-blur-xl border border-[#00BFFF]/20 rounded-2xl shadow-2xl p-8 md:p-12 max-w-7xl w-full relative overflow-hidden">
-        {/* Cyberpunk glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#00BFFF]/5 to-transparent pointer-events-none"></div>
-        <div className="relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-x-12">
-            {/* Left Column */}
-            <div className="lg:col-span-3">
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center px-6 py-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full text-white font-semibold mb-6">
-                  🔥 90% OFF - LIMITED TIME
-                </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  The SuccessNOW AI Systems & AI Agents Platform
-                </h1>
-                <p className="text-xl text-blue-300 mb-6">Your All-In-One Digital Foundation</p>
-                <p className="text-gray-300 max-w-3xl mx-auto mb-8">
-                  Get your custom website, smart funnel, and platform strategy built as a single, cohesive project. This
-                  is the complete package to dominate your industry, powered by AI and custom-coded by experts.
-                </p>
-
-                {/* Button 1: Immediately at the top on page load */}
-                <div className="mb-8">
-                  <PulsatingButton className="text-xl py-6 px-12">🚀 GET AI NOW - $3,488</PulsatingButton>
-                </div>
-              </div>
-
-              <div className="text-center mb-12">
-                <div className="text-2xl text-gray-400 line-through mb-2">$35,000</div>
-                <div className="text-6xl font-bold text-blue-400 mb-4">$3,488</div>
-                <div className="text-2xl font-bold text-yellow-400">SAVE OVER $30,000 TODAY!</div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-[#0A0A0F]/80 backdrop-blur-xl border border-[#00BFFF]/30 rounded-xl p-6 relative overflow-hidden group hover:border-[#00BFFF]/50 transition-all duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#00BFFF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-center mb-3">
-                      <div className="w-8 h-8 bg-gradient-to-r from-[#00BFFF] to-[#007BFF] rounded-full flex items-center justify-center mr-3">
-                        📈
-                      </div>
-                      <h4 className="font-semibold text-[#00BFFF]">BONUS: 50% OFF Platform Fees</h4>
-                    </div>
-                    <p className="text-gray-400 text-sm mb-2">Regular $1,994/month for all AI tools</p>
-                    <p className="text-[#00FF88] font-semibold">Only $997/month</p>
-                  </div>
-                </div>
-
-                <div className="bg-[#0A0A0F]/80 backdrop-blur-xl border border-[#00BFFF]/30 rounded-xl p-6 relative overflow-hidden group hover:border-[#00BFFF]/50 transition-all duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#00BFFF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-center mb-3">
-                      <div className="w-8 h-8 bg-gradient-to-r from-[#00BFFF] to-[#007BFF] rounded-full flex items-center justify-center mr-3">
-                        📞
-                      </div>
-                      <h4 className="font-semibold text-[#00BFFF]">BONUS: 50% OFF AI Voice Usage</h4>
-                    </div>
-                    <p className="text-gray-400 text-sm mb-2">Regular $0.28/minute for calls</p>
-                    <p className="text-[#00FF88] font-semibold">Only $0.14/minute</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-[#0A0A0F]/60 backdrop-blur-xl border border-[#00BFFF]/20 rounded-xl p-6 mb-8 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00BFFF]/5 to-transparent"></div>
-                <div className="relative z-10">
-                  <h3 className="text-xl font-semibold text-[#00BFFF] mb-6">Payment Information</h3>
-
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center py-3 border-b border-[#00BFFF]/20">
-                      <span className="text-gray-300">Platform Project (90% OFF)</span>
-                      <div className="text-right">
-                        <div className="text-sm text-gray-500 line-through">$35,000</div>
-                        <div className="text-xl font-bold text-[#00BFFF]">$3,488</div>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-between items-center py-3 border-b border-[#00BFFF]/20">
-                      <span className="text-gray-300">Monthly Platform Access (50% OFF)</span>
-                      <div className="text-right">
-                        <div className="text-sm text-gray-500 line-through">$1,994/mo</div>
-                        <div className="text-lg font-semibold text-[#00FF88]">$997/mo</div>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-between items-center py-4 text-xl font-bold border-t border-[#00BFFF]/30 pt-4">
-                      <span className="text-white">Total Today</span>
-                      <span className="text-[#00BFFF] text-2xl">$3,488</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Button 2: After total today card */}
-              <div className="text-center mb-8">
-                <PulsatingButton className="text-xl py-6 px-12">⚡ SECURE YOUR AI SYSTEMS NOW - $3,488</PulsatingButton>
-              </div>
-
-              <div className="mt-12 bg-[#00274D]/80 backdrop-blur-sm text-center py-12 px-6 rounded-2xl shadow-2xl border border-[#00BFFF]/30">
-                <h3 className="text-3xl md:text-4xl font-bold text-[#00BFFF] mb-8 animate-fadeTextUp">
-                  🎯 THE NO-BRAINER DEAL (LIMITED TIME OFFER)
-                </h3>
-
-                <div className="grid gap-8 max-w-4xl mx-auto mb-12">
-                  <div className="bg-black/40 backdrop-blur-sm p-6 md:p-8 rounded-xl border border-gray-700">
-                    <h4 className="text-xl md:text-2xl font-bold text-white mb-6">✅ Regular Price:</h4>
-                    <div className="text-gray-300 space-y-3 text-base md:text-lg">
-                      <div className="line-through">$35,000 Setup</div>
-                      <div className="line-through">$1,994/month</div>
-                      <div className="line-through">$0.28/minute (billed by millisecond)</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-[#00BFFF]/20 to-[#007BFF]/20 backdrop-blur-sm p-6 md:p-8 rounded-xl border-2 border-[#00BFFF] shadow-lg">
-                    <h4 className="text-xl md:text-2xl font-bold text-[#00BFFF] mb-6">🔥 Today's Offer:</h4>
-                    <div className="text-white space-y-3 font-semibold text-base md:text-lg">
-                      <div className="text-[#00BFFF] text-xl">$3,488 Setup (Over 90% OFF)</div>
-                      <div className="text-[#00BFFF] text-xl">$997/month (50% OFF)</div>
-                      <div className="text-[#00BFFF] text-xl">$0.14/minute (50% OFF)</div>
-                      <div className="text-sm md:text-base text-gray-300 mt-4">**FOR A LIMITED TIME</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Button 3: In the no brainer offer card */}
-                <div className="mb-8">
-                  <PulsatingButton className="text-2xl py-8 px-16">
-                    🎯 CLAIM THIS DEAL NOW - SAVE $31,512!
-                  </PulsatingButton>
-                </div>
-              </div>
-
-              <section className="py-12 text-center">
-                <div className="bg-gradient-to-br from-[#00274D]/80 to-[#001A33]/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-[#00BFFF]/30">
-                  <h3 className="text-3xl md:text-4xl font-bold text-[#00BFFF] mb-4">🚀 Ready to Get Started?</h3>
-                  <p className="text-gray-300 text-lg mb-8">
-                    Join thousands of successful businesses already using SuccessNOW
-                  </p>
-
-                  <a
-                    href="https://signup.successnow.ai"
-                    className="inline-block bg-gradient-to-r from-[#00BFFF] to-[#007BFF] text-[#0A0A0F] font-bold py-6 px-12 text-xl rounded-xl shadow-lg hover:shadow-[#00BFFF]/25 hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-[#00BFFF]/50"
-                  >
-                    🎯 Start My SuccessNOW Platform Build - $3,488
-                  </a>
-
-                  <div className="mt-6">
-                    <p className="text-sm text-gray-400">
-                      30-day money-back guarantee • Cancel anytime • Instant access
-                    </p>
-                  </div>
-                </div>
-              </section>
-
-              <section className="py-12 text-center">
-                <div className="bg-gradient-to-br from-[#00274D]/80 to-[#001A33]/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-[#00BFFF]/30">
-                  <h3 className="text-3xl md:text-4xl font-bold text-[#00BFFF] mb-4">Find Your Industry Solution</h3>
-                  <p className="text-gray-300 text-lg mb-8">
-                    We have tailored solutions for various industries. Find yours to get started!
-                  </p>
-
-                  <a
-                    href="https://www.successnow.ai/industries"
-                    className="inline-block bg-[#00BFFF] text-[#00274D] font-bold py-6 px-12 text-xl rounded-xl shadow-lg hover:bg-[#00BFFF]/90 transition-all duration-200 hover:scale-105"
-                  >
-                    Explore Industry Solutions
-                  </a>
-
-                  <div className="mt-6">
-                    <p className="text-sm text-gray-400">
-                      30-day money-back guarantee • Cancel anytime • Instant access
-                    </p>
-                  </div>
-                </div>
-              </section>
-            </div>
-
-            {/* Right Column */}
-            <div className="lg:col-span-2">
-              <div className="sticky top-12">
-                <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center mb-6 sm:mb-8 text-white animate-fadeTextUp">
-                  🚀 The SuccessNOW Core Offer
-                </h2>
-
-                <div className="space-y-3 sm:space-y-4 max-h-[150vh] overflow-y-auto pr-4 custom-scrollbar">
-                  {[
-                    {
-                      number: "1",
-                      title: "Done-For-You AI Smart Website with AI Voice Agent",
-                      description:
-                        "Your digital storefront, fully built and branded to convert traffic into booked leads, sales, and appointments—all on autopilot.",
-                      features: [
-                        "💬 Includes our AI Super Voice Agent to greet, guide, and book visitors in real-time like your best salesperson, 24/7.",
-                      ],
-                      value: "$15,998",
-                    },
-                    {
-                      number: "2",
-                      title: "AI Powered Self-Selling, Self-Booking Funnels",
-                      description:
-                        "Storytelling meets automation. Your funnel captures attention, builds trust, and drives instant action—whether it's a consult, booking, or direct sale.",
-                      features: [],
-                      value: "$7,500",
-                    },
-                    {
-                      number: "3",
-                      title: "EXPERT DESIGNED AND BUILT No-Brainer Offers + Prebuilt Lead Magnets",
-                      description:
-                        "Turn clicks into clients with irresistible offers designed for your niche. Includes lead magnets, upsells, and one-time offers built to convert fast.",
-                      features: [],
-                      value: "$3,000",
-                    },
-                    {
-                      number: "4",
-                      title: "Client-Facing White-Labeled App",
-                      description: "Deliver your brand in the palm of your client's hand:",
-                      features: [
-                        "• Build a community",
-                        "• Gamify with contests & rewards",
-                        "• Send push notifications",
-                        "• Sell courses, webinars, guides & more",
-                      ],
-                      value: "$4,997",
-                    },
-                    {
-                      number: "5",
-                      title: "AdsNOW™ Paid Traffic Engine",
-                      description: "Instantly CREATE, launch, test, and scale ads using:",
-                      features: [
-                        "• Done-for-you templates",
-                        "• Custom AI ad generator",
-                        "• Auto-optimization for Google, Facebook, TikTok & more",
-                      ],
-                      value: "$5,000",
-                    },
-                    {
-                      number: "6",
-                      title: "SeoNOW™ Organic Traffic Engine",
-                      description: "Outrank the competition with AI-driven SEO:",
-                      features: ["• On-page optimization", "• Local dominance", "• Optional human expert enhancements"],
-                      value: "$3,000",
-                    },
-                    {
-                      number: "7",
-                      title: "AI Agent + Army of Bots (Your 24/7 AI Employees)",
-                      description: "Every lead is followed up, nurtured, and closed—without fail.",
-                      features: [
-                        "• Respond instantly",
-                        "• Book appointments",
-                        "• Retarget cold leads",
-                        "• Convert while you sleep",
-                      ],
-                      value: "$15,998",
-                    },
-                    {
-                      number: "8",
-                      title: "Integrated Calendar, Booking & Follow-Up System",
-                      description: "Your AI agents manage:",
-                      features: ["• Bookings", "• Confirmations", "• Automated reminders", "• Smart retargeting"],
-                      value: "$2,500",
-                    },
-                    {
-                      number: "9",
-                      title: "AI Social Media Generator + Scheduler",
-                      description: "Your brand stays top of mind with:",
-                      features: ["• Auto-written, on-brand posts", "• Automated scheduling across all major platforms"],
-                      value: "$2,000",
-                    },
-                    {
-                      number: "10",
-                      title: "AI-Powered Instant Onboarding & Training",
-                      description:
-                        "No more waiting weeks. Get launched fast with our intelligent onboarding assistant and AI-guided training system.",
-                      features: [],
-                      value: "Priceless",
-                    },
-                    {
-                      number: "11",
-                      title: "AI Accountability Coach",
-                      description:
-                        "A built-in SuccessNOW AI that holds you accountable to only what requires your human touch.",
-                      features: [],
-                      value: "$2,000",
-                    },
-                    {
-                      number: "12",
-                      title: "Lifetime Access to SuccessNOW Resources",
-                      description: "Get our full vault of tools:",
-                      features: ["• Lead magnets", "• Templates", "• Swipe files", "• Courses & Funnels"],
-                      value: "$2,997",
-                    },
-                    {
-                      number: "13",
-                      title: "NEW: AI Reviews & AI Referrals System",
-                      description:
-                        "Reviews and referrals are gold—but most teams don't ask. Your AI agents are trained to spot happy customers and trigger review requests and referral offers at exactly the right moment—automatically.",
-                      features: [],
-                      value: "$3,000",
-                    },
-                  ].map((item, i) => (
-                    <div
-                      key={i}
-                      className="bg-[#0A0A0F]/60 backdrop-blur-xl border border-[#00BFFF]/20 rounded-xl p-4 md:p-6 relative overflow-hidden group hover:border-[#00BFFF]/40 transition-all duration-300"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#00BFFF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative z-10">
-                        <div className="flex flex-col space-y-3">
-                          <div className="flex items-start space-x-3">
-                            <span className="bg-gradient-to-r from-[#00BFFF] to-[#007BFF] text-[#0A0A0F] rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">
-                              {item.number}
-                            </span>
-                            <h3 className="text-lg md:text-xl font-bold text-[#00BFFF] leading-tight flex-1">
-                              {item.title}
-                            </h3>
-                          </div>
-
-                          <div className="text-center md:text-right">
-                            <span className="inline-block bg-[#0A0A0F]/80 backdrop-blur-sm text-[#00FF88] font-bold text-sm md:text-base px-4 py-2 rounded-full border border-[#00FF88]/30">
-                              📈 Setup Value: {item.value}
-                            </span>
-                          </div>
-
-                          <p className="text-gray-300 text-sm md:text-base leading-relaxed">{item.description}</p>
-
-                          {item.features.length > 0 && (
-                            <div className="text-gray-400 text-sm space-y-1">
-                              {item.features.map((feature, idx) => (
-                                <div key={idx}>{feature}</div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Total Value */}
-                <div className="mt-12 bg-gradient-to-r from-[#00274D]/80 to-[#001A33]/80 backdrop-blur-sm text-center py-12 px-6 rounded-2xl shadow-2xl border border-[#00BFFF]/30">
-                  <h3 className="text-3xl md:text-5xl font-bold text-[#00BFFF] mb-6 animate-pulse">
-                    💥 TOTAL VALUE STACK
-                  </h3>
-                  <div className="text-white text-xl md:text-2xl font-semibold mb-6 space-y-3">
-                    <div>
-                      💰 Setup Total: <span className="text-[#00BFFF]">Over $60,000</span>
-                    </div>
-                    <div>
-                      🛠️ Monthly Tools, AI Systems & Support: <span className="text-[#00BFFF]">$1,994/mo</span>
-                    </div>
-                    <div>
-                      💼 Real-World Cost if Built Separately: <span className="text-[#00BFFF]">Easily $60K+</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
