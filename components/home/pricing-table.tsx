@@ -25,9 +25,20 @@ export default function PricingTable() {
               Usually <span className="line-through">$35,000</span>, Now Just
             </p>
             <div className="text-6xl sm:text-7xl font-extrabold text-white mb-6">$3,488</div>
-            <div className="bg-green-500/10 border border-green-500 text-green-300 rounded-lg px-6 py-4 mb-8 inline-block text-lg font-semibold">
+            <div className="bg-green-500/10 border border-green-500 text-green-300 rounded-lg px-6 py-4 mb-6 inline-block text-lg font-semibold">
               + 2 MONTHS FREE Platform Access (Save $1,994)
             </div>
+
+            {/* New Bonuses Section */}
+            <div className="space-y-4 mb-8">
+              <div className="bg-purple-500/10 border border-purple-500 text-purple-300 rounded-lg px-6 py-4 text-lg font-semibold">
+                🎁 BONUS: AdsNOW AI Agent by adsnow.ai included
+              </div>
+              <div className="bg-blue-500/10 border border-blue-500 text-blue-300 rounded-lg px-6 py-4 text-lg font-semibold">
+                🎁 BONUS: SEONOW by SEOexperts.ai included
+              </div>
+            </div>
+
             <div>
               <Link href="/signup" passHref>
                 <Button
