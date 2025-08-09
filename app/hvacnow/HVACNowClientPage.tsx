@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import { AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const HVACNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -20,7 +20,7 @@ const HVACNowClientPage = () => {
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/hvacnow/signup")
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -140,7 +140,7 @@ const HVACNowClientPage = () => {
           <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for HVAC Contractors</h3>
           <div className="grid gap-4 sm:grid-cols-1">
             {[
-              "❄️ 24/7 AI dispatcher to handle emergency calls and book service",
+              "❄️ 24/7 AI dispatcher that never misses an emergency call",
               "📅 Automated booking for tune-ups, repairs, and sales consultations",
               "🎯 Relentless follow-up on all open quotes to maximize closing rates",
               "💬 Automated seasonal service reminders to generate recurring revenue",

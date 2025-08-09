@@ -20,7 +20,7 @@ const ContractorsNowClientPage = () => {
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/contractorsnow/signup")
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -141,7 +141,7 @@ const ContractorsNowClientPage = () => {
           <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for Contractors</h3>
           <div className="grid gap-4 sm:grid-cols-1">
             {[
-              "🔨 24/7 AI assistant to capture and qualify every lead instantly",
+              "🔨 24/7 AI agent to capture and qualify every lead instantly",
               "📅 Smart estimate booking with automated confirmations & reminders",
               "🎯 Long-term nurturing sequences for leads not ready to start projects",
               "💬 Answers common project questions automatically, any time of day",

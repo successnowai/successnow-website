@@ -20,7 +20,7 @@ const PlumbersNowClientPage = () => {
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/plumbersnow/signup")
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -59,7 +59,7 @@ const PlumbersNowClientPage = () => {
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
               onClick={handleSignupClick}
             >
-              GET PLUMBERSNOW →
+              Get AI NOW
             </Button>
             <Button
               variant="outline"
@@ -97,8 +97,8 @@ const PlumbersNowClientPage = () => {
                   staff that make excuses, call in sick, aren't motivated, or don't follow service protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
-                  🚀 Our custom-built agents never miss. Dominate your plumbing market with the best AI agents in the
-                  Galaxy!
+                  🚀 Our custom-built agents never miss. Dominate your local plumbing market with the best AI agents in
+                  the Galaxy!
                 </p>
               </div>
             </div>

@@ -5,12 +5,10 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import { AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const RestaurantsNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
-  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
-
   const rotatingTexts = [
     "Takes Reservations 24/7",
     "Manages Waitlists",
@@ -20,7 +18,7 @@ const RestaurantsNowClientPage = () => {
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/restaurantsnow/signup")
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -85,10 +83,6 @@ const RestaurantsNowClientPage = () => {
                 <p>
                   <strong className="text-white">Custom AI Agent:</strong> Trained on your menu items, dietary
                   restrictions, and service standards
-                </p>
-                <p>
-                  <strong className="text-white">Never Miss Anything:</strong> AI agents that never miss a reservation
-                  request, never miss special event bookings, makes notes and transcripts of every customer interaction
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
                   It's like having the best maître d' using all the best AI tools. Save countless money on staff that

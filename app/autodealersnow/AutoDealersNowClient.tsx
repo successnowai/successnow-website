@@ -20,7 +20,7 @@ const AutoDealersNowClient = () => {
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/autodealersnow/signup")
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -151,7 +151,7 @@ const AutoDealersNowClient = () => {
           <h3 className="text-3xl font-bold text-center mb-8 text-[#00BFFF]">AI Solutions for Auto Dealers</h3>
           <div className="grid gap-4 sm:grid-cols-1">
             {[
-              "🚗 24/7 AI assistant to engage and qualify every lead instantly",
+              "🚗 24/7 AI agent to engage and qualify every lead instantly",
               "📅 Smart test drive booking with automated confirmations & reminders",
               "🎯 Long-term nurturing sequences for leads not ready to buy today",
               "💬 Answers common vehicle and financing questions automatically",
@@ -179,7 +179,7 @@ const AutoDealersNowClient = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
-              onClick={handleSignupClick}
+              onClick={() => (window.location.href = "https://signup.successnow.ai")}
             >
               Get AI NOW
             </Button>

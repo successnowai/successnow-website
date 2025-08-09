@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import { AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const SolarNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -20,7 +20,7 @@ const SolarNowClientPage = () => {
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/solarnow/signup")
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -59,7 +59,7 @@ const SolarNowClientPage = () => {
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
               onClick={handleSignupClick}
             >
-              GET SOLARNOW →
+              Get AI NOW
             </Button>
             <Button
               variant="outline"

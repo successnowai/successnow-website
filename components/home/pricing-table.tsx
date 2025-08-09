@@ -1,182 +1,144 @@
 "use client"
 
-import type React from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Check, Star, Zap, Crown, Rocket } from "lucide-react"
-import { useInView } from "@/hooks/use-intersection-observer"
+import { Check, Star, Zap, Crown } from "lucide-react"
+import Link from "next/link"
 
 export default function PricingTable() {
-  const { ref, isInView } = useInView()
-
-  const plans = [
-    {
-      name: "Starter",
-      price: "$297",
-      originalPrice: "$2,997",
-      period: "/month",
-      description: "Perfect for small businesses getting started with AI",
-      icon: Zap,
-      popular: false,
-      features: [
-        "AI Website with Voice Agent",
-        "Lead Capture & Qualification",
-        "Basic CRM Integration",
-        "Email Follow-up Sequences",
-        "24/7 AI Chat Support",
-        "Mobile Responsive Design",
-        "Basic Analytics Dashboard",
-        "1 Business Location",
-      ],
-    },
-    {
-      name: "Professional",
-      price: "$497",
-      originalPrice: "$4,997",
-      period: "/month",
-      description: "Advanced features for growing businesses",
-      icon: Star,
-      popular: true,
-      features: [
-        "Everything in Starter",
-        "Advanced Voice AI Agents",
-        "Multi-language Support",
-        "Advanced CRM Integration",
-        "SMS & WhatsApp Automation",
-        "Appointment Scheduling",
-        "A/B Testing Tools",
-        "Advanced Analytics",
-        "Up to 3 Business Locations",
-        "Priority Support",
-      ],
-    },
-    {
-      name: "Enterprise",
-      price: "$997",
-      originalPrice: "$9,997",
-      period: "/month",
-      description: "Complete solution for large organizations",
-      icon: Crown,
-      popular: false,
-      features: [
-        "Everything in Professional",
-        "Custom AI Training",
-        "White-label Solutions",
-        "Advanced Integrations",
-        "Custom Workflows",
-        "Dedicated Account Manager",
-        "Custom Reporting",
-        "API Access",
-        "Unlimited Locations",
-        "24/7 Phone Support",
-      ],
-    },
-  ]
-
   return (
-    <section
-      ref={ref as React.RefObject<HTMLDivElement>}
-      className="cyber-section mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12"
-    >
-      <div className={`animate-fade-up ${isInView ? "animate-show" : ""}`}>
-        {/* Limited Time Badge */}
-        <div className="flex justify-center mb-8">
-          <Badge className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-2 text-lg font-bold rounded-full animate-pulse">
-            <Rocket className="mr-2 h-5 w-5" />
-            LIMITED TIME: 90% OFF
-          </Badge>
-        </div>
+    <section className="py-20 px-4 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-cyan-900/20" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.3),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(120,119,198,0.2),transparent_50%)]" />
 
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 cyber-text-glow">
-            The Best AI Agents That Engage, Convert & Book
-          </h2>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            Choose the perfect plan to transform your business with AI-powered automation
-          </p>
-        </div>
-
-        {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
-            <Card
-              key={plan.name}
-              className={`cyber-card relative ${plan.popular ? "ring-2 ring-cyan-400 scale-105" : ""}`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-1 text-sm font-bold">
-                    MOST POPULAR
-                  </Badge>
-                </div>
-              )}
-
-              <CardHeader className="text-center pb-4">
-                <div className="flex justify-center mb-4">
-                  <div
-                    className={`p-3 rounded-full ${plan.popular ? "bg-gradient-to-r from-cyan-500 to-blue-600" : "bg-gradient-to-r from-blue-500 to-purple-600"}`}
-                  >
-                    <plan.icon className="h-8 w-8 text-white" />
-                  </div>
-                </div>
-                <CardTitle className="text-2xl font-bold text-white mb-2">{plan.name}</CardTitle>
-                <div className="mb-4">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <span className="text-3xl md:text-4xl font-bold text-white">{plan.price}</span>
-                    <span className="text-gray-300">{plan.period}</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2">
-                    <span className="text-lg text-gray-400 line-through">{plan.originalPrice}</span>
-                    <Badge className="bg-green-600 text-white text-xs">90% OFF</Badge>
-                  </div>
-                </div>
-                <p className="text-gray-300 text-sm">{plan.description}</p>
-              </CardHeader>
-
-              <CardContent className="pt-0">
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-200 text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Button
-                  className={`w-full py-3 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 ${
-                    plan.popular
-                      ? "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl"
-                      : "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl"
-                  }`}
-                  onClick={() => (window.location.href = "https://signup.successnow.ai")}
-                  aria-label={`Get started with ${plan.name} plan for ${plan.price} per month`}
-                >
-                  Get Started Now
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-12">
-          <p className="text-gray-200 mb-6">
-            🚀 <strong>Limited Time Offer:</strong> Save 90% on your first month. No setup fees. Cancel anytime.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              onClick={() => (window.location.href = "/demo")}
-              aria-label="Try voice demo now - test our AI agents"
-            >
-              Try Voice Demo Now
-            </Button>
-            <p className="text-sm text-gray-400">⭐ Trusted by 10,000+ businesses worldwide</p>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-semibold mb-6 animate-pulse">
+            🔥 90% OFF - LIMITED TIME 🔥
           </div>
+
+          <div className="bg-gradient-to-r from-gray-800 to-gray-700 rounded-2xl p-8 mb-8 border border-gray-600">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">The SuccessNOW AI Systems</h2>
+            <p className="text-xl text-gray-300">Your AI Agent All-in-One Platform</p>
+          </div>
+        </div>
+
+        {/* Pricing Card */}
+        <div className="max-w-2xl mx-auto">
+          <Card className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-cyan-500/50 shadow-2xl overflow-hidden">
+            {/* Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 animate-pulse" />
+
+            {/* Popular Badge */}
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+              <Badge className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 text-sm font-semibold">
+                <Crown className="w-4 h-4 mr-2" />
+                MOST POPULAR
+              </Badge>
+            </div>
+
+            <CardHeader className="text-center pt-12 pb-8 relative z-10">
+              <div className="flex justify-center mb-4">
+                <div className="p-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full">
+                  <Zap className="w-12 h-12 text-cyan-400" />
+                </div>
+              </div>
+
+              <CardTitle className="text-3xl font-bold text-white mb-2">Platform Project Setup</CardTitle>
+              <CardDescription className="text-gray-300 text-lg">
+                Complete AI Agent ecosystem for your business
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent className="px-8 pb-8 relative z-10">
+              {/* Pricing */}
+              <div className="text-center mb-8">
+                <div className="flex items-center justify-center gap-4 mb-4">
+                  <span className="text-2xl text-gray-400 line-through">$34,880</span>
+                  <span className="text-5xl font-bold text-white">$3,488</span>
+                </div>
+                <p className="text-cyan-400 font-semibold text-lg">One-time setup fee</p>
+                <p className="text-gray-400 text-sm mt-2">90% savings - Limited time offer</p>
+              </div>
+
+              {/* Features */}
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-white font-medium">Complete AI Agent Setup</p>
+                    <p className="text-gray-400 text-sm">Voice & chat AI agents for your industry</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-white font-medium">Custom Website & Funnel</p>
+                    <p className="text-gray-400 text-sm">Professional website with conversion funnels</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-white font-medium">CRM Integration</p>
+                    <p className="text-gray-400 text-sm">GoHighLevel CRM setup and automation</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-white font-medium">Training & Support</p>
+                    <p className="text-gray-400 text-sm">Complete onboarding and ongoing support</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bonuses */}
+              <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-lg p-6 mb-8 border border-green-500/30">
+                <h4 className="text-green-400 font-semibold mb-4 flex items-center gap-2">
+                  <Star className="w-5 h-5" />
+                  Exclusive Bonuses Included
+                </h4>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-green-400" />
+                    <span className="text-white text-sm">50% off platform fees for 6 months</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-green-400" />
+                    <span className="text-white text-sm">50% off voice usage for 6 months</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <Button
+                asChild
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 text-lg rounded-xl transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                <Link href="/signup">Get Started Now - Save $31,392</Link>
+              </Button>
+
+              <p className="text-center text-gray-400 text-sm mt-4">
+                Limited time offer. Price increases to $34,880 soon.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Additional Info */}
+        <div className="text-center mt-12">
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            This is a complete business transformation package. Our team will build and deploy your entire AI agent
+            ecosystem, including custom training for your specific industry and business needs.
+          </p>
         </div>
       </div>
     </section>

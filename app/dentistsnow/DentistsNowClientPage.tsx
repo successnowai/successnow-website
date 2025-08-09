@@ -20,7 +20,7 @@ const DentistsNowClientPage = () => {
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/dentistsnow/signup")
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -139,7 +139,7 @@ const DentistsNowClientPage = () => {
               "🦷 24/7 AI receptionist that never misses a call or lead",
               "📅 Smart appointment booking and confirmation via text and voice",
               "🎯 Automated patient recall sequences to fill your schedule",
-              "💬 Answers common patient questions instantly, any time of day",
+              "💬 Answers common questions about services, insurance, and hours",
               "📈 Seamless integration with your existing practice management software",
               "🏆 Automatically requests and follows up for 5-star Google reviews",
             ].map((solution, index) => (

@@ -2,18 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Play, MessageSquare, Zap } from 'lucide-react'
+import { Play, MessageSquare, Zap } from "lucide-react"
 import Link from "next/link"
 
 export default function AdsNowHeroSection() {
   const [currentText, setCurrentText] = useState(0)
-  const dynamicTexts = [
-    "creates ads",
-    "optimizes campaigns", 
-    "manages budgets",
-    "tracks performance",
-    "scales results"
-  ]
+  const dynamicTexts = ["creates ads", "optimizes campaigns", "manages budgets", "tracks performance", "scales results"]
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,7 +29,7 @@ export default function AdsNowHeroSection() {
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`
+                animationDuration: `${2 + Math.random() * 3}s`,
               }}
             >
               <div className="w-1 h-1 bg-cyan-400/30 rounded-full" />
@@ -58,10 +52,12 @@ export default function AdsNowHeroSection() {
             <br />
             while you sleep
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed">
-            Simply text your AI AdsNOW Super Agent to create ads, review copy, make edits, set budget and launch instantly. 
-            <span className="text-cyan-400 font-semibold"> No more logging into software</span> - the future of ads is NOW!
+            Simply text your AI AdsNOW Super Agent to create ads, review copy, make edits, set budget and launch
+            instantly.
+            <span className="text-cyan-400 font-semibold"> No more logging into software</span> - the future of ads is
+            NOW!
           </p>
 
           {/* CTA Buttons */}
@@ -76,7 +72,7 @@ export default function AdsNowHeroSection() {
                 LIVE DEMO
               </Link>
             </Button>
-            
+
             <Button
               asChild
               size="lg"
@@ -98,15 +94,12 @@ export default function AdsNowHeroSection() {
               <span className="text-orange-400 font-bold text-lg">LIMITED TIME: 90% OFF</span>
               <Zap className="w-6 h-6 text-orange-400" />
             </div>
-            
+
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              The AdsNOW Platform Project - Usually $35,000, Now Just{" "}
-              <span className="text-cyan-400">$3,488</span>
+              The AdsNOW Platform Project - Usually $35,000, Now Just <span className="text-cyan-400">$3,488</span>
             </h3>
-            
-            <p className="text-green-400 font-semibold text-lg">
-              + 2 MONTHS FREE Platform Access (Save $1,994)
-            </p>
+
+            <p className="text-green-400 font-semibold text-lg">+ 2 MONTHS FREE Platform Access (Save $1,994)</p>
           </div>
         </div>
       </div>

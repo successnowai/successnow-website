@@ -5,12 +5,10 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import { AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const RealtorNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
-  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
-
   const rotatingTexts = [
     "Instantly Engages",
     "Converts Leads",
@@ -18,9 +16,10 @@ const RealtorNowClientPage = () => {
     "Gets 5 Star Reviews",
     "Follows Up Always",
   ]
+  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/realtornow/signup")
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
 
   useEffect(() => {
     const interval = setInterval(() => {

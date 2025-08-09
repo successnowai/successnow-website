@@ -20,7 +20,7 @@ const LawyersNowClientPage = () => {
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/lawyersnow/signup")
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -95,7 +95,7 @@ const LawyersNowClientPage = () => {
                   that make excuses, call in sick, aren't motivated, or don't follow client intake protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
-                  🚀 Our custom-built agents never miss. Dominate your legal market with the best AI agents in the
+                  🚀 Our custom-built agents never miss. Dominate your local legal market with the best AI agents in the
                   Galaxy!
                 </p>
               </div>

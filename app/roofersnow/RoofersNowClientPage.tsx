@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import { AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const RoofersNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -20,7 +20,7 @@ const RoofersNowClientPage = () => {
   ]
 
   const handleDemoClick = () => setIsDemoPopupOpen(true)
-  const handleSignupClick = () => (window.location.href = "/roofersnow/signup")
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -95,7 +95,7 @@ const RoofersNowClientPage = () => {
                   that make excuses, call in sick, aren't motivated, or don't follow sales protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
-                  🚀 Our custom-built agents never miss. Dominate your roofing market with the best AI agents in the
+                  🚀 Our custom-built agents never miss. Dominate your local roofing market with the best AI agents in the
                   Galaxy!
                 </p>
               </div>
@@ -161,7 +161,7 @@ const RoofersNowClientPage = () => {
 
         <div className="text-center bg-[#00274D]/80 backdrop-blur-sm p-12 rounded-2xl border border-[#00BFFF]/30">
           <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Book More Roofing Jobs with AI?</h3>
-          <p className="text-gray-300 mb-8 text-lg">Join top roofing companies using AI to increase their sales.</p>
+          <p className="text-gray-300 mb-8 text-lg">Join top roofing companies using AI to book more jobs.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
