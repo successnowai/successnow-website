@@ -275,8 +275,8 @@ export default function IndustriesClientPage() {
               Specialized AI for Your Industry
             </h1>
             <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
-              Discover pre-built, ready-to-deploy AI agents trained for the unique challenges and opportunities in your
-              industry.
+              Experience custom-built, expertly trained AI agents designed around your business — tailored to tackle
+              your industry's unique challenges and seize its biggest opportunities.
             </p>
           </div>
         </section>
