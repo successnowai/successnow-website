@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Block affiliate sales pages from indexing
+Disallow: /leo
+Disallow: /nara
+Disallow: /sam
+
+# Block admin and API routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /affiliate/apply/
+
+# Allow all other pages
+Allow: /
+
+# Sitemap
+Sitemap: https://successnow.ai/sitemap.xml
