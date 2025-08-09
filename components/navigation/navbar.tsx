@@ -18,24 +18,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const industries = [
-    { name: "Auto Dealers", href: "/autodealersnow" },
-    { name: "Chiropractors", href: "/chiropractorsnow" },
-    { name: "Contractors", href: "/contractorsnow" },
-    { name: "Custom Build", href: "/custombuildnow" },
-    { name: "Dentists", href: "/dentistsnow" },
-    { name: "Gyms", href: "/gymsnow" },
-    { name: "HVAC", href: "/hvacnow" },
-    { name: "Lawyers", href: "/lawyersnow" },
-    { name: "Medspas", href: "/medspanow" },
-    { name: "Mortgage", href: "/mortgagenow" },
-    { name: "Plumbers", href: "/plumbersnow" },
-    { name: "Real Estate", href: "/realtornow" },
-    { name: "Restaurants", href: "/restaurantsnow" },
-    { name: "Roofers", href: "/roofersnow" },
-    { name: "Solar", href: "/solarnow" },
-  ]
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -63,7 +45,6 @@ export default function Navbar() {
               Home
             </Link>
 
-            {/* Industries Direct Link */}
             <Link href="/industries" className="text-white hover:text-[#00BFFF] transition-colors">
               Industries
             </Link>
@@ -71,11 +52,9 @@ export default function Navbar() {
             <Link href="/demo" className="text-white hover:text-[#00BFFF] transition-colors">
               Demo
             </Link>
-            <Link href="/blogs" className="text-white hover:text-[#00BFFF] transition-colors">
-              Blog
-            </Link>
-            <Link href="/community" className="text-white hover:text-[#00BFFF] transition-colors">
-              Community
+
+            <Link href="/signup" className="text-white hover:text-[#00BFFF] transition-colors">
+              Pricing
             </Link>
           </div>
 
@@ -110,7 +89,6 @@ export default function Navbar() {
                 Home
               </Link>
 
-              {/* Mobile Industries Direct Link */}
               <Link
                 href="/industries"
                 className="block px-3 py-2 text-white hover:text-[#00BFFF] transition-colors"
@@ -126,19 +104,13 @@ export default function Navbar() {
               >
                 Demo
               </Link>
+
               <Link
-                href="/blogs"
+                href="/signup"
                 className="block px-3 py-2 text-white hover:text-[#00BFFF] transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                Blog
-              </Link>
-              <Link
-                href="/community"
-                className="block px-3 py-2 text-white hover:text-[#00BFFF] transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Community
+                Pricing
               </Link>
 
               <div className="pt-4 pb-2">
