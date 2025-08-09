@@ -68,6 +68,11 @@
   }
 }
 
+/* Global content spacing for navbar */
+.global-content-spacing {
+  padding-top: 0;
+}
+
 /* Custom Neon Glow Effect - Dimmed */
 .neon-text-glow {
   color: #00d4ff;
