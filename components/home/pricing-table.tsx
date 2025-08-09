@@ -1,154 +1,181 @@
 "use client"
 
 import type React from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Check, Star, Zap, Crown, Rocket } from "lucide-react"
 import { useInView } from "@/hooks/use-intersection-observer"
-import { Check, Star, Zap, Phone } from "lucide-react"
 
 export default function PricingTable() {
   const { ref, isInView } = useInView()
 
-  const features = [
+  const plans = [
     {
-      icon: "🌟",
-      text: "One Unified Platform Project",
+      name: "Starter",
+      price: "$297",
+      originalPrice: "$2,997",
+      period: "/month",
+      description: "Perfect for small businesses getting started with AI",
+      icon: Zap,
+      popular: false,
+      features: [
+        "AI Website with Voice Agent",
+        "Lead Capture & Qualification",
+        "Basic CRM Integration",
+        "Email Follow-up Sequences",
+        "24/7 AI Chat Support",
+        "Mobile Responsive Design",
+        "Basic Analytics Dashboard",
+        "1 Business Location",
+      ],
     },
     {
-      icon: "🚀",
-      text: "Custom Website Development Prompt",
+      name: "Professional",
+      price: "$497",
+      originalPrice: "$4,997",
+      period: "/month",
+      description: "Advanced features for growing businesses",
+      icon: Star,
+      popular: true,
+      features: [
+        "Everything in Starter",
+        "Advanced Voice AI Agents",
+        "Multi-language Support",
+        "Advanced CRM Integration",
+        "SMS & WhatsApp Automation",
+        "Appointment Scheduling",
+        "A/B Testing Tools",
+        "Advanced Analytics",
+        "Up to 3 Business Locations",
+        "Priority Support",
+      ],
     },
     {
-      icon: "🎯",
-      text: "High-Converting Smart Funnel Plan",
-    },
-    {
-      icon: "🧠",
-      text: "Strategic Platform Vision via AI",
-    },
-    {
-      icon: "📱",
-      text: "Includes AdsNOW.ai & SEOExperts.ai",
-    },
-    {
-      icon: "💎",
-      text: "Access to Voice AI at $0.0000233/second",
-    },
-    {
-      icon: "⚡",
-      text: "Priority VIP Support & Onboarding",
-    },
-  ]
-
-  const bonuses = [
-    {
-      title: "BONUS: 50% OFF Platform Fees",
-      description: "Regular $1,994/month for all AI tools",
-      price: "Only $997/month",
-      icon: <Zap className="w-5 h-5" />,
-    },
-    {
-      title: "BONUS: 50% OFF AI Voice Usage",
-      description: "Regular $0.28/minute for calls",
-      price: "Only $0.14/minute",
-      icon: <Phone className="w-5 h-5" />,
+      name: "Enterprise",
+      price: "$997",
+      originalPrice: "$9,997",
+      period: "/month",
+      description: "Complete solution for large organizations",
+      icon: Crown,
+      popular: false,
+      features: [
+        "Everything in Professional",
+        "Custom AI Training",
+        "White-label Solutions",
+        "Advanced Integrations",
+        "Custom Workflows",
+        "Dedicated Account Manager",
+        "Custom Reporting",
+        "API Access",
+        "Unlimited Locations",
+        "24/7 Phone Support",
+      ],
     },
   ]
 
   return (
-    <section ref={ref as React.RefObject<HTMLDivElement>} className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+    <section
+      ref={ref as React.RefObject<HTMLDivElement>}
+      className="cyber-section mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12"
+    >
       <div className={`animate-fade-up ${isInView ? "animate-show" : ""}`}>
         {/* Limited Time Badge */}
         <div className="flex justify-center mb-8">
-          <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold">
-            🔥 90% OFF - LIMITED TIME 🔥
-          </div>
+          <Badge className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 py-2 text-lg font-bold rounded-full animate-pulse">
+            <Rocket className="mr-2 h-5 w-5" />
+            LIMITED TIME: 90% OFF
+          </Badge>
         </div>
 
-        {/* Main Heading */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            The SUCCESSNOW Platform Project
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 cyber-text-glow">
+            The Best AI Agents That Engage, Convert & Book
           </h2>
-          <p className="text-xl sm:text-2xl text-[#00BFFF] mb-6">Your All-In-One Digital Foundation</p>
-          <p className="text-gray-300 text-lg max-w-4xl mx-auto leading-relaxed">
-            Get your custom website, smart funnel, and platform strategy built as a single, cohesive project. This is
-            the complete package to dominate your industry, powered by AI and custom-coded by experts.
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+            Choose the perfect plan to transform your business with AI-powered automation
           </p>
         </div>
 
-        {/* Pricing */}
-        <div className="text-center mb-12">
-          <div className="text-gray-400 text-xl line-through mb-2">$35,000</div>
-          <div className="text-[#00BFFF] text-6xl sm:text-7xl font-bold mb-4">$3,488</div>
-          <div className="text-yellow-400 text-xl font-bold">SAVE OVER $30,000 TODAY!</div>
-        </div>
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {plans.map((plan, index) => (
+            <Card
+              key={plan.name}
+              className={`cyber-card relative ${plan.popular ? "ring-2 ring-cyan-400 scale-105" : ""}`}
+            >
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <Badge className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-1 text-sm font-bold">
+                    MOST POPULAR
+                  </Badge>
+                </div>
+              )}
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
-          {/* What You Get */}
-          <div className={`animate-fade-up ${isInView ? "animate-show" : ""} animate-delay-200`}>
-            <div className="flex items-center mb-6">
-              <Star className="w-6 h-6 text-yellow-400 mr-3" />
-              <h3 className="text-2xl font-bold text-white">What You Get:</h3>
-            </div>
-            <div className="space-y-4">
-              {features.map((feature, index) => (
-                <div key={index} className="flex items-start">
-                  <Check className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" />
-                  <div className="flex items-center">
-                    <span className="text-xl mr-2">{feature.icon}</span>
-                    <span className="text-white text-lg">{feature.text}</span>
+              <CardHeader className="text-center pb-4">
+                <div className="flex justify-center mb-4">
+                  <div
+                    className={`p-3 rounded-full ${plan.popular ? "bg-gradient-to-r from-cyan-500 to-blue-600" : "bg-gradient-to-r from-blue-500 to-purple-600"}`}
+                  >
+                    <plan.icon className="h-8 w-8 text-white" />
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Exclusive Bonuses */}
-          <div className={`animate-fade-up ${isInView ? "animate-show" : ""} animate-delay-400`}>
-            <div className="flex items-center mb-6">
-              <Zap className="w-6 h-6 text-yellow-400 mr-3" />
-              <h3 className="text-2xl font-bold text-white">EXCLUSIVE Bonuses:</h3>
-            </div>
-            <div className="space-y-4">
-              {bonuses.map((bonus, index) => (
-                <div key={index} className="bg-gray-900/50 border border-gray-700 rounded-lg p-6">
-                  <div className="flex items-start mb-3">
-                    <div className="text-[#00BFFF] mr-3 mt-1">{bonus.icon}</div>
-                    <div>
-                      <h4 className="text-[#00BFFF] font-bold text-lg mb-2">{bonus.title}</h4>
-                      <p className="text-gray-300 text-sm mb-2">{bonus.description}</p>
-                      <p className="text-green-400 font-bold">{bonus.price}</p>
-                    </div>
+                <CardTitle className="text-2xl font-bold text-white mb-2">{plan.name}</CardTitle>
+                <div className="mb-4">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <span className="text-3xl md:text-4xl font-bold text-white">{plan.price}</span>
+                    <span className="text-gray-300">{plan.period}</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="text-lg text-gray-400 line-through">{plan.originalPrice}</span>
+                    <Badge className="bg-green-600 text-white text-xs">90% OFF</Badge>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+                <p className="text-gray-300 text-sm">{plan.description}</p>
+              </CardHeader>
+
+              <CardContent className="pt-0">
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-200 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button
+                  className={`w-full py-3 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 ${
+                    plan.popular
+                      ? "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl"
+                      : "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl"
+                  }`}
+                  onClick={() => (window.location.href = "https://signup.successnow.ai")}
+                  aria-label={`Get started with ${plan.name} plan for ${plan.price} per month`}
+                >
+                  Get Started Now
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
-        {/* CTA Button */}
-        <div className={`text-center mt-12 animate-fade-up ${isInView ? "animate-show" : ""} animate-delay-600`}>
-          <a
-            href="/industries"
-            className="bg-[#00BFFF] hover:bg-[#0099CC] text-white font-bold text-xl px-12 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-          >
-            Start My SuccessNOW Platform Build →
-          </a>
-
-          {/* Security badges */}
-          <div className="flex justify-center items-center mt-6 space-x-6 text-sm text-gray-400">
-            <div className="flex items-center">
-              <span className="text-yellow-400 mr-1">🔒</span>
-              Secure checkout
-            </div>
-            <div className="flex items-center">
-              <span className="text-yellow-400 mr-1">💰</span>
-              30-day money-back guarantee
-            </div>
-            <div className="flex items-center">
-              <span className="text-yellow-400 mr-1">⚡</span>
-              Instant access
-            </div>
+        {/* Bottom CTA */}
+        <div className="text-center mt-12">
+          <p className="text-gray-200 mb-6">
+            🚀 <strong>Limited Time Offer:</strong> Save 90% on your first month. No setup fees. Cancel anytime.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              onClick={() => (window.location.href = "/demo")}
+              aria-label="Try voice demo now - test our AI agents"
+            >
+              Try Voice Demo Now
+            </Button>
+            <p className="text-sm text-gray-400">⭐ Trusted by 10,000+ businesses worldwide</p>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Montserrat, Open_Sans } from 'next/font/google'
+import { Inter, Montserrat, Open_Sans } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/navigation/navbar"
 import Footer from "@/components/home/footer"
@@ -8,15 +8,24 @@ import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 import StarryBackground from "@/components/ui/starry-background"
 import ScrollToTop from "@/components/ui/scroll-to-top"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+})
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["600", "800"],
   variable: "--font-montserrat",
+  display: "swap",
+  preload: true,
 })
 const openSans = Open_Sans({
   subsets: ["latin"],
   variable: "--font-open-sans",
+  display: "swap",
+  preload: true,
 })
 
 export const metadata: Metadata = {
@@ -64,14 +73,24 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
+        {/* Favicon and icons */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#00BFFF" />
 
-        {/* Vapi.ai SDK */}
-        <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js" async></script>
+        {/* Preload critical resources */}
+        <link rel="preload" href="/images/successnow-logo.png" as="image" type="image/png" />
+
+        {/* Vapi.ai SDK - defer loading */}
+        <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js" defer></script>
       </head>
       <body className={`${inter.variable} ${montserrat.variable} ${openSans.variable} font-sans`}>
         <StarryBackground />
