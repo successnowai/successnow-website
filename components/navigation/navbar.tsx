@@ -3,13 +3,12 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import Image from "next/image"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [showIndustries, setShowIndustries] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,33 +63,10 @@ export default function Navbar() {
               Home
             </Link>
 
-            {/* Industries Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setShowIndustries(true)}
-              onMouseLeave={() => setShowIndustries(false)}
-            >
-              <button className="text-white hover:text-[#00BFFF] transition-colors flex items-center space-x-1">
-                <span>Industries</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
-
-              {showIndustries && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-black/95 backdrop-blur-md rounded-lg shadow-xl border border-gray-800 py-2 z-50">
-                  <div className="grid grid-cols-1 gap-1">
-                    {industries.map((industry) => (
-                      <Link
-                        key={industry.name}
-                        href={industry.href}
-                        className="px-4 py-2 text-gray-300 hover:text-[#00BFFF] hover:bg-gray-800/50 transition-colors"
-                      >
-                        {industry.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+            {/* Industries Direct Link */}
+            <Link href="/industries" className="text-white hover:text-[#00BFFF] transition-colors">
+              Industries
+            </Link>
 
             <Link href="/demo" className="text-white hover:text-[#00BFFF] transition-colors">
               Demo
@@ -134,29 +110,14 @@ export default function Navbar() {
                 Home
               </Link>
 
-              {/* Mobile Industries */}
-              <div className="px-3 py-2">
-                <span className="text-gray-400 text-sm font-medium">Industries</span>
-                <div className="mt-2 space-y-1 pl-4">
-                  {industries.slice(0, 8).map((industry) => (
-                    <Link
-                      key={industry.name}
-                      href={industry.href}
-                      className="block py-1 text-gray-300 hover:text-[#00BFFF] transition-colors text-sm"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {industry.name}
-                    </Link>
-                  ))}
-                  <Link
-                    href="/industries"
-                    className="block py-1 text-[#00BFFF] hover:text-[#00A3D9] transition-colors text-sm font-medium"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    View All Industries →
-                  </Link>
-                </div>
-              </div>
+              {/* Mobile Industries Direct Link */}
+              <Link
+                href="/industries"
+                className="block px-3 py-2 text-white hover:text-[#00BFFF] transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Industries
+              </Link>
 
               <Link
                 href="/demo"
