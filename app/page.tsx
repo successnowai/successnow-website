@@ -6,9 +6,9 @@ import AiAgentAlert from "@/components/home/ai-agent-alert"
 import IndustrySolutions from "@/components/home/industry-solutions"
 import LiveDemo from "@/components/home/live-demo"
 import PricingTable from "@/components/home/pricing-table"
-import CtaSection from "@/components/home/cta-section"
-import AdsNowSection from "@/components/home/adsnow-section"
 import { PlatformShowcaseSection } from "@/components/home/platform-showcase-section"
+import AdsNowSection from "@/components/home/adsnow-section"
+import CtaSection from "@/components/home/cta-section"
 
 export default function HomePage() {
   return (

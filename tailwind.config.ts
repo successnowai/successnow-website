@@ -3,24 +3,28 @@ import type { Config } from "tailwindcss"
 const config: Config = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -28,6 +32,10 @@ const config: Config = {
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -37,30 +45,16 @@ const config: Config = {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
         },
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
+        brandBlue: "#0ea5e9",
+        brandPurple: "#d946ef",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -69,31 +63,49 @@ const config: Config = {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        twinkle: {
+          "0%, 100%": { opacity: "0.2", transform: "scale(0.8)" },
+          "50%": { opacity: "0.5", transform: "scale(1)" },
+        },
+        shootingStarAnim: {
+          "0%": { transform: "translateX(0) translateY(0)", opacity: "0" },
+          "20%": { opacity: "1" },
+          "100%": { transform: "translateX(-600px) translateY(600px)", opacity: "0" },
+        },
+        subtleButtonPulse: {
+          "0%, 100%": {
+            boxShadow: "0 0 18px 2px rgba(14, 165, 233, 0.25)",
+            transform: "scale(1)",
           },
-          to: {
-            height: "0",
+          "50%": {
+            boxShadow: "0 0 28px 5px rgba(14, 165, 233, 0.4)",
+            transform: "scale(1.025)",
           },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        twinkle: "twinkle 2s ease-in-out infinite",
+        "shooting-star": "shootingStarAnim 3s linear infinite",
+        "subtle-pulse": "subtleButtonPulse 3s ease-in-out infinite",
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      boxShadow: {
+        "glow-blue-sm": "0 0 10px 2px rgba(14, 165, 233, 0.35)",
+        "glow-blue-md": "0 0 18px 4px rgba(14, 165, 233, 0.45)",
+        "glow-purple-sm": "0 0 10px 2px rgba(217, 70, 239, 0.35)",
+        "inner-glow-blue": "inset 0 0 10px rgba(14, 165, 233, 0.2)",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+} satisfies Config
+
 export default config

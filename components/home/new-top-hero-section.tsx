@@ -91,28 +91,6 @@ export function NewTopHeroSection() {
             </Button>
           </Link>
         </div>
-
-        {/* Limited Time Offer */}
-        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 max-w-4xl mx-auto shadow-2xl">
-          <div className="flex items-center justify-center mb-4">
-            <span className="text-2xl">🔥</span>
-            <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent mx-2">
-              LIMITED TIME: 90% OFF
-            </h3>
-            <span className="text-2xl">🔥</span>
-          </div>
-
-          <p className="text-xl md:text-2xl text-gray-300 mb-4">
-            The SuccessNOW AI Systems - Usually <span className="line-through text-gray-500">$35,000</span>, Now Just
-          </p>
-          <p className="text-3xl md:text-4xl font-bold text-white mb-4">$3,488</p>
-
-          <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-4">
-            <p className="text-lg md:text-xl font-semibold text-green-400">
-              + 2 MONTHS FREE Platform Access (Save $1,994)
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   )
