@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Play, MessageCircle, Bot, Zap, Star, Users, TrendingUp } from "lucide-react"
@@ -8,6 +8,7 @@ import { VoiceDemoModal } from "@/components/ui/voice-demo-modal"
 
 export default function LiveDemo() {
   const [showVoiceDemo, setShowVoiceDemo] = useState(false)
+  const [showInlineDemo, setShowInlineDemo] = useState(false)
 
   const demoFeatures = [
     {
@@ -36,6 +37,35 @@ export default function LiveDemo() {
     { number: "10K+", label: "Conversations Daily", icon: Users },
     { number: "300%", label: "Lead Conversion Increase", icon: TrendingUp },
   ]
+
+  useEffect(() => {
+    if (showInlineDemo) {
+      const frame = document.getElementById("assistantFrameLiveDemo")
+      const handleLoad = () => {
+        if (navigator.permissions) {
+          navigator.permissions
+            .query({ name: "microphone" as PermissionName })
+            .then((result) => {
+              if (result.state === "granted") {
+                console.log("Microphone access already granted")
+              } else if (result.state === "prompt") {
+                console.log("User will be prompted for microphone access")
+              }
+            })
+            .catch((err) => {
+              console.error("Microphone permission query failed:", err)
+            })
+        }
+      }
+
+      if (frame) {
+        frame.addEventListener("load", handleLoad)
+        return () => {
+          frame.removeEventListener("load", handleLoad)
+        }
+      }
+    }
+  }, [showInlineDemo])
 
   return (
     <section
@@ -66,15 +96,45 @@ export default function LiveDemo() {
             leads with human-like conversations.
           </p>
 
-          <Button
-            size="lg"
-            onClick={() => setShowVoiceDemo(true)}
-            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-lg"
-          >
-            <Play className="w-6 h-6 mr-2" />
-            Start Voice Demo
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              onClick={() => setShowVoiceDemo(true)}
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-lg"
+            >
+              <Play className="w-6 h-6 mr-2" />
+              Start Voice Demo
+            </Button>
+
+            <Button
+              size="lg"
+              onClick={() => setShowInlineDemo(!showInlineDemo)}
+              variant="outline"
+              className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-lg bg-transparent"
+            >
+              <MessageCircle className="w-6 h-6 mr-2" />
+              {showInlineDemo ? "Hide Demo" : "Show Inline Demo"}
+            </Button>
+          </div>
         </div>
+
+        {/* Inline Demo */}
+        {showInlineDemo && (
+          <div className="mb-16">
+            <div className="bg-gradient-to-r from-gray-900/80 to-black/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-800/50">
+              <h3 className="text-2xl font-bold text-white text-center mb-6">AI Voice Agent - Live Demo</h3>
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "200px" }}>
+                <iframe
+                  src="https://iframes.ai/o/1753831620452x607403809624031200?color=ed10cc&icon=bot"
+                  allow="microphone"
+                  style={{ width: "100%", height: "100%", border: "none" }}
+                  id="assistantFrameLiveDemo"
+                  title="AI Voice Agent Live Demo"
+                />
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Demo Features */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">

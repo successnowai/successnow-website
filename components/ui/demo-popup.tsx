@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
@@ -42,6 +41,36 @@ export function DemoPopup({ isOpen: controlledIsOpen, onClose, trigger }: DemoPo
 
     return () => {
       document.body.style.overflow = "unset"
+    }
+  }, [isOpen])
+
+  // Handle iframe load and microphone permissions
+  useEffect(() => {
+    if (isOpen) {
+      const frame = document.getElementById("assistantFrameDemo")
+      const handleLoad = () => {
+        if (navigator.permissions) {
+          navigator.permissions
+            .query({ name: "microphone" as PermissionName })
+            .then((result) => {
+              if (result.state === "granted") {
+                console.log("Microphone access already granted")
+              } else if (result.state === "prompt") {
+                console.log("User will be prompted for microphone access")
+              }
+            })
+            .catch((err) => {
+              console.error("Microphone permission query failed:", err)
+            })
+        }
+      }
+
+      if (frame) {
+        frame.addEventListener("load", handleLoad)
+        return () => {
+          frame.removeEventListener("load", handleLoad)
+        }
+      }
     }
   }, [isOpen])
 

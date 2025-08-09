@@ -88,9 +88,6 @@ export default function RootLayout({
 
         {/* Preload critical resources */}
         <link rel="preload" href="/images/successnow-logo.png" as="image" type="image/png" />
-
-        {/* Vapi.ai SDK - defer loading */}
-        <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js" defer></script>
       </head>
       <body className={`${inter.variable} ${montserrat.variable} ${openSans.variable} font-sans`}>
         <StarryBackground />

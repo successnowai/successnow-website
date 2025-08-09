@@ -15,6 +15,35 @@ export default function FloatingChatRobot() {
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    if (isExpanded) {
+      const frame = document.getElementById("assistantFrame")
+      const handleLoad = () => {
+        if (navigator.permissions) {
+          navigator.permissions
+            .query({ name: "microphone" as PermissionName })
+            .then((result) => {
+              if (result.state === "granted") {
+                console.log("Microphone access already granted")
+              } else if (result.state === "prompt") {
+                console.log("User will be prompted for microphone access")
+              }
+            })
+            .catch((err) => {
+              console.error("Microphone permission query failed:", err)
+            })
+        }
+      }
+
+      if (frame) {
+        frame.addEventListener("load", handleLoad)
+        return () => {
+          frame.removeEventListener("load", handleLoad)
+        }
+      }
+    }
+  }, [isExpanded])
+
   if (!isVisible) return null
 
   return (
@@ -36,9 +65,10 @@ export default function FloatingChatRobot() {
               style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "calc(100% - 48px)" }}
             >
               <iframe
-                src="https://iframes.ai/o/1750493608926x366840044583387140?color=00BFFF&icon=bot"
+                src="https://iframes.ai/o/1753831620452x607403809624031200?color=ed10cc&icon=bot"
                 allow="microphone"
                 style={{ width: "100%", height: "100%", border: "none" }}
+                id="assistantFrame"
                 title="AI Business Consultant"
               />
             </div>

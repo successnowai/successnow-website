@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Bot } from "lucide-react"
 
 interface GlowingOrbCtaProps {
@@ -29,6 +29,35 @@ export function GlowingOrbCta({ label = "Click Here, Talk to AI", size = "md", c
     md: "text-base",
     lg: "text-lg",
   }
+
+  useEffect(() => {
+    if (showPopup) {
+      const frame = document.getElementById("assistantFrameOrb")
+      const handleLoad = () => {
+        if (navigator.permissions) {
+          navigator.permissions
+            .query({ name: "microphone" as PermissionName })
+            .then((result) => {
+              if (result.state === "granted") {
+                console.log("Microphone access already granted")
+              } else if (result.state === "prompt") {
+                console.log("User will be prompted for microphone access")
+              }
+            })
+            .catch((err) => {
+              console.error("Microphone permission query failed:", err)
+            })
+        }
+      }
+
+      if (frame) {
+        frame.addEventListener("load", handleLoad)
+        return () => {
+          frame.removeEventListener("load", handleLoad)
+        }
+      }
+    }
+  }, [showPopup])
 
   return (
     <>
@@ -102,6 +131,7 @@ export function GlowingOrbCta({ label = "Click Here, Talk to AI", size = "md", c
                 src="https://iframes.ai/o/1753831620452x607403809624031200?color=ed10cc&icon=bot"
                 allow="microphone"
                 style={{ width: "100%", height: "100%", border: "none" }}
+                id="assistantFrameOrb"
                 title="AI Voice Agent"
               />
             </div>

@@ -39,11 +39,11 @@ function AiVoiceAgentFrame() {
   }, [])
 
   return (
-    <div className="w-full h-full flex items-center justify-center">
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%" }}>
       <iframe
-        src="https://iframes.ai/o/1750493608926x366840044583387140?color=00BFFF&icon=bot"
+        src="https://iframes.ai/o/1753831620452x607403809624031200?color=ed10cc&icon=bot"
         allow="microphone"
-        className="w-full h-full border-none rounded-lg"
+        style={{ width: "100%", height: "200px", border: "none" }}
         id="assistantFrame"
         title="AI Voice Agent"
       />
@@ -177,7 +177,7 @@ export default function DemoClientPage() {
                   Ask me about your business and how we can help you grow
                 </p>
               </div>
-              <div className="h-[500px]">
+              <div className="h-[500px] p-4">
                 <AiVoiceAgentFrame />
               </div>
             </div>
