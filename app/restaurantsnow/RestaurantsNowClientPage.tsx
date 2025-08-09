@@ -5,10 +5,12 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const RestaurantsNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
+  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+
   const rotatingTexts = [
     "Takes Reservations 24/7",
     "Manages Waitlists",
@@ -45,7 +47,7 @@ const RestaurantsNowClientPage = () => {
           </div>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
-            Stop missing reservations because your host is busy or it's after hours. Our{" "}
+            Stop missing reservations because your host is busy or it&apos;s after hours. Our{" "}
             <strong className="text-white">
               AI takes reservations, manages your waitlist, and promotes specials 24/7
             </strong>
@@ -85,8 +87,8 @@ const RestaurantsNowClientPage = () => {
                   restrictions, and service standards
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best maître d' using all the best AI tools. Save countless money on staff that
-                  make excuses, call in sick, aren't motivated, or don't follow service protocols.
+                  It&apos;s like having the best maître d&apos; using all the best AI tools. Save countless money on
+                  staff that make excuses, call in sick, aren&apos;t motivated, or don&apos;t follow service protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
                   🚀 Our custom-built agents never miss. Dominate your local dining scene with the best AI agents in the

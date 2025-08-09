@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const GymsNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -75,7 +75,7 @@ const GymsNowClientPage = () => {
               </h3>
               <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="text-white">Custom Website:</strong> Branded to your gym's culture and member
+                  <strong className="text-white">Custom Website:</strong> Branded to your gym&apos;s culture and member
                   experience
                 </p>
                 <p>
@@ -91,8 +91,9 @@ const GymsNowClientPage = () => {
                   inquiry, never miss class bookings, makes notes and transcripts of every member interaction
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best fitness consultant using all the best AI tools. Save countless money on
-                  staff that make excuses, call in sick, aren't motivated, or don't follow member engagement processes.
+                  It&apos;s like having the best fitness consultant using all the best AI tools. Save countless money on
+                  staff that make excuses, call in sick, aren&apos;t motivated, or don&apos;t follow member engagement
+                  processes.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
                   🚀 Our custom-built agents never miss. Dominate your local fitness market with the best AI agents in

@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const RoofersNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -91,12 +91,12 @@ const RoofersNowClientPage = () => {
                   inquiry, never miss estimate follow-ups, makes notes and transcripts of every homeowner interaction
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best roofing sales rep using all the best AI tools. Save countless money on staff
-                  that make excuses, call in sick, aren't motivated, or don't follow sales protocols.
+                  It&apos;s like having the best roofing sales rep using all the best AI tools. Save countless money on
+                  staff that make excuses, call in sick, aren&apos;t motivated, or don&apos;t follow sales protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
-                  🚀 Our custom-built agents never miss. Dominate your local roofing market with the best AI agents in the
-                  Galaxy!
+                  🚀 Our custom-built agents never miss. Dominate your local roofing market with the best AI agents in
+                  the Galaxy!
                 </p>
               </div>
             </div>

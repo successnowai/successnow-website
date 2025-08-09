@@ -78,4 +78,79 @@ export default function AdsNowSection() {
                   {process.step}
                 </div>
                 <process.icon className="w-6 h-6 text-purple-400 mx-auto mb-2" />
-                <h4 className="\
+                <h4 className="text-lg font-bold text-white mb-2">{process.title}</h4>
+                <p className="text-gray-300 text-sm">{process.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <p className="text-lg text-gray-300 mb-6">
+              <strong className="text-purple-400">Revolutionary AI Technology:</strong> Your personal AI agent that
+              creates, manages, and optimizes your entire advertising ecosystem while you focus on running your
+              business.
+            </p>
+            <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm rounded-xl p-6 border border-purple-500/30">
+              <p className="text-white font-bold text-xl">
+                🚀 The Future of Business Growth is Here - And It&apos;s Powered by AI
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Integration Benefits */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-gradient-to-br from-purple-900/30 to-purple-800/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30">
+            <div className="flex items-center gap-3 mb-6">
+              <Target className="w-8 h-8 text-purple-400" />
+              <h3 className="text-2xl font-bold text-white">AdsNow.ai</h3>
+            </div>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-2">
+                <span className="text-purple-400 mt-1">•</span>
+                <span>AI creates high-converting ads in seconds</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-purple-400 mt-1">•</span>
+                <span>Automatically optimizes for maximum ROI</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-purple-400 mt-1">•</span>
+                <span>Manages budgets and bidding strategies</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-purple-400 mt-1">•</span>
+                <span>Scales successful campaigns automatically</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-900/30 to-blue-800/30 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/30">
+            <div className="flex items-center gap-3 mb-6">
+              <Bot className="w-8 h-8 text-[#00BFFF]" />
+              <h3 className="text-2xl font-bold text-white">SuccessNOW AI</h3>
+            </div>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-2">
+                <span className="text-[#00BFFF] mt-1">•</span>
+                <span>Instantly converts every lead 24/7</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#00BFFF] mt-1">•</span>
+                <span>Books appointments automatically</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#00BFFF] mt-1">•</span>
+                <span>Nurtures leads until they buy</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#00BFFF] mt-1">•</span>
+                <span>Generates reviews and referrals</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

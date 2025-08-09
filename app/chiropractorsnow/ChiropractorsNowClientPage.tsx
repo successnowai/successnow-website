@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const ChiropractorsNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -93,8 +93,9 @@ const ChiropractorsNowClientPage = () => {
                   never miss adjustment follow-ups, makes notes and transcripts of every patient interaction
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best chiropractic assistant using all the best AI tools. Save countless money on
-                  staff that make excuses, call in sick, aren't motivated, or don't follow patient care protocols.
+                  It&apos;s like having the best chiropractic assistant using all the best AI tools. Save countless
+                  money on staff that make excuses, call in sick, aren&apos;t motivated, or don&apos;t follow patient
+                  care protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
                   🚀 Our custom-built agents never miss. Dominate your local wellness market with the best AI agents in

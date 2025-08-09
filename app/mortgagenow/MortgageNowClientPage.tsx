@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const MortgageNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -51,7 +51,7 @@ const MortgageNowClientPage = () => {
             <strong className="text-white">
               AI pre-qualifies borrowers, books consultations, and nurtures every lead
             </strong>{" "}
-            until they're ready to close.
+            until they&apos;re ready to close.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
@@ -93,8 +93,8 @@ const MortgageNowClientPage = () => {
                   inquiry, never miss loan follow-ups, makes notes and transcripts of every lending consultation
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best loan officer using all the best AI tools. Save countless money on staff that
-                  make excuses, call in sick, aren't motivated, or don't follow lending protocols.
+                  It&apos;s like having the best loan officer using all the best AI tools. Save countless money on staff
+                  that make excuses, call in sick, aren&apos;t motivated, or don&apos;t follow lending protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
                   🚀 Our custom-built agents never miss. Dominate your mortgage market with the best AI agents in the

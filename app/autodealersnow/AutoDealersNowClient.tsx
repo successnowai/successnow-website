@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const AutoDealersNowClient = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -77,8 +77,8 @@ const AutoDealersNowClient = () => {
                 <div className="bg-black/20 p-4 rounded-lg border border-[#00BFFF]/20">
                   <h4 className="text-lg font-semibold text-white mb-2">🎨 Custom Website to Your Brand & Vision</h4>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Every website is built from scratch to match your dealership's unique brand, colors, and vision. No
-                    templates, no cookie-cutter designs.
+                    Every website is built from scratch to match your dealership&apos;s unique brand, colors, and
+                    vision. No templates, no cookie-cutter designs.
                   </p>
                 </div>
 
@@ -104,8 +104,8 @@ const AutoDealersNowClient = () => {
                     <li>• Never miss a lead or follow-up</li>
                     <li>• Makes detailed notes and transcripts of every call</li>
                     <li>• Like having the best team member using all the best AI tools</li>
-                    <li>• Save countless money on staff that make excuses, call in sick, aren't motivated</li>
-                    <li>• No more employees who don't follow the process</li>
+                    <li>• Save countless money on staff that make excuses, call in sick, aren&apos;t motivated</li>
+                    <li>• No more employees who don&apos;t follow the process</li>
                   </ul>
                 </div>
 

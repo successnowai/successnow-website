@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const LawyersNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -75,8 +75,8 @@ const LawyersNowClientPage = () => {
               </h3>
               <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="text-white">Custom Website:</strong> Branded to your firm's expertise and client
-                  trust
+                  <strong className="text-white">Custom Website:</strong> Branded to your firm&apos;s expertise and
+                  client trust
                 </p>
                 <p>
                   <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your legal services and
@@ -91,8 +91,9 @@ const LawyersNowClientPage = () => {
                   client call, never miss case follow-ups, makes notes and transcripts of every legal consultation
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best legal assistant using all the best AI tools. Save countless money on staff
-                  that make excuses, call in sick, aren't motivated, or don't follow client intake protocols.
+                  It&apos;s like having the best legal assistant using all the best AI tools. Save countless money on
+                  staff that make excuses, call in sick, aren&apos;t motivated, or don&apos;t follow client intake
+                  protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
                   🚀 Our custom-built agents never miss. Dominate your local legal market with the best AI agents in the

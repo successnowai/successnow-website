@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const MedspaNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -89,8 +89,8 @@ const MedspaNowClientPage = () => {
                   never miss follow-up appointments, makes notes and transcripts of every client interaction
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best spa receptionist using all the best AI tools. Save countless money on staff
-                  that make excuses, call in sick, aren't motivated, or don't follow protocols.
+                  It&apos;s like having the best spa receptionist using all the best AI tools. Save countless money on
+                  staff that make excuses, call in sick, aren&apos;t motivated, or don&apos;t follow protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
                   🚀 Our custom-built agents never miss. Dominate your local aesthetic market with the best AI agents in

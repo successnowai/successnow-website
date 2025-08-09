@@ -1,71 +1,74 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import StarryBackground from "@/components/ui/starry-background"
-import MainHeroSection from "@/components/home/main-hero-section"
-import IndustrySolutions from "@/components/home/industry-solutions"
-import LiveDemo from "@/components/home/live-demo"
-import PricingTable from "@/components/home/pricing-table"
-import CtaSection from "@/components/home/cta-section"
-import AdsNowSection from "@/components/home/adsnow-section"
+import { Button } from "@/components/ui/button"
 import Footer from "@/components/home/footer"
-import { PlatformShowcaseSection } from "@/components/home/platform-showcase-section"
-import { Badge } from "@/components/ui/badge"
-import { VoiceDemoModal } from "@/components/ui/voice-demo-modal"
+import { DemoPopup } from "@/components/ui/demo-popup"
+import { useState } from "react"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
-function AffiliateCodeSection() {
+const NanaClientPage = () => {
+  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
+  const handleDemoClick = () => setIsDemoPopupOpen(true)
+  const handleSignupClick = () => (window.location.href = "https://signup.successnow.ai")
+
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="bg-gradient-to-r from-rose-500/20 to-pink-500/20 rounded-2xl border border-rose-500/30 p-8 backdrop-blur-sm">
-          <Badge className="bg-gradient-to-r from-rose-500 to-pink-500 text-white border-0 text-sm mb-4">
-            ✨ Nana Exclusive Offer
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Use My Code & Save an Extra 15% on Setup!</h2>
-          <div className="bg-black/30 rounded-lg p-6 mb-6">
-            <p className="text-gray-300 mb-2">Your Exclusive Code:</p>
-            <div className="text-4xl font-bold text-rose-400 tracking-wider">NANA2025</div>
-          </div>
-          <p className="text-lg text-gray-300">
-            Apply this code during checkout to get an additional 15% off your setup fee!
+    <div className="min-h-screen bg-gradient-to-br from-[#0B1426] via-[#1a2332] to-[#0B1426] text-white">
+      <section className="relative text-center py-16 px-6 md:px-10 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1426]/50 to-[#0B1426]"></div>
+        <div className="relative z-10 max-w-6xl mx-auto space-y-8">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
+            <span className="block text-white animate-fadeTextUp">Nana™ AI</span>
+            <span className="block text-[#00BFFF] animate-fadeTextUp animation-delay-300">Your Custom AI Solution</span>
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
+            A bespoke AI agent, built from the ground up to meet your unique business needs.
           </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-fadeTextUp animation-delay-1500">
+            <Button
+              className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
+              onClick={handleSignupClick}
+            >
+              GET YOUR CUSTOM AI →
+            </Button>
+            <Button
+              variant="outline"
+              className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
+              onClick={handleDemoClick}
+            >
+              Launch Instant Demo NOW
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <AdsSuccessEcosystem onDemoClick={handleDemoClick} />
+
+      <div className="text-center bg-[#00274D]/80 backdrop-blur-sm p-12 rounded-2xl border border-[#00BFFF]/30 max-w-4xl mx-auto my-16">
+        <h3 className="text-3xl font-bold mb-6 text-[#00BFFF]">Ready to Build Your Custom AI?</h3>
+        <p className="text-gray-300 mb-8 text-lg">
+          Let&apos;s create an AI solution that perfectly fits your business.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Button
+            className="px-8 py-4 bg-white text-black font-semibold rounded-md shadow-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105 text-base"
+            onClick={handleSignupClick}
+          >
+            Start Your Custom Build
+          </Button>
+          <Button
+            variant="outline"
+            className="px-8 py-4 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-md hover:bg-[#00BFFF] hover:text-white transition-all duration-200 hover:scale-105 text-base bg-transparent"
+            onClick={() => (window.location.href = "/")}
+          >
+            BACK TO HOME
+          </Button>
         </div>
       </div>
+
+      <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
+      <Footer />
     </div>
   )
 }
 
-export default function NanaClientPage() {
-  const [isVoiceDemoOpen, setIsVoiceDemoOpen] = useState(false)
-
-  useEffect(() => {
-    const script = document.createElement("script")
-    script.src = "https://link.successnow.ai/js/form_embed.js"
-    script.async = true
-    document.body.appendChild(script)
-
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
-      }
-    }
-  }, [])
-
-  return (
-    <div className="min-h-screen bg-black text-white relative">
-      <StarryBackground />
-      <div className="relative z-10">
-        <MainHeroSection />
-        <AffiliateCodeSection />
-        <PlatformShowcaseSection />
-        <AdsNowSection />
-        <IndustrySolutions />
-        <LiveDemo />
-        <PricingTable />
-        <CtaSection />
-        <Footer />
-      </div>
-      <VoiceDemoModal isOpen={isVoiceDemoOpen} onClose={() => setIsVoiceDemoOpen(false)} />
-    </div>
-  )
-}
+export default NanaClientPage

@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const DentistsNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -74,8 +74,8 @@ const DentistsNowClientPage = () => {
               <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#00BFFF]">🦷 Custom Built for YOUR Practice</h3>
               <div className="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="text-white">Custom Website:</strong> Branded to your practice's vision and patient
-                  experience
+                  <strong className="text-white">Custom Website:</strong> Branded to your practice&apos;s vision and
+                  patient experience
                 </p>
                 <p>
                   <strong className="text-white">Custom AI Smart Funnels:</strong> Tailored to your dental services and
@@ -90,8 +90,8 @@ const DentistsNowClientPage = () => {
                   never miss follow-up appointments, makes notes and transcripts of every patient interaction
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the best dental receptionist using all the best AI tools. Save countless money on
-                  staff that make excuses, call in sick, aren't motivated, or don't follow protocols.
+                  It&apos;s like having the best dental receptionist using all the best AI tools. Save countless money
+                  on staff that make excuses, call in sick, aren&apos;t motivated, or don&apos;t follow protocols.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
                   🚀 Our custom-built agents never miss. Dominate your local dental market with the best AI agents in

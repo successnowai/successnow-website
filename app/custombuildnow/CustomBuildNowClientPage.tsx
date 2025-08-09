@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/home/footer"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { useState, useEffect } from "react"
-import { AdsSuccessEcosystem } from "@/components/ui/ads-success-ecosystem"
+import AdsSuccessEcosystem from "@/components/ui/ads-success-ecosystem"
 
 const CustomBuildNowClientPage = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -43,7 +43,7 @@ const CustomBuildNowClientPage = () => {
           </h1>
 
           <div className="bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-2xl mx-auto animate-fadeTextUp animation-delay-900">
-            <p className="text-red-300 font-bold text-lg">⚠️ Generic solutions don't fit unique businesses!</p>
+            <p className="text-red-300 font-bold text-lg">⚠️ Generic solutions don&apos;t fit unique businesses!</p>
           </div>
 
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-1200">
@@ -93,8 +93,8 @@ const CustomBuildNowClientPage = () => {
                   business needs and never miss opportunities
                 </p>
                 <p className="text-[#00BFFF] font-semibold">
-                  It's like having the perfect team member who knows your business inside and out, using cutting-edge AI
-                  technology tailored specifically to your needs.
+                  It&apos;s like having the perfect team member who knows your business inside and out, using
+                  cutting-edge AI technology tailored specifically to your needs.
                 </p>
                 <p className="text-white font-bold text-center mt-4">
                   🚀 Get a completely custom AI solution built just for you. Dominate your market with AI that
