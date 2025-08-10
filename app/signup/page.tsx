@@ -49,6 +49,7 @@ export default function SignupPage() {
           <div className="mb-12">
             <Button
               size="lg"
+              asChild
               className="relative overflow-hidden bg-gradient-to-r from-[#00BFFF] via-[#0080FF] to-[#00BFFF] text-white font-bold px-12 py-6 text-xl rounded-xl border-2 border-[#00BFFF] shadow-[0_0_20px_#00BFFF,0_0_40px_#00BFFF,0_0_60px_#00BFFF] animate-pulse hover:scale-105 hover:shadow-[0_0_30px_#00BFFF,0_0_60px_#00BFFF,0_0_90px_#00BFFF] transition-all duration-300 transform hover:skew-x-1"
               style={{
                 animation: "pulse-glow 2s ease-in-out infinite alternate",
@@ -56,10 +57,12 @@ export default function SignupPage() {
                   "0 0 20px #00BFFF, 0 0 40px #00BFFF, 0 0 60px #00BFFF, inset 0 0 20px rgba(0, 191, 255, 0.2)",
               }}
             >
-              <span className="relative z-10 flex items-center gap-3">
-                <Rocket className="w-6 h-6" />🚀 GET AI NOW - $3,488
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
+              <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+                <span className="relative z-10 flex items-center gap-3">
+                  <Rocket className="w-6 h-6" />🚀 GET AI NOW - $3,488
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
+              </a>
             </Button>
           </div>
         </div>
@@ -102,11 +105,13 @@ export default function SignupPage() {
                 Enterprise AI Platform
               </CardTitle>
               <div className="text-5xl md:text-6xl font-bold mb-4">
-                <span className="text-[#00FF88]">${isAnnual ? "4,970" : "497"}</span>
+                <span className="text-[#00FF88]">${isAnnual ? "9,970" : "997"}</span>
                 <span className="text-xl text-gray-400 ml-2">{isAnnual ? "/year" : "/month"}</span>
               </div>
               {isAnnual && (
-                <Badge className="bg-[#00FF88]/20 text-[#00FF88] border border-[#00FF88]/30">Save $994 annually</Badge>
+                <Badge className="bg-[#00FF88]/20 text-[#00FF88] border border-[#00FF88]/30">
+                  Save $1,994 annually
+                </Badge>
               )}
             </CardHeader>
             <CardContent className="relative z-10">
@@ -193,9 +198,12 @@ export default function SignupPage() {
               <div className="text-center">
                 <Button
                   size="lg"
+                  asChild
                   className="bg-gradient-to-r from-[#00BFFF] to-[#00FF88] text-black font-bold px-8 py-4 text-lg rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(0,191,255,0.5)]"
                 >
-                  Start Your AI Transformation
+                  <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+                    Start Your AI Transformation
+                  </a>
                 </Button>
                 <p className="text-sm text-gray-400 mt-4">
                   30-day money-back guarantee • No setup fees • Cancel anytime
@@ -225,13 +233,17 @@ export default function SignupPage() {
                   <span className="text-[#00FF88] font-bold">FREE</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span>Ongoing Platform Access (Usually $7,000)</span>
+                  <span>Smart AI Website (Usually $5,000)</span>
+                  <span className="text-[#00FF88] font-bold">FREE</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span>2 months of platform fees included (Regular price $3,988)</span>
                   <span className="text-[#00FF88] font-bold">FREE</span>
                 </div>
                 <hr className="border-[#00BFFF]/30 my-4" />
                 <div className="flex justify-between items-center text-xl font-bold">
                   <span>Total Value:</span>
-                  <span className="text-gray-400 line-through">$35,000</span>
+                  <span className="text-gray-400 line-through">$40,000</span>
                 </div>
                 <div className="flex justify-between items-center text-2xl font-bold">
                   <span className="text-[#00BFFF]">Your Price Today:</span>
@@ -246,16 +258,19 @@ export default function SignupPage() {
         <div className="text-center mb-12">
           <Button
             size="lg"
+            asChild
             className="relative overflow-hidden bg-gradient-to-r from-[#00FF88] via-[#00BFFF] to-[#00FF88] text-black font-bold px-12 py-6 text-xl rounded-xl border-2 border-[#00FF88] shadow-[0_0_20px_#00FF88,0_0_40px_#00FF88,0_0_60px_#00FF88] animate-pulse hover:scale-105 hover:shadow-[0_0_30px_#00FF88,0_0_60px_#00FF88,0_0_90px_#00FF88] transition-all duration-300 transform hover:skew-x-1"
             style={{
               animation: "pulse-glow 2s ease-in-out infinite alternate",
               boxShadow: "0 0 20px #00FF88, 0 0 40px #00FF88, 0 0 60px #00FF88, inset 0 0 20px rgba(0, 255, 136, 0.2)",
             }}
           >
-            <span className="relative z-10 flex items-center gap-3">
-              <Zap className="w-6 h-6" />⚡ SECURE YOUR AI SYSTEMS NOW - $3,488
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
+            <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+              <span className="relative z-10 flex items-center gap-3">
+                <Zap className="w-6 h-6" />⚡ SECURE YOUR AI SYSTEMS NOW - $3,488
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
+            </a>
           </Button>
         </div>
 
@@ -269,13 +284,14 @@ export default function SignupPage() {
               </Badge>
               <CardTitle className="text-3xl font-bold text-white mb-4">This Is A Complete No-Brainer</CardTitle>
               <p className="text-xl text-gray-300 mb-6">
-                You're getting $35,000 worth of AI systems for just $3,488. That's a savings of $31,512!
+                You're getting $40,000 worth of AI systems for just $3,488. That's a savings of $36,512!
               </p>
 
               {/* Third Pulsating Button - In No-Brainer Card */}
               <div className="mb-6">
                 <Button
                   size="lg"
+                  asChild
                   className="relative overflow-hidden bg-gradient-to-r from-[#FF6B35] via-[#FF8C42] to-[#FF6B35] text-white font-bold px-16 py-8 text-2xl rounded-2xl border-2 border-[#FF6B35] shadow-[0_0_25px_#FF6B35,0_0_50px_#FF6B35,0_0_75px_#FF6B35] animate-pulse hover:scale-110 hover:shadow-[0_0_40px_#FF6B35,0_0_80px_#FF6B35,0_0_120px_#FF6B35] transition-all duration-300 transform hover:skew-x-2"
                   style={{
                     animation: "pulse-glow 1.5s ease-in-out infinite alternate",
@@ -283,10 +299,12 @@ export default function SignupPage() {
                       "0 0 25px #FF6B35, 0 0 50px #FF6B35, 0 0 75px #FF6B35, inset 0 0 25px rgba(255, 107, 53, 0.3)",
                   }}
                 >
-                  <span className="relative z-10 flex items-center gap-4">
-                    <Target className="w-8 h-8" />🎯 CLAIM THIS DEAL NOW - SAVE $31,512!
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
+                  <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+                    <span className="relative z-10 flex items-center gap-4">
+                      <Target className="w-8 h-8" />🎯 CLAIM THIS DEAL NOW - SAVE $36,512!
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
+                  </a>
                 </Button>
               </div>
 
@@ -296,7 +314,7 @@ export default function SignupPage() {
                   <div className="text-sm text-gray-400">Savings</div>
                 </div>
                 <div className="bg-[#0A0A0F]/60 rounded-lg p-4 border border-[#00BFFF]/30">
-                  <div className="text-2xl font-bold text-[#00FF88]">$31,512</div>
+                  <div className="text-2xl font-bold text-[#00FF88]">$36,512</div>
                   <div className="text-sm text-gray-400">You Save</div>
                 </div>
                 <div className="bg-[#0A0A0F]/60 rounded-lg p-4 border border-[#00BFFF]/30">
@@ -320,7 +338,11 @@ export default function SignupPage() {
               { icon: Users, title: "Lead Management", desc: "Intelligent lead qualification" },
               { icon: Shield, title: "Enterprise Security", desc: "Bank-level data protection" },
               { icon: Headphones, title: "Priority Support", desc: "Dedicated success manager" },
-              { icon: Globe, title: "Multi-Channel", desc: "Phone, web, social integration" },
+              {
+                icon: Globe,
+                title: "Smart AI Website",
+                desc: "Integrated AI voice on your lead converting SEO optimized site",
+              },
               { icon: Smartphone, title: "Mobile Apps", desc: "iOS & Android management apps" },
             ].map((feature, index) => (
               <Card
@@ -348,9 +370,12 @@ export default function SignupPage() {
               </p>
               <Button
                 size="lg"
+                asChild
                 className="bg-gradient-to-r from-[#00BFFF] to-[#00FF88] text-black font-bold px-8 py-4 text-lg rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(0,191,255,0.5)] mb-4"
               >
-                Get Started Now - $3,488
+                <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+                  Get Started Now - $3,488
+                </a>
               </Button>
               <p className="text-sm text-gray-400">
                 ✅ 30-day money-back guarantee
