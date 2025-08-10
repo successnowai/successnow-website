@@ -35,11 +35,26 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">S</span>
+          <Link href="/" className="flex items-center space-x-3 group">
+            {/* Neon S Icon */}
+            <div className="relative">
+              <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-pink-500/25 transition-all duration-300">
+                <span className="text-white font-bold text-lg drop-shadow-lg">S</span>
+              </div>
+              {/* Neon glow effect */}
+              <div className="absolute inset-0 w-10 h-10 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-lg opacity-0 group-hover:opacity-30 blur-md transition-all duration-300"></div>
             </div>
-            <span className="text-white font-bold text-xl">SuccessNOW</span>
+
+            {/* Logo Text */}
+            <div className="flex items-baseline space-x-1">
+              <span className="text-white font-bold text-xl md:text-2xl tracking-tight group-hover:text-cyan-300 transition-colors duration-300">
+                Success
+              </span>
+              <span className="text-cyan-400 font-bold text-xl md:text-2xl tracking-tight group-hover:text-pink-400 transition-colors duration-300">
+                NOW
+              </span>
+              <span className="text-gray-400 font-medium text-sm md:text-base">.ai</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -48,9 +63,10 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
+                className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium relative group"
               >
                 {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
               </Link>
             ))}
           </div>
@@ -58,14 +74,17 @@ export default function Navbar() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link href="/signup">
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
+              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-pink-500 hover:to-purple-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
                 Get Started
               </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white p-2">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-white p-2 hover:text-cyan-400 transition-colors duration-200"
+          >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -84,7 +103,7 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block text-gray-300 hover:text-white transition-colors duration-200 font-medium px-4 py-2"
+                    className="block text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium px-4 py-2"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
@@ -92,7 +111,7 @@ export default function Navbar() {
                 ))}
                 <div className="px-4 pt-4">
                   <Link href="/signup">
-                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white py-2 rounded-lg font-semibold">
+                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-pink-500 hover:to-purple-600 text-white py-2 rounded-lg font-semibold transition-all duration-300">
                       Get Started
                     </Button>
                   </Link>
