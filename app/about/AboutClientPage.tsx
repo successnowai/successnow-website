@@ -22,7 +22,7 @@ import Link from "next/link"
 
 const AboutClientPage = () => {
   return (
-    <div className="min-h-screen relative overflow-hidden bg-black">
+    <div className="min-h-screen bg-black relative overflow-hidden">
       <StarryBackground />
 
       <div className="relative z-10">
@@ -31,14 +31,14 @@ const AboutClientPage = () => {
           <div className="max-w-7xl mx-auto text-center">
             <Badge
               variant="outline"
-              className="mb-8 px-6 py-2 text-sm font-medium border-[#00BFFF]/30 text-[#00BFFF] bg-[#00BFFF]/10 hover:border-pink-500/50 hover:text-pink-400 hover:bg-pink-500/10 transition-all duration-300"
+              className="mb-8 px-6 py-2 text-sm font-medium border-cyan-400/30 text-cyan-400 bg-cyan-400/10 hover:border-pink-500/50 hover:text-pink-400 hover:bg-pink-500/10 transition-all duration-300"
             >
               About SuccessNOW.ai
             </Badge>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">The SuccessNOW.ai Story</h1>
 
-            <p className="text-xl md:text-2xl text-[#00BFFF] max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-cyan-400 max-w-4xl mx-auto leading-relaxed font-medium">
               From Door-to-Door Hustle to AI-Powered Global Automation
             </p>
           </div>
@@ -51,10 +51,10 @@ const AboutClientPage = () => {
 
             <div className="grid md:grid-cols-2 gap-8">
               {/* Company Mission Quote */}
-              <Card variant="cyberpunk">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#00BFFF] to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center text-white text-2xl font-bold transition-all duration-300">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center text-white text-2xl font-bold transition-all duration-300">
                       <Quote className="w-6 h-6" />
                     </div>
                     <div>
@@ -66,15 +66,17 @@ const AboutClientPage = () => {
                     "AI isn't coming — it's here. Deploy your AI Super Agents NOW... and never miss another lead."
                   </blockquote>
 
-                  <p className="text-[#00BFFF] font-medium">— John Potvin, Founder</p>
+                  <p className="text-cyan-400 font-medium group-hover:text-pink-400 transition-colors duration-300">
+                    — John Potvin, Founder
+                  </p>
                 </CardContent>
               </Card>
 
               {/* Innovation Panel Quote */}
-              <Card variant="cyberpunk">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#00BFFF] to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center text-white text-2xl font-bold transition-all duration-300">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center text-white text-2xl font-bold transition-all duration-300">
                       <Quote className="w-6 h-6" />
                     </div>
                     <div>
@@ -89,7 +91,9 @@ const AboutClientPage = () => {
                     again! AI is here, it's not coming, adapt or get left behind!"
                   </blockquote>
 
-                  <p className="text-[#00BFFF] font-medium">— John Potvin</p>
+                  <p className="text-cyan-400 font-medium group-hover:text-pink-400 transition-colors duration-300">
+                    — John Potvin
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -119,13 +123,15 @@ const AboutClientPage = () => {
               </div>
 
               <div className="flex justify-center">
-                <Card variant="cyberpunk" className="p-8 text-center max-w-sm">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center text-white text-4xl font-bold mx-auto mb-6">
+                <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group p-8 text-center max-w-sm">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center text-white text-4xl font-bold mx-auto mb-6 transition-all duration-300">
                     <User className="w-12 h-12" />
                   </div>
 
                   <h3 className="text-2xl font-bold text-white mb-2">John Potvin</h3>
-                  <p className="text-[#00BFFF] font-medium mb-4">Founder & CEO</p>
+                  <p className="text-cyan-400 font-medium mb-4 group-hover:text-pink-400 transition-colors duration-300">
+                    Founder & CEO
+                  </p>
                   <p className="text-gray-400 text-sm">Sales Innovator • AI Visionary • Business Growth Expert</p>
                 </Card>
               </div>
@@ -142,13 +148,16 @@ const AboutClientPage = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Early Career */}
-              <Card variant="cyberpunk">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center transition-all duration-300">
                       <Phone className="w-6 h-6 text-white" />
                     </div>
-                    <Badge variant="outline" className="border-[#00BFFF]/30 text-[#00BFFF] bg-[#00BFFF]/10">
+                    <Badge
+                      variant="outline"
+                      className="border-cyan-400/30 text-cyan-400 bg-cyan-400/10 group-hover:border-pink-500/50 group-hover:text-pink-400 group-hover:bg-pink-500/10 transition-all duration-300"
+                    >
                       Early Career
                     </Badge>
                   </div>
@@ -161,13 +170,16 @@ const AboutClientPage = () => {
               </Card>
 
               {/* Early 20s */}
-              <Card variant="cyberpunk">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center transition-all duration-300">
                       <Building2 className="w-6 h-6 text-white" />
                     </div>
-                    <Badge variant="outline" className="border-[#00BFFF]/30 text-[#00BFFF] bg-[#00BFFF]/10">
+                    <Badge
+                      variant="outline"
+                      className="border-cyan-400/30 text-cyan-400 bg-cyan-400/10 group-hover:border-pink-500/50 group-hover:text-pink-400 group-hover:bg-pink-500/10 transition-all duration-300"
+                    >
                       Early 20s
                     </Badge>
                   </div>
@@ -180,13 +192,16 @@ const AboutClientPage = () => {
               </Card>
 
               {/* Automotive Era */}
-              <Card variant="cyberpunk">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center transition-all duration-300">
                       <Car className="w-6 h-6 text-white" />
                     </div>
-                    <Badge variant="outline" className="border-[#00BFFF]/30 text-[#00BFFF] bg-[#00BFFF]/10">
+                    <Badge
+                      variant="outline"
+                      className="border-cyan-400/30 text-cyan-400 bg-cyan-400/10 group-hover:border-pink-500/50 group-hover:text-pink-400 group-hover:bg-pink-500/10 transition-all duration-300"
+                    >
                       Automotive Era
                     </Badge>
                   </div>
@@ -199,33 +214,39 @@ const AboutClientPage = () => {
               </Card>
 
               {/* Entrepreneurship */}
-              <Card variant="cyberpunk" className="md:col-span-2 lg:col-span-1">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group md:col-span-2 lg:col-span-1">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center transition-all duration-300">
                       <Dumbbell className="w-6 h-6 text-white" />
                     </div>
-                    <Badge variant="outline" className="border-[#00BFFF]/30 text-[#00BFFF] bg-[#00BFFF]/10">
+                    <Badge
+                      variant="outline"
+                      className="border-cyan-400/30 text-cyan-400 bg-cyan-400/10 group-hover:border-pink-500/50 group-hover:text-pink-400 group-hover:bg-pink-500/10 transition-all duration-300"
+                    >
                       Entrepreneurship
                     </Badge>
                   </div>
 
                   <h3 className="text-xl font-bold text-white mb-3">Franchise Gym Chain</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Scaled martial arts and fitness gyms to <span className="text-[#00BFFF] font-bold">$100K MRR</span>{" "}
+                    Scaled martial arts and fitness gyms to <span className="text-cyan-400 font-bold">$100K MRR</span>{" "}
                     in 6 months
                   </p>
                 </CardContent>
               </Card>
 
               {/* AI Revolution */}
-              <Card variant="cyberpunk" className="md:col-span-2 lg:col-span-2">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group md:col-span-2 lg:col-span-2">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center transition-all duration-300">
                       <Zap className="w-6 h-6 text-white" />
                     </div>
-                    <Badge variant="outline" className="border-[#00BFFF]/30 text-[#00BFFF] bg-[#00BFFF]/10">
+                    <Badge
+                      variant="outline"
+                      className="border-cyan-400/30 text-cyan-400 bg-cyan-400/10 group-hover:border-pink-500/50 group-hover:text-pink-400 group-hover:bg-pink-500/10 transition-all duration-300"
+                    >
                       AI Revolution
                     </Badge>
                   </div>
@@ -245,14 +266,14 @@ const AboutClientPage = () => {
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">The Turning Point</h2>
 
-            <Card variant="darker" className="p-8 md:p-12">
+            <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 p-8 md:p-12">
               <div className="text-center space-y-6">
                 <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
                   John realized that the only limitation to helping more businesses was his own time. He couldn't be
                   everywhere at once — but AI could.
                 </p>
 
-                <p className="text-lg md:text-xl text-[#00BFFF] leading-relaxed">
+                <p className="text-lg md:text-xl text-cyan-400 leading-relaxed font-medium">
                   Out of this vision, SuccessNOW.ai was born: a platform where his meticulously refined systems could be
                   deployed instantly for any business in any niche.
                 </p>
@@ -270,14 +291,14 @@ const AboutClientPage = () => {
 
                 <p className="text-xl text-gray-300 leading-relaxed">
                   To give every business — from small local service providers to enterprise-level agencies — access to
-                  AI Super Agents that work <span className="text-[#00BFFF] font-bold">24/7</span>, never miss a
+                  AI Super Agents that work <span className="text-cyan-400 font-bold">24/7</span>, never miss a
                   follow-up, and deliver personalized, high-converting customer experiences.
                 </p>
               </div>
 
               <div className="flex justify-center">
-                <Card variant="cyberpunk" className="p-8 text-center max-w-sm">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center text-white mx-auto mb-6">
+                <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group p-8 text-center max-w-sm">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center text-white mx-auto mb-6 transition-all duration-300">
                     <Target className="w-8 h-8" />
                   </div>
 
@@ -296,7 +317,7 @@ const AboutClientPage = () => {
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-12 text-white">Global Impact</h2>
 
-            <Card variant="darker" className="p-8 md:p-12 mb-12">
+            <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 p-8 md:p-12 mb-12">
               <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
                 Today, SuccessNOW.ai operates globally, empowering businesses in the U.S. and Canada to scale faster,
                 work smarter, and deliver customer experiences that feel deeply personal — at AI speed.
@@ -305,7 +326,7 @@ const AboutClientPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-[#00BFFF] to-blue-600 hover:from-pink-500 hover:to-purple-600 text-white px-8 py-3 transition-all duration-300"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-pink-500 hover:to-purple-600 text-white px-8 py-3 shadow-[0_0_20px_rgba(0,191,255,0.3)] hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] transition-all duration-300"
                   asChild
                 >
                   <Link href="/demo">
@@ -317,7 +338,7 @@ const AboutClientPage = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-[#00BFFF]/50 text-[#00BFFF] hover:bg-pink-500/10 hover:border-pink-500/50 hover:text-pink-400 px-8 py-3 bg-transparent transition-all duration-300"
+                  className="border-cyan-400/50 text-cyan-400 hover:bg-pink-500/10 hover:border-pink-500/50 hover:text-pink-400 px-8 py-3 bg-transparent hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] transition-all duration-300"
                   asChild
                 >
                   <Link href="/signup">
@@ -342,10 +363,10 @@ const AboutClientPage = () => {
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <Card variant="cyberpunk">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center transition-all duration-300">
                       <Users className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-white">Learn Your Business & Clients</h3>
@@ -356,10 +377,10 @@ const AboutClientPage = () => {
                 </CardContent>
               </Card>
 
-              <Card variant="cyberpunk">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center transition-all duration-300">
                       <BarChart3 className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-white">Update CRM Automatically</h3>
@@ -370,10 +391,10 @@ const AboutClientPage = () => {
                 </CardContent>
               </Card>
 
-              <Card variant="cyberpunk">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center transition-all duration-300">
                       <MessageSquare className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-white">Handle Voice & Chat Conversations</h3>
@@ -384,10 +405,10 @@ const AboutClientPage = () => {
                 </CardContent>
               </Card>
 
-              <Card variant="cyberpunk">
+              <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 group">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#00BFFF] to-blue-600 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center transition-all duration-300">
                       <Bolt className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-white">Adapt With Every Interaction</h3>
