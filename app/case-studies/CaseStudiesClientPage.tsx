@@ -9,10 +9,8 @@ import {
   DollarSign,
   Clock,
   Play,
-  ChevronRight,
   Users,
   CheckCircle,
-  XCircle,
   Calculator,
   Award,
   Briefcase,
@@ -21,6 +19,8 @@ import {
   Scale,
   Scissors,
   Wrench,
+  AlertTriangle,
+  Zap,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -411,62 +411,116 @@ export default function CaseStudiesClientPage() {
         </div>
       </section>
 
-      {/* Industry Case Studies */}
+      {/* Industry Pain Points & Solutions */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Industry Case Studies</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Industry Pain Points & AI Solutions</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              See exactly how businesses in your industry are saving money and time
+              See exactly how AI solves the biggest challenges in your industry
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {industryData.map((industry) => (
-              <Card
-                key={industry.id}
-                className="card-stylized hover:scale-105 transition-all duration-300 cursor-pointer"
-                onClick={() => setSelectedIndustry(industry)}
-              >
-                <CardHeader className="text-center">
-                  <div className="flex justify-center mb-4 text-brandBlue">{industry.icon}</div>
-                  <CardTitle className="text-2xl text-white mb-4">{industry.name}</CardTitle>
-
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="text-center p-4 rounded-lg bg-red-500/10 border border-red-500/20">
-                      <div className="text-2xl font-bold text-red-400 mb-1">
+          <div className="space-y-16">
+            {industryData.map((industry, industryIndex) => (
+              <div key={industry.id} className="space-y-8">
+                {/* Industry Header */}
+                <div className="text-center">
+                  <div className="inline-flex items-center px-6 py-3 rounded-full border border-brandBlue/30 bg-brandBlue/10 mb-4">
+                    <div className="text-brandBlue mr-3">{industry.icon}</div>
+                    <span className="text-brandBlue font-semibold text-lg">{industry.name}</span>
+                  </div>
+                  <div className="flex justify-center items-center gap-8 mb-8">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-red-400 mb-1">
                         ${(industry.before.total / 1000).toFixed(0)}K
                       </div>
-                      <div className="text-sm text-gray-400">Before (Annual)</div>
+                      <div className="text-sm text-gray-400">Before (Annual Cost)</div>
                     </div>
-                    <div className="text-center p-4 rounded-lg bg-green-500/10 border border-green-500/20">
-                      <div className="text-2xl font-bold text-green-400 mb-1">
+                    <ArrowRight className="w-8 h-8 text-brandBlue" />
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-green-400 mb-1">
                         ${(industry.after.savings / 1000).toFixed(0)}K
                       </div>
                       <div className="text-sm text-gray-400">Savings</div>
                     </div>
                   </div>
-                </CardHeader>
+                </div>
 
-                <CardContent>
-                  <div className="space-y-3 mb-6">
-                    {industry.after.improvements.slice(0, 3).map((improvement, index) => (
-                      <div key={index} className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-300 text-sm">{improvement}</span>
+                {/* Pain Points & Solutions Grid */}
+                <div className="grid lg:grid-cols-5 gap-6">
+                  {industry.before.problems.map((problem, index) => (
+                    <div key={index} className="space-y-4">
+                      {/* Pain Point Card */}
+                      <Card className="bg-red-500/5 border-red-500/20 p-6 h-32 flex flex-col justify-center">
+                        <div className="flex items-start mb-3">
+                          <AlertTriangle className="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" />
+                          <div className="text-red-400 font-semibold text-sm">PAIN POINT</div>
+                        </div>
+                        <p className="text-gray-300 text-sm leading-relaxed">{problem}</p>
+                      </Card>
+
+                      {/* Arrow */}
+                      <div className="flex justify-center">
+                        <div className="w-8 h-8 rounded-full bg-brandBlue/20 flex items-center justify-center">
+                          <ArrowRight className="w-4 h-4 text-brandBlue rotate-90" />
+                        </div>
                       </div>
-                    ))}
-                  </div>
 
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm">
-                      <div className="font-semibold text-white">{industry.testimonial.name}</div>
-                      <div className="text-gray-400">{industry.testimonial.title}</div>
+                      {/* Solution Card */}
+                      <Card className="bg-green-500/5 border-green-500/20 p-6 h-32 flex flex-col justify-center">
+                        <div className="flex items-start mb-3">
+                          <Zap className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                          <div className="text-green-400 font-semibold text-sm">AI SOLUTION</div>
+                        </div>
+                        <p className="text-gray-300 text-sm leading-relaxed">{industry.after.improvements[index]}</p>
+                      </Card>
                     </div>
-                    <ChevronRight className="w-5 h-5 text-brandBlue" />
+                  ))}
+                </div>
+
+                {/* Results Summary */}
+                <Card className="card-stylized p-8">
+                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-4">Real Results</h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        {Object.entries(industry.after.results).map(([key, value]) => (
+                          <div
+                            key={key}
+                            className="text-center p-4 rounded-lg bg-brandBlue/10 border border-brandBlue/20"
+                          >
+                            <div className="text-lg font-bold text-brandBlue mb-1">{value}</div>
+                            <div className="text-xs text-gray-400 capitalize">
+                              {key.replace(/([A-Z])/g, " $1").trim()}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="bg-brandBlue/5 border-brandBlue/20 rounded-lg p-6">
+                      <div className="flex items-start mb-4">
+                        <div className="text-4xl text-brandBlue/30 mr-3">"</div>
+                        <blockquote className="text-gray-300 italic text-lg leading-relaxed">
+                          {industry.testimonial.quote}
+                        </blockquote>
+                      </div>
+                      <div className="ml-7">
+                        <div className="font-semibold text-white">{industry.testimonial.name}</div>
+                        <div className="text-gray-400 text-sm">{industry.testimonial.title}</div>
+                        <div className="text-brandBlue text-sm">{industry.testimonial.location}</div>
+                      </div>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
+                </Card>
+
+                {/* Divider */}
+                {industryIndex < industryData.length - 1 && (
+                  <div className="flex justify-center py-8">
+                    <div className="w-32 h-px bg-gradient-to-r from-transparent via-brandBlue/30 to-transparent"></div>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </div>
@@ -509,159 +563,6 @@ export default function CaseStudiesClientPage() {
           </Card>
         </div>
       </section>
-
-      {/* Detailed Industry Modal */}
-      {selectedIndustry && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <Card className="card-stylized max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-            <CardHeader className="border-b border-brandBlue/20">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="text-brandBlue mr-4">{selectedIndustry.icon}</div>
-                  <div>
-                    <CardTitle className="text-3xl text-white mb-2">{selectedIndustry.name}</CardTitle>
-                    <p className="text-gray-400">Complete Before & After Breakdown</p>
-                  </div>
-                </div>
-                <Button
-                  variant="ghost"
-                  onClick={() => setSelectedIndustry(null)}
-                  className="text-gray-400 hover:text-white text-2xl"
-                >
-                  ✕
-                </Button>
-              </div>
-            </CardHeader>
-
-            <CardContent className="p-8">
-              {/* Before & After Comparison */}
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
-                {/* Before */}
-                <Card className="bg-red-500/5 border-red-500/20 p-6">
-                  <div className="flex items-center mb-6">
-                    <XCircle className="w-8 h-8 text-red-400 mr-3" />
-                    <h3 className="text-2xl font-bold text-white">BEFORE SuccessNOW</h3>
-                  </div>
-
-                  <div className="space-y-4 mb-6">
-                    {Object.entries(selectedIndustry.before)
-                      .filter(([key]) => key !== "total" && key !== "problems")
-                      .map(([role, cost]) => (
-                        <div key={role} className="flex justify-between items-center py-2 border-b border-red-500/10">
-                          <span className="text-gray-300 capitalize">{role.replace(/([A-Z])/g, " $1").trim()}:</span>
-                          <span className="text-red-400 font-semibold">${cost.toLocaleString()}/year</span>
-                        </div>
-                      ))}
-                  </div>
-
-                  <div className="border-t border-red-500/20 pt-4 mb-6">
-                    <div className="flex justify-between items-center">
-                      <span className="text-white font-bold text-lg">Total Overhead:</span>
-                      <span className="text-red-400 font-bold text-xl">
-                        ${selectedIndustry.before.total.toLocaleString()}/year
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h4 className="text-white font-semibold mb-3">Common Problems:</h4>
-                    {selectedIndustry.before.problems.map((problem, index) => (
-                      <div key={index} className="flex items-start">
-                        <XCircle className="w-5 h-5 text-red-400 mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-300 text-sm">{problem}</span>
-                      </div>
-                    ))}
-                  </div>
-                </Card>
-
-                {/* After */}
-                <Card className="bg-green-500/5 border-green-500/20 p-6">
-                  <div className="flex items-center mb-6">
-                    <CheckCircle className="w-8 h-8 text-green-400 mr-3" />
-                    <h3 className="text-2xl font-bold text-white">AFTER SuccessNOW</h3>
-                  </div>
-
-                  <div className="mb-6">
-                    <div className="text-center p-6 rounded-lg bg-green-500/10 border border-green-500/20">
-                      <div className="text-4xl font-bold text-green-400 mb-2">
-                        ${selectedIndustry.after.savings.toLocaleString()}
-                      </div>
-                      <div className="text-gray-300">Annual Savings</div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 mb-6">
-                    <h4 className="text-white font-semibold mb-3">AI Solutions:</h4>
-                    {selectedIndustry.after.improvements.map((improvement, index) => (
-                      <div key={index} className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-300 text-sm">{improvement}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    {Object.entries(selectedIndustry.after.results).map(([key, value]) => (
-                      <div key={key} className="text-center p-3 rounded-lg bg-green-500/10 border border-green-500/20">
-                        <div className="text-lg font-bold text-green-400 mb-1">{value}</div>
-                        <div className="text-xs text-gray-400 capitalize">{key.replace(/([A-Z])/g, " $1").trim()}</div>
-                      </div>
-                    ))}
-                  </div>
-                </Card>
-              </div>
-
-              {/* Testimonial */}
-              <Card className="bg-brandBlue/5 border-brandBlue/20 p-8 mb-8">
-                <div className="flex items-start">
-                  <div className="text-6xl text-brandBlue/30 mr-4">"</div>
-                  <div>
-                    <blockquote className="text-xl text-gray-300 italic mb-6">
-                      {selectedIndustry.testimonial.quote}
-                    </blockquote>
-                    <div className="flex items-center">
-                      <div>
-                        <div className="font-semibold text-white text-lg">{selectedIndustry.testimonial.name}</div>
-                        <div className="text-gray-400">{selectedIndustry.testimonial.title}</div>
-                        <div className="text-brandBlue text-sm">{selectedIndustry.testimonial.location}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-
-              {/* CTA */}
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-white mb-4">Ready to Get Similar Results?</h3>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-brandBlue to-brandPurple hover:from-brandBlue/80 hover:to-brandPurple/80 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105"
-                    asChild
-                  >
-                    <Link href="/demo">
-                      <Play className="w-5 h-5 mr-2" />
-                      See Live Demo
-                    </Link>
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="border-brandBlue/50 text-brandBlue hover:bg-brandBlue/10 px-8 py-4 rounded-lg transition-all duration-300 bg-transparent"
-                    asChild
-                  >
-                    <Link href="/signup">
-                      Get Started Now
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )}
 
       {/* Savings Calculator Modal */}
       {showCalculator && (
