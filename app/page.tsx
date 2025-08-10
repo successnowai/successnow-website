@@ -1,5 +1,5 @@
 import { generateHomePageJsonLd } from "@/lib/json-ld"
-import { JsonLdScript } from "@/components/json-ld-script"
+import JsonLdScript from "@/components/json-ld-script"
 import StarryBackground from "@/components/ui/starry-background"
 import { NewTopHeroSection } from "@/components/home/new-top-hero-section"
 import { GlassmorphicProblemsSection } from "@/components/home/glassmorphic-problems-section"

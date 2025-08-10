@@ -8,7 +8,7 @@ import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 import StarryBackground from "@/components/ui/starry-background"
 import ScrollToTop from "@/components/ui/scroll-to-top"
 import { generateSitewideJsonLd } from "@/lib/json-ld"
-import { JsonLdScript } from "@/components/json-ld-script"
+import JsonLdScript from "@/components/json-ld-script"
 
 const inter = Inter({
   subsets: ["latin"],

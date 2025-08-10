@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Facebook, Instagram, Linkedin, Twitter, Youtube, Users } from "lucide-react"
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer className="relative bg-black border-t border-white/10">
       {/* Starry background */}
@@ -229,3 +229,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer

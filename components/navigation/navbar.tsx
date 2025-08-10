@@ -7,7 +7,7 @@ import Link from "next/link"
 import { ChevronDown, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const Navbar = () => {
+export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isIndustriesOpen, setIsIndustriesOpen] = useState(false)
   const [isMobileIndustriesOpen, setIsMobileIndustriesOpen] = useState(false)
