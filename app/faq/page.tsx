@@ -1,8 +1,6 @@
 import type { Metadata } from "next"
 import FAQClientPage from "./FAQClientPage"
 import JsonLdScript from "@/components/json-ld-script"
-import { Navbar } from "@/components/navigation/navbar"
-import { Footer } from "@/components/home/footer"
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | SuccessNOW AI",
@@ -58,11 +56,7 @@ export default function FAQPage() {
   return (
     <>
       <JsonLdScript data={faqSchema} />
-      <div className="bg-black">
-        <Navbar />
-        <FAQClientPage faqs={faqs} />
-        <Footer />
-      </div>
+      <FAQClientPage faqs={faqs} />
     </>
   )
 }
