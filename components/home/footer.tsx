@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ExternalLink } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react"
 
 const Footer = () => {
   return (
@@ -30,29 +30,13 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Company Info */}
-          <div className="md:col-span-1">
-            <h3
-              className="text-2xl font-bold mb-6"
-              style={{
-                color: "white",
-                textShadow: "0 0 10px rgba(14, 165, 233, 0.6)",
-              }}
-            >
-              SuccessNOW
-            </h3>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              AI Superagents that convert, book, and nurture leads 24/7 — while you get back your time.
-            </p>
-          </div>
-
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold text-white mb-6">Quick Links</h4>
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/industries"
+                  href="/"
                   className="text-gray-300 hover:text-white transition-all duration-300"
                   style={{ textShadow: "0 0 0 transparent" }}
                   onMouseEnter={(e) => {
@@ -64,7 +48,7 @@ const Footer = () => {
                     e.target.style.color = "#d1d5db"
                   }}
                 >
-                  Industries
+                  Home
                 </Link>
               </li>
               <li>
@@ -98,12 +82,12 @@ const Footer = () => {
                     e.target.style.color = "#d1d5db"
                   }}
                 >
-                  Live Demo
+                  Demo
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/blogs"
+                  href="/industries"
                   className="text-gray-300 hover:text-white transition-all duration-300"
                   style={{ textShadow: "0 0 0 transparent" }}
                   onMouseEnter={(e) => {
@@ -115,7 +99,7 @@ const Footer = () => {
                     e.target.style.color = "#d1d5db"
                   }}
                 >
-                  Blogs
+                  Industries
                 </Link>
               </li>
               <li>
@@ -133,42 +117,6 @@ const Footer = () => {
                   }}
                 >
                   Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://my.successnow.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white transition-all duration-300"
-                  style={{ textShadow: "0 0 0 transparent" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.textShadow = "0 0 8px rgba(217, 70, 239, 0.6)"
-                    e.target.style.color = "#d946ef"
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.textShadow = "0 0 0 transparent"
-                    e.target.style.color = "#d1d5db"
-                  }}
-                >
-                  Community
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/signup"
-                  className="text-gray-300 hover:text-white transition-all duration-300"
-                  style={{ textShadow: "0 0 0 transparent" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.textShadow = "0 0 8px rgba(14, 165, 233, 0.6)"
-                    e.target.style.color = "#0ea5e9"
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.textShadow = "0 0 0 transparent"
-                    e.target.style.color = "#d1d5db"
-                  }}
-                >
-                  Get Started
                 </Link>
               </li>
               <li>
@@ -191,13 +139,13 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Industries */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">Support</h4>
+            <h4 className="text-lg font-semibold text-white mb-6">Industries</h4>
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="mailto:support@successnow.ai"
+                  href="/realtornow"
                   className="text-gray-300 hover:text-white transition-all duration-300"
                   style={{ textShadow: "0 0 0 transparent" }}
                   onMouseEnter={(e) => {
@@ -209,7 +157,118 @@ const Footer = () => {
                     e.target.style.color = "#d1d5db"
                   }}
                 >
-                  Contact Us
+                  Real Estate
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/autodealersnow"
+                  className="text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(14, 165, 233, 0.6)"
+                    e.target.style.color = "#0ea5e9"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  Auto Dealers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/medspanow"
+                  className="text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(14, 165, 233, 0.6)"
+                    e.target.style.color = "#0ea5e9"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  MedSpa
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/lawyersnow"
+                  className="text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(14, 165, 233, 0.6)"
+                    e.target.style.color = "#0ea5e9"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  Legal
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contractorsnow"
+                  className="text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(14, 165, 233, 0.6)"
+                    e.target.style.color = "#0ea5e9"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  Contractors
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support & Community */}
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-6">Support & Community</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/blogs"
+                  className="text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(14, 165, 233, 0.6)"
+                    e.target.style.color = "#0ea5e9"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://my.successnow.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(217, 70, 239, 0.6)"
+                    e.target.style.color = "#d946ef"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  Community
                 </Link>
               </li>
               <li>
@@ -246,54 +305,73 @@ const Footer = () => {
                   Terms of Service
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="mailto:support@successnow.ai"
+                  className="text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(14, 165, 233, 0.6)"
+                    e.target.style.color = "#0ea5e9"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  Contact Support
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Our Brands */}
+          {/* Follow Us */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">Our Brands</h4>
+            <h4 className="text-lg font-semibold text-white mb-6">Follow Us</h4>
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="https://devnow.ai"
+                  href="https://www.facebook.com/profile.php?id=61578055388858"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center text-gray-300 hover:text-white transition-all duration-300"
                   style={{ textShadow: "0 0 0 transparent" }}
                   onMouseEnter={(e) => {
-                    e.target.style.textShadow = "0 0 8px rgba(14, 165, 233, 0.6)"
-                    e.target.style.color = "#0ea5e9"
+                    e.target.style.textShadow = "0 0 8px rgba(59, 130, 246, 0.6)"
+                    e.target.style.color = "#3b82f6"
                   }}
                   onMouseLeave={(e) => {
                     e.target.style.textShadow = "0 0 0 transparent"
                     e.target.style.color = "#d1d5db"
                   }}
                 >
-                  DevNOW <ExternalLink className="w-4 h-4 ml-1" />
+                  <Facebook className="w-4 h-4 mr-2" />
+                  Facebook
                 </Link>
               </li>
               <li>
                 <Link
-                  href="https://salesbotnow.ai"
+                  href="https://www.instagram.com/successnowai/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center text-gray-300 hover:text-white transition-all duration-300"
                   style={{ textShadow: "0 0 0 transparent" }}
                   onMouseEnter={(e) => {
-                    e.target.style.textShadow = "0 0 8px rgba(14, 165, 233, 0.6)"
-                    e.target.style.color = "#0ea5e9"
+                    e.target.style.textShadow = "0 0 8px rgba(236, 72, 153, 0.6)"
+                    e.target.style.color = "#ec4899"
                   }}
                   onMouseLeave={(e) => {
                     e.target.style.textShadow = "0 0 0 transparent"
                     e.target.style.color = "#d1d5db"
                   }}
                 >
-                  SalesBotNOW <ExternalLink className="w-4 h-4 ml-1" />
+                  <Instagram className="w-4 h-4 mr-2" />
+                  Instagram
                 </Link>
               </li>
               <li>
                 <Link
-                  href="https://adsnow.ai"
+                  href="https://www.linkedin.com/in/john-potvin-65231229/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center text-gray-300 hover:text-white transition-all duration-300"
@@ -307,12 +385,13 @@ const Footer = () => {
                     e.target.style.color = "#d1d5db"
                   }}
                 >
-                  AdsNOW <ExternalLink className="w-4 h-4 ml-1" />
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  John's LinkedIn
                 </Link>
               </li>
               <li>
                 <Link
-                  href="https://seonow.ai"
+                  href="https://www.linkedin.com/company/success-now-ai/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center text-gray-300 hover:text-white transition-all duration-300"
@@ -326,7 +405,69 @@ const Footer = () => {
                     e.target.style.color = "#d1d5db"
                   }}
                 >
-                  SEONOW <ExternalLink className="w-4 h-4 ml-1" />
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  SuccessNOW LinkedIn
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://x.com/successnowx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(255, 255, 255, 0.6)"
+                    e.target.style.color = "#ffffff"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  <Twitter className="w-4 h-4 mr-2" />X (Twitter)
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://www.tiktok.com/@successnow.ai?is_from_webapp=1&sender_device=pc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(255, 0, 80, 0.6)"
+                    e.target.style.color = "#ff0050"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                  </svg>
+                  TikTok
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://www.youtube.com/@SuccessNow-AI-Agents"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(239, 68, 68, 0.6)"
+                    e.target.style.color = "#ef4444"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  <Youtube className="w-4 h-4 mr-2" />
+                  YouTube
                 </Link>
               </li>
             </ul>
