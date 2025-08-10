@@ -24,7 +24,7 @@ import {
   PhoneOff,
   TrendingDown,
   UserX,
-  ClockX,
+  Timer,
   Target,
 } from "lucide-react"
 import Link from "next/link"
@@ -40,7 +40,7 @@ const commonPainPoints = [
     color: "red",
   },
   {
-    icon: <ClockX className="w-8 h-8" />,
+    icon: <Timer className="w-8 h-8" />,
     title: "Slow Response Times",
     problem: "Customers expect instant responses. 5+ minutes = they're gone",
     cost: "$50,000-$200,000",
