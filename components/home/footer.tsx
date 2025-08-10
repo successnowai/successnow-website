@@ -69,6 +69,23 @@ const Footer = () => {
               </li>
               <li>
                 <Link
+                  href="/about"
+                  className="text-gray-300 hover:text-white transition-all duration-300"
+                  style={{ textShadow: "0 0 0 transparent" }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textShadow = "0 0 8px rgba(14, 165, 233, 0.6)"
+                    e.target.style.color = "#0ea5e9"
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textShadow = "0 0 0 transparent"
+                    e.target.style.color = "#d1d5db"
+                  }}
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/demo"
                   className="text-gray-300 hover:text-white transition-all duration-300"
                   style={{ textShadow: "0 0 0 transparent" }}
