@@ -362,31 +362,29 @@ export default function CaseStudiesClientPage() {
   )
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 relative">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center px-6 py-3 rounded-full border border-brandBlue/30 bg-brandBlue/10 mb-8">
-            <Award className="w-5 h-5 text-brandBlue mr-2" />
-            <span className="text-brandBlue font-semibold">Real Results • Proven Savings</span>
+          <div className="inline-flex items-center px-6 py-3 rounded-full border border-[#00BFFF]/30 bg-[#00BFFF]/10 mb-8 hover:border-pink-500/60 hover:shadow-pink-500/20 transition-all duration-300">
+            <Award className="w-5 h-5 text-[#00BFFF] mr-2" />
+            <span className="text-[#00BFFF] font-semibold">Real Results • Proven Savings</span>
           </div>
 
           <h1
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white"
             style={{
-              background: "linear-gradient(135deg, #ffffff 0%, #0ea5e9 50%, #d946ef 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              textShadow: "0 0 40px rgba(14, 165, 233, 0.3)",
+              textShadow: "0 0 20px rgba(0, 191, 255, 0.5), 0 0 40px rgba(0, 191, 255, 0.3)",
             }}
           >
             How Businesses Save Thousands
-            <br />& Reclaim Their Time
+            <br />
+            <span className="neon-blue-text">& Reclaim Their Time</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
             See how owners across every industry are saving{" "}
-            <span className="text-brandBlue font-bold">
+            <span className="text-[#00BFFF] font-bold neon-blue-text">
               ${totalSavingsRange.min / 1000}K–${totalSavingsRange.max / 1000}K annually
             </span>{" "}
             in staffing costs while working fewer hours and booking more appointments.
@@ -395,7 +393,7 @@ export default function CaseStudiesClientPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-brandBlue to-brandPurple hover:from-brandBlue/80 hover:to-brandPurple/80 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-r from-[#00BFFF] to-[#0080FF] hover:from-pink-500 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/30"
               asChild
             >
               <Link href="/demo">
@@ -407,7 +405,7 @@ export default function CaseStudiesClientPage() {
             <Button
               variant="outline"
               size="lg"
-              className="border-brandBlue/50 text-brandBlue hover:bg-brandBlue/10 px-8 py-4 rounded-lg transition-all duration-300 bg-transparent"
+              className="border-[#00BFFF]/50 text-[#00BFFF] hover:bg-pink-500/10 hover:border-pink-500/60 hover:text-pink-400 px-8 py-4 rounded-lg transition-all duration-300 bg-transparent"
               onClick={() => setShowCalculator(true)}
             >
               <Calculator className="w-5 h-5 mr-2" />
@@ -423,8 +421,10 @@ export default function CaseStudiesClientPage() {
               { icon: <TrendingUp className="w-8 h-8" />, title: "More Sales", subtitle: "Automated" },
               { icon: <Users className="w-8 h-8" />, title: "Family Time", subtitle: "Reclaimed" },
             ].map((benefit, index) => (
-              <Card key={index} className="card-stylized text-center p-6">
-                <div className="text-brandBlue mb-3 flex justify-center">{benefit.icon}</div>
+              <Card key={index} variant="cyberpunk" className="text-center p-6">
+                <div className="text-[#00BFFF] mb-3 flex justify-center hover:text-pink-400 transition-colors duration-300">
+                  {benefit.icon}
+                </div>
                 <div className="text-2xl font-bold text-white mb-1">{benefit.title}</div>
                 <div className="text-gray-400 text-sm">{benefit.subtitle}</div>
               </Card>
@@ -437,7 +437,7 @@ export default function CaseStudiesClientPage() {
       <section className="py-20 px-4 bg-gradient-to-b from-red-900/10 to-transparent">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-6 py-3 rounded-full border border-red-500/30 bg-red-500/10 mb-8">
+            <div className="inline-flex items-center px-6 py-3 rounded-full border border-red-500/30 bg-red-500/10 mb-8 hover:border-pink-500/60 hover:shadow-pink-500/20 transition-all duration-300">
               <AlertTriangle className="w-5 h-5 text-red-400 mr-2" />
               <span className="text-red-400 font-semibold">URGENT: Stop Losing Money on These Problems</span>
             </div>
@@ -459,23 +459,26 @@ export default function CaseStudiesClientPage() {
             {commonPainPoints.map((painPoint, index) => (
               <Card
                 key={index}
-                className="card-stylized border-red-500/20 bg-red-500/5 hover:border-red-500/40 transition-all duration-300 hover:scale-105"
+                variant="cyberpunk"
+                className="border-red-500/20 bg-red-500/5 hover:border-pink-500/60 hover:shadow-pink-500/20 transition-all duration-300 hover:scale-105"
               >
                 <CardHeader className="text-center pb-4">
                   <div className="flex justify-center mb-4">
-                    <div className="p-4 rounded-full bg-red-500/10 border border-red-500/20">
-                      <div className="text-red-400">{painPoint.icon}</div>
+                    <div className="p-4 rounded-full bg-red-500/10 border border-red-500/20 hover:border-pink-500/40 transition-colors duration-300">
+                      <div className="text-red-400 hover:text-pink-400 transition-colors duration-300">
+                        {painPoint.icon}
+                      </div>
                     </div>
                   </div>
                   <CardTitle className="text-xl text-white mb-2">{painPoint.title}</CardTitle>
-                  <div className="text-red-400 font-bold text-2xl mb-1">{painPoint.cost}</div>
+                  <div className="text-[#00BFFF] font-bold text-2xl mb-1 neon-blue-text">{painPoint.cost}</div>
                   <div className="text-gray-400 text-sm">{painPoint.frequency}</div>
                 </CardHeader>
 
                 <CardContent className="text-center">
                   <p className="text-gray-300 mb-4 leading-relaxed">{painPoint.problem}</p>
 
-                  <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                  <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 hover:border-pink-500/40 transition-colors duration-300">
                     <div className="text-red-400 font-semibold text-sm mb-1">⚠️ HAPPENING NOW</div>
                     <div className="text-gray-300 text-sm">{painPoint.urgency}</div>
                   </div>
@@ -486,7 +489,7 @@ export default function CaseStudiesClientPage() {
 
           {/* Urgency CTA */}
           <div className="text-center">
-            <Card className="card-stylized-darker p-8 max-w-4xl mx-auto">
+            <Card variant="cyberpunk" className="p-8 max-w-4xl mx-auto">
               <h3 className="text-3xl font-bold text-white mb-4">How Much Are These Problems Costing You?</h3>
               <p className="text-xl text-gray-300 mb-6">
                 The average business loses <span className="text-red-400 font-bold">$200,000-$800,000 annually</span>{" "}
@@ -496,7 +499,7 @@ export default function CaseStudiesClientPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105"
+                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-pink-500 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/30"
                   onClick={() => setShowCalculator(true)}
                 >
                   <Calculator className="w-5 h-5 mr-2" />
@@ -505,7 +508,7 @@ export default function CaseStudiesClientPage() {
 
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-brandBlue to-brandPurple hover:from-brandBlue/80 hover:to-brandPurple/80 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105"
+                  className="bg-gradient-to-r from-[#00BFFF] to-[#0080FF] hover:from-pink-500 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/30"
                   asChild
                 >
                   <Link href="/demo">
@@ -522,7 +525,7 @@ export default function CaseStudiesClientPage() {
       {/* The Big Picture Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <Card className="card-stylized-purple p-12 text-center">
+          <Card variant="cyberpunk" className="p-12 text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
               The Big Picture: Freedom, Savings, and More Sales
             </h2>
@@ -532,7 +535,7 @@ export default function CaseStudiesClientPage() {
                 Across every industry we serve, the story is the same: Owners were buried in overhead costs — sales
                 salaries, reception staff, media buyers, expensive SEO retainers — and still missing opportunities.
               </p>
-              <p className="mb-6 text-brandBlue font-semibold">Then they switched to SuccessNOW.ai.</p>
+              <p className="mb-6 text-[#00BFFF] font-semibold neon-blue-text">Then they switched to SuccessNOW.ai.</p>
               <p>
                 Our AI Voice & Chat Agents answer every call, respond to every lead, and book appointments instantly —
                 24/7, without breaks, sick days, or missed follow-ups. Our AdsNOW.ai bot launches and optimizes paid ads
@@ -550,7 +553,7 @@ export default function CaseStudiesClientPage() {
                 "More family referrals",
               ].map((result, index) => (
                 <div key={index} className="flex items-center text-left">
-                  <CheckCircle className="w-6 h-6 text-green-400 mr-3 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-green-400 mr-3 flex-shrink-0 hover:text-pink-400 transition-colors duration-300" />
                   <span className="text-gray-300">{result}</span>
                 </div>
               ))}
@@ -563,7 +566,7 @@ export default function CaseStudiesClientPage() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Industry Success Stories</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white neon-blue-text">Industry Success Stories</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               See exactly how businesses in your industry are saving money and time
             </p>
@@ -573,22 +576,25 @@ export default function CaseStudiesClientPage() {
             {industryData.map((industry) => (
               <Card
                 key={industry.id}
-                className="card-stylized hover:scale-105 transition-all duration-300 cursor-pointer"
+                variant="cyberpunk"
+                className="hover:scale-105 transition-all duration-300 cursor-pointer"
                 onClick={() => setSelectedIndustry(industry)}
               >
                 <CardHeader className="text-center">
-                  <div className="flex justify-center mb-4 text-brandBlue">{industry.icon}</div>
+                  <div className="flex justify-center mb-4 text-[#00BFFF] hover:text-pink-400 transition-colors duration-300">
+                    {industry.icon}
+                  </div>
                   <CardTitle className="text-2xl text-white mb-4">{industry.name}</CardTitle>
 
                   <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="text-center p-4 rounded-lg bg-red-500/10 border border-red-500/20">
+                    <div className="text-center p-4 rounded-lg bg-red-500/10 border border-red-500/20 hover:border-pink-500/40 transition-colors duration-300">
                       <div className="text-2xl font-bold text-red-400 mb-1">
                         ${(industry.before.total / 1000).toFixed(0)}K
                       </div>
                       <div className="text-sm text-gray-400">Before (Annual)</div>
                     </div>
-                    <div className="text-center p-4 rounded-lg bg-green-500/10 border border-green-500/20">
-                      <div className="text-2xl font-bold text-green-400 mb-1">
+                    <div className="text-center p-4 rounded-lg bg-green-500/10 border border-green-500/20 hover:border-pink-500/40 transition-colors duration-300">
+                      <div className="text-2xl font-bold text-[#00BFFF] neon-blue-text mb-1">
                         ${(industry.after.savings / 1000).toFixed(0)}K
                       </div>
                       <div className="text-sm text-gray-400">Savings</div>
@@ -600,7 +606,7 @@ export default function CaseStudiesClientPage() {
                   <div className="space-y-3 mb-6">
                     {industry.after.improvements.slice(0, 3).map((improvement, index) => (
                       <div key={index} className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0 hover:text-pink-400 transition-colors duration-300" />
                         <span className="text-gray-300 text-sm">{improvement}</span>
                       </div>
                     ))}
@@ -611,7 +617,7 @@ export default function CaseStudiesClientPage() {
                       <div className="font-semibold text-white">{industry.testimonial.name}</div>
                       <div className="text-gray-400">{industry.testimonial.title}</div>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-brandBlue" />
+                    <ArrowRight className="w-5 h-5 text-[#00BFFF] hover:text-pink-400 transition-colors duration-300" />
                   </div>
                 </CardContent>
               </Card>
@@ -623,7 +629,7 @@ export default function CaseStudiesClientPage() {
       {/* CTA Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <Card className="card-stylized-darker p-12">
+          <Card variant="cyberpunk" className="p-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Ready to Join These Success Stories?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Stop paying for expensive staff and agencies. Let AI handle your leads, bookings, and marketing while you
@@ -633,7 +639,7 @@ export default function CaseStudiesClientPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-brandBlue to-brandPurple hover:from-brandBlue/80 hover:to-brandPurple/80 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105"
+                className="bg-gradient-to-r from-[#00BFFF] to-[#0080FF] hover:from-pink-500 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/30"
                 asChild
               >
                 <Link href="/demo">
@@ -645,7 +651,7 @@ export default function CaseStudiesClientPage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white/50 text-white hover:bg-white/10 px-8 py-4 rounded-lg transition-all duration-300 bg-transparent"
+                className="border-white/50 text-white hover:bg-pink-500/10 hover:border-pink-500/60 hover:text-pink-400 px-8 py-4 rounded-lg transition-all duration-300 bg-transparent"
                 asChild
               >
                 <Link href="/signup">
@@ -661,11 +667,13 @@ export default function CaseStudiesClientPage() {
       {/* Detailed Industry Modal */}
       {selectedIndustry && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <Card className="card-stylized max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-            <CardHeader className="border-b border-brandBlue/20">
+          <Card variant="cyberpunk" className="max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <CardHeader className="border-b border-[#00BFFF]/20">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <div className="text-brandBlue mr-4">{selectedIndustry.icon}</div>
+                  <div className="text-[#00BFFF] mr-4 hover:text-pink-400 transition-colors duration-300">
+                    {selectedIndustry.icon}
+                  </div>
                   <div>
                     <CardTitle className="text-3xl text-white mb-2">{selectedIndustry.name}</CardTitle>
                     <p className="text-gray-400">Complete Before & After Breakdown</p>
@@ -674,7 +682,7 @@ export default function CaseStudiesClientPage() {
                 <Button
                   variant="ghost"
                   onClick={() => setSelectedIndustry(null)}
-                  className="text-gray-400 hover:text-white text-2xl"
+                  className="text-gray-400 hover:text-pink-400 hover:bg-pink-500/10 text-2xl transition-colors duration-300"
                 >
                   ✕
                 </Button>
@@ -685,7 +693,7 @@ export default function CaseStudiesClientPage() {
               {/* Before & After Comparison */}
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 {/* Before */}
-                <Card className="bg-red-500/5 border-red-500/20 p-6">
+                <Card variant="cyberpunk" className="bg-red-500/5 border-red-500/20 p-6">
                   <div className="flex items-center mb-6">
                     <AlertTriangle className="w-8 h-8 text-red-400 mr-3" />
                     <h3 className="text-2xl font-bold text-white">BEFORE SuccessNOW</h3>
@@ -723,15 +731,15 @@ export default function CaseStudiesClientPage() {
                 </Card>
 
                 {/* After */}
-                <Card className="bg-green-500/5 border-green-500/20 p-6">
+                <Card variant="cyberpunk" className="bg-green-500/5 border-green-500/20 p-6">
                   <div className="flex items-center mb-6">
-                    <CheckCircle className="w-8 h-8 text-green-400 mr-3" />
+                    <CheckCircle className="w-8 h-8 text-green-400 mr-3 hover:text-pink-400 transition-colors duration-300" />
                     <h3 className="text-2xl font-bold text-white">AFTER SuccessNOW</h3>
                   </div>
 
                   <div className="mb-6">
-                    <div className="text-center p-6 rounded-lg bg-green-500/10 border border-green-500/20">
-                      <div className="text-4xl font-bold text-green-400 mb-2">
+                    <div className="text-center p-6 rounded-lg bg-green-500/10 border border-green-500/20 hover:border-pink-500/40 transition-colors duration-300">
+                      <div className="text-4xl font-bold text-[#00BFFF] neon-blue-text mb-2">
                         ${selectedIndustry.after.savings.toLocaleString()}
                       </div>
                       <div className="text-gray-300">Annual Savings</div>
@@ -742,7 +750,7 @@ export default function CaseStudiesClientPage() {
                     <h4 className="text-white font-semibold mb-3">AI Solutions:</h4>
                     {selectedIndustry.after.improvements.map((improvement, index) => (
                       <div key={index} className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0 hover:text-pink-400 transition-colors duration-300" />
                         <span className="text-gray-300 text-sm">{improvement}</span>
                       </div>
                     ))}
@@ -750,8 +758,11 @@ export default function CaseStudiesClientPage() {
 
                   <div className="grid grid-cols-2 gap-4">
                     {Object.entries(selectedIndustry.after.results).map(([key, value]) => (
-                      <div key={key} className="text-center p-3 rounded-lg bg-green-500/10 border border-green-500/20">
-                        <div className="text-lg font-bold text-green-400 mb-1">{value}</div>
+                      <div
+                        key={key}
+                        className="text-center p-3 rounded-lg bg-green-500/10 border border-green-500/20 hover:border-pink-500/40 transition-colors duration-300"
+                      >
+                        <div className="text-lg font-bold text-[#00BFFF] neon-blue-text mb-1">{value}</div>
                         <div className="text-xs text-gray-400 capitalize">{key.replace(/([A-Z])/g, " $1").trim()}</div>
                       </div>
                     ))}
@@ -760,9 +771,9 @@ export default function CaseStudiesClientPage() {
               </div>
 
               {/* Testimonial */}
-              <Card className="bg-brandBlue/5 border-brandBlue/20 p-8 mb-8">
+              <Card variant="cyberpunk" className="bg-[#00BFFF]/5 border-[#00BFFF]/20 p-8 mb-8">
                 <div className="flex items-start">
-                  <div className="text-6xl text-brandBlue/30 mr-4">"</div>
+                  <div className="text-6xl text-[#00BFFF]/30 mr-4">"</div>
                   <div>
                     <blockquote className="text-xl text-gray-300 italic mb-6">
                       {selectedIndustry.testimonial.quote}
@@ -771,7 +782,9 @@ export default function CaseStudiesClientPage() {
                       <div>
                         <div className="font-semibold text-white text-lg">{selectedIndustry.testimonial.name}</div>
                         <div className="text-gray-400">{selectedIndustry.testimonial.title}</div>
-                        <div className="text-brandBlue text-sm">{selectedIndustry.testimonial.location}</div>
+                        <div className="text-[#00BFFF] text-sm neon-blue-text">
+                          {selectedIndustry.testimonial.location}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -784,7 +797,7 @@ export default function CaseStudiesClientPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-brandBlue to-brandPurple hover:from-brandBlue/80 hover:to-brandPurple/80 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105"
+                    className="bg-gradient-to-r from-[#00BFFF] to-[#0080FF] hover:from-pink-500 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/30"
                     asChild
                   >
                     <Link href="/demo">
@@ -796,7 +809,7 @@ export default function CaseStudiesClientPage() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="border-brandBlue/50 text-brandBlue hover:bg-brandBlue/10 px-8 py-4 rounded-lg transition-all duration-300 bg-transparent"
+                    className="border-[#00BFFF]/50 text-[#00BFFF] hover:bg-pink-500/10 hover:border-pink-500/60 hover:text-pink-400 px-8 py-4 rounded-lg transition-all duration-300 bg-transparent"
                     asChild
                   >
                     <Link href="/signup">
@@ -814,14 +827,14 @@ export default function CaseStudiesClientPage() {
       {/* Savings Calculator Modal */}
       {showCalculator && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <Card className="card-stylized max-w-2xl w-full">
-            <CardHeader className="border-b border-brandBlue/20">
+          <Card variant="cyberpunk" className="max-w-2xl w-full">
+            <CardHeader className="border-b border-[#00BFFF]/20">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-2xl text-white">Calculate Your Potential Savings</CardTitle>
                 <Button
                   variant="ghost"
                   onClick={() => setShowCalculator(false)}
-                  className="text-gray-400 hover:text-white text-2xl"
+                  className="text-gray-400 hover:text-pink-400 hover:bg-pink-500/10 text-2xl transition-colors duration-300"
                 >
                   ✕
                 </Button>
@@ -832,26 +845,26 @@ export default function CaseStudiesClientPage() {
               <div className="text-center mb-8">
                 <p className="text-gray-300 mb-6">
                   Based on our case studies, businesses typically save between{" "}
-                  <span className="text-brandBlue font-bold">
+                  <span className="text-[#00BFFF] font-bold neon-blue-text">
                     ${totalSavingsRange.min / 1000}K-${totalSavingsRange.max / 1000}K annually
                   </span>{" "}
                   by replacing traditional staff and agencies with SuccessNOW AI.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="text-center p-4 rounded-lg bg-red-500/10 border border-red-500/20">
+                  <div className="text-center p-4 rounded-lg bg-red-500/10 border border-red-500/20 hover:border-pink-500/40 transition-colors duration-300">
                     <div className="text-2xl font-bold text-red-400 mb-1">$80K-$200K</div>
                     <div className="text-sm text-gray-400">Typical Staff Costs</div>
                   </div>
-                  <div className="text-center p-4 rounded-lg bg-green-500/10 border border-green-500/20">
-                    <div className="text-2xl font-bold text-green-400 mb-1">$2K-$5K</div>
+                  <div className="text-center p-4 rounded-lg bg-green-500/10 border border-green-500/20 hover:border-pink-500/40 transition-colors duration-300">
+                    <div className="text-2xl font-bold text-[#00BFFF] neon-blue-text mb-1">$2K-$5K</div>
                     <div className="text-sm text-gray-400">SuccessNOW Cost</div>
                   </div>
                 </div>
 
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-brandBlue to-brandPurple hover:from-brandBlue/80 hover:to-brandPurple/80 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 w-full"
+                  className="bg-gradient-to-r from-[#00BFFF] to-[#0080FF] hover:from-pink-500 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-pink-500/30 w-full"
                   asChild
                 >
                   <Link href="/demo">
