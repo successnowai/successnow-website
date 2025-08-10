@@ -1,5 +1,4 @@
 import JsonLdScript from "@/components/json-ld-script"
-import { generateHomePageJsonLd } from "@/lib/json-ld"
 import StarryBackground from "@/components/ui/starry-background"
 import { NewTopHeroSection } from "@/components/home/new-top-hero-section"
 import { GlassmorphicProblemsSection } from "@/components/home/glassmorphic-problems-section"
@@ -13,7 +12,15 @@ import AdsNowSection from "@/components/home/adsnow-section"
 import CtaSection from "@/components/home/cta-section"
 
 export default function HomePage() {
-  const homePageJsonLd = generateHomePageJsonLd()
+  const homePageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "SuccessNOW AI",
+    url: "https://successnow.ai",
+    description:
+      "Transform your business with AI Superagents that handle customer interactions, qualify leads, and drive conversions 24/7.",
+    logo: "https://successnow.ai/images/successnow-logo.png",
+  }
 
   return (
     <>

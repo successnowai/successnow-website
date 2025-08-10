@@ -1,33 +1,19 @@
 import type { Metadata } from "next"
 import AboutClientPage from "./AboutClientPage"
-import JsonLdScript from "@/components/json-ld-script"
-import { generateAboutPageJsonLd } from "@/lib/json-ld"
 
 export const metadata: Metadata = {
-  title: "About Us – The SuccessNOW.ai Story",
+  title: "About Us - The SuccessNOW.ai Story | AI Super Agents for Business",
   description:
-    "Learn how founder John Potvin's journey from door-to-door sales to AI innovation led to the creation of SuccessNOW.ai, a global automation platform.",
-  keywords: "SuccessNOW.ai story, John Potvin, AI Super Agents, business automation, lead conversion, AI chatbots",
+    "Learn about John Potvin's journey from door-to-door sales to creating AI Super Agents that work 24/7. Discover how SuccessNOW.ai is revolutionizing business automation.",
+  keywords: "SuccessNOW.ai story, John Potvin founder, AI business automation, sales innovation, AI agents history",
   openGraph: {
     title: "About Us - The SuccessNOW.ai Story",
     description:
-      "From door-to-door hustle to AI-powered global automation. Discover how SuccessNOW.ai is revolutionizing business growth with AI Super Agents.",
-    type: "article",
-    authors: ["John Potvin"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Us - The SuccessNOW.ai Story",
-    description: "Learn the story behind SuccessNOW.ai and its founder, John Potvin.",
+      "From door-to-door hustle to AI-powered global automation. Learn John Potvin's journey and how SuccessNOW.ai is transforming businesses worldwide.",
+    type: "website",
   },
 }
 
 export default function AboutPage() {
-  const aboutPageJsonLd = generateAboutPageJsonLd()
-  return (
-    <>
-      <JsonLdScript data={aboutPageJsonLd} />
-      <AboutClientPage />
-    </>
-  )
+  return <AboutClientPage />
 }

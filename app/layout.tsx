@@ -7,6 +7,7 @@ import Footer from "@/components/home/footer"
 import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 import StarryBackground from "@/components/ui/starry-background"
 import ScrollToTop from "@/components/ui/scroll-to-top"
+import JsonLdScript from "@/components/json-ld-script"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,17 +30,13 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://successnow.ai"),
-  title: {
-    default: "SuccessNOW – AI Superagent System",
-    template: "%s | SuccessNOW AI",
-  },
+  title: "SuccessNOW – AI Superagent System",
   description:
     "Our AI Superagents convert, book, and nurture leads 24/7 — while you get back your time. Never lose a lead again.",
-  generator: "SuccessNOW AI",
+  generator: "v0.dev",
   keywords:
     "AI Superagents, Lead Conversion, AI Chatbots, Automated Marketing, Lead Generation, AI Sales Assistant, Business Automation",
-  authors: [{ name: "SuccessNOW", url: "https://successnow.ai" }],
+  authors: [{ name: "SuccessNOW" }],
   creator: "SuccessNOW",
   publisher: "SuccessNOW",
   robots: "index, follow",
@@ -52,7 +49,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/successnow-og-image.png", // Use a relative path
+        url: "https://successnow.ai/images/successnow-logo.png",
         width: 1200,
         height: 630,
         alt: "SuccessNOW AI Superagent System",
@@ -64,15 +61,7 @@ export const metadata: Metadata = {
     title: "SuccessNOW – AI Superagent System",
     description:
       "Our AI Superagents convert, book, and nurture leads 24/7 — while you get back your time. Never lose a lead again.",
-    images: ["/images/successnow-og-image.png"], // Use a relative path
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", type: "image/x-icon" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: "/apple-touch-icon.png",
+    images: ["https://successnow.ai/images/successnow-logo.png"],
   },
 }
 
@@ -81,6 +70,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const sitewideJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "SuccessNOW AI",
+    url: "https://successnow.ai",
+    logo: "https://successnow.ai/images/successnow-logo.png",
+  }
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
@@ -91,9 +88,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://iframes.ai" />
         <link rel="dns-prefetch" href="https://signup.successnow.ai" />
         <link rel="dns-prefetch" href="https://my.successnow.ai" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#00BFFF" />
         <link rel="preload" href="/images/successnow-logo.png" as="image" type="image/png" />
         <link rel="preload" href="/abstract-neural-network-background.webp" as="image" type="image/webp" />
+        <JsonLdScript data={sitewideJsonLd} />
       </head>
       <body className={`${inter.variable} ${montserrat.variable} ${openSans.variable} font-sans`}>
         <StarryBackground />
