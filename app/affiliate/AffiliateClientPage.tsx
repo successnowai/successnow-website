@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, Users, TrendingUp, Star, Crown } from "lucide-react"
+import { CheckCircle, Users, TrendingUp, Star, Zap, DollarSign, Clock } from "lucide-react"
 
 export default function AffiliateClientPage() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
@@ -132,7 +132,7 @@ export default function AffiliateClientPage() {
         </div>
       </section>
 
-      {/* Trusted Platinum Partners Section */}
+      {/* AgencyNOW Partner Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div
@@ -140,68 +140,105 @@ export default function AffiliateClientPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
-            <Card className="relative overflow-hidden border border-white/10 bg-black/40 backdrop-blur-xl">
-              {/* Animated gold border */}
+            <Card className="relative overflow-hidden border border-purple-500/30 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-purple-900/20 backdrop-blur-xl">
+              {/* Animated purple border */}
               <div className="absolute inset-0 rounded-lg">
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 animate-pulse" />
-                <div className="absolute inset-[1px] rounded-lg bg-black/60 backdrop-blur-xl" />
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-purple-500/30 animate-pulse" />
+                <div className="absolute inset-[1px] rounded-lg bg-gradient-to-br from-purple-900/40 via-blue-900/40 to-purple-900/40 backdrop-blur-xl" />
               </div>
 
-              {/* Gold glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 via-orange-500/30 to-yellow-400/30 rounded-lg blur-sm opacity-75" />
+              {/* Purple glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/40 via-pink-500/40 to-purple-500/40 rounded-lg blur-sm opacity-75" />
 
               <div className="absolute top-4 right-4 z-10">
-                <Crown className="h-8 w-8 text-yellow-400" />
+                <Zap className="h-8 w-8 text-purple-400" />
               </div>
 
               <CardContent className="relative z-10 p-8">
                 <div className="text-center mb-8">
-                  <Badge className="mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold">
-                    EXCLUSIVE PROGRAM
+                  <Badge className="mb-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold">
+                    🚀 CUSTOM DFY AGENCY BUILD
                   </Badge>
-                  <h3 className="text-3xl font-bold text-white mb-4">Trusted Platinum Partners</h3>
-                  <p className="text-gray-200 text-lg">
-                    Elite program for top performers - Limited to 5 partners globally per niche
+                  <h3 className="text-4xl font-bold text-white mb-4">Become an AgencyNOW Partner</h3>
+                  <p className="text-gray-200 text-lg mb-6">
+                    Launch your own AI agency with our complete done-for-you setup
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-yellow-500/20 rounded-lg p-6 mb-8 border border-yellow-400/20 backdrop-blur-sm">
+                {/* Value Stats */}
+                <div className="grid md:grid-cols-3 gap-6 mb-8">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-yellow-400 mb-2">
-                      EARN unlimited monthly recurring revenue
+                    <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                      <DollarSign className="h-8 w-8 text-green-400" />
                     </div>
+                    <div className="text-3xl font-bold text-white mb-2">$50,000+</div>
+                    <div className="text-cyan-400">Custom Build Value</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                      <Zap className="h-8 w-8 text-purple-400" />
+                    </div>
+                    <div className="text-3xl font-bold text-white mb-2">10,000+</div>
+                    <div className="text-cyan-400">Hours of Development</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                      <Clock className="h-8 w-8 text-cyan-400" />
+                    </div>
+                    <div className="text-3xl font-bold text-white mb-2">7 Days</div>
+                    <div className="text-cyan-400">To Launch</div>
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="space-y-4">
-                    {["40% Monthly Recurring Revenue", "Exclusive territory rights", "Priority support & training"].map(
-                      (benefit, index) => (
-                        <div key={index} className="flex items-center">
-                          <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
-                          <span className="text-gray-200">{benefit}</span>
-                        </div>
-                      ),
-                    )}
-                  </div>
-                  <div className="space-y-4">
-                    {["Co-marketing opportunities", "Custom commission structures"].map((benefit, index) => (
+                {/* Pricing */}
+                <div className="bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20 rounded-lg p-6 mb-8 border border-purple-400/20 backdrop-blur-sm text-center">
+                  <div className="text-gray-400 line-through mb-2">Regular Price: $24,888</div>
+                  <div className="text-5xl font-bold text-white mb-2">$9,997</div>
+                  <div className="text-green-400 text-xl font-semibold mb-2">Save $14,891 - Limited Time</div>
+                  <div className="text-gray-300">One-time setup fee • No monthly platform fees EVER</div>
+                </div>
+
+                {/* What's Included */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-bold text-white mb-6 text-center">What's Included:</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      "Custom-branded AI agency website",
+                      "Complete AI voice and chat systems",
+                      "Proven funnels for every major niche",
+                      "Client onboarding automation",
+                      "CRM and lead management system",
+                      "Payment processing integration",
+                      "White-label SuccessNOW platform access",
+                      "Marketing playbooks and templates",
+                      "Ongoing platform updates and features",
+                      "Technical support and training",
+                      "Zero hosting or platform fees",
+                      "Years of optimization included",
+                    ].map((feature, index) => (
                       <div key={index} className="flex items-center">
                         <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
-                        <span className="text-gray-200">{benefit}</span>
+                        <span className="text-gray-200">{feature}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
+                {/* Savings Highlight */}
+                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-lg p-6 mb-8 border border-green-400/20 backdrop-blur-sm text-center">
+                  <div className="text-3xl font-bold text-green-400 mb-2">$1,994/month SAVED</div>
+                  <div className="text-gray-300">vs. other platforms (more capital for ads!)</div>
+                </div>
+
                 <div className="text-center">
-                  <Link href="https://partner.successnow.ai">
-                    <Button className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-black font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105">
-                      Signup Now for Platinum Program
+                  <Link href="https://agencynow.ai">
+                    <Button className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold px-12 py-4 text-xl rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25">
+                      Apply Now - AgencyNOW Partner
                     </Button>
                   </Link>
+                  <p className="text-gray-400 mt-4">Launch in 7 days • 30-day money-back guarantee</p>
                 </div>
               </CardContent>
             </Card>
