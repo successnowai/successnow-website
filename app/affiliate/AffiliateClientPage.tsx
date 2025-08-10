@@ -122,9 +122,9 @@ export default function AffiliateClientPage() {
                 Join thousands of affiliates already earning recurring commissions with our proven system. Apply now and
                 start building your passive income stream.
               </p>
-              <Link href="/affiliate/apply">
+              <Link href="https://partner.successnow.ai">
                 <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-12 py-4 text-xl font-semibold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/25">
-                  Apply for Affiliate Program →
+                  Signup Now to Become Affiliate!
                 </Button>
               </Link>
             </div>
@@ -197,9 +197,9 @@ export default function AffiliateClientPage() {
                 </div>
 
                 <div className="text-center">
-                  <Link href="/affiliate/apply?program=Platinum">
+                  <Link href="https://partner.successnow.ai">
                     <Button className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-black font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105">
-                      Apply for Platinum Program
+                      Signup Now for Platinum Program
                     </Button>
                   </Link>
                 </div>
