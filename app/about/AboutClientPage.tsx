@@ -8,7 +8,7 @@ import {
   Quote,
   User,
   Phone,
-  Building,
+  Building2,
   Car,
   Dumbbell,
   Zap,
@@ -71,7 +71,7 @@ const AboutClientPage = () => {
 
             <div className="grid md:grid-cols-2 gap-8">
               {/* Company Mission Quote */}
-              <Card className="card-stylized hover:transform hover:scale-105 transition-all duration-300">
+              <Card className="card-stylized">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
@@ -91,7 +91,7 @@ const AboutClientPage = () => {
               </Card>
 
               {/* Innovation Panel Quote */}
-              <Card className="card-stylized-purple hover:transform hover:scale-105 transition-all duration-300">
+              <Card className="card-stylized-purple">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-blue-600 flex items-center justify-center text-white text-2xl font-bold">
@@ -149,7 +149,7 @@ const AboutClientPage = () => {
               </div>
 
               <div className="flex justify-center">
-                <Card className="card-stylized p-8 text-center max-w-sm hover:transform hover:scale-105 transition-all duration-300">
+                <Card className="card-stylized p-8 text-center max-w-sm">
                   <div className="w-24 h-24 rounded-full bg-gradient-to-r from-pink-500 to-blue-600 flex items-center justify-center text-white text-4xl font-bold mx-auto mb-6">
                     <User className="w-12 h-12" />
                   </div>
@@ -180,7 +180,7 @@ const AboutClientPage = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Early Career */}
-              <Card className="card-stylized hover:transform hover:scale-105 transition-all duration-300">
+              <Card className="card-stylized">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center">
@@ -199,11 +199,11 @@ const AboutClientPage = () => {
               </Card>
 
               {/* Early 20s */}
-              <Card className="card-stylized-purple hover:transform hover:scale-105 transition-all duration-300">
+              <Card className="card-stylized-purple">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-blue-600 flex items-center justify-center">
-                      <Building className="w-6 h-6 text-white" />
+                      <Building2 className="w-6 h-6 text-white" />
                     </div>
                     <Badge variant="outline" className="border-purple-500/30 text-purple-400 bg-purple-500/10">
                       Early 20s
@@ -218,7 +218,7 @@ const AboutClientPage = () => {
               </Card>
 
               {/* Automotive Era */}
-              <Card className="card-stylized hover:transform hover:scale-105 transition-all duration-300">
+              <Card className="card-stylized">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center">
@@ -237,7 +237,7 @@ const AboutClientPage = () => {
               </Card>
 
               {/* Entrepreneurship */}
-              <Card className="card-stylized hover:transform hover:scale-105 transition-all duration-300 md:col-span-2 lg:col-span-1">
+              <Card className="card-stylized-purple md:col-span-2 lg:col-span-1">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-pink-500 to-red-600 flex items-center justify-center">
@@ -256,7 +256,7 @@ const AboutClientPage = () => {
               </Card>
 
               {/* AI Revolution */}
-              <Card className="card-stylized-purple hover:transform hover:scale-105 transition-all duration-300 md:col-span-2 lg:col-span-2">
+              <Card className="card-stylized md:col-span-2 lg:col-span-2">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center">
@@ -292,7 +292,7 @@ const AboutClientPage = () => {
               The Turning Point
             </h2>
 
-            <Card className="card-stylized-darker p-8 md:p-12 hover:transform hover:scale-105 transition-all duration-300">
+            <Card className="card-stylized-darker p-8 md:p-12">
               <div className="text-center space-y-6">
                 <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
                   John realized that the only limitation to helping more businesses was his own time. He couldn't be
@@ -333,7 +333,7 @@ const AboutClientPage = () => {
               </div>
 
               <div className="flex justify-center">
-                <Card className="card-stylized p-8 text-center max-w-sm hover:transform hover:scale-105 transition-all duration-300">
+                <Card className="card-stylized p-8 text-center max-w-sm">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 to-blue-600 flex items-center justify-center text-white mx-auto mb-6">
                     <Target className="w-8 h-8" />
                   </div>
@@ -363,7 +363,7 @@ const AboutClientPage = () => {
               Global Impact
             </h2>
 
-            <Card className="card-stylized-darker p-8 md:p-12 mb-12 hover:transform hover:scale-105 transition-all duration-300">
+            <Card className="card-stylized-darker p-8 md:p-12 mb-12">
               <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
                 Today, SuccessNOW.ai operates globally, empowering businesses in the U.S. and Canada to scale faster,
                 work smarter, and deliver customer experiences that feel deeply personal — at AI speed.
@@ -372,7 +372,7 @@ const AboutClientPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-3 shadow-glow-blue-md hover:shadow-glow-purple-sm transition-all duration-300"
+                  className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-3 shadow-glow-blue-sm hover:shadow-glow-blue-md transition-all duration-300"
                   asChild
                 >
                   <Link href="/demo">
@@ -417,7 +417,7 @@ const AboutClientPage = () => {
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="card-stylized hover:transform hover:scale-105 transition-all duration-300">
+              <Card className="card-stylized">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center">
@@ -431,7 +431,7 @@ const AboutClientPage = () => {
                 </CardContent>
               </Card>
 
-              <Card className="card-stylized-purple hover:transform hover:scale-105 transition-all duration-300">
+              <Card className="card-stylized-purple">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-blue-600 flex items-center justify-center">
@@ -445,7 +445,7 @@ const AboutClientPage = () => {
                 </CardContent>
               </Card>
 
-              <Card className="card-stylized hover:transform hover:scale-105 transition-all duration-300">
+              <Card className="card-stylized">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center">
@@ -459,7 +459,7 @@ const AboutClientPage = () => {
                 </CardContent>
               </Card>
 
-              <Card className="card-stylized-purple hover:transform hover:scale-105 transition-all duration-300">
+              <Card className="card-stylized-purple">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-500 to-pink-600 flex items-center justify-center">
