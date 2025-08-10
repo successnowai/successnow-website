@@ -1,29 +1,32 @@
 import type { Metadata } from "next"
-import JsonLdScript from "@/components/json-ld-script"
-import { generateAboutJsonLd } from "@/lib/json-ld"
 import AboutClientPage from "./AboutClientPage"
+import JsonLdScript from "@/components/json-ld-script"
+import { generateAboutPageJsonLd } from "@/lib/json-ld"
 
 export const metadata: Metadata = {
-  title: "About SuccessNOW AI - The John Potvin Story",
+  title: "About Us – The SuccessNOW.ai Story",
   description:
-    "Learn about John Potvin's journey from door-to-door sales to AI innovation. Discover how SuccessNOW AI transforms businesses with AI Super Agents and automated marketing systems.",
+    "Learn how founder John Potvin's journey from door-to-door sales to AI innovation led to the creation of SuccessNOW.ai, a global automation platform.",
+  keywords: "SuccessNOW.ai story, John Potvin, AI Super Agents, business automation, lead conversion, AI chatbots",
   openGraph: {
-    title: "About SuccessNOW AI - The John Potvin Story",
+    title: "About Us - The SuccessNOW.ai Story",
     description:
-      "Learn about John Potvin's journey from door-to-door sales to AI innovation. Discover how SuccessNOW AI transforms businesses with AI Super Agents and automated marketing systems.",
-    url: "https://successnow.ai/about",
+      "From door-to-door hustle to AI-powered global automation. Discover how SuccessNOW.ai is revolutionizing business growth with AI Super Agents.",
+    type: "article",
+    authors: ["John Potvin"],
   },
-  alternates: {
-    canonical: "https://successnow.ai/about",
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us - The SuccessNOW.ai Story",
+    description: "Learn the story behind SuccessNOW.ai and its founder, John Potvin.",
   },
 }
 
 export default function AboutPage() {
-  const aboutJsonLd = generateAboutJsonLd()
-
+  const aboutPageJsonLd = generateAboutPageJsonLd()
   return (
     <>
-      <JsonLdScript data={aboutJsonLd} />
+      <JsonLdScript data={aboutPageJsonLd} />
       <AboutClientPage />
     </>
   )

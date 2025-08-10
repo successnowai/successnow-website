@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+
 import { useState } from "react"
 import { MessageCircle, X, Send, Minimize2 } from "lucide-react"
 
@@ -171,6 +172,3 @@ export default function FloatingChatRobot() {
     </>
   )
 }
-
-// Also export as named export to fix import issues
-export { FloatingChatRobot }
