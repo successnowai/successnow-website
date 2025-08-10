@@ -1,579 +1,420 @@
 "use client"
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import {
-  Users,
+  User,
   Target,
-  Zap,
+  Lightbulb,
+  Users,
   Globe,
+  Award,
   Phone,
   MessageSquare,
-  BarChart3,
-  Search,
-  Code,
-  Star,
+  Bot,
   TrendingUp,
   Building,
-  Car,
-  Stethoscope,
-  Scale,
-  Wrench,
-  Home,
-  UtensilsCrossed,
-  Dumbbell,
-  SmileIcon as Tooth,
-  Activity,
-  Droplets,
-  Hammer,
-  Sun,
-  Calculator,
-  Settings,
+  Calendar,
+  ArrowRight,
   Quote,
 } from "lucide-react"
 import Link from "next/link"
 
 export default function AboutClientPage() {
-  const [activeQuote, setActiveQuote] = useState(0)
-
-  const quotes = [
-    {
-      text: "AI isn't coming — it's here. Deploy your AI Super Agents NOW… and never miss another lead.",
-      source: "John Potvin, Founder",
-      context: "Company Mission",
-    },
-    {
-      text: "The future of software, and AI, is never having to log in, learn or have to manually use software again! AI is here, it's not coming, adapt or get left behind!",
-      source: "John Potvin",
-      context: "AI Innovation Business International Panel - Innovation Canada",
-    },
-  ]
-
-  const careerMilestones = [
-    {
-      period: "Early Career",
-      title: "Door-to-Door & Call Center Sales",
-      description: "Mastered timeless principles from Zig Ziglar, Dale Carnegie, Robert Cialdini, and Robert Greene",
-      icon: <Phone className="w-6 h-6" />,
-    },
-    {
-      period: "Early 20s",
-      title: "Director of Franchising & Sales",
-      description: "Rose to leadership at national Rogers franchise group",
-      icon: <Building className="w-6 h-6" />,
-    },
-    {
-      period: "Automotive Era",
-      title: "Finance Manager & Trainer",
-      description: "Specialized in high-performance subprime departments, building bulletproof systems",
-      icon: <Car className="w-6 h-6" />,
-    },
-    {
-      period: "Entrepreneurship",
-      title: "Franchise Gym Chain",
-      description: "Scaled martial arts and fitness gyms to $100K MRR in 6 months",
-      icon: <Dumbbell className="w-6 h-6" />,
-    },
-    {
-      period: "AI Revolution",
-      title: "SuccessNOW.ai Founder",
-      description: "Created AI Super Agents to scale proven systems globally",
-      icon: <Zap className="w-6 h-6" />,
-    },
-  ]
-
-  const aiBots = [
-    {
-      name: "Speed to Lead Bot",
-      description: "Engages every lead instantly before competitors can",
-      icon: <Zap className="w-5 h-5" />,
-    },
-    {
-      name: "SalesBot",
-      description: "Automates appointment booking and closes deals",
-      icon: <Target className="w-5 h-5" />,
-    },
-    {
-      name: "Follow-Up & Nurturing Bots",
-      description: "Keep leads warm until they buy",
-      icon: <MessageSquare className="w-5 h-5" />,
-    },
-    {
-      name: "AdsBot (AdsNOW.ai)",
-      description: "Creates, launches, and optimizes paid ads 24/7",
-      icon: <BarChart3 className="w-5 h-5" />,
-    },
-    {
-      name: "SEO Bot (SEONOW.ai)",
-      description: "Improves organic rankings & AI search visibility",
-      icon: <Search className="w-5 h-5" />,
-    },
-    {
-      name: "WebDev Bot (DevNOW.ai)",
-      description: "Builds high-converting, AI-powered websites that talk",
-      icon: <Code className="w-5 h-5" />,
-    },
-    {
-      name: "Review & Retention Bots",
-      description: "Maintain client satisfaction and loyalty",
-      icon: <Star className="w-5 h-5" />,
-    },
-    {
-      name: "Accountability Bots",
-      description: "Ensure consistent performance and results",
-      icon: <TrendingUp className="w-5 h-5" />,
-    },
-  ]
-
-  const industries = [
-    { name: "Real Estate", icon: <Home className="w-5 h-5" />, href: "/realtornow" },
-    { name: "Auto Dealers", icon: <Car className="w-5 h-5" />, href: "/autodealersnow" },
-    { name: "Healthcare", icon: <Stethoscope className="w-5 h-5" />, href: "/medspanow" },
-    { name: "Legal Services", icon: <Scale className="w-5 h-5" />, href: "/lawyersnow" },
-    { name: "HVAC", icon: <Wrench className="w-5 h-5" />, href: "/hvacnow" },
-    { name: "Contractors", icon: <Hammer className="w-5 h-5" />, href: "/contractorsnow" },
-    { name: "Restaurants", icon: <UtensilsCrossed className="w-5 h-5" />, href: "/restaurantsnow" },
-    { name: "Gyms & Fitness", icon: <Dumbbell className="w-5 h-5" />, href: "/gymsnow" },
-    { name: "Dentists", icon: <Tooth className="w-5 h-5" />, href: "/dentistsnow" },
-    { name: "Chiropractors", icon: <Activity className="w-5 h-5" />, href: "/chiropractorsnow" },
-    { name: "Plumbers", icon: <Droplets className="w-5 h-5" />, href: "/plumbersnow" },
-    { name: "Roofers", icon: <Home className="w-5 h-5" />, href: "/roofersnow" },
-    { name: "Solar", icon: <Sun className="w-5 h-5" />, href: "/solarnow" },
-    { name: "Mortgage", icon: <Calculator className="w-5 h-5" />, href: "/mortgagenow" },
-    { name: "Custom Build", icon: <Settings className="w-5 h-5" />, href: "/custombuildnow" },
-  ]
-
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Starry background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(120,119,198,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(236,72,153,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
+      {/* Hero Section */}
+      <section className="relative py-20 px-4">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-pink-900/20" />
+        <div className="relative max-w-4xl mx-auto text-center">
+          <Badge className="mb-6 bg-gradient-to-r from-pink-500 to-blue-500 text-white border-0">
+            The SuccessNOW.ai Story
+          </Badge>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+            From Door-to-Door Hustle to AI-Powered Global Automation
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            SuccessNOW.ai was founded by John Potvin, a lifelong sales innovator whose career journey reads like a
+            masterclass in resilience, reinvention, and relentless optimization.
+          </p>
+        </div>
+      </section>
 
-        {/* Animated stars */}
-        {[...Array(100)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-20 animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="relative z-10">
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4">
-          <div className="max-w-6xl mx-auto text-center">
-            <Badge className="mb-6 bg-gradient-to-r from-pink-500/20 to-blue-500/20 text-pink-300 border-pink-500/30">
-              About SuccessNOW.ai
-            </Badge>
-            <h1 className="text-5xl md:text-7xl font-bold mb-8">
-              <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                The SuccessNOW.ai Story
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-              From Door-to-Door Hustle to AI-Powered Global Automation
-            </p>
-          </div>
-        </section>
-
-        {/* Founder Story */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                  <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-                    Meet John Potvin
-                  </span>
-                </h2>
-                <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                  SuccessNOW.ai was founded by John Potvin, a lifelong sales innovator whose career journey reads like a
-                  masterclass in resilience, reinvention, and relentless optimization.
-                </p>
-                <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                  John's career began in the trenches — door-to-door and call center sales, mastering timeless
-                  principles from Zig Ziglar, Dale Carnegie, Robert Cialdini, and Robert Greene. These foundations in
-                  human nature, persuasion, and consultative selling were later amplified by modern business growth
-                  frameworks from Russell Brunson and Alex Hormozi.
-                </p>
-              </div>
-              <div className="relative">
-                <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8">
-                  <CardContent className="p-0">
-                    <div className="text-center">
-                      <div className="w-24 h-24 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <Users className="w-12 h-12 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-white mb-4">John Potvin</h3>
-                      <p className="text-pink-400 font-semibold mb-4">Founder & CEO</p>
-                      <p className="text-gray-300 text-sm">Sales Innovator • AI Visionary • Business Growth Expert</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+      {/* Founder Story */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                The Founder: John Potvin
+              </h2>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                John's career began in the trenches — door-to-door and call center sales, mastering timeless principles
+                from Zig Ziglar, Dale Carnegie, Robert Cialdini, and Robert Greene. These foundations in human nature,
+                persuasion, and consultative selling were later amplified by modern business growth frameworks from
+                Russell Brunson and Alex Hormozi.
+              </p>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                By his early 20s, John had already risen to Director of Franchising & Sales for a national Rogers
+                franchise group. Transitioning into the automotive world, he worked his way from front-line sales to
+                finance manager, trainer, and consultant — specializing in high-performance subprime departments.
+              </p>
             </div>
+            <Card className="bg-gray-900/50 border-gray-800">
+              <CardContent className="p-8">
+                <User className="w-12 h-12 text-blue-400 mb-4" />
+                <h3 className="text-xl font-semibold mb-4">John's Expertise</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <Award className="w-5 h-5 text-yellow-400" />
+                    <span className="text-gray-300">Director of Franchising & Sales</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Building className="w-5 h-5 text-green-400" />
+                    <span className="text-gray-300">Automotive Finance Manager</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <TrendingUp className="w-5 h-5 text-purple-400" />
+                    <span className="text-gray-300">Business Growth Consultant</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Users className="w-5 h-5 text-pink-400" />
+                    <span className="text-gray-300">Franchise Gym Chain Owner</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Career Journey */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-              <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-                Career Journey
-              </span>
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {careerMilestones.map((milestone, index) => (
-                <Card
-                  key={index}
-                  className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300"
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg flex items-center justify-center">
-                        {milestone.icon}
-                      </div>
-                      <Badge variant="outline" className="border-pink-500/30 text-pink-300">
-                        {milestone.period}
-                      </Badge>
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3">{milestone.title}</h3>
-                    <p className="text-gray-300 text-sm leading-relaxed">{milestone.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* The Turning Point */}
-        <section className="py-20 px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-                The Turning Point
-              </span>
-            </h2>
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8">
-              <CardContent className="p-0">
-                <p className="text-xl text-gray-300 leading-relaxed mb-6">
-                  John realized that the only limitation to helping more businesses was his own time. He couldn't be
-                  everywhere at once — but AI could.
+      {/* Career Journey */}
+      <section className="py-16 px-4 bg-gray-900/30">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            The Journey to AI Innovation
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-gray-900/50 border-gray-800 hover:border-blue-500/50 transition-colors">
+              <CardContent className="p-6">
+                <Phone className="w-10 h-10 text-blue-400 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Sales Foundation</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Started in door-to-door and call center sales, mastering human psychology and persuasion principles
+                  from industry legends like Zig Ziglar and Dale Carnegie.
                 </p>
-                <p className="text-xl text-gray-300 leading-relaxed">
-                  Out of this vision, SuccessNOW.ai was born: a platform where his meticulously refined systems could be
-                  deployed instantly for any business in any niche.
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-900/50 border-gray-800 hover:border-purple-500/50 transition-colors">
+              <CardContent className="p-6">
+                <Building className="w-10 h-10 text-purple-400 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Corporate Success</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Rose to Director of Franchising & Sales for Rogers franchise group, then became automotive finance
+                  manager and trainer specializing in high-performance departments.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-900/50 border-gray-800 hover:border-pink-500/50 transition-colors">
+              <CardContent className="p-6">
+                <TrendingUp className="w-10 h-10 text-pink-400 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Entrepreneurial Scaling</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Launched and scaled a chain of franchise martial arts and fitness gyms to $100K MRR in just six months
+                  using tripwire funnels and break-even ad campaigns.
                 </p>
               </CardContent>
             </Card>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Mission */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                  <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-                    Our Mission
-                  </span>
-                </h2>
-                <p className="text-xl text-gray-300 leading-relaxed">
-                  To give every business — from small local service providers to enterprise-level agencies — access to
-                  AI Super Agents that work 24/7, never miss a follow-up, and deliver personalized, high-converting
-                  customer experiences.
+      {/* The Turning Point */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <Lightbulb className="w-16 h-16 text-yellow-400 mx-auto mb-6" />
+          <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+            The Turning Point
+          </h2>
+          <p className="text-xl text-gray-300 leading-relaxed mb-8">
+            John realized that the only limitation to helping more businesses was his own time. He couldn't be
+            everywhere at once — but AI could. Out of this vision, SuccessNOW.ai was born: a platform where his
+            meticulously refined systems could be deployed instantly for any business in any niche.
+          </p>
+        </div>
+      </section>
+
+      {/* Mission */}
+      <section className="py-16 px-4 bg-gradient-to-r from-blue-900/20 to-purple-900/20">
+        <div className="max-w-4xl mx-auto text-center">
+          <Target className="w-16 h-16 text-blue-400 mx-auto mb-6" />
+          <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Our Mission
+          </h2>
+          <p className="text-xl text-gray-300 leading-relaxed">
+            To give every business — from small local service providers to enterprise-level agencies — access to AI
+            Super Agents that work 24/7, never miss a follow-up, and deliver personalized, high-converting customer
+            experiences.
+          </p>
+        </div>
+      </section>
+
+      {/* What Makes Us Different */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
+            What Makes SuccessNOW.ai Different
+          </h2>
+          <p className="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+            Our AI agents aren't just "chatbots." They are trained digital employees that:
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="bg-gray-900/50 border-gray-800 hover:border-blue-500/50 transition-colors">
+              <CardContent className="p-6 text-center">
+                <Bot className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                <h3 className="font-semibold mb-2">Learn Your Business</h3>
+                <p className="text-gray-300 text-sm">Review CRM history and client notes before every interaction</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-900/50 border-gray-800 hover:border-purple-500/50 transition-colors">
+              <CardContent className="p-6 text-center">
+                <MessageSquare className="w-12 h-12 text-purple-400 mx-auto mb-4" />
+                <h3 className="font-semibold mb-2">Voice & Chat</h3>
+                <p className="text-gray-300 text-sm">
+                  Handle conversations on your website and over the phone in real time
                 </p>
-              </div>
-              <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8">
-                <CardContent className="p-0">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <Target className="w-10 h-10 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">24/7 AI Workforce</h3>
-                    <p className="text-gray-300">
-                      Never miss a lead, never miss a follow-up, never miss an opportunity
-                    </p>
-                  </div>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-900/50 border-gray-800 hover:border-pink-500/50 transition-colors">
+              <CardContent className="p-6 text-center">
+                <Calendar className="w-12 h-12 text-pink-400 mx-auto mb-4" />
+                <h3 className="font-semibold mb-2">Update CRM</h3>
+                <p className="text-gray-300 text-sm">
+                  Log detailed notes, follow-up tasks, and client preferences automatically
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-900/50 border-gray-800 hover:border-green-500/50 transition-colors">
+              <CardContent className="p-6 text-center">
+                <TrendingUp className="w-12 h-12 text-green-400 mx-auto mb-4" />
+                <h3 className="font-semibold mb-2">Adapt & Learn</h3>
+                <p className="text-gray-300 text-sm">Become smarter, more personalized, and more effective over time</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Bot Army */}
+      <section className="py-16 px-4 bg-gray-900/30">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            The SuccessNOW Army of AI Bots
+          </h2>
+          <p className="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+            We've built a complete AI workforce to cover the entire business growth cycle:
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: "Speed to Lead Bot", desc: "Engages every lead instantly before competitors can", icon: "⚡" },
+              { name: "SalesBot", desc: "Automates appointment booking and closes deals", icon: "💼" },
+              { name: "Follow-Up & Nurturing Bots", desc: "Keep leads warm until they buy", icon: "🔄" },
+              { name: "Ads Bot (AdsNOW.ai)", desc: "Creates, launches, and optimizes paid ads 24/7", icon: "📱" },
+              { name: "SEO Bot (SEONOW.ai)", desc: "Improves organic rankings & AI search visibility", icon: "🔍" },
+              {
+                name: "WebDev Bot (DevNOW.ai)",
+                desc: "Builds high-converting, AI-powered websites that talk",
+                icon: "🌐",
+              },
+              { name: "Review Bot", desc: "Maintains client satisfaction and loyalty", icon: "⭐" },
+              { name: "Retention Bot", desc: "Keeps customers engaged and coming back", icon: "🤝" },
+              { name: "Accountability Bot", desc: "Ensures follow-through on all commitments", icon: "✅" },
+            ].map((bot, index) => (
+              <Card key={index} className="bg-gray-900/50 border-gray-800 hover:border-blue-500/50 transition-colors">
+                <CardContent className="p-6">
+                  <div className="text-3xl mb-3">{bot.icon}</div>
+                  <h3 className="font-semibold mb-2 text-blue-400">{bot.name}</h3>
+                  <p className="text-gray-300 text-sm">{bot.desc}</p>
                 </CardContent>
               </Card>
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* What Makes Us Different */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-              <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-                What Makes SuccessNOW.ai Different
-              </span>
-            </h2>
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8 mb-8">
-              <CardContent className="p-0">
-                <p className="text-xl text-gray-300 text-center mb-8">
-                  Our AI agents aren't just "chatbots." They are trained digital employees that:
-                </p>
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                        <Users className="w-4 h-4 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-white mb-2">Learn Your Business & Clients</h3>
-                        <p className="text-gray-300">
-                          Reviewing CRM history (human + AI notes) before every interaction
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                        <MessageSquare className="w-4 h-4 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-white mb-2">Handle Voice & Chat Conversations</h3>
-                        <p className="text-gray-300">
-                          Talking to customers on your website or over the phone in real time
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                        <BarChart3 className="w-4 h-4 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-white mb-2">Update CRM Automatically</h3>
-                        <p className="text-gray-300">Logging detailed notes, follow-up tasks, and client preferences</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                        <Zap className="w-4 h-4 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-white mb-2">Adapt With Every Interaction</h3>
-                        <p className="text-gray-300">
-                          Becoming smarter, more personalized, and more effective over time
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      {/* Industries Served */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
+            Industries We Serve
+          </h2>
+          <p className="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+            With pre-built systems for 15+ industries, SuccessNOW.ai delivers:
+          </p>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <Card className="bg-gray-900/50 border-gray-800">
+              <CardContent className="p-6">
+                <Globe className="w-10 h-10 text-blue-400 mb-4" />
+                <h3 className="font-semibold mb-3">Custom AI Website</h3>
+                <p className="text-gray-300 text-sm">That sells and books appointments automatically</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-900/50 border-gray-800">
+              <CardContent className="p-6">
+                <Bot className="w-10 h-10 text-purple-400 mb-4" />
+                <h3 className="font-semibold mb-3">Industry-Trained AI Agents</h3>
+                <p className="text-gray-300 text-sm">For lead generation and client care</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-900/50 border-gray-800">
+              <CardContent className="p-6">
+                <TrendingUp className="w-10 h-10 text-pink-400 mb-4" />
+                <h3 className="font-semibold mb-3">Done-for-You Marketing</h3>
+                <p className="text-gray-300 text-sm">Paid ads and SEO campaigns optimized for ROI</p>
               </CardContent>
             </Card>
           </div>
-        </section>
-
-        {/* AI Bot Army */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-8">
-              <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-                The SuccessNOW Army of AI Bots
-              </span>
-            </h2>
-            <p className="text-xl text-gray-300 text-center mb-16">
-              We've built a complete AI workforce to cover the entire business growth cycle:
-            </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {aiBots.map((bot, index) => (
-                <Card
-                  key={index}
-                  className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300"
-                >
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg flex items-center justify-center mb-4">
-                      {bot.icon}
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-3">{bot.name}</h3>
-                    <p className="text-gray-300 text-sm leading-relaxed">{bot.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {[
+              "Auto Dealers",
+              "Realtors",
+              "Mortgage Brokers",
+              "Lawyers",
+              "Contractors",
+              "Medispas",
+              "Gyms",
+              "Insurance",
+              "HVAC",
+              "Plumbers",
+              "Roofers",
+              "Chiropractors",
+              "Dentists",
+              "Restaurants",
+              "Solar",
+            ].map((industry, index) => (
+              <Badge key={index} variant="outline" className="justify-center py-2 border-gray-700 text-gray-300">
+                {industry}
+              </Badge>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Industries We Serve */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-8">
-              <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-                Industries We Serve
-              </span>
-            </h2>
-            <p className="text-xl text-gray-300 text-center mb-16">
-              With pre-built systems for 15+ industries, SuccessNOW.ai delivers:
-            </p>
-            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
-              {industries.map((industry, index) => (
-                <Link key={index} href={industry.href}>
-                  <Card className="bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-300 cursor-pointer">
-                    <CardContent className="p-4 text-center">
-                      <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-3">
-                        {industry.icon}
-                      </div>
-                      <p className="text-white font-medium text-sm">{industry.name}</p>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8">
-              <CardContent className="p-0">
-                <div className="grid md:grid-cols-3 gap-8 text-center">
-                  <div>
-                    <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Globe className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-2">Custom AI Website</h3>
-                    <p className="text-gray-300 text-sm">That sells and books appointments automatically</p>
+      {/* Pricing Overview */}
+      <section className="py-16 px-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Our Offer – The No-Brainer Setup
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <Card className="bg-gray-900/50 border-gray-800">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-4 text-purple-400">Setup</h3>
+                <div className="text-4xl font-bold mb-2">$997</div>
+                <div className="text-gray-400 line-through mb-4">normally $9,977</div>
+                <p className="text-gray-300 text-sm">One-time setup fee for complete AI implementation</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-gray-900/50 border-gray-800">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-4 text-pink-400">Monthly</h3>
+                <div className="text-4xl font-bold mb-2">$997</div>
+                <div className="text-gray-400 line-through mb-4">normally $1,994</div>
+                <p className="text-gray-300 text-sm">Ongoing management and optimization</p>
+              </CardContent>
+            </Card>
+          </div>
+          <p className="text-gray-300 mb-8">
+            Includes: fully built AI website, AI voice & chat agents, paid ads management, SEO setup, and complete CRM
+            automation.
+          </p>
+        </div>
+      </section>
+
+      {/* Founder Quotes */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Words from Our Founder
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 border-blue-500/30">
+              <CardContent className="p-8">
+                <Quote className="w-12 h-12 text-blue-400 mb-4" />
+                <blockquote className="text-lg text-gray-200 mb-6 italic leading-relaxed">
+                  "AI isn't coming — it's here. Deploy your AI Super Agents NOW… and never miss another lead."
+                </blockquote>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                    <User className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Zap className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-2">Industry-Trained AI Agents</h3>
-                    <p className="text-gray-300 text-sm">For lead generation and client care</p>
+                    <div className="font-semibold">John Potvin</div>
+                    <div className="text-gray-400 text-sm">Founder, SuccessNOW AI</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border-purple-500/30">
+              <CardContent className="p-8">
+                <Quote className="w-12 h-12 text-purple-400 mb-4" />
+                <blockquote className="text-lg text-gray-200 mb-6 italic leading-relaxed">
+                  "The future of software, and AI, is never having to log in, learn or have to manually use software
+                  again! AI is here, it's not coming, adapt or get left behind!"
+                </blockquote>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                    <User className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <BarChart3 className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-2">Done-for-You Campaigns</h3>
-                    <p className="text-gray-300 text-sm">Paid ads and SEO optimized for ROI</p>
+                    <div className="font-semibold">John Potvin</div>
+                    <div className="text-gray-400 text-sm">AI Innovation Business International Panel</div>
+                    <div className="text-gray-500 text-xs">Hosted by Innovation Canada</div>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Pricing Overview */}
-        <section className="py-20 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-              <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-                Our Offer – The No-Brainer Setup
-              </span>
-            </h2>
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8">
-              <CardContent className="p-0">
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
-                  <div className="text-center">
-                    <h3 className="text-3xl font-bold text-white mb-4">Setup</h3>
-                    <div className="text-4xl font-bold text-pink-400 mb-2">$997</div>
-                    <p className="text-gray-400 line-through mb-4">normally $9,977</p>
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-3xl font-bold text-white mb-4">Monthly</h3>
-                    <div className="text-4xl font-bold text-blue-400 mb-2">$997</div>
-                    <p className="text-gray-400 line-through mb-4">normally $1,994</p>
-                  </div>
-                </div>
-                <div className="text-center">
-                  <h4 className="text-xl font-bold text-white mb-4">Includes:</h4>
-                  <p className="text-gray-300 leading-relaxed">
-                    Fully built AI website, AI voice & chat agents, paid ads management, SEO setup, and complete CRM
-                    automation.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+      {/* Global Impact */}
+      <section className="py-16 px-4 bg-gray-900/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <Globe className="w-16 h-16 text-green-400 mx-auto mb-6" />
+          <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+            Global Impact
+          </h2>
+          <p className="text-xl text-gray-300 leading-relaxed mb-8">
+            Today, SuccessNOW.ai operates globally, empowering businesses in the U.S. and Canada to scale faster, work
+            smarter, and deliver customer experiences that feel deeply personal — at AI speed.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600"
+            >
+              <Link href="/demo">
+                See Live Demo
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent"
+            >
+              <Link href="/book">
+                Book Strategy Call
+                <Phone className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
           </div>
-        </section>
-
-        {/* Quotes Section */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-              <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-                Words from Our Founder
-              </span>
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {quotes.map((quote, index) => (
-                <Card
-                  key={index}
-                  className="bg-white/5 backdrop-blur-sm border-white/10 p-8 hover:bg-white/10 transition-all duration-300"
-                >
-                  <CardContent className="p-0">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Quote className="w-6 h-6 text-white" />
-                      </div>
-                      <Badge variant="outline" className="border-pink-500/30 text-pink-300">
-                        {quote.context}
-                      </Badge>
-                    </div>
-                    <blockquote className="text-lg text-gray-300 leading-relaxed mb-6 italic">
-                      "{quote.text}"
-                    </blockquote>
-                    <p className="text-pink-400 font-semibold">— {quote.source}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Global Impact */}
-        <section className="py-20 px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              <span className="bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-                Global Impact
-              </span>
-            </h2>
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-8 mb-8">
-              <CardContent className="p-0">
-                <p className="text-xl text-gray-300 leading-relaxed mb-8">
-                  Today, SuccessNOW.ai operates globally, empowering businesses in the U.S. and Canada to scale faster,
-                  work smarter, and deliver customer experiences that feel deeply personal — at AI speed.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white"
-                  >
-                    <Link href="/demo">
-                      <Zap className="w-5 h-5 mr-2" />
-                      See Live Demo
-                    </Link>
-                  </Button>
-                  <Button
-                    asChild
-                    size="lg"
-                    variant="outline"
-                    className="border-white/20 text-white hover:bg-white/10 bg-transparent"
-                  >
-                    <Link href="/signup">
-                      <Target className="w-5 h-5 mr-2" />
-                      Get Started Now
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   )
 }

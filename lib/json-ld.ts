@@ -1,96 +1,103 @@
-// Centralized JSON-LD configuration and builders
+// Site configuration - single source of truth
 export const SITE_CONFIG = {
-  domain: "https://successnow.ai",
-  brandName: "SuccessNOW",
-  fullName: "SuccessNOW AI",
-  description: "AI Superagents that work 24/7 to convert leads into sales for your business.",
+  name: "SuccessNOW AI",
+  url: "https://successnow.ai",
+  description:
+    "Transform your business with AI Super Agents that handle customer interactions, qualify leads, and drive conversions 24/7. Get your AI website, voice agents, and automated marketing system deployed in 48-72 hours.",
   logo: "https://successnow.ai/images/successnow-logo.png",
-  founder: "John Potvin",
-  foundingDate: "2024",
-  email: "support@successnow.ai",
-  phone: "+1-555-SUCCESS",
-  socialProfiles: [
-    "https://www.facebook.com/profile.php?id=61578055388858",
-    "https://www.instagram.com/successnowai/",
-    "https://www.linkedin.com/company/success-now-ai/",
-    "https://www.linkedin.com/in/john-potvin-65231229/",
-    "https://x.com/successnowx",
-    "https://www.tiktok.com/@successnow.ai",
-    "https://www.youtube.com/@SuccessNow-AI-Agents",
+  foundingDate: "2023-01-01",
+  founder: {
+    name: "John Potvin",
+    jobTitle: "Founder & CEO",
+    description:
+      "Sales innovation expert with 20+ years experience, from door-to-door sales to AI automation. Former Director of Franchising, automotive finance manager, and martial arts gym chain owner.",
+    url: "https://successnow.ai/about#john-potvin",
+    sameAs: ["https://www.linkedin.com/in/johnpotvin", "https://twitter.com/johnpotvin"],
+  },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      telephone: "+1-800-SUCCESS",
+      email: "sales@successnow.ai",
+      availableLanguage: ["English"],
+      areaServed: ["US", "CA"],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      telephone: "+1-800-SUCCESS",
+      email: "support@successnow.ai",
+      availableLanguage: ["English"],
+      areaServed: ["US", "CA"],
+    },
   ],
-  areaServed: ["United States", "Canada"],
+  sameAs: [
+    "https://www.linkedin.com/company/successnow-ai",
+    "https://www.facebook.com/successnowai",
+    "https://twitter.com/successnowai",
+    "https://www.youtube.com/c/successnowai",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "CA",
+    addressRegion: "ON",
+  },
+  areaServed: [
+    { "@type": "Country", name: "United States" },
+    { "@type": "Country", name: "Canada" },
+  ],
+  serviceType: "Business Automation Software",
   priceRange: "$997-$1994",
 }
 
-// Sitewide JSON-LD (Organization + Website)
+// Generate sitewide JSON-LD that appears on every page
 export function generateSitewideJsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": `${SITE_CONFIG.domain}/#org`,
-        name: SITE_CONFIG.fullName,
-        alternateName: SITE_CONFIG.brandName,
-        url: SITE_CONFIG.domain,
+        "@id": `${SITE_CONFIG.url}/#organization`,
+        name: SITE_CONFIG.name,
+        url: SITE_CONFIG.url,
         logo: {
           "@type": "ImageObject",
           url: SITE_CONFIG.logo,
-          width: 400,
-          height: 400,
+          width: 200,
+          height: 60,
         },
         description: SITE_CONFIG.description,
         foundingDate: SITE_CONFIG.foundingDate,
         founder: {
           "@type": "Person",
-          name: SITE_CONFIG.founder,
-          url: "https://www.linkedin.com/in/john-potvin-65231229/",
+          "@id": `${SITE_CONFIG.url}/about#john-potvin`,
+          name: SITE_CONFIG.founder.name,
+          jobTitle: SITE_CONFIG.founder.jobTitle,
+          description: SITE_CONFIG.founder.description,
+          url: SITE_CONFIG.founder.url,
+          sameAs: SITE_CONFIG.founder.sameAs,
         },
-        sameAs: SITE_CONFIG.socialProfiles,
-        contactPoint: [
-          {
-            "@type": "ContactPoint",
-            contactType: "sales",
-            telephone: SITE_CONFIG.phone,
-            email: SITE_CONFIG.email,
-            areaServed: SITE_CONFIG.areaServed,
-            availableLanguage: "English",
-          },
-          {
-            "@type": "ContactPoint",
-            contactType: "customer support",
-            email: SITE_CONFIG.email,
-            areaServed: SITE_CONFIG.areaServed,
-            availableLanguage: "English",
-          },
-        ],
-        areaServed: SITE_CONFIG.areaServed.map((area) => ({
-          "@type": "Country",
-          name: area,
-        })),
-        termsOfService: `${SITE_CONFIG.domain}/terms`,
-        privacyPolicy: `${SITE_CONFIG.domain}/privacy`,
-        knowsAbout: [
-          "Artificial Intelligence",
-          "Lead Generation",
-          "Sales Automation",
-          "Customer Service Automation",
-          "Voice AI",
-          "Chatbots",
-          "CRM Integration",
-        ],
+        contactPoint: SITE_CONFIG.contactPoint,
+        sameAs: SITE_CONFIG.sameAs,
+        address: SITE_CONFIG.address,
+        areaServed: SITE_CONFIG.areaServed,
+        serviceType: SITE_CONFIG.serviceType,
+        priceRange: SITE_CONFIG.priceRange,
+        termsOfService: `${SITE_CONFIG.url}/terms`,
+        privacyPolicy: `${SITE_CONFIG.url}/privacy`,
       },
       {
         "@type": "WebSite",
-        "@id": `${SITE_CONFIG.domain}/#website`,
-        url: SITE_CONFIG.domain,
-        name: SITE_CONFIG.fullName,
+        "@id": `${SITE_CONFIG.url}/#website`,
+        url: SITE_CONFIG.url,
+        name: SITE_CONFIG.name,
         description: SITE_CONFIG.description,
-        publisher: { "@id": `${SITE_CONFIG.domain}/#org` },
+        publisher: { "@id": `${SITE_CONFIG.url}/#organization` },
         inLanguage: "en-US",
         potentialAction: {
           "@type": "SearchAction",
-          target: `${SITE_CONFIG.domain}/search?q={search_term_string}`,
+          target: `${SITE_CONFIG.url}/search?q={search_term_string}`,
           "query-input": "required name=search_term_string",
         },
       },
@@ -99,203 +106,280 @@ export function generateSitewideJsonLd() {
 }
 
 // Home page specific JSON-LD
-export function generateHomePageJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${SITE_CONFIG.domain}/#webpage`,
-        url: SITE_CONFIG.domain,
-        name: `${SITE_CONFIG.fullName} - AI Superagent System`,
-        description:
-          "Our AI Superagents convert, book, and nurture leads 24/7 — while you get back your time. Never lose a lead again.",
-        inLanguage: "en-US",
-        isPartOf: { "@id": `${SITE_CONFIG.domain}/#website` },
-        about: { "@id": `${SITE_CONFIG.domain}/#org` },
-        mainEntity: { "@id": `${SITE_CONFIG.domain}/#service` },
-      },
-      {
-        "@type": "SoftwareApplication",
-        "@id": `${SITE_CONFIG.domain}/#service`,
-        name: "SuccessNOW AI Platform",
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "Web-based",
-        description:
-          "All-in-one AI business growth platform with AI agents, websites, ads management, and SEO optimization.",
-        provider: { "@id": `${SITE_CONFIG.domain}/#org` },
-        offers: {
-          "@type": "Offer",
-          url: `${SITE_CONFIG.domain}/signup`,
-          price: "997.00",
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-          priceSpecification: {
-            "@type": "UnitPriceSpecification",
-            price: "997.00",
-            priceCurrency: "USD",
-            billingIncrement: "P1M",
-          },
+export function generateHomeJsonLd() {
+  const sitewide = generateSitewideJsonLd()
+
+  const homeSpecific = {
+    "@type": "WebPage",
+    "@id": `${SITE_CONFIG.url}/#webpage`,
+    url: SITE_CONFIG.url,
+    name: `${SITE_CONFIG.name} - AI Super Agents for Business Automation`,
+    description:
+      "Deploy AI agents that convert leads into sales 24/7. Get your AI website, voice agents, and automated marketing system in 48-72 hours. Transform your business with SuccessNOW AI.",
+    inLanguage: "en-US",
+    isPartOf: { "@id": `${SITE_CONFIG.url}/#website` },
+    about: { "@id": `${SITE_CONFIG.url}/#organization` },
+    mainEntity: { "@id": `${SITE_CONFIG.url}/#organization` },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_CONFIG.url,
         },
-        featureList: [
-          "AI Voice Agents",
-          "AI Chat Agents",
-          "AI Website Builder",
-          "AI Ads Management",
-          "AI SEO Optimization",
-          "CRM Integration",
-          "24/7 Lead Engagement",
-        ],
-      },
-    ],
+      ],
+    },
   }
+
+  sitewide["@graph"].push(homeSpecific)
+  return sitewide
 }
 
-// FAQ page JSON-LD
-export function generateFAQJsonLd(faqs: Array<{ question: string; answer: string }>) {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${SITE_CONFIG.domain}/faq#webpage`,
-        url: `${SITE_CONFIG.domain}/faq`,
-        name: "Frequently Asked Questions - SuccessNOW AI",
-        description:
-          "Get answers to common questions about SuccessNOW AI Superagents, pricing, implementation, and results.",
-        inLanguage: "en-US",
-        isPartOf: { "@id": `${SITE_CONFIG.domain}/#website` },
-        mainEntity: { "@id": `${SITE_CONFIG.domain}/faq#faq` },
+// About page specific JSON-LD with John Potvin Person schema
+export function generateAboutJsonLd() {
+  const sitewide = generateSitewideJsonLd()
+
+  const aboutSpecific = [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_CONFIG.url}/about#webpage`,
+      url: `${SITE_CONFIG.url}/about`,
+      name: "About SuccessNOW AI - The John Potvin Story",
+      description:
+        "Learn about John Potvin's journey from door-to-door sales to AI innovation. Discover how SuccessNOW AI transforms businesses with AI Super Agents and automated marketing systems.",
+      inLanguage: "en-US",
+      isPartOf: { "@id": `${SITE_CONFIG.url}/#website` },
+      about: { "@id": `${SITE_CONFIG.url}/about#john-potvin` },
+      mainEntity: { "@id": `${SITE_CONFIG.url}/about#john-potvin` },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: SITE_CONFIG.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About",
+            item: `${SITE_CONFIG.url}/about`,
+          },
+        ],
       },
-      {
-        "@type": "FAQPage",
-        "@id": `${SITE_CONFIG.domain}/faq#faq`,
-        mainEntity: faqs.slice(0, 10).map((faq, index) => ({
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE_CONFIG.url}/about#john-potvin`,
+      name: "John Potvin",
+      givenName: "John",
+      familyName: "Potvin",
+      jobTitle: "Founder & CEO",
+      description:
+        "Lifelong sales innovator and AI automation expert. Former Director of Franchising for Rogers franchise group, automotive finance manager, and martial arts gym chain owner who scaled to $100K MRR in 6 months.",
+      url: `${SITE_CONFIG.url}/about`,
+      image: `${SITE_CONFIG.url}/images/john-potvin.jpg`,
+      sameAs: SITE_CONFIG.founder.sameAs,
+      worksFor: { "@id": `${SITE_CONFIG.url}/#organization` },
+      founder: { "@id": `${SITE_CONFIG.url}/#organization` },
+      knowsAbout: [
+        "Sales Automation",
+        "AI Business Solutions",
+        "Lead Generation",
+        "CRM Systems",
+        "Digital Marketing",
+        "Business Scaling",
+        "Franchise Development",
+        "Automotive Sales",
+        "Fitness Industry",
+      ],
+      award: [
+        "Director of Franchising & Sales - Rogers Franchise Group",
+        "Scaled martial arts gym chain to $100K MRR in 6 months",
+        "AI Innovation Business International Panel Speaker",
+      ],
+      alumniOf: "School of Hard Knocks - Door-to-Door Sales",
+      hasOccupation: {
+        "@type": "Occupation",
+        name: "CEO & Founder",
+        occupationLocation: SITE_CONFIG.address,
+        skills: [
+          "AI Implementation",
+          "Sales Training",
+          "Business Development",
+          "Marketing Automation",
+          "CRM Integration",
+        ],
+      },
+    },
+  ]
+
+  sitewide["@graph"].push(...aboutSpecific)
+  return sitewide
+}
+
+// FAQ page specific JSON-LD
+export function generateFAQJsonLd() {
+  const sitewide = generateSitewideJsonLd()
+
+  const faqSpecific = [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_CONFIG.url}/faq#webpage`,
+      url: `${SITE_CONFIG.url}/faq`,
+      name: "Frequently Asked Questions - SuccessNOW AI",
+      description:
+        "Get answers to common questions about SuccessNOW AI's services, pricing, setup time, and how our AI Super Agents can transform your business operations.",
+      inLanguage: "en-US",
+      isPartOf: { "@id": `${SITE_CONFIG.url}/#website` },
+      mainEntity: { "@id": `${SITE_CONFIG.url}/faq#faqpage` },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: SITE_CONFIG.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "FAQ",
+            item: `${SITE_CONFIG.url}/faq`,
+          },
+        ],
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_CONFIG.url}/faq#faqpage`,
+      mainEntity: [
+        {
           "@type": "Question",
-          "@id": `${SITE_CONFIG.domain}/faq#question-${index + 1}`,
-          name: faq.question,
+          name: "What is SuccessNOW AI and how does it work?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: faq.answer.split("\n")[0], // First paragraph only for snippets
+            text: "SuccessNOW AI deploys AI Super Agents that handle customer interactions 24/7. Our AI agents answer calls, respond to chats, qualify leads, book appointments, and update your CRM automatically.",
           },
-        })),
-      },
-    ],
-  }
+        },
+        {
+          "@type": "Question",
+          name: "How quickly can I get my AI agents running?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Most clients are operational within 48-72 hours. We handle complete setup including AI website, voice agents, CRM integration, and ad campaigns.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What does SuccessNOW AI cost?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Setup is $997 (normally $9,977) with monthly service at $997 (normally $1,994). Includes AI website, voice/chat agents, ads management, SEO, and CRM automation.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do AI agents integrate with my CRM?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, our AI agents integrate with all major CRMs including GoHighLevel, HubSpot, and Salesforce. They automatically log notes, schedule follow-ups, and track leads.",
+          },
+        },
+      ],
+    },
+  ]
+
+  sitewide["@graph"].push(...faqSpecific)
+  return sitewide
 }
 
 // Service page JSON-LD generator
-export function generateServiceJsonLd(service: {
-  slug: string
-  name: string
-  description: string
-  price?: string
-  features?: string[]
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${SITE_CONFIG.domain}/${service.slug}#webpage`,
-        url: `${SITE_CONFIG.domain}/${service.slug}`,
-        name: `${service.name} - ${SITE_CONFIG.brandName}`,
-        description: service.description,
-        inLanguage: "en-US",
-        isPartOf: { "@id": `${SITE_CONFIG.domain}/#website` },
-        about: { "@id": `${SITE_CONFIG.domain}/${service.slug}#service` },
+export function generateServiceJsonLd(
+  serviceName: string,
+  serviceUrl: string,
+  serviceDescription: string,
+  price?: string,
+) {
+  const sitewide = generateSitewideJsonLd()
+
+  const serviceSpecific = [
+    {
+      "@type": "WebPage",
+      "@id": `${serviceUrl}#webpage`,
+      url: serviceUrl,
+      name: `${serviceName} - SuccessNOW AI`,
+      description: serviceDescription,
+      inLanguage: "en-US",
+      isPartOf: { "@id": `${SITE_CONFIG.url}/#website` },
+      about: { "@id": `${serviceUrl}#service` },
+      mainEntity: { "@id": `${serviceUrl}#service` },
+    },
+    {
+      "@type": "Service",
+      "@id": `${serviceUrl}#service`,
+      name: serviceName,
+      description: serviceDescription,
+      provider: { "@id": `${SITE_CONFIG.url}/#organization` },
+      serviceType: "AI Business Automation",
+      areaServed: SITE_CONFIG.areaServed,
+      offers: {
+        "@type": "Offer",
+        url: serviceUrl,
+        price: price || "997.00",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        validFrom: "2024-01-01",
       },
-      {
-        "@type": "Service",
-        "@id": `${SITE_CONFIG.domain}/${service.slug}#service`,
-        name: service.name,
-        serviceType: "Business Automation",
-        provider: { "@id": `${SITE_CONFIG.domain}/#org` },
-        areaServed: SITE_CONFIG.areaServed.map((area) => ({
-          "@type": "Country",
-          name: area,
-        })),
-        description: service.description,
-        ...(service.price && {
-          offers: {
-            "@type": "Offer",
-            url: `${SITE_CONFIG.domain}/${service.slug}`,
-            price: service.price,
-            priceCurrency: "USD",
-            availability: "https://schema.org/InStock",
-          },
-        }),
-        ...(service.features && {
-          serviceOutput: service.features.map((feature) => ({
-            "@type": "Thing",
-            name: feature,
-          })),
-        }),
-      },
-    ],
-  }
+    },
+  ]
+
+  sitewide["@graph"].push(...serviceSpecific)
+  return sitewide
 }
 
 // Industry page JSON-LD generator
-export function generateIndustryJsonLd(industry: {
-  slug: string
-  name: string
-  description: string
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${SITE_CONFIG.domain}/${industry.slug}#webpage`,
-        url: `${SITE_CONFIG.domain}/${industry.slug}`,
-        name: `${industry.name} AI Solutions - ${SITE_CONFIG.brandName}`,
-        description: industry.description,
-        inLanguage: "en-US",
-        isPartOf: { "@id": `${SITE_CONFIG.domain}/#website` },
-        about: { "@id": `${SITE_CONFIG.domain}/${industry.slug}#service` },
-      },
-      {
-        "@type": "Service",
-        "@id": `${SITE_CONFIG.domain}/${industry.slug}#service`,
-        name: `${industry.name} AI Automation`,
-        serviceType: "Industry-Specific AI Solutions",
-        provider: { "@id": `${SITE_CONFIG.domain}/#org` },
-        areaServed: SITE_CONFIG.areaServed.map((area) => ({
-          "@type": "Country",
-          name: area,
-        })),
-        description: industry.description,
-        audience: {
-          "@type": "BusinessAudience",
-          name: `${industry.name} Businesses`,
-        },
-      },
-    ],
-  }
-}
+export function generateIndustryJsonLd(industryName: string, industryUrl: string, industryDescription: string) {
+  const sitewide = generateSitewideJsonLd()
 
-// How-to JSON-LD generator
-export function generateHowToJsonLd(howTo: {
-  name: string
-  description: string
-  steps: Array<{ name: string; text: string }>
-  totalTime?: string
-  estimatedCost?: string
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: howTo.name,
-    description: howTo.description,
-    inLanguage: "en-US",
-    ...(howTo.totalTime && { totalTime: howTo.totalTime }),
-    ...(howTo.estimatedCost && { estimatedCost: howTo.estimatedCost }),
-    step: howTo.steps.map((step, index) => ({
-      "@type": "HowToStep",
-      position: index + 1,
-      name: step.name,
-      text: step.text,
-    })),
-  }
+  const industrySpecific = [
+    {
+      "@type": "WebPage",
+      "@id": `${industryUrl}#webpage`,
+      url: industryUrl,
+      name: `${industryName} AI Solutions - SuccessNOW AI`,
+      description: industryDescription,
+      inLanguage: "en-US",
+      isPartOf: { "@id": `${SITE_CONFIG.url}/#website` },
+      about: { "@id": `${industryUrl}#service` },
+      mainEntity: { "@id": `${industryUrl}#service` },
+    },
+    {
+      "@type": "Service",
+      "@id": `${industryUrl}#service`,
+      name: `${industryName} AI Automation`,
+      description: industryDescription,
+      provider: { "@id": `${SITE_CONFIG.url}/#organization` },
+      serviceType: `${industryName} Business Automation`,
+      audience: {
+        "@type": "BusinessAudience",
+        name: `${industryName} Businesses`,
+      },
+      areaServed: SITE_CONFIG.areaServed,
+      offers: {
+        "@type": "Offer",
+        url: industryUrl,
+        price: "997.00",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+      },
+    },
+  ]
+
+  sitewide["@graph"].push(...industrySpecific)
+  return sitewide
 }

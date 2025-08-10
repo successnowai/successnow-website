@@ -1,68 +1,76 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Montserrat, Open_Sans } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
-import Navbar from "@/components/navigation/navbar"
-import Footer from "@/components/home/footer"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Navbar } from "@/components/navigation/navbar"
+import { Footer } from "@/components/home/footer"
 import FloatingChatRobot from "@/components/chat/floating-chat-robot"
-import StarryBackground from "@/components/ui/starry-background"
 import ScrollToTop from "@/components/ui/scroll-to-top"
-import JsonLdScript from "@/components/json-ld-script"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  preload: true,
-})
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["600", "800"],
-  variable: "--font-montserrat",
-  display: "swap",
-  preload: true,
-})
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  variable: "--font-open-sans",
-  display: "swap",
-  preload: true,
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "SuccessNOW – AI Superagent System",
+  title: {
+    default: "SuccessNOW AI - AI Super Agents That Convert Leads Into Sales 24/7",
+    template: "%s | SuccessNOW AI",
+  },
   description:
-    "Our AI Superagents convert, book, and nurture leads 24/7 — while you get back your time. Never lose a lead again.",
-  generator: "v0.dev",
-  keywords:
-    "AI Superagents, Lead Conversion, AI Chatbots, Automated Marketing, Lead Generation, AI Sales Assistant, Business Automation",
-  authors: [{ name: "SuccessNOW" }],
-  creator: "SuccessNOW",
-  publisher: "SuccessNOW",
-  robots: "index, follow",
+    "Transform your business with AI Super Agents that handle customer interactions, qualify leads, and drive conversions 24/7. Get your AI website, voice agents, and automated marketing system deployed in 48-72 hours.",
+  keywords: [
+    "AI agents",
+    "business automation",
+    "lead generation",
+    "AI voice agents",
+    "CRM automation",
+    "AI marketing",
+  ],
+  authors: [{ name: "John Potvin", url: "https://successnow.ai/about" }],
+  creator: "SuccessNOW AI",
+  publisher: "SuccessNOW AI",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "SuccessNOW – AI Superagent System",
-    description:
-      "Our AI Superagents convert, book, and nurture leads 24/7 — while you get back your time. Never lose a lead again.",
-    url: "https://successnow.ai",
-    siteName: "SuccessNOW",
     type: "website",
+    locale: "en_US",
+    url: "https://successnow.ai",
+    siteName: "SuccessNOW AI",
+    title: "SuccessNOW AI - AI Super Agents That Convert Leads Into Sales 24/7",
+    description:
+      "Transform your business with AI Super Agents that handle customer interactions, qualify leads, and drive conversions 24/7.",
     images: [
       {
         url: "https://successnow.ai/images/successnow-logo.png",
         width: 1200,
         height: 630,
-        alt: "SuccessNOW AI Superagent System",
+        alt: "SuccessNOW AI Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SuccessNOW – AI Superagent System",
+    title: "SuccessNOW AI - AI Super Agents That Convert Leads Into Sales 24/7",
     description:
-      "Our AI Superagents convert, book, and nurture leads 24/7 — while you get back your time. Never lose a lead again.",
+      "Transform your business with AI Super Agents that handle customer interactions, qualify leads, and drive conversions 24/7.",
     images: ["https://successnow.ai/images/successnow-logo.png"],
+    creator: "@successnowai",
   },
+  verification: {
+    google: "your-google-verification-code",
+  },
+  alternates: {
+    canonical: "https://successnow.ai",
+  },
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -70,48 +78,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const sitewideJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "SuccessNOW AI",
-    url: "https://successnow.ai",
-    logo: "https://successnow.ai/images/successnow-logo.png",
-  }
-
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-        <link rel="preconnect" href="https://iframes.ai" />
-        <link rel="dns-prefetch" href="https://signup.successnow.ai" />
-        <link rel="dns-prefetch" href="https://my.successnow.ai" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#00BFFF" />
-        <link rel="preload" href="/images/successnow-logo.png" as="image" type="image/png" />
-        <link rel="preload" href="/abstract-neural-network-background.webp" as="image" type="image/webp" />
-        <JsonLdScript data={sitewideJsonLd} />
-      </head>
-      <body className={`${inter.variable} ${montserrat.variable} ${openSans.variable} font-sans`}>
-        <StarryBackground />
-        <ScrollToTop />
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#00BFFF] focus:text-white focus:rounded-md"
-        >
-          Skip to main content
-        </a>
-        <Navbar />
-        <main id="main-content" className="global-content-spacing">
-          {children}
-        </main>
-        <Footer />
-        <FloatingChatRobot />
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <div className="min-h-screen bg-black text-white">
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <FloatingChatRobot />
+            <ScrollToTop />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -1,24 +1,25 @@
-import JsonLdScript from "@/components/json-ld-script"
+import type { Metadata } from "next"
 import RealtorNowClientPage from "./RealtorNowClientPage"
+import JsonLdScript from "@/components/json-ld-script"
+import { generateIndustryPageJsonLd } from "@/lib/json-ld"
+
+const industryData = {
+  slug: "realtornow",
+  name: "Realtors",
+  description:
+    "Our AI Superagents for Realtors qualify leads, book property viewings, and follow up 24/7, so you can focus on closing deals. Never miss a hot lead again.",
+}
+
+export const metadata: Metadata = {
+  title: `AI for ${industryData.name} - Automated Lead Conversion`,
+  description: industryData.description,
+}
 
 export default function RealtorNowPage() {
-  const realtorJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "AI for Realtors - SuccessNOW AI",
-    description:
-      "Generate and convert real estate leads 24/7 with an AI Superagent that never sleeps. Qualify buyers, schedule viewings, and follow up instantly.",
-    provider: {
-      "@type": "Organization",
-      name: "SuccessNOW AI",
-      url: "https://successnow.ai",
-    },
-    url: "https://successnow.ai/realtornow",
-  }
-
+  const industryJsonLd = generateIndustryPageJsonLd(industryData)
   return (
     <>
-      <JsonLdScript data={realtorJsonLd} />
+      <JsonLdScript data={industryJsonLd} />
       <RealtorNowClientPage />
     </>
   )

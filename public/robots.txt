@@ -1,12 +1,10 @@
 # Standard web crawlers
 User-agent: *
 Disallow: /admin/
-Disallow: /api/admin/
 Disallow: /login/
 Disallow: /cart/
 Disallow: /checkout/
 Disallow: /search?
-Disallow: /temp/
 Allow: /
 
 # Ensure assets used in rendering are crawlable
@@ -15,9 +13,13 @@ Allow: /static/
 Allow: /images/
 Allow: /css/
 Allow: /js/
-Allow: /_next/static/
 
-# AI/model training crawlers - restrict content usage for training
+# Sitemaps
+Sitemap: https://successnow.ai/sitemap.xml
+Sitemap: https://successnow.ai/sitemap-pages.xml
+Sitemap: https://successnow.ai/sitemap-posts.xml
+
+# AI/model training crawlers - restrict while allowing normal search bots
 User-agent: GPTBot
 Disallow: /
 
@@ -32,14 +34,3 @@ Disallow: /
 
 User-agent: Applebot-Extended
 Disallow: /
-
-User-agent: Claude-Web
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
-
-# Sitemaps
-Sitemap: https://successnow.ai/sitemap.xml
-Sitemap: https://successnow.ai/sitemap-pages.xml
-Sitemap: https://successnow.ai/sitemap-posts.xml
