@@ -1,3 +1,5 @@
+import { generateHomePageJsonLd } from "@/lib/json-ld"
+import { JsonLdScript } from "@/components/json-ld-script"
 import StarryBackground from "@/components/ui/starry-background"
 import { NewTopHeroSection } from "@/components/home/new-top-hero-section"
 import { GlassmorphicProblemsSection } from "@/components/home/glassmorphic-problems-section"
@@ -11,19 +13,24 @@ import AdsNowSection from "@/components/home/adsnow-section"
 import CtaSection from "@/components/home/cta-section"
 
 export default function HomePage() {
+  const homePageJsonLd = generateHomePageJsonLd()
+
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      <StarryBackground />
-      <NewTopHeroSection />
-      <GlassmorphicProblemsSection />
-      <MainHeroSection />
-      <AiAgentAlert />
-      <IndustrySolutions />
-      <LiveDemo />
-      <PricingTable />
-      <PlatformShowcaseSection />
-      <AdsNowSection />
-      <CtaSection />
-    </div>
+    <>
+      <JsonLdScript data={homePageJsonLd} />
+      <div className="min-h-screen bg-black text-white relative overflow-hidden">
+        <StarryBackground />
+        <NewTopHeroSection />
+        <GlassmorphicProblemsSection />
+        <MainHeroSection />
+        <AiAgentAlert />
+        <IndustrySolutions />
+        <LiveDemo />
+        <PricingTable />
+        <PlatformShowcaseSection />
+        <AdsNowSection />
+        <CtaSection />
+      </div>
+    </>
   )
 }

@@ -31,7 +31,7 @@ export default function SignupPage() {
     <div className="min-h-screen bg-[#0A0A0F] text-white relative overflow-hidden">
       <StarryBackground />
 
-      <div className="relative z-10 container mx-auto px-4 py-12">
+      <div className="relative z-10 container mx-auto px-4 py-20">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <Badge className="mb-4 bg-gradient-to-r from-[#00BFFF] to-[#00FF88] text-black font-bold px-6 py-2">

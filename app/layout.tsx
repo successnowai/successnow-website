@@ -7,6 +7,8 @@ import Footer from "@/components/home/footer"
 import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 import StarryBackground from "@/components/ui/starry-background"
 import ScrollToTop from "@/components/ui/scroll-to-top"
+import { generateSitewideJsonLd } from "@/lib/json-ld"
+import { JsonLdScript } from "@/components/json-ld-script"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -69,15 +71,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const sitewideJsonLd = generateSitewideJsonLd()
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 
-        {/* Preconnect to external domains */}
+        {/* Preconnect to external domains - Performance optimization */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="preconnect" href="https://iframes.ai" />
+
+        {/* DNS prefetch for additional domains */}
+        <link rel="dns-prefetch" href="https://signup.successnow.ai" />
+        <link rel="dns-prefetch" href="https://my.successnow.ai" />
 
         {/* Favicon and icons */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -88,6 +97,10 @@ export default function RootLayout({
 
         {/* Preload critical resources */}
         <link rel="preload" href="/images/successnow-logo.png" as="image" type="image/png" />
+        <link rel="preload" href="/abstract-neural-network-background.webp" as="image" type="image/webp" />
+
+        {/* Sitewide JSON-LD */}
+        <JsonLdScript data={sitewideJsonLd} />
       </head>
       <body className={`${inter.variable} ${montserrat.variable} ${openSans.variable} font-sans`}>
         <StarryBackground />
@@ -107,7 +120,7 @@ export default function RootLayout({
         </main>
         {/* Global Footer - Now appears on every page */}
         <Footer />
-        {/* Floating chat robot */}
+        {/* Floating chat robot - Lazy loaded */}
         <FloatingChatRobot />
       </body>
     </html>
