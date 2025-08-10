@@ -70,7 +70,7 @@ export function GlassmorphicProblemsSection() {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold text-white neon-text-glow mb-6">
             Stop Losing Money on These Problems
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
@@ -85,7 +85,7 @@ export function GlassmorphicProblemsSection() {
             return (
               <Card
                 key={index}
-                className="group bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 p-6 shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 hover:scale-105 hover:border-purple-500/50"
+                className="group bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 hover:border-pink-500/60 p-6 shadow-2xl hover:shadow-pink-500/20 transition-all duration-500 hover:scale-105"
                 style={{
                   animationDelay: problem.delay,
                   animation: `fadeInUp 0.6s ease-out forwards ${problem.delay}`,
@@ -93,7 +93,7 @@ export function GlassmorphicProblemsSection() {
               >
                 {/* Gradient Icon */}
                 <div className="relative mb-6">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-blue-600 p-0.5 group-hover:from-pink-400 group-hover:to-purple-500 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#00BFFF] to-blue-600 p-0.5 group-hover:from-pink-500 group-hover:to-pink-600 transition-all duration-300">
                     <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
@@ -101,16 +101,23 @@ export function GlassmorphicProblemsSection() {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-pink-300 transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#00BFFF] group-hover:drop-shadow-[0_0_8px_rgba(0,191,255,0.6)] transition-all duration-300">
                   {problem.title}
                 </h3>
                 <p className="text-gray-400 mb-6 leading-relaxed">{problem.description}</p>
 
                 {/* Stats with Arrow */}
                 <div className="flex items-center justify-between">
-                  <span className="text-pink-400 font-semibold text-lg">{problem.stats}</span>
-                  <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/40 transition-all duration-300">
-                    <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="text-[#00BFFF] font-semibold text-lg drop-shadow-[0_0_4px_rgba(0,191,255,0.4)]">
+                    {problem.stats}
+                  </span>
+                  <div className="w-8 h-8 rounded-full bg-[#00BFFF]/20 flex items-center justify-center group-hover:bg-pink-500/40 transition-all duration-300">
+                    <svg
+                      className="w-4 h-4 text-[#00BFFF] group-hover:text-pink-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
@@ -121,7 +128,7 @@ export function GlassmorphicProblemsSection() {
         </div>
 
         {/* CTA Section */}
-        <Card className="bg-gray-800/60 backdrop-blur-xl border border-gray-700/50 p-8 md:p-12 text-center shadow-2xl">
+        <Card className="bg-gray-800/60 backdrop-blur-xl border border-gray-700/50 hover:border-pink-500/40 p-8 md:p-12 text-center shadow-2xl hover:shadow-pink-500/10 transition-all duration-300">
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Solve These Problems Forever?</h3>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             SuccessNOW AI eliminates every single one of these issues while you sleep
@@ -129,7 +136,7 @@ export function GlassmorphicProblemsSection() {
           <Link href="/demo">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-pink-500 to-blue-600 hover:from-pink-400 hover:to-purple-500 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-[#00BFFF] to-blue-600 hover:from-pink-500 hover:to-pink-600 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-pink-500/50 transition-all duration-300 transform hover:scale-105"
             >
               See How It Works →
             </Button>
