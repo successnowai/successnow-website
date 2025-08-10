@@ -300,7 +300,7 @@ export default function CaseStudiesClientPage() {
   )
 
   return (
-    <div className="min-h-screen text-white relative overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 relative">
         <div className="max-w-7xl mx-auto text-center">

@@ -131,3 +131,21 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #718096;
 }
+
+@layer components {
+  .card-stylized {
+    @apply bg-secondary/30 backdrop-blur-lg border border-brandBlue/20 rounded-2xl transition-all duration-300;
+  }
+  .card-stylized:hover {
+    @apply border-brandBlue/40 shadow-2xl shadow-brandBlue/10;
+  }
+  .card-stylized-purple {
+    @apply bg-secondary/30 backdrop-blur-lg border border-brandPurple/20 rounded-2xl transition-all duration-300;
+  }
+  .card-stylized-purple:hover {
+    @apply border-brandPurple/40 shadow-2xl shadow-brandPurple/10;
+  }
+  .card-stylized-darker {
+    @apply bg-black/50 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+}
