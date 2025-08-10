@@ -114,17 +114,6 @@ export const Navbar = () => {
             <Link href="/case-studies" className="text-gray-300 hover:text-white transition-colors">
               Case Studies
             </Link>
-            <Link href="/faq" className="text-gray-300 hover:text-white transition-colors">
-              FAQ
-            </Link>
-            <Link
-              href="https://my.successnow.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white transition-colors"
-            >
-              Community
-            </Link>
             <Button
               asChild
               className="bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white"
@@ -207,22 +196,6 @@ export const Navbar = () => {
                 onClick={() => setIsOpen(false)}
               >
                 Case Studies
-              </Link>
-              <Link
-                href="/faq"
-                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                FAQ
-              </Link>
-              <Link
-                href="https://my.successnow.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Community
               </Link>
               <div className="px-3 py-2">
                 <Button

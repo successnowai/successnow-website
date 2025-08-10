@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Twitter, Youtube, Users } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react"
 
 export function Footer() {
   return (
@@ -58,6 +58,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  About Us
+                </Link>
+              </li>
+              <li>
                 <Link href="/demo" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Demo
                 </Link>
@@ -68,8 +73,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  FAQ
+                <Link href="/case-studies" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Case Studies
                 </Link>
               </li>
               <li>
@@ -112,10 +117,25 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Support & Community */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Legal</h3>
+            <h3 className="text-white font-semibold mb-4">Support & Community</h3>
             <ul className="space-y-2">
+              <li>
+                <Link href="/faq" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://my.successnow.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                >
+                  Community
+                </Link>
+              </li>
               <li>
                 <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Privacy Policy
@@ -207,15 +227,6 @@ export function Footer() {
               >
                 <Youtube className="w-4 h-4 group-hover:scale-110 transition-transform" />
                 <span>YouTube</span>
-              </a>
-              <a
-                href="https://my.successnow.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-purple-400 transition-colors text-sm group"
-              >
-                <Users className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span>Community</span>
               </a>
             </div>
           </div>
