@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -42,13 +41,13 @@ export default function IndustryPageTemplate({
   heroWarning,
   heroDescription,
   heroCtaText,
-  heroCtaLink,
-  customBuildPoints,
-  aiAgentsBenefits,
+  heroCtaLink = "https://signup.successnow.ai",
+  customBuildPoints = [],
+  aiAgentsBenefits = [],
   dominateCtaText,
-  featureCards,
-  problems,
-  solutions,
+  featureCards = [],
+  problems = [],
+  solutions = [],
   finalCtaTitle,
   finalCtaDescription,
 }: IndustryPageTemplateProps) {
@@ -77,7 +76,7 @@ export default function IndustryPageTemplate({
               size="lg"
               className="bg-gradient-to-r from-[#00BFFF] to-[#00D1FF] hover:from-[#00AADD] hover:to-[#00B8E6] text-white font-bold text-lg px-8 py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105"
             >
-              <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+              <Link href={heroCtaLink} target="_blank" rel="noopener noreferrer">
                 {heroCtaText} <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -97,108 +96,123 @@ export default function IndustryPageTemplate({
       <div className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto space-y-4">
           {/* Custom Build Points */}
-          <Card className="bg-white/5 border border-white/10 rounded-2xl p-8 sm:p-12 backdrop-blur-sm">
-            <CardContent className="p-0">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold flex items-center justify-center gap-3">
-                  <Zap className="text-[#00BFFF]" />
-                  100% Custom Built for YOUR {industryNameSingular}
-                </h2>
-              </div>
-              <div className="space-y-8">
-                {customBuildPoints.map((point, index) => (
-                  <div key={index} className="flex flex-col sm:flex-row items-start gap-4">
-                    <div className="flex-shrink-0">
-                      <point.icon className="h-8 w-8 text-[#00BFFF]" />
+          {customBuildPoints.length > 0 && (
+            <Card className="bg-white/5 border border-white/10 rounded-2xl p-8 sm:p-12 backdrop-blur-sm">
+              <CardContent className="p-0">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl sm:text-4xl font-bold flex items-center justify-center gap-3">
+                    <Zap className="text-[#00BFFF]" />
+                    100% Custom Built for YOUR {industryNameSingular}
+                  </h2>
+                </div>
+                <div className="space-y-8">
+                  {customBuildPoints.map((point, index) => (
+                    <div key={index} className="flex flex-col sm:flex-row items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <point.icon className="h-8 w-8 text-[#00BFFF]" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold">{point.title}</h3>
+                        <p className="mt-2 text-gray-400">{point.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-semibold">{point.title}</h3>
-                      <p className="mt-2 text-gray-400">{point.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
 
           {/* AI Agents Benefits */}
-          <Card className="bg-white/5 border border-white/10 rounded-2xl p-8 sm:p-12 backdrop-blur-sm">
-            <CardContent className="p-0">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl sm:text-4xl font-bold flex items-center justify-center gap-3">
-                  <Zap className="text-[#00BFFF]" />
-                  AI Agents That Never Miss
-                </h2>
-              </div>
-              <ul className="space-y-4 text-lg text-gray-300 max-w-3xl mx-auto">
-                {aiAgentsBenefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-[#00BFFF] mr-3 mt-1">&#8226;</span>
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-12 text-center">
-                <Button
-                  size="lg"
-                  className="bg-white/10 border border-white/20 hover:bg-white/20 text-white font-bold text-lg px-8 py-6 rounded-lg shadow-lg transition-all"
-                >
-                  <MessageCircle className="mr-3" />
-                  {dominateCtaText}
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          {aiAgentsBenefits.length > 0 && (
+            <Card className="bg-white/5 border border-white/10 rounded-2xl p-8 sm:p-12 backdrop-blur-sm">
+              <CardContent className="p-0">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl sm:text-4xl font-bold flex items-center justify-center gap-3">
+                    <Zap className="text-[#00BFFF]" />
+                    AI Agents That Never Miss
+                  </h2>
+                </div>
+                <ul className="space-y-4 text-lg text-gray-300 max-w-3xl mx-auto">
+                  {aiAgentsBenefits.map((benefit, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="text-[#00BFFF] mr-3 mt-1">&#8226;</span>
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-12 text-center">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-white/10 border border-white/20 hover:bg-white/20 text-white font-bold text-lg px-8 py-6 rounded-lg shadow-lg transition-all"
+                  >
+                    <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="mr-3" />
+                      {dominateCtaText}
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Revolutionary AI Card */}
           <RevolutionaryAiCard />
 
           {/* Feature Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featureCards.map((feature, index) => (
-              <Card
-                key={index}
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:border-[#00BFFF] transition-colors duration-300"
-              >
-                <CardContent className="p-0 flex flex-col items-center">
-                  <feature.icon className="h-12 w-12 text-[#00BFFF] mb-4" />
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          {featureCards.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featureCards.map((feature, index) => (
+                <Card
+                  key={index}
+                  className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:border-[#00BFFF] transition-colors duration-300"
+                >
+                  <CardContent className="p-0 flex flex-col items-center">
+                    <feature.icon className="h-12 w-12 text-[#00BFFF] mb-4" />
+                    <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                    <p className="text-gray-400">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
 
           {/* Problems and Solutions Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="bg-white/5 border border-red-500/20 rounded-2xl p-8 backdrop-blur-sm">
-              <CardContent className="p-0">
-                <h3 className="text-2xl font-bold mb-6 text-red-400">Problems We Solve</h3>
-                <ul className="space-y-3">
-                  {problems.map((problem, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="text-red-400 mr-3 mt-1">✗</span>
-                      <span className="text-gray-300">{problem}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+          {(problems.length > 0 || solutions.length > 0) && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {problems.length > 0 && (
+                <Card className="bg-white/5 border border-red-500/20 rounded-2xl p-8 backdrop-blur-sm">
+                  <CardContent className="p-0">
+                    <h3 className="text-2xl font-bold mb-6 text-red-400">Problems We Solve</h3>
+                    <ul className="space-y-3">
+                      {problems.map((problem, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-red-400 mr-3 mt-1">✗</span>
+                          <span className="text-gray-300">{problem}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              )}
 
-            <Card className="bg-white/5 border border-green-500/20 rounded-2xl p-8 backdrop-blur-sm">
-              <CardContent className="p-0">
-                <h3 className="text-2xl font-bold mb-6 text-green-400">Our Solutions</h3>
-                <ul className="space-y-3">
-                  {solutions.map((solution, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="text-green-400 mr-3 mt-1">✓</span>
-                      <span className="text-gray-300">{solution}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
+              {solutions.length > 0 && (
+                <Card className="bg-white/5 border border-green-500/20 rounded-2xl p-8 backdrop-blur-sm">
+                  <CardContent className="p-0">
+                    <h3 className="text-2xl font-bold mb-6 text-green-400">Our Solutions</h3>
+                    <ul className="space-y-3">
+                      {solutions.map((solution, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-green-400 mr-3 mt-1">✓</span>
+                          <span className="text-gray-300">{solution}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+          )}
 
           {/* Final CTA Section */}
           <Card className="bg-white/5 border border-white/10 rounded-2xl p-8 sm:p-12 backdrop-blur-sm text-center">
