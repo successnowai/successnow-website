@@ -100,13 +100,13 @@ export default function MainHeroSection() {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link href="/signup">
+            <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
                 variant="outline"
                 className="border-2 border-cyan-400/50 text-white hover:bg-cyan-500/10 px-8 py-4 text-lg font-semibold rounded-xl backdrop-blur-sm transition-all duration-300 brightness-110 bg-transparent"
               >
-                Start Free Trial
+                Get Started Now
               </Button>
             </Link>
           </div>

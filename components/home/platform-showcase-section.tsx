@@ -167,9 +167,9 @@ export function PlatformShowcaseSection() {
             growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/signup">
+            <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
               <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105">
-                Start Your Free Trial
+                Get Started Now
               </Button>
             </Link>
             <Link href="/demo">

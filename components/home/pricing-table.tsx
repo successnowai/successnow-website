@@ -180,7 +180,7 @@ export default function PricingTable() {
               </ul>
 
               {/* CTA Button */}
-              <Link href="/signup" className="block">
+              <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer" className="block">
                 <Button className="w-full py-4 text-lg font-semibold transition-all duration-300 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-lg hover:shadow-xl">
                   {plan.cta}
                 </Button>
