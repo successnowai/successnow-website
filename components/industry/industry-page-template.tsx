@@ -232,3 +232,6 @@ export default function IndustryPageTemplate({
     </div>
   )
 }
+
+// Named export for the template
+export { IndustryPageTemplate }
