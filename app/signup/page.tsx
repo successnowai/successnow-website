@@ -57,7 +57,7 @@ export default function SignupPage() {
               }}
             >
               <span className="relative z-10 flex items-center gap-3">
-                <Rocket className="w-6 h-6" />🚀 GET AI NOW - $3,488
+                <Rocket className="w-6 h-6" />🚀 GET AI NOW - $997/month
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
             </Button>
@@ -102,11 +102,13 @@ export default function SignupPage() {
                 Enterprise AI Platform
               </CardTitle>
               <div className="text-5xl md:text-6xl font-bold mb-4">
-                <span className="text-[#00FF88]">${isAnnual ? "4,970" : "497"}</span>
+                <span className="text-[#00FF88]">${isAnnual ? "9,970" : "997"}</span>
                 <span className="text-xl text-gray-400 ml-2">{isAnnual ? "/year" : "/month"}</span>
               </div>
               {isAnnual && (
-                <Badge className="bg-[#00FF88]/20 text-[#00FF88] border border-[#00FF88]/30">Save $994 annually</Badge>
+                <Badge className="bg-[#00FF88]/20 text-[#00FF88] border border-[#00FF88]/30">
+                  Save $1,994 annually
+                </Badge>
               )}
             </CardHeader>
             <CardContent className="relative z-10">
@@ -253,7 +255,7 @@ export default function SignupPage() {
             }}
           >
             <span className="relative z-10 flex items-center gap-3">
-              <Zap className="w-6 h-6" />⚡ SECURE YOUR AI SYSTEMS NOW - $3,488
+              <Zap className="w-6 h-6" />⚡ SECURE YOUR AI SYSTEMS NOW - $997/month
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
           </Button>
@@ -284,7 +286,7 @@ export default function SignupPage() {
                   }}
                 >
                   <span className="relative z-10 flex items-center gap-4">
-                    <Target className="w-8 h-8" />🎯 CLAIM THIS DEAL NOW - SAVE $31,512!
+                    <Target className="w-8 h-8" />🎯 CLAIM THIS DEAL NOW - SAVE $1,994!
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000" />
                 </Button>
@@ -350,7 +352,7 @@ export default function SignupPage() {
                 size="lg"
                 className="bg-gradient-to-r from-[#00BFFF] to-[#00FF88] text-black font-bold px-8 py-4 text-lg rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(0,191,255,0.5)] mb-4"
               >
-                Get Started Now - $3,488
+                Get Started Now - $997/month
               </Button>
               <p className="text-sm text-gray-400">
                 ✅ 30-day money-back guarantee
