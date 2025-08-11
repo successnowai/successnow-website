@@ -52,17 +52,46 @@ Disallow: /template/
 Disallow: /temp
 Disallow: /test
 
-# Block specific file types
+# Block specific file types from indexing
 Disallow: *.json$
 Disallow: *.xml$
 Disallow: *.txt$
 
+# AI-specific crawlers (allow by default, but can be restricted if needed)
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: CCBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Claude-Web
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
 # Crawl delay for respectful crawling
 Crawl-delay: 1
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://successnow.ai/sitemap.xml
-
-# Additional sitemaps for different content types
 Sitemap: https://successnow.ai/sitemap-industries.xml
 Sitemap: https://successnow.ai/sitemap-blogs.xml
+
+# LLMs.txt file for AI training
+# This file provides structured information for AI models
+# Location: https://successnow.ai/llms.txt
+# Full documentation: https://successnow.ai/llms-full.txt
