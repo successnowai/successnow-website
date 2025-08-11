@@ -1,18 +1,68 @@
 User-agent: *
 Allow: /
 
-# Block affiliate sales pages from indexing
-Disallow: /leo
-Disallow: /nara
-Disallow: /sam
+# High priority pages for crawling
+Allow: /
+Allow: /demo
+Allow: /book
+Allow: /industries
+Allow: /case-studies
+Allow: /about
+Allow: /faq
+Allow: /community
+Allow: /blogs
+Allow: /blogs/*
 
-# Block admin and API routes
+# Industry niche pages - high priority
+Allow: /autodealersnow
+Allow: /realtornow
+Allow: /dentistsnow
+Allow: /plumbersnow
+Allow: /hvacnow
+Allow: /gymsnow
+Allow: /chiropractorsnow
+Allow: /restaurantsnow
+Allow: /roofersnow
+Allow: /solarnow
+Allow: /medspanow
+Allow: /mortgagenow
+Allow: /contractorsnow
+Allow: /lawyersnow
+
+# Program pages
+Allow: /affiliate
+Allow: /affiliate/apply
+Allow: /diamond
+Allow: /diamond/*
+
+# Legal pages
+Allow: /privacy
+Allow: /terms
+
+# Signup redirect
+Allow: /signup
+
+# Block admin and API routes from indexing
 Disallow: /admin/
 Disallow: /api/
-Disallow: /affiliate/apply/
+Disallow: /_next/
+Disallow: /template/
 
-# Allow all other pages
-Allow: /
+# Block any temporary or test pages
+Disallow: /temp
+Disallow: /test
 
-# Sitemap
+# Block specific file types
+Disallow: *.json$
+Disallow: *.xml$
+Disallow: *.txt$
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://successnow.ai/sitemap.xml
+
+# Additional sitemaps for different content types
+Sitemap: https://successnow.ai/sitemap-industries.xml
+Sitemap: https://successnow.ai/sitemap-blogs.xml
