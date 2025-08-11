@@ -1,69 +1,108 @@
 "use client"
 
 import IndustryPageTemplate from "@/components/industry/industry-page-template"
-import { Home, MessageSquare, Users, Clock, Phone, CheckCircle, MapPin, Target, TrendingUp } from 'lucide-react'
+import { Globe, Target, Bot, LayoutDashboard, LinkIcon, GraduationCap } from "lucide-react"
 
 export default function RealtorNowClientPage() {
-  const features = [
-    {
-      icon: Home,
-      title: "Property Inquiries",
-      description: "AI handles all property questions and schedules showings automatically."
-    },
-    {
-      icon: MessageSquare,
-      title: "Lead Nurturing",
-      description: "Automated follow-up sequences that keep prospects engaged until they're ready to buy."
-    },
-    {
-      icon: Users,
-      title: "Buyer Qualification",
-      description: "AI pre-qualifies buyers and identifies serious prospects ready to purchase."
-    },
-    {
-      icon: Clock,
-      title: "24/7 Availability",
-      description: "Never miss a lead - AI responds to inquiries instantly at any time."
-    },
-    {
-      icon: MapPin,
-      title: "Showing Coordination",
-      description: "AI schedules property showings and coordinates with all parties involved."
-    },
-    {
-      icon: CheckCircle,
-      title: "CRM Integration",
-      description: "Seamlessly integrates with your existing real estate CRM and tools."
-    }
-  ]
-
-  const benefits = [
-    "Increase lead conversion by 350% with instant response times",
-    "Book 5x more property showings automatically",
-    "Never miss a lead with 24/7 AI availability",
-    "Qualify buyers before they waste your time",
-    "Improve client satisfaction with consistent communication",
-    "Scale your business without hiring assistants",
-    "Track every interaction with detailed analytics",
-    "Work with multiple clients simultaneously"
-  ]
-
   return (
     <IndustryPageTemplate
-      industryName="Realtors"
+      industryName="Real Estate Agents"
       industryNameSingular="Real Estate Business"
-      heroTitle="The Best AI Agents for Realtors"
-      heroSubtitle="AI That Books Showings & Closes Deals"
-      heroDescription="Transform your real estate business with AI that captures leads, schedules showings, and nurtures prospects 24/7. Close more deals while you focus on what matters most."
-      problemTitle="The Problem Every Realtor Faces"
-      problemDescription="Leads calling after hours with no response. Missing opportunities while showing properties. Unqualified prospects wasting your time. Competition responding faster and stealing your clients. Manual follow-ups that fall through the cracks."
-      solutionTitle="AI That Works While You Sleep"
-      solutionDescription="Our AI agents handle every lead interaction perfectly. From initial inquiry to showing coordination, your AI works 24/7 to book more appointments and close more deals automatically."
-      features={features}
-      benefitsTitle="Why Realtors Choose Our AI"
-      benefits={benefits}
+      heroSubtitle={
+        <>
+          AI that <span className="text-[#00BFFF]">Books More Showings</span>
+          <br />
+          To Close More Deals
+        </>
+      }
+      heroWarning="98% of buyers start their search online, but 40% of leads never get contacted!"
+      heroDescription={
+        <>
+          Stop losing clients to faster agents. Our{" "}
+          <span className="text-[#00BFFF]">AI responds instantly, books showings, and nurtures every lead</span> until
+          they buy or sell with you.
+        </>
+      }
+      heroCtaText="GET REALTORNOW"
+      heroCtaLink="/realtornow/signup"
+      customBuildPoints={[
+        {
+          icon: Globe,
+          title: "Custom Website to Showcase Your Expertise",
+          description:
+            "A professional website that highlights your market knowledge, recent sales, and client testimonials to build trust.",
+        },
+        {
+          icon: Target,
+          title: "Custom AI Smart Funnels for Buyers & Sellers",
+          description:
+            "Targeted funnels for first-time buyers, luxury properties, investment properties, and seller leads.",
+        },
+        {
+          icon: Bot,
+          title: "Custom AI Agent Trained on YOUR Market",
+          description:
+            "AI agents that know your local market, pricing trends, neighborhoods, and your unique selling approach.",
+        },
+      ]}
+      aiAgentsBenefits={[
+        "Never miss a hot lead or showing request",
+        "Responds to inquiries within seconds, not hours",
+        "Like having the perfect assistant who never sleeps or takes vacation",
+        "Save money on lead generation by converting more of what you have",
+        "Provides every prospect with immediate, professional service",
+      ]}
+      dominateCtaText="Dominate NOW with Lightning-Fast Response!"
+      featureCards={[
+        {
+          icon: Bot,
+          title: "AI Super Agents",
+          description: "AI agents that qualify leads, answer property questions, and book showings 24/7.",
+        },
+        {
+          icon: Target,
+          title: "Smart Funnels",
+          description: "AI-powered funnels that capture and convert both buyer and seller leads automatically.",
+        },
+        {
+          icon: Globe,
+          title: "Custom Website",
+          description: "Professional website with integrated AI chat, property search, and lead capture forms.",
+        },
+        {
+          icon: LayoutDashboard,
+          title: "Analytics Dashboard",
+          description: "Track lead sources, showing conversion rates, and market performance metrics.",
+        },
+        {
+          icon: LinkIcon,
+          title: "MLS Integration",
+          description: "Connects with your MLS and CRM systems for seamless property information and lead management.",
+        },
+        {
+          icon: GraduationCap,
+          title: "Training & Support",
+          description: "Complete onboarding and ongoing support to maximize your real estate success.",
+        },
+      ]}
+      problems={[
+        "Missing leads while showing properties to other clients",
+        "Slow response times losing deals to faster agents",
+        "Unqualified leads wasting time on pointless showings",
+        "Inconsistent follow-up with prospects not ready to buy immediately",
+        "Struggling to manage multiple clients and showings simultaneously",
+        "Losing referrals because past clients forget about you",
+      ]}
+      solutions={[
+        "24/7 AI assistant to capture and respond to every lead instantly",
+        "Smart showing scheduler that books appointments automatically",
+        "Lead qualification system that identifies serious buyers and sellers",
+        "Long-term nurturing campaigns for prospects not ready today",
+        "Automated follow-up system that keeps you top-of-mind",
+        "Review and referral requests sent automatically to past clients",
+      ]}
       finalCtaTitle="Ready to Close More Deals?"
-      finalCtaDescription="Join top-performing realtors using AI to capture more leads and increase sales. Get started today and see results within 24 hours."
+      finalCtaDescription="Join top-performing real estate agents using AI to capture more leads and increase sales."
     />
   )
 }

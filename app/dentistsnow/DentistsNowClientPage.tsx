@@ -1,69 +1,111 @@
 "use client"
 
 import IndustryPageTemplate from "@/components/industry/industry-page-template"
-import { Calendar, MessageSquare, Users, Clock, Phone, CheckCircle, Zap, Target, TrendingUp } from 'lucide-react'
+import { Globe, Target, Bot, LayoutDashboard, LinkIcon, GraduationCap } from "lucide-react"
 
 export default function DentistsNowClientPage() {
-  const features = [
-    {
-      icon: Calendar,
-      title: "Smart Appointment Booking",
-      description: "AI handles scheduling, rescheduling, and confirmations 24/7 without human intervention."
-    },
-    {
-      icon: MessageSquare,
-      title: "Patient Communication",
-      description: "Automated follow-ups, reminders, and patient care messages that feel personal."
-    },
-    {
-      icon: Users,
-      title: "Lead Qualification",
-      description: "AI pre-qualifies potential patients and identifies high-value opportunities."
-    },
-    {
-      icon: Clock,
-      title: "24/7 Availability",
-      description: "Never miss a patient inquiry - AI responds instantly at any time of day."
-    },
-    {
-      icon: Phone,
-      title: "Voice & Text Support",
-      description: "Handle both phone calls and text messages with natural conversation flow."
-    },
-    {
-      icon: CheckCircle,
-      title: "Appointment Confirmations",
-      description: "Automatic confirmation calls and texts to reduce no-shows significantly."
-    }
-  ]
-
-  const benefits = [
-    "Increase appointment bookings by 300% with 24/7 AI availability",
-    "Reduce no-shows by 80% with automated confirmation systems",
-    "Save 20+ hours per week on administrative tasks",
-    "Convert more leads with instant response times",
-    "Improve patient satisfaction with consistent communication",
-    "Scale your practice without hiring additional staff",
-    "Generate detailed analytics on patient interactions",
-    "Integrate seamlessly with your existing practice management software"
-  ]
-
   return (
     <IndustryPageTemplate
       industryName="Dentists"
-      industryNameSingular="Dental Practice"
-      heroTitle="The Best AI Agents for Dentists"
-      heroSubtitle="AI That Books, Confirms & Nurtures Every Patient"
-      heroDescription="Transform your dental practice with AI that never sleeps. Book more appointments, reduce no-shows, and grow your practice while you focus on patient care."
-      problemTitle="The Problem Every Dental Practice Faces"
-      problemDescription="Missed calls mean missed patients. Staff overwhelmed with scheduling. No-shows killing your revenue. Patients calling after hours with no response. Manual follow-ups that never happen. Your competition is stealing patients while you sleep."
-      solutionTitle="AI That Works Around The Clock"
-      solutionDescription="Our AI agents handle every patient interaction perfectly. From the first inquiry to appointment confirmation, your AI works 24/7 to book more patients, reduce no-shows, and grow your practice automatically."
-      features={features}
-      benefitsTitle="Why Dental Practices Choose Our AI"
-      benefits={benefits}
-      finalCtaTitle="Ready to Transform Your Dental Practice?"
-      finalCtaDescription="Join hundreds of dental practices using AI to book more patients and grow their revenue. Get started today and see results within 24 hours."
+      industryNameSingular="Practice"
+      heroSubtitle={
+        <>
+          AI that <span className="text-[#00BFFF]">Fills Your Chairs</span>
+          <br />
+          To Grow Your Practice
+        </>
+      }
+      heroWarning="The average dental practice misses 15-20 new patient calls per month!"
+      heroDescription={
+        <>
+          Stop letting new patients slip through the cracks. Our{" "}
+          <span className="text-[#00BFFF]">
+            AI books appointments 24/7, confirms schedules, and nurtures every inquiry
+          </span>{" "}
+          for everything from cleanings to cosmetic procedures.
+        </>
+      }
+      heroCtaText="GET DENTISTNOW"
+      heroCtaLink="/dentistsnow/signup"
+      customBuildPoints={[
+        {
+          icon: Globe,
+          title: "Custom Website to Reflect Your Practice's Quality",
+          description:
+            "A modern, professional website that builds trust and showcases your dental services, technology, and patient testimonials.",
+        },
+        {
+          icon: Target,
+          title: "Custom AI Smart Funnels for High-Value Services",
+          description:
+            "Specialized funnels for implants, Invisalign, teeth whitening, and new patient exams to attract your ideal patients.",
+        },
+        {
+          icon: Bot,
+          title: "Custom AI Agent Trained on YOUR Dental Practice",
+          description:
+            "AI agents that can answer questions about procedures, insurance coverage, financing options, and office hours.",
+        },
+      ]}
+      aiAgentsBenefits={[
+        "Never miss a call from a potential high-value patient",
+        "Answers insurance and billing questions instantly",
+        "Like having a highly-trained, empathetic front desk coordinator on duty 24/7",
+        "Reduce staff burnout and administrative workload",
+        "Provides a seamless and modern experience for every new patient",
+      ]}
+      dominateCtaText="Dominate NOW with a Flawless Patient Journey!"
+      featureCards={[
+        {
+          icon: Bot,
+          title: "AI Super Agents",
+          description:
+            "AI agents trained in dental terminology that book appointments and answer patient questions 24/7.",
+        },
+        {
+          icon: Target,
+          title: "Smart Funnels",
+          description: "AI-powered funnels to attract and convert patients for your most profitable procedures.",
+        },
+        {
+          icon: Globe,
+          title: "Custom Website",
+          description: "Professional website with integrated AI chat, online booking, and patient education resources.",
+        },
+        {
+          icon: LayoutDashboard,
+          title: "Analytics Dashboard",
+          description: "Track new patient sources, appointment booking rates, and marketing campaign effectiveness.",
+        },
+        {
+          icon: LinkIcon,
+          title: "Practice Management Integration",
+          description: "Connects with systems like Dentrix, Eaglesoft, and Open Dental for seamless scheduling.",
+        },
+        {
+          icon: GraduationCap,
+          title: "Training & Support",
+          description: "Full onboarding and continuous support to ensure your practice maximizes its growth potential.",
+        },
+      ]}
+      problems={[
+        "Missing new patient calls during lunch or after hours",
+        "High cancellation and no-show rates for appointments",
+        "Staff spending too much time on repetitive scheduling calls",
+        "Inconsistent information given to patients about procedures",
+        "Difficulty getting patient reviews to boost online reputation",
+        "Losing patients to corporate dental chains with bigger teams",
+      ]}
+      solutions={[
+        "24/7 AI assistant to capture every new patient opportunity",
+        "Automated appointment confirmations and smart reminders",
+        "Frees up your team to provide exceptional in-person care",
+        "Provides consistent, accurate information to every patient",
+        "Automatically sends review requests after appointments",
+        "Levels the playing field with enterprise-level technology",
+      ]}
+      finalCtaTitle="Ready to See Your Schedule Smile?"
+      finalCtaDescription="Join forward-thinking dental practices using AI to create happier patients and healthier profits."
     />
   )
 }

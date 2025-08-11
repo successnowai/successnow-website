@@ -1,67 +1,112 @@
 "use client"
 
 import IndustryPageTemplate from "@/components/industry/industry-page-template"
-import { Wrench, Calendar, Phone, TrendingUp, MessageSquare, Clock } from "lucide-react"
+import { Globe, Target, Bot, LayoutDashboard, LinkIcon, GraduationCap } from "lucide-react"
 
 export default function PlumbersNowClientPage() {
-  const features = [
-    {
-      icon: Phone,
-      title: "24/7 Emergency Dispatch",
-      description: "Never miss an emergency call. Our AI handles urgent plumbing requests instantly, day or night.",
-    },
-    {
-      icon: Calendar,
-      title: "Service Scheduling",
-      description: "Automatically book service appointments and emergency calls directly into your calendar.",
-    },
-    {
-      icon: MessageSquare,
-      title: "Quote Follow-Up",
-      description: "Follow up on estimates and quotes until customers are ready to book your services.",
-    },
-    {
-      icon: Clock,
-      title: "Instant Response",
-      description: "Respond to service requests within seconds, not hours, to beat your competition.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Job Analytics",
-      description: "Track conversion rates, service types, and revenue with detailed reporting.",
-    },
-    {
-      icon: Wrench,
-      title: "Service Integration",
-      description: "Connect with your existing systems to provide accurate pricing and availability.",
-    },
-  ]
-
-  const benefits = [
-    "Increase service bookings by 400% with instant emergency response",
-    "Convert more estimates into jobs with automated follow-up",
-    "Reduce missed calls and lost revenue from slow response times",
-    "Handle emergency calls 24/7, even when you're on another job",
-    "Pre-qualify customers and gather job details before arrival",
-    "Integrate with your existing scheduling and invoicing systems",
-  ]
-
   return (
     <IndustryPageTemplate
       industryName="Plumbers"
       industryNameSingular="Plumbing Business"
-      heroTitle="AI Dispatcher That Never Sleeps"
-      heroSubtitle="Book More Jobs, Handle More Emergencies"
-      heroDescription="Transform your plumbing business with a 24/7 AI dispatcher that books jobs, follows up on quotes, and keeps your schedule full. Never miss another emergency call or lose business to competitors."
-      problemTitle="The Problem: Missing Calls = Missing Money"
-      problemDescription="Plumbing businesses lose thousands in revenue every month from missed calls and slow response times. When someone has a plumbing emergency, they need help NOW. If you don't answer immediately, they're calling the next plumber on Google."
-      solutionTitle="The Solution: 24/7 AI Dispatcher"
-      solutionDescription="Our AI dispatcher answers every call instantly, books emergency services, and follows up on quotes until they convert. It works around the clock, handles multiple calls simultaneously, and integrates with your scheduling system."
-      features={features}
-      benefitsTitle="Why Plumbers Choose SuccessNOW"
-      benefits={benefits}
-      finalCtaTitle="Ready to Grow Your Plumbing Business?"
-      finalCtaDescription="Join hundreds of plumbers who've transformed their business with AI. Start booking more jobs and handling more emergencies today."
+      heroSubtitle={
+        <>
+          AI that <span className="text-[#00BFFF]">Keeps Your Phones Ringing</span>
+          <br />
+          To Unclog Your Growth
+        </>
+      }
+      heroWarning="A single missed emergency call can cost you thousands in revenue!"
+      heroDescription={
+        <>
+          Never miss another job, day or night. Our{" "}
+          <span className="text-[#00BFFF]">
+            24/7 AI dispatcher books jobs, provides estimates, and follows up on quotes
+          </span>{" "}
+          to keep your technicians busy.
+        </>
+      }
+      heroCtaText="GET PLUMBERNOW"
+      heroCtaLink="/plumbersnow/signup"
+      customBuildPoints={[
+        {
+          icon: Globe,
+          title: "Custom Website That Builds Immediate Trust",
+          description:
+            "A clean, professional website that highlights your services, licensing, and customer satisfaction guarantees.",
+        },
+        {
+          icon: Target,
+          title: "Custom AI Smart Funnels for Every Service",
+          description:
+            "Targeted funnels for drain cleaning, water heater installation, leak detection, and emergency services.",
+        },
+        {
+          icon: Bot,
+          title: "Custom AI Agent Trained on YOUR Plumbing Business",
+          description:
+            "AI agents that understand common plumbing issues, your service area, dispatch logic, and pricing.",
+        },
+      ]}
+      aiAgentsBenefits={[
+        "Never miss a panicked call about a burst pipe at 3 AM",
+        "Gathers all necessary job details before dispatching a tech",
+        "Like having the most reliable and efficient dispatcher in the world",
+        "Drastically reduce costs from after-hours answering services",
+        "Provides every customer with a fast, professional, and reassuring response",
+      ]}
+      dominateCtaText="Dominate NOW with a Watertight Operation!"
+      featureCards={[
+        {
+          icon: Bot,
+          title: "AI Dispatcher",
+          description: "A 24/7 AI agent that troubleshoots issues, provides quotes, and schedules service calls.",
+        },
+        {
+          icon: Target,
+          title: "Quote Follow-Up",
+          description:
+            "AI-powered campaigns to automatically follow up on every quote you send, increasing your close rate.",
+        },
+        {
+          icon: Globe,
+          title: "Custom Website",
+          description: "Professional website with an AI service scheduler, lead capture, and customer testimonials.",
+        },
+        {
+          icon: LayoutDashboard,
+          title: "Analytics Dashboard",
+          description: "Track job bookings, lead sources, quote conversion rates, and revenue per technician.",
+        },
+        {
+          icon: LinkIcon,
+          title: "FSM Integration",
+          description:
+            "Connects with your Field Service Management software (like ServiceTitan) for seamless dispatch.",
+        },
+        {
+          icon: GraduationCap,
+          title: "Training & Support",
+          description: "Full support to ensure you're booking more jobs and maximizing profitability from day one.",
+        },
+      ]}
+      problems={[
+        "Missing high-revenue emergency calls after hours",
+        "Wasting technician time driving to unqualified jobs",
+        "Forgetting to follow up on quotes for larger projects",
+        "Inconsistent information given to customers over the phone",
+        "Struggling to get reviews from satisfied customers",
+        "Dispatching and scheduling is a manual, chaotic process",
+      ]}
+      solutions={[
+        "24/7 AI dispatcher to capture and book every single job opportunity",
+        "AI-powered lead qualification to ensure every job is legitimate",
+        "Automated follow-up sequences to win more bids and projects",
+        "Provides consistent, accurate information every time",
+        "Automatically requests reviews after a job is completed",
+        "Streamlined, automated scheduling that fills gaps in your calendar",
+      ]}
+      finalCtaTitle="Ready for a Flood of New Business?"
+      finalCtaDescription="Join the top plumbing companies using AI to streamline their operations and dominate their service area."
     />
   )
 }
