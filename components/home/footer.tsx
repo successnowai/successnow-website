@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Youtube } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -23,30 +23,56 @@ export default function Footer() {
               AI Super Agents that learn, sell, and scale your business 24/7. The only all-in-one AI platform built for
               small business growth.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61578055388858"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-gray-800/50 text-gray-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/successnowai/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-gray-800/50 text-gray-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
               >
-                <Twitter className="w-5 h-5" />
+                <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/success-now-ai/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-gray-800/50 text-gray-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://x.com/successnowx"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-gray-800/50 text-gray-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
               >
-                <Instagram className="w-5 h-5" />
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.youtube.com/@SuccessNow-AI-Agents"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-gray-800/50 text-gray-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@successnow.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-gray-800/50 text-gray-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                </svg>
               </a>
             </div>
           </div>
@@ -111,12 +137,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/community"
+                <a
+                  href="https://my.successnow.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 hover:underline"
                 >
                   Community
-                </Link>
+                </a>
               </li>
               <li>
                 <a
