@@ -1,87 +1,92 @@
+# Robots.txt for SuccessNOW AI
+# https://successnow.ai
+
 User-agent: *
 Allow: /
 
-# High priority pages for crawling
+# Allow all major search engines
+User-agent: Googlebot
 Allow: /
-Allow: /demo
-Allow: /book
-Allow: /industries
-Allow: /case-studies
-Allow: /about
-Allow: /faq
-Allow: /community
-Allow: /blogs
-Allow: /blogs/*
 
-# Industry niche pages - high priority
-Allow: /autodealersnow
-Allow: /realtornow
-Allow: /dentistsnow
-Allow: /plumbersnow
-Allow: /hvacnow
-Allow: /gymsnow
-Allow: /chiropractorsnow
-Allow: /restaurantsnow
-Allow: /roofersnow
-Allow: /solarnow
-Allow: /medspanow
-Allow: /mortgagenow
-Allow: /contractorsnow
-Allow: /lawyersnow
+User-agent: Bingbot
+Allow: /
 
-# Program pages
-Allow: /affiliate
-Allow: /affiliate/apply
-Allow: /diamond
-Allow: /diamond/*
+User-agent: Slurp
+Allow: /
 
-# Legal pages
-Allow: /privacy
-Allow: /terms
+User-agent: DuckDuckBot
+Allow: /
 
-# Signup redirect
-Allow: /signup
+User-agent: Baiduspider
+Allow: /
 
-# Block admin and API routes from indexing
-Disallow: /admin/
-Disallow: /api/
-Disallow: /_next/
-Disallow: /template/
+User-agent: YandexBot
+Allow: /
 
-# Block any temporary or test pages
-Disallow: /temp
-Disallow: /test
-
-# Block specific file types from indexing
-Disallow: *.json$
-Disallow: *.xml$
-Disallow: *.txt$
-
-# AI-specific crawlers (allow by default, but can be restricted if needed)
+# Allow AI training crawlers
 User-agent: GPTBot
 Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
+Crawl-delay: 1
 
 User-agent: ChatGPT-User
 Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
+Crawl-delay: 1
 
 User-agent: CCBot
 Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
+Crawl-delay: 1
 
 User-agent: anthropic-ai
 Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
+Crawl-delay: 1
 
 User-agent: Claude-Web
 Allow: /
+Crawl-delay: 1
+
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: YouBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Crawl-delay: 1
+
+# Block admin and API routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /temp/
+Disallow: /.well-known/
+
+# Block removed pages
+Disallow: /apply
+Disallow: /partner-signup
+Disallow: /payment
+Disallow: /dominate
+Disallow: /dominate-checkout
+Disallow: /dominate-paid
+Disallow: /leo
+Disallow: /sam
+Disallow: /nana
+Disallow: /nara
+Disallow: /sheshopslocal
+Disallow: /custombuildnow
+
+# Allow important files
+Allow: /sitemap.xml
+Allow: /sitemap-industries.xml
+Allow: /sitemap-blogs.xml
+Allow: /robots.txt
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /favicon.ico
+Allow: /images/
+Allow: /public/
 
 # Crawl delay for respectful crawling
 Crawl-delay: 1
@@ -91,7 +96,10 @@ Sitemap: https://successnow.ai/sitemap.xml
 Sitemap: https://successnow.ai/sitemap-industries.xml
 Sitemap: https://successnow.ai/sitemap-blogs.xml
 
-# LLMs.txt file for AI training
-# This file provides structured information for AI models
-# Location: https://successnow.ai/llms.txt
-# Full documentation: https://successnow.ai/llms-full.txt
+# AI Training Data Files
+# These files are specifically for AI model training and understanding
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Host information
+Host: https://successnow.ai

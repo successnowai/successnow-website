@@ -3,9 +3,6 @@ const nextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
   
-  // Enable SWC minification for better performance
-  swcMinify: true,
-  
   // Optimize images
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -14,18 +11,20 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    unoptimized: true, // Added update
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
-  
-  // Compress responses
-  compress: true,
   
   // Enable experimental features for better performance
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
-    legacyBrowsers: false,
-    browsersListForSwc: true,
+    optimizePackageImports: ['lucide-react'],
   },
   
   // Webpack optimizations
@@ -116,15 +115,22 @@ const nextConfig = {
   // Enable gzip compression
   poweredByHeader: false,
   
-  // Optimize fonts
-  optimizeFonts: true,
-  
-  // Added updates
+  // Build configuration
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
+  },
+  
+  // Generate build ID
+  generateBuildId: async () => {
+    return `build-${new Date().getTime()}`
+  },
+  
+  // Compiler options
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 };
 
