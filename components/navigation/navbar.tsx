@@ -15,7 +15,7 @@ export default function Navbar() {
     { name: "Industries", href: "/industries" },
     { name: "Live Demo", href: "/demo" },
     { name: "Case Studies", href: "/case-studies" },
-    { name: "Pricing", href: "/signup" },
+    { name: "Pricing", href: "https://signup.successnow.ai", external: true },
   ]
 
   useEffect(() => {
@@ -47,25 +47,38 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.external ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium relative group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium relative group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              ),
+            )}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Link href="/signup">
+            <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
               <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-pink-500 hover:to-purple-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
                 Get Started
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -87,22 +100,35 @@ export default function Navbar() {
               className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10"
             >
               <div className="py-4 space-y-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="block text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium px-4 py-2"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                {navItems.map((item) =>
+                  item.external ? (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium px-4 py-2"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="block text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium px-4 py-2"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ),
+                )}
                 <div className="px-4 pt-4">
-                  <Link href="/signup">
+                  <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
                     <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-pink-500 hover:to-purple-600 text-white py-2 rounded-lg font-semibold transition-all duration-300">
                       Get Started
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </motion.div>
