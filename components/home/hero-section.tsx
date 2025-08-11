@@ -3,31 +3,23 @@
 import { Button } from "@/components/ui/button"
 import { RotatingText } from "@/components/ui/rotating-text"
 import { Play, Sparkles } from "lucide-react"
-import { useState, useCallback, useMemo } from "react"
+import { useState } from "react"
 
 export default function HeroSection() {
-  const rotatingWords = useMemo(() => ["Leads", "Conversations", "Inquiries", "Website Clicks", "Cold Prospects"], [])
+  const rotatingWords = ["Leads", "Conversations", "Inquiries", "Website Clicks", "Cold Prospects"]
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
   const [isVideoVisible, setIsVideoVisible] = useState(false)
 
-  const handleDemoClick = useCallback(() => {
+  const handleDemoClick = () => {
     setIsDemoPopupOpen(true)
-  }, [])
-
-  const handleVideoClick = useCallback(() => {
-    setIsVideoVisible(true)
-  }, [])
-
-  const handleScrollToGetStarted = useCallback(() => {
-    document.getElementById("get-started")?.scrollIntoView({ behavior: "smooth" })
-  }, [])
+  }
 
   const youtubeVideoId = "3D0CjjB9EIA"
 
   return (
     <div className="relative bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white overflow-hidden">
       {/* Animated Border */}
-      <div className="absolute top-0 left-0 w-full h-[5px] bg-gradient-to-r from-[#00BFFF] via-[#007BFF] to-[#00BFFF] bg-[length:200%_100%] animate-[scroll-border_5s_linear_infinite] will-change-transform"></div>
+      <div className="absolute top-0 left-0 w-full h-[5px] bg-gradient-to-r from-[#00BFFF] via-[#007BFF] to-[#00BFFF] bg-[length:200%_100%] animate-[scroll-border_5s_linear_infinite]"></div>
 
       {/* Hero Content */}
       <section className="relative text-center py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-10 overflow-hidden pt-24 sm:pt-28">
@@ -55,7 +47,7 @@ export default function HeroSection() {
           <div className="flex justify-center mt-8 sm:mt-10 animate-fadeTextUp animation-delay-1200 px-4">
             <Button
               variant="outline"
-              className="w-full sm:w-auto max-w-sm px-6 sm:px-8 py-4 sm:py-5 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-lg hover:bg-[#00BFFF] hover:text-white transition-all duration-200 text-base sm:text-lg bg-transparent min-h-[52px] shadow-lg hover:shadow-[0_0_20px_rgba(0,191,255,0.5)] will-change-transform"
+              className="w-full sm:w-auto max-w-sm px-6 sm:px-8 py-4 sm:py-5 border-2 border-[#00BFFF] text-[#00BFFF] font-semibold rounded-lg hover:bg-[#00BFFF] hover:text-white transition-all duration-200 text-base sm:text-lg bg-transparent min-h-[52px] shadow-lg hover:shadow-[0_0_20px_rgba(0,191,255,0.5)]"
               onClick={handleDemoClick}
             >
               Launch Instant Demo NOW
@@ -63,11 +55,11 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Background Effects - Optimized */}
+        {/* Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00BFFF] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob will-change-transform"></div>
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000 will-change-transform"></div>
-          <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000 will-change-transform"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00BFFF] rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob"></div>
+          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
         </div>
       </section>
 
@@ -77,15 +69,15 @@ export default function HeroSection() {
           {/* Glowing Demo Box */}
           <div
             onClick={handleDemoClick}
-            className="relative group cursor-pointer transform transition-all duration-300 hover:scale-105 active:scale-95 will-change-transform"
+            className="relative group cursor-pointer transform transition-all duration-300 hover:scale-105 active:scale-95"
           >
             {/* Glow Effect Background */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#00BFFF] via-[#007BFF] to-[#00BFFF] rounded-2xl blur-lg opacity-75 group-hover:opacity-100 animate-pulse will-change-transform"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#00BFFF] via-[#007BFF] to-[#00BFFF] rounded-2xl blur-lg opacity-75 group-hover:opacity-100 animate-pulse"></div>
 
             {/* Main CTA Box */}
             <div className="relative bg-gradient-to-br from-[#00BFFF] to-[#007BFF] p-6 sm:p-8 md:p-10 rounded-2xl shadow-2xl border border-[#00BFFF]/30 overflow-hidden">
               {/* Animated Background Pattern */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-[shimmer_3s_ease-in-out_infinite] will-change-transform"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 animate-[shimmer_3s_ease-in-out_infinite]"></div>
 
               {/* Content */}
               <div className="relative z-10 text-center">
@@ -115,9 +107,9 @@ export default function HeroSection() {
               </div>
 
               {/* Floating Elements */}
-              <div className="absolute top-4 right-4 w-3 h-3 bg-white/30 rounded-full animate-bounce will-change-transform"></div>
-              <div className="absolute bottom-4 left-4 w-2 h-2 bg-white/40 rounded-full animate-bounce animation-delay-500 will-change-transform"></div>
-              <div className="absolute top-1/2 left-4 w-1 h-1 bg-white/50 rounded-full animate-ping will-change-transform"></div>
+              <div className="absolute top-4 right-4 w-3 h-3 bg-white/30 rounded-full animate-bounce"></div>
+              <div className="absolute bottom-4 left-4 w-2 h-2 bg-white/40 rounded-full animate-bounce animation-delay-500"></div>
+              <div className="absolute top-1/2 left-4 w-1 h-1 bg-white/50 rounded-full animate-ping"></div>
             </div>
           </div>
 
@@ -145,14 +137,14 @@ export default function HeroSection() {
               {!isVideoVisible ? (
                 <div
                   className="absolute inset-0 group cursor-pointer hover:border-[#00BFFF] transition-colors duration-300"
-                  onClick={handleVideoClick}
+                  onClick={() => setIsVideoVisible(true)}
                 >
                   {/* Video Placeholder Background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#00274D]/50 to-black/50"></div>
 
                   {/* Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-[#00BFFF] rounded-full p-4 sm:p-5 shadow-lg group-hover:scale-110 transition-transform duration-300 hover:shadow-[0_0_20px_rgba(0,191,255,0.6)] will-change-transform">
+                    <div className="bg-[#00BFFF] rounded-full p-4 sm:p-5 shadow-lg group-hover:scale-110 transition-transform duration-300 hover:shadow-[0_0_20px_rgba(0,191,255,0.6)]">
                       <Play className="w-6 h-6 sm:w-8 sm:h-8 text-white fill-white ml-1" />
                     </div>
                   </div>
@@ -173,7 +165,6 @@ export default function HeroSection() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
-                  loading="lazy"
                 ></iframe>
               )}
             </div>
@@ -182,8 +173,8 @@ export default function HeroSection() {
           <div className="flex justify-center px-4">
             <Button
               size="lg"
-              className="w-full sm:w-auto max-w-sm bg-transparent border-2 border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-white font-bold px-6 sm:px-8 py-4 sm:py-5 text-base sm:text-lg transition-all duration-200 hover:scale-105 min-h-[52px] shadow-lg hover:shadow-[0_0_20px_rgba(0,191,255,0.5)] will-change-transform"
-              onClick={handleScrollToGetStarted}
+              className="w-full sm:w-auto max-w-sm bg-transparent border-2 border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-white font-bold px-6 sm:px-8 py-4 sm:py-5 text-base sm:text-lg transition-all duration-200 hover:scale-105 min-h-[52px] shadow-lg hover:shadow-[0_0_20px_rgba(0,191,255,0.5)]"
+              onClick={() => document.getElementById("get-started")?.scrollIntoView({ behavior: "smooth" })}
             >
               Get AI NOW
             </Button>
@@ -191,7 +182,7 @@ export default function HeroSection() {
 
           {/* Scrolling Text */}
           <div className="mt-8 sm:mt-10 overflow-hidden whitespace-nowrap">
-            <div className="text-[#00BFFF] text-xs sm:text-sm md:text-base animate-[marquee_20s_linear_infinite] will-change-transform">
+            <div className="text-[#00BFFF] text-xs sm:text-sm md:text-base animate-[marquee_20s_linear_infinite]">
               SuccessNOW.ai – AI Voice Agents | Paid Ads with AdsNOW | Automated Follow-Ups | 5-Star Reviews | Full CRM
               Control | SEO Domination | Cold Lead Reactivation | Never Miss a Lead Again
             </div>
