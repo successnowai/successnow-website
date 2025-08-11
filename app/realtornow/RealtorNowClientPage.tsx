@@ -1,78 +1,69 @@
 "use client"
 
 import IndustryPageTemplate from "@/components/industry/industry-page-template"
-import { Home, Calendar, Users, TrendingUp, Phone, MessageSquare } from "lucide-react"
+import { Home, MessageSquare, Users, Clock, Phone, CheckCircle, MapPin, Target, TrendingUp } from 'lucide-react'
 
-interface Template {
-  id: string
-  name: string
-  url: string
-  thumbnailUrl?: string
-}
-
-interface RealtorNowClientPageProps {
-  templates: Template[]
-}
-
-export default function RealtorNowClientPage({ templates }: RealtorNowClientPageProps) {
+export default function RealtorNowClientPage() {
   const features = [
     {
-      icon: Phone,
-      title: "24/7 Lead Response",
-      description: "Never miss a potential buyer or seller again. Our AI responds to every inquiry instantly.",
-    },
-    {
-      icon: Calendar,
-      title: "Showing Scheduler",
-      description: "Automatically book property showings and open house appointments directly into your calendar.",
+      icon: Home,
+      title: "Property Inquiries",
+      description: "AI handles all property questions and schedules showings automatically."
     },
     {
       icon: MessageSquare,
       title: "Lead Nurturing",
-      description: "Follow up with prospects consistently until they're ready to buy or sell.",
+      description: "Automated follow-up sequences that keep prospects engaged until they're ready to buy."
     },
     {
       icon: Users,
       title: "Buyer Qualification",
-      description: "Pre-qualify buyers and gather financing information before showings.",
+      description: "AI pre-qualifies buyers and identifies serious prospects ready to purchase."
     },
     {
-      icon: TrendingUp,
-      title: "Market Analytics",
-      description: "Track lead sources, conversion rates, and market trends with detailed reporting.",
+      icon: Clock,
+      title: "24/7 Availability",
+      description: "Never miss a lead - AI responds to inquiries instantly at any time."
     },
     {
-      icon: Home,
-      title: "Listing Integration",
-      description: "Connect with MLS and provide real-time property information and availability.",
+      icon: MapPin,
+      title: "Showing Coordination",
+      description: "AI schedules property showings and coordinates with all parties involved."
     },
+    {
+      icon: CheckCircle,
+      title: "CRM Integration",
+      description: "Seamlessly integrates with your existing real estate CRM and tools."
+    }
   ]
 
   const benefits = [
-    "Increase showing bookings by 300% with instant lead response",
-    "Convert more leads into clients with automated follow-up sequences",
-    "Reduce administrative work while improving client experience",
-    "Capture leads 24/7, even outside business hours",
-    "Pre-qualify buyers to focus on serious prospects",
-    "Integrate with your existing CRM and MLS systems",
+    "Increase lead conversion by 350% with instant response times",
+    "Book 5x more property showings automatically",
+    "Never miss a lead with 24/7 AI availability",
+    "Qualify buyers before they waste your time",
+    "Improve client satisfaction with consistent communication",
+    "Scale your business without hiring assistants",
+    "Track every interaction with detailed analytics",
+    "Work with multiple clients simultaneously"
   ]
 
   return (
     <IndustryPageTemplate
-      industryName="Real Estate Agents"
+      industryName="Realtors"
       industryNameSingular="Real Estate Business"
-      heroTitle="AI That Sells Homes While You Sleep"
-      heroSubtitle="Book More Showings, Close More Deals"
-      heroDescription="Transform your real estate business with AI that books showings, confirms appointments, and nurtures every lead until they buy or sell. Never lose another client to slow response times."
-      problemTitle="The Problem: Leads Are Going to Your Competitors"
-      problemDescription="Real estate agents lose 80% of potential clients due to slow response times. When someone inquires about a property, they expect immediate answers. If you don't respond within 5 minutes, they're already working with another agent."
-      solutionTitle="The Solution: AI That Never Sleeps"
-      solutionDescription="Our AI responds to every lead instantly, books showings automatically, and follows up persistently until they buy or sell. It works 24/7, speaks multiple languages, and integrates with your MLS to maximize every opportunity."
+      heroTitle="The Best AI Agents for Realtors"
+      heroSubtitle="AI That Books Showings & Closes Deals"
+      heroDescription="Transform your real estate business with AI that captures leads, schedules showings, and nurtures prospects 24/7. Close more deals while you focus on what matters most."
+      problemTitle="The Problem Every Realtor Faces"
+      problemDescription="Leads calling after hours with no response. Missing opportunities while showing properties. Unqualified prospects wasting your time. Competition responding faster and stealing your clients. Manual follow-ups that fall through the cracks."
+      solutionTitle="AI That Works While You Sleep"
+      solutionDescription="Our AI agents handle every lead interaction perfectly. From initial inquiry to showing coordination, your AI works 24/7 to book more appointments and close more deals automatically."
       features={features}
-      benefitsTitle="Why Real Estate Agents Choose SuccessNOW"
+      benefitsTitle="Why Realtors Choose Our AI"
       benefits={benefits}
-      finalCtaTitle="Ready to Sell More Homes?"
-      finalCtaDescription="Join hundreds of real estate agents who've transformed their business with AI. Start booking more showings and closing more deals today."
+      finalCtaTitle="Ready to Close More Deals?"
+      finalCtaDescription="Join top-performing realtors using AI to capture more leads and increase sales. Get started today and see results within 24 hours."
     />
   )
 }

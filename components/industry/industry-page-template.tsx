@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Zap, MessageCircle, ArrowRight, Play } from "lucide-react"
+import { Zap, MessageCircle, ArrowRight, Play } from 'lucide-react'
 import DemoPopup from "@/components/ui/demo-popup"
 import type { LucideIcon } from "lucide-react"
 
@@ -41,9 +41,9 @@ export default function IndustryPageTemplate({
   problemDescription,
   solutionTitle,
   solutionDescription,
-  features,
+  features = [],
   benefitsTitle,
-  benefits,
+  benefits = [],
   finalCtaTitle,
   finalCtaDescription,
 }: IndustryPageTemplateProps) {
@@ -103,40 +103,44 @@ export default function IndustryPageTemplate({
           </Card>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card
-                key={index}
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:border-[#00BFFF] transition-colors duration-300"
-              >
-                <CardContent className="p-0 flex flex-col items-center">
-                  <feature.icon className="h-12 w-12 text-[#00BFFF] mb-4" />
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          {features.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {features.map((feature, index) => (
+                <Card
+                  key={index}
+                  className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:border-[#00BFFF] transition-colors duration-300"
+                >
+                  <CardContent className="p-0 flex flex-col items-center">
+                    <feature.icon className="h-12 w-12 text-[#00BFFF] mb-4" />
+                    <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                    <p className="text-gray-400">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
 
           {/* Benefits Section */}
-          <Card className="bg-white/5 border border-white/10 rounded-2xl p-8 sm:p-12 backdrop-blur-sm">
-            <CardContent className="p-0">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl sm:text-4xl font-bold flex items-center justify-center gap-3">
-                  <Zap className="text-[#00BFFF]" />
-                  {benefitsTitle}
-                </h2>
-              </div>
-              <ul className="space-y-4 text-lg text-gray-300 max-w-3xl mx-auto">
-                {benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-[#00BFFF] mr-3 mt-1">&#8226;</span>
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+          {benefits.length > 0 && (
+            <Card className="bg-white/5 border border-white/10 rounded-2xl p-8 sm:p-12 backdrop-blur-sm">
+              <CardContent className="p-0">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl sm:text-4xl font-bold flex items-center justify-center gap-3">
+                    <Zap className="text-[#00BFFF]" />
+                    {benefitsTitle}
+                  </h2>
+                </div>
+                <ul className="space-y-4 text-lg text-gray-300 max-w-3xl mx-auto">
+                  {benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="text-[#00BFFF] mr-3 mt-1">&#8226;</span>
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Final CTA Section */}
           <Card className="bg-white/5 border border-white/10 rounded-2xl p-8 sm:p-12 backdrop-blur-sm text-center">
