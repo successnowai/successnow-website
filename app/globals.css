@@ -65,6 +65,10 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Optimize font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 }
 
@@ -73,12 +77,13 @@
   padding-top: 0;
 }
 
-/* Custom Neon Glow Effect - Dimmed */
+/* Custom Neon Glow Effect - Dimmed and optimized */
 .neon-text-glow {
   color: #00d4ff;
   text-shadow: 0 0 5px rgba(0, 212, 255, 0.3), 0 0 10px rgba(0, 212, 255, 0.4), 0 0 15px rgba(0, 212, 255, 0.5), 0 0
     20px rgba(0, 212, 255, 0.2), 0 0 35px rgba(0, 191, 255, 0.3), 0 0 40px rgba(0, 191, 255, 0.2);
   animation: neon-pulse-dimmed 3s ease-in-out infinite alternate;
+  will-change: text-shadow;
 }
 
 /* Neon Blue Text Effects */
@@ -105,6 +110,7 @@
   box-shadow: 0 0 20px rgba(236, 72, 153, 0.2);
 }
 
+/* Optimized animations with will-change */
 @keyframes neon-pulse-dimmed {
   from {
     text-shadow: 0 0 5px rgba(0, 212, 255, 0.2), 0 0 10px rgba(0, 212, 255, 0.3), 0 0 15px rgba(0, 212, 255, 0.4), 0 0
@@ -123,10 +129,11 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Button glow effect */
+/* Button glow effect with optimized transitions */
 .btn-glow {
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
   transition: box-shadow 0.3s ease;
+  will-change: box-shadow;
 }
 
 .btn-glow:hover {
@@ -138,7 +145,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Optimized scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -159,12 +166,14 @@ html {
 @layer components {
   .card-stylized {
     @apply bg-secondary/30 backdrop-blur-lg border border-brandBlue/20 rounded-2xl transition-all duration-300;
+    will-change: border-color, box-shadow;
   }
   .card-stylized:hover {
     @apply border-brandBlue/40 shadow-2xl shadow-brandBlue/10;
   }
   .card-stylized-purple {
     @apply bg-secondary/30 backdrop-blur-lg border border-brandPurple/20 rounded-2xl transition-all duration-300;
+    will-change: border-color, box-shadow;
   }
   .card-stylized-purple:hover {
     @apply border-brandPurple/40 shadow-2xl shadow-brandPurple/10;
@@ -172,9 +181,10 @@ html {
   .card-stylized-darker {
     @apply bg-black/50 backdrop-blur-xl border border-white/10 rounded-2xl;
   }
-  /* Cyberpunk Card Styles */
+  /* Cyberpunk Card Styles with optimized transitions */
   .card-cyberpunk {
     @apply bg-gray-900/60 backdrop-blur-xl border border-brandBlue/30 rounded-2xl transition-all duration-500;
+    will-change: border-color, box-shadow;
   }
   .card-cyberpunk:hover {
     @apply border-pink-500/60 shadow-2xl shadow-pink-500/20;
@@ -182,8 +192,31 @@ html {
 
   .card-neon {
     @apply bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 rounded-2xl transition-all duration-300;
+    will-change: border-color, box-shadow;
   }
   .card-neon:hover {
     @apply border-pink-500/60 shadow-2xl shadow-pink-500/20;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize animations for mobile */
+@media (max-width: 768px) {
+  .neon-text-glow {
+    animation-duration: 4s; /* Slower animation on mobile */
+  }
+
+  .animate-pulse {
+    animation-duration: 3s; /* Slower pulse on mobile */
   }
 }

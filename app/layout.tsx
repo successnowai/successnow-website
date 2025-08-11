@@ -78,6 +78,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="preconnect" href="https://i.ytimg.com" />
+
+        {/* DNS prefetch for external domains */}
+        <link rel="dns-prefetch" href="https://signup.successnow.ai" />
 
         {/* Favicon and icons */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -88,6 +93,11 @@ export default function RootLayout({
 
         {/* Preload critical resources */}
         <link rel="preload" href="/images/successnow-logo.png" as="image" type="image/png" />
+        <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+
+        {/* Resource hints for performance */}
+        <link rel="prefetch" href="/demo" />
+        <link rel="prefetch" href="/book" />
       </head>
       <body className={`${inter.variable} ${montserrat.variable} ${openSans.variable} font-sans`}>
         <StarryBackground />
