@@ -34,27 +34,15 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            {/* Neon S Icon */}
-            <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-pink-500/25 transition-all duration-300">
-                <span className="text-white font-bold text-lg drop-shadow-lg">S</span>
-              </div>
-              {/* Neon glow effect */}
-              <div className="absolute inset-0 w-10 h-10 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-lg opacity-0 group-hover:opacity-30 blur-md transition-all duration-300"></div>
-            </div>
-
-            {/* Logo Text */}
-            <div className="flex items-baseline space-x-1">
-              <span className="text-white font-bold text-xl md:text-2xl tracking-tight group-hover:text-cyan-300 transition-colors duration-300">
-                Success
-              </span>
-              <span className="text-cyan-400 font-bold text-xl md:text-2xl tracking-tight group-hover:text-pink-400 transition-colors duration-300">
-                NOW
-              </span>
-              <span className="text-gray-400 font-medium text-sm md:text-base">.ai</span>
-            </div>
+          {/* Logo - Text Only */}
+          <Link href="/" className="flex items-baseline space-x-1 group">
+            <span className="text-white font-bold text-xl md:text-2xl tracking-tight group-hover:text-cyan-300 transition-colors duration-300 drop-shadow-lg">
+              Success
+            </span>
+            <span className="text-cyan-400 font-bold text-xl md:text-2xl tracking-tight group-hover:text-pink-400 transition-colors duration-300 drop-shadow-lg">
+              NOW
+            </span>
+            <span className="text-gray-400 font-medium text-sm md:text-base">.ai</span>
           </Link>
 
           {/* Desktop Navigation */}
