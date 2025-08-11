@@ -237,7 +237,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/blogs"
+                  href="/faq"
                   className="text-gray-300 hover:text-white transition-all duration-300"
                   style={{ textShadow: "0 0 0 transparent" }}
                   onMouseEnter={(e) => {
