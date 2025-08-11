@@ -6,7 +6,7 @@ import { Play, Sparkles } from "lucide-react"
 import { useState } from "react"
 
 export default function HeroSection() {
-  const rotatingWords = ["Leads", "Conversations", "Inquiries", "Website Clicks", "Cold Prospects"]
+  const rotatingWords = ["Qualify", "Close", "Book", "Convert"]
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
   const [isVideoVisible, setIsVideoVisible] = useState(false)
 
