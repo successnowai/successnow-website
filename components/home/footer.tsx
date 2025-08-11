@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Youtube } from "lucide-react"
+import { Facebook, Twitter, Linkedin, Instagram, Mail, MapPin, Youtube } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -164,19 +164,10 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-cyan-400" />
                 <a
-                  href="mailto:hello@successnow.ai"
+                  href="mailto:info@successnow.ai"
                   className="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
                 >
-                  hello@successnow.ai
-                </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-cyan-400" />
-                <a
-                  href="tel:+1-800-SUCCESS"
-                  className="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
-                >
-                  1-800-SUCCESS
+                  info@successnow.ai
                 </a>
               </div>
               <div className="flex items-start space-x-3">
