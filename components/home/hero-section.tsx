@@ -17,7 +17,7 @@ export default function HeroSection() {
   const youtubeVideoId = "3D0CjjB9EIA"
 
   return (
-    <div className="relative bg-gradient-to-b from-black via-[#0b0f1a] to-[#00274D] text-white overflow-hidden">
+    <div className="relative bg-gradient-to-b from-black/90 via-[#0b0f1a] to-[#00274D] text-white overflow-hidden brightness-110">
       {/* Animated Border */}
       <div className="absolute top-0 left-0 w-full h-[5px] bg-gradient-to-r from-[#00BFFF] via-[#007BFF] to-[#00BFFF] bg-[length:200%_100%] animate-[scroll-border_5s_linear_infinite]"></div>
 
@@ -26,19 +26,19 @@ export default function HeroSection() {
         <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8 md:space-y-10">
           {/* Main Headline with Rotating Text Animation */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight px-2">
-            <span className="block text-white animate-fadeTextUp text-2xl sm:text-3xl md:text-5xl lg:text-6xl">
+            <span className="block text-gray-100 animate-fadeTextUp text-2xl sm:text-3xl md:text-5xl lg:text-6xl">
               SuccessNOW AI™ that converts
             </span>
             <span className="block animate-fadeTextUp animation-delay-300 text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
-              <RotatingText words={rotatingWords} className="text-[#00BFFF]" interval={2500} />
+              <RotatingText words={rotatingWords} className="neon-text-glow" interval={2500} />
             </span>
-            <span className="block text-white animate-fadeTextUp animation-delay-600 text-2xl sm:text-3xl md:text-5xl lg:text-6xl">
+            <span className="block text-gray-100 animate-fadeTextUp animation-delay-600 text-2xl sm:text-3xl md:text-5xl lg:text-6xl">
               into sales
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto animate-fadeTextUp animation-delay-900 px-4 sm:px-6 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 max-w-3xl mx-auto animate-fadeTextUp animation-delay-900 px-4 sm:px-6 leading-relaxed">
             Let The <strong className="text-white">SuccessNOW AI Superagents and AI bots</strong> close leads, book
             appointments, and reply to client inquiries—24/7.
           </p>
@@ -114,7 +114,7 @@ export default function HeroSection() {
           </div>
 
           {/* Supporting Text */}
-          <p className="text-center text-gray-300 text-xs sm:text-sm mt-4 px-2">
+          <p className="text-center text-gray-200 text-xs sm:text-sm mt-4 px-2">
             No signup required • Instant access • Live AI demonstration
           </p>
         </div>
@@ -126,7 +126,7 @@ export default function HeroSection() {
           <h2 className="mb-6 sm:mb-8 text-xl sm:text-2xl md:text-3xl font-bold text-white px-2">
             Try Our AI Agent Live – See It, Hear It, Test It
           </h2>
-          <p className="mx-auto mb-8 sm:mb-10 max-w-2xl text-sm sm:text-base md:text-lg text-gray-300 px-4 leading-relaxed">
+          <p className="mx-auto mb-8 sm:mb-10 max-w-2xl text-sm sm:text-base md:text-lg text-gray-200 px-4 leading-relaxed">
             Our AI Superagents convert, book, and nurture leads 24/7 — while you get back your time. Never lose a lead
             again.
           </p>
