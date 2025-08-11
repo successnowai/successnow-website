@@ -36,7 +36,7 @@ export default function MainHeroSection() {
   const actionWords = ["Close", "Book", "Qualify", "Convert"]
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+    <section className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-black/90">
       <div className="max-w-6xl mx-auto text-center">
         {/* Main Headline - 3 Lines Structure */}
         <div
@@ -44,7 +44,7 @@ export default function MainHeroSection() {
         >
           {/* First Line */}
           <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
-            <span className="text-white">AI That</span>
+            <span className="text-white brightness-110">AI That</span>
           </div>
 
           {/* Second Line - Dynamic Text with Fixed Height */}
@@ -54,7 +54,7 @@ export default function MainHeroSection() {
 
           {/* Third Line */}
           <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-            <span className="text-white">Leads Into Sales</span>
+            <span className="text-white brightness-110">Leads Into Sales</span>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ export default function MainHeroSection() {
         <div
           className={`mb-8 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl sm:text-2xl md:text-3xl text-gray-100 mb-8 max-w-4xl mx-auto leading-relaxed">
             Get AI-Powered Websites That Convert Visitors Into Customers Using AI Optimization, Voice Agents, And
             Automated Follow-Up Systems.
           </p>
@@ -111,8 +111,8 @@ export default function MainHeroSection() {
                     <benefit.icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{benefit.description}</p>
+                <h3 className="text-xl font-bold text-white brightness-110 mb-3">{benefit.title}</h3>
+                <p className="text-gray-100 leading-relaxed">{benefit.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -122,7 +122,7 @@ export default function MainHeroSection() {
         <div
           className={`mt-16 transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <p className="text-gray-400 text-sm mb-4">Trusted By Businesses Across 15+ Industries</p>
+          <p className="text-gray-200 text-sm mb-4">Trusted By Businesses Across 15+ Industries</p>
           <div className="flex justify-center items-center space-x-8 opacity-60">
             <div className="text-2xl">🚗</div>
             <div className="text-2xl">🏡</div>
