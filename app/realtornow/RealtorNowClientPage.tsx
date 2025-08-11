@@ -1,56 +1,13 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import {
-  Phone,
-  Calendar,
-  Users,
-  TrendingUp,
-  Clock,
-  Star,
-  ArrowRight,
-  Home,
-  DollarSign,
-  Target,
-  Zap,
-} from "lucide-react"
+import { Phone, Calendar, Users, TrendingUp, Clock, Star, ArrowRight, Home, DollarSign, Target } from "lucide-react"
 import Link from "next/link"
 import StarryBackground from "@/components/ui/starry-background"
 
 export default function RealtorNowClientPage() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    company: "",
-    experience: "",
-    currentChallenges: "",
-    monthlyLeads: "",
-    averageCommission: "",
-    agreeToTerms: false,
-  })
-
-  const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Handle form submission
-  }
-
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <StarryBackground />
@@ -68,9 +25,9 @@ export default function RealtorNowClientPage() {
               AI Voice Agents that convert leads into showings 24/7. Never miss another potential buyer or seller again.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="#signup">
+              <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-[#00BFFF] hover:bg-[#00A3D9] text-white px-8 py-4 text-lg">
-                  Start Free Trial
+                  Get Started Now
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
@@ -261,201 +218,13 @@ export default function RealtorNowClientPage() {
         </div>
       </section>
 
-      {/* Signup Form */}
-      <section id="signup" className="py-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Start Converting More Leads <span className="text-[#00BFFF]">Today</span>
-            </h2>
-            <p className="text-xl text-gray-300 mb-8">
-              Join thousands of real estate professionals who trust RealtorNOW to grow their business
-            </p>
-          </div>
-
-          <Card className="bg-gray-900/50 border-gray-800">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white text-center">
-                Get Your AI Real Estate Assistant
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="firstName" className="text-white">
-                      First Name
-                    </Label>
-                    <Input
-                      id="firstName"
-                      value={formData.firstName}
-                      onChange={(e) => handleInputChange("firstName", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="lastName" className="text-white">
-                      Last Name
-                    </Label>
-                    <Input
-                      id="lastName"
-                      value={formData.lastName}
-                      onChange={(e) => handleInputChange("lastName", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="email" className="text-white">
-                      Email Address
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange("email", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone" className="text-white">
-                      Phone Number
-                    </Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange("phone", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="company" className="text-white">
-                      Brokerage/Company
-                    </Label>
-                    <Input
-                      id="company"
-                      value={formData.company}
-                      onChange={(e) => handleInputChange("company", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="experience" className="text-white">
-                      Years in Real Estate
-                    </Label>
-                    <Select onValueChange={(value) => handleInputChange("experience", value)}>
-                      <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                        <SelectValue placeholder="Select experience" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="0-1">0-1 years</SelectItem>
-                        <SelectItem value="2-5">2-5 years</SelectItem>
-                        <SelectItem value="6-10">6-10 years</SelectItem>
-                        <SelectItem value="10+">10+ years</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="monthlyLeads" className="text-white">
-                      Monthly Leads
-                    </Label>
-                    <Select onValueChange={(value) => handleInputChange("monthlyLeads", value)}>
-                      <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                        <SelectValue placeholder="Select range" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="0-25">0-25 leads</SelectItem>
-                        <SelectItem value="26-50">26-50 leads</SelectItem>
-                        <SelectItem value="51-100">51-100 leads</SelectItem>
-                        <SelectItem value="100+">100+ leads</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Label htmlFor="averageCommission" className="text-white">
-                      Average Commission
-                    </Label>
-                    <Select onValueChange={(value) => handleInputChange("averageCommission", value)}>
-                      <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                        <SelectValue placeholder="Select range" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="0-5k">$0-$5,000</SelectItem>
-                        <SelectItem value="5k-10k">$5,000-$10,000</SelectItem>
-                        <SelectItem value="10k-20k">$10,000-$20,000</SelectItem>
-                        <SelectItem value="20k+">$20,000+</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="currentChallenges" className="text-white">
-                    Current Lead Management Challenges
-                  </Label>
-                  <Textarea
-                    id="currentChallenges"
-                    value={formData.currentChallenges}
-                    onChange={(e) => handleInputChange("currentChallenges", e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-white"
-                    rows={4}
-                    placeholder="Tell us about your biggest challenges with lead response and follow-up..."
-                  />
-                </div>
-
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="agreeToTerms"
-                    checked={formData.agreeToTerms}
-                    onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
-                  />
-                  <Label htmlFor="agreeToTerms" className="text-sm text-gray-300">
-                    I agree to the{" "}
-                    <Link href="/terms" className="text-[#00BFFF] hover:underline">
-                      Terms of Service
-                    </Link>{" "}
-                    and{" "}
-                    <Link href="/privacy" className="text-[#00BFFF] hover:underline">
-                      Privacy Policy
-                    </Link>
-                  </Label>
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-[#00BFFF] hover:bg-[#00A3D9] text-white py-4 text-lg"
-                  disabled={!formData.agreeToTerms}
-                >
-                  Start My Free Trial
-                  <Zap className="ml-2 w-5 h-5" />
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-16 px-6 bg-gradient-to-r from-[#00BFFF]/10 to-purple-600/10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to 10X Your Real Estate Business?</h2>
           <p className="text-xl text-gray-300 mb-8">Join the AI revolution and never miss another opportunity</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="#signup">
+            <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="bg-[#00BFFF] hover:bg-[#00A3D9] text-white px-8 py-4 text-lg">
                 Get Started Now
                 <ArrowRight className="ml-2 w-5 h-5" />
