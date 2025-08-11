@@ -1,7 +1,7 @@
 "use client"
 
 import IndustryPageTemplate from "@/components/industry/industry-page-template"
-import { Globe, Target, Bot, LayoutDashboard, LinkIcon, GraduationCap } from "lucide-react"
+import { Globe, Target, Bot, LayoutDashboard, LinkIcon, GraduationCap, MessageSquare } from "lucide-react"
 
 export default function GymsNowClientPage() {
   return (
@@ -19,8 +19,10 @@ export default function GymsNowClientPage() {
       heroDescription={
         <>
           Stop the churn and fill your classes. Our{" "}
-          <span className="text-[#00BFFF]">AI engages leads, books facility tours, and nurtures members</span> to keep
-          them motivated and committed.
+          <span className="text-[#00BFFF] font-semibold">
+            AI engages leads, books facility tours, and nurtures members
+          </span>{" "}
+          to keep them motivated and committed.
         </>
       }
       heroCtaText="GET GYMNOW"
@@ -39,7 +41,7 @@ export default function GymsNowClientPage() {
             "Targeted funnels for free trials, class packs, personal training consultations, and corporate wellness programs.",
         },
         {
-          icon: Bot,
+          icon: MessageSquare,
           title: "Custom AI Agent Trained on YOUR Gym",
           description:
             "AI agents that know your class schedules, membership pricing, amenities, and trainer specializations.",

@@ -1,480 +1,110 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import {
-  Phone,
-  Calendar,
-  TrendingUp,
-  Clock,
-  Star,
-  ArrowRight,
-  Home,
-  DollarSign,
-  Target,
-  Zap,
-  Calculator,
-} from "lucide-react"
-import Link from "next/link"
-import StarryBackground from "@/components/ui/starry-background"
+import IndustryPageTemplate from "@/components/industry/industry-page-template"
+import { Globe, Target, Bot, LayoutDashboard, LinkIcon, GraduationCap, MessageSquare } from "lucide-react"
 
 export default function MortgageNowClientPage() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    companyName: "",
-    licenseType: "",
-    experience: "",
-    currentChallenges: "",
-    monthlyLeads: "",
-    averageLoanAmount: "",
-    agreeToTerms: false,
-  })
-
-  const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Handle form submission
-  }
-
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      <StarryBackground />
-
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-green-600/20 text-green-400 border-green-600/30">Mortgage AI Solutions</Badge>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <span className="text-white">Mortgage</span>
-              <span className="text-[#00BFFF]">NOW</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
-              AI Voice Agents that qualify borrowers and book consultations 24/7. Close more loans with zero missed
-              leads.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="#signup">
-                <Button size="lg" className="bg-[#00BFFF] hover:bg-[#00A3D9] text-white px-8 py-4 text-lg">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Link href="/demo">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-white px-8 py-4 text-lg bg-transparent"
-                >
-                  Watch Demo
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Study Highlight */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-green-600/20 to-blue-600/20 border-green-600/30">
-            <CardHeader>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-green-600/20 rounded-full flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <Badge className="bg-green-600/20 text-green-400 border-green-600/30 mb-2">SUCCESS STORY</Badge>
-                  <h3 className="text-2xl font-bold text-white">Mortgage Broker Saves $125K+ Annually</h3>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">Before SuccessNOW:</h4>
-                  <ul className="space-y-2 text-gray-300">
-                    <li>• $10.5K/month on lead qualification staff</li>
-                    <li>• 45% of leads never contacted</li>
-                    <li>• Average 5-hour response time</li>
-                    <li>• Missing weekend opportunities</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">After SuccessNOW:</h4>
-                  <ul className="space-y-2 text-green-400">
-                    <li>• $0 monthly qualification costs</li>
-                    <li>• 100% lead contact rate</li>
-                    <li>• Instant response 24/7</li>
-                    <li>• Faster closings with zero missed leads</li>
-                  </ul>
-                </div>
-              </div>
-              <div className="mt-8 text-center">
-                <Link href="/case-studies#mortgage">
-                  <Button className="bg-green-600 hover:bg-green-700 text-white">
-                    View Full Case Study
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Key Features */}
-      <section className="py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Why Mortgage Pros Choose <span className="text-[#00BFFF]">MortgageNOW</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Purpose-built AI solutions for mortgage brokers and loan officers
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Phone className="w-8 h-8" />,
-                title: "Instant Lead Qualification",
-                description: "AI pre-qualifies borrowers instantly, collecting income, credit score, and loan needs.",
-                color: "blue",
-              },
-              {
-                icon: <Calendar className="w-8 h-8" />,
-                title: "Consultation Scheduling",
-                description:
-                  "AI books pre-approval meetings directly into your calendar based on urgency and loan type.",
-                color: "green",
-              },
-              {
-                icon: <Calculator className="w-8 h-8" />,
-                title: "Rate Quotes & Calculations",
-                description: "AI provides instant rate quotes and payment calculations to keep prospects engaged.",
-                color: "purple",
-              },
-              {
-                icon: <Home className="w-8 h-8" />,
-                title: "Loan Program Matching",
-                description: "AI matches borrowers to the best loan programs based on their financial profile.",
-                color: "orange",
-              },
-              {
-                icon: <DollarSign className="w-8 h-8" />,
-                title: "Pre-Approval Processing",
-                description: "AI collects all necessary documentation and starts the pre-approval process immediately.",
-                color: "red",
-              },
-              {
-                icon: <Target className="w-8 h-8" />,
-                title: "Follow-up Automation",
-                description: "AI nurtures leads through the entire loan process with timely follow-ups and updates.",
-                color: "cyan",
-              },
-            ].map((feature, index) => (
-              <Card
-                key={index}
-                className="bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 hover:scale-105"
-              >
-                <CardHeader>
-                  <div
-                    className={`w-12 h-12 rounded-lg bg-${feature.color}-600/20 flex items-center justify-center mb-4`}
-                  >
-                    <div className={`text-${feature.color}-400`}>{feature.icon}</div>
-                  </div>
-                  <CardTitle className="text-xl font-bold text-white">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 px-6 bg-gray-900/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Proven Results for <span className="text-[#00BFFF]">Mortgage Professionals</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { number: "100%", label: "Lead Contact Rate", icon: <Phone className="w-6 h-6" /> },
-              { number: "60%", label: "Faster Pre-Approvals", icon: <Calendar className="w-6 h-6" /> },
-              { number: "24/7", label: "Availability", icon: <Clock className="w-6 h-6" /> },
-              { number: "$125K+", label: "Annual Savings", icon: <DollarSign className="w-6 h-6" /> },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-[#00BFFF]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="text-[#00BFFF]">{stat.icon}</div>
-                </div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-gray-300">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex justify-center mb-6">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
-            ))}
-          </div>
-          <blockquote className="text-2xl md:text-3xl font-light text-white mb-8 italic">
-            "MortgageNOW has transformed my business. I'm closing 40% more loans because I never miss a lead. The AI
-            qualifies borrowers better than my old team and works around the clock."
-          </blockquote>
-          <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-12 bg-gray-600 rounded-full"></div>
-            <div className="text-left">
-              <div className="font-semibold text-white">David Martinez</div>
-              <div className="text-gray-400">Senior Loan Officer, Premier Mortgage</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Signup Form */}
-      <section id="signup" className="py-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Start Closing More Loans <span className="text-[#00BFFF]">Today</span>
-            </h2>
-            <p className="text-xl text-gray-300 mb-8">
-              Join top mortgage professionals who trust MortgageNOW to grow their business
-            </p>
-          </div>
-
-          <Card className="bg-gray-900/50 border-gray-800">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white text-center">
-                Get Your AI Mortgage Assistant
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="firstName" className="text-white">
-                      First Name
-                    </Label>
-                    <Input
-                      id="firstName"
-                      value={formData.firstName}
-                      onChange={(e) => handleInputChange("firstName", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="lastName" className="text-white">
-                      Last Name
-                    </Label>
-                    <Input
-                      id="lastName"
-                      value={formData.lastName}
-                      onChange={(e) => handleInputChange("lastName", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="email" className="text-white">
-                      Email Address
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange("email", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone" className="text-white">
-                      Phone Number
-                    </Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange("phone", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="companyName" className="text-white">
-                      Company Name
-                    </Label>
-                    <Input
-                      id="companyName"
-                      value={formData.companyName}
-                      onChange={(e) => handleInputChange("companyName", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="licenseType" className="text-white">
-                      License Type
-                    </Label>
-                    <Select onValueChange={(value) => handleInputChange("licenseType", value)}>
-                      <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                        <SelectValue placeholder="Select license" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="loan-officer">Loan Officer</SelectItem>
-                        <SelectItem value="mortgage-broker">Mortgage Broker</SelectItem>
-                        <SelectItem value="bank-employee">Bank Employee</SelectItem>
-                        <SelectItem value="credit-union">Credit Union</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="monthlyLeads" className="text-white">
-                      Monthly Leads
-                    </Label>
-                    <Select onValueChange={(value) => handleInputChange("monthlyLeads", value)}>
-                      <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                        <SelectValue placeholder="Select range" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="0-25">0-25 leads</SelectItem>
-                        <SelectItem value="26-50">26-50 leads</SelectItem>
-                        <SelectItem value="51-100">51-100 leads</SelectItem>
-                        <SelectItem value="100+">100+ leads</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Label htmlFor="averageLoanAmount" className="text-white">
-                      Average Loan Amount
-                    </Label>
-                    <Select onValueChange={(value) => handleInputChange("averageLoanAmount", value)}>
-                      <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                        <SelectValue placeholder="Select range" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="0-200k">$0-$200,000</SelectItem>
-                        <SelectItem value="200k-400k">$200,000-$400,000</SelectItem>
-                        <SelectItem value="400k-600k">$400,000-$600,000</SelectItem>
-                        <SelectItem value="600k+">$600,000+</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="currentChallenges" className="text-white">
-                    Current Lead Management Challenges
-                  </Label>
-                  <Textarea
-                    id="currentChallenges"
-                    value={formData.currentChallenges}
-                    onChange={(e) => handleInputChange("currentChallenges", e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-white"
-                    rows={4}
-                    placeholder="Tell us about your biggest challenges with lead qualification and follow-up..."
-                  />
-                </div>
-
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="agreeToTerms"
-                    checked={formData.agreeToTerms}
-                    onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
-                  />
-                  <Label htmlFor="agreeToTerms" className="text-sm text-gray-300">
-                    I agree to the{" "}
-                    <Link href="/terms" className="text-[#00BFFF] hover:underline">
-                      Terms of Service
-                    </Link>{" "}
-                    and{" "}
-                    <Link href="/privacy" className="text-[#00BFFF] hover:underline">
-                      Privacy Policy
-                    </Link>
-                  </Label>
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-[#00BFFF] hover:bg-[#00A3D9] text-white py-4 text-lg"
-                  disabled={!formData.agreeToTerms}
-                >
-                  Start My Free Trial
-                  <Zap className="ml-2 w-5 h-5" />
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 px-6 bg-gradient-to-r from-[#00BFFF]/10 to-green-600/10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Close More Loans?</h2>
-          <p className="text-xl text-gray-300 mb-8">Join the AI revolution and never miss another borrower</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="#signup">
-              <Button size="lg" className="bg-[#00BFFF] hover:bg-[#00A3D9] text-white px-8 py-4 text-lg">
-                Get Started Now
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <Link href="/book">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-white px-8 py-4 text-lg bg-transparent"
-              >
-                Schedule Demo
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+    <IndustryPageTemplate
+      industryName="Mortgage Brokers & Loan Officers"
+      industryNameSingular="Mortgage Business"
+      heroSubtitle={
+        <>
+          AI that <span className="text-[#00BFFF]">Qualifies Borrowers</span>
+          <br />
+          To Close More Loans
+        </>
+      }
+      heroWarning="45% of mortgage leads never get contacted due to slow response times!"
+      heroDescription={
+        <>
+          Stop losing deals to faster competitors. Our{" "}
+          <span className="text-[#00BFFF] font-semibold">
+            AI qualifies borrowers, books consultations, and nurtures leads
+          </span>{" "}
+          through the entire loan process to maximize your closings.
+        </>
+      }
+      heroCtaText="GET MORTGAGENOW"
+      heroCtaLink="/mortgagenow/signup"
+      customBuildPoints={[
+        {
+          icon: Globe,
+          title: "Custom Website to Build Trust",
+          description:
+            "A professional website that showcases your expertise, rates, and makes pre-qualification easy for borrowers.",
+        },
+        {
+          icon: Target,
+          title: "Custom AI Smart Funnels for Your Programs",
+          description: "Targeted funnels for first-time buyers, refinancing, investment properties, and jumbo loans.",
+        },
+        {
+          icon: MessageSquare,
+          title: "Custom AI Agent Trained on YOUR Loan Programs",
+          description:
+            "AI agents that know your rates, loan products, qualification requirements, and processing timelines.",
+        },
+      ]}
+      aiAgentsBenefits={[
+        "Never miss a borrower inquiry, even on weekends",
+        "Qualifies leads and provides rate quotes instantly",
+        "Like having the most knowledgeable loan processor working 24/7",
+        "Save money on lead qualification staff and increase conversion",
+        "Creates a professional and responsive experience for every borrower",
+      ]}
+      dominateCtaText="Dominate NOW with Lightning-Fast Lead Response!"
+      featureCards={[
+        {
+          icon: Bot,
+          title: "AI Qualification Agent",
+          description:
+            "An AI agent that pre-qualifies borrowers and collects all necessary financial information 24/7.",
+        },
+        {
+          icon: Target,
+          title: "AI Rate Advisor",
+          description: "Provides instant rate quotes and payment calculations to keep prospects engaged.",
+        },
+        {
+          icon: Globe,
+          title: "Custom Website",
+          description: "Professional website with integrated AI chat, rate calculators, and application system.",
+        },
+        {
+          icon: LayoutDashboard,
+          title: "Analytics Dashboard",
+          description: "Track lead sources, qualification rates, and loan pipeline progress.",
+        },
+        {
+          icon: LinkIcon,
+          title: "System Integration",
+          description: "Connects with popular loan origination systems like Encompass and Calyx.",
+        },
+        {
+          icon: GraduationCap,
+          title: "Training & Support",
+          description: "Full support to ensure you're maximizing loan closings and borrower satisfaction.",
+        },
+      ]}
+      problems={[
+        "Losing qualified borrowers to competitors with faster response times",
+        "Spending too much time on unqualified leads",
+        "Missing opportunities during evenings and weekends",
+        "Inconsistent rate quotes and program information",
+        "Difficulty nurturing leads through long loan processes",
+        "Manual follow-up for document collection and status updates",
+      ]}
+      solutions={[
+        "24/7 AI assistant to capture and qualify every borrower inquiry",
+        "Instant pre-qualification to focus your time on ready-to-close deals",
+        "Round-the-clock availability when borrowers are researching",
+        "Consistent, accurate rate quotes and program details every time",
+        "Automated nurturing sequences to keep deals moving forward",
+        "Streamlined document collection and automated status updates",
+      ]}
+      finalCtaTitle="Ready to Close More Loans?"
+      finalCtaDescription="Join the top mortgage professionals using AI to respond faster, qualify better, and close more deals."
+    />
   )
 }
