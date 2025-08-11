@@ -1,109 +1,67 @@
 "use client"
 
 import IndustryPageTemplate from "@/components/industry/industry-page-template"
-import { Globe, Target, Bot, BarChart3, Link, GraduationCap } from "lucide-react"
+import { Car, Users, Calendar, TrendingUp, Phone, MessageSquare } from "lucide-react"
 
 export default function AutoDealersNowClient() {
+  const features = [
+    {
+      icon: Phone,
+      title: "24/7 Lead Response",
+      description: "Never miss a potential customer again. Our AI responds to every inquiry instantly, day or night.",
+    },
+    {
+      icon: Calendar,
+      title: "Test Drive Booking",
+      description: "Automatically schedule test drives and service appointments directly into your calendar system.",
+    },
+    {
+      icon: MessageSquare,
+      title: "Follow-Up Automation",
+      description: "Nurture leads with personalized follow-ups until they're ready to buy or lease.",
+    },
+    {
+      icon: Users,
+      title: "Customer Qualification",
+      description: "Pre-qualify customers and gather financing information before they visit your lot.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Sales Analytics",
+      description: "Track conversion rates, lead sources, and sales performance with detailed reporting.",
+    },
+    {
+      icon: Car,
+      title: "Inventory Integration",
+      description: "Connect with your inventory system to provide real-time vehicle availability and pricing.",
+    },
+  ]
+
+  const benefits = [
+    "Increase test drive bookings by 300% with instant lead response",
+    "Convert more leads into sales with automated follow-up sequences",
+    "Reduce staff workload while improving customer experience",
+    "Capture leads 24/7, even when your dealership is closed",
+    "Pre-qualify customers to focus on serious buyers",
+    "Integrate with your existing CRM and inventory systems",
+  ]
+
   return (
     <IndustryPageTemplate
       industryName="Auto Dealers"
-      industryNameSingular="Dealership"
-      heroSubtitle={
-        <>
-          AI that <span className="text-[#00BFFF]">Book More Test Drives</span>
-          <br />
-          To Skyrocket Your Results
-        </>
-      }
-      heroWarning="77% of Leads are lost due to poor handling!"
-      heroDescription={
-        <>
-          Stop losing sales to no-shows and forgotten follow-ups. Our{" "}
-          <span className="text-[#00BFFF]">AI books test drives, confirms appointments, and nurtures every lead</span>{" "}
-          until they buy.
-        </>
-      }
-      heroCtaText="GET AUTODEALERNOW"
-      heroCtaLink="/autodealersnow/signup"
-      customBuildPoints={[
-        {
-          icon: Globe,
-          title: "Custom Website to Your Brand & Vision",
-          description:
-            "Every website is built from scratch to match your dealership's unique brand, colors, and vision. No templates, no cookie-cutter designs.",
-        },
-        {
-          icon: Target,
-          title: "Custom AI Smart Funnels to Your Offers",
-          description:
-            "Tailored conversion funnels designed specifically for your inventory, financing options, and special promotions.",
-        },
-        {
-          icon: Bot,
-          title: "Custom AI Agent Trained on YOUR Business",
-          description:
-            "AI agents that know your inventory, pricing, financing options, and dealership policies inside and out.",
-        },
-      ]}
-      aiAgentsBenefits={[
-        "Never miss a lead or follow-up",
-        "Makes detailed notes and transcripts of every call",
-        "Like having the best team member using all the best AI tools",
-        "Save countless money on staff that make excuses, call in sick, aren't motivated",
-        "No more employees who don't follow the process",
-      ]}
-      dominateCtaText="Dominate NOW with the Best Agents in the Galaxy!"
-      featureCards={[
-        {
-          icon: Bot,
-          title: "AI Super Agents",
-          description:
-            "Custom AI agents trained on your business that never sleep, never miss a call, and always follow up.",
-        },
-        {
-          icon: Target,
-          title: "Smart Funnels",
-          description: "AI-powered funnels that automatically qualify leads, book appointments, and nurture prospects.",
-        },
-        {
-          icon: Globe,
-          title: "Custom Website",
-          description: "Professional website branded to your business with integrated AI chat and lead capture.",
-        },
-        {
-          icon: BarChart3,
-          title: "Analytics Dashboard",
-          description: "Real-time insights into your AI performance, lead quality, and conversion rates.",
-        },
-        {
-          icon: Link,
-          title: "CRM Integration",
-          description: "Seamlessly connects with your existing tools and workflows for maximum efficiency.",
-        },
-        {
-          icon: GraduationCap,
-          title: "Training & Support",
-          description: "Complete onboarding, training, and ongoing support to ensure your success.",
-        },
-      ]}
-      problems={[
-        "Losing leads to competitors with faster response times",
-        "High no-show rates for test drive appointments",
-        "Sales team too busy to follow up with every online lead",
-        "Inconsistent communication with potential buyers",
-        "Struggling to get positive reviews to build trust",
-        "Manually managing leads from multiple sources is chaotic",
-      ]}
-      solutions={[
-        "24/7 AI assistant to engage and qualify every lead instantly",
-        "Smart test drive booking with automated confirmations & reminders",
-        "Long-term nurturing sequences for leads not ready to buy today",
-        "Answers common vehicle and financing questions automatically",
-        "Integrates with your CRM for a seamless sales process",
-        "Automatically requests reviews from happy car buyers",
-      ]}
-      finalCtaTitle="Ready to Sell More Cars with AI?"
-      finalCtaDescription="Join successful dealerships already using AI to boost sales"
+      industryNameSingular="Auto Dealership"
+      heroTitle="AI That Sells Cars While You Sleep"
+      heroSubtitle="Book More Test Drives, Close More Deals"
+      heroDescription="Transform your auto dealership with AI that books test drives, confirms appointments, and nurtures every lead until they buy. Never lose another customer to slow response times."
+      problemTitle="The Problem: Leads Are Slipping Through the Cracks"
+      problemDescription="Auto dealerships lose 70% of potential customers due to slow response times. When someone inquires about a vehicle, they expect immediate answers. If you don't respond within 5 minutes, they're already calling your competitor down the street."
+      solutionTitle="The Solution: AI That Never Sleeps"
+      solutionDescription="Our AI responds to every lead instantly, books test drives automatically, and follows up persistently until they buy. It works 24/7, speaks multiple languages, and integrates with your existing systems to maximize every opportunity."
+      features={features}
+      benefitsTitle="Why Auto Dealers Choose SuccessNOW"
+      benefits={benefits}
+      finalCtaTitle="Ready to Sell More Cars?"
+      finalCtaDescription="Join hundreds of auto dealers who've transformed their sales process with AI. Start booking more test drives and closing more deals today."
     />
   )
 }
