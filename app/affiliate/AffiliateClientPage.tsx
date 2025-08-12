@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Users, TrendingUp, Star, Zap, DollarSign, Clock } from "lucide-react"
+import AffiliateCalculators from "@/components/calculators/affiliate-calculator"
 
 export default function AffiliateClientPage() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
@@ -307,6 +308,13 @@ export default function AffiliateClientPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Revenue Calculator Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <AffiliateCalculators />
         </div>
       </section>
     </div>
