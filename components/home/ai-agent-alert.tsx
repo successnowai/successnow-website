@@ -1,47 +1,61 @@
 "use client"
 
-import { useState } from "react"
-import { AlertTriangle, X, ArrowRight, Zap } from "lucide-react"
+import { motion } from "framer-motion"
+import { AlertTriangle, ArrowRight, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 export default function AiAgentAlert() {
-  const [isVisible, setIsVisible] = useState(true)
-
-  if (!isVisible) return null
-
   return (
-    <div className="relative bg-gradient-to-r from-red-600/90 to-orange-600/90 border-y border-red-500/50 py-4 px-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <AlertTriangle className="w-6 h-6 text-yellow-300 animate-pulse" />
-            <span className="text-white font-bold text-lg">URGENT:</span>
+    <section className="relative py-16 px-4 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-red-900/30 via-orange-900/30 to-red-900/30" />
+
+      {/* Pulsing alert background */}
+      <div className="absolute inset-0 bg-red-500/5 animate-pulse" />
+
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border-2 border-red-500/40 rounded-2xl p-8 text-center backdrop-blur-sm"
+        >
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <AlertTriangle className="w-8 h-8 text-red-400 animate-pulse" />
+            <span className="text-red-400 font-bold text-lg uppercase tracking-wide">Urgent Business Alert</span>
+            <AlertTriangle className="w-8 h-8 text-red-400 animate-pulse" />
           </div>
 
-          <div className="text-white">
-            <span className="font-semibold">Your competitors are using AI agents right now.</span>
-            <span className="ml-2 hidden sm:inline">Every day you wait, they capture more of your market share.</span>
-          </div>
-        </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            Your Competitors Are Using <span className="text-red-400">AI Agents</span> Right Now
+          </h2>
 
-        <div className="flex items-center gap-3">
+          <p className="text-xl text-gray-200 mb-8 max-w-4xl mx-auto">
+            While you're manually handling calls and emails, smart businesses are using AI to capture leads 24/7, book
+            appointments instantly, and dominate their markets.
+            <span className="text-red-400 font-bold"> Don't get left behind.</span>
+          </p>
+
+          <div className="flex items-center justify-center gap-2 mb-8">
+            <Clock className="w-5 h-5 text-orange-400" />
+            <span className="text-orange-400 font-semibold">Every day you wait, you lose more market share</span>
+          </div>
+
           <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
             <Button
-              size="sm"
-              className="bg-white text-red-600 hover:bg-gray-100 font-semibold transition-all duration-300 hover:scale-105"
+              size="lg"
+              className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-bold px-10 py-5 text-xl transition-all duration-300 hover:scale-105 shadow-2xl shadow-red-500/30"
             >
-              <Zap className="w-4 h-4 mr-2" />
-              Get AI Now
-              <ArrowRight className="w-4 h-4 ml-2" />
+              Get AI Working For You NOW
+              <ArrowRight className="ml-3 w-6 h-6" />
             </Button>
           </Link>
 
-          <button onClick={() => setIsVisible(false)} className="text-white/80 hover:text-white transition-colors">
-            <X className="w-5 h-5" />
-          </button>
-        </div>
+          <p className="text-gray-400 mt-4 text-sm">Setup takes 5 minutes. Results start immediately.</p>
+        </motion.div>
       </div>
-    </div>
+    </section>
   )
 }

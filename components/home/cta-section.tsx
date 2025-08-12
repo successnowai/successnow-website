@@ -1,96 +1,101 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles, Clock, Shield } from "lucide-react"
+import { ArrowRight, Shield, Clock, TrendingUp } from "lucide-react"
 import Link from "next/link"
 
 export default function CtaSection() {
+  const guarantees = [
+    {
+      icon: <Shield className="w-6 h-6" />,
+      title: "30-Day Money Back",
+      description: "Not happy? Full refund, no questions asked",
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      title: "5-Minute Setup",
+      description: "AI working for you in minutes, not months",
+    },
+    {
+      icon: <TrendingUp className="w-6 h-6" />,
+      title: "Guaranteed Results",
+      description: "More leads and sales, or your money back",
+    },
+  ]
+
   return (
-    <section className="relative py-24 px-4 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-800" />
+    <section className="py-20 px-4 bg-gradient-to-br from-green-900/20 via-black to-blue-900/20 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
 
-      {/* Animated background elements */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse delay-500" />
-
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <div className="mb-8">
-          <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-2 mb-6">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span className="text-cyan-400 text-sm font-medium">Limited Time Offer</span>
-          </div>
-
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Don't Let Your Competitors
-            <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-              Win With AI
-            </span>
+      <div className="max-w-6xl mx-auto relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Stop Losing to{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
+              AI-Powered
+            </span>{" "}
+            Competitors
           </h2>
-
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Every day you wait is another day your competitors capture customers with AI. Join the thousands of
-            businesses already growing faster with SuccessNOW.
-          </p>
-        </div>
-
-        {/* Value props */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-            <Clock className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-            <h3 className="text-lg font-semibold text-white mb-2">Setup in 24 Hours</h3>
-            <p className="text-gray-400 text-sm">Your AI system will be live and working tomorrow</p>
-          </div>
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-            <Shield className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-            <h3 className="text-lg font-semibold text-white mb-2">30-Day Guarantee</h3>
-            <p className="text-gray-400 text-sm">Not satisfied? Get every penny back, no questions asked</p>
-          </div>
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-            <Sparkles className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-            <h3 className="text-lg font-semibold text-white mb-2">No Technical Skills</h3>
-            <p className="text-gray-400 text-sm">We handle everything—you just watch your business grow</p>
-          </div>
-        </div>
-
-        {/* Main CTA */}
-        <div className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-2xl p-8 mb-8">
-          <h3 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business with AI?</h3>
-          <p className="text-gray-300 mb-6">
-            Join over 1,000 businesses already using AI to grow faster, serve customers better, and increase profits.
+          <p className="text-xl text-gray-300 mb-12 max-w-4xl mx-auto">
+            Every day you wait, your competitors get further ahead with AI automation. Don't let them dominate your
+            market while you're still doing things manually.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* Guarantees */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {guarantees.map((guarantee, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6"
+              >
+                <div className="bg-gradient-to-r from-green-500 to-blue-500 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                  {guarantee.icon}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">{guarantee.title}</h3>
+                <p className="text-gray-400">{guarantee.description}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Final CTA */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8 }}
+            className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border-2 border-green-500/40 rounded-2xl p-8"
+          >
+            <h3 className="text-3xl font-bold text-white mb-4">Your AI Business Revolution Starts Now</h3>
+            <p className="text-xl text-gray-300 mb-8">
+              Join the thousands of businesses already using AI to automate their growth. Setup takes 5 minutes. Results
+              start immediately.
+            </p>
+
             <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold px-10 py-6 text-xl transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
+                className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-bold px-12 py-6 text-2xl transition-all duration-300 hover:scale-110 shadow-2xl shadow-green-500/30 mb-4"
               >
-                Get Started Now
-                <ArrowRight className="ml-3 w-6 h-6" />
+                Start Dominating Your Market
+                <ArrowRight className="ml-3 w-8 h-8" />
               </Button>
             </Link>
 
-            <Link href="/book">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400 px-10 py-6 text-xl transition-all duration-300 bg-transparent"
-              >
-                Book a Demo First
-              </Button>
-            </Link>
-          </div>
-        </div>
-
-        {/* Urgency message */}
-        <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-xl p-6">
-          <p className="text-red-300 font-semibold text-lg">
-            ⚡ Don't wait—your competitors are already using AI to capture your customers. The longer you wait, the
-            harder it becomes to catch up.
-          </p>
-        </div>
+            <p className="text-gray-400 text-sm">No contracts. Cancel anytime. 30-day money-back guarantee.</p>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

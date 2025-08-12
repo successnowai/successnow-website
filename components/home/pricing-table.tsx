@@ -1,8 +1,11 @@
 "use client"
 
 import { useState } from "react"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Check, ArrowRight, Star, Zap } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Check, ArrowRight, Zap, Crown, Rocket } from "lucide-react"
 import Link from "next/link"
 
 export default function PricingTable() {
@@ -11,99 +14,95 @@ export default function PricingTable() {
   const plans = [
     {
       name: "Starter",
+      icon: <Zap className="w-6 h-6" />,
       description: "Perfect for small businesses getting started with AI",
       monthlyPrice: 297,
       annualPrice: 2970,
+      setupFee: 1488,
       features: [
-        "AI Chat Agent",
-        "Basic Website Integration",
-        "Lead Capture Forms",
-        "Email Notifications",
-        "Basic Analytics",
-        "5 AI Conversations/day",
+        "AI Chat Agent on your website",
+        "Basic lead qualification",
+        "Email notifications",
+        "Simple appointment booking",
+        "Basic analytics dashboard",
+        "Email support",
       ],
-      cta: "Get Started Now",
       popular: false,
+      cta: "Start with AI",
     },
     {
       name: "Professional",
-      description: "Most popular for growing businesses",
+      icon: <Crown className="w-6 h-6" />,
+      description: "Complete AI automation for growing businesses",
       monthlyPrice: 497,
       annualPrice: 4970,
+      setupFee: 1488,
       features: [
-        "AI Chat + Voice Agents",
-        "Custom Website + Funnels",
-        "CRM Integration",
-        "Automated Follow-ups",
-        "Advanced Analytics",
-        "50 AI Conversations/day",
-        "Multi-channel Marketing",
-        "A/B Testing",
+        "Everything in Starter",
+        "AI Voice Agent for phone calls",
+        "Advanced lead qualification",
+        "CRM integration",
+        "Automated follow-up sequences",
+        "Multi-channel communication",
+        "Advanced analytics & reporting",
+        "Priority support",
       ],
-      cta: "Get Started Now",
       popular: true,
+      cta: "Go Professional",
     },
     {
       name: "Enterprise",
-      description: "For established businesses scaling with AI",
+      icon: <Rocket className="w-6 h-6" />,
+      description: "Full-scale AI domination for serious businesses",
       monthlyPrice: 997,
       annualPrice: 9970,
+      setupFee: 1488,
       features: [
         "Everything in Professional",
-        "Unlimited AI Conversations",
-        "Custom AI Training",
-        "White-label Options",
-        "Priority Support",
-        "Advanced Integrations",
-        "Custom Reporting",
-        "Dedicated Account Manager",
+        "Custom AI training for your business",
+        "Multiple AI agents",
+        "Advanced automation workflows",
+        "Custom integrations",
+        "White-label options",
+        "Dedicated account manager",
+        "24/7 phone support",
       ],
-      cta: "Get Started Now",
       popular: false,
-    },
-    {
-      name: "Custom",
-      description: "Tailored solutions for enterprise needs",
-      monthlyPrice: null,
-      annualPrice: null,
-      features: [
-        "Everything in Enterprise",
-        "Custom AI Development",
-        "On-premise Deployment",
-        "SLA Guarantees",
-        "24/7 Phone Support",
-        "Custom Integrations",
-        "Training & Onboarding",
-        "Success Manager",
-      ],
-      cta: "Contact Sales",
-      popular: false,
+      cta: "Dominate Your Market",
     },
   ]
 
   return (
-    <section className="relative py-24 px-4 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-800" />
+    <section className="py-20 px-4 bg-gradient-to-br from-slate-900 via-black to-slate-800 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
 
-      {/* Animated background elements */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Simple, Transparent Pricing</h2>
+      <div className="max-w-7xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Choose Your{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+              AI Advantage
+            </span>
+          </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Choose the plan that fits your business. All plans include our core AI features with no hidden fees.
+            Every plan includes our complete AI setup and training. Start dominating your market today.
           </p>
 
           {/* Billing toggle */}
-          <div className="flex items-center justify-center gap-4 mb-12">
+          <div className="flex items-center justify-center gap-4 mb-8">
             <span className={`text-lg ${!isAnnual ? "text-white font-semibold" : "text-gray-400"}`}>Monthly</span>
             <button
               onClick={() => setIsAnnual(!isAnnual)}
               className={`relative w-16 h-8 rounded-full transition-colors duration-300 ${
-                isAnnual ? "bg-cyan-500" : "bg-gray-600"
+                isAnnual ? "bg-purple-500" : "bg-gray-600"
               }`}
             >
               <div
@@ -113,125 +112,121 @@ export default function PricingTable() {
               />
             </button>
             <span className={`text-lg ${isAnnual ? "text-white font-semibold" : "text-gray-400"}`}>Annual</span>
-            {isAnnual && (
-              <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Save 20%</span>
-            )}
+            {isAnnual && <Badge className="bg-green-500/20 text-green-400 border-green-500/30">Save 20%</Badge>}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {plans.map((plan, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`relative bg-white/5 backdrop-blur-xl border-2 rounded-2xl p-8 transition-all duration-300 hover:scale-105 ${
-                plan.popular ? "border-cyan-500 bg-cyan-500/10" : "border-white/10 hover:border-cyan-500/50"
-              }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="relative"
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-1">
-                    <Star className="w-4 h-4" />
+                  <Badge className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-1 text-sm font-semibold">
                     Most Popular
-                  </div>
+                  </Badge>
                 </div>
               )}
 
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                <p className="text-gray-400 text-sm mb-6">{plan.description}</p>
+              <Card
+                className={`h-full ${
+                  plan.popular
+                    ? "bg-gradient-to-br from-purple-500/10 to-blue-500/10 border-purple-500/30 scale-105"
+                    : "bg-white/5 border-white/10"
+                } hover:scale-105 transition-all duration-300`}
+              >
+                <CardHeader className="text-center pb-4">
+                  <div
+                    className={`inline-flex p-3 rounded-full mb-4 ${
+                      plan.popular ? "bg-gradient-to-r from-purple-500 to-blue-500" : "bg-gray-600"
+                    }`}
+                  >
+                    {plan.icon}
+                  </div>
+                  <CardTitle className="text-2xl font-bold text-white mb-2">{plan.name}</CardTitle>
+                  <p className="text-gray-400 text-sm">{plan.description}</p>
+                </CardHeader>
 
-                <div className="mb-6">
-                  {plan.monthlyPrice ? (
-                    <>
-                      <div className="text-4xl font-bold text-white">
-                        ${isAnnual ? Math.round(plan.annualPrice / 12) : plan.monthlyPrice}
+                <CardContent className="pt-0">
+                  <div className="text-center mb-6">
+                    <div className="text-4xl font-bold text-white mb-2">
+                      ${isAnnual ? Math.floor(plan.annualPrice / 12) : plan.monthlyPrice}
+                      <span className="text-lg text-gray-400 font-normal">/month</span>
+                    </div>
+                    <div className="text-sm text-gray-400">+ ${plan.setupFee} one-time setup</div>
+                    {isAnnual && (
+                      <div className="text-sm text-green-400 mt-1">
+                        Save ${plan.monthlyPrice * 12 - plan.annualPrice} annually
                       </div>
-                      <div className="text-gray-400 text-sm">per month{isAnnual && ", billed annually"}</div>
-                      {isAnnual && (
-                        <div className="text-green-400 text-sm font-semibold">
-                          Save ${plan.monthlyPrice * 12 - plan.annualPrice}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <div className="text-2xl font-bold text-white">Custom</div>
-                  )}
-                </div>
-              </div>
+                    )}
+                  </div>
 
-              <ul className="space-y-4 mb-8">
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+                  <ul className="space-y-3 mb-8">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-              <div className="mt-auto">
-                {plan.name === "Custom" ? (
-                  <Link href="/book">
-                    <Button
-                      className={`w-full font-semibold py-3 transition-all duration-300 hover:scale-105 ${
-                        plan.popular
-                          ? "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
-                          : "bg-white/10 border border-white/20 text-white hover:bg-white/20"
-                      }`}
-                    >
-                      {plan.cta}
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </Link>
-                ) : (
                   <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
                     <Button
                       className={`w-full font-semibold py-3 transition-all duration-300 hover:scale-105 ${
                         plan.popular
-                          ? "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
-                          : "bg-white/10 border border-white/20 text-white hover:bg-white/20"
+                          ? "bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white"
+                          : "bg-white/10 hover:bg-white/20 text-white border border-white/20"
                       }`}
                     >
                       {plan.cta}
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
                   </Link>
-                )}
-              </div>
-            </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-8 max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <Zap className="w-6 h-6 text-yellow-400" />
-              <h3 className="text-2xl font-bold text-white">30-Day Money-Back Guarantee</h3>
-            </div>
-            <p className="text-gray-300 mb-6">
-              Try any plan risk-free. If you're not completely satisfied, we'll refund every penny within 30 days.
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
+        >
+          <div className="bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/30 rounded-2xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-3xl font-bold text-white mb-4">30-Day Money-Back Guarantee</h3>
+            <p className="text-xl text-gray-300 mb-6">
+              Not seeing results? Get a full refund. But you will see results - our AI works.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
+                  className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-bold px-8 py-4 text-lg"
                 >
-                  Start Your Free Trial
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  Start Risk-Free Today
                 </Button>
               </Link>
-              <Link href="/book">
+              <Link href="/demo">
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-2 border-purple-500/50 text-purple-400 hover:bg-purple-500/10 hover:border-purple-400 px-8 py-4 text-lg transition-all duration-300 bg-transparent"
+                  className="border-2 border-green-500/50 text-green-400 hover:bg-green-500/10 hover:border-green-400 px-8 py-4 text-lg bg-transparent"
                 >
-                  Book a Demo
+                  See Demo First
                 </Button>
               </Link>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

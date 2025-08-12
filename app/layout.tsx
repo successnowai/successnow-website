@@ -94,7 +94,7 @@ export const metadata: Metadata = {
   },
   category: "technology",
   classification: "AI Software",
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 const jsonLd = {

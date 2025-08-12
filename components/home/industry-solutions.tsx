@@ -1,127 +1,146 @@
 "use client"
 
-import { useState } from "react"
+import { motion } from "framer-motion"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Car, Home, Wrench, Stethoscope, Scale, Utensils } from "lucide-react"
+import { ArrowRight, Car, Home, Wrench, Stethoscope, Briefcase, Utensils, Hammer, Sun } from "lucide-react"
 import Link from "next/link"
 
 export default function IndustrySolutions() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-
   const industries = [
     {
-      icon: Car,
+      icon: <Car className="w-8 h-8" />,
       title: "Auto Dealers",
-      description: "AI that qualifies leads, schedules test drives, and follows up with prospects automatically.",
+      description: "AI handles test drive bookings, financing questions, and inventory inquiries 24/7",
       link: "/autodealersnow",
       color: "from-blue-500 to-cyan-500",
     },
     {
-      icon: Home,
+      icon: <Home className="w-8 h-8" />,
       title: "Real Estate",
-      description:
-        "24/7 AI agent that qualifies buyers, schedules showings, and nurtures leads through the sales funnel.",
+      description: "Qualify buyers, schedule showings, and nurture leads automatically",
       link: "/realtornow",
       color: "from-green-500 to-emerald-500",
     },
     {
-      icon: Wrench,
-      title: "Contractors",
-      description: "AI that books estimates, qualifies projects, and follows up with homeowners automatically.",
-      link: "/contractorsnow",
+      icon: <Wrench className="w-8 h-8" />,
+      title: "HVAC & Plumbing",
+      description: "Emergency calls, service bookings, and quote requests handled instantly",
+      link: "/hvacnow",
       color: "from-orange-500 to-red-500",
     },
     {
-      icon: Stethoscope,
+      icon: <Stethoscope className="w-8 h-8" />,
       title: "Healthcare",
-      description: "AI receptionist that books appointments, answers questions, and manages patient communications.",
+      description: "Appointment scheduling, insurance verification, and patient intake automation",
       link: "/dentistsnow",
       color: "from-purple-500 to-pink-500",
     },
     {
-      icon: Scale,
+      icon: <Briefcase className="w-8 h-8" />,
       title: "Legal Services",
-      description: "AI that qualifies legal cases, schedules consultations, and nurtures potential clients.",
+      description: "Case consultations, document requests, and client intake streamlined",
       link: "/lawyersnow",
-      color: "from-indigo-500 to-blue-500",
+      color: "from-indigo-500 to-purple-500",
     },
     {
-      icon: Utensils,
+      icon: <Utensils className="w-8 h-8" />,
       title: "Restaurants",
-      description: "AI that takes reservations, answers menu questions, and manages customer communications.",
+      description: "Reservations, catering orders, and customer service automated",
       link: "/restaurantsnow",
       color: "from-yellow-500 to-orange-500",
+    },
+    {
+      icon: <Hammer className="w-8 h-8" />,
+      title: "Contractors",
+      description: "Project estimates, scheduling, and lead qualification on autopilot",
+      link: "/contractorsnow",
+      color: "from-gray-500 to-slate-500",
+    },
+    {
+      icon: <Sun className="w-8 h-8" />,
+      title: "Solar Companies",
+      description: "Energy consultations, savings calculations, and installation bookings",
+      link: "/solarnow",
+      color: "from-amber-500 to-yellow-500",
     },
   ]
 
   return (
-    <section className="relative py-24 px-4 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-800" />
+    <section className="py-20 px-4 bg-gradient-to-br from-slate-900 via-black to-slate-800 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
-      {/* Animated background elements */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">AI Solutions for Every Industry</h2>
+      <div className="max-w-7xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            AI Solutions for{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+              Every Industry
+            </span>
+          </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Get industry-specific AI that understands your business and speaks your customers' language.
+            Specialized AI agents trained for your specific business needs. Ready to deploy in minutes.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {industries.map((industry, index) => (
-            <div
+            <motion.div
               key={index}
-              className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              {/* Glow effect on hover */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-r ${industry.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}
-              />
-
-              <div className="relative z-10">
-                <div
-                  className={`w-16 h-16 bg-gradient-to-r ${industry.color} rounded-full flex items-center justify-center mb-6`}
-                >
-                  <industry.icon className="w-8 h-8 text-white" />
-                </div>
-
-                <h3 className="text-2xl font-bold text-white mb-4">{industry.title}</h3>
-
-                <p className="text-gray-300 mb-6 leading-relaxed">{industry.description}</p>
-
-                <Link href={industry.link}>
-                  <Button
-                    variant="outline"
-                    className={`w-full border-2 border-transparent bg-gradient-to-r ${industry.color} bg-clip-border text-white hover:scale-105 transition-all duration-300`}
+              <Card className="bg-white/5 border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 group h-full">
+                <CardContent className="p-6">
+                  <div
+                    className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${industry.color} mb-4 group-hover:scale-110 transition-transform duration-300`}
                   >
-                    Learn More
-                    <ArrowRight
-                      className={`ml-2 w-4 h-4 transition-transform duration-300 ${hoveredIndex === index ? "translate-x-1" : ""}`}
-                    />
-                  </Button>
-                </Link>
-              </div>
-            </div>
+                    <div className="text-white">{industry.icon}</div>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">{industry.title}</h3>
+                  <p className="text-gray-400 mb-4 leading-relaxed">{industry.description}</p>
+                  <Link href={industry.link}>
+                    <Button
+                      variant="ghost"
+                      className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 p-0 h-auto font-semibold group-hover:translate-x-1 transition-transform duration-300"
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <Link href="/industries">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
-            >
-              View All Industries
-              <ArrowRight className="ml-2 w-5 h-5" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
+        >
+          <h3 className="text-2xl font-bold text-white mb-4">Don't See Your Industry?</h3>
+          <p className="text-gray-400 mb-6">
+            Our AI adapts to any business. Get a custom solution built for your specific needs.
+          </p>
+          <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold px-8 py-3">
+              Get Custom AI Solution
             </Button>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

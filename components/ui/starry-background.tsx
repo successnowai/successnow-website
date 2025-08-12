@@ -49,15 +49,9 @@ export default function StarryBackground() {
         ctx.fill()
 
         // Twinkle effect
-        star.opacity += (Math.random() - 0.5) * 0.02
-        star.opacity = Math.max(0.1, Math.min(1, star.opacity))
-
-        // Slow movement
-        star.y += star.speed
-        if (star.y > canvas.height) {
-          star.y = 0
-          star.x = Math.random() * canvas.width
-        }
+        star.opacity += star.speed * (Math.random() > 0.5 ? 1 : -1)
+        if (star.opacity <= 0) star.opacity = 0.1
+        if (star.opacity >= 1) star.opacity = 0.9
       })
 
       requestAnimationFrame(animate)
@@ -71,6 +65,10 @@ export default function StarryBackground() {
   }, [])
 
   return (
-    <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" style={{ background: "transparent" }} />
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 z-0 pointer-events-none"
+      style={{ background: "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)" }}
+    />
   )
 }
