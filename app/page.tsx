@@ -9,11 +9,13 @@ import PricingTable from "@/components/home/pricing-table"
 import { PlatformShowcaseSection } from "@/components/home/platform-showcase-section"
 import AdsNowSection from "@/components/home/adsnow-section"
 import CtaSection from "@/components/home/cta-section"
+import PilotFundingPopup from "@/components/ui/pilot-funding-popup"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <StarryBackground />
+      <PilotFundingPopup />
       <NewTopHeroSection />
       <GlassmorphicProblemsSection />
       <MainHeroSection />

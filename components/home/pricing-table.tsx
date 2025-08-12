@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Check, Crown, TrendingUp, Phone } from "lucide-react"
 import Link from "next/link"
+import PilotFundingBanner from "@/components/ui/pilot-funding-banner"
 
 export default function PricingTable() {
   const [isAnnual, setIsAnnual] = useState(true)
@@ -50,6 +51,9 @@ export default function PricingTable() {
   return (
     <section className="py-16 px-6 bg-black" id="pricing">
       <div className="max-w-4xl mx-auto">
+        {/* Pilot Funding Banner */}
+        <PilotFundingBanner />
+
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
