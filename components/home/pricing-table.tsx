@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Check, Crown, TrendingUp, Phone } from "lucide-react"
 import Link from "next/link"
+import PilotFundingBanner from "@/components/ui/pilot-funding-banner"
 
 export default function PricingTable() {
   const [isAnnual, setIsAnnual] = useState(true)
@@ -50,6 +51,9 @@ export default function PricingTable() {
   return (
     <section className="py-16 px-6 bg-black" id="pricing">
       <div className="max-w-4xl mx-auto">
+        {/* Pilot Funding Banner */}
+        <PilotFundingBanner />
+
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -180,7 +184,7 @@ export default function PricingTable() {
               </ul>
 
               {/* CTA Button */}
-              <Link href="/signup" className="block">
+              <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer" className="block">
                 <Button className="w-full py-4 text-lg font-semibold transition-all duration-300 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-lg hover:shadow-xl">
                   {plan.cta}
                 </Button>

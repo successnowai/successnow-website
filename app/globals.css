@@ -13,11 +13,11 @@
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 222.2 84% 4.9%;
     --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-foreground: 222.2 84% 4.9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
@@ -65,69 +65,113 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Global content spacing for navbar */
-.global-content-spacing {
-  padding-top: 0;
+/* Starry background animation */
+.starry-background {
+  background: linear-gradient(135deg, #0b1426 0%, #1a2332 50%, #0b1426 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Custom Neon Glow Effect - Dimmed */
-.neon-text-glow {
-  color: #00d4ff;
-  text-shadow: 0 0 5px rgba(0, 212, 255, 0.3), 0 0 10px rgba(0, 212, 255, 0.4), 0 0 15px rgba(0, 212, 255, 0.5), 0 0
-    20px rgba(0, 212, 255, 0.2), 0 0 35px rgba(0, 191, 255, 0.3), 0 0 40px rgba(0, 191, 255, 0.2);
-  animation: neon-pulse-dimmed 3s ease-in-out infinite alternate;
+.starry-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: sparkle 20s linear infinite;
+  will-change: transform;
 }
 
-@keyframes neon-pulse-dimmed {
+@keyframes sparkle {
   from {
-    text-shadow: 0 0 5px rgba(0, 212, 255, 0.2), 0 0 10px rgba(0, 212, 255, 0.3), 0 0 15px rgba(0, 212, 255, 0.4), 0 0
-      20px rgba(0, 212, 255, 0.1), 0 0 35px rgba(0, 191, 255, 0.2), 0 0 40px rgba(0, 191, 255, 0.1);
+    transform: translateX(0);
   }
   to {
-    text-shadow: 0 0 5px rgba(0, 212, 255, 0.4), 0 0 10px rgba(0, 212, 255, 0.5), 0 0 15px rgba(0, 212, 255, 0.6), 0 0
-      20px rgba(0, 212, 255, 0.3), 0 0 35px rgba(0, 191, 255, 0.4), 0 0 40px rgba(0, 191, 255, 0.3);
+    transform: translateX(200px);
   }
 }
 
-/* Glass morphism effect */
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Neon text glow effect */
+.neon-text-glow {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff, 0 0 20px #00ffff, 0 0 35px #00ffff, 0 0 40px #00ffff;
+  animation: neon-pulse-cyan 2s ease-in-out infinite alternate;
+  will-change: text-shadow;
 }
 
-/* Button glow effect */
-.btn-glow {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-  transition: box-shadow 0.3s ease;
+@keyframes neon-pulse-cyan {
+  from {
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff, 0 0 20px #00ffff, 0 0 35px #00ffff, 0 0 40px
+      #00ffff;
+  }
+  to {
+    text-shadow: 0 0 2px #00ffff, 0 0 5px #00ffff, 0 0 8px #00ffff, 0 0 12px #00ffff, 0 0 18px #00ffff, 0 0 25px #00ffff,
+      0 0 35px #00ffff;
+  }
 }
 
-.btn-glow:hover {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .neon-text-glow {
+    animation: none;
+  }
+  .starry-background::before {
+    animation: none;
+  }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .starry-background::before {
+    animation-duration: 30s;
+  }
+  .neon-text-glow {
+    text-shadow: 0 0 3px #00ffff, 0 0 6px #00ffff, 0 0 9px #00ffff, 0 0 12px #00ffff;
+  }
 }
 
-/* Custom scrollbar */
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+}
+
+/* Focus and accessibility */
+*:focus-visible {
+  outline: 2px solid #00ffff;
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #0b1426;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4a5568;
+  background: #00ffff;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #718096;
+  background: #00cccc;
 }

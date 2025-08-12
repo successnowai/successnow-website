@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo, useCallback } from "react"
 
 interface Star {
   id: number
@@ -21,44 +21,86 @@ interface ShootingStar {
 export const StarryBackground = () => {
   const [stars, setStars] = useState<Star[]>([])
   const [shootingStars, setShootingStars] = useState<ShootingStar[]>([])
+  const [isVisible, setIsVisible] = useState(false)
+
+  // Memoize colors array to prevent recreation on each render
+  const colors = useMemo(() => ["#0ea5e9", "#d946ef", "#ffffff", "#38bdf8", "#e879f9"], [])
+
+  // Generate stars with useCallback to prevent recreation
+  const generateStars = useCallback(() => {
+    const newStars: Star[] = []
+    // Reduce star count for mobile performance
+    const starCount = typeof window !== "undefined" && window.innerWidth < 768 ? 75 : 150
+
+    for (let i = 0; i < starCount; i++) {
+      newStars.push({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.8 + 0.2,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        animationDelay: Math.random() * 3,
+      })
+    }
+    setStars(newStars)
+  }, [colors])
+
+  // Generate shooting stars with useCallback
+  const generateShootingStars = useCallback(() => {
+    const newShootingStars: ShootingStar[] = []
+    // Reduce shooting stars for mobile
+    const shootingStarCount = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 3
+
+    for (let i = 0; i < shootingStarCount; i++) {
+      newShootingStars.push({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 50,
+        animationDelay: Math.random() * 8,
+      })
+    }
+    setShootingStars(newShootingStars)
+  }, [])
 
   useEffect(() => {
-    // Generate random stars
-    const generateStars = () => {
-      const newStars: Star[] = []
-      const colors = ["#0ea5e9", "#d946ef", "#ffffff", "#38bdf8", "#e879f9"]
-
-      for (let i = 0; i < 150; i++) {
-        newStars.push({
-          id: i,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
-          size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.8 + 0.2,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          animationDelay: Math.random() * 3,
-        })
-      }
-      setStars(newStars)
+    // Use requestIdleCallback for non-critical initialization
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(() => {
+        generateStars()
+        generateShootingStars()
+        setIsVisible(true)
+      })
+    } else {
+      // Fallback for browsers without requestIdleCallback
+      setTimeout(() => {
+        generateStars()
+        generateShootingStars()
+        setIsVisible(true)
+      }, 100)
     }
 
-    // Generate shooting stars
-    const generateShootingStars = () => {
-      const newShootingStars: ShootingStar[] = []
-      for (let i = 0; i < 3; i++) {
-        newShootingStars.push({
-          id: i,
-          x: Math.random() * 100,
-          y: Math.random() * 50,
-          animationDelay: Math.random() * 8,
-        })
-      }
-      setShootingStars(newShootingStars)
+    // Handle resize with debouncing
+    let resizeTimeout: NodeJS.Timeout
+    const handleResize = () => {
+      clearTimeout(resizeTimeout)
+      resizeTimeout = setTimeout(() => {
+        generateStars()
+        generateShootingStars()
+      }, 250)
     }
 
-    generateStars()
-    generateShootingStars()
-  }, [])
+    window.addEventListener("resize", handleResize, { passive: true })
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      clearTimeout(resizeTimeout)
+    }
+  }, [generateStars, generateShootingStars])
+
+  // Don't render until visible to improve initial load
+  if (!isVisible) {
+    return <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" />
+  }
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -68,17 +110,17 @@ export const StarryBackground = () => {
         style={{ animationDuration: "8s" }}
       />
 
-      {/* Nebula effects */}
+      {/* Nebula effects - reduced for mobile */}
       <div
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-brandBlue/5 rounded-full blur-3xl animate-pulse"
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-brandBlue/5 rounded-full blur-3xl animate-pulse will-change-transform"
         style={{ animationDuration: "6s", animationDelay: "0s" }}
       />
       <div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-brandPurple/5 rounded-full blur-3xl animate-pulse"
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-brandPurple/5 rounded-full blur-3xl animate-pulse will-change-transform"
         style={{ animationDuration: "7s", animationDelay: "2s" }}
       />
       <div
-        className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl animate-pulse"
+        className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl animate-pulse will-change-transform"
         style={{ animationDuration: "5s", animationDelay: "4s" }}
       />
 
@@ -86,7 +128,7 @@ export const StarryBackground = () => {
       {stars.map((star) => (
         <div
           key={star.id}
-          className="absolute rounded-full animate-twinkle"
+          className="absolute rounded-full animate-twinkle will-change-transform"
           style={{
             left: `${star.x}%`,
             top: `${star.y}%`,
@@ -104,7 +146,7 @@ export const StarryBackground = () => {
       {shootingStars.map((shootingStar) => (
         <div
           key={shootingStar.id}
-          className="absolute w-1 h-1 animate-shooting-star"
+          className="absolute w-1 h-1 animate-shooting-star will-change-transform"
           style={{
             left: `${shootingStar.x}%`,
             top: `${shootingStar.y}%`,
@@ -118,7 +160,7 @@ export const StarryBackground = () => {
 
       {/* Additional atmospheric effects */}
       <div
-        className="absolute inset-0 bg-gradient-to-t from-transparent via-brandBlue/5 to-transparent animate-pulse"
+        className="absolute inset-0 bg-gradient-to-t from-transparent via-brandBlue/5 to-transparent animate-pulse will-change-transform"
         style={{ animationDuration: "10s" }}
       />
     </div>

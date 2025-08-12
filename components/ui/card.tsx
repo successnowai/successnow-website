@@ -4,13 +4,16 @@ import { cn } from "@/lib/utils"
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
-    variant?: "default" | "purple" | "darker"
+    variant?: "default" | "purple" | "darker" | "neon" | "cyberpunk"
   }
 >(({ className, variant = "default", ...props }, ref) => {
   const variantClasses = {
     default: "card-stylized",
     purple: "card-stylized-purple",
     darker: "card-stylized-darker",
+    neon: "bg-gray-800/40 backdrop-blur-xl border border-gray-700/50 hover:border-pink-500/60 hover:shadow-pink-500/20 transition-all duration-300",
+    cyberpunk:
+      "bg-gray-900/60 backdrop-blur-xl border border-[#00BFFF]/30 hover:border-pink-500/60 hover:shadow-pink-500/20 transition-all duration-500",
   }
 
   return <div ref={ref} className={cn("rounded-lg shadow-sm", variantClasses[variant], className)} {...props} />

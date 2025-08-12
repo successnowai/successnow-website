@@ -2,14 +2,15 @@ import type { Metadata } from "next"
 import AboutClientPage from "./AboutClientPage"
 
 export const metadata: Metadata = {
-  title: "About Us - The SuccessNOW.ai Story | AI Super Agents for Business",
+  title: "About Us - The SuccessNOW.ai Story | AI Super Agents",
   description:
-    "Learn about John Potvin's journey from door-to-door sales to creating AI Super Agents that work 24/7. Discover how SuccessNOW.ai is revolutionizing business automation.",
-  keywords: "SuccessNOW.ai story, John Potvin founder, AI business automation, sales innovation, AI agents history",
+    "Learn about John Potvin's journey from door-to-door sales to founding SuccessNOW.ai. Discover how we're revolutionizing business automation with AI Super Agents that work 24/7.",
+  keywords:
+    "SuccessNOW.ai story, John Potvin founder, AI automation, business growth, sales innovation, AI super agents",
   openGraph: {
     title: "About Us - The SuccessNOW.ai Story",
     description:
-      "From door-to-door hustle to AI-powered global automation. Learn John Potvin's journey and how SuccessNOW.ai is transforming businesses worldwide.",
+      "From door-to-door hustle to AI-powered global automation. Learn how SuccessNOW.ai is revolutionizing business with AI Super Agents.",
     type: "website",
   },
 }

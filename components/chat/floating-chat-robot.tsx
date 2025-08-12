@@ -1,172 +1,150 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
-import { MessageCircle, X, Send, Minimize2 } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Bot, X } from "lucide-react"
 
 export default function FloatingChatRobot() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isMinimized, setIsMinimized] = useState(false)
-  const [message, setMessage] = useState("")
-  const [messages, setMessages] = useState([
-    {
-      type: "bot",
-      content: "Hi! I'm your AI assistant. How can I help you learn about SuccessNOW AI today?",
-      timestamp: new Date(),
-    },
-  ])
+  const [isVisible, setIsVisible] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
-  const toggleChat = () => {
-    setIsOpen(!isOpen)
-    setIsMinimized(false)
-  }
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true)
+    }, 3000)
 
-  const minimizeChat = () => {
-    setIsMinimized(true)
-  }
+    return () => clearTimeout(timer)
+  }, [])
 
-  const sendMessage = () => {
-    if (message.trim()) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          type: "user",
-          content: message,
-          timestamp: new Date(),
-        },
-      ])
+  useEffect(() => {
+    if (isExpanded) {
+      const frame = document.getElementById("assistantFrame")
+      const handleLoad = () => {
+        if (navigator.permissions) {
+          navigator.permissions
+            .query({ name: "microphone" as PermissionName })
+            .then((result) => {
+              if (result.state === "granted") {
+                console.log("Microphone access already granted")
+              } else if (result.state === "prompt") {
+                console.log("User will be prompted for microphone access")
+              }
+            })
+            .catch((err) => {
+              console.error("Microphone permission query failed:", err)
+            })
+        }
+      }
 
-      // Simulate bot response
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          {
-            type: "bot",
-            content:
-              "Thanks for your message! Our AI Superagents can help with lead conversion 24/7. Would you like to see a demo?",
-            timestamp: new Date(),
-          },
-        ])
-      }, 1000)
-
-      setMessage("")
+      if (frame) {
+        frame.addEventListener("load", handleLoad)
+        return () => {
+          frame.removeEventListener("load", handleLoad)
+        }
+      }
     }
-  }
+  }, [isExpanded])
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      sendMessage()
-    }
-  }
+  if (!isVisible) return null
 
   return (
     <>
-      {/* Floating Chat Button */}
-      {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-50">
-          <button
-            onClick={toggleChat}
-            className="relative w-16 h-16 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group animate-pulse"
-            style={{
-              animationDuration: "2s",
-              animationIterationCount: "infinite",
-            }}
+      {/* Floating Chat Robot */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {isExpanded ? (
+          <div
+            className="mb-4 bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden"
+            style={{ width: "350px", height: "400px" }}
           >
-            <MessageCircle className="w-8 h-8 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-
-            {/* Ripple Effect */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 to-blue-500 opacity-75 group-hover:scale-110 transition-transform duration-300"></div>
-            <div
-              className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 to-blue-500 opacity-50"
-              style={{
-                animationName: "ping",
-                animationDuration: "2s",
-                animationIterationCount: "infinite",
-              }}
-            ></div>
-          </button>
-        </div>
-      )}
-
-      {/* Chat Window */}
-      {isOpen && (
-        <div
-          className={`fixed bottom-6 right-6 z-50 w-80 h-96 bg-gray-900/95 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl transition-all duration-300 ${
-            isMinimized ? "h-14" : "h-96"
-          }`}
-        >
-          {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-white/20">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full flex items-center justify-center">
-                <MessageCircle className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <h3 className="text-white font-semibold text-sm">SuccessNOW AI</h3>
-                <p className="text-gray-400 text-xs">Always here to help</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <button onClick={minimizeChat} className="text-gray-400 hover:text-white transition-colors duration-200">
-                <Minimize2 className="w-4 h-4" />
-              </button>
-              <button onClick={toggleChat} className="text-gray-400 hover:text-white transition-colors duration-200">
+            <div className="flex justify-between items-center p-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+              <h3 className="font-semibold text-sm">AI Business Consultant</h3>
+              <button onClick={() => setIsExpanded(false)} className="text-white hover:text-gray-200 transition-colors">
                 <X className="w-4 h-4" />
               </button>
             </div>
+            <div
+              style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "calc(100% - 48px)" }}
+            >
+              <iframe
+                src="https://iframes.ai/o/1753831620452x607403809624031200?color=ed10cc&icon=bot"
+                allow="microphone"
+                style={{ width: "100%", height: "100%", border: "none" }}
+                id="assistantFrame"
+                title="AI Business Consultant"
+              />
+            </div>
           </div>
+        ) : null}
 
-          {/* Messages */}
-          {!isMinimized && (
-            <>
-              <div className="flex-1 p-4 space-y-4 h-64 overflow-y-auto">
-                {messages.map((msg, index) => (
-                  <div key={index} className={`flex ${msg.type === "user" ? "justify-end" : "justify-start"}`}>
-                    <div
-                      className={`max-w-xs px-4 py-2 rounded-2xl ${
-                        msg.type === "user"
-                          ? "bg-gradient-to-r from-pink-500 to-blue-500 text-white"
-                          : "bg-white/10 text-gray-300 border border-white/20"
-                      }`}
-                    >
-                      <p className="text-sm">{msg.content}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+        <div className="group cursor-pointer flex flex-col items-center" onClick={() => setIsExpanded(!isExpanded)}>
+          <div className="relative w-16 h-16 mb-2">
+            {/* Outer glow effect - slowest */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+              style={{
+                animation: "slowPulse 6s ease-in-out infinite alternate",
+              }}
+            ></div>
 
-              {/* Input */}
-              <div className="p-4 border-t border-white/20">
-                <div className="flex items-center gap-2">
-                  <input
-                    type="text"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder="Type your message..."
-                    className="flex-1 px-3 py-2 bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-400 text-sm focus:outline-none focus:border-pink-500/50 transition-colors duration-200"
-                  />
-                  <button
-                    onClick={sendMessage}
-                    className="w-8 h-8 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-200"
-                  >
-                    <Send className="w-4 h-4 text-white" />
-                  </button>
-                </div>
-              </div>
-            </>
-          )}
+            {/* Middle glow effect - medium */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500"
+              style={{
+                animation: "slowPulse 4.5s ease-in-out infinite alternate-reverse",
+              }}
+            ></div>
+
+            {/* Inner glow effect */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-500"
+              style={{
+                animation: "slowPulse 3s ease-in-out infinite alternate",
+              }}
+            ></div>
+
+            <div
+              className="relative w-full h-full flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-2xl group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110"
+              style={{
+                animation: "slowGlow 4s ease-in-out infinite alternate",
+              }}
+            >
+              <Bot className="w-8 h-8 text-white" />
+
+              {/* Slow pulsing rings */}
+              <div
+                className="absolute inset-0 rounded-full border-2 border-purple-400/30"
+                style={{
+                  animation: "slowRing 5s ease-in-out infinite",
+                }}
+              ></div>
+              <div
+                className="absolute inset-0 rounded-full border-2 border-pink-400/20"
+                style={{
+                  animation: "slowRing 5s ease-in-out infinite 1.5s",
+                }}
+              ></div>
+            </div>
+          </div>
+          <span className="text-xs font-semibold text-white bg-black/50 px-2 py-1 rounded backdrop-blur-sm group-hover:text-purple-200 transition-colors duration-300 text-center">
+            Click Here, Talk to AI
+          </span>
         </div>
-      )}
+      </div>
 
-      {/* CSS Animations */}
       <style jsx>{`
-        @keyframes ping {
-          75%, 100% {
-            transform: scale(1.1);
-            opacity: 0;
-          }
+        @keyframes slowGlow {
+          0% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.3), 0 0 40px rgba(236, 72, 153, 0.2); }
+          100% { box-shadow: 0 0 30px rgba(147, 51, 234, 0.5), 0 0 60px rgba(236, 72, 153, 0.3); }
+        }
+        
+        @keyframes slowPulse {
+          0% { opacity: 0.3; transform: scale(1); }
+          100% { opacity: 0.6; transform: scale(1.05); }
+        }
+        
+        @keyframes slowRing {
+          0% { opacity: 0; transform: scale(1); }
+          50% { opacity: 0.3; transform: scale(1.1); }
+          100% { opacity: 0; transform: scale(1.2); }
         }
       `}</style>
     </>

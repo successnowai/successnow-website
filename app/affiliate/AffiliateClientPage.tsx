@@ -6,7 +6,8 @@ import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, Users, TrendingUp, Star, Crown } from "lucide-react"
+import { CheckCircle, Users, TrendingUp, Star, Zap, DollarSign, Clock } from "lucide-react"
+import AffiliateCalculators from "@/components/calculators/affiliate-calculator"
 
 export default function AffiliateClientPage() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
@@ -90,7 +91,7 @@ export default function AffiliateClientPage() {
                   className="relative"
                 >
                   <Card
-                    className={`bg-gray-800/50 border-gray-700 transition-all duration-300 ${
+                    className={`bg-gray-800/50 border-gray-700 transition-all duration-300 hover:border-pink-500/50 hover:shadow-lg hover:shadow-pink-500/25 ${
                       hoveredCard === tier.tier ? "scale-105 shadow-2xl" : ""
                     }`}
                   >
@@ -116,15 +117,15 @@ export default function AffiliateClientPage() {
             transition={{ duration: 0.8 }}
             className="text-center mt-12 mb-8"
           >
-            <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl p-8 border border-cyan-500/20 backdrop-blur-sm">
+            <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl p-8 border border-cyan-500/20 backdrop-blur-sm hover:border-pink-500/30 transition-all duration-300">
               <h3 className="text-2xl font-bold text-white mb-4">Ready to Start Earning?</h3>
               <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
                 Join thousands of affiliates already earning recurring commissions with our proven system. Apply now and
                 start building your passive income stream.
               </p>
-              <Link href="/affiliate/apply">
-                <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-12 py-4 text-xl font-semibold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/25">
-                  Apply for Affiliate Program →
+              <Link href="https://partner.successnow.ai">
+                <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-pink-500 hover:to-pink-600 text-white px-12 py-4 text-xl font-semibold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-pink-500/25">
+                  Signup Now to Become Affiliate!
                 </Button>
               </Link>
             </div>
@@ -132,7 +133,7 @@ export default function AffiliateClientPage() {
         </div>
       </section>
 
-      {/* Trusted Platinum Partners Section */}
+      {/* AgencyNOW Partner Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div
@@ -140,68 +141,114 @@ export default function AffiliateClientPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
-            <Card className="relative overflow-hidden border border-white/10 bg-black/40 backdrop-blur-xl">
-              {/* Animated gold border */}
-              <div className="absolute inset-0 rounded-lg">
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 animate-pulse" />
-                <div className="absolute inset-[1px] rounded-lg bg-black/60 backdrop-blur-xl" />
-              </div>
+            <Card className="relative overflow-hidden border border-white/10 bg-black/40 backdrop-blur-xl hover:border-pink-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/20">
+              {/* Glassmorphic background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/60 to-gray-900/80 backdrop-blur-xl" />
 
-              {/* Gold glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 via-orange-500/30 to-yellow-400/30 rounded-lg blur-sm opacity-75" />
+              {/* Subtle glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-pink-500/20 to-cyan-500/20 rounded-lg blur-sm opacity-50" />
 
               <div className="absolute top-4 right-4 z-10">
-                <Crown className="h-8 w-8 text-yellow-400" />
+                <Zap className="h-8 w-8 text-cyan-400" />
               </div>
 
               <CardContent className="relative z-10 p-8">
                 <div className="text-center mb-8">
-                  <Badge className="mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold">
-                    EXCLUSIVE PROGRAM
+                  <Badge className="mb-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:from-pink-500 hover:to-pink-600 transition-all duration-300">
+                    🚀 CUSTOM DFY AGENCY BUILD
                   </Badge>
-                  <h3 className="text-3xl font-bold text-white mb-4">Trusted Platinum Partners</h3>
-                  <p className="text-gray-200 text-lg">
-                    Elite program for top performers - Limited to 5 partners globally per niche
+                  <h3 className="text-4xl font-bold text-white mb-4 hover:text-cyan-400 transition-colors duration-300">
+                    Become an AgencyNOW Partner
+                  </h3>
+                  <p className="text-gray-300 text-lg mb-6">
+                    Launch your own AI agency with our complete done-for-you setup
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-yellow-500/20 rounded-lg p-6 mb-8 border border-yellow-400/20 backdrop-blur-sm">
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-yellow-400 mb-2">
-                      EARN unlimited monthly recurring revenue
+                {/* Value Stats */}
+                <div className="grid md:grid-cols-3 gap-6 mb-8">
+                  <div className="text-center group">
+                    <div className="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:from-pink-500/20 group-hover:to-pink-600/20 transition-all duration-300">
+                      <DollarSign className="h-8 w-8 text-cyan-400 group-hover:text-pink-400 transition-colors duration-300" />
                     </div>
+                    <div className="text-3xl font-bold text-cyan-400 mb-2 group-hover:text-pink-400 transition-colors duration-300">
+                      $50,000+
+                    </div>
+                    <div className="text-gray-300">Custom Build Value</div>
+                  </div>
+                  <div className="text-center group">
+                    <div className="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:from-pink-500/20 group-hover:to-pink-600/20 transition-all duration-300">
+                      <Zap className="h-8 w-8 text-cyan-400 group-hover:text-pink-400 transition-colors duration-300" />
+                    </div>
+                    <div className="text-3xl font-bold text-cyan-400 mb-2 group-hover:text-pink-400 transition-colors duration-300">
+                      10,000+
+                    </div>
+                    <div className="text-gray-300">Hours of Development</div>
+                  </div>
+                  <div className="text-center group">
+                    <div className="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:from-pink-500/20 group-hover:to-pink-600/20 transition-all duration-300">
+                      <Clock className="h-8 w-8 text-cyan-400 group-hover:text-pink-400 transition-colors duration-300" />
+                    </div>
+                    <div className="text-3xl font-bold text-cyan-400 mb-2 group-hover:text-pink-400 transition-colors duration-300">
+                      7 Days
+                    </div>
+                    <div className="text-gray-300">To Launch</div>
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="space-y-4">
-                    {["40% Monthly Recurring Revenue", "Exclusive territory rights", "Priority support & training"].map(
-                      (benefit, index) => (
-                        <div key={index} className="flex items-center">
-                          <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
-                          <span className="text-gray-200">{benefit}</span>
-                        </div>
-                      ),
-                    )}
+                {/* Pricing */}
+                <div className="bg-gradient-to-r from-gray-800/60 to-gray-900/60 rounded-lg p-6 mb-8 border border-gray-700/50 backdrop-blur-sm text-center hover:border-pink-500/30 transition-all duration-300">
+                  <div className="text-gray-400 line-through mb-2">Regular Price: $24,888</div>
+                  <div className="text-5xl font-bold text-white mb-2">
+                    <span className="text-cyan-400">$9,997</span>
                   </div>
-                  <div className="space-y-4">
-                    {["Co-marketing opportunities", "Custom commission structures"].map((benefit, index) => (
-                      <div key={index} className="flex items-center">
-                        <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
-                        <span className="text-gray-200">{benefit}</span>
+                  <div className="text-green-400 text-xl font-semibold mb-2">Save $14,891 - Limited Time</div>
+                  <div className="text-gray-300">One-time setup fee • No monthly platform fees EVER</div>
+                </div>
+
+                {/* What's Included */}
+                <div className="mb-8">
+                  <h4 className="text-2xl font-bold text-white mb-6 text-center">What's Included:</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      "Custom-branded AI agency website",
+                      "Complete AI voice and chat systems",
+                      "Proven funnels for every major niche",
+                      "Client onboarding automation",
+                      "CRM and lead management system",
+                      "Payment processing integration",
+                      "White-label SuccessNOW platform access",
+                      "Marketing playbooks and templates",
+                      "Ongoing platform updates and features",
+                      "Technical support and training",
+                      "Zero hosting or platform fees",
+                      "Years of optimization included",
+                    ].map((feature, index) => (
+                      <div key={index} className="flex items-center group">
+                        <CheckCircle className="h-5 w-5 text-cyan-400 mr-3 flex-shrink-0 group-hover:text-pink-400 transition-colors duration-300" />
+                        <span className="text-gray-300 group-hover:text-white transition-colors duration-300">
+                          {feature}
+                        </span>
                       </div>
                     ))}
                   </div>
                 </div>
 
+                {/* Savings Highlight */}
+                <div className="bg-gradient-to-r from-gray-800/60 to-gray-900/60 rounded-lg p-6 mb-8 border border-gray-700/50 backdrop-blur-sm text-center hover:border-pink-500/30 transition-all duration-300">
+                  <div className="text-3xl font-bold text-cyan-400 mb-2">$1,994/month SAVED</div>
+                  <div className="text-gray-300">vs. other platforms (more capital for ads!)</div>
+                </div>
+
                 <div className="text-center">
-                  <Link href="/affiliate/apply?program=Platinum">
-                    <Button className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-black font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105">
-                      Apply for Platinum Program
+                  <Link href="https://agencynow.ai">
+                    <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-pink-500 hover:to-pink-600 text-white font-semibold px-12 py-4 text-xl rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-pink-500/25">
+                      Apply Now - AgencyNOW Partner
                     </Button>
                   </Link>
+                  <p className="text-gray-400 mt-4">Launch in 7 days • 30-day money-back guarantee</p>
                 </div>
               </CardContent>
             </Card>
@@ -249,16 +296,25 @@ export default function AffiliateClientPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
+                className="text-center group"
               >
-                <div className="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-cyan-400">
+                <div className="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-cyan-400 group-hover:from-pink-500/20 group-hover:to-pink-600/20 group-hover:text-pink-400 transition-all duration-300">
                   {benefit.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">{benefit.title}</h3>
+                <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-cyan-400 transition-colors duration-300">
+                  {benefit.title}
+                </h3>
                 <p className="text-gray-300 leading-relaxed">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Revenue Calculator Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <AffiliateCalculators />
         </div>
       </section>
     </div>
