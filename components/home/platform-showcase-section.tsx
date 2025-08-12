@@ -1,187 +1,205 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Brain, MessageSquare, Calendar, BarChart3, Users, Zap, ArrowRight, CheckCircle } from "lucide-react"
+import { ArrowRight, MessageCircle, Phone, Globe, BarChart3, Users, Zap } from "lucide-react"
 import Link from "next/link"
 
 export function PlatformShowcaseSection() {
+  const [activeFeature, setActiveFeature] = useState(0)
+
   const features = [
     {
-      icon: <Brain className="w-8 h-8" />,
-      title: "AI Voice Agents",
-      description: "Human-like conversations that convert prospects into customers 24/7",
-      color: "from-blue-500 to-cyan-500",
+      icon: MessageCircle,
+      title: "AI Chat Agent",
+      description: "24/7 intelligent chat that converts visitors into qualified leads",
+      details: [
+        "Natural language processing",
+        "Lead qualification",
+        "Appointment booking",
+        "CRM integration",
+        "Multi-language support",
+      ],
     },
     {
-      icon: <MessageSquare className="w-8 h-8" />,
-      title: "Smart Lead Qualification",
-      description: "Automatically qualify leads and route them to the right team member",
-      color: "from-purple-500 to-pink-500",
+      icon: Phone,
+      title: "AI Voice Agent",
+      description: "Human-like voice AI that handles calls and books appointments",
+      details: [
+        "Natural voice conversations",
+        "Call routing and handling",
+        "Appointment scheduling",
+        "Follow-up automation",
+        "Call analytics",
+      ],
     },
     {
-      icon: <Calendar className="w-8 h-8" />,
-      title: "Automated Booking",
-      description: "Schedule appointments directly from conversations without human intervention",
-      color: "from-green-500 to-emerald-500",
+      icon: Globe,
+      title: "AI-Optimized Website",
+      description: "High-converting websites built for AI visibility and lead generation",
+      details: [
+        "AI-optimized content",
+        "Mobile-responsive design",
+        "Fast loading speeds",
+        "SEO optimization",
+        "Conversion tracking",
+      ],
     },
     {
-      icon: <BarChart3 className="w-8 h-8" />,
-      title: "Real-time Analytics",
-      description: "Track performance, conversion rates, and ROI with detailed insights",
-      color: "from-orange-500 to-red-500",
+      icon: BarChart3,
+      title: "Smart Analytics",
+      description: "AI-powered insights that show exactly what's working",
+      details: [
+        "Real-time performance metrics",
+        "Lead source tracking",
+        "Conversion optimization",
+        "ROI calculations",
+        "Predictive analytics",
+      ],
     },
     {
-      icon: <Users className="w-8 h-8" />,
+      icon: Users,
       title: "CRM Integration",
-      description: "Seamlessly sync with your existing CRM and marketing tools",
-      color: "from-indigo-500 to-purple-500",
+      description: "Seamlessly connects with your existing tools and workflows",
+      details: [
+        "Popular CRM integrations",
+        "Automated data sync",
+        "Lead scoring",
+        "Pipeline management",
+        "Custom workflows",
+      ],
     },
     {
-      icon: <Zap className="w-8 h-8" />,
-      title: "Instant Deployment",
-      description: "Get up and running in minutes with our plug-and-play solution",
-      color: "from-yellow-500 to-orange-500",
+      icon: Zap,
+      title: "Marketing Automation",
+      description: "AI-driven campaigns that run themselves and optimize performance",
+      details: [
+        "Automated email sequences",
+        "Social media management",
+        "Ad campaign optimization",
+        "Content generation",
+        "Performance tracking",
+      ],
     },
-  ]
-
-  const benefits = [
-    "Increase lead conversion by 300%",
-    "Reduce response time to under 30 seconds",
-    "Save 40+ hours per week on manual tasks",
-    "Never miss a lead again, even after hours",
-    "Scale your business without hiring more staff",
   ]
 
   return (
-    <section className="py-20 px-6 bg-black relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/10 to-pink-900/10" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+    <section className="relative py-24 px-4 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-800" />
+      
+      {/* Animated background elements */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <Badge className="mb-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border-blue-500/30">
-            Platform Overview
-          </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Everything You Need to{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-              Dominate Your Market
-            </span>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Complete AI Business Platform
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Our comprehensive AI platform handles every aspect of lead generation, qualification, and conversion - so
-            you can focus on growing your business.
+            Everything you need to automate, optimize, and scale your business with AI. 
+            No technical skills required.
           </p>
-        </motion.div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <Card className="bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 hover:scale-105 group">
-                <CardContent className="p-6">
-                  <div
-                    className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${feature.color} mb-4 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <div className="text-white">{feature.icon}</div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{feature.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
         </div>
 
-        {/* Benefits Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-          className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 rounded-2xl p-8 md:p-12 border border-gray-700"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-bold text-white mb-6">Transform Your Business Results</h3>
-              <ul className="space-y-4">
-                {benefits.map((benefit, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="flex items-center gap-3"
-                  >
-                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
-                    <span className="text-gray-300 text-lg">{benefit}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-            <div className="text-center lg:text-right">
-              <div className="inline-block p-8 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl border border-blue-500/20">
-                <div className="text-5xl font-bold text-white mb-2">300%</div>
-                <div className="text-blue-400 text-lg font-semibold mb-4">Average Conversion Increase</div>
-                <Link href="/demo">
-                  <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 group">
-                    See It In Action
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mt-16"
-        >
-          <h3 className="text-2xl font-bold text-white mb-4">Ready to Experience the Future of Lead Generation?</h3>
-          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-            Join thousands of businesses already using our AI platform to automate their sales process and scale their
-            growth.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105">
-                Get Started Now
-              </Button>
-            </Link>
-            <Link href="/demo">
-              <Button
-                variant="outline"
-                className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white px-8 py-3 rounded-lg transition-all duration-300 bg-transparent"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Feature list */}
+          <div className="space-y-4">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className={`cursor-pointer p-6 rounded-2xl border-2 transition-all duration-300 ${
+                  activeFeature === index
+                    ? 'border-cyan-500 bg-cyan-500/10'
+                    : 'border-white/10 bg-white/5 hover:border-cyan-500/50'
+                }`}
+                onClick={() => setActiveFeature(index)}
               >
-                Watch Demo
-              </Button>
-            </Link>
+                <div className="flex items-start gap-4">
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                    activeFeature === index ? 'bg-cyan-500' : 'bg-gray-600'
+                  }`}>
+                    {feature.icon && <feature.icon className="w-6 h-6 text-white" />}
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                    <p className="text-gray-300">{feature.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        </motion.div>
+
+          {/* Feature details */}
+          <div className="lg:sticky lg:top-8">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
+                  {features[activeFeature] && (\
+                    <features[activeFeature].icon className="w-8 h-8 text-white" />
+                  )}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">
+                    {features[activeFeature]?.title}
+                  </h3>
+                  <p className="text-gray-400">
+                    {features[activeFeature]?.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-3 mb-8">
+                {features[activeFeature]?.details.map((detail, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+                    <span className="text-gray-300">{detail}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+                <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 transition-all duration-300 hover:scale-105">
+                  Get Started Now
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-2xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-3xl font-bold text-white mb-4">
+              Ready to Transform Your Business?
+            </h3>
+            <p className="text-xl text-gray-300 mb-6">
+              Join thousands of businesses already using AI to grow faster and serve customers better.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+                <Button 
+                  size="lg"
+                  className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
+                >
+                  Start Your AI Journey
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <Link href="/demo">
+                <Button 
+                  variant="outline"
+                  size="lg"
+                  className="border-2 border-green-500/50 text-green-400 hover:bg-green-500/10 hover:border-green-400 px-8 py-4 text-lg transition-all duration-300 bg-transparent"
+                >
+                  Watch Demo First
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

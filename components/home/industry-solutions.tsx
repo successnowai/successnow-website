@@ -1,157 +1,128 @@
 "use client"
 
-import type React from "react"
-import { useInView } from "@/hooks/use-intersection-observer"
-import { AnimatedSwitcher } from "@/components/ui/animated-switcher"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { ArrowRight, Car, Home, Wrench, Stethoscope, Scale, Utensils } from "lucide-react"
+import Link from "next/link"
 
 export default function IndustrySolutions() {
-  const { ref, isInView } = useInView({ threshold: 0.1 })
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   const industries = [
     {
-      emoji: "🚗",
+      icon: Car,
       title: "Auto Dealers",
-      checkmark: "✅",
-      benefits: [
-        "Increase Financing Approvals",
-        "Book More Test Drives",
-        "Convert Leads 24/7",
-        "Qualify Buyers Instantly",
-      ],
-      buttonText: "See AutoDealersNOW",
-      slug: "autodealersnow",
+      description: "AI that qualifies leads, schedules test drives, and follows up with prospects automatically.",
+      link: "/autodealersnow",
+      color: "from-blue-500 to-cyan-500",
     },
     {
-      emoji: "🏡",
-      title: "Realtors",
-      checkmark: "✅",
-      benefits: [
-        "Book Showings Automatically",
-        "Qualify Buyers While You Sleep",
-        "Never Miss Hot Leads",
-        "Close More Deals Faster",
-      ],
-      buttonText: "See RealtorNOW",
-      slug: "realtornow",
+      icon: Home,
+      title: "Real Estate",
+      description:
+        "24/7 AI agent that qualifies buyers, schedules showings, and nurtures leads through the sales funnel.",
+      link: "/realtornow",
+      color: "from-green-500 to-emerald-500",
     },
     {
-      emoji: "🏋️",
-      title: "Gyms & Studios",
-      checkmark: "✅",
-      benefits: [
-        "Reduce Cancellations by 42%",
-        "Fill Classes Without Marketing",
-        "Automate Follow-ups for No-shows",
-        "Boost Member Retention",
-      ],
-      buttonText: "See GymsNOW",
-      slug: "gymsnow",
+      icon: Wrench,
+      title: "Contractors",
+      description: "AI that books estimates, qualifies projects, and follows up with homeowners automatically.",
+      link: "/contractorsnow",
+      color: "from-orange-500 to-red-500",
     },
     {
-      emoji: "🧑‍⚖️",
-      title: "Lawyers",
-      checkmark: "✅",
-      benefits: [
-        "Book Consultations Auto",
-        "Get More Qualified Clients",
-        "Convert Leads While Competitors Sleep",
-        "Handle Intake 24/7",
-      ],
-      buttonText: "See LawyersNOW",
-      slug: "lawyersnow",
+      icon: Stethoscope,
+      title: "Healthcare",
+      description: "AI receptionist that books appointments, answers questions, and manages patient communications.",
+      link: "/dentistsnow",
+      color: "from-purple-500 to-pink-500",
     },
     {
-      emoji: "💆",
-      title: "Medspas",
-      checkmark: "✅",
-      benefits: [
-        "Collect Reviews Effortlessly",
-        "Book Appointments Automatically",
-        "Increase Treatment Package Sales",
-        "Reduce No-Shows by 60%",
-      ],
-      buttonText: "See MedspaNOW",
-      slug: "medspanow",
+      icon: Scale,
+      title: "Legal Services",
+      description: "AI that qualifies legal cases, schedules consultations, and nurtures potential clients.",
+      link: "/lawyersnow",
+      color: "from-indigo-500 to-blue-500",
     },
     {
-      emoji: "🏦",
-      title: "Mortgage Brokers",
-      checkmark: "✅",
-      benefits: [
-        "Close More Loans Easily",
-        "Pre-qualify Leads Without Work",
-        "Nurture Leads Until Ready",
-        "Beat Competitors on Speed",
-      ],
-      buttonText: "See MortgageNOW",
-      slug: "mortgagenow",
+      icon: Utensils,
+      title: "Restaurants",
+      description: "AI that takes reservations, answers menu questions, and manages customer communications.",
+      link: "/restaurantsnow",
+      color: "from-yellow-500 to-orange-500",
     },
   ]
 
   return (
-    <section
-      ref={ref as React.RefObject<HTMLDivElement>}
-      className="mx-auto max-w-6xl px-4 sm:px-5 py-12 sm:py-15"
-      aria-labelledby="industry-solutions-title"
-    >
-      <h2
-        id="industry-solutions-title"
-        className={`mb-6 sm:mb-8 text-center text-2xl sm:text-3xl font-bold text-white transition-all duration-700 ${
-          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
-      >
-        AI-Powered Solutions for Top Industries
-      </h2>
-      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {industries.map((industry, index) => (
-          <div
-            key={index}
-            className={`bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-lg p-4 sm:p-6 transition-all duration-700 hover:-translate-y-1 focus-within:-translate-y-1 hover:shadow-xl focus-within:shadow-xl cursor-pointer ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-            style={{ transitionDelay: `${index * 100}ms` }}
-            tabIndex={0}
-            role="region"
-            aria-label={`${industry.title} industry solution`}
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">{industry.emoji}</span>
-                <h3 className="font-bold text-white text-base sm:text-lg">{industry.title}</h3>
-              </div>
-              <span className="text-green-400 text-xl">{industry.checkmark}</span>
-            </div>
+    <section className="relative py-24 px-4 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-800" />
 
-            <div className="mb-6 min-h-[60px] flex items-center">
-              <p className="text-gray-300 text-sm sm:text-base">
-                <span className="text-white font-bold">AI that </span>
-                <AnimatedSwitcher
-                  phrases={industry.benefits}
-                  className="text-blue-400 font-bold inline"
-                  interval={3000 + index * 500}
-                  scrolling={false}
-                />
-              </p>
-            </div>
+      {/* Animated background elements */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
 
-            <button
-              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 focus:from-blue-600 focus:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 hover:scale-105 focus:scale-105 shadow-lg text-sm sm:text-base min-h-[44px]"
-              onClick={() => (window.location.href = `/${industry.slug}`)}
-              aria-label={`View ${industry.title} industry solution`}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">AI Solutions for Every Industry</h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Get industry-specific AI that understands your business and speaks your customers' language.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {industries.map((industry, index) => (
+            <div
+              key={index}
+              className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              {industry.buttonText} →
-            </button>
-          </div>
-        ))}
+              {/* Glow effect on hover */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-r ${industry.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}
+              />
+
+              <div className="relative z-10">
+                <div
+                  className={`w-16 h-16 bg-gradient-to-r ${industry.color} rounded-full flex items-center justify-center mb-6`}
+                >
+                  <industry.icon className="w-8 h-8 text-white" />
+                </div>
+
+                <h3 className="text-2xl font-bold text-white mb-4">{industry.title}</h3>
+
+                <p className="text-gray-300 mb-6 leading-relaxed">{industry.description}</p>
+
+                <Link href={industry.link}>
+                  <Button
+                    variant="outline"
+                    className={`w-full border-2 border-transparent bg-gradient-to-r ${industry.color} bg-clip-border text-white hover:scale-105 transition-all duration-300`}
+                  >
+                    Learn More
+                    <ArrowRight
+                      className={`ml-2 w-4 h-4 transition-transform duration-300 ${hoveredIndex === index ? "translate-x-1" : ""}`}
+                    />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-16">
+          <Link href="/industries">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
+            >
+              View All Industries
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
+        </div>
       </div>
-      <p
-        className={`mt-6 sm:mt-8 text-center text-gray-300 transition-all duration-700 text-sm sm:text-base px-4 ${
-          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
-        style={{ transitionDelay: "500ms" }}
-      >
-        {"Don't see your industry? Our AI demo will adapt. A Custom Dev Agent will follow up after your live test."}
-      </p>
     </section>
   )
 }
