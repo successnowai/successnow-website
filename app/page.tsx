@@ -19,7 +19,9 @@ export default function HomePage() {
       <PilotFundingPopup />
       <NewTopHeroSection />
       <GlassmorphicProblemsSection />
-      <MainHeroSection />
+      <div className="pt-24">
+        <MainHeroSection />
+      </div>
       <AiAgentAlert />
       <UrgencyAlertSection />
       <LegendaryHeroSection />

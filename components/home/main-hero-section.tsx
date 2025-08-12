@@ -14,7 +14,10 @@ export default function MainHeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
+      style={{ marginTop: "100px" }}
+    >
       {/* Enhanced Dark Background with Overlay */}
       <div className="absolute inset-0 bg-black/90 z-10" />
 
