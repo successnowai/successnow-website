@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-16 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Company Info */}
           <div className="space-y-4 lg:col-span-2">
             <div className="flex items-center space-x-2">
@@ -96,6 +96,63 @@ export default function Footer() {
                 <span>John Potvin - CEO & Founder</span>
               </Link>
             </div>
+          </div>
+
+          {/* Our Brands */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Our Brands</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="https://adsnow.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  AdsNow
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://devnow.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  DevNow
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://salesbotnow.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  SalesBotNow
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://seoexperts.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  SEO Experts
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://agencynow.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  AgencyNow
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Platform */}
