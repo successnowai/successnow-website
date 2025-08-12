@@ -139,7 +139,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preconnect to external domains */}
+        {/* Critical resource hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://signup.successnow.ai" />
@@ -150,6 +150,7 @@ export default function RootLayout({
 
         {/* Preload critical resources */}
         <link rel="preload" href="/images/successnow-logo.png" as="image" type="image/png" />
+        <link rel="preload" href="/abstract-neural-network-background.png" as="image" type="image/png" />
 
         {/* Resource hints for key pages */}
         <link rel="prefetch" href="/demo" />
@@ -189,6 +190,19 @@ export default function RootLayout({
         {/* Language Tags */}
         <meta name="language" content="English" />
         <meta httpEquiv="content-language" content="en-US" />
+
+        {/* Critical CSS inlining hint */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+            /* Critical above-the-fold styles */
+            body { margin: 0; padding: 0; }
+            .hero-section { min-height: 100vh; }
+            /* Prevent layout shift */
+            img { max-width: 100%; height: auto; }
+          `,
+          }}
+        />
       </head>
       <body className={`${inter.className} antialiased`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>

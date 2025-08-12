@@ -11,7 +11,7 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    unoptimized: true,
+    unoptimized: false, // Enable optimization
     remotePatterns: [
       {
         protocol: 'https',
@@ -24,7 +24,15 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
   
   // Webpack optimizations
@@ -33,10 +41,36 @@ const nextConfig = {
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
         cacheGroups: {
+          default: {
+            minChunks: 1,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
+            priority: -10,
+            chunks: 'all',
+          },
+          react: {
+            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            name: 'react',
+            priority: 20,
+            chunks: 'all',
+          },
+          framerMotion: {
+            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+            name: 'framer-motion',
+            priority: 15,
+            chunks: 'all',
+          },
+          lucide: {
+            test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+            name: 'lucide',
+            priority: 15,
             chunks: 'all',
           },
         },
@@ -46,6 +80,10 @@ const nextConfig = {
     // Tree shaking optimization
     config.optimization.usedExports = true;
     config.optimization.sideEffects = false;
+    
+    // Minimize main thread blocking
+    config.optimization.moduleIds = 'deterministic';
+    config.optimization.chunkIds = 'deterministic';
     
     return config;
   },
@@ -85,6 +123,15 @@ const nextConfig = {
       },
       {
         source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/(.*\\.(css|js|woff|woff2|ttf|otf))',
         headers: [
           {
             key: 'Cache-Control',
@@ -132,6 +179,9 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  
+  // Enable SWC minification
+  swcMinify: true,
 };
 
 export default nextConfig;
