@@ -15,9 +15,18 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         gradient:
-          "bg-gradient-to-r from-brandBlue to-brandPurple text-white font-semibold hover:from-brandBlue/80 hover:to-brandPurple/80 hover:scale-105 transition-all duration-300",
-        neon: "bg-transparent border-2 border-brandBlue text-brandBlue hover:bg-brandBlue hover:text-white hover:shadow-glow-blue-sm transition-all duration-300",
-        purple: "bg-brandPurple text-white hover:bg-brandPurple/80 hover:scale-105 transition-all duration-300",
+          "bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:from-blue-700 hover:to-purple-700 hover:scale-105 transition-all duration-300 shadow-lg",
+        neon: "bg-gray-900 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 hover:shadow-lg hover:shadow-cyan-400/25 transition-all duration-300 font-semibold",
+        purple:
+          "bg-purple-600 text-white hover:bg-purple-700 hover:scale-105 transition-all duration-300 shadow-lg font-semibold",
+        success:
+          "bg-green-600 text-white hover:bg-green-700 hover:scale-105 transition-all duration-300 shadow-lg font-semibold",
+        warning:
+          "bg-yellow-600 text-white hover:bg-yellow-700 hover:scale-105 transition-all duration-300 shadow-lg font-semibold",
+        info: "bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 transition-all duration-300 shadow-lg font-semibold",
+        light:
+          "bg-gray-100 text-gray-900 border border-gray-300 hover:bg-gray-200 hover:border-gray-400 transition-all duration-300 font-semibold",
+        dark: "bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 shadow-lg font-semibold",
       },
       size: {
         default: "h-10 px-4 py-2",

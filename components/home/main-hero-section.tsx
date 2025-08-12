@@ -49,8 +49,8 @@ export default function MainHeroSection() {
         >
           {/* Badge */}
           <div className="mb-8">
-            <Badge className="bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-white border-cyan-500/30 px-6 py-2 text-sm font-medium backdrop-blur-sm brightness-110">
-              <Sparkles className="w-4 h-4 mr-2" />
+            <Badge className="bg-gray-900/90 text-white border-2 border-cyan-400/60 px-6 py-2 text-sm font-medium backdrop-blur-sm shadow-lg">
+              <Sparkles className="w-4 h-4 mr-2 text-cyan-400" />
               {"#1 AI Super Agent Platform"}
             </Badge>
           </div>
