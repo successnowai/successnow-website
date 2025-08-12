@@ -15,6 +15,11 @@ import {
   Bot,
   MessageSquare,
   Gavel,
+  Users,
+  Clock,
+  Globe,
+  Eye,
+  UserCheck,
 } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import Link from "next/link"
@@ -127,7 +132,7 @@ export default function TermsClientPage() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2 bg-[#00BFFF]/20 rounded-lg">
-                        <Shield className="w-5 h-5 text-[#00BFFF]" />
+                        <UserCheck className="w-5 h-5 text-[#00BFFF]" />
                       </div>
                       <h3 className="text-lg font-semibold text-white">Acceptance & Eligibility</h3>
                     </div>
@@ -161,7 +166,7 @@ export default function TermsClientPage() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2 bg-[#00BFFF]/20 rounded-lg">
-                        <Scale className="w-5 h-5 text-[#00BFFF]" />
+                        <Shield className="w-5 h-5 text-[#00BFFF]" />
                       </div>
                       <h3 className="text-lg font-semibold text-white">Ownership & Access Rights</h3>
                     </div>
@@ -192,117 +197,245 @@ export default function TermsClientPage() {
                 </Card>
               </div>
 
-              {/* AI Services Section */}
-              <div className="mb-8">
-                <div className="flex items-center gap-2 mb-4">
-                  <Bot className="w-5 h-5 text-[#00BFFF]" />
-                  <h3 className="text-xl font-semibold text-white">Artificial Intelligence (AI) Services</h3>
-                </div>
-                <div className="bg-black/20 p-6 rounded-lg space-y-4">
-                  <div>
-                    <h4 className="text-white font-medium mb-2">AI Service Disclosure</h4>
-                    <p className="text-gray-300 text-sm">
-                      When you interact with our AI Services, you are communicating with an automated system, not a
-                      human representative. We clearly identify AI interactions and comply with bot disclosure
-                      requirements.
-                    </p>
+              {/* Detailed Sections */}
+              <div className="space-y-8">
+                {/* AI Services Section */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Bot className="w-5 h-5 text-[#00BFFF]" />
+                    <h3 className="text-xl font-semibold text-white">Artificial Intelligence (AI) Services</h3>
                   </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">AI Limitations</h4>
-                    <p className="text-gray-300 text-sm">
-                      AI technology has inherent limitations and may occasionally provide incomplete or inaccurate
-                      responses. Information is for general purposes only and should not be considered professional
-                      advice.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">User Responsibilities</h4>
-                    <p className="text-gray-300 text-sm">
-                      Users must use AI services lawfully, not attempt to circumvent safety measures, and verify
-                      important information before making critical decisions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* SMS & Text Messaging */}
-              <div className="mb-8">
-                <div className="flex items-center gap-2 mb-4">
-                  <MessageSquare className="w-5 h-5 text-[#00BFFF]" />
-                  <h3 className="text-xl font-semibold text-white">SMS & Text Messaging Services</h3>
-                </div>
-                <div className="bg-black/20 p-6 rounded-lg space-y-4">
-                  <div>
-                    <h4 className="text-white font-medium mb-2">Compliance Requirements</h4>
-                    <p className="text-gray-300 text-sm">
-                      All text messaging services comply with TCPA, CAN-SPAM Act, and carrier requirements. Proper
-                      consent must be obtained before sending messages.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">Prohibited Practices</h4>
-                    <ul className="text-gray-300 text-sm space-y-1">
-                      <li>• Sending messages without explicit consent</li>
-                      <li>• Continuing to message after opt-out</li>
-                      <li>• Sending inappropriate or illegal content</li>
-                      <li>• Messaging outside normal business hours</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">Data Privacy</h4>
-                    <p className="text-gray-300 text-sm">
-                      Mobile information is not shared with third parties for marketing purposes. Opt-out requests are
-                      honored immediately and permanently.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Legal Provisions */}
-              <div className="mb-8">
-                <div className="flex items-center gap-2 mb-4">
-                  <Gavel className="w-5 h-5 text-[#00BFFF]" />
-                  <h3 className="text-xl font-semibold text-white">Key Legal Provisions</h3>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-[#00BFFF] rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="bg-black/20 p-6 rounded-lg space-y-4">
                     <div>
-                      <h4 className="text-white font-medium">Intellectual Property Rights</h4>
+                      <h4 className="text-white font-medium mb-2">AI Service Disclosure</h4>
+                      <p className="text-gray-300 text-sm">
+                        When you interact with our AI Services, you are communicating with an automated system, not a
+                        human representative. We clearly identify AI interactions and comply with bot disclosure
+                        requirements.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium mb-2">AI Limitations</h4>
+                      <p className="text-gray-300 text-sm">
+                        AI technology has inherent limitations and may occasionally provide incomplete or inaccurate
+                        responses. Information is for general purposes only and should not be considered professional
+                        advice.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium mb-2">User Responsibilities</h4>
+                      <p className="text-gray-300 text-sm">
+                        Users must use AI services lawfully, not attempt to circumvent safety measures, and verify
+                        important information before making critical decisions.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* SMS & Text Messaging */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <MessageSquare className="w-5 h-5 text-[#00BFFF]" />
+                    <h3 className="text-xl font-semibold text-white">SMS & Text Messaging Services</h3>
+                  </div>
+                  <div className="bg-black/20 p-6 rounded-lg space-y-4">
+                    <div>
+                      <h4 className="text-white font-medium mb-2">Compliance Requirements</h4>
+                      <p className="text-gray-300 text-sm">
+                        All text messaging services comply with TCPA, CAN-SPAM Act, and carrier requirements. Proper
+                        consent must be obtained before sending messages.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium mb-2">Prohibited Practices</h4>
+                      <ul className="text-gray-300 text-sm space-y-1">
+                        <li>• Sending messages without explicit consent</li>
+                        <li>• Continuing to message after opt-out</li>
+                        <li>• Sending inappropriate or illegal content</li>
+                        <li>• Messaging outside normal business hours</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium mb-2">Data Privacy</h4>
+                      <p className="text-gray-300 text-sm">
+                        Mobile information is not shared with third parties for marketing purposes. Opt-out requests are
+                        honored immediately and permanently.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* White Label CRM Services */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Users className="w-5 h-5 text-[#00BFFF]" />
+                    <h3 className="text-xl font-semibold text-white">White Label CRM Services</h3>
+                  </div>
+                  <div className="bg-black/20 p-6 rounded-lg space-y-4">
+                    <div>
+                      <h4 className="text-white font-medium mb-2">White Label Relationship</h4>
+                      <p className="text-gray-300 text-sm">
+                        We may provide white-labeled CRM services to our clients. Certain functionalities and underlying
+                        technologies are provided by third-party CRM platforms.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium mb-2">Limitations of Responsibility</h4>
+                      <p className="text-gray-300 text-sm">
+                        The Company is not responsible for issues, outages, or security breaches that occur within
+                        systems controlled exclusively by third-party providers.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Contract Duration */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Clock className="w-5 h-5 text-[#00BFFF]" />
+                    <h3 className="text-xl font-semibold text-white">Contract Duration & Subscriptions</h3>
+                  </div>
+                  <div className="bg-black/20 p-6 rounded-lg space-y-4">
+                    <div>
+                      <h4 className="text-white font-medium mb-2">Subscription Types</h4>
+                      <p className="text-gray-300 text-sm">
+                        Subscriptions allow continuous access to Services. Fixed-term subscriptions cannot be terminated
+                        prematurely and run until expiration.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium mb-2">Automatic Renewal</h4>
+                      <p className="text-gray-300 text-sm">
+                        Subscriptions automatically renew unless cancelled within specified deadlines. You will receive
+                        renewal reminders with cancellation procedures.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Intellectual Property */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Eye className="w-5 h-5 text-[#00BFFF]" />
+                    <h3 className="text-xl font-semibold text-white">Intellectual Property Rights</h3>
+                  </div>
+                  <div className="bg-black/20 p-6 rounded-lg space-y-4">
+                    <div>
+                      <h4 className="text-white font-medium mb-2">Ownership</h4>
                       <p className="text-gray-300 text-sm">
                         All intellectual property rights in the Services are owned by SuccessNOW AI INC. Limited license
-                        granted for business use only.
+                        granted for business use only during the term of this Agreement.
                       </p>
                     </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-[#00BFFF] rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="text-white font-medium">No Warranty</h4>
-                      <p className="text-gray-300 text-sm">
-                        Services provided "AS-IS" without warranties. No guarantees of accuracy, reliability, or fitness
-                        for particular purpose.
-                      </p>
+                      <h4 className="text-white font-medium mb-2">Usage Restrictions</h4>
+                      <ul className="text-gray-300 text-sm space-y-1">
+                        <li>• No copying, distribution, or modification</li>
+                        <li>• No reverse engineering or decompilation</li>
+                        <li>• No competitive use or exploitation</li>
+                        <li>• No systematic data retrieval</li>
+                      </ul>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-[#00BFFF] rounded-full mt-2 flex-shrink-0"></div>
+                </div>
+
+                {/* User Content */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <FileText className="w-5 h-5 text-[#00BFFF]" />
+                    <h3 className="text-xl font-semibold text-white">User Content & Standards</h3>
+                  </div>
+                  <div className="bg-black/20 p-6 rounded-lg space-y-4">
                     <div>
-                      <h4 className="text-white font-medium">Limitation of Liability</h4>
+                      <h4 className="text-white font-medium mb-2">Content Responsibility</h4>
                       <p className="text-gray-300 text-sm">
-                        Company not liable for indirect, incidental, or consequential damages. Maximum liability limited
-                        to amounts paid for services.
+                        You are solely responsible for your User Content. All content must comply with our Content
+                        Standards and applicable laws.
                       </p>
                     </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-[#00BFFF] rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="text-white font-medium">Governing Law & Disputes</h4>
-                      <p className="text-gray-300 text-sm">
-                        Agreement governed by Cayman Islands law. Disputes resolved through binding arbitration. Claims
-                        must be filed within one year.
-                      </p>
+                      <h4 className="text-white font-medium mb-2">Prohibited Content</h4>
+                      <ul className="text-gray-300 text-sm space-y-1">
+                        <li>• Illegal, defamatory, or harmful material</li>
+                        <li>• Intellectual property violations</li>
+                        <li>• Fraudulent or misleading information</li>
+                        <li>• Sexually explicit or discriminatory content</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Geographic Restrictions */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Globe className="w-5 h-5 text-[#00BFFF]" />
+                    <h3 className="text-xl font-semibold text-white">Geographic Restrictions</h3>
+                  </div>
+                  <div className="bg-black/20 p-6 rounded-lg">
+                    <p className="text-gray-300 text-sm">
+                      The Company is based in the Cayman Islands. Services are intended primarily for users in the
+                      United States and Canada but may be accessed internationally. Users accept full responsibility for
+                      compliance with local laws.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Legal Provisions */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Gavel className="w-5 h-5 text-[#00BFFF]" />
+                    <h3 className="text-xl font-semibold text-white">Key Legal Provisions</h3>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#00BFFF] rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <h4 className="text-white font-medium">No Warranty</h4>
+                        <p className="text-gray-300 text-sm">
+                          Services provided "AS-IS" without warranties. No guarantees of accuracy, reliability, or
+                          fitness for particular purpose.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#00BFFF] rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <h4 className="text-white font-medium">Limitation of Liability</h4>
+                        <p className="text-gray-300 text-sm">
+                          Company not liable for indirect, incidental, or consequential damages. Maximum liability
+                          limited to amounts paid for services.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#00BFFF] rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <h4 className="text-white font-medium">Indemnification</h4>
+                        <p className="text-gray-300 text-sm">
+                          Users agree to indemnify and hold harmless the Company from claims arising from breach of
+                          agreement or misuse of services.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#00BFFF] rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <h4 className="text-white font-medium">Governing Law & Disputes</h4>
+                        <p className="text-gray-300 text-sm">
+                          Agreement governed by Cayman Islands law. Disputes resolved through binding arbitration.
+                          Claims must be filed within one year.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#00BFFF] rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <h4 className="text-white font-medium">Termination Rights</h4>
+                        <p className="text-gray-300 text-sm">
+                          Company may suspend or terminate access at any time for violations, non-payment, or system
+                          integrity concerns. All services cease immediately upon termination.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

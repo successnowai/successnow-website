@@ -208,13 +208,26 @@ AS REQUIRED BY LAW
 We may also use or process your data as required for us to comply with legal obligations.
 
 INTERNATIONAL DATA
-Our website is hosted by servers located in the United States of America. Therefore, if you reside outside the United States of America, some of your data will be transferred internationally to and stored on those servers. In addition, we may use third-party processors (including payment processors) and subcontractors located in the United States of America. We use all reasonable methods to protect the safety of your data during transfer, including hosting our website on reputable servers and engaging reputable third-party processors. By using this site and providing us with information, you consent to this transfer, processing, and storage of your information in the United States of America. Note that the privacy laws in the United States of America may not be as strict as those in other countries.
+Our website is hosted by servers located in the United States of America. Therefore, if you reside outside the United States of America, some of your data will be transferred internationally to and stored on those servers. In addition, we may use third-party processors (including payment processors) and subcontractors located in the United States of America. We use all reasonable methods to protect the safety of your data during transfer, including hosting our website on reputable servers and engaging reputable third-party processors. By using this site and providing us with information, you consent to this transfer, processing, and storage of your information in the United States of America. Note that the privacy laws in the United States of America may not be as strict as those in other countries. Please be aware that:
+
+• We may transfer data that we collect to locations outside of our headquarters for processing or storing, and the data may be processed by our staff or by third-party processors. For example, we may engage third parties to fulfill orders. By submitting your personal data, you agree to this transfer, storing, and processing. We take all reasonable steps to make sure your data is treated securely and in conformity with this Privacy Policy.
+• Data that is provided to us is stored on secure servers. Payment information and other sensitive data will be encrypted to ensure its safety.
+• The transmission of data via the internet is never completely secure, and we cannot guarantee the security of data that is sent to us electronically. Your transmission of data to us is at your own risk.
+• Where data that you have transmitted to us is password protected, you are responsible for keeping the password confidential. You are exclusively responsible for any breaches of your data that results from your own disclosure of or failure to protect your password.
 
 DATA RETENTION
 We retain personal data as long as it is needed to conduct our legitimate business purposes or to comply with our legal obligations, or until you ask us to delete your data. For example, we will retain certain personal information indefinitely for the purposes of maintaining your account, unless and until you delete your account. Data that we gather for a specific and particular purpose, such as assisting law enforcement or analyzing trends, will be kept for no longer than is necessary for that particular purpose. Data that is no longer needed by us for any of the purposes listed above will be permanently deleted.
 
+We will honor your request to delete your data, as described more fully below, unless we are required by law to retain access to the data. However, note that we cannot control the retention policies of third parties. If you wish to have any third parties, including those to whom we've transmitted your data, delete that data, you will need to contact those third parties directly. You may request from us a list of all third parties to whom we have transmitted your data.
+
+We may retain usage data (that is, data that is gathered by our company or third-party analytics companies for the purpose of analyzing the use of our website) as needed for internal analysis purposes. This type of data is usually retained for a shorter period of time than personal data, unless the data is necessary to improve the security or functionality of our website or offerings, or we are legally obligated to retain the data for a longer period of time.
+
 SECURITY OF YOUR INFORMATION
 We take all reasonable steps to protect your personal data and keep your information secure. We use recognized online secure payment systems and implement generally accepted standards of security to protect against personal data loss or misuse. However, no security measure is foolproof, and no method of data transmission can be guaranteed against interception or misuse. We cannot guarantee complete security of any information you transmit to us.
+
+By consenting to this Privacy Policy, you acknowledge that your personal data may be available, via the internet, around the world. We cannot prevent the use or misuse of your data by other parties.
+
+We will notify you promptly of any known breach of our security systems or your data which might expose you to serious risk.
 
 SENSITIVE DATA
 We request that you do not submit any sensitive data to us, via public postings, email correspondence with us, or any other method, including social security number, health data, genetic data, or information related to your ethnic origin, religious beliefs, or criminal history. If you do send us this information, then by doing so you are consenting to our use, storage, and processing of this information in accordance with this privacy policy.
@@ -322,7 +335,7 @@ SuccessNOW.ai Inc.
 📧 support@successnow.ai
 `
 
-  // Create a simple HTML structure for PDF generation
+  // Create a comprehensive HTML structure for PDF generation
   const htmlContent = `
 <!DOCTYPE html>
 <html>
@@ -335,73 +348,234 @@ SuccessNOW.ai Inc.
             line-height: 1.6;
             margin: 40px;
             color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
         }
         h1 {
             color: #00BFFF;
-            border-bottom: 2px solid #00BFFF;
-            padding-bottom: 10px;
+            border-bottom: 3px solid #00BFFF;
+            padding-bottom: 15px;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
         }
         h2 {
             color: #333;
-            margin-top: 30px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-left: 4px solid #00BFFF;
+            padding-left: 15px;
         }
         h3 {
             color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        h4 {
+            color: #666;
             margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
         }
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #00BFFF;
         }
         .company-info {
             background-color: #f8f9fa;
-            padding: 20px;
-            border-left: 4px solid #00BFFF;
-            margin: 20px 0;
+            padding: 25px;
+            border-left: 6px solid #00BFFF;
+            margin: 30px 0;
+            border-radius: 5px;
         }
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .ai-section {
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        .data-section {
+            background-color: #d1ecf1;
+            border-left: 6px solid #17a2b8;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        .rights-section {
+            background-color: #d4edda;
+            border-left: 6px solid #28a745;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        .legal-section {
+            background-color: #f8d7da;
+            border-left: 6px solid #dc3545;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
         }
         ul {
-            margin: 10px 0;
-            padding-left: 20px;
+            margin: 15px 0;
+            padding-left: 25px;
         }
         li {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
             text-align: center;
             color: #666;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
         }
         .highlight {
             background-color: #fff3cd;
-            padding: 15px;
-            border-left: 4px solid #ffc107;
-            margin: 15px 0;
+            padding: 20px;
+            border-left: 6px solid #ffc107;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .important {
+            background-color: #f8d7da;
+            padding: 20px;
+            border-left: 6px solid #dc3545;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .contact-info {
+            background-color: #e2e3e5;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid #dee2e6;
+        }
+        .toc h3 {
+            color: #00BFFF;
+            margin-top: 0;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+        .effective-date {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        @media print {
+            body { margin: 20px; }
+            .header { background: white; }
         }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>PRIVACY POLICY</h1>
-        <p><strong>Effective Date: March 24, 2025</strong></p>
+        <p class="effective-date"><strong>Effective Date: March 24, 2025</strong></p>
         <div class="company-info">
             <p><strong>SuccessNOW AI INC doing business as SuccessNOW AI™</strong></p>
             <p>20 Genesis Close, George Town KY1-1208, Cayman Islands</p>
             <p>📧 support@successnow.ai</p>
         </div>
     </div>
+
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ul>
+            <li>Introduction</li>
+            <li>AI Technology Disclosure and Disclaimer</li>
+            <li>Information That We Collect</li>
+            <li>How We Use Your Information</li>
+            <li>Data Sharing Commitment</li>
+            <li>White-Labeled CRM Services</li>
+            <li>Third Party Integrations</li>
+            <li>Your Privacy Rights</li>
+            <li>Legal Compliance (CCPA, COPPA, CAN-SPAM)</li>
+            <li>International Data Transfers</li>
+            <li>Data Security and Retention</li>
+            <li>Contact Information</li>
+        </ul>
+    </div>
     
     <div class="content">
-        ${privacyContent.replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br>").replace(/^/, "<p>").replace(/$/, "</p>")}
+        ${privacyContent
+          .split("\n\n")
+          .map((paragraph) => {
+            if (paragraph.trim().startsWith("AI TECHNOLOGY DISCLOSURE")) {
+              return `<div class="ai-section">${paragraph.replace(/\n/g, "<br>")}</div>`
+            } else if (
+              paragraph.trim().startsWith("INFORMATION THAT WE COLLECT") ||
+              paragraph.trim().startsWith("PERSONAL DATA") ||
+              paragraph.trim().startsWith("DERIVATIVE DATA") ||
+              paragraph.trim().startsWith("FINANCIAL DATA")
+            ) {
+              return `<div class="data-section">${paragraph.replace(/\n/g, "<br>")}</div>`
+            } else if (
+              paragraph.trim().startsWith("YOUR RIGHTS") ||
+              paragraph.trim().startsWith("CALIFORNIA PRIVACY RIGHTS")
+            ) {
+              return `<div class="rights-section">${paragraph.replace(/\n/g, "<br>")}</div>`
+            } else if (paragraph.trim().startsWith("WE DO NOT SELL YOUR DATA")) {
+              return `<div class="important">${paragraph.replace(/\n/g, "<br>")}</div>`
+            } else if (
+              paragraph.trim().startsWith("COPPA") ||
+              paragraph.trim().startsWith("CAN SPAM ACT") ||
+              paragraph.trim().startsWith("FAIR INFORMATION PRACTICES")
+            ) {
+              return `<div class="legal-section">${paragraph.replace(/\n/g, "<br>")}</div>`
+            } else {
+              return `<div class="section">${paragraph.replace(/\n/g, "<br>")}</div>`
+            }
+          })
+          .join("")}
     </div>
     
     <div class="footer">
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p><strong>SuccessNOW.ai Inc.</strong></p>
+            <p>20 Genesis Close, George Town KY1-1208, Cayman Islands</p>
+            <p>📧 support@successnow.ai</p>
+            <p>🌐 <a href="https://successnow.ai" style="color: #00BFFF;">https://successnow.ai</a></p>
+        </div>
         <p>© 2025 SuccessNOW AI INC. All rights reserved.</p>
         <p>This document was generated on ${new Date().toLocaleDateString()}</p>
+        <div class="highlight">
+            <p><strong>Important:</strong> This Privacy Policy is effective as of March 24, 2025. By using SuccessNOW.ai services, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy.</p>
+        </div>
     </div>
 </body>
 </html>
