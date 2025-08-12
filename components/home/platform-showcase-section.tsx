@@ -83,23 +83,22 @@ export function PlatformShowcaseSection() {
     },
   ]
 
+  const ActiveIcon = features[activeFeature]?.icon
+
   return (
     <section className="relative py-24 px-4 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-800" />
-      
+
       {/* Animated background elements */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Complete AI Business Platform
-          </h2>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Complete AI Business Platform</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Everything you need to automate, optimize, and scale your business with AI. 
-            No technical skills required.
+            Everything you need to automate, optimize, and scale your business with AI. No technical skills required.
           </p>
         </div>
 
@@ -111,18 +110,20 @@ export function PlatformShowcaseSection() {
                 key={index}
                 className={`cursor-pointer p-6 rounded-2xl border-2 transition-all duration-300 ${
                   activeFeature === index
-                    ? 'border-cyan-500 bg-cyan-500/10'
-                    : 'border-white/10 bg-white/5 hover:border-cyan-500/50'
+                    ? "border-cyan-500 bg-cyan-500/10"
+                    : "border-white/10 bg-white/5 hover:border-cyan-500/50"
                 }`}
                 onClick={() => setActiveFeature(index)}
               >
                 <div className="flex items-start gap-4">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                    activeFeature === index ? 'bg-cyan-500' : 'bg-gray-600'
-                  }`}>
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                      activeFeature === index ? "bg-cyan-500" : "bg-gray-600"
+                    }`}
+                  >
                     {feature.icon && <feature.icon className="w-6 h-6 text-white" />}
                   </div>
-                  
+
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
                     <p className="text-gray-300">{feature.description}</p>
@@ -137,17 +138,11 @@ export function PlatformShowcaseSection() {
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
-                  {features[activeFeature] && (\
-                    <features[activeFeature].icon className="w-8 h-8 text-white" />
-                  )}
+                  {ActiveIcon && <ActiveIcon className="w-8 h-8 text-white" />}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">
-                    {features[activeFeature]?.title}
-                  </h3>
-                  <p className="text-gray-400">
-                    {features[activeFeature]?.description}
-                  </p>
+                  <h3 className="text-2xl font-bold text-white">{features[activeFeature]?.title}</h3>
+                  <p className="text-gray-400">{features[activeFeature]?.description}</p>
                 </div>
               </div>
 
@@ -172,15 +167,13 @@ export function PlatformShowcaseSection() {
 
         <div className="text-center mt-16">
           <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Ready to Transform Your Business?
-            </h3>
+            <h3 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Business?</h3>
             <p className="text-xl text-gray-300 mb-6">
               Join thousands of businesses already using AI to grow faster and serve customers better.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
-                <Button 
+                <Button
                   size="lg"
                   className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
                 >
@@ -189,7 +182,7 @@ export function PlatformShowcaseSection() {
                 </Button>
               </Link>
               <Link href="/demo">
-                <Button 
+                <Button
                   variant="outline"
                   size="lg"
                   className="border-2 border-green-500/50 text-green-400 hover:bg-green-500/10 hover:border-green-400 px-8 py-4 text-lg transition-all duration-300 bg-transparent"
