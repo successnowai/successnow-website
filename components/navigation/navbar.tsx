@@ -15,7 +15,7 @@ export default function Navbar() {
     { name: "Industries", href: "/industries" },
     { name: "Live Demo", href: "/demo" },
     { name: "Case Studies", href: "/case-studies" },
-    { name: "Pricing", href: "https://signup.successnow.ai", external: true },
+    { name: "Pricing", href: "/pricing", external: false },
   ]
 
   useEffect(() => {
