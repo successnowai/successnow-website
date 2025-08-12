@@ -1,17 +1,11 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { Sparkles, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function PilotFundingBanner() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="mx-auto max-w-6xl px-4 mb-8"
-    >
+    <div className="mx-auto max-w-6xl px-4 mb-8">
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500/20 via-red-500/20 to-pink-500/20 border border-orange-500/30 backdrop-blur-xl">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-red-500/10 animate-pulse" />
 
@@ -76,6 +70,6 @@ export default function PilotFundingBanner() {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }

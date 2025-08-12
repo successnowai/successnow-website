@@ -2,29 +2,15 @@ import type { Metadata } from "next"
 import PricingClientPage from "./PricingClientPage"
 
 export const metadata: Metadata = {
-  title: "Pricing - SuccessNOW AI",
-  description: "Choose the perfect AI solution for your business. Transparent pricing with no hidden fees.",
+  title: "Pricing - SuccessNOW AI | Affordable AI Solutions for Business",
+  description:
+    "Choose the perfect AI plan for your business. From starter packages to enterprise solutions, SuccessNOW AI offers flexible pricing with powerful features.",
+  keywords:
+    "AI pricing, business automation pricing, AI voice agents cost, lead generation pricing, CRM integration pricing",
   openGraph: {
     title: "Pricing - SuccessNOW AI",
-    description: "Choose the perfect AI solution for your business. Transparent pricing with no hidden fees.",
-    url: "https://successnow.ai/pricing",
-    siteName: "SuccessNOW AI",
-    images: [
-      {
-        url: "https://successnow.ai/images/pricing-og.png",
-        width: 1200,
-        height: 630,
-        alt: "SuccessNOW AI Pricing",
-      },
-    ],
-    locale: "en_US",
+    description: "Choose the perfect AI plan for your business. Flexible pricing with powerful features.",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Pricing - SuccessNOW AI",
-    description: "Choose the perfect AI solution for your business. Transparent pricing with no hidden fees.",
-    images: ["https://successnow.ai/images/pricing-og.png"],
   },
 }
 

@@ -1,31 +1,31 @@
+import StarryBackground from "@/components/ui/starry-background"
+import { NewTopHeroSection } from "@/components/home/new-top-hero-section"
+import { GlassmorphicProblemsSection } from "@/components/home/glassmorphic-problems-section"
 import MainHeroSection from "@/components/home/main-hero-section"
-import AdsNowSection from "@/components/home/adsnow-section"
-import AnimatedPlatformShowcase from "@/components/home/animated-platform-showcase"
+import AiAgentAlert from "@/components/home/ai-agent-alert"
 import IndustrySolutions from "@/components/home/industry-solutions"
-import FeatureStack from "@/components/home/feature-stack"
-import GlassmorphicProblemsSection from "@/components/home/glassmorphic-problems-section"
-import PricingTable from "@/components/home/pricing-table"
-import PartnerProgramSection from "@/components/home/partner-program-section"
-import CTASection from "@/components/home/cta-section"
 import LiveDemo from "@/components/home/live-demo"
-import AIAgentAlert from "@/components/home/ai-agent-alert"
+import PricingTable from "@/components/home/pricing-table"
+import { PlatformShowcaseSection } from "@/components/home/platform-showcase-section"
+import AdsNowSection from "@/components/home/adsnow-section"
+import CtaSection from "@/components/home/cta-section"
 import PilotFundingPopup from "@/components/ui/pilot-funding-popup"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      <StarryBackground />
       <PilotFundingPopup />
-      <MainHeroSection />
-      <AIAgentAlert />
-      <AdsNowSection />
-      <AnimatedPlatformShowcase />
-      <IndustrySolutions />
-      <FeatureStack />
+      <NewTopHeroSection />
       <GlassmorphicProblemsSection />
-      <PricingTable />
-      <PartnerProgramSection />
+      <MainHeroSection />
+      <AiAgentAlert />
+      <IndustrySolutions />
       <LiveDemo />
-      <CTASection />
+      <PricingTable />
+      <PlatformShowcaseSection />
+      <AdsNowSection />
+      <CtaSection />
     </div>
   )
 }

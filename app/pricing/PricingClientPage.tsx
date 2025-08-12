@@ -1,260 +1,334 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Check, Star, Zap, Crown, Rocket } from "lucide-react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Check, Crown, Star, Zap, Building } from "lucide-react"
+import Link from "next/link"
 import PilotFundingBanner from "@/components/ui/pilot-funding-banner"
 
-const plans = [
-  {
-    name: "Starter",
-    price: 497,
-    description: "Perfect for small businesses getting started with AI",
-    icon: Zap,
-    features: [
-      "AI Chat Assistant",
-      "Basic Lead Capture",
-      "Email Integration",
-      "Mobile Responsive",
-      "Basic Analytics",
-      "24/7 Support",
-    ],
-    popular: false,
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    name: "Professional",
-    price: 997,
-    description: "Most popular choice for growing businesses",
-    icon: Star,
-    features: [
-      "Everything in Starter",
-      "AI Voice Assistant",
-      "Advanced Lead Qualification",
-      "CRM Integration",
-      "Custom Workflows",
-      "A/B Testing",
-      "Advanced Analytics",
-      "Priority Support",
-    ],
-    popular: true,
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    name: "Enterprise",
-    price: 1997,
-    description: "Complete AI solution for established businesses",
-    icon: Crown,
-    features: [
-      "Everything in Professional",
-      "Multi-location Support",
-      "Custom AI Training",
-      "White-label Options",
-      "API Access",
-      "Dedicated Account Manager",
-      "Custom Integrations",
-      "SLA Guarantee",
-    ],
-    popular: false,
-    color: "from-orange-500 to-red-500",
-  },
-  {
-    name: "Custom Build",
-    price: "Custom",
-    description: "Fully tailored AI system built for your specific needs",
-    icon: Rocket,
-    features: [
-      "Completely Custom Solution",
-      "Unlimited Features",
-      "Full Source Code",
-      "Dedicated Development Team",
-      "Ongoing Maintenance",
-      "Training & Onboarding",
-      "Performance Guarantees",
-      "Enterprise SLA",
-    ],
-    popular: false,
-    color: "from-emerald-500 to-teal-500",
-  },
-]
-
 export default function PricingClientPage() {
+  const [isAnnual, setIsAnnual] = useState(true)
+
+  const plans = [
+    {
+      name: "Starter",
+      description: "Perfect for small businesses getting started with AI",
+      monthlyPrice: 297,
+      annualPrice: 2970,
+      savings: "Save $564",
+      features: [
+        "1 AI Voice Agent",
+        "Basic Lead Management",
+        "Email Integration",
+        "Standard Support",
+        "Up to 500 conversations/month",
+        "Basic Analytics",
+      ],
+      cta: "Start Free Trial",
+      icon: <Star className="w-6 h-6" />,
+      popular: false,
+    },
+    {
+      name: "Professional",
+      description: "Ideal for growing businesses ready to scale",
+      monthlyPrice: 597,
+      annualPrice: 5970,
+      savings: "Save $1,194",
+      features: [
+        "3 AI Voice Agents",
+        "Advanced Lead Management",
+        "CRM Integrations",
+        "Priority Support",
+        "Up to 2,000 conversations/month",
+        "Advanced Analytics",
+        "Custom AI Training",
+        "Multi-language Support",
+      ],
+      cta: "Start Free Trial",
+      icon: <Zap className="w-6 h-6" />,
+      popular: true,
+    },
+    {
+      name: "Enterprise",
+      description: "Complete AI solution for serious businesses",
+      monthlyPrice: 997,
+      annualPrice: 9970,
+      savings: "Save $1,994",
+      originalPrice: 35000,
+      discountPrice: 3488,
+      limitedTime: true,
+      features: [
+        "Unlimited AI Voice Agents",
+        "Full Lead Management Suite",
+        "All CRM Integrations",
+        "24/7 Dedicated Support",
+        "Custom AI Training",
+        "Unlimited conversations",
+        "White-label Solution",
+        "API Access",
+        "Custom Integrations",
+        "Advanced Reporting Dashboard",
+        "Multi-language Support",
+        "Priority Queue Processing",
+      ],
+      bonuses: [
+        {
+          title: "AdsNOW AI Agent by adsnow.ai included",
+          color: "purple",
+        },
+        {
+          title: "SEONOW by SEOexperts.ai included",
+          color: "blue",
+        },
+      ],
+      cta: "Get Started Now",
+      icon: <Crown className="w-6 h-6" />,
+      popular: false,
+    },
+    {
+      name: "Custom",
+      description: "Tailored solutions for enterprise organizations",
+      monthlyPrice: "Custom",
+      annualPrice: "Custom",
+      features: [
+        "Everything in Enterprise",
+        "Custom Development",
+        "Dedicated Account Manager",
+        "On-premise Deployment",
+        "Custom SLA",
+        "Advanced Security",
+        "Custom Integrations",
+        "Training & Onboarding",
+      ],
+      cta: "Contact Sales",
+      icon: <Building className="w-6 h-6" />,
+      popular: false,
+    },
+  ]
+
+  const faqs = [
+    {
+      question: "What's included in the free trial?",
+      answer: "All plans include a 14-day free trial with full access to features. No credit card required to start.",
+    },
+    {
+      question: "Can I change plans anytime?",
+      answer: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.",
+    },
+    {
+      question: "What kind of support do you offer?",
+      answer:
+        "We offer email support for Starter, priority support for Professional, and 24/7 dedicated support for Enterprise plans.",
+    },
+    {
+      question: "Do you offer custom integrations?",
+      answer:
+        "Yes, Enterprise and Custom plans include custom integrations. Professional plans can add integrations for an additional fee.",
+    },
+    {
+      question: "Is there a setup fee?",
+      answer: "No setup fees for any plan. You only pay the monthly or annual subscription fee.",
+    },
+  ]
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-      {/* Pilot Funding Banner */}
-      <div className="pt-20">
+    <div className="min-h-screen bg-black text-white">
+      <div className="pt-24 pb-16">
+        {/* Pilot Funding Banner */}
         <PilotFundingBanner />
-      </div>
 
-      <div className="container mx-auto px-4 py-16">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Choose Your AI Solution
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Transform your business with our AI-powered solutions. No setup fees, no hidden costs, just results.
-          </p>
-        </motion.div>
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Choose Your <span className="text-[#00BFFF]">AI Success</span> Plan
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              Transform your business with AI-powered automation. Choose the plan that fits your needs and scale as you
+              grow.
+            </p>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative"
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <Badge className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1">
-                    Most Popular
-                  </Badge>
-                </div>
-              )}
-
-              <Card
-                className={`h-full bg-slate-900/60 backdrop-blur-xl border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 ${plan.popular ? "ring-2 ring-purple-500/50" : ""}`}
+            {/* Billing Toggle */}
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <span className={`text-sm ${!isAnnual ? "text-white" : "text-gray-400"}`}>Monthly</span>
+              <button
+                onClick={() => setIsAnnual(!isAnnual)}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                  isAnnual ? "bg-[#00BFFF]" : "bg-gray-600"
+                }`}
               >
+                <span
+                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                    isAnnual ? "translate-x-6" : "translate-x-1"
+                  }`}
+                />
+              </button>
+              <span className={`text-sm ${isAnnual ? "text-white" : "text-gray-400"}`}>
+                Annual{" "}
+                <Badge variant="secondary" className="ml-2 bg-green-600 text-white">
+                  Save 20%
+                </Badge>
+              </span>
+            </div>
+          </div>
+
+          {/* Pricing Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {plans.map((plan, index) => (
+              <Card
+                key={index}
+                className={`relative bg-gray-900/50 border transition-all duration-300 hover:scale-105 ${
+                  plan.popular
+                    ? "border-[#00BFFF] shadow-lg shadow-[#00BFFF]/20"
+                    : plan.limitedTime
+                      ? "border-2 border-gradient-to-r from-orange-500 to-red-500"
+                      : "border-gray-700"
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-[#00BFFF] text-white px-4 py-1">Most Popular</Badge>
+                  </div>
+                )}
+                {plan.limitedTime && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-1 animate-pulse">
+                      🔥 LIMITED TIME: 90% OFF 🔥
+                    </Badge>
+                  </div>
+                )}
+
                 <CardHeader className="text-center pb-4">
-                  <div
-                    className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${plan.color} flex items-center justify-center`}
-                  >
-                    <plan.icon className="w-8 h-8 text-white" />
+                  <div className="flex items-center justify-center mb-4">
+                    <div
+                      className={`p-3 rounded-full ${
+                        plan.popular
+                          ? "bg-[#00BFFF]/20 text-[#00BFFF]"
+                          : plan.limitedTime
+                            ? "bg-gradient-to-r from-orange-500/20 to-red-500/20 text-orange-400"
+                            : "bg-gray-700/50 text-gray-400"
+                      }`}
+                    >
+                      {plan.icon}
+                    </div>
                   </div>
-                  <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
-                  <div className="text-3xl font-bold mt-2">
-                    {typeof plan.price === "number" ? (
-                      <>
-                        <span className="text-4xl">${plan.price}</span>
-                        <span className="text-lg text-gray-400">/month</span>
-                      </>
-                    ) : (
-                      <span className="text-4xl">{plan.price}</span>
-                    )}
-                  </div>
-                  <p className="text-gray-400 mt-2">{plan.description}</p>
+                  <CardTitle className="text-2xl font-bold text-white mb-2">{plan.name}</CardTitle>
+                  <p className="text-gray-400 text-sm">{plan.description}</p>
                 </CardHeader>
 
                 <CardContent className="pt-0">
+                  {/* Pricing */}
+                  <div className="text-center mb-6">
+                    {plan.limitedTime ? (
+                      <div className="space-y-2">
+                        <div className="text-gray-400 line-through text-lg">
+                          Usually ${plan.originalPrice?.toLocaleString()}
+                        </div>
+                        <div className="text-4xl font-bold text-white">${plan.discountPrice?.toLocaleString()}</div>
+                        <div className="text-sm text-gray-400">One-time payment</div>
+                      </div>
+                    ) : typeof plan.monthlyPrice === "string" ? (
+                      <div className="text-4xl font-bold text-white mb-2">Custom</div>
+                    ) : (
+                      <div className="space-y-2">
+                        <div className="text-4xl font-bold text-white">
+                          ${isAnnual ? Math.round(plan.annualPrice / 12) : plan.monthlyPrice}
+                        </div>
+                        <div className="text-sm text-gray-400">per month</div>
+                        {isAnnual && plan.savings && (
+                          <div className="text-green-400 text-sm font-medium">{plan.savings}</div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Bonuses for Enterprise */}
+                  {plan.bonuses && (
+                    <div className="space-y-3 mb-6">
+                      {plan.bonuses.map((bonus, bonusIndex) => (
+                        <div
+                          key={bonusIndex}
+                          className={`p-3 border rounded-lg ${
+                            bonus.color === "purple"
+                              ? "bg-purple-600/20 border-purple-600/30"
+                              : "bg-blue-600/20 border-blue-600/30"
+                          }`}
+                        >
+                          <div
+                            className={`font-semibold text-center text-sm ${
+                              bonus.color === "purple" ? "text-purple-400" : "text-blue-400"
+                            }`}
+                          >
+                            🎁 BONUS: {bonus.title}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Features */}
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center">
-                        <Check className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" />
-                        <span className="text-gray-300">{feature}</span>
+                      <li key={featureIndex} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-[#00BFFF] mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-300 text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer" className="block">
-                    <Button
-                      className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white font-semibold py-3 transition-all duration-300 hover:scale-105`}
-                    >
-                      Get Started
-                    </Button>
-                  </a>
+                  {/* CTA Button */}
+                  {plan.name === "Custom" ? (
+                    <Link href="/book" className="block">
+                      <Button className="w-full py-3 text-lg font-semibold transition-all duration-300 bg-gray-700 hover:bg-gray-600 text-white">
+                        {plan.cta}
+                      </Button>
+                    </Link>
+                  ) : (
+                    <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer" className="block">
+                      <Button
+                        className={`w-full py-3 text-lg font-semibold transition-all duration-300 ${
+                          plan.popular
+                            ? "bg-[#00BFFF] hover:bg-[#0099CC] text-white"
+                            : plan.limitedTime
+                              ? "bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-lg hover:shadow-xl"
+                              : "bg-gray-700 hover:bg-gray-600 text-white"
+                        }`}
+                      >
+                        {plan.cta}
+                      </Button>
+                    </a>
+                  )}
                 </CardContent>
               </Card>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* FAQ Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-4xl mx-auto"
-        >
-          <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-cyan-400">What's included in setup?</h3>
-                <p className="text-gray-300">
-                  Complete AI system deployment, training, and integration with your existing tools. No additional setup
-                  fees.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-cyan-400">Can I upgrade or downgrade?</h3>
-                <p className="text-gray-300">
-                  Yes, you can change your plan at any time. Changes take effect on your next billing cycle.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-cyan-400">Is there a contract?</h3>
-                <p className="text-gray-300">No long-term contracts required. Cancel anytime with 30 days notice.</p>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-cyan-400">What kind of support do you provide?</h3>
-                <p className="text-gray-300">
-                  24/7 technical support, training resources, and dedicated account management for Enterprise plans.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-cyan-400">How quickly can I get started?</h3>
-                <p className="text-gray-300">
-                  Most systems are deployed within 48-72 hours. Custom builds may take 1-2 weeks depending on
-                  complexity.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-2 text-cyan-400">Do you offer custom solutions?</h3>
-                <p className="text-gray-300">
-                  Yes, our Custom Build option provides fully tailored AI solutions designed specifically for your
-                  business needs.
-                </p>
-              </div>
+          {/* FAQ Section */}
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {faqs.map((faq, index) => (
+                <div key={index} className="bg-gray-900/50 rounded-lg p-6 border border-gray-700">
+                  <h3 className="text-lg font-semibold text-white mb-3">{faq.question}</h3>
+                  <p className="text-gray-300">{faq.answer}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </motion.div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-16"
-        >
-          <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of businesses already using AI to increase leads, improve customer service, and boost
-            revenue.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
+            <p className="text-gray-400 mb-6">Join thousands of businesses already using SuccessNOW AI</p>
             <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-pink-500 hover:to-purple-600 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105">
-                Start Your AI Journey
-              </Button>
-            </a>
-            <a href="/demo">
-              <Button
-                variant="outline"
-                className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black px-8 py-3 text-lg font-semibold transition-all duration-300 bg-transparent"
-              >
-                Watch Live Demo
+              <Button className="bg-gradient-to-r from-[#00BFFF] to-blue-600 hover:from-[#0099CC] hover:to-blue-700 text-white px-8 py-3 text-lg">
+                Start Your Free Trial
               </Button>
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   )

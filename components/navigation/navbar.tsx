@@ -2,21 +2,23 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Menu, X } from "lucide-react"
+
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Industries", href: "/industries" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Demo", href: "/demo" },
+  { name: "Affiliate", href: "/affiliate" },
+  { name: "Blog", href: "/blogs" },
+  { name: "Contact", href: "/book" },
+]
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Industries", href: "/industries" },
-    { name: "Live Demo", href: "/demo" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Pricing", href: "/pricing", external: false },
-  ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,114 +29,99 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/10" : "bg-transparent"
+        scrolled ? "bg-black/90 backdrop-blur-xl border-b border-white/10" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo - Text Only */}
-          <Link href="/" className="flex items-baseline space-x-1 group">
-            <span className="text-white font-bold text-xl md:text-2xl tracking-tight group-hover:text-cyan-300 transition-colors duration-300 drop-shadow-lg">
-              Success
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+        <div className="flex lg:flex-1">
+          <Link href="/" className="-m-1.5 p-1.5">
+            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              SuccessNOW
             </span>
-            <span className="text-cyan-400 font-bold text-xl md:text-2xl tracking-tight group-hover:text-pink-400 transition-colors duration-300 drop-shadow-lg">
-              NOW
-            </span>
-            <span className="text-gray-400 font-medium text-sm md:text-base">.ai</span>
           </Link>
+        </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) =>
-              item.external ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium relative group"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium relative group"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
-                </Link>
-              ),
-            )}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-pink-500 hover:to-purple-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25">
-                Get Started
-              </Button>
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
+        <div className="flex lg:hidden">
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2 hover:text-cyan-400 transition-colors duration-200"
+            type="button"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
+            onClick={() => setMobileMenuOpen(true)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10"
+        <div className="hidden lg:flex lg:gap-x-12">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-sm font-semibold leading-6 text-white hover:text-cyan-400 transition-colors"
             >
-              <div className="py-4 space-y-4">
-                {navItems.map((item) =>
-                  item.external ? (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium px-4 py-2"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
+              {item.name}
+            </Link>
+          ))}
+        </div>
+
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white">
+              Get Started
+            </Button>
+          </a>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden">
+          <div className="fixed inset-0 z-50" />
+          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+            <div className="flex items-center justify-between">
+              <Link href="/" className="-m-1.5 p-1.5">
+                <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  SuccessNOW
+                </span>
+              </Link>
+              <button
+                type="button"
+                className="-m-2.5 rounded-md p-2.5 text-gray-400"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <X className="h-6 w-6" aria-hidden="true" />
+              </button>
+            </div>
+            <div className="mt-6 flow-root">
+              <div className="-my-6 divide-y divide-gray-500/25">
+                <div className="space-y-2 py-6">
+                  {navigation.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block text-gray-300 hover:text-cyan-400 transition-colors duration-200 font-medium px-4 py-2"
-                      onClick={() => setIsOpen(false)}
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
                     </Link>
-                  ),
-                )}
-                <div className="px-4 pt-4">
-                  <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
-                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-pink-500 hover:to-purple-600 text-white py-2 rounded-lg font-semibold transition-all duration-300">
-                      Get Started
-                    </Button>
+                  ))}
+                </div>
+                <div className="py-6">
+                  <a
+                    href="https://signup.successnow.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800"
+                  >
+                    Get Started
                   </a>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </nav>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
   )
 }
