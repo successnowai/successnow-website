@@ -44,7 +44,12 @@ export default function LegendaryHeroSection() {
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
           Make Your Business{" "}
           <span
-            className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(34,211,238,0.8)] transition-all duration-1000"
+            className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-500 bg-clip-text text-transparent transition-all duration-1000"
+            style={{
+              textShadow:
+                "0 0 10px rgba(34, 211, 238, 0.8), 0 0 20px rgba(34, 211, 238, 0.6), 0 0 30px rgba(34, 211, 238, 0.4), 0 0 40px rgba(34, 211, 238, 0.3)",
+              filter: "drop-shadow(0 0 15px rgba(34, 211, 238, 0.7))",
+            }}
             key={currentWordIndex}
           >
             {rotatingWords[currentWordIndex]}

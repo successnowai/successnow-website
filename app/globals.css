@@ -13,11 +13,11 @@
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
@@ -65,78 +65,48 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Optimized starry background animation with GPU acceleration */
-.starry-background {
-  background: linear-gradient(135deg, #0b1426 0%, #1a2332 50%, #0b1426 100%);
-  position: relative;
-  overflow: hidden;
-  transform: translateZ(0); /* Force GPU acceleration */
-  will-change: transform;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.starry-background::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
-    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(2px 2px at 160px 30px, #fff, transparent);
-  background-repeat: repeat;
-  background-size: 200px 100px;
-  animation: sparkle 20s linear infinite;
-  will-change: transform;
-  transform: translateZ(0); /* Force GPU acceleration */
+::-webkit-scrollbar-track {
+  background: #1e293b;
 }
 
-@keyframes sparkle {
-  from {
-    transform: translateX(0) translateZ(0);
-  }
-  to {
-    transform: translateX(200px) translateZ(0);
-  }
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
 }
 
-/* Optimized neon text glow effect with GPU acceleration */
-.neon-text-glow {
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff, 0 0 20px #00ffff, 0 0 35px #00ffff, 0 0 40px #00ffff;
-  animation: neon-pulse-cyan 2s ease-in-out infinite alternate;
-  will-change: text-shadow;
-  transform: translateZ(0); /* Force GPU acceleration */
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
 }
 
-@keyframes neon-pulse-cyan {
-  from {
-    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff, 0 0 20px #00ffff, 0 0 35px #00ffff, 0 0 40px
-      #00ffff;
-  }
-  to {
-    text-shadow: 0 0 2px #00ffff, 0 0 5px #00ffff, 0 0 8px #00ffff, 0 0 12px #00ffff, 0 0 18px #00ffff, 0 0 25px #00ffff,
-      0 0 35px #00ffff;
-  }
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
-  .neon-text-glow {
+  .neon-text-blue,
+  .neon-text-red {
     animation: none;
   }
-  .starry-background::before {
-    animation: none;
-  }
+
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -144,72 +114,148 @@
   }
 }
 
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .starry-background::before {
-    animation-duration: 30s;
-    background-size: 150px 75px; /* Smaller background size for mobile */
-  }
-  .neon-text-glow {
-    text-shadow: 0 0 3px #00ffff, 0 0 6px #00ffff, 0 0 9px #00ffff, 0 0 12px #00ffff;
-  }
-
-  /* Reduce complexity on mobile */
-  .starry-background::before {
-    background-image: radial-gradient(1px 1px at 20px 30px, #fff, transparent),
-      radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.6), transparent);
-  }
-}
-
-/* High DPI display optimizations */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  body {
-    -webkit-font-smoothing: subpixel-antialiased;
-  }
-}
-
-/* Focus and accessibility */
-*:focus-visible {
-  outline: 2px solid #00ffff;
+/* Focus styles */
+.focus-visible:focus-visible {
+  outline: 2px solid #22d3ee;
   outline-offset: 2px;
 }
 
-/* Optimized scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
+/* Custom gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-::-webkit-scrollbar-track {
-  background: #0b1426;
+.neural-bg {
+  background: radial-gradient(circle at 50% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 70%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 10% 90%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 90%, rgba(120, 119, 198, 0.15) 0%, transparent 50%);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #00ffff;
-  border-radius: 4px;
+/* Neon Text Effects */
+.neon-text-blue {
+  color: #22d3ee;
+  text-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee, 0 0 20px #0ea5e9, 0 0 35px #0ea5e9, 0 0 40px #0ea5e9;
+  animation: neon-pulse-blue 2s ease-in-out infinite alternate;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #00cccc;
+@keyframes neon-pulse-blue {
+  from {
+    text-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee, 0 0 20px #0ea5e9, 0 0 35px #0ea5e9, 0 0 40px
+      #0ea5e9;
+  }
+  to {
+    text-shadow: 0 0 2px #22d3ee, 0 0 5px #22d3ee, 0 0 8px #22d3ee, 0 0 12px #0ea5e9, 0 0 18px #0ea5e9, 0 0 25px #0ea5e9;
+  }
 }
 
-/* GPU acceleration for common animations */
-.animate-pulse,
-.animate-bounce,
-.animate-spin {
-  transform: translateZ(0);
-  will-change: transform;
+.neon-text-glow {
+  color: #22d3ee;
+  text-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee, 0 0 20px #0ea5e9;
 }
 
-/* Optimize image loading */
-img {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 1000px;
+/* Red neon effects for bleeding money text */
+.neon-text-red {
+  color: #ef4444;
+  text-shadow: 0 0 5px #ef4444, 0 0 10px #ef4444, 0 0 15px #ef4444, 0 0 20px #dc2626, 0 0 35px #dc2626, 0 0 40px #dc2626;
+  animation: neon-pulse-red 2s ease-in-out infinite alternate;
 }
 
-/* Optimize large content blocks */
-.hero-section,
-.pricing-section,
-.features-section {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 1000px;
+@keyframes neon-pulse-red {
+  from {
+    text-shadow: 0 0 5px #ef4444, 0 0 10px #ef4444, 0 0 15px #ef4444, 0 0 20px #dc2626, 0 0 35px #dc2626, 0 0 40px
+      #dc2626;
+  }
+  to {
+    text-shadow: 0 0 2px #ef4444, 0 0 5px #ef4444, 0 0 8px #ef4444, 0 0 12px #dc2626, 0 0 18px #dc2626, 0 0 25px #dc2626;
+  }
+}
+
+/* Gradient text utilities */
+.gradient-text-blue {
+  background: linear-gradient(45deg, #22d3ee, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-purple {
+  background: linear-gradient(45deg, #a855f7, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .neon-text-blue {
+    text-shadow: 0 0 3px #22d3ee, 0 0 6px #22d3ee, 0 0 9px #22d3ee, 0 0 12px #0ea5e9;
+  }
+
+  .neon-text-red {
+    text-shadow: 0 0 3px #ef4444, 0 0 6px #ef4444, 0 0 9px #ef4444, 0 0 12px #dc2626;
+  }
+}
+
+/* Glow effects */
+.glow-text {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3), 0 0 30px rgba(59, 130, 246, 0.2);
+}
+
+.glow-border {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+}
+
+/* Animation utilities */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Typography improvements */
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Loading states */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }
