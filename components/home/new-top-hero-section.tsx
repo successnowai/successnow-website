@@ -49,10 +49,7 @@ export function NewTopHeroSection() {
       <div className="relative z-10 text-center max-w-6xl mx-auto">
         {/* Main Headline */}
         <div className="mb-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
-            AI Systems With The Best AI
-          </h1>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">Agents That</h1>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">AI Systems That</h1>
           <div className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
             <span
               key={currentWordIndex}
