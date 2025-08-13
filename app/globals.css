@@ -133,26 +133,25 @@ html {
     radial-gradient(circle at 90% 90%, rgba(120, 119, 198, 0.15) 0%, transparent 50%);
 }
 
-/* Neon Text Effects */
+/* Neon Text Effects - Reduced brightness by 50% */
 .neon-text-blue {
-  color: #22d3ee;
-  text-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee, 0 0 20px #0ea5e9, 0 0 35px #0ea5e9, 0 0 40px #0ea5e9;
+  color: #0891b2;
+  text-shadow: 0 0 2px #0891b2, 0 0 4px #0891b2, 0 0 6px #0891b2, 0 0 8px #0369a1, 0 0 14px #0369a1, 0 0 16px #0369a1;
   animation: neon-pulse-blue 2s ease-in-out infinite alternate;
 }
 
 @keyframes neon-pulse-blue {
   from {
-    text-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee, 0 0 20px #0ea5e9, 0 0 35px #0ea5e9, 0 0 40px
-      #0ea5e9;
+    text-shadow: 0 0 2px #0891b2, 0 0 4px #0891b2, 0 0 6px #0891b2, 0 0 8px #0369a1, 0 0 14px #0369a1, 0 0 16px #0369a1;
   }
   to {
-    text-shadow: 0 0 2px #22d3ee, 0 0 5px #22d3ee, 0 0 8px #22d3ee, 0 0 12px #0ea5e9, 0 0 18px #0ea5e9, 0 0 25px #0ea5e9;
+    text-shadow: 0 0 1px #0891b2, 0 0 2px #0891b2, 0 0 3px #0891b2, 0 0 5px #0369a1, 0 0 7px #0369a1, 0 0 10px #0369a1;
   }
 }
 
 .neon-text-glow {
-  color: #22d3ee;
-  text-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee, 0 0 20px #0ea5e9;
+  color: #0891b2;
+  text-shadow: 0 0 2px #0891b2, 0 0 4px #0891b2, 0 0 6px #0891b2, 0 0 8px #0369a1;
 }
 
 /* Red neon effects for bleeding money text */
@@ -174,7 +173,7 @@ html {
 
 /* Gradient text utilities */
 .gradient-text-blue {
-  background: linear-gradient(45deg, #22d3ee, #0ea5e9);
+  background: linear-gradient(45deg, #0891b2, #0369a1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -190,7 +189,7 @@ html {
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .neon-text-blue {
-    text-shadow: 0 0 3px #22d3ee, 0 0 6px #22d3ee, 0 0 9px #22d3ee, 0 0 12px #0ea5e9;
+    text-shadow: 0 0 1px #0891b2, 0 0 2px #0891b2, 0 0 3px #0891b2, 0 0 5px #0369a1;
   }
 
   .neon-text-red {
@@ -200,21 +199,21 @@ html {
 
 /* Glow effects */
 .glow-text {
-  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3), 0 0 30px rgba(59, 130, 246, 0.2);
+  text-shadow: 0 0 4px rgba(59, 130, 246, 0.2), 0 0 8px rgba(59, 130, 246, 0.12), 0 0 12px rgba(59, 130, 246, 0.08);
 }
 
 .glow-border {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.12), 0 0 16px rgba(59, 130, 246, 0.04);
 }
 
 /* Animation utilities */
 @keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.12);
   }
   50% {
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
   }
 }
 
@@ -231,7 +230,7 @@ html {
 }
 
 .text-gradient-cyan {
-  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #22d3ee 100%);
+  background: linear-gradient(135deg, #0891b2 0%, #3b82f6 50%, #0891b2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
