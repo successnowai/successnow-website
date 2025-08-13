@@ -89,7 +89,7 @@ export function NewTopHeroSection() {
 
         {/* Trust Indicators */}
         <div className="text-center">
-          <p className="text-gray-400 mb-6">Trusted by 10,000+ businesses worldwide</p>
+          <p className="text-gray-400 mb-6">Trusted by businesses worldwide</p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
             <div className="text-white font-semibold">Fortune 500</div>
             <div className="text-white font-semibold">Small Business</div>
