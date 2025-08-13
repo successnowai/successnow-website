@@ -45,12 +45,14 @@ export default function UrgencyAlertSection() {
 
           {/* CTA Button */}
           <div className="text-center mb-6">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-bold text-xl px-12 py-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border-0"
-            >
-              Get AI Working For You NOW →
-            </Button>
+            <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer" className="inline-block">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-bold text-xl px-12 py-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border-0"
+              >
+                Get AI Working For You NOW →
+              </Button>
+            </a>
           </div>
 
           {/* Bottom Text */}

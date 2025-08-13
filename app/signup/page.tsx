@@ -1,21 +1,40 @@
-"use client"
+import type { Metadata } from "next"
+import SignupClientPage from "./SignupClientPage"
 
-import { useState, useEffect } from "react"
+export const metadata: Metadata = {
+  title: "Sign Up - SuccessNOW AI | Get Your AI Agent Today",
+  description:
+    "Transform your business with AI agents that work 24/7. Enterprise and custom plans available. Setup in 24 hours with 30-day money-back guarantee.",
+  keywords: "AI agent signup, business automation, lead generation, sales AI, enterprise AI solutions",
+  openGraph: {
+    title: "Sign Up - SuccessNOW AI | Get Your AI Agent Today",
+    description:
+      "Transform your business with AI agents that work 24/7. Enterprise and custom plans available. Setup in 24 hours with 30-day money-back guarantee.",
+    url: "https://successnow.ai/signup",
+    siteName: "SuccessNOW AI",
+    images: [
+      {
+        url: "/images/successnow-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "SuccessNOW AI - Sign Up for AI Agents",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sign Up - SuccessNOW AI | Get Your AI Agent Today",
+    description:
+      "Transform your business with AI agents that work 24/7. Enterprise and custom plans available. Setup in 24 hours with 30-day money-back guarantee.",
+    images: ["/images/successnow-logo.png"],
+  },
+  alternates: {
+    canonical: "/signup",
+  },
+}
 
 export default function SignupPage() {
-  const [isAnnual, setIsAnnual] = useState(true)
-
-  useEffect(() => {
-    // Redirect to the external signup funnel
-    window.location.href = "https://signup.successnow.ai"
-  }, [])
-
-  return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mb-4 mx-auto"></div>
-        <p className="text-xl">Redirecting to signup...</p>
-      </div>
-    </div>
-  )
+  return <SignupClientPage />
 }

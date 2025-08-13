@@ -76,7 +76,7 @@ export default function IndustryPageTemplate({
               size="lg"
               className="bg-gradient-to-r from-[#00BFFF] to-[#00D1FF] hover:from-[#00AADD] hover:to-[#00B8E6] text-white font-bold text-lg px-8 py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105"
             >
-              <Link href={heroCtaLink} target="_blank" rel="noopener noreferrer">
+              <Link href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
                 {heroCtaText} <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>

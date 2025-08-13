@@ -289,3 +289,6 @@ export default function RevolutionaryAiCard() {
     </>
   )
 }
+
+// Named export for the component
+export { RevolutionaryAiCard }

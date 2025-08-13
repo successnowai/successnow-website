@@ -3,18 +3,19 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import Navbar from "@/components/navigation/navbar"
-import Footer from "@/components/home/footer"
-import FloatingChatRobot from "@/components/chat/floating-chat-robot"
-import { Suspense } from "react"
+import { ScrollToTop } from "@/components/ui/scroll-to-top"
+import { Navbar } from "@/components/navigation/navbar"
+import { Footer } from "@/components/home/footer"
+import { AutoPilotFundingPopup } from "@/components/ui/pilot-funding-popup"
+import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "SuccessNOW AI - Revolutionary AI Business Solutions",
+  title: "SuccessNOW AI - Revolutionary AI Agents for Business Growth",
   description:
-    "Transform your business with AI-powered lead generation, customer service, and automation. Join thousands of successful businesses using SuccessNOW AI.",
-  keywords: "AI business solutions, lead generation, customer service automation, business growth, AI technology",
+    "Transform your business with AI agents that work 24/7 to qualify, nurture, and close leads. Stop losing money on leads that never convert.",
+  keywords: "AI agents, business automation, lead generation, sales automation, AI chatbots, customer service AI",
   authors: [{ name: "SuccessNOW AI" }],
   creator: "SuccessNOW AI",
   publisher: "SuccessNOW AI",
@@ -28,8 +29,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "SuccessNOW AI - Revolutionary AI Business Solutions",
-    description: "Transform your business with AI-powered lead generation, customer service, and automation.",
+    title: "SuccessNOW AI - Revolutionary AI Agents for Business Growth",
+    description:
+      "Transform your business with AI agents that work 24/7 to qualify, nurture, and close leads. Stop losing money on leads that never convert.",
     url: "https://successnow.ai",
     siteName: "SuccessNOW AI",
     images: [
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
         url: "/images/successnow-logo.png",
         width: 1200,
         height: 630,
-        alt: "SuccessNOW AI Logo",
+        alt: "SuccessNOW AI - Revolutionary AI Agents",
       },
     ],
     locale: "en_US",
@@ -45,10 +47,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SuccessNOW AI - Revolutionary AI Business Solutions",
-    description: "Transform your business with AI-powered lead generation, customer service, and automation.",
+    title: "SuccessNOW AI - Revolutionary AI Agents for Business Growth",
+    description:
+      "Transform your business with AI agents that work 24/7 to qualify, nurture, and close leads. Stop losing money on leads that never convert.",
     images: ["/images/successnow-logo.png"],
-    creator: "@successnowai",
   },
   robots: {
     index: true,
@@ -75,37 +77,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#000000" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17474215278"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-17474215278');
-            `,
-          }}
-        />
+        {/* Google Analytics */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-17474215278" />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17474215278');
+          `}
+        </Script>
       </head>
-      <body className={`${inter.className} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-          <div className="flex flex-col min-h-screen">
-            <Suspense fallback={<div className="h-16 bg-black" />}>
-              <Navbar />
-            </Suspense>
-            <main className="flex-1">{children}</main>
-            <Suspense fallback={<div className="h-32 bg-black" />}>
-              <Footer />
-            </Suspense>
-          </div>
-          <Suspense fallback={null}>
-            <FloatingChatRobot />
-          </Suspense>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <ScrollToTop />
+          <AutoPilotFundingPopup />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
