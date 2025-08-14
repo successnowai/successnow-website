@@ -88,13 +88,20 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          nowprocket="true"
-          nitro-exclude="true"
-          type="text/javascript"
+        <Script
           id="sa-dynamic-optimization"
-          data-uuid="bb3b5327-e118-40f5-b738-aaf9429af057"
-          src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQuZGF0YXNldC51dWlkID0gImJiM2I1MzI3LWUxMTgtNDBmNS1iNzM4LWFhZjk0MjlhZjA1NyI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              var script = document.createElement("script");
+              script.setAttribute("nowprocket", "");
+              script.setAttribute("nitro-exclude", "");
+              script.src = "https://dashboard.searchatlas.com/scripts/dynamic_optimization.js";
+              script.dataset.uuid = "bb3b5327-e118-40f5-b738-aaf9429af057";
+              script.id = "sa-dynamic-optimization-loader";
+              document.head.appendChild(script);
+            `,
+          }}
         />
 
         {/* Google Analytics */}
