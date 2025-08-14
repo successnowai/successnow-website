@@ -88,6 +88,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Search Atlas SEO Dynamic Optimization */}
+        <Script
+          id="sa-dynamic-optimization"
+          data-uuid="c49a505f-130d-4de4-a994-40b234b3f57d"
+          src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQuZGF0YXNldC51dWlkID0gImM0OWE1MDVmLTEzMGQtNGRlNC1hOTk0LTQwYjIzNGIzZjU3ZCI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="
+          strategy="afterInteractive"
+        />
+
         {/* Google Analytics */}
         <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-17474215278" />
         <Script id="google-analytics">

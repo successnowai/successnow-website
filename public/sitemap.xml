@@ -3,7 +3,7 @@
         xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   
-   Homepage 
+  <!-- Homepage -->
   <url>
     <loc>https://successnow.ai</loc>
     <lastmod>2024-01-10</lastmod>
@@ -12,7 +12,7 @@
     <mobile:mobile/>
   </url>
   
-   Core Pages 
+  <!-- Core Pages -->
   <url>
     <loc>https://successnow.ai/demo</loc>
     <lastmod>2024-01-10</lastmod>
@@ -45,7 +45,7 @@
     <mobile:mobile/>
   </url>
   
-   Industry Pages 
+  <!-- Industry Pages -->
   <url>
     <loc>https://successnow.ai/autodealersnow</loc>
     <lastmod>2024-01-10</lastmod>
@@ -158,15 +158,8 @@
     <mobile:mobile/>
   </url>
   
-   Programs 
-  <url>
-    <loc>https://successnow.ai/diamond</loc>
-    <lastmod>2024-01-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <mobile:mobile/>
-  </url>
-  
+  <!-- Programs -->
+  <!-- Removed diamond program entry since pages don't exist -->
   <url>
     <loc>https://successnow.ai/affiliate</loc>
     <lastmod>2024-01-10</lastmod>
@@ -183,7 +176,7 @@
     <mobile:mobile/>
   </url>
   
-   Resources 
+  <!-- Resources -->
   <url>
     <loc>https://successnow.ai/blogs</loc>
     <lastmod>2024-01-10</lastmod>
@@ -208,7 +201,7 @@
     <mobile:mobile/>
   </url>
   
-   Legal 
+  <!-- Legal -->
   <url>
     <loc>https://successnow.ai/privacy</loc>
     <lastmod>2024-01-10</lastmod>
