@@ -5,6 +5,8 @@ import { Volume2, VolumeX, Play, PhoneCall, Headphones, CheckCircle, AlertTriang
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog"
+import AICallWidget from "@/components/call/ai-call-widget"
+import AICallInterface from "@/components/call/ai-call-interface"
 
 export default function DemoPage() {
   // Core state
@@ -575,6 +577,27 @@ export default function DemoPage() {
           <p className="text-xl sm:text-2xl text-blue-100 max-w-3xl mx-auto">
             Experience a live demo with Jessica, your 24/7 AI agent who never sleeps and never misses a lead
           </p>
+        </div>
+
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Connect with Jessica Instantly</h2>
+            <p className="text-lg text-blue-100 max-w-2xl mx-auto">
+              Choose your preferred way to connect - call directly or have our AI call you back in 30 seconds
+            </p>
+          </div>
+          <AICallInterface />
+        </div>
+
+        {/* AI Call Widget Section */}
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Talk to Jessica Right Now</h2>
+            <p className="text-lg text-blue-100 max-w-2xl mx-auto">
+              Choose your preferred way to connect with our AI SuperAgent - call directly or have Jessica call you back
+            </p>
+          </div>
+          <AICallWidget />
         </div>
 
         {/* Mobile Play Button */}

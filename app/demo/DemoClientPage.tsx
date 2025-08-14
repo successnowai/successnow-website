@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Phone, MessageSquare, Lightbulb, Users, PhoneCall, AlertTriangle, Zap } from "lucide-react"
 import Link from "next/link"
 import { DemoFAQ } from "@/components/faq/demo-faq"
+import AICallInterface from "@/components/call/ai-call-interface"
 
 export default function DemoClientPage() {
   const [activeDemo, setActiveDemo] = useState("voice")
@@ -86,6 +87,18 @@ export default function DemoClientPage() {
           </Link>
         </div>
       </div>
+
+      <section className="py-8 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">Connect with Jessica Instantly</h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Choose your preferred way to connect - call directly or have our AI call you back in 30 seconds
+            </p>
+          </div>
+          <AICallInterface />
+        </div>
+      </section>
 
       {/* Hero Section */}
       <section className="py-12 px-4">
