@@ -1,0 +1,27 @@
+# AI / LLM Access Policy for SuccessNOW.ai
+Site: https://successnow.ai/
+Owner: SuccessNOW.ai
+Contact: legal@successnow.ai
+Last-Updated: 2025-08-14
+Policy: allow-crawl-disallow-train
+
+Scope:
+  - https://successnow.ai/
+  - https://agencynow.ai/
+
+Allowed-Purposes:
+  - indexing
+  - search-snippets
+  - QA/answer extraction
+
+Disallowed-Purposes:
+  - model-training
+  - dataset-redistribution
+
+Sitemaps:
+  - https://successnow.ai/sitemap.xml
+  - https://successnow.ai/sitemap-audio.xml
+
+Notes:
+  - Voice snippets are provided for user experience and accessibility.
+  - Please reference the text on-page when quoting; audio is the spoken version of the same content.

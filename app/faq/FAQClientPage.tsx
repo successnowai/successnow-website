@@ -4,6 +4,8 @@ import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { StarryBackground } from "@/components/ui/starry-background"
 import { ChevronDown, ChevronUp, MessageCircle, Bot, Zap, Building, Rocket, Target } from "lucide-react"
+import { VoiceSnippetPlayer } from "@/components/voice/voice-snippet-player"
+import { StructuredData, generateFAQSchema } from "@/components/seo/enhanced-structured-data"
 
 const faqData = [
   {
@@ -100,91 +102,37 @@ export default function FAQClientPage() {
     setOpenItems((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
   }
 
+  const faqSchema = generateFAQSchema(
+    faqData.flatMap((category) =>
+      category.questions.map((faq) => ({
+        question: faq.question,
+        answer: faq.answer,
+        // Audio URL will be populated when voice snippets are generated
+        voiceData: undefined,
+      })),
+    ),
+  )
+
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <StarryBackground />
 
-      {/* JSON-LD Schema */}
+      <StructuredData schema={faqSchema} />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "What is SuccessNOW.ai?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "SuccessNOW.ai is one of the best AI tools for small business, offering a suite of agentic AI that handle lead generation, customer engagement, and conversion—including AI voice & chat, ads agents, SEO agents, and smart automation, all in one platform.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What are AI Super Agents?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "AI Super Agents are autonomous AI agents for small businesses. They go beyond chatbots—reviewing client history, handling objections, following up, updating CRM notes, requesting reviews, and continuously improving with every interaction.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "How does the AI website work?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "The SuccessNOW.ai website acts as an AI tool that talks to customers: it's voice/chat-enabled, qualifies leads, books appointments, answers questions, and automatically syncs with your CRM.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "How does SuccessNOW generate and convert leads?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We use top AI marketing tools for small businesses, including AdsNOW.ai for paid campaigns, SEOExperts.ai for AI search visibility, AI-powered funnels, and Speed to Lead agents to respond instantly to every inquiry.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Can the AI help with customer service and retention?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes—SuccessNOW.ai includes AI tools for client retention that review past interactions, provide personalized support, proactively follow up for renewals or upsells, and ensure no client is overlooked.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What industries are supported?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "We offer AI tools for realtors, auto dealers, mortgage brokers, lawyers, and 15+ other industries. Each gets a bespoke AI website, niche-trained agents, and done-for-you marketing tailored to your sector.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What's included in the No-Brainer Offer?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Our No-Brainer Offer includes the full AI all-in-one platform for $3,488 setup (normally $34,888) and $997/month (normally $1,994)—covering website, bots, ads, SEO, and CRM automation.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Can agencies resell SuccessNOW?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes—through AgencyNow.ai, our AI reseller agency program, you earn 40% recurring commissions. We handle setup and support; you bring the clients and brand the solution.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "How does onboarding work?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Onboarding uses our AI onboarding system—an agent gathers your business info, builds your site and funnels, connects your CRM, and launches your first campaigns with minimal input.",
-                },
-              },
-            ],
+            "@type": "WebPage",
+            speakable: {
+              "@type": "SpeakableSpecification",
+              xpath: [
+                "/html/body//h1[1]",
+                "/html/body//section//h2[contains(@class, 'text-2xl')]",
+                "/html/body//p[contains(@class, 'text-xl')]",
+              ],
+            },
           }),
         }}
       />
@@ -210,6 +158,14 @@ export default function FAQClientPage() {
               Everything you need to know about SuccessNOW.ai's AI Super Agents and all-in-one business growth platform.
               Get answers about our best AI tools for small business.
             </p>
+
+            <div className="mt-6">
+              <VoiceSnippetPlayer
+                text="Get comprehensive answers about SuccessNOW.ai's AI Super Agents, our all-in-one business growth platform, and how our best AI tools for small business can transform your operations with autonomous agents that learn, sell, and scale 24/7."
+                category="faq-intro"
+                variant="compact"
+              />
+            </div>
           </div>
         </section>
 
@@ -227,6 +183,11 @@ export default function FAQClientPage() {
                       <IconComponent className="w-6 h-6 text-cyan-400" />
                     </div>
                     <h2 className="text-2xl font-bold text-white">{category.category}</h2>
+                    <VoiceSnippetPlayer
+                      text={`Learn about ${category.category} - ${category.questions.map((q) => q.question).join(", ")}`}
+                      category={`faq-category-${categoryIndex}`}
+                      variant="inline"
+                    />
                   </div>
 
                   {/* Questions */}
@@ -245,20 +206,35 @@ export default function FAQClientPage() {
                               onClick={() => toggleItem(itemId)}
                               className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-800/50 transition-colors duration-200"
                             >
-                              <h3 className="text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors duration-200">
-                                {faq.question}
-                              </h3>
+                              <div className="flex-1">
+                                <h3 className="text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors duration-200 mb-2">
+                                  {faq.question}
+                                </h3>
+                                <VoiceSnippetPlayer
+                                  text={faq.answer}
+                                  category={`faq-${categoryIndex}-${questionIndex}`}
+                                  variant="inline"
+                                />
+                              </div>
                               {isOpen ? (
-                                <ChevronUp className="w-5 h-5 text-cyan-400 group-hover:text-pink-400 transition-colors duration-200" />
+                                <ChevronUp className="w-5 h-5 text-cyan-400 group-hover:text-pink-400 transition-colors duration-200 ml-4" />
                               ) : (
-                                <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors duration-200" />
+                                <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors duration-200 ml-4" />
                               )}
                             </button>
 
                             {isOpen && (
                               <div className="px-6 pb-6">
                                 <div className="h-px bg-gradient-to-r from-cyan-500/50 to-pink-500/50 mb-4" />
-                                <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                                <p className="text-gray-300 leading-relaxed mb-4">{faq.answer}</p>
+
+                                <div className="mt-4">
+                                  <VoiceSnippetPlayer
+                                    text={faq.answer}
+                                    category={`faq-${categoryIndex}-${questionIndex}`}
+                                    variant="compact"
+                                  />
+                                </div>
                               </div>
                             )}
                           </CardContent>
@@ -285,10 +261,18 @@ export default function FAQClientPage() {
 
                 <h3 className="text-2xl font-bold text-white mb-4">Ready to Get Started?</h3>
 
-                <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+                <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
                   See how SuccessNOW.ai's AI Super Agents can transform your business with our all-in-one platform that
                   learns, sells, and scales 24/7.
                 </p>
+
+                <div className="mb-8">
+                  <VoiceSnippetPlayer
+                    text="Ready to transform your business? See how SuccessNOW.ai's AI Super Agents can revolutionize your operations with our all-in-one platform that learns, sells, and scales 24/7. Launch your instant demo now or contact our support team to get started."
+                    category="faq-cta"
+                    variant="compact"
+                  />
+                </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a

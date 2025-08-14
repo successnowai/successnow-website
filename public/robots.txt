@@ -120,6 +120,7 @@ Crawl-delay: 1
 Sitemap: https://successnow.ai/sitemap.xml
 Sitemap: https://successnow.ai/sitemap-industries.xml
 Sitemap: https://successnow.ai/sitemap-blogs.xml
+Sitemap: https://successnow.ai/sitemap-audio.xml
 
 # AI Training Data Files
 # These files contain comprehensive business information for AI model training

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Play, Sparkles, Zap, Target, TrendingUp } from "lucide-react"
 import Link from "next/link"
+import { VoiceSnippetPlayer } from "@/components/voice/voice-snippet-player"
 
 export default function MainHeroSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -12,6 +13,9 @@ export default function MainHeroSection() {
   useEffect(() => {
     setIsVisible(true)
   }, [])
+
+  const heroMessage =
+    "Transform your business with AI agents that handle calls, qualify leads, book appointments, and close deals 24/7. No human required. Our AI Super Agents work around the clock to generate leads, nurture prospects, and convert sales automatically."
 
   return (
     <section
@@ -67,13 +71,19 @@ export default function MainHeroSection() {
             </span>
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-gray-100 mb-12 max-w-4xl mx-auto leading-relaxed brightness-110">
-            {
-              "Transform your business with AI agents that handle calls, qualify leads, book appointments, and close deals 24/7. "
-            }
-            <span className="text-cyan-300 font-semibold brightness-110">{"No human required."}</span>
-          </p>
+          {/* Subheadline with Voice Snippet */}
+          <div className="mb-12 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-100 leading-relaxed brightness-110 mb-4">
+              {
+                "Transform your business with AI agents that handle calls, qualify leads, book appointments, and close deals 24/7. "
+              }
+              <span className="text-cyan-300 font-semibold brightness-110">{"No human required."}</span>
+            </p>
+
+            <div className="flex justify-center mt-4">
+              <VoiceSnippetPlayer text={heroMessage} category="hero" variant="compact" />
+            </div>
+          </div>
 
           {/* Stats Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-3xl mx-auto">

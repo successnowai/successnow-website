@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Check, Crown, TrendingUp, Phone } from "lucide-react"
 import Link from "next/link"
 import PilotFundingBanner from "@/components/ui/pilot-funding-banner"
+import { VoiceSnippetPlayer } from "@/components/voice/voice-snippet-player"
 
 export default function PricingTable() {
   const [isAnnual, setIsAnnual] = useState(true)
@@ -48,6 +49,9 @@ export default function PricingTable() {
     icon: <Crown className="w-6 h-6" />,
   }
 
+  const pricingMessage =
+    "Get the complete AI Enterprise solution for just $3,488 setup instead of $35,000, plus only $997 per month instead of $1,994. This includes unlimited AI voice agents, full lead management, all CRM integrations, 24/7 support, and custom AI training. Plus you get 2 months free and 50% off platform fees."
+
   return (
     <section className="py-16 px-6 bg-black" id="pricing">
       <div className="max-w-4xl mx-auto">
@@ -84,6 +88,10 @@ export default function PricingTable() {
                 Save 20%
               </Badge>
             </span>
+          </div>
+
+          <div className="flex justify-center mb-8">
+            <VoiceSnippetPlayer text={pricingMessage} category="pricing" variant="default" />
           </div>
         </div>
 

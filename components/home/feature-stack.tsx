@@ -3,6 +3,7 @@
 import type React from "react"
 import { useInView } from "@/hooks/use-intersection-observer"
 import { AnimatedSwitcher } from "@/components/ui/animated-switcher"
+import { VoiceSnippetPlayer } from "@/components/voice/voice-snippet-player"
 
 export default function FeatureStack() {
   const { ref, isInView } = useInView()
@@ -19,6 +20,8 @@ export default function FeatureStack() {
         "Never Miss an Opportunity",
       ],
       buttonText: "See AI Websites",
+      description:
+        "AI-powered websites that convert visitors 24/7, answer questions instantly, and qualify leads automatically while you sleep.",
     },
     {
       emoji: "📱",
@@ -31,6 +34,8 @@ export default function FeatureStack() {
         "Build Stronger Relationships",
       ],
       buttonText: "See Client Apps",
+      description:
+        "Custom client apps that keep customers engaged with automated push notifications and gamified experiences.",
     },
     {
       emoji: "🚀",
@@ -43,6 +48,8 @@ export default function FeatureStack() {
         "Launch Ads with 1 Click",
       ],
       buttonText: "See AI Advertising",
+      description:
+        "AI-powered advertising that generates leads 60% cheaper, optimizes ad spend automatically, and launches campaigns with one click.",
     },
     {
       emoji: "🤖",
@@ -55,6 +62,8 @@ export default function FeatureStack() {
         "Follow-up Every Lead",
       ],
       buttonText: "See AI Agents",
+      description:
+        "AI voice agents and bot army that close deals while you sleep, handle objections automatically, and follow up with every lead.",
     },
     {
       emoji: "🔍",
@@ -67,6 +76,8 @@ export default function FeatureStack() {
         "Generate Leads While You Sleep",
       ],
       buttonText: "See AI SEO",
+      description:
+        "AI-powered SEO that dominates Google search, outranks competitors automatically, and generates leads from high-intent buyers.",
     },
     {
       emoji: "📲",
@@ -79,6 +90,8 @@ export default function FeatureStack() {
         "Create Viral Content Daily",
       ],
       buttonText: "See AI Social",
+      description:
+        "AI social media management that posts consistently, maintains your brand voice, and creates viral content daily.",
     },
   ]
 
@@ -92,6 +105,13 @@ export default function FeatureStack() {
         className={`mb-6 sm:mb-8 text-center text-2xl sm:text-3xl font-bold text-white animate-fade-up ${isInView ? "animate-show" : ""}`}
       >
         Your AI Super Agent Stack – Core Features
+        <div className="flex justify-center mt-4">
+          <VoiceSnippetPlayer
+            text="Your complete AI Super Agent Stack includes AI-powered websites, voice agents, automated advertising, SEO optimization, social media management, and client apps - all working together to grow your business 24/7."
+            category="features"
+            variant="compact"
+          />
+        </div>
       </h2>
       <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature, index) => (
@@ -120,6 +140,12 @@ export default function FeatureStack() {
                 />
               </p>
             </div>
+
+            {index < 3 && (
+              <div className="mb-4">
+                <VoiceSnippetPlayer text={feature.description} category="features" variant="compact" />
+              </div>
+            )}
 
             <button
               className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover:scale-105 shadow-lg text-sm sm:text-base min-h-[44px]"
