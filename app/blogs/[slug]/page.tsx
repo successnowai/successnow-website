@@ -1,34 +1,35 @@
-import { getBlogArticleBySlug, getRelatedArticles } from '@/lib/blog-data'
-import { notFound } from 'next/navigation'
-import ArticleRenderer from '@/components/blog/ArticleRenderer'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
-import type { Metadata } from 'next'
+import { getBlogArticleBySlug, getRelatedArticles } from "@/lib/blog-data"
+import { notFound } from "next/navigation"
+import ArticleRenderer from "@/components/blog/ArticleRenderer"
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
+import type { Metadata } from "next"
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const article = getBlogArticleBySlug(params.slug)
-  
+  const { slug } = await params
+  const article = getBlogArticleBySlug(slug)
+
   if (!article) {
     return {
-      title: 'Article Not Found | SuccessNOW AI Blog',
-      description: 'The requested article could not be found.'
+      title: "Article Not Found | SuccessNOW AI Blog",
+      description: "The requested article could not be found.",
     }
   }
 
   return {
     title: article.seo.metaTitle,
     description: article.seo.metaDescription,
-    keywords: article.seo.keywords.join(', '),
+    keywords: article.seo.keywords.join(", "),
     openGraph: {
       title: article.title,
       description: article.excerpt,
-      type: 'article',
+      type: "article",
       publishedTime: article.publishedAt,
       modifiedTime: article.updatedAt,
       authors: [article.author],
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: article.title,
       description: article.excerpt,
       images: [article.image],
@@ -50,14 +51,15 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const article = getBlogArticleBySlug(params.slug)
-  
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params
+  const article = getBlogArticleBySlug(slug)
+
   if (!article) {
     notFound()
   }
 
-  const relatedArticles = getRelatedArticles(params.slug, 3)
+  const relatedArticles = getRelatedArticles(slug, 3)
 
   return (
     <>
@@ -68,28 +70,28 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "headline": article.title,
-            "description": article.excerpt,
-            "image": article.image,
-            "author": {
+            headline: article.title,
+            description: article.excerpt,
+            image: article.image,
+            author: {
               "@type": "Person",
-              "name": article.author
+              name: article.author,
             },
-            "publisher": {
+            publisher: {
               "@type": "Organization",
-              "name": "SuccessNOW AI",
-              "logo": {
+              name: "SuccessNOW AI",
+              logo: {
                 "@type": "ImageObject",
-                "url": "/images/successnow-logo.png"
-              }
+                url: "/images/successnow-logo.png",
+              },
             },
-            "datePublished": article.publishedAt,
-            "dateModified": article.updatedAt,
-            "mainEntityOfPage": {
+            datePublished: article.publishedAt,
+            dateModified: article.updatedAt,
+            mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://successnow.ai/blogs/${article.slug}`
-            }
-          })
+              "@id": `https://successnow.ai/blogs/${article.slug}`,
+            },
+          }),
         }}
       />
 
@@ -119,15 +121,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   href={`/blogs/${relatedArticle.slug}`}
                   className="block bg-gray-900/50 rounded-lg border border-gray-800 hover:border-[#00BFFF]/50 transition-colors p-6"
                 >
-                  <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2">
-                    {relatedArticle.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">
-                    {relatedArticle.excerpt}
-                  </p>
-                  <div className="text-[#00BFFF] text-sm font-medium">
-                    Read more →
-                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2">{relatedArticle.title}</h3>
+                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">{relatedArticle.excerpt}</p>
+                  <div className="text-[#00BFFF] text-sm font-medium">Read more →</div>
                 </Link>
               ))}
             </div>
