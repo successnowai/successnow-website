@@ -95,6 +95,9 @@ export function Navbar() {
             <Link href="/demo" className="text-gray-300 hover:text-white transition-colors duration-200">
               Demo
             </Link>
+            <Link href="/faq" className="text-gray-300 hover:text-white transition-colors duration-200">
+              FAQ
+            </Link>
             <Link href="/affiliate" className="text-gray-300 hover:text-white transition-colors duration-200">
               Affiliate
             </Link>
@@ -162,6 +165,13 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
               >
                 Demo
+              </Link>
+              <Link
+                href="/faq"
+                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                FAQ
               </Link>
               <Link
                 href="/affiliate"

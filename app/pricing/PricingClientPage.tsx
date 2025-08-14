@@ -88,26 +88,29 @@ export default function PricingClientPage() {
 
   const faqs = [
     {
-      question: "What's included in the free trial?",
-      answer: "All plans include a 14-day free trial with full access to features. No credit card required to start.",
-    },
-    {
-      question: "Can I change plans anytime?",
-      answer: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.",
-    },
-    {
-      question: "What kind of support do you offer?",
+      question: "What's included in the Enterprise plan?",
       answer:
-        "We offer email support for Starter, priority support for Professional, and 24/7 dedicated support for Enterprise plans.",
+        "The Enterprise plan includes unlimited AI voice agents, full lead management suite, all CRM integrations, 24/7 dedicated support, custom AI training, and white-label solutions. Plus exclusive bonuses like 50% off platform fees and voice usage rates.",
     },
     {
-      question: "Do you offer custom integrations?",
+      question: "How does the AI voice pricing work?",
       answer:
-        "Yes, Enterprise and Custom plans include custom integrations. Professional plans can add integrations for an additional fee.",
+        "Voice AI usage is charged per minute of conversation. Enterprise customers get 50% off the regular rate of $0.28/minute, paying only $0.14/minute. This covers all voice interactions including lead qualification, appointment booking, and customer service calls.",
     },
     {
-      question: "Is there a setup fee?",
-      answer: "No setup fees for any plan. You only pay the monthly or annual subscription fee.",
+      question: "Can I customize the AI agents for my industry?",
+      answer:
+        "Our AI agents are fully customizable and can be trained on your specific business processes, industry knowledge, and customer data. We have pre-built solutions for 15+ industries including auto dealers, realtors, contractors, gyms, and more.",
+    },
+    {
+      question: "What kind of support and onboarding do you provide?",
+      answer:
+        "Enterprise customers receive 24/7 dedicated support, a personal account manager, and comprehensive onboarding. Our AI Onboarding Agent collects your business info, while our AI WebDev Agent builds your custom website and funnels. Most businesses are fully deployed within 1-2 weeks.",
+    },
+    {
+      question: "Do you offer agency partnerships?",
+      answer:
+        "Yes! Through AgencyNow, you can resell our AI-powered systems and keep 40% recurring commissions on every client. We handle setup, onboarding, and support while you focus on bringing in clients. Perfect for marketing agencies looking to add AI services.",
     },
   ]
 

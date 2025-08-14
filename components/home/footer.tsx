@@ -44,6 +44,9 @@ export function Footer() {
               <Link href="/demo" className="block text-gray-400 hover:text-white transition-colors text-sm">
                 Demo
               </Link>
+              <Link href="/faq" className="block text-gray-400 hover:text-white transition-colors text-sm">
+                FAQ
+              </Link>
               <Link href="/affiliate" className="block text-gray-400 hover:text-white transition-colors text-sm">
                 Affiliate Program
               </Link>
