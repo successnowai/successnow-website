@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Play, Phone, MessageSquare, Calendar, CheckCircle, ArrowRight, Mic, Volume2 } from "lucide-react"
 import { DemoPopup } from "@/components/ui/demo-popup"
 import { VoiceDemoModal } from "@/components/ui/voice-demo-modal"
+import AICallInterface from "@/components/call/ai-call-interface"
 import Link from "next/link"
 
 export default function LiveDemo() {
@@ -163,7 +164,7 @@ export default function LiveDemo() {
             </div>
           </motion.div>
 
-          {/* Right - Demo Preview */}
+          {/* Right - Functional Demo Widget */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -171,73 +172,75 @@ export default function LiveDemo() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <Card className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-gray-700 backdrop-blur-sm">
-              <CardContent className="p-8">
+            {activeDemo === "voice" ? (
+              <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 backdrop-blur-sm rounded-lg p-6">
                 <div className="text-center mb-6">
-                  <div
-                    className={`inline-flex p-4 rounded-full bg-gradient-to-r ${
-                      demoOptions.find((d) => d.id === activeDemo)?.color
-                    } mb-4`}
-                  >
-                    <div className="text-white text-2xl">{demoOptions.find((d) => d.id === activeDemo)?.icon}</div>
+                  <h3 className="text-2xl font-bold text-white mb-2">Try Our AI Agent Now</h3>
+                  <p className="text-gray-400">Call Jessica directly or request a callback within 30 seconds</p>
+                </div>
+                <AICallInterface />
+              </div>
+            ) : (
+              <Card className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-gray-700 backdrop-blur-sm">
+                <CardContent className="p-8">
+                  <div className="text-center mb-6">
+                    <div
+                      className={`inline-flex p-4 rounded-full bg-gradient-to-r ${
+                        demoOptions.find((d) => d.id === activeDemo)?.color
+                      } mb-4`}
+                    >
+                      <div className="text-white text-2xl">{demoOptions.find((d) => d.id === activeDemo)?.icon}</div>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-2">
+                      {demoOptions.find((d) => d.id === activeDemo)?.title}
+                    </h3>
+                    <p className="text-gray-400">{demoOptions.find((d) => d.id === activeDemo)?.description}</p>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
-                    {demoOptions.find((d) => d.id === activeDemo)?.title}
-                  </h3>
-                  <p className="text-gray-400">{demoOptions.find((d) => d.id === activeDemo)?.description}</p>
-                </div>
 
-                {/* Demo Preview Content */}
-                <div className="bg-gray-800/50 rounded-lg p-6 mb-6 min-h-[150px] flex items-center justify-center">
-                  {activeDemo === "voice" && (
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mb-4 flex items-center justify-center animate-pulse">
-                        <Mic className="w-8 h-8 text-white" />
+                  {/* Demo Preview Content for non-voice demos */}
+                  <div className="bg-gray-800/50 rounded-lg p-6 mb-6 min-h-[150px] flex items-center justify-center">
+                    {activeDemo === "chat" && (
+                      <div className="space-y-3 w-full">
+                        <div className="bg-blue-500/20 rounded-lg p-3 text-right">
+                          <p className="text-white">Hi, I'm interested in your services</p>
+                        </div>
+                        <div className="bg-gray-700/50 rounded-lg p-3">
+                          <p className="text-gray-300">
+                            Great! I'd love to help you. What type of business do you have?
+                          </p>
+                        </div>
+                        <div className="text-center">
+                          <span className="text-sm text-gray-400">AI typing...</span>
+                        </div>
                       </div>
-                      <p className="text-gray-300 mb-2">"Hi! I'm Sarah, your AI assistant."</p>
-                      <p className="text-sm text-gray-400">Click 'Start Voice Demo' to hear our AI in action</p>
-                    </div>
-                  )}
+                    )}
 
-                  {activeDemo === "chat" && (
-                    <div className="space-y-3 w-full">
-                      <div className="bg-blue-500/20 rounded-lg p-3 text-right">
-                        <p className="text-white">Hi, I'm interested in your services</p>
+                    {activeDemo === "booking" && (
+                      <div className="space-y-3 w-full">
+                        <div className="flex items-center gap-3 p-3 bg-green-500/20 rounded-lg">
+                          <Calendar className="w-5 h-5 text-green-400" />
+                          <span className="text-white">Available: Tomorrow 2:00 PM</span>
+                        </div>
+                        <div className="flex items-center gap-3 p-3 bg-green-500/20 rounded-lg">
+                          <Calendar className="w-5 h-5 text-green-400" />
+                          <span className="text-white">Available: Friday 10:00 AM</span>
+                        </div>
+                        <div className="text-center">
+                          <span className="text-sm text-gray-400">Booking confirmed automatically</span>
+                        </div>
                       </div>
-                      <div className="bg-gray-700/50 rounded-lg p-3">
-                        <p className="text-gray-300">Great! I'd love to help you. What type of business do you have?</p>
-                      </div>
-                      <div className="text-center">
-                        <span className="text-sm text-gray-400">AI typing...</span>
-                      </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
 
-                  {activeDemo === "booking" && (
-                    <div className="space-y-3 w-full">
-                      <div className="flex items-center gap-3 p-3 bg-green-500/20 rounded-lg">
-                        <Calendar className="w-5 h-5 text-green-400" />
-                        <span className="text-white">Available: Tomorrow 2:00 PM</span>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 bg-green-500/20 rounded-lg">
-                        <Calendar className="w-5 h-5 text-green-400" />
-                        <span className="text-white">Available: Friday 10:00 AM</span>
-                      </div>
-                      <div className="text-center">
-                        <span className="text-sm text-gray-400">Booking confirmed automatically</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="text-center">
-                  <Badge className="bg-green-600 text-white">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    Lead Qualified & Booked
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="text-center">
+                    <Badge className="bg-green-600 text-white">
+                      <CheckCircle className="w-4 h-4 mr-2" />
+                      Lead Qualified & Booked
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </motion.div>
         </div>
       </div>
