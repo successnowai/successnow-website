@@ -7,9 +7,10 @@ import { ArrowLeft, Phone, MessageSquare, Lightbulb, Users, PhoneCall, AlertTria
 import Link from "next/link"
 import { DemoFAQ } from "@/components/faq/demo-faq"
 import AICallInterface from "@/components/call/ai-call-interface"
+import Script from "next/script"
 
 export default function DemoClientPage() {
-  const [activeDemo, setActiveDemo] = useState("voice")
+  const activeDemo = useState("voice")
 
   useEffect(() => {
     const handleMicrophonePermissions = () => {
@@ -75,6 +76,22 @@ export default function DemoClientPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <Script
+        src="https://botdisplay.com/chat-widget.js"
+        data-color="#FF007A"
+        data-assistant-id="1753831573951x589054349879485360"
+        data-account-id="UMy2Y82UItPQzkvXP7VK"
+        data-position="bottom-left"
+        data-theme="dark"
+        data-show-prompt="false"
+        data-prompt-message="Ask me about voice AI 🚀"
+        data-startup-message="How can I help you today?"
+        data-assistant-name="ASIA | Advanced Sales Intelligence Agent"
+        data-button-icon="chat"
+        data-greeting-message="👋 Hey there! My name is {A.S.I.A | Advanced Sales Intelligence Agent} and I'm here to find out why you aren't making money with voice ai, ask me anything."
+        data-prompts='[{"text": "What is AI Assistant?"}, {"text": "How do I get started?"}, {"text": "What does it cost?"}, {"text": "How does it work?"}]'
+      />
+
       {/* Header with Back Button */}
       <div className="border-b border-gray-800">
         <div className="container mx-auto px-4 py-4">
@@ -93,10 +110,12 @@ export default function DemoClientPage() {
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-4">Connect with Jessica Instantly</h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Choose your preferred way to connect - call directly or have our AI call you back in 30 seconds
+              Call directly or have our AI call you back in 30 seconds
             </p>
           </div>
-          <AICallInterface />
+          <div className="flex justify-center">
+            <AICallInterface />
+          </div>
         </div>
       </section>
 
