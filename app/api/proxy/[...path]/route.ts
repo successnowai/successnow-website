@@ -33,10 +33,11 @@ const templateUrls: Record<string, string> = {
   "gym-3": "https://v0-martial-arts-gym-template-git-martial-arts-info-9422s-projects.vercel.app",
 }
 
-export async function GET(request: NextRequest, { params }: { params: { path: string[] } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
-    const templateId = params.path[0]
-    const subPath = params.path.slice(1).join("/")
+    const resolvedParams = await params
+    const templateId = resolvedParams.path[0]
+    const subPath = resolvedParams.path.slice(1).join("/")
 
     console.log("🔍 Proxy Request:", { templateId, subPath })
 
@@ -124,11 +125,8 @@ export async function GET(request: NextRequest, { params }: { params: { path: st
     }
   } catch (error) {
     console.error("💥 Proxy error:", error)
-    return createErrorResponse(
-      "Proxy Error",
-      "An unexpected error occurred while loading the template.",
-      params.path[0],
-    )
+    const templateId = "unknown"
+    return createErrorResponse("Proxy Error", "An unexpected error occurred while loading the template.", templateId)
   }
 }
 
