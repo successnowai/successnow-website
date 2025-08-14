@@ -88,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Search Atlas SEO Dynamic Optimization - Fixed with proper attributes */}
+        {/* Search Atlas OTTO Script - Must be first */}
         <script
           nowprocket="true"
           nitro-exclude="true"
