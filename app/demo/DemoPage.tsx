@@ -494,7 +494,7 @@ export default function DemoPage() {
           text.length * 120 + 8000,
         )
 
-        synth.current.speak(utterance)
+        synth.current?.speak(utterance) // Added optional chaining to prevent null reference error
         addDebug("🎤 Speech utterance queued for playback")
       } catch (error) {
         addDebug(`❌ Speech creation failed: ${error}`)
