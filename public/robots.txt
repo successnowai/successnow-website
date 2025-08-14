@@ -23,7 +23,7 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
-# Allow AI training crawlers
+# Allow AI training crawlers with optimized crawl delays
 User-agent: GPTBot
 Allow: /
 Crawl-delay: 1
@@ -56,6 +56,14 @@ User-agent: Meta-ExternalAgent
 Allow: /
 Crawl-delay: 1
 
+User-agent: Applebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 1
+
 # Block admin and API routes
 Disallow: /admin/
 Disallow: /api/
@@ -63,7 +71,7 @@ Disallow: /_next/
 Disallow: /temp/
 Disallow: /.well-known/
 
-# Block removed pages
+# Block removed pages and old routes
 Disallow: /apply
 Disallow: /partner-signup
 Disallow: /payment
@@ -76,8 +84,24 @@ Disallow: /nana
 Disallow: /nara
 Disallow: /sheshopslocal
 Disallow: /custombuildnow
+Disallow: /diamond/
+Disallow: /autodealersnow/signup
+Disallow: /chiropractorsnow/signup
+Disallow: /contractorsnow/signup
+Disallow: /custombuildnow/signup
+Disallow: /dentistsnow/signup
+Disallow: /gymsnow/signup
+Disallow: /hvacnow/signup
+Disallow: /lawyersnow/signup
+Disallow: /medspanow/signup
+Disallow: /mortgagenow/signup
+Disallow: /plumbersnow/signup
+Disallow: /realtornow/signup
+Disallow: /restaurantsnow/signup
+Disallow: /roofersnow/signup
+Disallow: /solarnow/signup
 
-# Allow important files
+# Allow important files and directories
 Allow: /sitemap.xml
 Allow: /sitemap-industries.xml
 Allow: /sitemap-blogs.xml
@@ -87,6 +111,7 @@ Allow: /llms-full.txt
 Allow: /favicon.ico
 Allow: /images/
 Allow: /public/
+Allow: /schema/
 
 # Crawl delay for respectful crawling
 Crawl-delay: 1
@@ -97,7 +122,7 @@ Sitemap: https://successnow.ai/sitemap-industries.xml
 Sitemap: https://successnow.ai/sitemap-blogs.xml
 
 # AI Training Data Files
-# These files are specifically for AI model training and understanding
+# These files contain comprehensive business information for AI model training
 Allow: /llms.txt
 Allow: /llms-full.txt
 

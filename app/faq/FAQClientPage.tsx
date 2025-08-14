@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { StarryBackground } from "@/components/ui/starry-background"
-import { ChevronDown, ChevronUp, MessageCircle, Bot, Zap, Building, Rocket } from "lucide-react"
+import { ChevronDown, ChevronUp, MessageCircle, Bot, Zap, Building, Rocket, Target } from "lucide-react"
 
 const faqData = [
   {
@@ -13,12 +13,12 @@ const faqData = [
       {
         question: "What is SuccessNOW.ai?",
         answer:
-          "SuccessNOW.ai is the only all-in-one AI business platform that gives you: Custom AI-Powered Websites that talk to visitors through integrated AI voice & chat agents, AI Super Agents trained on your business, your clients, and your processes — they instantly engage leads, update CRM notes, and handle calls like your best salesperson, AI Paid Ads Agents that create, launch, and optimize ads 24/7, AI SEO Agents that boost your organic rankings and AI search visibility, and Full Automation for lead capture, nurturing, appointment booking, sales, and client retention.",
+          "SuccessNOW.ai is recognized among the best AI tools for small business, offering a suite of 'agentic AI' — autonomous AI agents that handle lead generation, customer engagement, and conversion for you. With integrated AI voice & chat, paid ads agents, AI-driven SEO, and smart automation, SuccessNOW.ai delivers full-service AI growth tools under one roof.",
       },
       {
-        question: "What makes SuccessNOW's AI Agents different?",
+        question: "What are AI Super Agents?",
         answer:
-          "Our AI Super Agents don't just answer questions — they learn and adapt. They review past CRM notes (human + AI) before each interaction to understand the client's history and needs. They remember preferences and tailor every call, chat, or email to the individual. They update client records automatically after every conversation. They get smarter with every single call, building relationships that feel human while working at AI speed.",
+          "These are true AI agents for small businesses, not chatbots. SuccessNOW's AI agents think and act independently—they review client history, handle objections, follow up, update CRM notes, request reviews, and refine their approach over time. They get smarter with every call, building relationships that feel human while working at AI speed.",
       },
     ],
   },
@@ -27,51 +27,67 @@ const faqData = [
     icon: Bot,
     questions: [
       {
-        question: "How does the AI Website work?",
+        question: "How does the AI website work?",
         answer:
-          "Your website isn't just a brochure — it's a live sales agent. Built by our AI WebDev Agent to be high-converting and mobile-optimized. Integrated with AI voice & chat so visitors can speak to your AI agents instantly. Captures leads, qualifies them, books appointments, and pushes all details into your CRM — without human intervention.",
+          "The SuccessNOW.ai website acts as an AI tool that talks to customers: it's voice/chat-enabled, qualifies leads, books appointments, answers questions, and automatically syncs with your CRM. Built by our AI WebDev Agent to be high-converting and mobile-optimized.",
       },
       {
         question: "How does SuccessNOW generate and convert leads?",
         answer:
-          "We deploy a complete AI-powered growth system: AI Paid Ads Agent (AdsNOW.ai) — Creates, launches, and optimizes high-ROI ad campaigns. AI SEO Agent (SEONOW.ai) — Boosts organic rankings and AI search visibility. Self-Selling Funnels with irresistible No-Brainer Offers. AI Speed to Lead Agent — Engages every lead instantly before competitors get a chance. AI Follow-Up & Nurturing Agents — Keep leads warm until they buy.",
+          "We use top AI marketing tools for small businesses, including AdsNOW.ai for paid campaigns, SEOExperts.ai for AI search visibility, AI-powered funnels, and Speed to Lead agents to respond instantly to every inquiry. Self-selling funnels with no-brainer offers ensure maximum conversion.",
       },
       {
-        question: "Can the AI Agents handle ongoing client service?",
+        question: "Can the AI help with customer service and retention?",
         answer:
-          "Yes. Our AI Retention Agents: Review each client's history before responding. Provide personalized service based on notes, preferences, and previous interactions. Proactively follow up for renewals, reviews, and upsells at the perfect time. Act as your ultimate client concierge, making sure no one slips through the cracks.",
+          "Yes—SuccessNOW.ai includes AI tools for client retention that review past interactions, provide personalized support, proactively follow up for renewals or upsells, and ensure no client is overlooked. They act as your ultimate client concierge.",
       },
     ],
   },
   {
-    category: "Industries & Pricing",
+    category: "Industries & Targeting",
+    icon: Target,
+    questions: [
+      {
+        question: "What industries are supported?",
+        answer:
+          "We offer AI tools for realtors, auto dealers, mortgage brokers, lawyers, contractors, gyms, medspas, insurance agencies, and 15+ other industries. Each gets a tailored AI-powered website, niche-trained agents, and done-for-you marketing—so you launch fast with deeply relevant experience.",
+      },
+      {
+        question: "How are the AI agents trained for my industry?",
+        answer:
+          "Each industry gets pre-built AI systems with specialized knowledge, objection handling, and conversation flows. Our agents understand your market's pain points, buying cycles, and communication preferences to engage prospects like an experienced industry professional.",
+      },
+    ],
+  },
+  {
+    category: "Pricing & Agency Programs",
     icon: Building,
     questions: [
       {
-        question: "What industries does SuccessNOW serve?",
-        answer:
-          "We have pre-built AI-powered systems for 15+ industries, including: Auto dealers, realtors, mortgage brokers, lawyers, contractors, gyms, medspas, insurance agencies, local service providers, and more. Each niche gets: A custom high-converting AI website, Industry-trained AI Agents for lead generation & client care, and Done-for-You marketing & ads tailored to the niche.",
-      },
-      {
         question: "What's included in the No-Brainer Offer?",
         answer:
-          "Our current launch offer: Setup: $997 (normally $9,977), Monthly: $997 (normally $1,994). Includes: Fully built AI website & funnels, AI voice & chat agents, Paid ads management & optimization, SEO setup & monitoring, and CRM integration with full automation.",
+          "Our No-Brainer Offer includes the full AI all-in-one platform for $3,488 setup (normally $34,888) and $997/month (normally $1,994)—covering website, bots, ads, SEO, and CRM automation. You get a complete AI ecosystem ready to go.",
       },
       {
-        question: "Can agencies use SuccessNOW?",
+        question: "Can agencies resell SuccessNOW?",
         answer:
-          "Yes — via AgencyNow you can resell all our AI-powered niche systems: Keep 40% recurring commissions on every client. We handle setup, onboarding, and support. You just focus on bringing in clients while our AI Super Agents do the work.",
+          "Yes—through AgencyNow.ai, our AI reseller agency program, you earn 40% recurring commissions. We handle setup and support; you bring the clients and brand the solution under your agency name. Perfect for scaling your agency with AI.",
       },
     ],
   },
   {
-    category: "Getting Started",
+    category: "Getting Started & Support",
     icon: Rocket,
     questions: [
       {
-        question: "How is onboarding handled?",
+        question: "How does onboarding work?",
         answer:
-          "AI Onboarding Agent collects all business info, branding, and goals. AI WebDev Agent builds your custom website & funnels. AI CRM Setup ensures every lead, call, and sale is tracked automatically. Most businesses are fully deployed within 1-2 weeks from sign-up.",
+          "Onboarding uses our AI onboarding system—an agent gathers your business info, builds your site and funnels, connects your CRM, and launches your first campaigns with minimal input. Most businesses are fully deployed within 1-2 weeks from sign-up.",
+      },
+      {
+        question: "What kind of support do I get?",
+        answer:
+          "You get access to our training community, dedicated support team, and ongoing optimization from our AI agents. We monitor performance and make adjustments to ensure your system continues improving and generating results.",
       },
     ],
   },
@@ -87,6 +103,91 @@ export default function FAQClientPage() {
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <StarryBackground />
+
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What is SuccessNOW.ai?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "SuccessNOW.ai is one of the best AI tools for small business, offering a suite of agentic AI that handle lead generation, customer engagement, and conversion—including AI voice & chat, ads agents, SEO agents, and smart automation, all in one platform.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What are AI Super Agents?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "AI Super Agents are autonomous AI agents for small businesses. They go beyond chatbots—reviewing client history, handling objections, following up, updating CRM notes, requesting reviews, and continuously improving with every interaction.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How does the AI website work?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "The SuccessNOW.ai website acts as an AI tool that talks to customers: it's voice/chat-enabled, qualifies leads, books appointments, answers questions, and automatically syncs with your CRM.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How does SuccessNOW generate and convert leads?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We use top AI marketing tools for small businesses, including AdsNOW.ai for paid campaigns, SEOExperts.ai for AI search visibility, AI-powered funnels, and Speed to Lead agents to respond instantly to every inquiry.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can the AI help with customer service and retention?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes—SuccessNOW.ai includes AI tools for client retention that review past interactions, provide personalized support, proactively follow up for renewals or upsells, and ensure no client is overlooked.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What industries are supported?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We offer AI tools for realtors, auto dealers, mortgage brokers, lawyers, and 15+ other industries. Each gets a bespoke AI website, niche-trained agents, and done-for-you marketing tailored to your sector.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What's included in the No-Brainer Offer?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Our No-Brainer Offer includes the full AI all-in-one platform for $3,488 setup (normally $34,888) and $997/month (normally $1,994)—covering website, bots, ads, SEO, and CRM automation.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can agencies resell SuccessNOW?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes—through AgencyNow.ai, our AI reseller agency program, you earn 40% recurring commissions. We handle setup and support; you bring the clients and brand the solution.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How does onboarding work?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Onboarding uses our AI onboarding system—an agent gathers your business info, builds your site and funnels, connects your CRM, and launches your first campaigns with minimal input.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
 
       <div className="relative z-10">
         {/* Hero Section */}
@@ -107,6 +208,7 @@ export default function FAQClientPage() {
 
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Everything you need to know about SuccessNOW.ai's AI Super Agents and all-in-one business growth platform.
+              Get answers about our best AI tools for small business.
             </p>
           </div>
         </section>

@@ -24,6 +24,7 @@ import {
 import Footer from "@/components/home/footer"
 import StarryBackground from "@/components/ui/starry-background"
 import { cn } from "@/lib/utils"
+import { IndustriesFAQ } from "@/components/faq/industries-faq"
 
 export default function IndustriesClientPage() {
   const { ref: heroRef } = useInView()
@@ -334,6 +335,8 @@ export default function IndustriesClientPage() {
           </div>
         </section>
       </main>
+
+      <IndustriesFAQ />
 
       <div className="relative z-10">
         <Footer />

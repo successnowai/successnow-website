@@ -1,22 +1,33 @@
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "SuccessNOW AI Services",
-  "description": "Comprehensive AI-powered business automation services",
+  "name": "SuccessNOW.ai AI Business Services",
+  "description": "Best AI tools for small business - comprehensive AI-powered automation services and solutions",
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
       "item": {
         "@type": "Service",
-        "name": "AI Lead Conversion",
-        "description": "24/7 automated lead conversion using AI superagents that never sleep",
+        "name": "AI Super Agents for Lead Conversion",
+        "description": "24/7 AI agents for small businesses that convert leads, book appointments, and nurture prospects automatically. Never miss another lead with our intelligent AI tools that talk to customers.",
         "provider": {
           "@type": "Organization",
-          "name": "SuccessNOW"
+          "name": "SuccessNOW.ai"
         },
-        "areaServed": "Global",
-        "serviceType": "Lead Generation"
+        "areaServed": ["United States", "Canada"],
+        "serviceType": "Lead Generation",
+        "offers": {
+          "@type": "Offer",
+          "price": "997",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "997",
+            "priceCurrency": "USD",
+            "unitText": "monthly"
+          }
+        }
       }
     },
     {
@@ -24,14 +35,25 @@
       "position": 2,
       "item": {
         "@type": "Service",
-        "name": "AI Appointment Booking",
-        "description": "Automated appointment scheduling and calendar management",
+        "name": "AI Marketing Tools for Small Business",
+        "description": "Complete AI marketing automation including AdsNOW.ai for paid campaigns and SEOExperts.ai for organic visibility. AI all-in-one platform for business growth.",
         "provider": {
           "@type": "Organization",
-          "name": "SuccessNOW"
+          "name": "SuccessNOW.ai"
         },
-        "areaServed": "Global",
-        "serviceType": "Business Automation"
+        "areaServed": ["United States", "Canada"],
+        "serviceType": "Digital Marketing",
+        "offers": {
+          "@type": "Offer",
+          "price": "997",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "997",
+            "priceCurrency": "USD",
+            "unitText": "monthly"
+          }
+        }
       }
     },
     {
@@ -39,14 +61,148 @@
       "position": 3,
       "item": {
         "@type": "Service",
-        "name": "Industry-Specific AI Solutions",
-        "description": "Customized AI implementations for Auto Dealers, Real Estate, Healthcare, Legal, HVAC, and more",
+        "name": "AI Tools for Realtors and Auto Dealers",
+        "description": "Industry-specific AI solutions including RealtorNOW for real estate lead qualification and AutoDealersNOW for automotive sales automation.",
         "provider": {
           "@type": "Organization",
-          "name": "SuccessNOW"
+          "name": "SuccessNOW.ai"
         },
-        "areaServed": "Global",
-        "serviceType": "Custom Software Development"
+        "areaServed": ["United States", "Canada"],
+        "serviceType": "Industry Solutions",
+        "offers": {
+          "@type": "Offer",
+          "price": "997",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "997",
+            "priceCurrency": "USD",
+            "unitText": "monthly"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Service",
+        "name": "AI Tools for Client Retention",
+        "description": "Advanced AI systems that review client history, provide personalized support, and proactively follow up for renewals and upsells to maximize customer lifetime value.",
+        "provider": {
+          "@type": "Organization",
+          "name": "SuccessNOW.ai"
+        },
+        "areaServed": ["United States", "Canada"],
+        "serviceType": "Customer Relationship Management",
+        "offers": {
+          "@type": "Offer",
+          "price": "997",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "997",
+            "priceCurrency": "USD",
+            "unitText": "monthly"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Service",
+        "name": "AI Onboarding for Small Business",
+        "description": "Complete AI implementation service where our AI Onboarding Agent collects business info, AI WebDev Agent builds websites, and AI CRM Setup tracks every lead automatically.",
+        "provider": {
+          "@type": "Organization",
+          "name": "SuccessNOW.ai"
+        },
+        "areaServed": ["United States", "Canada"],
+        "serviceType": "Business Consulting",
+        "offers": {
+          "@type": "Offer",
+          "price": "3488",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "3488",
+            "priceCurrency": "USD",
+            "unitText": "one-time setup"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Service",
+        "name": "AI Reseller Agency Program",
+        "description": "AgencyNow.ai partnership program offering 40% recurring commissions for agencies reselling our AI solutions. Complete white-label support included.",
+        "provider": {
+          "@type": "Organization",
+          "name": "SuccessNOW.ai"
+        },
+        "areaServed": ["United States", "Canada"],
+        "serviceType": "Partnership Program",
+        "offers": {
+          "@type": "Offer",
+          "description": "40% recurring commission on all referred clients"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Service",
+        "name": "Healthcare AI Solutions",
+        "description": "Specialized AI tools for dentists, chiropractors, and medical spas including DentistsNOW, ChiropractorsNOW, and MedspaNOW for appointment booking and patient management.",
+        "provider": {
+          "@type": "Organization",
+          "name": "SuccessNOW.ai"
+        },
+        "areaServed": ["United States", "Canada"],
+        "serviceType": "Healthcare Technology",
+        "offers": {
+          "@type": "Offer",
+          "price": "997",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "997",
+            "priceCurrency": "USD",
+            "unitText": "monthly"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Service",
+        "name": "Home Services AI Automation",
+        "description": "AI solutions for contractors, plumbers, HVAC, and roofers including ContractorsNOW, PlumbersNOW, HVACNOW, and RoofersNOW for emergency response and service scheduling.",
+        "provider": {
+          "@type": "Organization",
+          "name": "SuccessNOW.ai"
+        },
+        "areaServed": ["United States", "Canada"],
+        "serviceType": "Home Services Technology",
+        "offers": {
+          "@type": "Offer",
+          "price": "997",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "997",
+            "priceCurrency": "USD",
+            "unitText": "monthly"
+          }
+        }
       }
     }
   ]

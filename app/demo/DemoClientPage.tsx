@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Phone, MessageSquare, Lightbulb, Users, PhoneCall, AlertTriangle, Zap } from "lucide-react"
 import Link from "next/link"
+import { DemoFAQ } from "@/components/faq/demo-faq"
 
 export default function DemoClientPage() {
   const [activeDemo, setActiveDemo] = useState("voice")
@@ -246,6 +247,8 @@ export default function DemoClientPage() {
           </div>
         </div>
       </section>
+
+      <DemoFAQ />
     </div>
   )
 }

@@ -19,6 +19,7 @@ import {
   Bolt,
 } from "lucide-react"
 import Link from "next/link"
+import { AboutFAQ } from "@/components/faq/about-faq"
 
 const AboutClientPage = () => {
   return (
@@ -422,6 +423,8 @@ const AboutClientPage = () => {
           </div>
         </section>
       </div>
+
+      <AboutFAQ />
     </div>
   )
 }

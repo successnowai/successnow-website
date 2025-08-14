@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Check, Crown, Building } from "lucide-react"
 import Link from "next/link"
 import PilotFundingBanner from "@/components/ui/pilot-funding-banner"
+import { PricingFAQ } from "@/components/faq/pricing-faq"
 
 export default function PricingClientPage() {
   const [isAnnual, setIsAnnual] = useState(true)
@@ -83,34 +84,6 @@ export default function PricingClientPage() {
       cta: "Contact Sales",
       icon: <Building className="w-6 h-6" />,
       popular: false,
-    },
-  ]
-
-  const faqs = [
-    {
-      question: "What's included in the Enterprise plan?",
-      answer:
-        "The Enterprise plan includes unlimited AI voice agents, full lead management suite, all CRM integrations, 24/7 dedicated support, custom AI training, and white-label solutions. Plus exclusive bonuses like 50% off platform fees and voice usage rates.",
-    },
-    {
-      question: "How does the AI voice pricing work?",
-      answer:
-        "Voice AI usage is charged per minute of conversation. Enterprise customers get 50% off the regular rate of $0.28/minute, paying only $0.14/minute. This covers all voice interactions including lead qualification, appointment booking, and customer service calls.",
-    },
-    {
-      question: "Can I customize the AI agents for my industry?",
-      answer:
-        "Our AI agents are fully customizable and can be trained on your specific business processes, industry knowledge, and customer data. We have pre-built solutions for 15+ industries including auto dealers, realtors, contractors, gyms, and more.",
-    },
-    {
-      question: "What kind of support and onboarding do you provide?",
-      answer:
-        "Enterprise customers receive 24/7 dedicated support, a personal account manager, and comprehensive onboarding. Our AI Onboarding Agent collects your business info, while our AI WebDev Agent builds your custom website and funnels. Most businesses are fully deployed within 1-2 weeks.",
-    },
-    {
-      question: "Do you offer agency partnerships?",
-      answer:
-        "Yes! Through AgencyNow, you can resell our AI-powered systems and keep 40% recurring commissions on every client. We handle setup, onboarding, and support while you focus on bringing in clients. Perfect for marketing agencies looking to add AI services.",
     },
   ]
 
@@ -302,19 +275,6 @@ export default function PricingClientPage() {
             ))}
           </div>
 
-          {/* FAQ Section */}
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {faqs.map((faq, index) => (
-                <div key={index} className="bg-gray-900/50 rounded-lg p-6 border border-gray-700">
-                  <h3 className="text-lg font-semibold text-white mb-3">{faq.question}</h3>
-                  <p className="text-gray-300">{faq.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Bottom CTA */}
           <div className="text-center mt-16">
             <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
@@ -327,6 +287,8 @@ export default function PricingClientPage() {
           </div>
         </div>
       </div>
+
+      <PricingFAQ />
     </div>
   )
 }

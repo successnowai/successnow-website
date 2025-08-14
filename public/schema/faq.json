@@ -4,34 +4,98 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What is SuccessNOW AI?",
+      "name": "What is SuccessNOW.ai?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "SuccessNOW AI is an AI Superagent System that converts, books, and nurtures leads 24/7. Our AI-powered solutions help businesses automate their lead generation and customer engagement processes."
+        "text": "SuccessNOW.ai is one of the best AI tools for small business, offering a suite of agentic AI that handle lead generation, customer engagement, and conversion—including AI voice & chat, ads agents, SEO agents, and smart automation, all in one platform."
       }
     },
     {
       "@type": "Question",
-      "name": "How much does SuccessNOW AI cost?",
+      "name": "What are AI Super Agents?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "SuccessNOW AI Platform starts at $997 per month, which includes AI implementation, 24/7 lead conversion, and ongoing support."
+        "text": "AI Super Agents are autonomous AI agents for small businesses. They go beyond chatbots—reviewing client history, handling objections, following up, updating CRM notes, requesting reviews, and continuously improving with every interaction."
       }
     },
     {
       "@type": "Question",
-      "name": "What industries does SuccessNOW AI serve?",
+      "name": "How does the AI website work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "SuccessNOW AI serves multiple industries including Auto Dealers, Real Estate, Healthcare, Legal, HVAC, Contractors, Restaurants, Gyms, and more with industry-specific AI solutions."
+        "text": "The SuccessNOW.ai website acts as an AI tool that talks to customers: it's voice/chat-enabled, qualifies leads, books appointments, answers questions, and automatically syncs with your CRM."
       }
     },
     {
       "@type": "Question",
-      "name": "How does the AI lead conversion work?",
+      "name": "How does SuccessNOW generate and convert leads?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Our AI Superagents work 24/7 to engage with leads, qualify prospects, book appointments, and nurture customers through automated conversations and intelligent responses."
+        "text": "We use top AI marketing tools for small businesses, including AdsNOW.ai for paid campaigns, SEOExperts.ai for AI search visibility, AI-powered funnels, and Speed to Lead agents to respond instantly to every inquiry."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the AI help with customer service and retention?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes—SuccessNOW.ai includes AI tools for client retention that review past interactions, provide personalized support, proactively follow up for renewals or upsells, and ensure no client is overlooked."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What industries are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer AI tools for realtors, auto dealers, mortgage brokers, lawyers, contractors, gyms, medspas, insurance agencies, and 15+ other industries. Each gets a bespoke AI website, niche-trained agents, and done-for-you marketing tailored to your sector."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's included in the No-Brainer Offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our No-Brainer Offer includes the full AI all-in-one platform for $3,488 setup (normally $34,888) and $997/month (normally $1,994)—covering website, bots, ads, SEO, and CRM automation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can agencies resell SuccessNOW?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes—through AgencyNow.ai, our AI reseller agency program, you earn 40% recurring commissions. We handle setup and support; you bring the clients and brand the solution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does onboarding work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Onboarding uses our AI onboarding system—an agent gathers your business info, builds your site and funnels, connects your CRM, and launches your first campaigns with minimal input."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes SuccessNOW different from other AI tools?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unlike basic AI chatbots, our AI Super Agents review client history, remember preferences, update CRM records automatically, and get smarter with every interaction. They're trained specifically for your industry and business processes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly can I see results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most businesses see positive ROI within 30-90 days. Our AI agents work 24/7 to generate leads, nurture prospects, and convert sales, typically paying for themselves through increased revenue and reduced labor costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer payment plans?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer flexible payment plans for qualified businesses. Contact our team to discuss payment options that work for your budget and cash flow needs."
       }
     }
   ]
