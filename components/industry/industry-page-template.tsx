@@ -32,6 +32,7 @@ type IndustryPageTemplateProps = {
   solutions: string[]
   finalCtaTitle: string
   finalCtaDescription: string
+  children?: React.ReactNode
 }
 
 export default function IndustryPageTemplate({
@@ -50,6 +51,7 @@ export default function IndustryPageTemplate({
   solutions = [],
   finalCtaTitle,
   finalCtaDescription,
+  children,
 }: IndustryPageTemplateProps) {
   const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false)
 
@@ -108,9 +110,7 @@ export default function IndustryPageTemplate({
                 <div className="space-y-8">
                   {customBuildPoints.map((point, index) => (
                     <div key={index} className="flex flex-col sm:flex-row items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <point.icon className="h-8 w-8 text-[#00BFFF]" />
-                      </div>
+                      <div className="flex-shrink-0">{point.icon({ className: "h-8 w-8 text-[#00BFFF]" })}</div>
                       <div>
                         <h3 className="text-xl font-semibold">{point.title}</h3>
                         <p className="mt-2 text-gray-400">{point.description}</p>
@@ -168,7 +168,7 @@ export default function IndustryPageTemplate({
                   className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:border-[#00BFFF] transition-colors duration-300"
                 >
                   <CardContent className="p-0 flex flex-col items-center">
-                    <feature.icon className="h-12 w-12 text-[#00BFFF] mb-4" />
+                    {feature.icon({ className: "h-12 w-12 text-[#00BFFF] mb-4" })}
                     <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
                     <p className="text-gray-400">{feature.description}</p>
                   </CardContent>
@@ -242,6 +242,9 @@ export default function IndustryPageTemplate({
           </Card>
         </div>
       </div>
+
+      {children}
+
       <DemoPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
     </div>
   )
