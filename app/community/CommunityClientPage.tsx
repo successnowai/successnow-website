@@ -190,7 +190,7 @@ export default function CommunityClientPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#001a33] via-[#002244] to-[#001a33]">
-      <Navbar currentPage="community" />
+      <Navbar />
 
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
@@ -356,7 +356,7 @@ export default function CommunityClientPage() {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Button
                       variant="outline"
-                      className="flex-1 border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-white"
+                      className="flex-1 border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-white bg-transparent"
                       onClick={() => {
                         // Open PDF in new tab
                         window.open(post.pdfUrl, "_blank")
