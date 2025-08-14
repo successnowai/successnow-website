@@ -270,8 +270,12 @@ export default function DemoPage() {
           }
         }, 5000)
 
-        synth.current.speak(testUtterance)
-        addDebug("Speech test utterance queued")
+        if (synth.current) {
+          synth.current.speak(testUtterance)
+          addDebug("Speech test utterance queued")
+        } else {
+          resolveTest(false, "Speech synthesis not available")
+        }
       } catch (error) {
         addDebug(`Speech test error: ${error}`)
         resolve(false)
