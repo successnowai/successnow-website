@@ -88,20 +88,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
+        {/* Search Atlas OTTO pixel script using dangerouslySetInnerHTML approach */}
+        <script
+          nowprocket=""
+          nitro-exclude=""
+          type="text/javascript"
           id="sa-dynamic-optimization"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              var script = document.createElement("script");
-              script.setAttribute("nowprocket", "");
-              script.setAttribute("nitro-exclude", "");
-              script.src = "https://dashboard.searchatlas.com/scripts/dynamic_optimization.js";
-              script.dataset.uuid = "bb3b5327-e118-40f5-b738-aaf9429af057";
-              script.id = "sa-dynamic-optimization-loader";
-              document.head.appendChild(script);
-            `,
-          }}
+          data-uuid="bb3b5327-e118-40f5-b738-aaf9429af057"
+          src="https://dashboard.searchatlas.com/scripts/dynamic_optimization.js"
+          dangerouslySetInnerHTML={{ __html: "" }}
         />
 
         {/* Google Analytics */}
