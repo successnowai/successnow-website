@@ -1,8 +1,6 @@
 import type { NextRequest } from "next/server"
 
-export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params
-
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
   const templateUrls: Record<string, string> = {
     // Auto Dealer Templates
     "auto-1": "https://v0-autodele-now-template-site.vercel.app/",
@@ -26,11 +24,11 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     mortgage: "https://v0-free-idx-api-options.vercel.app/",
   }
 
-  let templateUrl = templateUrls[id]
+  let templateUrl = templateUrls[params.id]
 
   // If exact match not found, try partial matching
   if (!templateUrl) {
-    const partialMatch = Object.keys(templateUrls).find((key) => key.includes(id) || id.includes(key))
+    const partialMatch = Object.keys(templateUrls).find((key) => key.includes(params.id) || params.id.includes(key))
 
     if (partialMatch) {
       templateUrl = templateUrls[partialMatch]

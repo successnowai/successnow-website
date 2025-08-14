@@ -1,19 +1,18 @@
 import TemplateClientPage from "./TemplateClientPage"
 
 interface TemplatePageProps {
-  params: Promise<{
+  params: {
     id: string
-  }>
+  }
 }
 
-export default async function TemplatePage({ params }: TemplatePageProps) {
-  const { id } = await params
-  return <TemplateClientPage params={{ id }} />
+// EXACT SAME SERVER COMPONENT FOR DESKTOP AND MOBILE
+export default function TemplatePage({ params }: TemplatePageProps) {
+  return <TemplateClientPage params={params} />
 }
 
+// EXACT SAME METADATA GENERATION
 export async function generateMetadata({ params }: TemplatePageProps) {
-  const { id } = await params
-
   const templateTitles: Record<string, string> = {
     "auto-1": "Auto Dealer Website Template",
     "medspa-1": "Medical Spa Website Template",
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: TemplatePageProps) {
     "mortgage-1": "Mortgage Broker Template",
   }
 
-  const title = templateTitles[id] || "Website Template"
+  const title = templateTitles[params.id] || "Website Template"
 
   return {
     title: `${title} - SuccessNOW`,

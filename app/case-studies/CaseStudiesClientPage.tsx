@@ -28,32 +28,6 @@ import {
   Target,
 } from "lucide-react"
 import Link from "next/link"
-import type { JSX } from "react/jsx-runtime"
-
-type IndustryData = {
-  id: string
-  name: string
-  icon: JSX.Element
-  image: string
-  before: {
-    [key: string]: number | string[]
-    total: number
-    problems: string[]
-  }
-  after: {
-    savings: number
-    improvements: string[]
-    results: {
-      [key: string]: string
-    }
-  }
-  testimonial: {
-    quote: string
-    name: string
-    title: string
-    location: string
-  }
-}
 
 const commonPainPoints = [
   {
@@ -112,7 +86,7 @@ const commonPainPoints = [
   },
 ]
 
-const industryData: IndustryData[] = [
+const industryData = [
   {
     id: "auto-dealers",
     name: "Auto Dealers",
@@ -374,7 +348,7 @@ const industryData: IndustryData[] = [
 ]
 
 export default function CaseStudiesClientPage() {
-  const [selectedIndustry, setSelectedIndustry] = useState<IndustryData | null>(null)
+  const [selectedIndustry, setSelectedIndustry] = useState(null)
   const [showCalculator, setShowCalculator] = useState(false)
 
   const totalSavingsRange = industryData.reduce(

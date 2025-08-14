@@ -270,12 +270,8 @@ export default function DemoPage() {
           }
         }, 5000)
 
-        if (synth.current) {
-          synth.current.speak(testUtterance)
-          addDebug("Speech test utterance queued")
-        } else {
-          resolveTest(false, "Speech synthesis not available")
-        }
+        synth.current.speak(testUtterance)
+        addDebug("Speech test utterance queued")
       } catch (error) {
         addDebug(`Speech test error: ${error}`)
         resolve(false)
@@ -494,7 +490,7 @@ export default function DemoPage() {
           text.length * 120 + 8000,
         )
 
-        synth.current?.speak(utterance) // Added optional chaining to prevent null reference error
+        synth.current.speak(utterance)
         addDebug("🎤 Speech utterance queued for playback")
       } catch (error) {
         addDebug(`❌ Speech creation failed: ${error}`)
