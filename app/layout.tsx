@@ -90,8 +90,8 @@ export default function RootLayout({
       <head>
         {/* Search Atlas SEO Dynamic Optimization - Fixed with proper attributes */}
         <script
-          nowprocket
-          nitro-exclude
+          nowprocket="true"
+          nitro-exclude="true"
           type="text/javascript"
           id="sa-dynamic-optimization"
           data-uuid="c49a505f-130d-4de4-a994-40b234b3f57d"
