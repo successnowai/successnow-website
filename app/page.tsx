@@ -11,12 +11,19 @@ import PricingTable from "@/components/home/pricing-table"
 import AdsNowSection from "@/components/home/adsnow-section"
 import CtaSection from "@/components/home/cta-section"
 import PilotFundingPopup from "@/components/ui/pilot-funding-popup"
+import { GlowingOrbCta } from "@/components/ui/glowing-orb-cta"
+import LiveDemo from "@/components/home/live-demo"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <StarryBackground />
       <PilotFundingPopup />
+
+      <div className="fixed bottom-6 right-6 z-40">
+        <GlowingOrbCta size="lg" label="Talk to AI Now" />
+      </div>
+
       <NewTopHeroSection />
       <GlassmorphicProblemsSection />
       <div className="pt-24">
@@ -26,6 +33,9 @@ export default function HomePage() {
       <UrgencyAlertSection />
       <LegendaryHeroSection />
       <BusinessRealitySection />
+
+      <LiveDemo />
+
       <IndustrySolutions />
       <PricingTable />
       <AdsNowSection />

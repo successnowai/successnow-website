@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
 import { Navbar } from "@/components/navigation/navbar"
 import { Footer } from "@/components/home/footer"
-import { AutoPilotFundingPopup } from "@/components/ui/pilot-funding-popup"
 import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -91,7 +90,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <ScrollToTop />
-          <AutoPilotFundingPopup />
           <Navbar />
           <main>{children}</main>
           <Footer />

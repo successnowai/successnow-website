@@ -12,11 +12,10 @@ export function AutoPilotFundingPopup() {
     const hasShown = sessionStorage.getItem("pilot-funding-popup-shown")
 
     if (!hasShown) {
-      // Show popup after 20 seconds
       const timer = setTimeout(() => {
         setIsVisible(true)
         sessionStorage.setItem("pilot-funding-popup-shown", "true")
-      }, 20000)
+      }, 10000)
 
       return () => clearTimeout(timer)
     }
@@ -34,7 +33,7 @@ export function AutoPilotFundingPopup() {
   if (!isVisible) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
       <div className="relative w-full max-w-2xl bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-2xl shadow-2xl border border-purple-500/20 overflow-hidden">
         {/* Close Button */}
         <button
