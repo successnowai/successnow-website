@@ -46,7 +46,7 @@ export default function PricingClientPage() {
         {
           title: "50% OFF AI Voice Usage",
           subtitle: "Regular $0.28/minute",
-          price: "Only $0.14/minute",
+          price: "Only $0.07/minute",
           color: "pink",
         },
         {

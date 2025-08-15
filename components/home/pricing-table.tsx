@@ -146,9 +146,9 @@ export default function PricingTable() {
                       <Phone className="w-6 h-6 text-pink-400" />
                     </div>
                   </div>
-                  <h4 className="font-bold text-white text-sm mb-1">BONUS: 50% OFF AI Voice Usage</h4>
-                  <p className="text-gray-400 text-xs line-through">Regular $0.28/minute</p>
-                  <p className="text-green-400 font-semibold text-lg">Only $0.14/minute</p>
+                  <h4 className="font-bold text-white text-sm mb-1">BONUS: Industry Leading Voice AI Pricing</h4>
+                  <p className="text-gray-400 text-xs line-through">Regular $0.14/minute</p>
+                  <p className="text-green-400 font-semibold text-lg">Only $0.07/minute</p>
                 </div>
               </div>
 

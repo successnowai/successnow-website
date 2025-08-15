@@ -52,10 +52,10 @@
     },
     {
       "@type": "Question",
-      "name": "What's included in the No-Brainer Offer?",
+      "name": "What's included in the Pilot Program offer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Our No-Brainer Offer includes the full AI all-in-one platform for $988 setup (regularly $9,988 with automatic coupon) and $997/month (normally $1,994)—covering website, bots, ads, SEO, CRM automation, plus AdsNow.ai Platinum ($998/mo value) and AI SEO by SEOExperts.ai."
+        "text": "Our Pilot Program includes the full AI all-in-one platform for $988 one-time setup fee (regularly $9,988 with automatic 'Pilot' discount) and $997/month (normally $1,994 with 50% off for life)—covering website, bots, ads, SEO, CRM automation, plus AdsNow.ai Platinum ($998/mo value), AI SEO by SEOExperts.ai, and industry-leading voice AI at only $0.07/minute."
       }
     },
     {
@@ -71,7 +71,7 @@
       "name": "How does onboarding work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Onboarding uses our AI onboarding system—an agent gathers your business info, builds your site and funnels, connects your CRM, and launches your first campaigns with minimal input."
+        "text": "Onboarding uses our AI onboarding system—an agent gathers your business info, builds your site and funnels, connects your CRM, and launches your first campaigns with minimal input. Plus we provide industry-leading 4 x 1 hour onboarding sessions with an expert, weekly group training, recorded training, and 24/7 live support."
       }
     },
     {
