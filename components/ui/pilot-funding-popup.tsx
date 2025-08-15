@@ -53,7 +53,7 @@ export function AutoPilotFundingPopup() {
             <div className="flex-1">
               <div className="flex items-center justify-between mb-2">
                 <h2 className="text-2xl font-bold text-white">
-                  Pilot Funding Announced — $2,000 Off Your Custom AI Build
+                  Pilot Funding Announced — $9,000 Off Your Custom AI Build
                 </h2>
                 <div className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                   Limited Time
@@ -67,9 +67,11 @@ export function AutoPilotFundingPopup() {
             <p className="text-gray-300 text-lg mb-4">
               SuccessNOW AI Systems Inc. has been awarded{" "}
               <span className="text-orange-400 font-semibold">$250,000 in pilot funding</span> to help local businesses
-              adopt AI at an affordable price. No application required—use code{" "}
-              <span className="bg-yellow-400 text-black px-2 py-1 rounded font-bold">2000OFF</span> to launch your fully
-              custom setup:
+              adopt AI at an affordable price.{" "}
+              <span className="bg-yellow-400 text-black px-2 py-1 rounded font-bold">Pilot</span> code automatically
+              applied for a very limited time while funds last — get your fully custom{" "}
+              <span className="text-green-400 font-bold">one-time setup fee for just $988</span> (regularly $9,988) plus{" "}
+              <span className="text-blue-400 font-bold">50% off monthly fees for life</span> at only $997/month:
             </p>
 
             {/* Feature List */}
@@ -88,12 +90,21 @@ export function AutoPilotFundingPopup() {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                <span className="text-gray-300">AI paid ads & SEO</span>
+                <span className="text-gray-300">AdsNow.ai Platinum + AI SEO</span>
               </div>
             </div>
 
+            <p className="text-orange-400 font-semibold text-lg mb-2">
+              Includes AdsNow.ai Platinum ($998/mo value), AI SEO by SEOExperts.ai, and{" "}
+              <span className="text-green-400">2 months FREE platform access</span> (saving $1,994).
+            </p>
+
+            <p className="text-green-400 font-semibold mb-4">
+              30-day money-back guarantee — No Risk, Just Missed Opportunity!
+            </p>
+
             <p className="text-orange-400 font-semibold text-lg">
-              Claim your spot now—this pilot program is limited and ends soon.
+              Claim your spot now—this pilot program is limited and ends soon while funds last.
             </p>
           </div>
 

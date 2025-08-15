@@ -242,26 +242,36 @@ export default function RevolutionaryAiCard() {
                 <span className="text-8xl font-black text-cyan-400">$</span>
                 <div>
                   <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">
-                    LESS THAN <span className="text-pink-400">30¢</span> PER MINUTE
+                    ONE-TIME SETUP FEE <span className="text-pink-400">$988</span>
                   </h3>
-                  <p className="text-2xl text-gray-300 font-semibold mb-6">
-                    Average 2-3 minute sales call = <span className="text-cyan-400">LESS THAN $1</span> per booked
-                    appointment
+                  <p className="text-2xl text-gray-300 font-semibold mb-4">
+                    Regularly $9,988 - <span className="text-cyan-400">90% OFF</span> Pilot Program +
+                    <span className="text-blue-400"> 50% OFF monthly fees for life</span> at only $997/month
+                  </p>
+                  <p className="text-lg text-green-400 font-semibold mb-2">
+                    Includes 2 months FREE platform access (saving $1,994)
+                  </p>
+                  <p className="text-sm text-green-400 font-semibold">
+                    30-day money-back guarantee — No Risk, Just Missed Opportunity!
                   </p>
                 </div>
               </div>
               <ul className="space-y-3 text-gray-300 text-lg">
                 <li className="flex items-start gap-3">
                   <span className="text-pink-400 mt-1">•</span>
-                  <span>No hourly wages, benefits, or training costs</span>
+                  <span>Complete AI website, voice agents, and automation setup</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-cyan-400 mt-1">•</span>
-                  <span>Works 24/7 without breaks or sick days</span>
+                  <span>AdsNow.ai Platinum ($998/mo value) + AI SEO by SEOExperts.ai included</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-pink-400 mt-1">•</span>
-                  <span>Scales infinitely with your business growth</span>
+                  <span>Works 24/7 without breaks, sick days, or training costs</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-400 mt-1">•</span>
+                  <span>Pilot Program: Lifetime 50% discount on monthly platform fees</span>
                 </li>
               </ul>
             </CardContent>

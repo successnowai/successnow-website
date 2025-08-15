@@ -58,8 +58,9 @@ export default function AdsNowSection() {
             </h2>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Get our premium advertising AI platform included FREE with your SuccessNOW subscription. Create, optimize,
-              and scale high-converting ad campaigns across all major platforms.
+              For just the price of AdsNOW.ai Platinum package, get all the SuccessNOW.ai AI features and automations to
+              help you get more clients and automate it for you - thanks to our Pilot Program and our Founder's mission
+              to help as many businesses as he can with AI!
             </p>
 
             <div className="space-y-4 mb-8">
@@ -114,36 +115,38 @@ export default function AdsNowSection() {
                 <div className="text-center mb-6">
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-full border border-orange-500/30 mb-4">
                     <Sparkles className="w-4 h-4 text-orange-400" />
-                    <span className="text-orange-300 font-semibold">FREE Bonus</span>
+                    <span className="text-orange-300 font-semibold">Pilot Program Special</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">AdsNOW Platform</h3>
-                  <p className="text-gray-400">Normally $497/month - Included FREE</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">Complete SuccessNOW Package</h3>
+                  <p className="text-gray-400">AdsNOW Platinum alone: $998/month</p>
+                  <p className="text-green-400 font-semibold">Your Price: Just $997/month</p>
                 </div>
 
                 <div className="space-y-4">
                   <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-gray-300">AI Ad Creation</span>
+                    <span className="text-gray-300">AdsNOW.ai Platinum</span>
                     <Badge className="bg-green-600 text-white">Included</Badge>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-gray-300">Campaign Optimization</span>
+                    <span className="text-gray-300">AI SEO by SEOExperts.ai</span>
                     <Badge className="bg-green-600 text-white">Included</Badge>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-gray-300">Multi-Platform Management</span>
+                    <span className="text-gray-300">AI Voice Agents & Automation</span>
                     <Badge className="bg-green-600 text-white">Included</Badge>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                    <span className="text-gray-300">Advanced Analytics</span>
+                    <span className="text-gray-300">Custom Website & CRM</span>
                     <Badge className="bg-green-600 text-white">Included</Badge>
                   </div>
                 </div>
 
                 <div className="mt-6 p-4 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-lg border border-orange-500/20">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-white mb-1">$5,964</div>
-                    <div className="text-orange-400 font-semibold">Total Value Per Year</div>
-                    <div className="text-sm text-gray-400 mt-1">SuccessNOW + AdsNOW Combined</div>
+                    <div className="text-3xl font-bold text-white mb-1">$4,896</div>
+                    <div className="text-orange-400 font-semibold">Total Value Per Month</div>
+                    <div className="text-sm text-gray-400 mt-1">Complete AI Business System</div>
+                    <div className="text-green-400 font-bold mt-2">79% OFF - Pilot Program Only</div>
                   </div>
                 </div>
               </CardContent>

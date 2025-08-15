@@ -19,8 +19,8 @@ export default function PricingClientPage() {
       monthlyPrice: 997,
       annualPrice: 9970,
       savings: "Save $1,994",
-      originalPrice: 35000,
-      discountPrice: 3488,
+      originalPrice: 9988,
+      discountPrice: 988,
       limitedTime: true,
       features: [
         "Unlimited AI Voice Agents",
@@ -54,11 +54,11 @@ export default function PricingClientPage() {
           color: "green",
         },
         {
-          title: "AdsNOW AI Agent by adsnow.ai included",
+          title: "AdsNOW.ai Platinum included ($998/mo value)",
           color: "purple",
         },
         {
-          title: "SEONOW by SEOexperts.ai included",
+          title: "AI SEO by SEOExperts.ai included",
           color: "blue",
         },
       ],
@@ -181,7 +181,7 @@ export default function PricingClientPage() {
                           Usually ${plan.originalPrice?.toLocaleString()}
                         </div>
                         <div className="text-4xl font-bold text-white">${plan.discountPrice?.toLocaleString()}</div>
-                        <div className="text-sm text-gray-400">One-time payment</div>
+                        <div className="text-sm text-gray-400">One-time payment (coupon automatically applied)</div>
                       </div>
                     ) : typeof plan.monthlyPrice === "string" ? (
                       <div className="text-4xl font-bold text-white mb-2">Custom</div>

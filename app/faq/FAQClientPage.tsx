@@ -57,7 +57,7 @@ const faqData = [
       {
         question: "How are the AI agents trained for my industry?",
         answer:
-          "Each industry gets pre-built AI systems with specialized knowledge, objection handling, and conversation flows. Our agents understand your market's pain points, buying cycles, and communication preferences to engage prospects like an experienced industry professional.",
+          "On top of our prebuilt AI agents with specialized industry knowledge, we custom train the AI agents specifically on your business by creating a comprehensive knowledge base with your mission, goals, and objectives for each AI agent. This ensures your agents understand not just your industry, but your unique business approach, values, and specific processes to engage prospects exactly how you would.",
       },
     ],
   },
@@ -68,7 +68,7 @@ const faqData = [
       {
         question: "What's included in the No-Brainer Offer?",
         answer:
-          "Our No-Brainer Offer includes the full AI all-in-one platform for $3,488 setup (normally $34,888) and $997/month (normally $1,994)—covering website, bots, ads, SEO, and CRM automation. You get a complete AI ecosystem ready to go.",
+          "Our No-Brainer Offer includes the full AI all-in-one platform for $988 setup (regularly $9,988 with automatic coupon) and $997/month (normally $1,994)—covering website, bots, ads, SEO, CRM automation, plus AdsNow.ai Platinum ($998/mo value) and AI SEO by SEOExperts.ai. You get a complete AI ecosystem ready to go.",
       },
       {
         question: "Can agencies resell SuccessNOW?",
@@ -84,7 +84,7 @@ const faqData = [
       {
         question: "How does onboarding work?",
         answer:
-          "Onboarding uses our AI onboarding system—an agent gathers your business info, builds your site and funnels, connects your CRM, and launches your first campaigns with minimal input. Most businesses are fully deployed within 1-2 weeks from sign-up.",
+          "Onboarding uses our AI onboarding system—an agent gathers your business info, builds your site and funnels, connects your CRM, and launches your first campaigns with minimal input. On top of this, we provide industry-leading 4 x 1 hour onboarding sessions with an expert to make sure you are setup and ready to succeed. We also offer weekly group training, recorded training sessions, and 24/7 live support. Most businesses are fully deployed within 1-2 weeks from sign-up.",
       },
       {
         question: "What kind of support do I get?",

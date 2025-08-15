@@ -99,7 +99,7 @@ export default function SignupClientPage() {
     {
       question: "What if I'm not satisfied?",
       answer:
-        "We offer a 30-day money-back guarantee. If you're not completely satisfied with the results, we'll refund your investment.",
+        "We offer a 30-day money-back guarantee on our one-time setup fee. If you're not completely satisfied with the results, we'll refund your investment. No Risk, Just Missed Opportunity!",
     },
     {
       question: "How does the AI handle complex conversations?",
@@ -146,7 +146,7 @@ export default function SignupClientPage() {
             </div>
             <div className="flex items-center gap-2 text-green-400">
               <Check className="w-5 h-5" />
-              <span>30-Day Money Back</span>
+              <span>30-Day Money Back - No Risk, Just Missed Opportunity!</span>
             </div>
             <div className="flex items-center gap-2 text-green-400">
               <Check className="w-5 h-5" />
@@ -380,7 +380,7 @@ export default function SignupClientPage() {
 
             <div className="flex items-center justify-center gap-2 mt-6 text-green-400">
               <Check className="w-5 h-5" />
-              <span>30-Day Money Back Guarantee</span>
+              <span>30-Day Money Back Guarantee - No Risk, Just Missed Opportunity!</span>
             </div>
           </CardContent>
         </Card>

@@ -18,8 +18,8 @@ export default function PricingTable() {
     monthlyPrice: 997,
     annualPrice: 9970,
     savings: "Save $1,994",
-    originalPrice: 35000,
-    discountPrice: 3488,
+    originalPrice: 9988,
+    discountPrice: 988,
     limitedTime: true,
     features: [
       "Unlimited AI Voice Agents",
@@ -37,11 +37,11 @@ export default function PricingTable() {
     ],
     bonuses: [
       {
-        title: "AdsNOW AI Agent by adsnow.ai included",
+        title: "AdsNOW.ai Platinum included ($998/mo value)",
         color: "purple",
       },
       {
-        title: "SEONOW by SEOexperts.ai included",
+        title: "AI SEO by SEOExperts.ai included",
         color: "blue",
       },
     ],
@@ -50,7 +50,7 @@ export default function PricingTable() {
   }
 
   const pricingMessage =
-    "Get the complete AI Enterprise solution for just $3,488 setup instead of $35,000, plus only $997 per month instead of $1,994. This includes unlimited AI voice agents, full lead management, all CRM integrations, 24/7 support, and custom AI training. Plus you get 2 months free and 50% off platform fees."
+    "Get the complete AI Enterprise solution for just $988 one-time setup fee (90% off $9,988) plus only $997/month thanks to our Pilot Program's 50% off monthly fees for life. Includes 2 months free platform access, AdsNow.ai Platinum worth $998 per month, and AI SEO by SEOExperts.ai. 30-day money-back guarantee - No Risk, Just Missed Opportunity!"
 
   return (
     <section className="py-16 px-6 bg-black" id="pricing">
@@ -123,7 +123,8 @@ export default function PricingTable() {
                     Usually ${plan.originalPrice?.toLocaleString()}
                   </div>
                   <div className="text-5xl font-bold text-white">${plan.discountPrice?.toLocaleString()}</div>
-                  <div className="text-sm text-gray-400">One-time payment</div>
+                  <div className="text-sm text-gray-400">One-time Setup Fee (90% OFF - Pilot Program)</div>
+                  <div className="text-xs text-green-400 font-semibold">Includes 2 Months Platform Access FREE</div>
                 </div>
               </div>
 
@@ -135,7 +136,7 @@ export default function PricingTable() {
                       <TrendingUp className="w-6 h-6 text-blue-400" />
                     </div>
                   </div>
-                  <h4 className="font-bold text-white text-sm mb-1">BONUS: 50% OFF Platform Fees</h4>
+                  <h4 className="font-bold text-white text-sm mb-1">PILOT PROGRAM: 50% OFF Monthly Fees FOR LIFE</h4>
                   <p className="text-gray-400 text-xs line-through">Regular $1,994/month</p>
                   <p className="text-green-400 font-semibold text-lg">Only $997/month</p>
                 </div>
@@ -199,7 +200,10 @@ export default function PricingTable() {
               </Link>
 
               {/* Money Back Guarantee */}
-              <p className="text-center text-xs text-gray-500 mt-4">30-day money-back guarantee</p>
+              <p className="text-center text-sm text-gray-400 mt-4">
+                30-day money-back guarantee •{" "}
+                <span className="text-green-400 font-semibold">No Risk, Just Missed Opportunity!</span>
+              </p>
             </CardContent>
           </Card>
         </div>
