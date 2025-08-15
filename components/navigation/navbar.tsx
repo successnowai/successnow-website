@@ -9,6 +9,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isIndustriesOpen, setIsIndustriesOpen] = useState(false)
+  const [isCompetitorsOpen, setIsCompetitorsOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +34,19 @@ export function Navbar() {
     { name: "Restaurants", href: "/restaurantsnow" },
     { name: "Roofers", href: "/roofersnow" },
     { name: "Solar", href: "/solarnow" },
+  ]
+
+  const competitors = [
+    { name: "Lindy AI", href: "/competitors/lindy-ai" },
+    { name: "JustCall", href: "/competitors/justcall" },
+    { name: "Synthflow", href: "/competitors/synthflow" },
+    { name: "Regal AI", href: "/competitors/regal-ai" },
+    { name: "Resemble AI", href: "/competitors/resemble-ai" },
+    { name: "Thinkrr.ai", href: "/competitors/thinkrr-ai" },
+    { name: "HubSpot", href: "/competitors/hubspot" },
+    { name: "Salesforce", href: "/competitors/salesforce" },
+    { name: "Claude", href: "/competitors/claude" },
+    { name: "ChatGPT", href: "/competitors/chatgpt" },
   ]
 
   return (
@@ -83,6 +97,42 @@ export function Navbar() {
                       onClick={() => setIsIndustriesOpen(false)}
                     >
                       {industry.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="relative">
+              <div className="flex items-center">
+                <Link href="/competitors" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  Competitors
+                </Link>
+                <button
+                  onClick={() => setIsCompetitorsOpen(!isCompetitorsOpen)}
+                  className="ml-1 text-gray-300 hover:text-white transition-colors duration-200"
+                >
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+              </div>
+
+              {isCompetitorsOpen && (
+                <div className="absolute top-full left-0 mt-2 w-48 bg-slate-800 rounded-lg shadow-xl border border-purple-500/20 py-2 z-50 max-h-80 overflow-y-auto">
+                  <Link
+                    href="/competitors"
+                    className="block px-4 py-2 text-cyan-300 hover:text-white hover:bg-slate-700 transition-colors duration-200 font-semibold border-b border-gray-700/50"
+                    onClick={() => setIsCompetitorsOpen(false)}
+                  >
+                    All Comparisons
+                  </Link>
+                  {competitors.map((competitor) => (
+                    <Link
+                      key={competitor.href}
+                      href={competitor.href}
+                      className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-200"
+                      onClick={() => setIsCompetitorsOpen(false)}
+                    >
+                      vs {competitor.name}
                     </Link>
                   ))}
                 </div>
@@ -151,6 +201,13 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
               >
                 Industries
+              </Link>
+              <Link
+                href="/competitors"
+                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                Competitors
               </Link>
               <Link
                 href="/pricing"

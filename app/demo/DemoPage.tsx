@@ -40,13 +40,13 @@ export default function DemoPage() {
   const addDebug = (message: string) => {
     const timestamp = new Date().toLocaleTimeString()
     const logMessage = `[${timestamp}] ${message}`
-    console.log(`[Jessica Audio]: ${logMessage}`)
+    console.log(`[Robin Audio]: ${logMessage}`)
     setDebugLog((prev) => [...prev.slice(-4), logMessage])
   }
 
   // Script content
   const demoScript = [
-    "Hi there! I'm Jessica, your AI SuperAgent from SuccessNOW.",
+    "Hi there! I'm Robin, your AI SuperAgent from SuccessNOW.",
     "I work 24/7 to help businesses like yours convert leads, book appointments, and nurture relationships.",
     "Unlike chatbots, I can have natural conversations with your leads, understand their needs, and take meaningful actions.",
     "I can qualify leads, schedule appointments, answer FAQs, and even transfer hot leads directly to your sales team.",
@@ -572,16 +572,16 @@ export default function DemoPage() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
-            Meet Jessica - Your AI SuperAgent
+            Meet Robin - Your AI SuperAgent
           </h1>
           <p className="text-xl sm:text-2xl text-blue-100 max-w-3xl mx-auto">
-            Experience a live demo with Jessica, your 24/7 AI agent who never sleeps and never misses a lead
+            Experience a live demo with Robin, your 24/7 AI agent who never sleeps and never misses a lead
           </p>
         </div>
 
         <div className="mb-12">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-white mb-4">Connect with Jessica Instantly</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Connect with Robin Instantly</h2>
             <p className="text-lg text-blue-100 max-w-2xl mx-auto">
               Choose your preferred way to connect - call directly or have our AI call you back in 30 seconds
             </p>
@@ -592,9 +592,9 @@ export default function DemoPage() {
         {/* AI Call Widget Section */}
         <div className="mb-12">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-white mb-4">Talk to Jessica Right Now</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Talk to Robin Right Now</h2>
             <p className="text-lg text-blue-100 max-w-2xl mx-auto">
-              Choose your preferred way to connect with our AI SuperAgent - call directly or have Jessica call you back
+              Choose your preferred way to connect with our AI SuperAgent - call directly or have Robin call you back
             </p>
           </div>
           <AICallWidget />
@@ -606,10 +606,10 @@ export default function DemoPage() {
             <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <Headphones className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Start Jessica's Voice Demo</h3>
+            <h3 className="text-xl font-bold text-white mb-2">Start Robin's Voice Demo</h3>
             <p className="text-blue-100 mb-4">
-              Tap below to unlock audio and hear Jessica speak. This will play a brief audio test to ensure your device
-              is ready.
+              Tap below to unlock audio and hear Robin speak. This will play a brief audio test to ensure your device is
+              ready.
             </p>
             <Button
               onClick={handlePlayClick}
@@ -642,7 +642,7 @@ export default function DemoPage() {
             {audioStatus === "ready" && (
               <div className="mt-4 flex items-center justify-center space-x-2 text-green-300">
                 <CheckCircle className="w-5 h-5" />
-                <span>✅ Voice test passed! Jessica will speak during the demo.</span>
+                <span>✅ Voice test passed! Robin will speak during the demo.</span>
               </div>
             )}
             {audioStatus === "failed" && (
@@ -678,7 +678,7 @@ export default function DemoPage() {
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                   <span className="text-2xl">🤖</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white">Jessica - SuccessNOW AI SuperAgent</h3>
+                <h3 className="text-xl font-semibold text-white">Robin - SuccessNOW AI SuperAgent</h3>
               </div>
               <div className="flex space-x-2">
                 {audioStatus === "ready" && speechTestPassed.current && (
@@ -717,7 +717,7 @@ export default function DemoPage() {
                       )}
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-2">
-                      {isPlaying ? "🎤 Jessica is Speaking" : "Jessica is Ready"}
+                      {isPlaying ? "🎤 Robin is Speaking" : "Robin is Ready"}
                     </h3>
                     <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-500 text-white text-sm">
                       <span className={`w-2 h-2 bg-white rounded-full mr-2 ${isPlaying ? "animate-pulse" : ""}`}></span>
@@ -741,7 +741,7 @@ export default function DemoPage() {
               {/* Message Display */}
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-white text-lg break-words min-h-[100px] flex items-center">
                 <div className="w-full">
-                  {currentMessage || "Jessica will begin speaking momentarily..."}
+                  {currentMessage || "Robin will begin speaking momentarily..."}
                   {isProcessing && <span className="inline-block ml-1 animate-pulse">▌</span>}
                 </div>
               </div>
@@ -782,7 +782,7 @@ export default function DemoPage() {
           {/* Demo Script */}
           <div className="bg-white/10 backdrop-blur-sm rounded-xl shadow-xl p-6 text-white">
             <h3 className="text-2xl font-bold mb-6 flex items-center">
-              <span className="mr-2">📝</span> Jessica's Demo Script
+              <span className="mr-2">📝</span> Robin's Demo Script
             </h3>
             <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2">
               {demoScript.map((step, index) => (
@@ -827,7 +827,7 @@ export default function DemoPage() {
             <DialogHeader>
               <DialogTitle className="text-xl font-bold mb-4">Live Transfer</DialogTitle>
             </DialogHeader>
-            <p className="mb-4">Who would you like Jessica to transfer you to?</p>
+            <p className="mb-4">Who would you like Robin to transfer you to?</p>
             <Input
               type="text"
               value={transferName}

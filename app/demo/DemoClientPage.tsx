@@ -108,7 +108,7 @@ export default function DemoClientPage() {
       <section className="py-8 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-white mb-4">Connect with Jessica Instantly</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Connect with Robin Instantly</h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Call directly or have our AI call you back in 30 seconds
             </p>
