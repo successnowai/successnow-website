@@ -30,7 +30,22 @@ export default function HomePage() {
     {
       question: "What's included in the SuccessNOW AI platform?",
       answer:
-        "The complete SuccessNOW AI platform includes unlimited AI voice agents, AI-powered websites, automated advertising with AdsNOW, SEO optimization, social media management, CRM integration, 24/7 support, and custom AI training - all for just $997 per month with a one-time $3,488 setup fee.",
+        "The complete SuccessNOW AI platform includes unlimited AI voice agents at industry-leading $0.07/minute rates, AI-powered websites, AdsNOW.ai Platinum ($998/mo value), AI SEO by SEOExperts.ai, automated advertising, CRM integration, 24/7 support, and custom AI training - all for just $997 per month with a one-time $988 setup fee through our Pilot Program.",
+    },
+    {
+      question: "How much does SuccessNOW AI cost?",
+      answer:
+        "Our Pilot Program offers 90% off setup at just $988 (normally $9,988) and 50% off monthly fees for life at $997/month (normally $1,994). This includes everything: AI voice agents, website, AdsNOW.ai Platinum, AI SEO, CRM integration, plus 2 months FREE platform access and expert onboarding sessions.",
+    },
+    {
+      question: "What makes SuccessNOW different from competitors?",
+      answer:
+        "Unlike basic chatbots or generic AI tools, SuccessNOW AI Super Agents review client history before every interaction, handle complex objections, update CRM records automatically, and get smarter with each conversation. We offer industry-specific solutions for 15+ verticals with proven ROI and comprehensive support.",
+    },
+    {
+      question: "How do I get started with AI voice agents?",
+      answer:
+        "Start by experiencing our live AI demo at successnow.ai/demo where you can talk directly with our AI. Then book a strategy call to discuss your specific business needs. Our AI Onboarding Agent handles the setup process, and most businesses are deployed within 1-2 weeks with full expert support.",
     },
   ]
 

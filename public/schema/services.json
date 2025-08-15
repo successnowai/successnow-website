@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "SuccessNOW.ai AI Business Services",
-  "description": "Best AI tools for small business - comprehensive AI-powered automation services and solutions",
+  "description": "Best AI tools for small business - comprehensive AI-powered automation services and solutions with voice agents, automated marketing, and business growth tools",
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -10,22 +10,27 @@
       "item": {
         "@type": "Service",
         "name": "AI Super Agents for Lead Conversion",
-        "description": "24/7 AI agents for small businesses that convert leads, book appointments, and nurture prospects automatically. Never miss another lead with our intelligent AI tools that talk to customers.",
+        "description": "24/7 AI agents for small businesses that convert leads, book appointments, and nurture prospects automatically. Revolutionary AI voice agents with industry-leading $0.07/minute pricing.",
         "provider": {
           "@type": "Organization",
           "name": "SuccessNOW.ai"
         },
-        "areaServed": ["United States", "Canada"],
+        "areaServed": ["United States", "Canada", "Worldwide"],
         "serviceType": "Lead Generation",
         "offers": {
           "@type": "Offer",
-          "price": "997",
+          "price": "988",
           "priceCurrency": "USD",
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "997",
+            "price": "988",
             "priceCurrency": "USD",
-            "unitText": "monthly"
+            "unitText": "one-time setup fee"
+          },
+          "additionalProperty": {
+            "@type": "PropertyValue",
+            "name": "Monthly Fee",
+            "value": "$997/month (Pilot Program - 50% off for life)"
           }
         }
       }
@@ -36,22 +41,22 @@
       "item": {
         "@type": "Service",
         "name": "AI Marketing Tools for Small Business",
-        "description": "Complete AI marketing automation including AdsNOW.ai for paid campaigns and SEOExperts.ai for organic visibility. AI all-in-one platform for business growth.",
+        "description": "Complete AI marketing automation including AdsNOW.ai Platinum ($998/mo value) for paid campaigns and AI SEO by SEOExperts.ai for organic visibility. AI all-in-one platform for business growth.",
         "provider": {
           "@type": "Organization",
           "name": "SuccessNOW.ai"
         },
-        "areaServed": ["United States", "Canada"],
+        "areaServed": ["United States", "Canada", "Worldwide"],
         "serviceType": "Digital Marketing",
         "offers": {
           "@type": "Offer",
-          "price": "997",
+          "price": "988",
           "priceCurrency": "USD",
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "997",
+            "price": "988",
             "priceCurrency": "USD",
-            "unitText": "monthly"
+            "unitText": "one-time setup fee"
           }
         }
       }
@@ -62,7 +67,7 @@
       "item": {
         "@type": "Service",
         "name": "AI Tools for Realtors and Auto Dealers",
-        "description": "Industry-specific AI solutions including RealtorNOW for real estate lead qualification and AutoDealersNOW for automotive sales automation.",
+        "description": "Industry-specific AI solutions including RealtorNOW for real estate lead qualification and AutoDealersNOW for automotive sales automation with voice-enabled AI agents.",
         "provider": {
           "@type": "Organization",
           "name": "SuccessNOW.ai"
@@ -71,13 +76,13 @@
         "serviceType": "Industry Solutions",
         "offers": {
           "@type": "Offer",
-          "price": "997",
+          "price": "988",
           "priceCurrency": "USD",
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "997",
+            "price": "988",
             "priceCurrency": "USD",
-            "unitText": "monthly"
+            "unitText": "one-time setup fee"
           }
         }
       }
@@ -93,17 +98,17 @@
           "@type": "Organization",
           "name": "SuccessNOW.ai"
         },
-        "areaServed": ["United States", "Canada"],
+        "areaServed": ["United States", "Canada", "Worldwide"],
         "serviceType": "Customer Relationship Management",
         "offers": {
           "@type": "Offer",
-          "price": "997",
+          "price": "988",
           "priceCurrency": "USD",
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "997",
+            "price": "988",
             "priceCurrency": "USD",
-            "unitText": "monthly"
+            "unitText": "one-time setup fee"
           }
         }
       }
@@ -114,22 +119,22 @@
       "item": {
         "@type": "Service",
         "name": "AI Onboarding for Small Business",
-        "description": "Complete AI implementation service where our AI Onboarding Agent collects business info, AI WebDev Agent builds websites, and AI CRM Setup tracks every lead automatically.",
+        "description": "Complete AI implementation service where our AI Onboarding Agent collects business info, AI WebDev Agent builds websites, and AI CRM Setup tracks every lead automatically. Includes 4 x 1 hour expert onboarding sessions.",
         "provider": {
           "@type": "Organization",
           "name": "SuccessNOW.ai"
         },
-        "areaServed": ["United States", "Canada"],
+        "areaServed": ["United States", "Canada", "Worldwide"],
         "serviceType": "Business Consulting",
         "offers": {
           "@type": "Offer",
-          "price": "3488",
+          "price": "988",
           "priceCurrency": "USD",
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "3488",
+            "price": "988",
             "priceCurrency": "USD",
-            "unitText": "one-time setup"
+            "unitText": "one-time setup fee (90% off from $9,988)"
           }
         }
       }
@@ -139,13 +144,32 @@
       "position": 6,
       "item": {
         "@type": "Service",
-        "name": "AI Reseller Agency Program",
-        "description": "AgencyNow.ai partnership program offering 40% recurring commissions for agencies reselling our AI solutions. Complete white-label support included.",
+        "name": "Standard Affiliate Program",
+        "description": "Earn 25% recurring commissions on all referrals with our simplified flat-rate affiliate program. No tiers, just consistent 25% on every sale.",
         "provider": {
           "@type": "Organization",
           "name": "SuccessNOW.ai"
         },
-        "areaServed": ["United States", "Canada"],
+        "areaServed": ["United States", "Canada", "Worldwide"],
+        "serviceType": "Affiliate Program",
+        "offers": {
+          "@type": "Offer",
+          "description": "25% recurring commission on all referred clients"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Service",
+        "name": "AgencyNow.ai Reseller Program",
+        "description": "Premium agency partnership program offering 40% recurring commissions for agencies reselling our AI solutions. Complete white-label support and done-for-you setup included.",
+        "provider": {
+          "@type": "Organization",
+          "name": "SuccessNOW.ai"
+        },
+        "areaServed": ["United States", "Canada", "Worldwide"],
         "serviceType": "Partnership Program",
         "offers": {
           "@type": "Offer",
@@ -155,11 +179,11 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 8,
       "item": {
         "@type": "Service",
         "name": "Healthcare AI Solutions",
-        "description": "Specialized AI tools for dentists, chiropractors, and medical spas including DentistsNOW, ChiropractorsNOW, and MedspaNOW for appointment booking and patient management.",
+        "description": "Specialized AI tools for dentists, chiropractors, and medical spas including DentistsNOW, ChiropractorsNOW, and MedspaNOW for appointment booking and patient management with voice AI capabilities.",
         "provider": {
           "@type": "Organization",
           "name": "SuccessNOW.ai"
@@ -168,24 +192,24 @@
         "serviceType": "Healthcare Technology",
         "offers": {
           "@type": "Offer",
-          "price": "997",
+          "price": "988",
           "priceCurrency": "USD",
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "997",
+            "price": "988",
             "priceCurrency": "USD",
-            "unitText": "monthly"
+            "unitText": "one-time setup fee"
           }
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 9,
       "item": {
         "@type": "Service",
         "name": "Home Services AI Automation",
-        "description": "AI solutions for contractors, plumbers, HVAC, and roofers including ContractorsNOW, PlumbersNOW, HVACNOW, and RoofersNOW for emergency response and service scheduling.",
+        "description": "AI solutions for contractors, plumbers, HVAC, and roofers including ContractorsNOW, PlumbersNOW, HVACNOW, and RoofersNOW for emergency response and service scheduling with 24/7 voice agents.",
         "provider": {
           "@type": "Organization",
           "name": "SuccessNOW.ai"
@@ -194,13 +218,13 @@
         "serviceType": "Home Services Technology",
         "offers": {
           "@type": "Offer",
-          "price": "997",
+          "price": "988",
           "priceCurrency": "USD",
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "997",
+            "price": "988",
             "priceCurrency": "USD",
-            "unitText": "monthly"
+            "unitText": "one-time setup fee"
           }
         }
       }

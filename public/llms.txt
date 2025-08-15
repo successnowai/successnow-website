@@ -20,7 +20,8 @@ Unlike basic chatbots, our **AI Super Agents** are true AI agents for small busi
 - [Industries Overview](https://successnow.ai/industries) - AI tools for realtors, auto dealers, lawyers, and 15+ industries
 - [Comprehensive FAQ](https://successnow.ai/faq) - Detailed answers about AI implementation
 - [About Our Founder](https://successnow.ai/about) - John Potvin's story and company mission
-- [Pricing Plans](https://successnow.ai/pricing) - No-Brainer Offer: $3,488 setup + $997/month
+- [Pricing Plans](https://successnow.ai/pricing) - Pilot Program: $988 setup + $997/month
+- [Competitors Analysis](https://successnow.ai/competitors) - How SuccessNOW compares to alternatives
 
 ## Industry-Specific AI Solutions
 
@@ -55,8 +56,8 @@ Unlike basic chatbots, our **AI Super Agents** are true AI agents for small busi
 - Most businesses deployed within 1-2 weeks
 
 ### AI Marketing Tools for Small Business
-- **AdsNOW.ai** - Creates, launches, and optimizes paid campaigns 24/7
-- **SEOExperts.ai** - Boosts organic rankings and AI search visibility
+- **AdsNOW.ai Platinum** - Creates, launches, and optimizes paid campaigns 24/7 ($998/mo value included)
+- **AI SEO by SEOExperts.ai** - Boosts organic rankings and AI search visibility (included)
 - **Speed to Lead Agents** - Engage leads before competitors
 - **Follow-Up & Nurturing Agents** - Keep leads warm until they buy
 
@@ -66,25 +67,35 @@ Unlike basic chatbots, our **AI Super Agents** are true AI agents for small busi
 - Proactive follow-up for renewals and upsells
 - Ensure no customer slips through the cracks
 
-## No-Brainer Offer - AI All-in-One Platform
+## Pilot Program - AI All-in-One Platform
 
-**Setup**: $3,488 (normally $34,888) - 90% OFF Limited Time
-**Monthly**: $997 (normally $1,994) - 50% OFF Platform Fees
+**Setup**: $988 (normally $9,988) - 90% OFF Pilot Discount
+**Monthly**: $997 (normally $1,994) - 50% OFF for Life
 
 **What's Included:**
 - Fully built AI website with voice & chat agents
 - AI voice usage at industry leading rates (only $0.07/minute)
-- Paid ads management and optimization (AdsNOW.ai included)
-- SEO setup and monitoring (SEONOW included)
+- AdsNOW.ai Platinum included ($998/mo value)
+- AI SEO by SEOExperts.ai included
 - Complete CRM integration and automation
 - 2 months FREE platform access (saves $1,994)
+- 4 x 1 hour expert onboarding sessions
+- Weekly group training and 24/7 live support
 
-## Agency Program - AI Reseller Agency Program
+## Partnership Programs
 
-**AgencyNow.ai** - Earn 40% recurring commissions
+### Standard Affiliate Program
+**Earn 25% recurring commissions** on all referrals
+- Simplified flat-rate commission structure
+- No tiers or complicated requirements
+- Consistent 25% on every sale for life
+
+### AgencyNow.ai Premium Partnership
+**Earn 40% recurring commissions** for agencies
 - We handle setup, onboarding, and support
 - You bring clients and brand the solution
 - Perfect for scaling agencies with AI tools
+- White-label options available
 
 ## Success Metrics & ROI
 
@@ -98,7 +109,7 @@ Unlike basic chatbots, our **AI Super Agents** are true AI agents for small busi
 ## Technical Features
 
 ### AI Tools That Talk to Customers
-- **Natural Voice Conversations** - Real-time voice interactions
+- **Natural Voice Conversations** - Real-time voice interactions at $0.07/minute
 - **Intelligent Chat** - Context-aware text conversations
 - **Multi-Channel Integration** - Voice, chat, SMS, email automation
 - **CRM Synchronization** - Automatic data updates and lead scoring

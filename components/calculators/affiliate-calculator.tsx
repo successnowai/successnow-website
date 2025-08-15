@@ -1,11 +1,11 @@
 "use client"
 
 // Affiliate & Partner Commission Sample (locked tiers + 40% partner share)
-// - Affiliates earn: 1–9 = 20%, 10–24 = 25%, 25+ = 30%
+// - Affiliates earn: flat 25% on all referrals
 // - Agency Partner earns 40% of MRR on ALL clients in their org.
 //   • Direct clients: partner keeps full 40%.
-//   • Affiliate-sourced clients: partner pays the affiliate tiered % OUT OF the 40%.
-//     Partner NET on affiliate-sourced MRR = 40% - tier%.
+//   • Affiliate-sourced clients: partner pays the affiliate 25% OUT OF the 40%.
+//     Partner NET on affiliate-sourced MRR = 40% - 25% = 15%.
 // This file exports pure calc utilities + a tiny React demo.
 
 import type React from "react"
@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label"
 /********************
  * Calc Utilities
  *******************/
-export type TierRate = 0 | 0.2 | 0.25 | 0.3
+export type TierRate = 0 | 0.25
 
 export interface PartnerInputs {
   price: number // MRR per client (e.g., 997)
@@ -43,9 +43,7 @@ export interface MonthRow {
 }
 
 export function affiliateTierByActive(activePerAffiliate: number): TierRate {
-  if (activePerAffiliate >= 25) return 0.3
-  if (activePerAffiliate >= 10) return 0.25
-  if (activePerAffiliate >= 1) return 0.2
+  if (activePerAffiliate >= 1) return 0.25
   return 0
 }
 
@@ -136,9 +134,7 @@ export function snapshotPartnerEarnings({
  * Standard Affiliate Calculator Helpers
  *******************/
 export function affiliateCommissionRateByReferrals(activeReferrals: number): TierRate {
-  if (activeReferrals >= 25) return 0.3
-  if (activeReferrals >= 10) return 0.25
-  if (activeReferrals >= 1) return 0.2
+  if (activeReferrals >= 1) return 0.25
   return 0
 }
 
@@ -186,11 +182,7 @@ function StandardAffiliateCalculator() {
 
   const commission = useMemo(() => calcAffiliateCommission(referrals, price), [referrals, price])
 
-  const tiers = [
-    { range: "1–9", rate: 0.2, example: 5 },
-    { range: "10–24", rate: 0.25, example: 15 },
-    { range: "25+", rate: 0.3, example: 30 },
-  ]
+  const flatRate = { rate: 0.25, examples: [5, 10, 20] }
 
   return (
     <Card className="bg-slate-900/60 backdrop-blur-xl border-slate-700/50 shadow-2xl rounded-2xl">
@@ -232,26 +224,32 @@ function StandardAffiliateCalculator() {
         </div>
 
         <div className="overflow-hidden rounded-xl border border-slate-700/50">
+          <div className="bg-slate-800/60 p-4 text-center">
+            <h4 className="font-semibold text-slate-200 mb-2">Simplified Commission Structure</h4>
+            <div className="text-2xl font-bold text-green-400 mb-2">25% on All Referrals</div>
+            <p className="text-sm text-slate-400">No tiers, no complexity - just consistent earnings</p>
+          </div>
           <table className="w-full text-sm">
-            <thead className="bg-slate-800/60">
+            <thead className="bg-slate-800/40">
               <tr>
-                <th className="p-3 text-left">Active Referrals</th>
+                <th className="p-3 text-left">Example Referrals</th>
                 <th className="p-3 text-left">Commission Rate</th>
-                <th className="p-3 text-left">Example</th>
                 <th className="p-3 text-left">Monthly Earnings</th>
+                <th className="p-3 text-left">Annual Earnings</th>
               </tr>
             </thead>
             <tbody>
-              {tiers.map((tier) => {
-                const exampleEarnings = tier.example * price * tier.rate
+              {flatRate.examples.map((example, index) => {
+                const monthlyEarnings = example * price * flatRate.rate
+                const annualEarnings = monthlyEarnings * 12
                 return (
-                  <tr key={tier.range} className="odd:bg-slate-900/40 even:bg-slate-900/20">
-                    <td className="p-3">{tier.range}</td>
-                    <td className="p-3">{Math.round(tier.rate * 100)}%</td>
+                  <tr key={index} className="odd:bg-slate-900/40 even:bg-slate-900/20">
                     <td className="p-3">
-                      {tier.example} referrals × {fmtUSD(price)}
+                      {example} referrals × {fmtUSD(price)}
                     </td>
-                    <td className="p-3 font-medium">{fmtUSD(exampleEarnings)}</td>
+                    <td className="p-3 text-green-400 font-medium">25%</td>
+                    <td className="p-3 font-medium">{fmtUSD(monthlyEarnings)}</td>
+                    <td className="p-3 font-medium">{fmtUSD(annualEarnings)}</td>
                   </tr>
                 )
               })}
@@ -355,7 +353,7 @@ function AgencyPartnerCalculator() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 text-sm">
           <Stat label={`Active Direct @ M${months}`} value={last?.activeDirect ?? 0} />
           <Stat label={`Active via Affiliates @ M${months}`} value={last?.activeFromAffiliatesTotal ?? 0} />
-          <Stat label={`Affiliate Tier @ M${months}`} value={`${Math.round((last?.tierRate ?? 0) * 100)}%`} />
+          <Stat label={`Affiliate Rate @ M${months}`} value="25%" />
           <Stat label={`Your MRR @ M${months}`} value={fmtUSD(last?.partnerTotal ?? 0)} />
           <Stat label={`12-Mo Total`} value={fmtUSD(yearTotal)} />
         </div>
@@ -370,9 +368,9 @@ function AgencyPartnerCalculator() {
               • <strong>Direct clients:</strong> You keep the full 40%
             </li>
             <li>
-              • <strong>Affiliate-sourced clients:</strong> You pay affiliate commission out of your 40%
+              • <strong>Affiliate-sourced clients:</strong> You pay 25% affiliate commission out of your 40%
             </li>
-            <li>• Your net from affiliate clients = 40% - affiliate tier rate</li>
+            <li>• Your net from affiliate clients = 40% - 25% = 15%</li>
           </ul>
         </div>
       </CardContent>

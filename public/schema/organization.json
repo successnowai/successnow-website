@@ -1,24 +1,38 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "SuccessNOW",
-  "alternateName": "SuccessNOW AI",
+  "name": "SuccessNOW AI",
+  "alternateName": "SuccessNOW.ai",
   "url": "https://successnow.ai",
   "logo": "https://successnow.ai/images/successnow-logo.png",
-  "description": "AI Superagent System that converts, books, and nurtures leads 24/7. Our AI-powered solutions help businesses never lose a lead again with automated lead conversion, appointment booking, and customer nurturing.",
+  "description": "Revolutionary AI agents for business growth. Transform your business with AI agents that work 24/7 to qualify, nurture, and close leads. Complete AI all-in-one platform with voice agents, automated marketing, and business automation.",
   "foundingDate": "2024",
-  "industry": "Artificial Intelligence, Marketing Technology, Lead Generation",
-  "keywords": "AI Superagents, Lead Conversion, AI Chatbots, Automated Marketing, Lead Generation, AI Sales Assistant, Business Automation",
+  "industry": "Artificial Intelligence, Marketing Technology, Lead Generation, Voice AI, Business Automation",
+  "keywords": "AI Super Agents, AI voice agents, business automation, lead generation, AI marketing tools, AI tools for small business, voice AI, automated lead qualification, AI appointment booking, 24/7 AI agents",
   "serviceArea": {
     "@type": "Place",
     "name": "Global"
   },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "Customer Service",
-    "url": "https://successnow.ai/demo"
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "url": "https://successnow.ai/demo",
+      "availableLanguage": "English"
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "Sales",
+      "url": "https://successnow.ai/book",
+      "availableLanguage": "English"
+    }
+  ],
+  "sameAs": ["https://successnow.ai", "https://agencynow.ai"],
+  "founder": {
+    "@type": "Person",
+    "name": "John Potvin",
+    "jobTitle": "Founder & CEO"
   },
-  "sameAs": ["https://successnow.ai"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "SuccessNOW AI Services",
@@ -27,17 +41,70 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "AI Superagent Implementation",
-          "description": "24/7 AI-powered lead conversion and customer engagement system"
+          "name": "AI Super Agents Platform",
+          "description": "Complete AI-powered business automation with 24/7 voice agents, lead conversion, and customer engagement system. Includes AdsNOW.ai Platinum and AI SEO by SEOExperts.ai."
+        },
+        "price": "988",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "988",
+          "priceCurrency": "USD",
+          "unitText": "one-time setup fee"
+        },
+        "additionalProperty": {
+          "@type": "PropertyValue",
+          "name": "Monthly Fee",
+          "value": "$997/month (50% off for life with Pilot Program)"
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Industry-Specific AI Solutions",
-          "description": "Customized AI solutions for Auto Dealers, Real Estate, Healthcare, Legal, and more"
+          "name": "AgencyNow.ai Reseller Program",
+          "description": "White-label AI agency program with 40% recurring commissions for marketing agencies and consultants"
+        },
+        "offers": {
+          "@type": "Offer",
+          "description": "40% recurring commission on all referred clients"
         }
+      }
+    ]
+  },
+  "makesOffer": {
+    "@type": "Offer",
+    "name": "Pilot Program - AI Enterprise Solution",
+    "description": "Complete AI business automation platform with voice agents, website, marketing tools, and 2 months FREE platform access. Includes AdsNOW.ai Platinum ($998/mo value) and AI SEO by SEOExperts.ai.",
+    "price": "988",
+    "priceCurrency": "USD",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "988",
+      "priceCurrency": "USD",
+      "unitText": "one-time setup"
+    },
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2024-01-01",
+    "seller": {
+      "@type": "Organization",
+      "name": "SuccessNOW AI"
+    },
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Voice AI Pricing",
+        "value": "$0.07/minute (industry leading rates)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Monthly Platform Fee",
+        "value": "$997/month (50% off for life)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Money Back Guarantee",
+        "value": "30-day risk-free guarantee"
       }
     ]
   }

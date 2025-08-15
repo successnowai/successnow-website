@@ -8,6 +8,7 @@ import { Check, Crown, Building } from "lucide-react"
 import Link from "next/link"
 import PilotFundingBanner from "@/components/ui/pilot-funding-banner"
 import { PricingFAQ } from "@/components/faq/pricing-faq"
+import { VoiceSnippetPlayer } from "@/components/voice/voice-snippet-player"
 
 export default function PricingClientPage() {
   const [isAnnual, setIsAnnual] = useState(true)
@@ -103,6 +104,14 @@ export default function PricingClientPage() {
               Transform your business with AI-powered automation. Choose the plan that fits your needs and scale as you
               grow.
             </p>
+
+            <div className="mb-8">
+              <VoiceSnippetPlayer
+                text="Transform your business with AI-powered automation. Our Pilot Program offers the complete AI growth suite for just $988 setup and $997 per month - that's 90% off setup and 50% off monthly fees for life. Choose the plan that fits your needs and scale as you grow with SuccessNOW AI."
+                category="pricing-intro"
+                variant="compact"
+              />
+            </div>
 
             {/* Billing Toggle */}
             <div className="flex items-center justify-center gap-4 mb-8">
@@ -279,6 +288,15 @@ export default function PricingClientPage() {
           <div className="text-center mt-16">
             <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
             <p className="text-gray-400 mb-6">Join thousands of businesses already using SuccessNOW AI</p>
+
+            <div className="mb-6">
+              <VoiceSnippetPlayer
+                text="Ready to transform your business? Join thousands of businesses already using SuccessNOW AI. Start your free trial today and experience the power of AI Super Agents that work 24/7 to grow your business."
+                category="pricing-cta"
+                variant="compact"
+              />
+            </div>
+
             <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer">
               <Button className="bg-gradient-to-r from-[#00BFFF] to-blue-600 hover:from-[#0099CC] hover:to-blue-700 text-white px-8 py-3 text-lg">
                 Start Your Free Trial

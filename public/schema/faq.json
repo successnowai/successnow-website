@@ -31,7 +31,7 @@
       "name": "How does SuccessNOW generate and convert leads?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We use top AI marketing tools for small businesses, including AdsNOW.ai for paid campaigns, SEOExperts.ai for AI search visibility, AI-powered funnels, and Speed to Lead agents to respond instantly to every inquiry."
+        "text": "We use top AI marketing tools for small businesses, including AdsNOW.ai Platinum for paid campaigns, AI SEO by SEOExperts.ai for AI search visibility, AI-powered funnels, and Speed to Lead agents to respond instantly to every inquiry."
       }
     },
     {
@@ -55,7 +55,15 @@
       "name": "What's included in the Pilot Program offer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Our Pilot Program includes the full AI all-in-one platform for $988 one-time setup fee (regularly $9,988 with automatic 'Pilot' discount) and $997/month (normally $1,994 with 50% off for life)—covering website, bots, ads, SEO, CRM automation, plus AdsNow.ai Platinum ($998/mo value), AI SEO by SEOExperts.ai, and industry-leading voice AI at only $0.07/minute."
+        "text": "Our Pilot Program includes the full AI all-in-one platform for $988 one-time setup fee (regularly $9,988 with automatic 'Pilot' discount) and $997/month (normally $1,994 with 50% off for life)—covering website, bots, ads, SEO, CRM automation, plus AdsNOW.ai Platinum ($998/mo value), AI SEO by SEOExperts.ai, and industry-leading voice AI at only $0.07/minute."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the affiliate commission rates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer a simplified affiliate program with a flat 25% recurring commission on all referrals. No tiers or complicated requirements—just consistent 25% on every sale for life. For agencies, our AgencyNow.ai program offers 40% recurring commissions with white-label support."
       }
     },
     {
@@ -76,10 +84,10 @@
     },
     {
       "@type": "Question",
-      "name": "What makes SuccessNOW different from other AI tools?",
+      "name": "What makes SuccessNOW different from competitors like Lindy AI, JustCall, or HubSpot?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Unlike basic AI chatbots, our AI Super Agents review client history, remember preferences, update CRM records automatically, and get smarter with every interaction. They're trained specifically for your industry and business processes."
+        "text": "Unlike basic AI chatbots or generic CRM tools, our AI Super Agents review client history, remember preferences, update CRM records automatically, and get smarter with every interaction. We offer industry-specific solutions with proven ROI, while competitors provide one-size-fits-all approaches with steep learning curves."
       }
     },
     {

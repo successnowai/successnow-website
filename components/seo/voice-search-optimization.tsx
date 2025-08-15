@@ -1,11 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useEffect } from "react"
 
 interface VoiceSearchOptimizationProps {
-  pageType: "home" | "faq" | "pricing" | "demo" | "about"
+  pageType: "home" | "faq" | "pricing" | "demo" | "about" | "competitors"
   primaryKeywords: string[]
   voiceSnippets?: {
     question: string
@@ -38,7 +37,6 @@ export function VoiceSearchOptimization({
     addMetaTag("voice-keywords", primaryKeywords.join(", "))
     addMetaTag("voice-snippets-available", voiceSnippets.length.toString())
 
-    // Add conversational keywords for voice search
     const conversationalKeywords = primaryKeywords.flatMap((keyword) => [
       `what is ${keyword}`,
       `how does ${keyword} work`,
@@ -46,11 +44,16 @@ export function VoiceSearchOptimization({
       `${keyword} for business`,
       `${keyword} pricing`,
       `${keyword} demo`,
+      `${keyword} vs competitors`,
+      `${keyword} features`,
+      `${keyword} benefits`,
+      `how to use ${keyword}`,
+      `${keyword} cost`,
+      `${keyword} reviews`,
     ])
 
     addMetaTag("conversational-keywords", conversationalKeywords.join(", "))
 
-    // Add FAQ-style structured data for voice snippets
     if (voiceSnippets.length > 0) {
       const faqSchema = {
         "@context": "https://schema.org",
@@ -65,22 +68,52 @@ export function VoiceSearchOptimization({
               audio: {
                 "@type": "AudioObject",
                 contentUrl: snippet.audioUrl,
-                description: `Voice snippet answering: ${snippet.question}`,
+                description: `AI-generated voice answer: ${snippet.question}`,
                 encodingFormat: "audio/mpeg",
-                name: snippet.question.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase(),
+                name: `${snippet.question.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}-voice-answer`,
+                duration: "PT60S",
+                uploadDate: new Date().toISOString(),
+                creator: {
+                  "@type": "Organization",
+                  name: "SuccessNOW.ai",
+                  url: "https://successnow.ai",
+                },
+                genre: "Business Education",
+                inLanguage: "en-US",
+                accessibilityFeature: ["audioDescription", "voiceControl"],
               },
             }),
           },
         })),
+        speakable: {
+          "@type": "SpeakableSpecification",
+          xpath: [
+            "/html/body//h1[1]",
+            "/html/body//h2[contains(@class, 'text-')]",
+            "/html/body//p[contains(@class, 'text-xl')]",
+          ],
+        },
       }
 
       const script = document.createElement("script")
       script.type = "application/ld+json"
+      script.id = `voice-faq-schema-${pageType}`
       script.textContent = JSON.stringify(faqSchema)
       document.head.appendChild(script)
 
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag("event", "voice_content_loaded", {
+          event_category: "Voice Search",
+          event_label: pageType,
+          value: voiceSnippets.length,
+        })
+      }
+
       return () => {
-        document.head.removeChild(script)
+        const existingScript = document.getElementById(`voice-faq-schema-${pageType}`)
+        if (existingScript) {
+          document.head.removeChild(existingScript)
+        }
       }
     }
   }, [pageType, primaryKeywords, voiceSnippets])
@@ -107,4 +140,39 @@ export function SpeakableContent({
       {children}
     </div>
   )
+}
+
+export function VoiceSearchTracker({ pageType }: { pageType: string }) {
+  useEffect(() => {
+    // Track voice search readiness
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "voice_search_ready", {
+        event_category: "Voice Search",
+        event_label: pageType,
+        custom_parameter_1: "audio_enhanced",
+      })
+    }
+
+    // Listen for voice search interactions
+    const handleVoiceInteraction = (event: Event) => {
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag("event", "voice_interaction", {
+          event_category: "Voice Search",
+          event_label: pageType,
+          event_action: "voice_command_detected",
+        })
+      }
+    }
+
+    // Add voice interaction listeners
+    window.addEventListener("speechstart", handleVoiceInteraction)
+    window.addEventListener("speechend", handleVoiceInteraction)
+
+    return () => {
+      window.removeEventListener("speechstart", handleVoiceInteraction)
+      window.removeEventListener("speechend", handleVoiceInteraction)
+    }
+  }, [pageType])
+
+  return null
 }

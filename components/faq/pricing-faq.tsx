@@ -34,7 +34,7 @@ const pricingFAQs = [
   {
     question: "Are there any hidden fees or additional costs?",
     answer:
-      "No hidden fees. The Pilot Program monthly fee of $997/month (50% off for life) covers all platform features, AI agent operations, hosting, support, and ongoing optimization. Ad spend for paid campaigns is separate and managed according to your budget. AdsNow.ai Platinum and AI SEO are included at no extra cost. 30-day money-back guarantee - No Risk, Just Missed Opportunity!",
+      "No hidden fees. The Pilot Program monthly fee of $997/month (50% off for life) covers all platform features, AI agent operations, hosting, support, and ongoing optimization. Ad spend for paid campaigns is separate and managed according to your budget. AdsNow.ai Platinum and AI SEO are included at no extra cost. Voice AI usage is only $0.07/minute - industry-leading pricing. 30-day money-back guarantee - No Risk, Just Missed Opportunity!",
   },
 ]
 

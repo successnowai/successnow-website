@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react"
+import { VoiceSnippetPlayer } from "@/components/voice/voice-snippet-player"
 
 interface FAQItem {
   question: string
@@ -38,6 +39,13 @@ export function PageFAQ({ title = "Frequently Asked Questions", faqs, pageType }
           <p className="text-gray-300 max-w-2xl mx-auto">
             Get answers to common questions about {pageType ? `our ${pageType}` : "SuccessNOW.ai"}.
           </p>
+          <div className="mt-6">
+            <VoiceSnippetPlayer
+              text={`Get answers to common questions about ${pageType ? `our ${pageType}` : "SuccessNOW.ai"}. Listen to detailed explanations of our features, pricing, and how our AI agents can transform your business.`}
+              category={`page-faq-${pageType?.replace(/\s+/g, "-") || "general"}`}
+              variant="compact"
+            />
+          </div>
         </div>
 
         {/* FAQ Items */}
@@ -55,9 +63,16 @@ export function PageFAQ({ title = "Frequently Asked Questions", faqs, pageType }
                     onClick={() => toggleItem(index)}
                     className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-800/50 transition-colors duration-200"
                   >
-                    <h3 className="text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors duration-200 pr-4">
-                      {faq.question}
-                    </h3>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors duration-200 pr-4 mb-2">
+                        {faq.question}
+                      </h3>
+                      <VoiceSnippetPlayer
+                        text={faq.answer}
+                        category={`page-faq-${pageType?.replace(/\s+/g, "-") || "general"}-${index}`}
+                        variant="inline"
+                      />
+                    </div>
                     {isOpen ? (
                       <ChevronUp className="w-5 h-5 text-cyan-400 group-hover:text-pink-400 transition-colors duration-200 flex-shrink-0" />
                     ) : (
@@ -68,7 +83,14 @@ export function PageFAQ({ title = "Frequently Asked Questions", faqs, pageType }
                   {isOpen && (
                     <div className="px-6 pb-6">
                       <div className="h-px bg-gradient-to-r from-cyan-500/50 to-pink-500/50 mb-4" />
-                      <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                      <p className="text-gray-300 leading-relaxed mb-4">{faq.answer}</p>
+                      <div className="mt-4">
+                        <VoiceSnippetPlayer
+                          text={faq.answer}
+                          category={`page-faq-${pageType?.replace(/\s+/g, "-") || "general"}-${index}`}
+                          variant="compact"
+                        />
+                      </div>
                     </div>
                   )}
                 </CardContent>

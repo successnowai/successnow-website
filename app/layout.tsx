@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Transform your business with AI agents that work 24/7 to qualify, nurture, and close leads. Stop losing money on leads that never convert.",
   keywords:
-    "AI agents, business automation, lead generation, sales automation, AI chatbots, customer service AI, voice AI, AI voice agents, business growth AI, automated lead qualification, AI appointment booking, 24/7 AI agents, voice snippets, audio content, AI voice search",
+    "AI agents, business automation, lead generation, sales automation, AI chatbots, customer service AI, voice AI, AI voice agents, business growth AI, automated lead qualification, AI appointment booking, 24/7 AI agents, voice snippets, audio content, AI voice search, voice-enabled AI, conversational AI, speech recognition, voice commands, audio accessibility, voice search optimization, speakable content, voice assistant compatible",
   authors: [{ name: "SuccessNOW AI" }],
   creator: "SuccessNOW AI",
   publisher: "SuccessNOW AI",
@@ -76,6 +76,10 @@ export const metadata: Metadata = {
     "business-automation": "ai-powered",
     "voice-snippets": "enabled",
     "audio-enhanced": "true",
+    "speakable-content": "optimized",
+    "voice-assistant-ready": "google-assistant,alexa,siri",
+    "conversational-ai": "enabled",
+    "audio-accessibility": "wcag-compliant",
   },
   generator: "v0.app",
 }
@@ -119,18 +123,29 @@ export default function RootLayout({
         <meta name="speakable" content="true" />
         <meta name="voice-assistant-compatible" content="Google Assistant, Alexa, Siri" />
 
-        {/* Audio content meta tags */}
         <meta name="audio-enhanced-content" content="true" />
         <meta name="voice-snippets-enabled" content="FAQ answers, feature descriptions, company information" />
         <meta name="audio-accessibility" content="screen reader compatible, voice navigation ready" />
+        <meta name="audio-format" content="mp3, high-quality TTS" />
+        <meta name="voice-interaction-supported" content="true" />
+        <meta name="conversational-queries-optimized" content="what is, how does, best practices, pricing" />
+        <meta name="audio-sitemap-available" content="/api/sitemap-audio" />
 
         {/* Business-specific voice search optimization */}
         <meta name="business-type" content="AI Technology, Business Automation" />
         <meta name="service-area" content="United States, Worldwide" />
         <meta name="primary-service" content="AI Voice Agents for Business Growth" />
 
-        {/* Link to audio sitemap */}
         <link rel="sitemap" type="application/xml" title="Audio Sitemap" href="/api/sitemap-audio" />
+        <link rel="alternate" type="application/rss+xml" title="SuccessNOW AI Audio Feed" href="/api/audio-feed" />
+
+        {/* Voice search optimization hints */}
+        <meta
+          name="voice-search-queries"
+          content="what is successnow ai, how do ai agents work, ai voice agents pricing, best ai business automation, successnow vs competitors"
+        />
+        <meta name="natural-language-optimized" content="true" />
+        <meta name="question-answer-format" content="enabled" />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
@@ -142,7 +157,6 @@ export default function RootLayout({
           <WebSiteSchema />
           <AIServiceSchema />
 
-          {/* Global Voice Search Schema */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -172,10 +186,43 @@ export default function RootLayout({
                         description:
                           "24/7 AI agents with voice interaction, lead qualification, and automated follow-up",
                         category: "AI Business Automation",
+                        hasOfferCatalog: {
+                          "@type": "OfferCatalog",
+                          name: "Voice-Enhanced Features",
+                          itemListElement: [
+                            {
+                              "@type": "Service",
+                              name: "Voice AI Agents",
+                              description: "AI agents that handle voice calls and conversations",
+                              serviceType: "Voice AI Technology",
+                            },
+                            {
+                              "@type": "Service",
+                              name: "Audio Content Generation",
+                              description: "AI-generated voice snippets for enhanced accessibility",
+                              serviceType: "Audio Content Creation",
+                            },
+                          ],
+                        },
                       },
                     ],
                   },
                 },
+                speakable: {
+                  "@type": "SpeakableSpecification",
+                  xpath: [
+                    "/html/body//h1[1]",
+                    "/html/body//section//h2[contains(@class, 'text-')]",
+                    "/html/body//p[contains(@class, 'text-xl')]",
+                  ],
+                },
+                accessibilityFeature: [
+                  "audioDescription",
+                  "readingOrder",
+                  "structuralNavigation",
+                  "alternativeText",
+                  "voiceControl",
+                ],
               }),
             }}
           />

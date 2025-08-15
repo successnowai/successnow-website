@@ -121,11 +121,13 @@ These components are defined in `app/layout.tsx` to ensure a consistent user exp
 ### Page: Affiliate (`/affiliate`)
 -   **Route:** `app/affiliate/page.tsx`
 -   **Purpose:** To recruit partners by explaining the benefits and commission structure of the affiliate program.
--   **Key Components:** `AffiliateClientPage` with a hero section, commission tier cards (Standard and Platinum), and a "How It Works" guide.
+-   **Key Components:** `AffiliateClientPage` with a hero section, flat 25% commission structure, and AgencyNOW partner program.
 -   **Content Outline:**
     -   **Headline:** "Partner with SuccessNOW. Earn Recurring Revenue."
-    -   **CTAs:** "Apply for Standard Program," "Apply for Platinum Program."
--   **Interlinking:** Linked from the `Footer`. Links to `/affiliate/apply`.
+    -   **Commission:** Simplified flat 25% recurring commission on all referrals
+    -   **AgencyNOW:** 40% MRR share for agency partners with complete done-for-you setup
+    -   **CTAs:** "Signup Now to Become Affiliate!", "Apply Now - AgencyNOW Partner"
+-   **Interlinking:** Linked from the `Footer`. Links to external partner signup and AgencyNOW application.
 -   **JSON-LD:** `WebPage`, potentially with an `Offer` schema for the commission structure.
 
 ### Page: Industries (`/industries`)

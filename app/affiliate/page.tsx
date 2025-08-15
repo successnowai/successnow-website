@@ -4,7 +4,7 @@ import AffiliateClientPage from "./AffiliateClientPage"
 export const metadata: Metadata = {
   title: "Affiliate Program - SuccessNOW.ai",
   description:
-    "Join our affiliate program and earn up to 40% commission on recurring revenue. Two-tier program with Standard and Platinum levels.",
+    "Join our affiliate program and earn 25% recurring commission on all referrals. Simple, flat-rate structure with no tiers or complexity.",
 }
 
 export default function AffiliatePage() {

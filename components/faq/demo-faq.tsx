@@ -4,32 +4,32 @@ const demoFAQs = [
   {
     question: "How do I start the voice AI demo?",
     answer:
-      "Simply click the microphone button in the demo area and start speaking. The AI will respond naturally to your questions and scenarios. Make sure your browser allows microphone access for the best experience.",
+      "Simply click the microphone button in the demo area and start speaking. The AI will respond naturally to your questions and scenarios. Make sure your browser allows microphone access for the best experience. Our AI agent Robin is ready to demonstrate our capabilities.",
   },
   {
     question: "What should I ask the AI during the demo?",
     answer:
-      "Try asking: 'How can you help my business?', 'What type of business do you work with?', 'How would you call my clients?', or give it challenging scenarios like handling angry customers or complex objections.",
+      "Try asking: 'How can you help my business?', 'What type of business do you work with?', 'How would you call my clients?', or give it challenging scenarios like handling angry customers or complex objections. Ask about our Pilot Program pricing and included features.",
   },
   {
     question: "Can the AI handle industry-specific questions?",
     answer:
-      "Yes! Tell the AI what type of business you have (realtor, auto dealer, lawyer, etc.) and it will adapt its responses with industry-specific knowledge, terminology, and best practices.",
+      "Yes! Tell the AI what type of business you have (realtor, auto dealer, lawyer, etc.) and it will adapt its responses with industry-specific knowledge, terminology, and best practices. Our AI agents are trained on 15+ industries with specialized expertise.",
   },
   {
     question: "How realistic is this demo compared to the actual AI?",
     answer:
-      "This demo uses the same AI technology that powers our client systems. The actual deployed AI agents are even more powerful as they're trained on your specific business data, processes, and client history.",
+      "This demo uses the same AI technology that powers our client systems. The actual deployed AI agents are even more powerful as they're trained on your specific business data, processes, and client history. Voice AI costs only $0.07/minute in production.",
   },
   {
     question: "What if the AI doesn't understand my question?",
     answer:
-      "The AI is designed to handle a wide range of questions and scenarios. If it doesn't understand something, try rephrasing your question or being more specific about your business context.",
+      "The AI is designed to handle a wide range of questions and scenarios. If it doesn't understand something, try rephrasing your question or being more specific about your business context. Our AI agents get smarter with every interaction.",
   },
   {
     question: "Can I test difficult customer service scenarios?",
     answer:
-      "Try challenging the AI with difficult situations like: 'What if a customer is angry about pricing?', 'How do you handle objections?', or 'What if someone wants to cancel their service?'",
+      "Try challenging the AI with difficult situations like: 'What if a customer is angry about pricing?', 'How do you handle objections?', or 'What if someone wants to cancel their service?' Our AI agents are trained to handle complex customer interactions professionally.",
   },
 ]
 

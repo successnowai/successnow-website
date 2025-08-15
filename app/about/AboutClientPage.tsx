@@ -345,7 +345,7 @@ const AboutClientPage = () => {
 
             <Card className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-300 p-8 md:p-12">
               <div className="text-center space-y-6">
-                <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+                <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
                   John realized that the only limitation to helping more businesses was his own time. He couldn't be
                   everywhere at once — but AI could.
                 </p>
@@ -510,6 +510,14 @@ const AboutClientPage = () => {
                 Today, SuccessNOW.ai operates globally, empowering businesses in the U.S. and Canada to scale faster,
                 work smarter, and deliver customer experiences that feel deeply personal — at AI speed.
               </p>
+
+              <div className="mb-8">
+                <VoiceSnippetPlayer
+                  text="Today, SuccessNOW.ai operates globally, empowering businesses in the U.S. and Canada to scale faster, work smarter, and deliver customer experiences that feel deeply personal at AI speed. Our AI Super Agents are transforming how businesses operate worldwide."
+                  category="global-impact"
+                  variant="compact"
+                />
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button

@@ -59,54 +59,38 @@ export default function AffiliateClientPage() {
 
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-white mb-8 text-center">Commission Structure:</h3>
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {[
-                {
-                  tier: "1-9 Active Referrals",
-                  rate: "20% MRR",
-                  color: "from-blue-500 to-cyan-500",
-                  example: "5 referrals × $997 × 20% = $997/month",
-                },
-                {
-                  tier: "10-24 Active Referrals",
-                  rate: "25% MRR",
-                  color: "from-green-500 to-emerald-500",
-                  example: "15 referrals × $997 × 25% = $3,738/month",
-                },
-                {
-                  tier: "25+ Active Referrals",
-                  rate: "30% MRR",
-                  color: "from-orange-500 to-red-500",
-                  example: "30 referrals × $997 × 30% = $8,973/month",
-                },
-              ].map((tier, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  onHoverStart={() => setHoveredCard(tier.tier)}
-                  onHoverEnd={() => setHoveredCard(null)}
-                  className="relative"
+            <div className="flex justify-center max-w-2xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                onHoverStart={() => setHoveredCard("flat-rate")}
+                onHoverEnd={() => setHoveredCard(null)}
+                className="relative w-full max-w-md"
+              >
+                <Card
+                  className={`bg-gray-800/50 border-gray-700 transition-all duration-300 hover:border-pink-500/50 hover:shadow-lg hover:shadow-pink-500/25 ${
+                    hoveredCard === "flat-rate" ? "scale-105 shadow-2xl" : ""
+                  }`}
                 >
-                  <Card
-                    className={`bg-gray-800/50 border-gray-700 transition-all duration-300 hover:border-pink-500/50 hover:shadow-lg hover:shadow-pink-500/25 ${
-                      hoveredCard === tier.tier ? "scale-105 shadow-2xl" : ""
-                    }`}
-                  >
-                    <CardContent className="p-6 text-center">
-                      <h4 className="text-lg font-semibold text-white mb-2">{tier.tier}</h4>
-                      <div
-                        className={`text-3xl font-bold bg-gradient-to-r ${tier.color} bg-clip-text text-transparent mb-4`}
-                      >
-                        {tier.rate}
-                      </div>
-                      <p className="text-sm text-gray-400">Example: {tier.example}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+                  <CardContent className="p-8 text-center">
+                    <h4 className="text-2xl font-semibold text-white mb-4">All Referrals</h4>
+                    <div className="text-5xl font-bold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent mb-6">
+                      25% MRR
+                    </div>
+                    <p className="text-gray-300 mb-4">Simple, flat commission rate</p>
+                    <p className="text-sm text-gray-400">Example: 10 referrals × $997 × 25% = $2,493/month</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+            <div className="text-center mt-8">
+              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+                We've simplified our commission structure! Now earn a consistent{" "}
+                <span className="text-green-400 font-semibold">25% recurring commission</span> on all your active
+                referrals, regardless of volume. No tiers, no complexity - just straightforward earnings.
+              </p>
             </div>
           </div>
 
