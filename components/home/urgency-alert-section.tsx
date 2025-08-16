@@ -13,7 +13,7 @@ export default function UrgencyAlertSection() {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="bg-gradient-to-br from-red-600/90 via-red-700/90 to-orange-600/90 rounded-3xl p-12 backdrop-blur-sm border border-red-500/30 shadow-2xl">
+        <div className="bg-gradient-to-br from-red-600/90 via-red-700/90 to-orange-600/90 rounded-3xl p-6 md:p-12 backdrop-blur-sm border border-red-500/30 shadow-2xl">
           {/* Alert Header */}
           <div className="flex items-center justify-center gap-3 mb-8">
             <AlertTriangle className="w-8 h-8 text-yellow-300" />
@@ -44,13 +44,19 @@ export default function UrgencyAlertSection() {
           </div>
 
           {/* CTA Button */}
-          <div className="text-center mb-6">
-            <a href="https://signup.successnow.ai" target="_blank" rel="noopener noreferrer" className="inline-block">
+          <div className="text-center mb-6 px-4">
+            <a
+              href="https://signup.successnow.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block w-full max-w-md"
+            >
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-bold text-xl px-12 py-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border-0"
+                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-bold text-base md:text-xl px-4 md:px-12 py-4 md:py-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border-0 w-full"
               >
-                Get AI Working For You NOW →
+                <span className="block sm:hidden">Get AI Working Now →</span>
+                <span className="hidden sm:block">Get AI Working For You NOW →</span>
               </Button>
             </a>
           </div>
