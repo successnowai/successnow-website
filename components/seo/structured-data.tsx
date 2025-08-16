@@ -1,7 +1,5 @@
 "use client"
 
-import { useEffect } from "react"
-
 interface AudioObjectSchema {
   "@type": "AudioObject"
   contentUrl: string
@@ -18,27 +16,22 @@ interface StructuredDataProps {
 }
 
 export function StructuredData({ type, data, audioObjects }: StructuredDataProps) {
-  useEffect(() => {
-    // Enhanced structured data with audio objects
-    const enhancedData = {
-      ...data,
-      ...(audioObjects &&
-        audioObjects.length > 0 && {
-          audio: audioObjects.length === 1 ? audioObjects[0] : audioObjects,
-        }),
-    }
+  const enhancedData = {
+    ...data,
+    ...(audioObjects &&
+      audioObjects.length > 0 && {
+        audio: audioObjects.length === 1 ? audioObjects[0] : audioObjects,
+      }),
+  }
 
-    const script = document.createElement("script")
-    script.type = "application/ld+json"
-    script.textContent = JSON.stringify(enhancedData)
-    document.head.appendChild(script)
-
-    return () => {
-      document.head.removeChild(script)
-    }
-  }, [type, data, audioObjects])
-
-  return null
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(enhancedData, null, 2),
+      }}
+    />
+  )
 }
 
 // Organization Schema with Audio Capabilities

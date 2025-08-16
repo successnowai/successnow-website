@@ -106,6 +106,7 @@ Allow: /sitemap.xml
 Allow: /sitemap-industries.xml
 Allow: /sitemap-blogs.xml
 Allow: /sitemap-competitors.xml
+Allow: /sitemap-index.xml
 Allow: /robots.txt
 Allow: /llms.txt
 Allow: /llms-full.txt
@@ -115,12 +116,16 @@ Allow: /public/
 Allow: /schema/
 
 Allow: /api/sitemap-audio
+Allow: /api/sitemap-index
 Allow: /voices/
 
 # Crawl delay for respectful crawling
 Crawl-delay: 1
 
-# Sitemap locations
+# Primary Sitemap Index (contains all other sitemaps)
+Sitemap: https://successnow.ai/sitemap-index.xml
+
+# Individual Sitemaps
 Sitemap: https://successnow.ai/sitemap.xml
 Sitemap: https://successnow.ai/sitemap-industries.xml
 Sitemap: https://successnow.ai/sitemap-blogs.xml
