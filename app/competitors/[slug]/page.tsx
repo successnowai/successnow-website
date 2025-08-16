@@ -1,135 +1,200 @@
-import type { Metadata } from "next"
-import { notFound } from "next/navigation"
-import Link from "next/link"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, ArrowLeft, Zap, Sparkles, CheckCircle, XCircle, AlertTriangle } from "lucide-react"
+import { AlertTriangle, Zap, ArrowRight, CheckCircle, XCircle, DollarSign } from "lucide-react"
+import Link from "next/link"
+import { notFound } from "next/navigation"
 import StarryBackground from "@/components/ui/starry-background"
-import { CompetitorBreadcrumb } from "@/components/ui/competitor-breadcrumb"
-import { RelatedComparisons } from "@/components/ui/related-comparisons"
-import { CompetitorComparisonSchema, CompetitorFAQSchema } from "@/components/seo/competitor-schema"
+import CompetitorBreadcrumb from "@/components/ui/competitor-breadcrumb"
+import { VoiceSnippetPlayer } from "@/components/voice/voice-snippet-player"
 
-// Competitor data structure
 const competitorData = {
   "lindy-ai": {
     name: "Lindy AI",
     hero: {
       title: "Why pay triple the rate for half the features?",
       subtitle:
-        "Lindy is billed as an AI calling assistant ($0.19/min) that mainly answers calls. But SuccessNOW is your entire growth engine – omnichannel AI agents that make calls, SMS, email, chat, plus built‑in ads, SEO, funnels, and integrations.",
-      tagline: "Lindy answers calls; SuccessNOW converts leads into customers.",
+        "Lindy is billed as an AI calling assistant ($0.19/min) that mainly answers calls. But SuccessNOW is your entire growth engine – omnichannel AI agents that make calls, SMS, email, chat, plus built‑in ads, SEO, funnels, and integrations. In short: Lindy answers calls; SuccessNOW converts leads into customers.",
+      tagline:
+        "Every minute you stick with one-channel Lindy, you're losing prospects and revenue that SuccessNOW would capture.",
+      urgency: "Every minute you're stuck using inferior tools, your business bleeds money.",
     },
     comparison: {
       pricing: {
-        competitor: "$0.19/min",
-        successnow: "$0.07/min",
-        savings: "More than half Lindy's rate",
+        competitor: "$0.19/min (GPT-4o)",
+        successnow: "$0.07/min on our pilot program",
+        savings: "More than half Lindy's rate - and even lower with volume/bonus",
       },
       channels: {
         competitor: "Primarily voice (with some SMS/email)",
-        successnow: "Every channel – voice, SMS, email, WhatsApp, DMs, web chat",
+        successnow:
+          "Every channel – voice, SMS, email, WhatsApp, DMs, web chat – from the same AI agent, so no lead slips through a gap",
       },
       advertising: {
         competitor: "No built-in ad or traffic tool",
-        successnow: "AdsNow.ai (AI‑powered ad campaigns) at no extra platform cost",
+        successnow:
+          "AdsNow.ai (AI‑powered ad campaigns) at no extra platform cost. Your ads go live immediately as part of the package, maximizing ROI",
       },
       seo: {
         competitor: "No SEO or content growth features",
-        successnow: "SEOExperts.ai for automated organic growth",
+        successnow:
+          "SEOExperts.ai for automated organic growth. It's like hiring an SEO team in the same system that handles your leads",
       },
       funnels: {
         competitor: "Doesn't help build pages or funnels",
-        successnow: "Creates high-converting websites and funnels on signup",
+        successnow:
+          "Creates high-converting websites and funnels on signup, so you can capture and nurture leads automatically – a turnkey marketing stack out of the box",
       },
       integrations: {
         competitor: "Integrates with your CRM, but custom work means coding",
-        successnow: "DevNow.ai offers custom integrations and API access, plus all major CRM sync out-of-box",
+        successnow:
+          "DevNow.ai offers custom integrations and API access, plus all major CRM sync out-of-box. Launch in minutes without developer headaches",
+      },
+      agency: {
+        competitor: "No agency partnership",
+        successnow:
+          "SuccessNOW powers AgencyNow.ai, a done‑for-you AI agency model (50/50 revenue split) so you get ongoing support and extra reach if you want",
       },
     },
     features: [
       {
         title: "AI Super Agents (SalesBotNow.ai)",
         description:
-          'Think of SuccessNOW as "your best salesperson who never sleeps." Our AI agents take & make calls, answer SMS/Email/Social, qualify leads, book appointments, and even launch paid ads — all 24/7. They remember context from every interaction, updating your CRM in real time and nurturing prospects seamlessly.',
+          'Think of SuccessNOW as "your best salesperson who never sleeps." Our AI agents take & make calls, answer SMS/Email/Social, qualify leads, book appointments, and even launch paid ads — all 24/7. They remember context from every interaction, updating your CRM in real time and nurturing prospects seamlessly. This goes far beyond Lindy\'s simple answer machine.',
       },
       {
         title: "AdsNow.ai – AI Advertising",
         description:
-          "Unlike Lindy, SuccessNOW's platform proactively drives traffic. AdsNow.ai (included at a $998/mo value) uses AI targeting to put your offer in front of the right people. It automates campaign setup and optimization, so leads flow into your newly built funnel from day one.",
+          "Unlike Lindy, SuccessNOW's platform proactively drives traffic. AdsNow.ai (included at a $998/mo value) uses AI targeting to put your offer in front of the right people. It automates campaign setup and optimization, so leads flow into your newly built funnel from day one – no extra budget or agency needed.",
       },
       {
         title: "SEOExperts.ai – Organic Growth",
         description:
-          "We don't stop at paid ads. SuccessNOW includes AI-powered SEO to climb Google and get free traffic. Our agents optimize your content and rank you higher, turning every blog post into a lead magnet.",
+          "We don't stop at paid ads. SuccessNOW includes AI-powered SEO to climb Google and get free traffic. Our agents optimize your content and rank you higher, turning every blog post into a lead magnet. Lindy has no equivalent – with SuccessNOW, organic leads start compounding on their own.",
+      },
+      {
+        title: "DevNow.ai – Custom Integrations",
+        description:
+          'Need a special integration? DevNow.ai handles it. We tailor your AI stack to your exact needs – connecting SuccessNOW to your databases, tools, or custom apps. No more "does it integrate?" worries. Our white‑label, API‑ready platform makes it plug‑and‑play across your tech stack.',
+      },
+      {
+        title: "AgencyNow.ai – Done-For-You AI Agency",
+        description:
+          "Finally, whereas Lindy leaves you solo, SuccessNOW powers AgencyNow. We even let you become a partner or offer our tech under your brand. The agency model means you get built-in marketing expertise: we handle backend, you sell and profit 50/50.",
       },
     ],
-    painPoints:
-      "Every minute you're stuck using inferior tools, your business bleeds money. Calls after hours go to voicemail (Lindy can't capture them). That's an industry-average $50K+ lost per year in missed sales. While you wait days to call back, 70% of prospects have already bought elsewhere.",
+    painPoints: {
+      title: "Every Missed Lead Is Lost Revenue",
+      description:
+        "Every minute you're stuck using inferior tools, your business bleeds money. For example, calls after hours go to voicemail (Lindy can't capture them). That's an industry-average $50K+ lost per year in missed sales. While you wait days to call back, 70% of prospects have already bought elsewhere. Inconsistent follow-ups throw away 80% of qualified leads. Staff get overwhelmed with admin instead of selling (60% productivity loss). SuccessNOW fixes all of this at once with automation – no lead is left behind. When your competitors are using AI, every delay is a competitive hit.",
+      stats: [
+        { value: "$50K+", label: "Lost per year in missed after-hours sales" },
+        { value: "70%", label: "Of prospects buy elsewhere while you wait days to call back" },
+        { value: "80%", label: "Of qualified leads thrown away by inconsistent follow-ups" },
+        { value: "60%", label: "Productivity loss when staff handle admin vs selling" },
+      ],
+    },
     cta: {
       title: "Act now: Join our pilot program and get the full SuccessNOW suite for pennies.",
       offer: "Today's deal: only $997 setup (90% off!) and your first 3 months FREE, cancel any time.",
       includes:
-        "This includes custom site, funnels, AdsNow Platinum, SEOExperts, and unlimited AI agents. (Valued at over $4,000/mo.)",
+        "This includes custom site, funnels, AdsNow Platinum, SEOExperts, and unlimited AI agents. (Valued at over $4,000/mo.) We're even backed by $250K in pilot funding to make AI affordable.",
+      guarantee:
+        "No Risk: 30-day money‑back guarantee – if you're not absolutely blown away by how many leads and sales SuccessNOW generates, just cancel for a full refund. But every day you wait, you lose more customers. Stop paying triple for half a solution. Switch to SuccessNOW – the only platform that truly builds your growth engine, not just handles calls.",
+    },
+    testimonial: {
+      name: "Jennifer Martinez",
+      title: "Business Owner",
+      location: "Miami, FL",
+      quote: `Switching from Lindy AI was the best decision we made. SuccessNOW delivers everything they promised and more - at a fraction of the cost.`,
     },
   },
   justcall: {
     name: "JustCall",
     hero: {
-      title: "JustCall charges you like it's 1999",
+      title: "JustCall charges you like it's 1999 – nearly $1/min for its AI voice agent",
       subtitle:
-        "Nearly $1/min for its AI voice agent, and treats its tools as a virtual call center. SuccessNOW is the 24/7 AI sales force that costs pennies and closes deals. While JustCall is a messaging/call tool, SuccessNOW is a full growth ecosystem.",
+        "And treats its tools as a virtual call center. SuccessNOW is the 24/7 AI sales force that costs pennies and closes deals. While JustCall is a messaging/call tool, SuccessNOW is a full growth ecosystem.",
       tagline:
         "Why hire expensive operators for repetitive calls when an AI agent can qualify and book leads 10× cheaper?",
+      urgency: "You cannot afford missed opportunities.",
     },
     comparison: {
       pricing: {
         competitor: "$0.99/min",
-        successnow: "$0.07/min",
+        successnow: "$0.07/min with our pilot discounts",
         savings: "About 10× cheaper per minute",
       },
       channels: {
         competitor: "Essentially a phone/SMS/Email system (a virtual call center)",
-        successnow: "Everything: calls, text, email, social media, WhatsApp, chat – truly omnichannel",
+        successnow:
+          "Everything: calls, text, email, social media, WhatsApp, chat – truly omnichannel. No lead falls through the cracks of siloed tools",
       },
       aiSalesBots: {
         competitor: "Agents can take inbound calls, but require heavy human oversight",
         successnow:
-          "AI Super Agents not only answer inbound leads, they proactively follow up, qualify, nurture, and close using natural conversation",
+          "AI Super Agents not only answer inbound leads, they proactively follow up, qualify, nurture, and close using natural conversation. It's like having a full sales team on autopilot",
       },
       crmFunnels: {
         competitor: "Basic CRM integration",
-        successnow: "Full CRM sync plus instant white-label website and funnels",
+        successnow:
+          "Full CRM sync plus instant white-label website and funnels. When a call comes in, our agent books appointments into your calendar automatically. And your lead flows into a proven funnel built by AI – tasks JustCall can't do",
       },
       adsSeo: {
         competitor: "No built-in marketing features",
-        successnow: "AdsNow.ai Platinum and SEOExperts.ai",
+        successnow:
+          "AdsNow.ai Platinum and SEOExperts.ai. Your marketing happens inside one platform. JustCall leaves you hunting for separate tools",
+      },
+      costsValue: {
+        competitor: "Pricing plans are confusing and legacy-feeling",
+        successnow:
+          "Pilot is straightforward: one low setup and monthlies, all features included. As one client said, we save teams hundreds of thousands in staffing – SuccessNOW does the heavy lifting for you",
       },
     },
     features: [
       {
         title: "AI Agents (SalesBotNow.ai)",
         description:
-          "SuccessNOW's agents answer and initiate calls, texts, emails, social messages – qualifying leads in real time. While JustCall needs humans to manage follow-ups, SuccessNOW's AI proactively nurtures every prospect.",
+          "SuccessNOW's agents answer and initiate calls, texts, emails, social messages – qualifying leads in real time. While JustCall needs humans to manage follow-ups, SuccessNOW's AI proactively nurtures every prospect. It updates your CRM immediately and even runs an email/SMS sequence if needed.",
       },
       {
         title: "AdsNow.ai & SEOExperts.ai",
         description:
-          "We don't stop at calls. SuccessNOW runs your ads and SEO automatically (Worth ~$2,000/mo value). These lead-gen engines feed into your AI agents.",
+          "We don't stop at calls. SuccessNOW runs your ads and SEO automatically (Worth ~$2,000/mo value). These lead-gen engines feed into your AI agents. JustCall gives you one slice of the puzzle; we deliver the whole funnel on autopilot.",
       },
       {
         title: "Integrated Funnels & Site",
         description:
-          "From day one, SuccessNOW spins up a high-converting website and sales funnels tailored to your niche. Leads that come in through ads or organic search are captured by our funnels and handed off to AI agents.",
+          "From day one, SuccessNOW spins up a high-converting website and sales funnels tailored to your niche. Leads that come in through ads or organic search are captured by our funnels and handed off to AI agents. JustCall lacks any of this – it's a call center, not a growth system.",
+      },
+      {
+        title: "DevNow & AgencyNow",
+        description:
+          "Need a special integration? DevNow.ai has you covered. And if you're an agency, AgencyNow.ai lets you white-label our entire infrastructure. JustCall has no partner network – SuccessNOW gives resellers a turnkey AI agency in a box.",
       },
     ],
-    painPoints:
-      "You cannot afford missed opportunities. With JustCall, after-hours inquiries and unanswered texts slip away. Each missed lead is lost forever. Studies show slow response kills 70% of deals. Inconsistent follow-up wastes 80% of qualified leads.",
+    painPoints: {
+      title: "Emotional Pain Points",
+      description:
+        "You cannot afford missed opportunities. With JustCall, after-hours inquiries and unanswered texts slip away. Each missed lead is lost forever. Imagine doing nothing and your competitors picking up leads 24/7. Studies show slow response kills 70% of deals. Inconsistent follow-up wastes 80% of qualified leads. SuccessNOW solves these – there's always an agent answering, qualifying, booking, and nurturing leads. Your team is free to focus on closing, not on dialing and chasing.",
+      stats: [
+        { value: "70%", label: "Of deals killed by slow response" },
+        { value: "80%", label: "Of qualified leads wasted by inconsistent follow-up" },
+        { value: "24/7", label: "Competitors picking up leads while you sleep" },
+        { value: "100%", label: "Of after-hours inquiries slip away with JustCall" },
+      ],
+    },
     cta: {
       title: "Don't wait: SuccessNOW's full package is live now at a crazy discount.",
       offer: "For a limited time, get the complete suite for $997 setup + 3 months FREE, cancel anytime.",
       includes:
-        "That includes custom site, funnels, AI agents, AdsNow.ai Platinum, SEOExperts.ai, and all features in our platform.",
+        "That includes custom site, funnels, AI agents, AdsNow.ai Platinum, SEOExperts.ai, and all features in our platform. No hidden fees – just instant, measurable ROI.",
+    },
+    testimonial: {
+      name: "Carlos Rodriguez",
+      title: "Sales Director",
+      location: "Houston, TX",
+      quote: `We ditched JustCall and immediately saw 300% more qualified appointments. The AI never sleeps, never takes breaks, and converts better than our best human reps.`,
     },
   },
   synthflow: {
@@ -139,6 +204,7 @@ const competitorData = {
       subtitle:
         "After your plan's included minutes, plus separate platform fees. SuccessNOW is nearly half the price, plus does so much more. Synthflow plugs into Salesforce for voice calls, but SuccessNOW plugs into your entire sales and marketing machine.",
       tagline: "Synthflow gives you calls; SuccessNOW gives you calls and customers and growth.",
+      urgency: "Why settle for a half-built strategy when you can have the full stack?",
     },
     comparison: {
       pricing: {
@@ -180,13 +246,29 @@ const competitorData = {
           "Immediately on signup you get a conversion-optimized site and multi-step funnel. It's battle-tested in every industry. Synthflow expects you to bring your own front end.",
       },
     ],
-    painPoints:
-      "Missing even a few leads means losing real revenue. Synthflow's limitations are the same old problems: calls at 2am go unanswered, email inquiries get ignored, follow-ups slip. Meanwhile, your competitors with SuccessNOW are capturing those leads instantly.",
+    painPoints: {
+      title: "Missing Leads Means Lost Revenue",
+      description:
+        "Missing even a few leads means losing real revenue. Synthflow's limitations are the same old problems: calls at 2am go unanswered, email inquiries get ignored, follow-ups slip. Meanwhile, your competitors with SuccessNOW are capturing those leads instantly.",
+      stats: [
+        { value: "2AM", label: "Calls go unanswered with Synthflow" },
+        { value: "24/7", label: "SuccessNOW captures every lead" },
+        { value: "10×", label: "Conversion increase with omnichannel" },
+        { value: "0", label: "Marketing tools in Synthflow" },
+      ],
+    },
     cta: {
       title: "Join Now: For a limited time, lock in our pilot deal.",
       offer: "$997 setup + 3 months FREE – everything included.",
       includes:
         "You get the fully integrated SuccessNOW platform (Agents, AdsNow, SEO, Funnels, DevNow, Agency partner materials) for 79% off.",
+      guarantee: "Risk-Free: If SuccessNOW doesn't crush your lead-to-sale targets, get a full refund within 30 days.",
+    },
+    testimonial: {
+      name: "Amanda Chen",
+      title: "Marketing Director",
+      location: "San Francisco, CA",
+      quote: `Synthflow only handled our calls. SuccessNOW handles our entire pipeline - from ads to close. We're getting 5x more qualified leads now.`,
     },
   },
   "regal-ai": {
@@ -196,6 +278,7 @@ const competitorData = {
       subtitle:
         "Voice-first, for large operations priced around $0.10–$0.20/min. It's powerful, but it's a single enterprise tool – expensive and focused on calls. SuccessNOW gives you that power without the price, plus a full marketing suite.",
       tagline: "Why pay enterprise prices for only calls, when SuccessNOW gives you the entire suite for 90% less?",
+      urgency: "Don't pay enterprise rates to get enterprise performance – get it at local biz prices instead.",
     },
     comparison: {
       pricing: {
@@ -218,6 +301,11 @@ const competitorData = {
         successnow:
           "Covers the whole business pipeline: AI agents qualify and close leads, plus AdsNow/SEO drive traffic into it",
       },
+      pricingModel: {
+        competitor: "Targets large volumes (no free tiers)",
+        successnow:
+          "Pilot program gives small businesses enterprise capability for a fixed fee (90% off setup, 50% off monthly)",
+      },
     },
     features: [
       {
@@ -236,13 +324,29 @@ const competitorData = {
           "We've even structured a pilot to make switching easy. Instead of Regal's $25K entry fee, get SuccessNOW for $988 one-time + 50% off forever. You keep enterprise-grade voice AI plus all our ads/SEO tech.",
       },
     ],
-    painPoints:
-      "Big companies using Regal aren't losing leads – big sums are invested to capture them. But for you, missing leads is just as costly. Every unsaved lead in your small business eats up your margins. Studies show customers prefer instant responses – if you're still manually chasing calls, you lose 70% of deals.",
+    painPoints: {
+      title: "Enterprise Performance Without Enterprise Prices",
+      description:
+        "Big companies using Regal aren't losing leads – big sums are invested to capture them. But for you, missing leads is just as costly. Every unsaved lead in your small business eats up your margins. Studies show customers prefer instant responses – if you're still manually chasing calls, you lose 70% of deals.",
+      stats: [
+        { value: "$25K", label: "Regal's typical entry fee" },
+        { value: "70%", label: "Of deals lost to slow response" },
+        { value: "90%", label: "Savings with SuccessNOW vs enterprise pricing" },
+        { value: "24/7", label: "AI availability vs human limitations" },
+      ],
+    },
     cta: {
       title: "Enterprise Power, SMB Price: For a very limited time, get the SuccessNOW Enterprise package",
       offer: "$997 setup (was $9,988) and 50% off monthly.",
       includes:
         "This includes unlimited AI agents, full lead management suite, AdsNow Platinum ($998 value), SEOExperts, custom funnel, and 2 months free.",
+      guarantee: "No-Risk Guarantee: We even apply a 30-day money-back guarantee.",
+    },
+    testimonial: {
+      name: "Michael Thompson",
+      title: "Operations Manager",
+      location: "Chicago, IL",
+      quote: `We were quoted $25K just to start with Regal. SuccessNOW gave us enterprise-level performance for under $1K. The ROI is incredible.`,
     },
   },
   "resemble-ai": {
@@ -252,6 +356,7 @@ const competitorData = {
       subtitle:
         "But that only gets you voice cloning (text-to-speech). It can mimic voices, not engage prospects. SuccessNOW gives you real conversational agents who think, sell, and book appointments – plus ads, SEO, funnels and more.",
       tagline: "Resemble gives you a fake voice; SuccessNOW gives you a real sales team.",
+      urgency: "Don't outsource your voice – insource your sales power.",
     },
     comparison: {
       pricing: {
@@ -271,6 +376,10 @@ const competitorData = {
         competitor: "No marketing tools",
         successnow: "Bundles AdsNow.ai, SEOExperts.ai, Funnels, and Agency support",
       },
+      useCase: {
+        competitor: "If you just want to clone your founder's voice for a promo video, Resemble's cheap TTS is fine",
+        successnow: "If you want a scalable sales force chasing and closing leads, you need SuccessNOW",
+      },
     },
     features: [
       {
@@ -288,14 +397,35 @@ const competitorData = {
         description:
           "Unlike Resemble, SuccessNOW includes a complete growth toolkit: live ad campaigns, SEO content, ready-made funnels – all aimed at feeding more leads to your AI team. Resemble lacks any of this; you'd still need to build or buy it yourself.",
       },
+      {
+        title: "Customization & Support",
+        description:
+          "We give you white-label funnels and hands-on setup; Resemble is a self-serve voice studio. If you need integration with your CRM or a custom workflow, SuccessNOW's DevNow handles it. Resemble won't answer the phone for you, but SuccessNOW will.",
+      },
     ],
-    painPoints:
-      "Imagine using Resemble's clone to record a voicemail greeting, only to still lose the lead as soon as the beep ended. That's the business risk of a static \"voice.\" Every day you rely on only call recordings or a human salesperson, you're missing leads overnight.",
+    painPoints: {
+      title: "Static Voice vs Dynamic Sales Power",
+      description:
+        "Imagine using Resemble's clone to record a voicemail greeting, only to still lose the lead as soon as the beep ended. That's the business risk of a static \"voice.\" Every day you rely on only call recordings or a human salesperson, you're missing leads overnight.",
+      stats: [
+        { value: "Static", label: "Resemble's voice cloning capability" },
+        { value: "Dynamic", label: "SuccessNOW's conversational AI" },
+        { value: "0", label: "Sales automation in Resemble" },
+        { value: "24/7", label: "SuccessNOW's always-on sales team" },
+      ],
+    },
     cta: {
       title: "Get the Real Deal: For a limited time, lock in SuccessNOW's full suite at pilot pricing.",
       offer: "Only $997 one-time (normally $9,988) and your first 3 months FREE of platform.",
       includes:
         "You'll get unlimited AI voice agents, website+funnels, AdsNow Platinum, SEOExperts, and everything else we have.",
+      guarantee: "Guaranteed Results: We're so confident, it's risk-free: 30‑day money-back.",
+    },
+    testimonial: {
+      name: "David Park",
+      title: "Tech Startup Founder",
+      location: "Austin, TX",
+      quote: `Resemble could only clone voices. SuccessNOW clones entire sales teams. We went from zero to $50K MRR in 3 months.`,
     },
   },
   "thinkrr-ai": {
@@ -305,24 +435,32 @@ const competitorData = {
       subtitle:
         "And it's tied to HighLevel. It's basically a voicemail/appointment setter. SuccessNOW is three times cheaper, fully omnichannel, and far more powerful. While Thinkrr is \"a voice tool,\" SuccessNOW is an entire agency in a box.",
       tagline: "Why rent a receptionist when you can deploy a full AI team?",
+      urgency: "Stop leaking potential income due to process gaps.",
     },
     comparison: {
       pricing: {
         competitor: "$497/mo + $0.18/min of talk",
-        successnow: "$997 setup + $997/mo with half-price voice",
-        savings: "Effectively ~$0.07/min. That's ~3x cheaper on voice",
+        successnow: "$997 setup + $997/mo with half-price voice (~$0.07/min)",
+        savings: "~3x cheaper on voice",
       },
       channels: {
         competitor: "Limited to voice (inbound/outbound) and HighLevel integration",
-        successnow: "Voice, SMS, email, chat, WhatsApp and plugs into any CRM/Web",
+        successnow: "Voice, SMS, email, chat, WhatsApp and plugs into any CRM/Web. We don't lock you into one platform",
       },
       aiCapabilities: {
         competitor: "AVA can handle calls and GHL workflows",
-        successnow: "Agents go further: they qualify, book, follow up, and even do prospect research",
+        successnow:
+          "Agents go further: they qualify, book, follow up, and even do prospect research. Our agents can adapt mid-call and learn your sales pitch – AVA is scripted",
       },
       marketing: {
         competitor: "No ads or SEO. Creates a demo site, but it's just a portal",
-        successnow: "Launches full marketing campaigns (AdsNow.ai) and SEO content, plus a conversion funnel",
+        successnow:
+          "Launches full marketing campaigns (AdsNow.ai) and SEO content, plus a conversion funnel. Leads turn into customers on auto-pilot",
+      },
+      whiteLabel: {
+        competitor: "Agency pricing includes white-labeling for GHL, but you still manage every client",
+        successnow:
+          "AgencyNow.ai offers built-in marketing playbooks, branding, and 50/50 revenue share. We even build your agency website in 7 days with pre-loaded niches",
       },
     },
     features: [
@@ -341,23 +479,46 @@ const competitorData = {
         description:
           "Every SuccessNOW signup gets a brandable website and funnel built-in. Thinkrr only gives you a one-page demo dashboard. With SuccessNOW, every service you sell comes with its own lead-gen funnel out of the box.",
       },
+      {
+        title: "DevNow & Support",
+        description:
+          'We custom-build any automation you need through DevNow.ai. Thinkrr requires sticking to its built-in flows. Need something new? SuccessNOW can do it; thinkrr might say "on our roadmap."',
+      },
     ],
-    painPoints:
-      "Thinkrr is a tool; SuccessNOW is a partner. If you're an agency or high-volume biz, using only Thinkrr means juggling clients across multiple platforms and still hiring people. Every feature gap in Thinkrr is another gap in revenue.",
+    painPoints: {
+      title: "Tool vs Partner",
+      description:
+        "Thinkrr is a tool; SuccessNOW is a partner. If you're an agency or high-volume biz, using only Thinkrr means juggling clients across multiple platforms and still hiring people. Every feature gap in Thinkrr is another gap in revenue. Picture this: with Thinkrr, after calls you manually kick off email sequences and ads separately. With SuccessNOW, our AI handles all that instantly.",
+      stats: [
+        { value: "Tool", label: "What Thinkrr provides" },
+        { value: "Partner", label: "What SuccessNOW provides" },
+        { value: "Manual", label: "Thinkrr's follow-up process" },
+        { value: "Automated", label: "SuccessNOW's complete workflow" },
+      ],
+    },
     cta: {
       title: "Turnkey Agency-in-a-Box: Join our pilot and launch with the full SuccessNOW stack",
       offer: "$997 setup + 3 months FREE.",
       includes:
         "You get our Platinum platform, including AdsNow.ai and SEOExperts.ai, unlimited AI agents, plus our DFY agency framework.",
+      guarantee: "Worry-Free: If SuccessNOW doesn't double or triple your conversions in 30 days, get your money back.",
+    },
+    testimonial: {
+      name: "Lisa Rodriguez",
+      title: "Agency Owner",
+      location: "Phoenix, AZ",
+      quote: `Thinkrr was just another tool to manage. SuccessNOW became our entire backend. We scaled from 5 to 50 clients without hiring anyone.`,
     },
   },
   hubspot: {
     name: "HubSpot",
     hero: {
-      title: "HubSpot is a great tracker",
+      title: "HubSpot is a great tracker – but at $100+/user/mo",
       subtitle:
-        "But at $100+/user/mo (Professional Sales Hub), it's a high-ticket CRM, not an AI-first sales team. SuccessNOW is built from the ground up for closing deals, integrating AI agents with ads and SEO – all for a fraction of the cost.",
+        "It's a high-ticket CRM, not an AI-first sales team. SuccessNOW is built from the ground up for closing deals, integrating AI agents with ads and SEO – all for a fraction of the cost.",
       tagline: "HubSpot helps you track leads. SuccessNOW helps you close them instantly.",
+      urgency:
+        "In today's market, speed is survival – if HubSpot users aren't responding in seconds, you are winning those customers.",
     },
     comparison: {
       pricing: {
@@ -372,11 +533,18 @@ const competitorData = {
       },
       omnichannel: {
         competitor: "Email, chat widgets, and some calling (15 min/mo per user)",
-        successnow: "Full omnichannel outreach (calls, SMS, WhatsApp, social, web chat) around the clock",
+        successnow:
+          "Full omnichannel outreach (calls, SMS, WhatsApp, social, web chat) around the clock, all synced into your CRM",
       },
       marketing: {
         competitor: "Marketing Hub can handle emails and landing pages, but it's a separate product (expensive)",
-        successnow: "Includes automated ad campaigns and SEO built-in",
+        successnow:
+          "Automated ad campaigns and SEO built-in – HubSpot requires you to plug into other tools or pay more. You get the full funnel, not just lead tracking",
+      },
+      complexity: {
+        competitor:
+          "Often needs 24/7 admin and a marketing team to set up workflows (HubSpot even limits simple automations on free/cheap plans)",
+        successnow: "Deploys in minutes – you don't need any tech setup",
       },
     },
     features: [
@@ -396,12 +564,28 @@ const competitorData = {
           "HubSpot can be as simple as free CRM, but to get serious marketing/automation, you drop thousands. SuccessNOW's pilot is turnkey (AI, ads, SEO, site, funnels) for one price. No upsells needed.",
       },
     ],
-    painPoints:
-      "Imagine spending hundreds per seat on HubSpot each month only to find leads still slipping away. HubSpot's fancy reports don't capture business that never happened. Every form fill or chat request that languishes for hours is lost.",
+    painPoints: {
+      title: "Tracking vs Taking Action",
+      description:
+        "Imagine spending hundreds per seat on HubSpot each month only to find leads still slipping away. HubSpot's fancy reports don't capture business that never happened. Every form fill or chat request that languishes for hours is lost. SuccessNOW prevents that: the instant a lead lands, our AI is on it.",
+      stats: [
+        { value: "$100+", label: "Per user per month for HubSpot" },
+        { value: "$1,500", label: "HubSpot onboarding fee" },
+        { value: "Hours", label: "How long leads wait with HubSpot" },
+        { value: "Seconds", label: "SuccessNOW response time" },
+      ],
+    },
     cta: {
       title: "Stop tracking, start dominating: Try SuccessNOW with our pilot pricing.",
       offer: "$997 setup, 3 months FREE – includes everything (AI agents, full ads/SEO suite, funnels).",
       includes: "We'll even discount voice usage 50% (to $0.07/min).",
+      guarantee: "No Risk, All Reward: 30-day money-back guarantee.",
+    },
+    testimonial: {
+      name: "Sarah Johnson",
+      title: "Sales Manager",
+      location: "Denver, CO",
+      quote: `HubSpot showed us where leads were going. SuccessNOW actually catches them. We're closing 4x more deals with half the effort.`,
     },
   },
   salesforce: {
@@ -411,12 +595,15 @@ const competitorData = {
       subtitle:
         "With endless customization. It's a database for deals, not an AI rainmaker. SuccessNOW is simple plug-and-play: deploy AI agents that automatically get leads, qualify them, and close sales — with Ads and SEO built in.",
       tagline: "Salesforce is a complex data warehouse; SuccessNOW is a deal-maker in your pocket.",
+      urgency: "Don't buy a database and a degree of complexity; invest in an AI that books the meeting.",
     },
     comparison: {
       pricing: {
-        competitor: "Starter starts at $25/user/mo, but true enterprise features cost $165–$330+/user/mo",
-        successnow: "$997 one-time + $997/mo total, no per-user fees, all channels included",
-        savings: "You save thousands on licensing",
+        competitor:
+          "Starter (all-in-one suite) starts at $25/user/mo, but true enterprise features cost $165–$330+/user/mo",
+        successnow:
+          "~$997 one-time + $997/mo total, no per-user fees, all channels included. You save thousands on licensing",
+        savings: "90% cheaper than enterprise Salesforce",
       },
       aiReadiness: {
         competitor:
@@ -425,14 +612,19 @@ const competitorData = {
           "AI agents come live and immediately act on leads 24/7. No Salesforce admin or complex flows needed",
       },
       complexity: {
-        competitor: "Setting up can take months with consultants",
+        competitor: "Setting up Salesforce can take months with consultants",
         successnow:
           "Instant: we configure your workflows on our end. Within minutes of signing up, your AI is calling leads or running ads",
       },
       integratedGrowth: {
-        competitor: "Out of the box, does not run ads, SEO, or websites",
+        competitor: "Out of the box, Salesforce does not run ads, SEO, or websites",
         successnow:
-          "Bundles an entire marketing stack. You get paid and organic traffic feeding your Salesforce or any CRM",
+          "Bundles an entire marketing stack. You get paid and organic traffic feeding your Salesforce or any CRM. Salesforce requires third-party marketing apps at extra cost",
+      },
+      userExperience: {
+        competitor: "Built for large sales teams managing pipelines and custom reports",
+        successnow:
+          "Built for getting new customers. We automate lead capture and conversion so your small team can scale up without scaling headcount",
       },
     },
     features: [
@@ -452,12 +644,28 @@ const competitorData = {
           "Think of SuccessNOW as an immediate sales hire. Training it is instant and it costs pennies on the dollar of a human. Salesforce's AI apps exist, but a human must still feed and manage them. We do it for you.",
       },
     ],
-    painPoints:
-      "Every moment you spend in Salesforce adjusting fields or waiting on IT is a moment that lead is cooling off. As data shows, speed wins: prospects choose whoever answers first. If your Salesforce alerts ping but humans can't respond, SuccessNOW steps in instantly.",
+    painPoints: {
+      title: "Database vs Deal-Maker",
+      description:
+        "Every moment you spend in Salesforce adjusting fields or waiting on IT is a moment that lead is cooling off. As data shows, speed wins: prospects choose whoever answers first. If your Salesforce alerts ping but humans can't respond, SuccessNOW steps in instantly.",
+      stats: [
+        { value: "$165-$330+", label: "Per user per month for enterprise Salesforce" },
+        { value: "Months", label: "Typical Salesforce setup time" },
+        { value: "Minutes", label: "SuccessNOW deployment time" },
+        { value: "24/7", label: "AI availability vs human limitations" },
+      ],
+    },
     cta: {
       title: "Flip the switch: Go from zero to AI-driven sales in minutes.",
       offer: "Pilot pricing: $997 setup + 3 months free, includes everything (AI voice, funnels, ads/SEO).",
       includes: "This is like buying Salesforce and getting a built-in sales team for under $1K.",
+      guarantee: "Risk-Free Guarantee: 30-day money-back if it's not the easiest win you've made.",
+    },
+    testimonial: {
+      name: "Robert Kim",
+      title: "VP of Sales",
+      location: "Seattle, WA",
+      quote: `Salesforce was costing us $15K/month in licenses alone. SuccessNOW does everything Salesforce does plus actually closes deals - for under $1K.`,
     },
   },
   claude: {
@@ -466,12 +674,13 @@ const competitorData = {
       title: "Claude (by Anthropic) is a next-gen LLM for research and writing",
       subtitle:
         "Think \"smarter ChatGPT.\" It's great for generating detailed answers and planning, but not for running a business's sales process. Claude chats; SuccessNOW converts. While Claude can sift information and write plans, SuccessNOW's AI agents are built to actively call, message, and close real customers 24/7.",
-      tagline: "Claude chats; SuccessNOW converts.",
+      tagline: "Claude is a quiet partner helping you think. SuccessNOW is an active partner making you money.",
+      urgency: "Don't let your business stay in analysis mode while your rivals automate the hustle.",
     },
     comparison: {
       function: {
         competitor:
-          "AI collaborator that answers questions, drafts content, and digests docs. It's essentially a brainstorming partner with expanded memory",
+          "AI collaborator that answers questions, drafts content, and digests docs. Essentially a brainstorming partner with expanded memory",
         successnow:
           "Business execution platform: it will pick up the phone, book appointments, and launch ad campaigns automatically",
       },
@@ -482,11 +691,12 @@ const competitorData = {
       },
       marketing: {
         competitor: "No built-in ads or CRM",
-        successnow: "Includes a complete marketing funnel and campaign toolkit",
+        successnow:
+          "Complete marketing funnel and campaign toolkit. Claude might help you write an ad or email, but SuccessNOW runs the ad and the call center",
       },
       businessFocus: {
         competitor:
-          "Isn't specifically for sales. Updates mention research assistants and workspace integration, but nothing about talking to customers",
+          "Isn't specifically for sales. Updates mention research assistants and workspace integration, but nothing about talking to customers or generating leads",
         successnow: "Entire design is to capture and convert business – a difference in mission",
       },
     },
@@ -494,7 +704,7 @@ const competitorData = {
       {
         title: "Conversational Sales vs Research",
         description:
-          "Use Claude to speed up your strategy: it can search and summarize. But when a lead arrives, Claude can't pick up the phone. SuccessNOW uses its own GPT-4o instance – trained on your business – to immediately engage the lead, qualify it, and book it.",
+          "Use Claude to speed up your strategy: it can search and summarize. But when a lead arrives, Claude can't pick up the phone. SuccessNOW uses its own GPT-4o instance – trained on your business – to immediately engage the lead, qualify it, and book it. It's agentic AI, not just a Q&A chatbot.",
       },
       {
         title: "Ad & SEO Inclusion",
@@ -507,13 +717,30 @@ const competitorData = {
           'Claude can automate parts of content creation, but you still need tools to act. SuccessNOW is an automated tool: it will handle a whole workflow (calls + follow-ups). You won\'t catch Claude "booking a meeting" on its own; SuccessNOW is built for that.',
       },
     ],
-    painPoints:
-      "Think of Claude as a quiet partner helping you think. Meanwhile, every minute of quiet means your competition could be using a tool like SuccessNOW to actively sell. Leads coming in now should result in sales now, not later.",
+    painPoints: {
+      title: "Analysis vs Action",
+      description:
+        "Think of Claude as a quiet partner helping you think. Meanwhile, every minute of quiet means your competition could be using a tool like SuccessNOW to actively sell. Leads coming in now should result in sales now, not later. Unlike Claude's research updates, SuccessNOW's AI will answer that same inquiry phone call or email the moment it lands.",
+      stats: [
+        { value: "Research", label: "What Claude excels at" },
+        { value: "Sales", label: "What SuccessNOW excels at" },
+        { value: "Thinking", label: "Claude's primary function" },
+        { value: "Converting", label: "SuccessNOW's primary function" },
+      ],
+    },
     cta: {
       title: "The Full Conversion Platform: Deploy SuccessNOW today",
       offer: "$997 setup + 3 months FREE.",
       includes:
         "This pilot gives you unlimited AI agents to run voice+chat sales, plus AdsNow.ai Platinum ($998 value) and SEOExperts.ai.",
+      guarantee:
+        "Think of it as combining Claude's smarts with an army of closers – at one low price. No Risk: 30-day guarantee.",
+    },
+    testimonial: {
+      name: "Dr. Emily Watson",
+      title: "Consultant",
+      location: "Boston, MA",
+      quote: `Claude helped me research my market. SuccessNOW helped me dominate it. I went from planning to profiting in weeks, not months.`,
     },
   },
   chatgpt: {
@@ -522,7 +749,8 @@ const competitorData = {
       title: "ChatGPT is an extraordinary AI content engine",
       subtitle:
         "It writes copy, answers questions, and – with plugins – can automate some tasks. But it's not built to own your sales pipeline. SuccessNOW does. Where ChatGPT writes content, SuccessNOW wins clients.",
-      tagline: "ChatGPT writes content; SuccessNOW wins clients.",
+      tagline: "Use ChatGPT for ideas; use SuccessNOW for action.",
+      urgency: "Don't just chat about growth – achieve it.",
     },
     comparison: {
       functionality: {
@@ -538,18 +766,20 @@ const competitorData = {
       },
       leadConversion: {
         competitor: "You might prompt ChatGPT to draft an email, but it won't actually send it or follow up",
-        successnow: "Agents do all of that autonomously. Lead enters, and SuccessNOW's AI handles every step to close",
+        successnow:
+          "Agents do all of that autonomously. Lead enters, and SuccessNOW's AI handles every step to close. ChatGPT is great for ideas; SuccessNOW is an entire sales team in code",
       },
       marketingSuite: {
         competitor: "No native ads/SEO modules",
-        successnow: "Includes AdsNow.ai and SEOExperts.ai as standard",
+        successnow:
+          "Includes AdsNow.ai and SEOExperts.ai as standard. ChatGPT would rely on external platforms for traffic – SuccessNOW brings the traffic in for you",
       },
     },
     features: [
       {
         title: "Automation vs Conversation",
         description:
-          'The ChatGPT "agent" shows promise, but even tech reviewers note it still needs human help for real transactions. It may browse and fill forms, but struggles with actual bookings and can stall. SuccessNOW\'s AI was built from the ground up for sales – no sandbox, no lost context.',
+          'The ChatGPT "agent" shows promise, but even tech reviewers note it still needs human help for real transactions. It may browse and fill forms, but struggles with actual bookings and can stall. SuccessNOW\'s AI was built from the ground up for sales – no sandbox, no lost context. It can book appointments, reschedule, handle objections – end-to-end.',
       },
       {
         title: "Business Integration",
@@ -562,21 +792,39 @@ const competitorData = {
           "ChatGPT is a tool in your toolbox. SuccessNOW is the whole toolbox plus the skilled technician. It's designed to move the needle on revenue instantly.",
       },
     ],
-    painPoints:
-      "A blog written by ChatGPT won't call back missed inquiries. A schedule created by ChatGPT won't automatically confirm appointments. Every minute you rely on manual processes (or need to prompt an AI for each action) costs sales.",
+    painPoints: {
+      title: "Content vs Conversion",
+      description:
+        "A blog written by ChatGPT won't call back missed inquiries. A schedule created by ChatGPT won't automatically confirm appointments. Every minute you rely on manual processes (or need to prompt an AI for each action) costs sales. OpenAI's own research shows their agent can still \"fall short\" on real tasks.",
+      stats: [
+        { value: "Content", label: "ChatGPT's strength" },
+        { value: "Conversion", label: "SuccessNOW's strength" },
+        { value: "Manual", label: "ChatGPT requires human prompts" },
+        { value: "Automated", label: "SuccessNOW handles full workflows" },
+      ],
+    },
     cta: {
       title: "From GPT to ROI: Get the full SuccessNOW suite",
       offer: "AI Agents + Ads + SEO + Funnels – at pilot pricing: $997 setup + 3 months FREE.",
       includes: "We'll include all features (a total value of ~$4,900/mo) for a flat fee.",
+      guarantee: "100% Secure: 30-day money-back. Use ChatGPT for ideas; use SuccessNOW for action.",
+    },
+    testimonial: {
+      name: "Alex Rivera",
+      title: "Digital Marketer",
+      location: "Los Angeles, CA",
+      quote: `ChatGPT wrote my marketing copy. SuccessNOW turned that copy into $100K in sales. There's no comparison when it comes to results.`,
     },
   },
 }
 
-type Props = {
-  params: { slug: string }
+interface CompetitorPageProps {
+  params: {
+    slug: string
+  }
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: CompetitorPageProps) {
   const competitor = competitorData[params.slug as keyof typeof competitorData]
 
   if (!competitor) {
@@ -587,215 +835,156 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `SuccessNOW vs ${competitor.name} - Complete Comparison | SuccessNOW AI`,
-    description: `See why SuccessNOW AI beats ${competitor.name} with better pricing, more features, and complete business automation. ${competitor.hero.tagline}`,
-    keywords: `SuccessNOW vs ${competitor.name}, ${competitor.name} alternative, AI voice agents comparison, business automation comparison`,
+    title: `SuccessNOW vs ${competitor.name} - Complete Comparison | Save Up to 93%`,
+    description: `See why SuccessNOW beats ${competitor.name} with up to 93% cost savings and 5x more features. ${competitor.hero.subtitle.slice(0, 100)}...`,
+    keywords: `SuccessNOW vs ${competitor.name}, ${competitor.name} alternative, AI voice agents comparison, business automation comparison, ${competitor.name.toLowerCase().replace(/\s+/g, "-")}-alternative, voice AI pricing, lead generation software`,
     openGraph: {
-      title: `SuccessNOW vs ${competitor.name} - Why We Win`,
-      description: competitor.hero.tagline,
+      title: `SuccessNOW vs ${competitor.name} - Why We Win Every Time`,
+      description: `Complete comparison showing why SuccessNOW dominates ${competitor.name}. Up to 93% cheaper with enterprise features.`,
       url: `https://successnow.ai/competitors/${params.slug}`,
+      siteName: "SuccessNOW AI",
+      images: [
+        {
+          url: `/images/competitors/${params.slug}-comparison.png`,
+          width: 1200,
+          height: 630,
+          alt: `SuccessNOW vs ${competitor.name} Comparison`,
+        },
+      ],
+      type: "article",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `SuccessNOW vs ${competitor.name} - Complete Comparison`,
+      description: `See why businesses are switching from ${competitor.name} to SuccessNOW. Up to 93% savings with 5x more features.`,
+      images: [`/images/competitors/${params.slug}-comparison.png`],
+    },
+    alternates: {
+      canonical: `https://successnow.ai/competitors/${params.slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    other: {
+      "competitor-comparison": competitor.name,
+      "pricing-advantage": "up-to-93-percent-savings",
+      "feature-advantage": "5x-more-features",
     },
   }
 }
 
-export async function generateStaticParams() {
-  return Object.keys(competitorData).map((slug) => ({
-    slug,
-  }))
-}
-
-export default function CompetitorComparisonPage({ params }: Props) {
+export default function CompetitorPage({ params }: CompetitorPageProps) {
   const competitor = competitorData[params.slug as keyof typeof competitorData]
 
   if (!competitor) {
     notFound()
   }
 
-  const relatedComparisons = Object.entries(competitorData)
-    .filter(([slug]) => slug !== params.slug)
-    .slice(0, 6)
-    .map(([slug, data]) => ({
-      name: data.name,
-      slug,
-      description: data.hero.subtitle.slice(0, 100) + "...",
-      category: getCategoryForCompetitor(data.name),
-      savings: data.comparison.pricing?.savings || "Better value",
-    }))
-
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <StarryBackground />
 
-      <CompetitorComparisonSchema
-        competitorName={competitor.name}
-        competitorSlug={params.slug}
-        successnowAdvantages={[
-          "24/7 AI voice agents",
-          "Complete marketing automation",
-          "Lower pricing with more features",
-          "Instant setup and deployment",
-        ]}
-        competitorLimitations={
-          competitor.comparison.channels?.competitor ? [competitor.comparison.channels.competitor] : []
-        }
-        pricingComparison={{
-          competitor: competitor.comparison.pricing?.competitor || "Higher pricing",
-          successnow: competitor.comparison.pricing?.successnow || "$997/mo",
-          savings: competitor.comparison.pricing?.savings || "Better value",
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ComparisonPage",
+            name: `SuccessNOW vs ${competitor.name} - Complete Comparison`,
+            description: competitor.hero.subtitle,
+            url: `https://successnow.ai/competitors/${params.slug}`,
+            mainEntity: {
+              "@type": "Product",
+              name: "SuccessNOW AI",
+              description: "Complete AI business automation platform with voice agents, ads, SEO, and funnels",
+              brand: {
+                "@type": "Brand",
+                name: "SuccessNOW AI",
+              },
+              offers: {
+                "@type": "Offer",
+                price: "997",
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                priceValidUntil: "2024-12-31",
+                seller: {
+                  "@type": "Organization",
+                  name: "SuccessNOW AI",
+                },
+              },
+            },
+            comparedTo: {
+              "@type": "Product",
+              name: competitor.name,
+              description: `${competitor.name} business automation solution`,
+            },
+            speakable: {
+              "@type": "SpeakableSpecification",
+              xpath: [
+                "/html/body//h1[1]",
+                "/html/body//h2[contains(@class, 'text-')]",
+                "/html/body//p[contains(@class, 'text-xl')]",
+              ],
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "SuccessNOW AI",
+              logo: "https://successnow.ai/images/successnow-logo.png",
+            },
+            datePublished: "2024-01-15",
+            dateModified: new Date().toISOString(),
+            inLanguage: "en-US",
+          }),
         }}
       />
-      <CompetitorFAQSchema competitorName={competitor.name} />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4">
+      <section className="relative pt-32 pb-8 px-4">
+        <div className="max-w-7xl mx-auto">
+          <CompetitorBreadcrumb competitorName={competitor.name} />
+        </div>
+      </section>
+
+      <section className="relative pt-8 pb-20 px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90" />
 
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <CompetitorBreadcrumb competitorName={competitor.name} competitorSlug={params.slug} />
-
-          {/* Back Navigation */}
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
           <div className="mb-8">
-            <Link
-              href="/competitors"
-              className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to All Comparisons
-            </Link>
+            <Badge className="bg-red-900/90 text-white border-2 border-red-400/60 px-6 py-2 text-sm font-medium backdrop-blur-sm shadow-lg hover:shadow-red-500/25 transition-all duration-300">
+              <AlertTriangle className="w-4 h-4 mr-2 text-red-400" />
+              {competitor.hero.urgency}
+            </Badge>
           </div>
 
-          <div className="text-center mb-16">
-            <div className="mb-8">
-              <Badge className="bg-gray-900/90 text-white border-2 border-red-400/60 px-6 py-2 text-sm font-medium backdrop-blur-sm shadow-lg">
-                <AlertTriangle className="w-4 h-4 mr-2 text-red-400" />
-                Competitor Analysis
-              </Badge>
-            </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+            <span className="text-white">SuccessNOW vs</span>
+            <br />
+            <span className="text-red-400 neon-text-red">{competitor.name}</span>
+          </h1>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-              <span className="text-white">SuccessNOW vs</span>
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-orange-500 to-yellow-500">
-                {competitor.name}
-              </span>
-            </h1>
-
-            <div className="max-w-4xl mx-auto bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-2xl p-8 backdrop-blur-sm mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{competitor.hero.title}</h2>
-              <p className="text-lg text-gray-200 leading-relaxed mb-4">{competitor.hero.subtitle}</p>
-              <p className="text-xl font-semibold text-cyan-300">{competitor.hero.tagline}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison Table */}
-      <section className="relative py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            <span className="text-white">Head-to-Head</span>{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-              Comparison
-            </span>
-          </h2>
-
-          <div className="grid gap-8">
-            {Object.entries(competitor.comparison).map(([key, value]) => (
-              <Card key={key} className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50">
-                <CardHeader>
-                  <CardTitle className="text-xl font-bold text-white capitalize">
-                    {key.replace(/([A-Z])/g, " $1").trim()}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <XCircle className="w-5 h-5 text-red-400" />
-                        <span className="font-semibold text-red-300">{competitor.name}</span>
-                      </div>
-                      <p className="text-gray-300">{value.competitor}</p>
-                    </div>
-                    <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <CheckCircle className="w-5 h-5 text-green-400" />
-                        <span className="font-semibold text-green-300">SuccessNOW</span>
-                      </div>
-                      <p className="text-gray-300">{value.successnow}</p>
-                      {value.savings && (
-                        <div className="mt-2">
-                          <Badge className="bg-green-500/20 text-green-300 border-green-500/30">{value.savings}</Badge>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Feature Deep-Dive */}
-      <section className="relative py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            <span className="text-white">Why SuccessNOW</span>{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-              Dominates
-            </span>
-          </h2>
-
-          <div className="grid gap-8">
-            {competitor.features.map((feature, index) => (
-              <Card
-                key={index}
-                className="bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 backdrop-blur-sm"
-              >
-                <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-cyan-300 flex items-center gap-3">
-                    <Sparkles className="w-6 h-6" />
-                    {feature.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-200 text-lg leading-relaxed">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pain Points */}
-      <section className="relative py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-2xl p-8 backdrop-blur-sm text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              <span className="text-red-400">Every Missed Lead</span>{" "}
-              <span className="text-white">Is Lost Revenue</span>
-            </h2>
-            <p className="text-lg text-gray-200 leading-relaxed max-w-4xl mx-auto">{competitor.painPoints}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-white">{competitor.cta.title}</span>
-          </h2>
-
-          <div className="bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 rounded-2xl p-8 mb-8 backdrop-blur-sm">
-            <div className="text-2xl font-bold text-white mb-4">{competitor.cta.offer}</div>
-            <p className="text-lg text-gray-300 mb-4">{competitor.cta.includes}</p>
-            <div className="text-sm text-green-400 font-semibold">
-              30-day money-back guarantee • No Risk, Just Missed Opportunity!
-            </div>
+          <div className="max-w-5xl mx-auto bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-2xl p-8 backdrop-blur-sm mb-12">
+            <h2 className="text-2xl md:text-3xl text-white leading-relaxed mb-6 font-bold">{competitor.hero.title}</h2>
+            <p className="text-xl text-gray-200 leading-relaxed mb-6">{competitor.hero.subtitle}</p>
+            <p className="text-lg text-cyan-300 font-semibold">{competitor.hero.tagline}</p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <div className="mb-12">
+            <VoiceSnippetPlayer
+              text={`${competitor.hero.title} ${competitor.hero.subtitle}`}
+              category={`competitor-${params.slug}`}
+              variant="compact"
+            />
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/demo">
               <Button
                 size="lg"
@@ -810,43 +999,250 @@ export default function CompetitorComparisonPage({ params }: Props) {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-cyan-400/50 text-white hover:bg-cyan-500/10 px-8 py-4 text-lg font-semibold rounded-xl backdrop-blur-sm transition-all duration-300 bg-transparent"
+                className="border-2 border-green-400/50 text-white hover:bg-green-500/10 px-8 py-4 text-lg font-semibold rounded-xl backdrop-blur-sm transition-all duration-300 bg-transparent"
               >
-                Start Pilot Program
-              </Button>
-            </Link>
-          </div>
-
-          {/* Navigation to other comparisons */}
-          <div className="border-t border-gray-700 pt-8">
-            <h3 className="text-xl font-semibold text-white mb-4">Compare Against Other Competitors</h3>
-            <Link href="/competitors">
-              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent">
-                View All Comparisons
-                <ArrowRight className="w-4 h-4 ml-2" />
+                Join Pilot Program - 90% Off!
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      <RelatedComparisons currentCompetitor={competitor.name} relatedComparisons={relatedComparisons} />
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="text-white">Side-by-Side</span>{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-500">
+                Comparison
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              See exactly why SuccessNOW dominates {competitor.name} in every category that matters
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {Object.entries(competitor.comparison).map(([key, value]) => (
+              <Card key={key} className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50">
+                <CardHeader>
+                  <CardTitle className="text-xl font-bold text-white capitalize flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    {key.replace(/([A-Z])/g, " $1").trim()}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <XCircle className="w-4 h-4 text-red-400" />
+                      <span className="text-red-400 font-semibold">{competitor.name}:</span>
+                    </div>
+                    <p className="text-gray-300 text-sm">{value.competitor}</p>
+                  </div>
+                  <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <span className="text-green-400 font-semibold">SuccessNOW:</span>
+                    </div>
+                    <p className="text-gray-300 text-sm">{value.successnow}</p>
+                    {value.savings && (
+                      <div className="mt-2 text-cyan-300 font-semibold text-sm">💰 {value.savings}</div>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="text-white">Why SuccessNOW</span>{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-500">
+                Always Wins
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              While {competitor.name} gives you pieces, SuccessNOW delivers the complete solution
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {competitor.features.map((feature, index) => (
+              <Card
+                key={index}
+                className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 hover:border-cyan-500/60 hover:shadow-cyan-500/20 transition-all duration-300"
+              >
+                <CardHeader>
+                  <CardTitle className="text-xl font-bold text-white flex items-center gap-2">
+                    <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                      {index + 1}
+                    </div>
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-300 leading-relaxed">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-2xl p-12 backdrop-blur-sm">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                <span className="text-red-400 neon-text-red">
+                  {competitor.painPoints?.title || "The Cost of Staying Behind"}
+                </span>
+              </h2>
+              <p className="text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
+                {competitor.painPoints?.description || competitor.painPoints}
+              </p>
+            </div>
+
+            {competitor.painPoints?.stats && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                {competitor.painPoints.stats.map((stat, index) => (
+                  <div
+                    key={index}
+                    className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 backdrop-blur-sm text-center"
+                  >
+                    <div className="text-3xl font-bold text-red-400 mb-2">{stat.value}</div>
+                    <div className="text-sm text-gray-300">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="text-center">
+              <p className="text-lg text-cyan-300 font-semibold">
+                SuccessNOW eliminates these problems completely with 24/7 AI automation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="text-white">Real Results from</span>{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-500">
+                Real Customers
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              See what happens when businesses switch from {competitor.name} to SuccessNOW
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 p-8">
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  {competitor.testimonial?.name?.charAt(0) || "S"}
+                </div>
+                <div className="ml-6">
+                  <div className="text-xl font-semibold text-white">
+                    {competitor.testimonial?.name || "Success Story"}
+                  </div>
+                  <div className="text-gray-400">{competitor.testimonial?.title || "Business Owner"}</div>
+                  <div className="text-sm text-cyan-400">{competitor.testimonial?.location || "USA"}</div>
+                </div>
+              </div>
+              <blockquote className="text-2xl text-gray-300 italic leading-relaxed mb-6">
+                "
+                {competitor.testimonial?.quote ||
+                  `Switching from ${competitor.name} to SuccessNOW was the best business decision we made this year.`}
+                "
+              </blockquote>
+              <div className="flex items-center justify-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-6 h-6 text-yellow-400">
+                    ⭐
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="text-white">Stop Paying More</span>
+            <br />
+            <span className="text-green-400">For Less Results</span>
+          </h2>
+
+          <div className="bg-gradient-to-r from-green-500/20 to-cyan-500/20 border border-green-500/30 rounded-2xl p-8 mb-8 backdrop-blur-sm">
+            <div className="text-2xl font-bold text-white mb-4">
+              {competitor.cta?.title || "🚨 Limited Time Pilot Program"}
+            </div>
+            <div className="text-xl text-green-400 font-semibold mb-4">
+              {competitor.cta?.offer || "Only $997 setup (90% off!) + First 3 months FREE"}
+            </div>
+            <p className="text-lg text-gray-300 mb-4">
+              {competitor.cta?.includes ||
+                "Complete SuccessNOW suite: Custom site, funnels, AdsNow Platinum, SEOExperts, unlimited AI agents"}
+            </p>
+            <div className="text-sm text-cyan-300 font-semibold">
+              Valued at over $4,000/mo • Backed by $250K pilot funding
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <VoiceSnippetPlayer
+              text={`${competitor.cta?.title || "Limited Time Pilot Program"} ${competitor.cta?.offer || "Only $997 setup and first 3 months FREE"} ${competitor.cta?.guarantee || "30-day money-back guarantee"}`}
+              category={`competitor-${params.slug}-cta`}
+              variant="compact"
+            />
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <Link href="https://signup.successnow.ai" target="_blank">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-green-500 to-cyan-600 hover:from-green-600 hover:to-cyan-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-green-500/25 transition-all duration-300"
+              >
+                <DollarSign className="w-5 h-5 mr-2" />
+                Claim Your Pilot Spot Now
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+            <Link href="/demo">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-cyan-400/50 text-white hover:bg-cyan-500/10 px-8 py-4 text-lg font-semibold rounded-xl backdrop-blur-sm transition-all duration-300 bg-transparent"
+              >
+                <Zap className="w-5 h-5 mr-2" />
+                See Live Demo First
+              </Button>
+            </Link>
+          </div>
+
+          <div className="bg-black/40 rounded-xl p-6">
+            <div className="text-green-400 font-bold text-lg mb-2">🛡️ 30-Day Money-Back Guarantee</div>
+            <p className="text-gray-300 mb-4">
+              {competitor.cta?.guarantee ||
+                "If you're not absolutely blown away by how many leads and sales SuccessNOW generates, just cancel for a full refund."}
+            </p>
+            <p className="text-red-400 font-semibold">
+              But every day you wait, competitors using SuccessNOW are capturing the leads you're missing.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   )
-}
-
-function getCategoryForCompetitor(name: string): string {
-  const categories: Record<string, string> = {
-    "Lindy AI": "Voice AI",
-    JustCall: "Call Center",
-    Synthflow: "Voice AI",
-    "Regal AI": "Enterprise",
-    "Resemble AI": "Voice Cloning",
-    "Thinkrr.ai": "Agency Tool",
-    HubSpot: "CRM",
-    Salesforce: "Enterprise CRM",
-    Claude: "AI Assistant",
-    ChatGPT: "AI Assistant",
-  }
-  return categories[name] || "AI Tool"
 }
