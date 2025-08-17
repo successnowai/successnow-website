@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
 import { Navbar } from "@/components/navigation/navbar"
 import { Footer } from "@/components/home/footer"
+import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -198,15 +199,18 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <FloatingChatRobot />
         </ThemeProvider>
 
         <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-17474215278" />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-J66B4KR8N4" />
         <Script id="google-analytics">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'AW-17474215278');
+            gtag('config', 'G-J66B4KR8N4');
           `}
         </Script>
       </body>
