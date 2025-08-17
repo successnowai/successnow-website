@@ -6,10 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
 import { Navbar } from "@/components/navigation/navbar"
 import { Footer } from "@/components/home/footer"
-import { OrganizationSchema, WebSiteSchema, AIServiceSchema } from "@/components/seo/structured-data"
-import { StructuredData, generateOrganizationSchema } from "@/components/seo/enhanced-structured-data"
-import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 import Script from "next/script"
+import FloatingChatRobot from "@/components/chat/floating-chat-robot" // Declare the FloatingChatRobot variable
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -107,6 +105,156 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Organization Schema - Server-side rendered */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "SuccessNOW AI Systems Inc.",
+              alternateName: "SuccessNOW.ai",
+              url: "https://successnow.ai",
+              logo: "https://successnow.ai/images/successnow-logo.png",
+              description:
+                "Revolutionary AI agents for business growth with 24/7 lead qualification, voice AI capabilities, and automated sales processes.",
+              foundingDate: "2024",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+1-800-SUCCESS",
+                contactType: "customer service",
+                availableLanguage: "English",
+                areaServed: "US",
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "US",
+                addressRegion: "United States",
+              },
+              sameAs: ["https://twitter.com/successnowai", "https://linkedin.com/company/successnow-ai"],
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "AI Business Automation Services",
+                itemListElement: [
+                  {
+                    "@type": "Offer",
+                    name: "AI Super Agents",
+                    description: "24/7 AI agents with voice capabilities for lead qualification and conversion",
+                    price: "997",
+                    priceCurrency: "USD",
+                    priceSpecification: {
+                      "@type": "UnitPriceSpecification",
+                      price: "997",
+                      priceCurrency: "USD",
+                      billingIncrement: "monthly",
+                    },
+                  },
+                ],
+              },
+            }),
+          }}
+        />
+
+        {/* Website Schema - Server-side rendered */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "SuccessNOW.ai",
+              url: "https://successnow.ai",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: "https://successnow.ai/search?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
+              publisher: {
+                "@type": "Organization",
+                name: "SuccessNOW AI Systems Inc.",
+                logo: "https://successnow.ai/images/successnow-logo.png",
+              },
+              speakable: {
+                "@type": "SpeakableSpecification",
+                xpath: [
+                  "/html/body//h1[1]",
+                  "/html/body//section//h2[contains(@class, 'text-')]",
+                  "/html/body//p[contains(@class, 'text-xl')]",
+                ],
+              },
+              accessibilityFeature: [
+                "audioDescription",
+                "readingOrder",
+                "structuralNavigation",
+                "alternativeText",
+                "voiceControl",
+              ],
+            }),
+          }}
+        />
+
+        {/* Service Schema - Server-side rendered */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              name: "AI Business Automation Platform",
+              description:
+                "Comprehensive AI agents platform with voice capabilities, lead qualification, and 24/7 automated sales processes",
+              provider: {
+                "@type": "Organization",
+                name: "SuccessNOW AI Systems Inc.",
+                url: "https://successnow.ai",
+              },
+              serviceType: "AI Business Automation",
+              areaServed: "United States",
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "AI Services with Voice Enhancement",
+                itemListElement: [
+                  {
+                    "@type": "Service",
+                    name: "Voice AI Agents",
+                    description: "AI agents that handle voice calls and conversations for lead qualification",
+                    serviceType: "Voice AI Technology",
+                  },
+                  {
+                    "@type": "Service",
+                    name: "Lead Qualification Automation",
+                    description: "24/7 automated lead scoring and qualification with voice interaction",
+                    serviceType: "Sales Automation",
+                  },
+                  {
+                    "@type": "Service",
+                    name: "Audio Content Generation",
+                    description: "AI-generated voice snippets for enhanced accessibility and engagement",
+                    serviceType: "Audio Content Creation",
+                  },
+                ],
+              },
+              offers: {
+                "@type": "Offer",
+                name: "Pilot Program",
+                description: "Complete AI automation platform with voice capabilities",
+                price: "997",
+                priceCurrency: "USD",
+                priceSpecification: {
+                  "@type": "UnitPriceSpecification",
+                  price: "997",
+                  priceCurrency: "USD",
+                  billingIncrement: "monthly",
+                },
+                availability: "https://schema.org/InStock",
+              },
+            }),
+          }}
+        />
+
         {/* Search Atlas OTTO pixel script using dangerouslySetInnerHTML approach */}
         <script
           nowprocket=""
@@ -186,89 +334,11 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {/* Enhanced Organization Schema with Audio Capabilities */}
-          <StructuredData schema={generateOrganizationSchema()} />
-
-          {/* Existing Schemas */}
-          <OrganizationSchema />
-          <WebSiteSchema />
-          <AIServiceSchema />
-
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                name: "SuccessNOW.ai",
-                url: "https://successnow.ai",
-                potentialAction: {
-                  "@type": "SearchAction",
-                  target: {
-                    "@type": "EntryPoint",
-                    urlTemplate: "https://successnow.ai/search?q={search_term_string}",
-                  },
-                  "query-input": "required name=search_term_string",
-                },
-                mainEntity: {
-                  "@type": "Organization",
-                  name: "SuccessNOW.ai",
-                  hasOfferCatalog: {
-                    "@type": "OfferCatalog",
-                    name: "AI Business Solutions with Voice Enhancement",
-                    itemListElement: [
-                      {
-                        "@type": "Offer",
-                        name: "AI Super Agents with Voice Capabilities",
-                        description:
-                          "24/7 AI agents with voice interaction, lead qualification, and automated follow-up",
-                        category: "AI Business Automation",
-                        hasOfferCatalog: {
-                          "@type": "OfferCatalog",
-                          name: "Voice-Enhanced Features",
-                          itemListElement: [
-                            {
-                              "@type": "Service",
-                              name: "Voice AI Agents",
-                              description: "AI agents that handle voice calls and conversations",
-                              serviceType: "Voice AI Technology",
-                            },
-                            {
-                              "@type": "Service",
-                              name: "Audio Content Generation",
-                              description: "AI-generated voice snippets for enhanced accessibility",
-                              serviceType: "Audio Content Creation",
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-                speakable: {
-                  "@type": "SpeakableSpecification",
-                  xpath: [
-                    "/html/body//h1[1]",
-                    "/html/body//section//h2[contains(@class, 'text-')]",
-                    "/html/body//p[contains(@class, 'text-xl')]",
-                  ],
-                },
-                accessibilityFeature: [
-                  "audioDescription",
-                  "readingOrder",
-                  "structuralNavigation",
-                  "alternativeText",
-                  "voiceControl",
-                ],
-              }),
-            }}
-          />
-
           <ScrollToTop />
           <Navbar />
           <main>{children}</main>
           <Footer />
-          <FloatingChatRobot />
+          <FloatingChatRobot /> {/* Insert the FloatingChatRobot component */}
         </ThemeProvider>
       </body>
     </html>

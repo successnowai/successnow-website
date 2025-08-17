@@ -43,10 +43,79 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/robots.txt',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600',
+          },
+        ],
+      },
+      {
+        source: '/llms.txt',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600',
+          },
+        ],
+      },
+      {
+        source: '/llms-full.txt',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600',
+          },
+        ],
+      },
+      {
+        source: '/sitemap*.xml',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/xml',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600',
+          },
+        ],
+      },
+      {
+        source: '/api/sitemap*',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/xml',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=1800',
+          },
+        ],
+      },
     ]
   },
   async rewrites() {
     return [
+      {
+        source: '/sitemap-index.xml',
+        destination: '/api/sitemap-index',
+      },
       {
         source: '/sitemap.xml',
         destination: '/api/sitemap',
@@ -57,9 +126,24 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   trailingSlash: false,
-  generateEtags: false,
+  generateEtags: true,
   httpAgentOptions: {
     keepAlive: true,
+  },
+  output: 'standalone',
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Optimize for production builds
+    if (!dev && !isServer) {
+      config.optimization.splitChunks.cacheGroups.commons.minChunks = 2
+    }
+    
+    // Ensure proper handling of SEO files
+    config.module.rules.push({
+      test: /\.(txt|xml)$/,
+      use: 'raw-loader',
+    })
+
+    return config
   },
 }
 
