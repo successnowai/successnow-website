@@ -5,10 +5,12 @@
   "scripts": {
     "build": "next build",
     "postbuild": "node scripts/postbuild.js",
+    "deploy-check": "npm run test-deployment && npm run verify-seo",
     "dev": "next dev",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "lint": "next lint",
     "start": "next start",
+    "test-deployment": "node scripts/test-deployment.js",
     "verify-seo": "node scripts/verify-deployment.js"
   },
   "dependencies": {

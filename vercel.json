@@ -1,4 +1,8 @@
 {
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "https://successnow.ai",
+    "NEXT_PUBLIC_DOMAIN": "successnow.ai"
+  },
   "functions": {
     "app/api/*/route.ts": {
       "maxDuration": 30
@@ -15,10 +19,6 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600"
-        },
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
         }
       ]
     },
@@ -73,6 +73,32 @@
           "value": "public, max-age=1800"
         }
       ]
+    },
+    {
+      "source": "/api/seo-health-check",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/api/debug-seo",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
     }
   ],
   "rewrites": [
@@ -83,5 +109,7 @@
   ],
   "buildCommand": "npm run build && npm run postbuild",
   "installCommand": "npm install",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "regions": ["iad1"],
+  "outputDirectory": ".next"
 }
