@@ -11,7 +11,12 @@ import { StructuredData, generateOrganizationSchema } from "@/components/seo/enh
 import FloatingChatRobot from "@/components/chat/floating-chat-robot"
 import Script from "next/script"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  variable: "--font-inter",
+})
 
 export const metadata: Metadata = {
   title: "SuccessNOW AI - Revolutionary AI Agents for Business Growth",
@@ -105,8 +110,25 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://dashboard.searchatlas.com" />
+        <link rel="preconnect" href="https://signup.successnow.ai" />
+
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://dashboard.searchatlas.com" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="color-scheme" content="dark light" />
+
+        <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+
         <script
           nowprocket="true"
           nitro-exclude="true"
@@ -182,7 +204,7 @@ export default function RootLayout({
         <meta name="featured-snippet-ready" content="true" />
         <meta name="answer-box-optimized" content="true" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {/* Enhanced Organization Schema with Audio Capabilities */}
           <StructuredData schema={generateOrganizationSchema()} />

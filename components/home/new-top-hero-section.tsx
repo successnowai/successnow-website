@@ -78,6 +78,15 @@ export const NewTopHeroSection = () => {
 
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="text-center max-w-6xl mx-auto">
+          <div className="mb-8 p-6 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-lg backdrop-blur-sm">
+            <div className="text-cyan-400 font-semibold text-sm mb-2">ANSWER:</div>
+            <p className="text-white font-bold text-lg leading-tight">
+              SuccessNOW.ai builds 24/7 AI sales agents that automatically engage and qualify leads for industries like
+              auto dealerships, real estate, and professional services, increasing conversion rates by 40-60% while
+              reducing costs by 90%.
+            </p>
+          </div>
+
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
             AI Systems That
@@ -102,10 +111,27 @@ export const NewTopHeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
             Stop losing money on leads that never convert. Our AI agents work 24/7 to qualify, nurture, and close your
             prospects while you focus on growing your business.
           </p>
+
+          <div className="mb-12 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-6 text-left">
+              <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                <h3 className="text-cyan-400 font-semibold mb-2">• 24/7 Lead Engagement</h3>
+                <p className="text-gray-300 text-sm">Never miss a lead with AI agents that work around the clock</p>
+              </div>
+              <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                <h3 className="text-cyan-400 font-semibold mb-2">• Automated Appointment Scheduling</h3>
+                <p className="text-gray-300 text-sm">AI books qualified appointments directly into your calendar</p>
+              </div>
+              <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                <h3 className="text-cyan-400 font-semibold mb-2">• AI Voice + Chat Integration</h3>
+                <p className="text-gray-300 text-sm">Voice AI at $0.07/minute with intelligent chat capabilities</p>
+              </div>
+            </div>
+          </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">

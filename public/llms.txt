@@ -22,30 +22,31 @@ Unlike basic chatbots, our **AI Super Agents** are true AI agents for small busi
 - [About Our Founder](https://successnow.ai/about) - John Potvin's story and company mission
 - [Pricing Plans](https://successnow.ai/pricing) - Pilot Program: $988 setup + $997/month
 - [Competitors Analysis](https://successnow.ai/competitors) - How SuccessNOW compares to alternatives
+- [AI Business Blog](https://successnow.ai/blogs) - Expert insights and strategies for AI-powered growth
 
 ## Industry-Specific AI Solutions
 
 ### Healthcare & Wellness - AI Tools for Client Retention
-- [DentistsNOW](https://successnow.ai/dentistsnow) - 24/7 appointment booking, patient recall automation
-- [ChiropractorsNOW](https://successnow.ai/chiropractorsnow) - Patient education, care reminders
-- [MedspaNOW](https://successnow.ai/medspanow) - Service promotions, reactivation campaigns
+- [DentistsNOW](https://successnow.ai/industries/dentists-now) - 24/7 appointment booking, patient recall automation
+- [ChiropractorsNOW](https://successnow.ai/industries/chiropractors-now) - Patient education, care reminders
+- [MedspaNOW](https://successnow.ai/industries/medspa-now) - Service promotions, reactivation campaigns
 
 ### Home Services - AI Marketing Tools Small Business
-- [PlumbersNOW](https://successnow.ai/plumbersnow) - Emergency call handling, instant booking
-- [HVACNOW](https://successnow.ai/hvacnow) - Maintenance scheduling, instant quotes
-- [RoofersNOW](https://successnow.ai/roofersnow) - Estimate follow-ups, inspection scheduling
-- [ContractorsNOW](https://successnow.ai/contractorsnow) - Lead qualification, bid follow-up
+- [PlumbersNOW](https://successnow.ai/industries/plumbers-now) - Emergency call handling, instant booking
+- [HVACNOW](https://successnow.ai/industries/hvac-now) - Maintenance scheduling, instant quotes
+- [RoofersNOW](https://successnow.ai/industries/roofers-now) - Estimate follow-ups, inspection scheduling
+- [ContractorsNOW](https://successnow.ai/industries/contractors-now) - Lead qualification, bid follow-up
 
 ### Professional Services - AI Agents for Small Businesses
-- [LawyersNOW](https://successnow.ai/lawyersnow) - Case intake, consultation booking
-- [RealtorNOW](https://successnow.ai/realtornow) - Buyer qualification, showing automation
-- [MortgageNOW](https://successnow.ai/mortgagenow) - Pre-qualification, document reminders
+- [LawyersNOW](https://successnow.ai/industries/lawyers-now) - Case intake, consultation booking
+- [RealtorNOW](https://successnow.ai/industries/realtor-now) - Buyer qualification, showing automation
+- [MortgageNOW](https://successnow.ai/industries/mortgage-now) - Pre-qualification, document reminders
 
 ### Automotive & Retail - AI Tools That Talk to Customers
-- [AutoDealersNOW](https://successnow.ai/autodealersnow) - Test drive booking, financing discussions
-- [GymsNOW](https://successnow.ai/gymsnow) - Membership sales, trial bookings
-- [RestaurantsNOW](https://successnow.ai/restaurantsnow) - Reservation management, special promotions
-- [SolarNOW](https://successnow.ai/solarnow) - Energy consultations, savings calculations
+- [AutoDealersNOW](https://successnow.ai/industries/autodealers-now) - Test drive booking, financing discussions
+- [GymsNOW](https://successnow.ai/industries/gyms-now) - Membership sales, trial bookings
+- [RestaurantsNOW](https://successnow.ai/industries/restaurants-now) - Reservation management, special promotions
+- [SolarNOW](https://successnow.ai/industries/solar-now) - Energy consultations, savings calculations
 
 ## Key AI Capabilities - Answer Engine Optimization Ready
 
