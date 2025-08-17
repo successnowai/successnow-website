@@ -1,34 +1,57 @@
 "use client"
-
-import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Check, Zap, ArrowRight, Users, TrendingUp, Shield, Clock } from "lucide-react"
+import { Check, Zap, ArrowRight, Users, TrendingUp, Shield, Clock, Phone, MessageSquare } from "lucide-react"
 import Link from "next/link"
 import PilotFundingBanner from "@/components/ui/pilot-funding-banner"
 
-export default function SignupClientPage() {
-  const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly")
+const faqs = [
+  {
+    question: "What is the setup time for the Enterprise plan?",
+    answer: "The Enterprise plan can be set up in just 24 hours.",
+  },
+  {
+    question: "Is there a money-back guarantee?",
+    answer: "Yes, we offer a 30-Day Money Back Guarantee with no risk.",
+  },
+  {
+    question: "Do you offer any long-term contracts?",
+    answer: "No, we do not offer long-term contracts. Our plans are flexible.",
+  },
+  {
+    question: "What is included in the Custom plan?",
+    answer:
+      "The Custom plan includes everything in the Enterprise plan plus custom AI development, a dedicated account manager, custom reporting, advanced security, SLA guarantees, on-premise deployment, custom training programs, priority feature requests, and unlimited customization.",
+  },
+]
 
+export default function SignupClientPage() {
   const plans = [
     {
       name: "Enterprise",
-      description: "Perfect for established businesses ready to scale with AI",
-      monthlyPrice: 2997,
-      annualPrice: 29970,
-      savings: 6000,
+      description: "Complete AI solution for serious businesses",
+      setupFee: 988,
+      originalSetupFee: 9988,
+      monthlyFee: 997,
+      originalMonthlyFee: 1994,
+      voiceRate: 0.07,
+      originalVoiceRate: 0.28,
       features: [
-        "Unlimited AI Voice Calls",
-        "Unlimited SMS & Email",
-        "Advanced Lead Qualification",
+        "Unlimited AI Voice Agents",
+        "Full Lead Management Suite",
+        "All CRM Integrations",
+        "4× 1-on-1 Onboarding & Training Sessions",
+        "12 Weekly Group Trainings",
+        "Platinum Support 24/7",
+        "Done-With-You Set-Up",
         "Custom AI Training",
-        "CRM Integration",
-        "Real-time Analytics",
-        "24/7 Priority Support",
-        "White-label Options",
-        "API Access",
-        "Custom Integrations",
+        "Unlimited Conversations",
+        "Advanced Reporting Dashboard",
+        "Social Media Management & AI Posts",
+        "Custom Lead-Generating AI Visible Smart Website",
+        "AdsNOW AI Agent (by AdsNOW.ai) included",
+        "SEONOW AI Agent (by SEOexperts.ai) included",
       ],
       popular: true,
       cta: "Start Enterprise Trial",
@@ -59,57 +82,34 @@ export default function SignupClientPage() {
 
   const bonuses = [
     {
-      title: "AI Setup & Training",
-      value: "$5,000",
-      description: "Complete AI agent setup and custom training for your business",
+      title: "50% OFF Platform Fees",
+      value: "FOR LIFE",
+      description: "Regular $1,994/month → now $997/month for life (50% off)",
+      icon: <TrendingUp className="w-6 h-6 text-blue-400" />,
     },
     {
-      title: "CRM Integration",
-      value: "$2,500",
-      description: "Full integration with your existing CRM and tools",
+      title: "50% OFF AI Voice Usage",
+      value: "$0.07/min",
+      description: "Regular $0.28/minute → $0.07/minute",
+      icon: <Phone className="w-6 h-6 text-purple-400" />,
     },
     {
-      title: "Priority Support",
-      value: "$1,200",
-      description: "24/7 priority support and dedicated success manager",
+      title: "2 Months FREE Platform Access",
+      value: "Save $1,994",
+      description: "Complete platform access included free for 2 months",
+      icon: <Clock className="w-6 h-6 text-green-400" />,
     },
     {
-      title: "Custom Scripts",
-      value: "$3,000",
-      description: "Industry-specific conversation scripts and workflows",
-    },
-  ]
-
-  const faqs = [
-    {
-      question: "How quickly can I see results?",
-      answer:
-        "Most clients see immediate improvements in lead response times and qualification. Full ROI typically occurs within 30-60 days as the AI learns and optimizes.",
+      title: "AdsNOW AI Platinum",
+      value: "$998/mo value",
+      description: "Premium AI advertising platform included",
+      icon: <Zap className="w-6 h-6 text-yellow-400" />,
     },
     {
-      question: "Do I need technical knowledge to use this?",
-      answer:
-        "Not at all! Our team handles all the technical setup and training. You'll have a fully functional AI agent without any technical work on your part.",
-    },
-    {
-      question: "Can the AI integrate with my existing tools?",
-      answer:
-        "Yes! We integrate with all major CRMs, calendars, and business tools. Our team will handle the entire integration process for you.",
-    },
-    {
-      question: "What if I'm not satisfied?",
-      answer:
-        "We offer a 30-day money-back guarantee on our one-time setup fee. If you're not completely satisfied with the results, we'll refund your investment. No Risk, Just Missed Opportunity!",
-    },
-    {
-      question: "How does the AI handle complex conversations?",
-      answer:
-        "Our AI is trained on millions of sales conversations and can handle objections, complex questions, and nuanced discussions. It gets smarter with every interaction.",
-    },
-    {
-      question: "Is my data secure?",
-      answer:
-        "Absolutely. We use enterprise-grade security with end-to-end encryption. Your data is never shared and remains completely confidential.",
+      title: "AI SEO by SEOExperts.ai",
+      value: "Included",
+      description: "Professional AI-driven SEO optimization",
+      icon: <MessageSquare className="w-6 h-6 text-cyan-400" />,
     },
   ]
 
@@ -123,7 +123,7 @@ export default function SignupClientPage() {
 
         <div className="container mx-auto max-w-6xl relative z-10 text-center">
           <Badge className="mb-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0 text-lg px-6 py-2">
-            🚀 Limited Time Offer
+            🚀 Pilot Program - Limited Time
           </Badge>
 
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
@@ -156,35 +156,6 @@ export default function SignupClientPage() {
         </div>
       </div>
 
-      {/* Billing Toggle */}
-      <div className="container mx-auto max-w-6xl px-4 mb-12">
-        <div className="flex justify-center">
-          <div className="bg-slate-800/50 rounded-full p-1 backdrop-blur-sm border border-slate-700">
-            <button
-              onClick={() => setBillingCycle("monthly")}
-              className={`px-6 py-2 rounded-full transition-all ${
-                billingCycle === "monthly"
-                  ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setBillingCycle("annual")}
-              className={`px-6 py-2 rounded-full transition-all ${
-                billingCycle === "annual"
-                  ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              Annual
-              <Badge className="ml-2 bg-green-600 text-white text-xs">Save 20%</Badge>
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Pricing Cards */}
       <div className="container mx-auto max-w-6xl px-4 mb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -209,18 +180,39 @@ export default function SignupClientPage() {
                 <CardTitle className="text-2xl font-bold text-white mb-2">{plan.name}</CardTitle>
                 <p className="text-gray-400 mb-6">{plan.description}</p>
 
-                {plan.monthlyPrice ? (
+                {plan.setupFee ? (
                   <div className="mb-6">
-                    <div className="text-5xl font-bold text-white mb-2">
-                      $
-                      {billingCycle === "monthly"
-                        ? plan.monthlyPrice.toLocaleString()
-                        : (plan.annualPrice! / 12).toLocaleString()}
-                      <span className="text-lg text-gray-400 font-normal">/month</span>
+                    <div className="text-sm text-gray-400 line-through mb-1">
+                      Usually ${plan.originalSetupFee?.toLocaleString()}
                     </div>
-                    {billingCycle === "annual" && (
-                      <div className="text-green-400 text-sm">Save ${plan.savings?.toLocaleString()} annually</div>
-                    )}
+                    <div className="text-5xl font-bold text-white mb-2">${plan.setupFee}</div>
+                    <div className="text-sm text-green-400 mb-4">One-time Setup Fee (90% OFF - Pilot Program)</div>
+                    <div className="text-lg text-green-400 font-semibold mb-4">
+                      Includes 2 Months Platform Access FREE
+                    </div>
+
+                    {/* Pilot Program Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                      <div className="bg-gradient-to-br from-blue-900/50 to-blue-800/50 rounded-lg p-4 border border-blue-500/30">
+                        <div className="flex items-center justify-center mb-2">
+                          <TrendingUp className="w-5 h-5 text-blue-400 mr-2" />
+                        </div>
+                        <div className="text-sm text-blue-300 font-semibold mb-1">PILOT PROGRAM: 50% OFF</div>
+                        <div className="text-sm text-blue-300 mb-1">Monthly Fees FOR LIFE</div>
+                        <div className="text-sm text-gray-400 line-through">Regular $1,994/month</div>
+                        <div className="text-lg font-bold text-green-400">Only $997/month</div>
+                      </div>
+
+                      <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/50 rounded-lg p-4 border border-purple-500/30">
+                        <div className="flex items-center justify-center mb-2">
+                          <Phone className="w-5 h-5 text-purple-400 mr-2" />
+                        </div>
+                        <div className="text-sm text-purple-300 font-semibold mb-1">BONUS: Industry Leading</div>
+                        <div className="text-sm text-purple-300 mb-1">Voice AI Pricing</div>
+                        <div className="text-sm text-gray-400 line-through">Regular $0.28/minute</div>
+                        <div className="text-lg font-bold text-green-400">Only $0.07/minute</div>
+                      </div>
+                    </div>
                   </div>
                 ) : (
                   <div className="text-3xl font-bold text-white mb-6">Custom Pricing</div>
@@ -256,35 +248,23 @@ export default function SignupClientPage() {
         </div>
       </div>
 
-      {/* Bonus Section */}
       <div className="container mx-auto max-w-6xl px-4 mb-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Exclusive Bonuses Worth
-            <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-              {" "}
-              $11,700
-            </span>
-          </h2>
-          <p className="text-xl text-gray-300">Get these premium bonuses when you start today</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">PILOT PROGRAM BONUSES</h2>
+          <p className="text-xl text-gray-300">Exclusive benefits for early adopters</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {bonuses.map((bonus, index) => (
             <Card
               key={index}
-              className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700 backdrop-blur-sm"
+              className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700 backdrop-blur-sm hover:border-purple-500/50 transition-all duration-300"
             >
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-white mb-2">{bonus.title}</h3>
-                    <p className="text-gray-400">{bonus.description}</p>
-                  </div>
-                  <Badge className="bg-gradient-to-r from-green-600 to-emerald-600 text-white text-lg px-3 py-1 ml-4">
-                    {bonus.value}
-                  </Badge>
-                </div>
+              <CardContent className="p-6 text-center">
+                <div className="flex justify-center mb-4">{bonus.icon}</div>
+                <h3 className="text-lg font-semibold text-white mb-2">{bonus.title}</h3>
+                <div className="text-2xl font-bold text-green-400 mb-3">{bonus.value}</div>
+                <p className="text-gray-400 text-sm">{bonus.description}</p>
               </CardContent>
             </Card>
           ))}

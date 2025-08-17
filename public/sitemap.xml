@@ -6,7 +6,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://successnow.ai</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <mobile:mobile/>
@@ -15,7 +15,7 @@
   <!-- Core Pages -->
   <url>
     <loc>https://successnow.ai/demo</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <mobile:mobile/>
@@ -23,7 +23,7 @@
   
   <url>
     <loc>https://successnow.ai/book</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <mobile:mobile/>
@@ -31,7 +31,7 @@
   
   <url>
     <loc>https://successnow.ai/pricing</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <mobile:mobile/>
@@ -39,15 +39,131 @@
   
   <url>
     <loc>https://successnow.ai/case-studies</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <!-- Features Section -->
+  <url>
+    <loc>https://successnow.ai/features</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+  </url>
+
+  <!-- Added all new core platform feature pages -->
+  <!-- Main AI Systems -->
+  <url>
+    <loc>https://successnow.ai/features/voice-ai-agent</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/ai-paid-ads</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/ai-seo</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/ai-automation-orchestration</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <!-- Core Platform Features -->
+  <url>
+    <loc>https://successnow.ai/features/ai-communication-engagement</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/ai-crm-pipelines</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/ai-marketing-automation</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/funnels-websites</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/scheduling-appointments</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/reputation-referrals</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/analytics-ai-insights</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/white-label-reseller</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://successnow.ai/features/integrations-extensibility</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
   </url>
   
   <url>
     <loc>https://successnow.ai/industries</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -55,7 +171,7 @@
 
   <url>
     <loc>https://successnow.ai/competitors</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -63,7 +179,7 @@
 
   <url>
     <loc>https://successnow.ai/about</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -71,17 +187,16 @@
 
   <url>
     <loc>https://successnow.ai/faq</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
   </url>
   
-  <!-- Updated industry pages to new URL structure under /industries/ -->
   <!-- New Industry Pages Structure -->
   <url>
     <loc>https://successnow.ai/industries/autodealers-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -89,7 +204,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/chiropractors-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -97,7 +212,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/contractors-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -105,7 +220,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/dentists-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -113,7 +228,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/gyms-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -121,7 +236,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/hvac-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -129,7 +244,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/lawyers-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -137,7 +252,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/medspa-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -145,7 +260,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/mortgage-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -153,7 +268,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/plumbers-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -161,7 +276,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/realtor-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -169,7 +284,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/restaurants-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -177,7 +292,7 @@
   
   <url>
     <loc>https://successnow.ai/industries/roofers-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -185,17 +300,16 @@
   
   <url>
     <loc>https://successnow.ai/industries/solar-now</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
   </url>
 
-  <!-- Added old industry URLs for backward compatibility (will redirect) -->
   <!-- Legacy Industry URLs (for redirect tracking) -->
   <url>
     <loc>https://successnow.ai/autodealersnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -203,7 +317,7 @@
   
   <url>
     <loc>https://successnow.ai/chiropractorsnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -211,7 +325,7 @@
   
   <url>
     <loc>https://successnow.ai/contractorsnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -219,7 +333,7 @@
   
   <url>
     <loc>https://successnow.ai/dentistsnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -227,7 +341,7 @@
   
   <url>
     <loc>https://successnow.ai/gymsnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -235,7 +349,7 @@
   
   <url>
     <loc>https://successnow.ai/hvacnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -243,7 +357,7 @@
   
   <url>
     <loc>https://successnow.ai/lawyersnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -251,7 +365,7 @@
   
   <url>
     <loc>https://successnow.ai/medspanow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -259,7 +373,7 @@
   
   <url>
     <loc>https://successnow.ai/mortgagenow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -267,7 +381,7 @@
   
   <url>
     <loc>https://successnow.ai/plumbersnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -275,7 +389,7 @@
   
   <url>
     <loc>https://successnow.ai/realtornow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -283,7 +397,7 @@
   
   <url>
     <loc>https://successnow.ai/restaurantsnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -291,7 +405,7 @@
   
   <url>
     <loc>https://successnow.ai/roofersnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
@@ -299,17 +413,16 @@
   
   <url>
     <loc>https://successnow.ai/solarnow</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
     <mobile:mobile/>
   </url>
   
-  <!-- Added missing pages found in site structure -->
   <!-- Blog Section -->
   <url>
     <loc>https://successnow.ai/blogs</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -318,7 +431,7 @@
   <!-- Programs -->
   <url>
     <loc>https://successnow.ai/affiliate</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <mobile:mobile/>
@@ -326,7 +439,7 @@
 
   <url>
     <loc>https://successnow.ai/affiliate/apply</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <mobile:mobile/>
@@ -334,7 +447,7 @@
   
   <url>
     <loc>https://successnow.ai/community</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <mobile:mobile/>
@@ -342,16 +455,15 @@
 
   <url>
     <loc>https://successnow.ai/signup</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
   </url>
 
-  <!-- Added missing pages found in verification -->
   <url>
     <loc>https://successnow.ai/seo-test</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
     <mobile:mobile/>
@@ -360,7 +472,7 @@
   <!-- Legal -->
   <url>
     <loc>https://successnow.ai/privacy</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <mobile:mobile/>
@@ -368,7 +480,7 @@
   
   <url>
     <loc>https://successnow.ai/terms</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <mobile:mobile/>

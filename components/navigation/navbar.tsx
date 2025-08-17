@@ -10,9 +10,11 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isIndustriesOpen, setIsIndustriesOpen] = useState(false)
   const [isCompetitorsOpen, setIsCompetitorsOpen] = useState(false)
+  const [isFeaturesOpen, setIsFeaturesOpen] = useState(false)
 
   const industriesRef = useRef<HTMLDivElement>(null)
   const competitorsRef = useRef<HTMLDivElement>(null)
+  const featuresRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +32,9 @@ export function Navbar() {
       if (competitorsRef.current && !competitorsRef.current.contains(event.target as Node)) {
         setIsCompetitorsOpen(false)
       }
+      if (featuresRef.current && !featuresRef.current.contains(event.target as Node)) {
+        setIsFeaturesOpen(false)
+      }
     }
 
     document.addEventListener("mousedown", handleClickOutside)
@@ -40,12 +45,20 @@ export function Navbar() {
 
   const toggleIndustries = () => {
     setIsIndustriesOpen(!isIndustriesOpen)
-    setIsCompetitorsOpen(false) // Close competitors when opening industries
+    setIsCompetitorsOpen(false)
+    setIsFeaturesOpen(false)
   }
 
   const toggleCompetitors = () => {
     setIsCompetitorsOpen(!isCompetitorsOpen)
-    setIsIndustriesOpen(false) // Close industries when opening competitors
+    setIsIndustriesOpen(false)
+    setIsFeaturesOpen(false)
+  }
+
+  const toggleFeatures = () => {
+    setIsFeaturesOpen(!isFeaturesOpen)
+    setIsIndustriesOpen(false)
+    setIsCompetitorsOpen(false)
   }
 
   const industries = [
@@ -78,6 +91,22 @@ export function Navbar() {
     { name: "ChatGPT", href: "/competitors/chatgpt" },
   ]
 
+  const features = [
+    { name: "Voice AI Sales Agent", href: "/features/voice-ai-agent" },
+    { name: "AI-Powered Advertising", href: "/features/ai-paid-ads" },
+    { name: "AI-Driven SEO", href: "/features/ai-seo" },
+    { name: "AI Automation & Orchestration", href: "/features/ai-automation-orchestration" },
+    { name: "AI Communication & Engagement", href: "/features/ai-communication-engagement" },
+    { name: "AI CRM & Pipelines", href: "/features/ai-crm-pipelines" },
+    { name: "AI Marketing Automation", href: "/features/ai-marketing-automation" },
+    { name: "Funnels & Websites", href: "/features/funnels-websites" },
+    { name: "Scheduling & Appointments", href: "/features/scheduling-appointments" },
+    { name: "Reputation & Referrals", href: "/features/reputation-referrals" },
+    { name: "Analytics & AI Insights", href: "/features/analytics-ai-insights" },
+    { name: "White-Label & Reseller", href: "/features/white-label-reseller" },
+    { name: "Integrations & Extensibility", href: "/features/integrations-extensibility" },
+  ]
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -101,6 +130,43 @@ export function Navbar() {
             <Link href="/about" className="text-gray-300 hover:text-white transition-colors duration-200">
               About
             </Link>
+
+            {/* Features Dropdown */}
+            <div className="relative" ref={featuresRef}>
+              <div className="flex items-center">
+                <Link href="/features" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  Features
+                </Link>
+                <button
+                  onClick={toggleFeatures}
+                  className="ml-1 text-gray-300 hover:text-white transition-colors duration-200"
+                >
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+              </div>
+
+              {isFeaturesOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-slate-800 rounded-lg shadow-xl border border-purple-500/20 py-2 z-50">
+                  <Link
+                    href="/features"
+                    className="block px-4 py-2 text-cyan-300 hover:text-white hover:bg-slate-700 transition-colors duration-200 font-semibold border-b border-gray-700/50"
+                    onClick={() => setIsFeaturesOpen(false)}
+                  >
+                    All Features
+                  </Link>
+                  {features.map((feature) => (
+                    <Link
+                      key={feature.href}
+                      href={feature.href}
+                      className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-200"
+                      onClick={() => setIsFeaturesOpen(false)}
+                    >
+                      {feature.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Industries Dropdown */}
             <div className="relative" ref={industriesRef}>
@@ -178,15 +244,6 @@ export function Navbar() {
             <Link href="/faq" className="text-gray-300 hover:text-white transition-colors duration-200">
               FAQ
             </Link>
-            <Link href="/affiliate" className="text-gray-300 hover:text-white transition-colors duration-200">
-              Affiliate
-            </Link>
-            <Link href="/blogs" className="text-gray-300 hover:text-white transition-colors duration-200">
-              Blog
-            </Link>
-            <Link href="/book" className="text-gray-300 hover:text-white transition-colors duration-200">
-              Contact
-            </Link>
           </div>
 
           {/* CTA Button */}
@@ -226,6 +283,13 @@ export function Navbar() {
                 About
               </Link>
               <Link
+                href="/features"
+                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                Features
+              </Link>
+              <Link
                 href="/industries"
                 className="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200"
                 onClick={() => setIsOpen(false)}
@@ -259,27 +323,6 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
               >
                 FAQ
-              </Link>
-              <Link
-                href="/affiliate"
-                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200"
-                onClick={() => setIsOpen(false)}
-              >
-                Affiliate
-              </Link>
-              <Link
-                href="/blogs"
-                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200"
-                onClick={() => setIsOpen(false)}
-              >
-                Blog
-              </Link>
-              <Link
-                href="/book"
-                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200"
-                onClick={() => setIsOpen(false)}
-              >
-                Contact
               </Link>
               <div className="px-3 py-2">
                 <Button
