@@ -107,12 +107,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          id="search-atlas-pixel"
-          src="https://dashboard.searchatlas.com/scripts/dynamic_optimization.js"
+        <script
+          nowprocket="true"
+          nitro-exclude="true"
+          type="text/javascript"
+          id="sa-dynamic-optimization"
           data-uuid="bb3b5327-e118-40f5-b738-aaf9429af057"
-          strategy="afterInteractive"
-        />
+          src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJzY3JpcHQiKTtzY3JpcHQuc2V0QXR0cmlidXRlKCJub3dwcmlja2V0IiwgIiIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5pdHJvLWV4Y2x1ZGUiLCAiIik7c2NyaXB0LnNyYyA9ICJodHRwczovL2Rhc2hib2FyZC5zZWFyY2hhdGxhcy5jb20vc2NyaXB0cy9keW5hbWljX29wdGltaXphdGlvbi5qcyI7c2NyaXB0LmRhdGFzdWlkID0gImJiM2I1MzI3LWUxMTgtNDBmNS1iNzM4LWFhZjk0MjlhZjA1NyI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="
+        ></script>
 
         {/* Google Analytics */}
         <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-17474215278" />

@@ -42,7 +42,7 @@ export default function IndustriesClientPage() {
       title: "AutoDealersNOW",
       description: "AI agents to book test drives, qualify leads, and follow up 24/7, ensuring you never miss a sale.",
       features: ["24/7 Lead Conversion", "Automated Test Drives", "Financing Pre-qualification"],
-      slug: "autodealersnow",
+      slug: "autodealers-now",
       color: "sky",
     },
     {
@@ -50,7 +50,7 @@ export default function IndustriesClientPage() {
       title: "RealtorsNOW",
       description: "Qualify buyers, book showings, and nurture leads automatically, so you can focus on closing deals.",
       features: ["Instant Buyer Qualification", "Automated Showings", "Hot Lead Prioritization"],
-      slug: "realtornow",
+      slug: "realtor-now",
       color: "green",
     },
     {
@@ -58,7 +58,7 @@ export default function IndustriesClientPage() {
       title: "GymsNOW",
       description: "Appointment Bot, Nurturing Bot, Ads Bot – Class fills, retention, community content.",
       features: ["Class Booking", "Member Retention", "Community Building"],
-      slug: "gymsnow",
+      slug: "gyms-now",
       color: "fuchsia",
     },
     {
@@ -66,7 +66,7 @@ export default function IndustriesClientPage() {
       title: "LawyersNOW",
       description: "Automate client intake, book consultations, and pre-qualify cases to maximize your billable hours.",
       features: ["Automated Client Intake", "24/7 Consultation Booking", "Case Pre-qualification"],
-      slug: "lawyersnow",
+      slug: "lawyers-now",
       color: "yellow",
     },
     {
@@ -74,7 +74,7 @@ export default function IndustriesClientPage() {
       title: "MedspaNOW",
       description: "Reactivation Bot, OfferBot, Review Bot – Follow-ups, service promotions, 5-star reviews.",
       features: ["Appointment Booking", "Service Promotions", "Review Collection"],
-      slug: "medspanow",
+      slug: "medspa-now",
       color: "pink",
     },
     {
@@ -83,7 +83,7 @@ export default function IndustriesClientPage() {
       description:
         "Pre-qualify applicants, automate document reminders, and nurture leads until they are ready to buy.",
       features: ["Automated Pre-qualification", "Document Reminders", "Long-term Lead Nurturing"],
-      slug: "mortgagenow",
+      slug: "mortgage-now",
       color: "orange",
     },
     {
@@ -91,7 +91,7 @@ export default function IndustriesClientPage() {
       title: "DentistsNOW",
       description: "Book appointments 24/7, reduce no-shows, and automate patient recall to keep your schedule full.",
       features: ["24/7 Appointment Booking", "Automated Patient Recall", "No-Show Reduction"],
-      slug: "dentistsnow",
+      slug: "dentists-now",
       color: "blue",
     },
     {
@@ -99,7 +99,7 @@ export default function IndustriesClientPage() {
       title: "ChiropractorNOW",
       description: "Appointment Bot, Nurturing Bot, Review Bot – Care reminders, education, feedback collection.",
       features: ["Appointment Booking", "Patient Education", "Feedback Collection"],
-      slug: "chiropractorsnow",
+      slug: "chiropractors-now",
       color: "teal",
     },
     {
@@ -107,7 +107,7 @@ export default function IndustriesClientPage() {
       title: "SolarNOW",
       description: "Generate qualified leads, automate consultation booking, and nurture prospects long-term.",
       features: ["Qualified Lead Generation", "Automated Consultations", "Long-term Nurturing"],
-      slug: "solarnow",
+      slug: "solar-now",
       color: "amber",
     },
     {
@@ -115,7 +115,7 @@ export default function IndustriesClientPage() {
       title: "RoofersNOW",
       description: "Automate quote requests, schedule inspections 24/7, and follow-up on estimates to win more bids.",
       features: ["Automated Quote Requests", "24/7 Inspection Scheduling", "Estimate Follow-ups"],
-      slug: "roofersnow",
+      slug: "roofers-now",
       color: "slate",
     },
     {
@@ -123,7 +123,7 @@ export default function IndustriesClientPage() {
       title: "PlumbersNOW",
       description: "Book emergency calls instantly, automate service reminders, and dispatch technicians faster.",
       features: ["Instant Emergency Booking", "Automated Reminders", "Faster Dispatch"],
-      slug: "plumbersnow",
+      slug: "plumbers-now",
       color: "gray",
     },
     {
@@ -132,7 +132,7 @@ export default function IndustriesClientPage() {
       description:
         "Schedule maintenance, automate tune-up reminders, and provide instant quotes to boost service contracts.",
       features: ["Maintenance Scheduling", "Tune-up Reminders", "Instant Quotes"],
-      slug: "hvacnow",
+      slug: "hvac-now",
       color: "cyan",
     },
     {
@@ -140,7 +140,7 @@ export default function IndustriesClientPage() {
       title: "ContractorsNOW",
       description: "Qualify leads for new projects, automate bid follow-ups, and schedule client meetings 24/7.",
       features: ["New Lead Qualification", "Automated Bid Follow-up", "24/7 Meeting Scheduler"],
-      slug: "contractorsnow",
+      slug: "contractors-now",
       color: "stone",
     },
     {
@@ -148,7 +148,7 @@ export default function IndustriesClientPage() {
       title: "RestaurantsNOW",
       description: "Automate reservations, manage waitlists, and promote specials to keep your tables full.",
       features: ["Automated Reservations", "Intelligent Waitlist Mgmt", "Promote Daily Specials"],
-      slug: "restaurantsnow",
+      slug: "restaurants-now",
       color: "red",
     },
     {
@@ -322,7 +322,7 @@ export default function IndustriesClientPage() {
                             "w-full bg-slate-800 text-slate-300 border border-slate-700 transition-all duration-300",
                             "group-hover:bg-pink-500 group-hover:text-white group-hover:border-pink-500 group-hover:shadow-[0_0_15px_theme(colors.pink.400)]",
                           )}
-                          onClick={() => (window.location.href = `/${industry.slug}`)}
+                          onClick={() => (window.location.href = `/industries/${industry.slug}`)}
                         >
                           Learn More
                         </Button>

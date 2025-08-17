@@ -45,6 +45,80 @@ const nextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      {
+        source: '/autodealersnow',
+        destination: '/industries/autodealers-now',
+        permanent: true,
+      },
+      {
+        source: '/chiropractorsnow',
+        destination: '/industries/chiropractors-now',
+        permanent: true,
+      },
+      {
+        source: '/contractorsnow',
+        destination: '/industries/contractors-now',
+        permanent: true,
+      },
+      {
+        source: '/dentistsnow',
+        destination: '/industries/dentists-now',
+        permanent: true,
+      },
+      {
+        source: '/gymsnow',
+        destination: '/industries/gyms-now',
+        permanent: true,
+      },
+      {
+        source: '/hvacnow',
+        destination: '/industries/hvac-now',
+        permanent: true,
+      },
+      {
+        source: '/lawyersnow',
+        destination: '/industries/lawyers-now',
+        permanent: true,
+      },
+      {
+        source: '/medspanow',
+        destination: '/industries/medspa-now',
+        permanent: true,
+      },
+      {
+        source: '/mortgagenow',
+        destination: '/industries/mortgage-now',
+        permanent: true,
+      },
+      {
+        source: '/plumbersnow',
+        destination: '/industries/plumbers-now',
+        permanent: true,
+      },
+      {
+        source: '/realtornow',
+        destination: '/industries/realtor-now',
+        permanent: true,
+      },
+      {
+        source: '/restaurantsnow',
+        destination: '/industries/restaurants-now',
+        permanent: true,
+      },
+      {
+        source: '/roofersnow',
+        destination: '/industries/roofers-now',
+        permanent: true,
+      },
+      {
+        source: '/solarnow',
+        destination: '/industries/solar-now',
+        permanent: true,
+      },
+    ]
+  },
   async rewrites() {
     return [
       {

@@ -19,7 +19,7 @@ export default function IndustrySolutions() {
         "Qualify Buyers Instantly",
       ],
       buttonText: "See AutoDealersNOW",
-      slug: "autodealersnow",
+      slug: "industries/autodealers-now",
     },
     {
       emoji: "🏡",
@@ -32,7 +32,7 @@ export default function IndustrySolutions() {
         "Close More Deals Faster",
       ],
       buttonText: "See RealtorNOW",
-      slug: "realtornow",
+      slug: "industries/realtor-now",
     },
     {
       emoji: "🏋️",
@@ -45,7 +45,7 @@ export default function IndustrySolutions() {
         "Boost Member Retention",
       ],
       buttonText: "See GymsNOW",
-      slug: "gymsnow",
+      slug: "industries/gyms-now",
     },
     {
       emoji: "🧑‍⚖️",
@@ -58,7 +58,7 @@ export default function IndustrySolutions() {
         "Handle Intake 24/7",
       ],
       buttonText: "See LawyersNOW",
-      slug: "lawyersnow",
+      slug: "industries/lawyers-now",
     },
     {
       emoji: "💆",
@@ -71,7 +71,7 @@ export default function IndustrySolutions() {
         "Reduce No-Shows by 60%",
       ],
       buttonText: "See MedspaNOW",
-      slug: "medspanow",
+      slug: "industries/medspa-now",
     },
     {
       emoji: "🏦",
@@ -84,7 +84,7 @@ export default function IndustrySolutions() {
         "Beat Competitors on Speed",
       ],
       buttonText: "See MortgageNOW",
-      slug: "mortgagenow",
+      slug: "industries/mortgage-now",
     },
   ]
 

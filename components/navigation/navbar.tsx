@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -11,6 +11,9 @@ export function Navbar() {
   const [isIndustriesOpen, setIsIndustriesOpen] = useState(false)
   const [isCompetitorsOpen, setIsCompetitorsOpen] = useState(false)
 
+  const industriesRef = useRef<HTMLDivElement>(null)
+  const competitorsRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
@@ -19,21 +22,47 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (industriesRef.current && !industriesRef.current.contains(event.target as Node)) {
+        setIsIndustriesOpen(false)
+      }
+      if (competitorsRef.current && !competitorsRef.current.contains(event.target as Node)) {
+        setIsCompetitorsOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
+  const toggleIndustries = () => {
+    setIsIndustriesOpen(!isIndustriesOpen)
+    setIsCompetitorsOpen(false) // Close competitors when opening industries
+  }
+
+  const toggleCompetitors = () => {
+    setIsCompetitorsOpen(!isCompetitorsOpen)
+    setIsIndustriesOpen(false) // Close industries when opening competitors
+  }
+
   const industries = [
-    { name: "Auto Dealers", href: "/autodealersnow" },
-    { name: "Chiropractors", href: "/chiropractorsnow" },
-    { name: "Contractors", href: "/contractorsnow" },
-    { name: "Dentists", href: "/dentistsnow" },
-    { name: "Gyms", href: "/gymsnow" },
-    { name: "HVAC", href: "/hvacnow" },
-    { name: "Lawyers", href: "/lawyersnow" },
-    { name: "Med Spas", href: "/medspanow" },
-    { name: "Mortgage", href: "/mortgagenow" },
-    { name: "Plumbers", href: "/plumbersnow" },
-    { name: "Realtors", href: "/realtornow" },
-    { name: "Restaurants", href: "/restaurantsnow" },
-    { name: "Roofers", href: "/roofersnow" },
-    { name: "Solar", href: "/solarnow" },
+    { name: "Auto Dealers", href: "/industries/autodealers-now" },
+    { name: "Chiropractors", href: "/industries/chiropractors-now" },
+    { name: "Contractors", href: "/industries/contractors-now" },
+    { name: "Dentists", href: "/industries/dentists-now" },
+    { name: "Gyms", href: "/industries/gyms-now" },
+    { name: "HVAC", href: "/industries/hvac-now" },
+    { name: "Lawyers", href: "/industries/lawyers-now" },
+    { name: "Med Spas", href: "/industries/medspa-now" },
+    { name: "Mortgage", href: "/industries/mortgage-now" },
+    { name: "Plumbers", href: "/industries/plumbers-now" },
+    { name: "Realtors", href: "/industries/realtor-now" },
+    { name: "Restaurants", href: "/industries/restaurants-now" },
+    { name: "Roofers", href: "/industries/roofers-now" },
+    { name: "Solar", href: "/industries/solar-now" },
   ]
 
   const competitors = [
@@ -74,13 +103,13 @@ export function Navbar() {
             </Link>
 
             {/* Industries Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={industriesRef}>
               <div className="flex items-center">
                 <Link href="/industries" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Industries
                 </Link>
                 <button
-                  onClick={() => setIsIndustriesOpen(!isIndustriesOpen)}
+                  onClick={toggleIndustries}
                   className="ml-1 text-gray-300 hover:text-white transition-colors duration-200"
                 >
                   <ChevronDown className="w-4 h-4" />
@@ -103,13 +132,14 @@ export function Navbar() {
               )}
             </div>
 
-            <div className="relative">
+            {/* Competitors Dropdown */}
+            <div className="relative" ref={competitorsRef}>
               <div className="flex items-center">
                 <Link href="/competitors" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Competitors
                 </Link>
                 <button
-                  onClick={() => setIsCompetitorsOpen(!isCompetitorsOpen)}
+                  onClick={toggleCompetitors}
                   className="ml-1 text-gray-300 hover:text-white transition-colors duration-200"
                 >
                   <ChevronDown className="w-4 h-4" />
