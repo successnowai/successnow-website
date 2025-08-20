@@ -62,7 +62,9 @@ export default function UrgencyAlertSection() {
           </div>
 
           {/* Bottom Text */}
-          <p className="text-center text-gray-300 text-lg">Setup takes 5 minutes. Results start immediately.</p>
+          <p className="text-center text-gray-300 text-lg">
+            Custom AI solutions, websites, and funnels delivered as fast as 7 days.
+          </p>
         </div>
       </div>
     </section>

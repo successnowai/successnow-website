@@ -125,7 +125,7 @@ export default function AnalyticsClientPage() {
 
   const performanceStats = [
     { metric: "Data Processing Speed", value: "10x Faster", description: "Real-time insights vs delayed reporting" },
-    { metric: "Setup Time", value: "5 Minutes", description: "vs 2-3 months for traditional BI" },
+    { metric: "Custom Delivery", value: "7 Days", description: "Custom AI solutions vs months for traditional setup" },
     { metric: "Accuracy Improvement", value: "94%", description: "AI-powered predictions vs manual analysis" },
     { metric: "Cost Savings", value: "85% Less", description: "vs enterprise analytics solutions" },
   ]
