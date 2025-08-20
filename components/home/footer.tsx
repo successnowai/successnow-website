@@ -78,11 +78,11 @@ export function Footer() {
                 DevNow
               </Link>
               <Link
-                href="https://salesbotnow.ai"
+                href="https://salesagentnow.ai"
                 target="_blank"
                 className="block text-gray-400 hover:text-white transition-colors text-sm"
               >
-                SalesBotNow
+                SalesagentNOW
               </Link>
               <Link
                 href="https://seoexperts.ai"

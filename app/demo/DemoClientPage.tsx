@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, Phone, MessageSquare, Lightbulb, Users, PhoneCall, AlertTriangle, Zap } from "lucide-react"
+import { Phone, MessageSquare, Lightbulb, Users, PhoneCall, AlertTriangle, Zap } from "lucide-react"
 import Link from "next/link"
 import { DemoFAQ } from "@/components/faq/demo-faq"
 import AICallInterface from "@/components/call/ai-call-interface"
@@ -91,19 +91,6 @@ export default function DemoClientPage() {
         data-greeting-message="👋 Hey there! My name is {A.S.I.A | Advanced Sales Intelligence Agent} and I'm here to find out why you aren't making money with voice ai, ask me anything."
         data-prompts='[{"text": "What is AI Assistant?"}, {"text": "How do I get started?"}, {"text": "What does it cost?"}, {"text": "How does it work?"}]'
       />
-
-      {/* Header with Back Button */}
-      <div className="border-b border-gray-800">
-        <div className="container mx-auto px-4 py-4">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-200"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span className="font-medium">Back to Home</span>
-          </Link>
-        </div>
-      </div>
 
       <section className="py-8 px-4">
         <div className="container mx-auto max-w-4xl">

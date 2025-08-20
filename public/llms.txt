@@ -52,7 +52,7 @@ Unlike basic chatbots, our **AI Super Agents** are true AI agents for small busi
 
 ### Main AI Systems
 - [Features Overview](https://successnow.ai/features) - Complete AI sales & marketing suite
-- [Voice AI Agent](https://successnow.ai/features/voice-ai-agent) - SalesBotNow.ai 24/7 lead conversion at $0.07/min
+- [Voice AI Agent](https://successnow.ai/features/voice-ai-agent) - SalesagentNOW.ai 24/7 lead conversion at $0.07/min
 - [AI Paid Ads](https://successnow.ai/features/ai-paid-ads) - AdsNOW.ai automated campaign management
 - [AI SEO](https://successnow.ai/features/ai-seo) - SEOExperts.ai continuous optimization
 - [AI Automation](https://successnow.ai/features/ai-automation-orchestration) - Complete business orchestration

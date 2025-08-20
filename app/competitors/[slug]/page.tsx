@@ -49,7 +49,7 @@ const competitorData = {
     },
     features: [
       {
-        title: "AI Super Agents (SalesBotNow.ai)",
+        title: "AI Super Agents (SalesagentNOW.ai)",
         description:
           'Think of SuccessNOW as "your best salesperson who never sleeps." Our AI agents take & make calls, answer SMS/Email/Social, qualify leads, book appointments, and even launch paid ads — all 24/7. They remember context from every interaction, updating your CRM in real time and nurturing prospects seamlessly.',
       },
@@ -108,7 +108,7 @@ const competitorData = {
     },
     features: [
       {
-        title: "AI Agents (SalesBotNow.ai)",
+        title: "AI Agents (SalesagentNOW.ai)",
         description:
           "SuccessNOW's agents answer and initiate calls, texts, emails, social messages – qualifying leads in real time. While JustCall needs humans to manage follow-ups, SuccessNOW's AI proactively nurtures every prospect.",
       },
@@ -165,7 +165,7 @@ const competitorData = {
     },
     features: [
       {
-        title: "Voice + Omni-Channels (SalesBotNow.ai)",
+        title: "Voice + Omni-Channels (SalesagentNOW.ai)",
         description:
           "Yes, SuccessNOW has speech-to-text as good as Synthflow, but that's just the start. Our AI agents not only talk to callers, they also text, email, and chat your leads continuously. They remember past conversations and can pivot across channels.",
       },

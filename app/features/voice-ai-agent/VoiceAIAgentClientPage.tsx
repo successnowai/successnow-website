@@ -11,8 +11,8 @@ import { StructuredData, generateWebPageSchema } from "@/components/seo/enhanced
 
 const VoiceAIAgentClientPage = () => {
   const voiceAIPageSchema = generateWebPageSchema(
-    "Voice AI Sales Agent - SalesBotNow.ai | 24/7 Lead Conversion",
-    "SalesBotNow.ai instantly answers every call and chat in seconds with 24/7 AI lead conversion, human-like voice, omni-channel coverage, and competitive $0.07/min pilot pricing.",
+    "Voice AI Sales Agent - SalesagentNOW.ai | 24/7 Lead Conversion",
+    "SalesagentNOW.ai instantly answers every call and chat in seconds with 24/7 AI lead conversion, human-like voice, omni-channel coverage, and competitive $0.07/min pilot pricing.",
     "https://successnow.ai/features/voice-ai-agent",
     [
       { name: "24/7 AI Lead Conversion", voiceData: undefined },
@@ -35,7 +35,7 @@ const VoiceAIAgentClientPage = () => {
       icon: Globe,
       title: "Omni-Channel",
       description:
-        "A single SalesBotNow instance handles voice calls (VoIP or cellular), SMS/MMS, WhatsApp, email and web/social chat. Configure it once and it works everywhere.",
+        "A single SalesagentNOW instance handles voice calls (VoIP or cellular), SMS/MMS, WhatsApp, email and web/social chat. Configure it once and it works everywhere.",
       highlight: "All channels unified",
     },
     {
@@ -56,7 +56,7 @@ const VoiceAIAgentClientPage = () => {
       icon: Headphones,
       title: "Human-like Voice (Quantum Voice)",
       description:
-        "SalesBotNow uses realistic AI voices so the experience feels natural. Prospects hear a friendly, human tone and personalized responses.",
+        "SalesagentNOW uses realistic AI voices so the experience feels natural. Prospects hear a friendly, human tone and personalized responses.",
       highlight: "Natural conversations",
     },
     {
@@ -70,7 +70,7 @@ const VoiceAIAgentClientPage = () => {
 
   const competitors = [
     {
-      platform: "SalesBotNow.ai (SuccessNOW)",
+      platform: "SalesagentNOW.ai (SuccessNOW)",
       cost: "$0.07/min",
       coverage: "Voice + SMS/Email/Web/Social",
       notes: "Multi-channel AI agent; includes CRM sync, booking",
@@ -134,7 +134,7 @@ const VoiceAIAgentClientPage = () => {
     {
       question: "Does it only do voice calls?",
       answer:
-        "No. One SalesBotNow.ai bot does voice calls and all messaging channels. It can talk on the phone, answer text/SMS, reply to emails, chat on your website or Facebook/Instagram messages, even WhatsApp. All from one setup.",
+        "No. One SalesagentNOW.ai bot does voice calls and all messaging channels. It can talk on the phone, answer text/SMS, reply to emails, chat on your website or Facebook/Instagram messages, even WhatsApp. All from one setup.",
     },
     {
       question: "What happens after the bot qualifies a lead?",
@@ -144,7 +144,7 @@ const VoiceAIAgentClientPage = () => {
     {
       question: "How does pricing work?",
       answer:
-        "SalesBotNow charges per minute of voice use. During our pilot, it's $0.07/minute for unlimited conversations. By contrast, competitors like Lindy.ai charge ~$0.19/min (GPT-4 voice) and JustCall ~$0.99/min. You only pay for what you use – there are no seat fees and web chat/SMS use is included.",
+        "SalesagentNOW.ai charges per minute of voice use. During our pilot, it's $0.07/minute for unlimited conversations. By contrast, competitors like Lindy.ai charge ~$0.19/min (GPT-4 voice) and JustCall ~$0.99/min. You only pay for what you use – there are no seat fees and web chat/SMS use is included.",
     },
     {
       question: "Which businesses benefit most?",
@@ -167,13 +167,13 @@ const VoiceAIAgentClientPage = () => {
               variant="outline"
               className="mb-8 px-6 py-2 text-sm font-medium border-cyan-400/30 text-cyan-400 bg-cyan-400/10 hover:border-pink-500/50 hover:text-pink-400 hover:bg-pink-500/10 transition-all duration-300"
             >
-              SalesBotNow.ai
+              SalesagentNOW.ai
             </Badge>
 
             <div className="mb-8 p-6 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-lg backdrop-blur-sm max-w-4xl mx-auto">
               <div className="text-cyan-400 font-semibold text-sm mb-2">ANSWER:</div>
               <p className="text-white font-bold text-lg leading-tight">
-                SalesBotNow.ai instantly answers every incoming call or web chat in seconds, acting like your best
+                SalesagentNOW.ai instantly answers every incoming call or web chat in seconds, acting like your best
                 salesperson with a friendly, human-like voice that qualifies prospects and books appointments
                 automatically 24/7.
               </p>
@@ -183,7 +183,7 @@ const VoiceAIAgentClientPage = () => {
               Voice AI Sales Agent
               <span className="bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
                 {" "}
-                (SalesBotNow.ai)
+                (SalesagentNOW.ai)
               </span>
             </h1>
 
@@ -209,7 +209,7 @@ const VoiceAIAgentClientPage = () => {
             </div>
 
             <VoiceSnippetPlayer
-              text="SalesBotNow.ai is your 24/7 AI lead conversion system that instantly answers every call and chat in seconds. Acting like your best salesperson, it greets prospects with human-like voice, qualifies them automatically, and books appointments around the clock."
+              text="SalesagentNOW.ai is your 24/7 AI lead conversion system that instantly answers every call and chat in seconds. Acting like your best salesperson, it greets prospects with human-like voice, qualifies them automatically, and books appointments around the clock."
               category="voice-ai-hero"
               variant="compact"
             />
@@ -260,7 +260,7 @@ const VoiceAIAgentClientPage = () => {
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Competitor Comparison</h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                See how SalesBotNow.ai delivers more value at a fraction of the cost
+                See how SalesagentNOW.ai delivers more value at a fraction of the cost
               </p>
             </div>
 
@@ -301,10 +301,10 @@ const VoiceAIAgentClientPage = () => {
 
             <div className="mt-8 p-6 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-lg backdrop-blur-sm">
               <p className="text-gray-300 text-center">
-                <span className="text-cyan-400 font-semibold">SalesBotNow.ai costs a tiny fraction of others</span>{" "}
+                <span className="text-cyan-400 font-semibold">SalesagentNOW.ai costs a tiny fraction of others</span>{" "}
                 while covering all channels. For example, Retell.ai and Synthflow only offer voice (at $0.07–0.13/min),
-                whereas SalesBotNow covers voice and chat for $0.07–$0.14/min. There are no per-seat licenses or hidden
-                fees – you pay only for usage.
+                whereas SalesagentNOW covers voice and chat for $0.07–$0.14/min. There are no per-seat licenses or
+                hidden fees – you pay only for usage.
               </p>
             </div>
           </div>
@@ -341,11 +341,11 @@ const VoiceAIAgentClientPage = () => {
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Ready for 24/7 Lead Conversion?</h2>
 
               <p className="text-xl text-gray-300 leading-relaxed mb-8">
-                Never miss another lead with SalesBotNow.ai's instant, human-like AI responses
+                Never miss another lead with SalesagentNOW.ai's instant, human-like AI responses
               </p>
 
               <VoiceSnippetPlayer
-                text="Ready for 24/7 lead conversion? Never miss another lead with SalesBotNow.ai's instant, human-like AI responses that qualify prospects and book appointments automatically."
+                text="Ready for 24/7 lead conversion? Never miss another lead with SalesagentNOW.ai's instant, human-like AI responses that qualify prospects and book appointments automatically."
                 category="voice-ai-cta"
                 variant="compact"
               />

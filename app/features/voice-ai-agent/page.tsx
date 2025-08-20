@@ -2,11 +2,11 @@ import type { Metadata } from "next"
 import VoiceAIAgentClientPage from "./VoiceAIAgentClientPage"
 
 export const metadata: Metadata = {
-  title: "Voice AI Sales Agent - SalesBotNow.ai | 24/7 Lead Conversion",
+  title: "Voice AI Sales Agent - SalesagentNOW.ai | 24/7 Lead Conversion",
   description:
-    "SalesBotNow.ai instantly answers every call and chat in seconds. 24/7 AI lead conversion with human-like voice, omni-channel coverage, and $0.07/min pilot pricing.",
+    "SalesagentNOW.ai instantly answers every call and chat in seconds. 24/7 AI lead conversion with human-like voice, omni-channel coverage, and $0.07/min pilot pricing.",
   keywords:
-    "voice AI agent, SalesBotNow.ai, AI sales agent, lead conversion, voice AI, automated sales calls, AI phone agent, conversational AI",
+    "voice AI agent, SalesagentNOW.ai, AI sales agent, lead conversion, voice AI, automated sales calls, AI phone agent, conversational AI",
   openGraph: {
     title: "Voice AI Sales Agent - 24/7 Lead Conversion",
     description:

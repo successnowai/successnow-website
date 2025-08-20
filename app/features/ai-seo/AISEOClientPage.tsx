@@ -63,7 +63,7 @@ const AISEOClientPage = () => {
       icon: BarChart3,
       title: "Affordably Priced",
       description:
-        "We deliver better results faster than traditional agencies, without the 5-figure monthly fees. SEOExperts.ai offers transparent plans or even a free audit – you pay only for the growth. When bundled with AdsNow and SalesBot, it's a full-stack traffic machine.",
+        "We deliver better results faster than traditional agencies, without the 5-figure monthly fees. SEOExperts.ai offers transparent plans or even a free audit – you pay only for the growth. When bundled with AdsNow and SalesagentNOW, it's a full-stack traffic machine.",
       highlight: "Cost-effective",
     },
   ]
@@ -137,7 +137,7 @@ const AISEOClientPage = () => {
     {
       question: "How does this integrate with the rest of SuccessNOW?",
       answer:
-        "SEOExperts.ai is part of the SuccessNOW suite. It works hand-in-hand with AdsNow.ai and SalesBotNow. SEO brings free organic leads to your funnel, AdsNow drives paid traffic, and SalesBotNow converts them. All data flows through one system, so every lead is tracked and nurtured consistently.",
+        "SEOExperts.ai is part of the SuccessNOW suite. It works hand-in-hand with AdsNow.ai and SalesagentNOW. SEO brings free organic leads to your funnel, AdsNow drives paid traffic, and SalesagentNOW converts them. All data flows through one system, so every lead is tracked and nurtured consistently.",
     },
   ]
 
@@ -326,7 +326,7 @@ const AISEOClientPage = () => {
                   <div className="w-16 h-16 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 group-hover:from-pink-500 group-hover:to-purple-600 flex items-center justify-center mx-auto mb-6 transition-all duration-300">
                     <Bot className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">SalesBotNow.ai</h3>
+                  <h3 className="text-xl font-bold text-white mb-3">SalesagentNOW.ai</h3>
                   <p className="text-gray-300 text-sm">Converts all leads automatically</p>
                 </CardContent>
               </Card>

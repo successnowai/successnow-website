@@ -76,7 +76,7 @@ export default function WhiteLabelClientPage() {
       features: ["Continuous SEO", "AI Content", "Local Optimization", "Rank Tracking"],
     },
     {
-      name: "SalesBotNOW.ai",
+      name: "SalesagentNOW.ai",
       description: "AI voice agents for sales and lead conversion",
       url: "/features/voice-ai-agent",
       features: ["Voice AI", "Lead Qualification", "Appointment Booking", "CRM Sync"],
@@ -223,7 +223,7 @@ export default function WhiteLabelClientPage() {
           <div className="bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20 rounded-xl p-6 mb-8 max-w-4xl mx-auto">
             <p className="text-lg text-purple-100 leading-relaxed">
               <strong className="text-purple-300">Answer:</strong> The SuccessNOW.ai Partner Program offers revenue
-              sharing across our complete AI systems portfolio including AdsNOW.ai, SEOExperts.ai, and SalesBotNOW.ai.
+              sharing across our complete AI systems portfolio including AdsNOW.ai, SEOExperts.ai, and SalesagentNOW.ai.
               Unlike GoHighLevel or HubSpot, we handle all client implementation and support while you earn generous
               recurring commissions from our established AI brands.
             </p>

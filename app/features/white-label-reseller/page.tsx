@@ -4,9 +4,9 @@ import WhiteLabelClientPage from "./WhiteLabelClientPage"
 export const metadata: Metadata = {
   title: "Partner Program - Join SuccessNOW.ai Systems Portfolio | SuccessNOW.ai",
   description:
-    "Join the SuccessNOW.ai Partner Program and earn recurring revenue from our complete AI systems portfolio including AdsNOW.ai, SEOExperts.ai, and SalesBotNOW.ai. We handle implementation and support.",
+    "Join the SuccessNOW.ai Partner Program and earn recurring revenue from our complete AI systems portfolio including AdsNOW.ai, SEOExperts.ai, and SalesagentNOW.ai. We handle implementation and support.",
   keywords:
-    "AI partner program, revenue sharing, AI systems portfolio, AdsNOW partner, SEOExperts partner, SalesBotNOW partner, AI commission program, recurring revenue, partner dashboard",
+    "AI partner program, revenue sharing, AI systems portfolio, AdsNOW partner, SEOExperts partner, SalesagentNOW partner, AI commission program, recurring revenue, partner dashboard",
   openGraph: {
     title: "Partner Program - Join SuccessNOW.ai Systems Portfolio | SuccessNOW.ai",
     description:

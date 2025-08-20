@@ -152,7 +152,7 @@ const AIAutomationClientPage = () => {
               <p className="text-white font-bold text-lg leading-tight">
                 SuccessNOW.ai is the brain that ties everything together, orchestrating your entire sales funnel with
                 intelligent automation. Once set up, it builds your website/funnels, deploys AdsNow.ai campaigns,
-                engages leads via SalesBotNow.ai, and boosts organic traffic via SEOExperts.ai.
+                engages leads via SalesagentNOW.ai, and boosts organic traffic via SEOExperts.ai.
               </p>
             </div>
 
