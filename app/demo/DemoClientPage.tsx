@@ -7,7 +7,6 @@ import { Phone, MessageSquare, Lightbulb, Users, PhoneCall, AlertTriangle, Zap }
 import Link from "next/link"
 import { DemoFAQ } from "@/components/faq/demo-faq"
 import AICallInterface from "@/components/call/ai-call-interface"
-import Script from "next/script"
 
 export default function DemoClientPage() {
   const activeDemo = useState("voice")
@@ -76,22 +75,6 @@ export default function DemoClientPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <Script
-        src="https://botdisplay.com/chat-widget.js"
-        data-color="#FF007A"
-        data-assistant-id="1753831573951x589054349879485360"
-        data-account-id="UMy2Y82UItPQzkvXP7VK"
-        data-position="bottom-left"
-        data-theme="dark"
-        data-show-prompt="false"
-        data-prompt-message="Ask me about voice AI 🚀"
-        data-startup-message="How can I help you today?"
-        data-assistant-name="ASIA | Advanced Sales Intelligence Agent"
-        data-button-icon="chat"
-        data-greeting-message="👋 Hey there! My name is {A.S.I.A | Advanced Sales Intelligence Agent} and I'm here to find out why you aren't making money with voice ai, ask me anything."
-        data-prompts='[{"text": "What is AI Assistant?"}, {"text": "How do I get started?"}, {"text": "What does it cost?"}, {"text": "How does it work?"}]'
-      />
-
       <section className="py-8 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-8">

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Bot, X } from "lucide-react"
 
-export default function FloatingChatRobot() {
+export function FloatingChatRobot() {
   const [isVisible, setIsVisible] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
 

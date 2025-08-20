@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
 import { Navbar } from "@/components/navigation/navbar"
 import { Footer } from "@/components/home/footer"
+import { FloatingChatRobot } from "@/components/chat/floating-chat-robot"
 import { OrganizationSchema, WebSiteSchema, AIServiceSchema } from "@/components/seo/structured-data"
 import { StructuredData, generateOrganizationSchema } from "@/components/seo/enhanced-structured-data"
 import Script from "next/script"
@@ -287,6 +288,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <FloatingChatRobot />
         </ThemeProvider>
       </body>
     </html>
