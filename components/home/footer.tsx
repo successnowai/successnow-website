@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Facebook, Twitter, Linkedin, Instagram, Youtube } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -11,9 +12,13 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                SuccessNOW
-              </span>
+              <Image
+                src="/images/successnow-logo.png"
+                alt="SuccessNOW"
+                width={200}
+                height={45}
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-gray-400 text-sm">
               Revolutionary AI agents that work 24/7 to qualify, nurture, and close your prospects.
