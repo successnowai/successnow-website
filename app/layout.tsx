@@ -7,6 +7,8 @@ import { ScrollToTop } from "@/components/ui/scroll-to-top"
 import { Navbar } from "@/components/navigation/navbar"
 import { Footer } from "@/components/home/footer"
 import { FloatingChatRobot } from "@/components/chat/floating-chat-robot"
+import { InstallPrompt } from "@/components/pwa/install-prompt"
+import { PWAProvider } from "@/components/pwa/pwa-provider"
 import { OrganizationSchema, WebSiteSchema, AIServiceSchema } from "@/components/seo/structured-data"
 import { StructuredData, generateOrganizationSchema } from "@/components/seo/enhanced-structured-data"
 import Script from "next/script"
@@ -37,10 +39,15 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "SuccessNOW AI - Revolutionary AI Agents for Business Growth",
     description:
@@ -129,8 +136,18 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://dashboard.searchatlas.com" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#7c3aed" />
         <meta name="color-scheme" content="dark light" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="SuccessNOW.ai" />
+        <meta name="mobile-web-app-capable" content="yes" />
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
 
         <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
 
@@ -211,89 +228,92 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {/* Enhanced Organization Schema with Audio Capabilities */}
-          <StructuredData schema={generateOrganizationSchema()} />
+          <PWAProvider>
+            {/* Enhanced Organization Schema with Audio Capabilities */}
+            <StructuredData schema={generateOrganizationSchema()} />
 
-          {/* Existing Schemas */}
-          <OrganizationSchema />
-          <WebSiteSchema />
-          <AIServiceSchema />
+            {/* Existing Schemas */}
+            <OrganizationSchema />
+            <WebSiteSchema />
+            <AIServiceSchema />
 
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                name: "SuccessNOW.ai",
-                url: "https://successnow.ai",
-                potentialAction: {
-                  "@type": "SearchAction",
-                  target: {
-                    "@type": "EntryPoint",
-                    urlTemplate: "https://successnow.ai/search?q={search_term_string}",
-                  },
-                  "query-input": "required name=search_term_string",
-                },
-                mainEntity: {
-                  "@type": "Organization",
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "WebSite",
                   name: "SuccessNOW.ai",
-                  hasOfferCatalog: {
-                    "@type": "OfferCatalog",
-                    name: "AI Business Solutions with Voice Enhancement",
-                    itemListElement: [
-                      {
-                        "@type": "Offer",
-                        name: "AI Super Agents with Voice Capabilities",
-                        description:
-                          "24/7 AI agents with voice interaction, lead qualification, and automated follow-up",
-                        category: "AI Business Automation",
-                        hasOfferCatalog: {
-                          "@type": "OfferCatalog",
-                          name: "Voice-Enhanced Features",
-                          itemListElement: [
-                            {
-                              "@type": "Service",
-                              name: "Voice AI Agents",
-                              description: "AI agents that handle voice calls and conversations",
-                              serviceType: "Voice AI Technology",
-                            },
-                            {
-                              "@type": "Service",
-                              name: "Audio Content Generation",
-                              description: "AI-generated voice snippets for enhanced accessibility",
-                              serviceType: "Audio Content Creation",
-                            },
-                          ],
+                  url: "https://successnow.ai",
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target: {
+                      "@type": "EntryPoint",
+                      urlTemplate: "https://successnow.ai/search?q={search_term_string}",
+                    },
+                    "query-input": "required name=search_term_string",
+                  },
+                  mainEntity: {
+                    "@type": "Organization",
+                    name: "SuccessNOW.ai",
+                    hasOfferCatalog: {
+                      "@type": "OfferCatalog",
+                      name: "AI Business Solutions with Voice Enhancement",
+                      itemListElement: [
+                        {
+                          "@type": "Offer",
+                          name: "AI Super Agents with Voice Capabilities",
+                          description:
+                            "24/7 AI agents with voice interaction, lead qualification, and automated follow-up",
+                          category: "AI Business Automation",
+                          hasOfferCatalog: {
+                            "@type": "OfferCatalog",
+                            name: "Voice-Enhanced Features",
+                            itemListElement: [
+                              {
+                                "@type": "Service",
+                                name: "Voice AI Agents",
+                                description: "AI agents that handle voice calls and conversations",
+                                serviceType: "Voice AI Technology",
+                              },
+                              {
+                                "@type": "Service",
+                                name: "Audio Content Generation",
+                                description: "AI-generated voice snippets for enhanced accessibility",
+                                serviceType: "Audio Content Creation",
+                              },
+                            ],
+                          },
                         },
-                      },
+                      ],
+                    },
+                  },
+                  speakable: {
+                    "@type": "SpeakableSpecification",
+                    xpath: [
+                      "/html/body//h1[1]",
+                      "/html/body//section//h2[contains(@class, 'text-')]",
+                      "/html/body//p[contains(@class, 'text-xl')]",
                     ],
                   },
-                },
-                speakable: {
-                  "@type": "SpeakableSpecification",
-                  xpath: [
-                    "/html/body//h1[1]",
-                    "/html/body//section//h2[contains(@class, 'text-')]",
-                    "/html/body//p[contains(@class, 'text-xl')]",
+                  accessibilityFeature: [
+                    "audioDescription",
+                    "readingOrder",
+                    "structuralNavigation",
+                    "alternativeText",
+                    "voiceControl",
                   ],
-                },
-                accessibilityFeature: [
-                  "audioDescription",
-                  "readingOrder",
-                  "structuralNavigation",
-                  "alternativeText",
-                  "voiceControl",
-                ],
-              }),
-            }}
-          />
+                }),
+              }}
+            />
 
-          <ScrollToTop />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <FloatingChatRobot />
+            <ScrollToTop />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <FloatingChatRobot />
+            <InstallPrompt />
+          </PWAProvider>
         </ThemeProvider>
       </body>
     </html>

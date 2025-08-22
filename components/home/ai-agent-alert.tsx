@@ -48,10 +48,11 @@ export default function AiAgentAlert() {
 
             <div className="text-center bg-blue-900/20 border border-blue-500/50 rounded-lg p-6">
               <p className="text-2xl md:text-3xl font-bold text-white">
-                Less than <span className="text-cyan-300">30 cents a minute.</span>
+                Only <span className="text-cyan-300">0.07 cents a minute!</span>
               </p>
               <p className="text-gray-300 mt-1">
-                An average 2-3 minute sales call costs less than $1 per booked appointment.
+                The average lead qualification call is 2-3 minutes, costing about 25 cents per booked appointment. Our
+                AI agent instantly engages and books almost every lead!
               </p>
             </div>
           </div>

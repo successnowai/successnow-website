@@ -1,0 +1,101 @@
+{
+  "name": "SuccessNOW AI - Revolutionary AI Agents for Business Growth",
+  "short_name": "SuccessNOW.ai",
+  "description": "Transform your business with AI agents that work 24/7 to qualify, nurture, and close leads. Get instant access to voice AI agents, lead automation, and business growth tools.",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/successnow-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#7c3aed",
+  "background_color": "#0f0f23",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "utilities", "ai", "automation"],
+  "screenshots": [
+    {
+      "src": "/images/successnow-logo.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "SuccessNOW AI Dashboard - Wide View"
+    },
+    {
+      "src": "/images/successnow-logo.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "SuccessNOW AI Mobile Experience"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "AI Demo",
+      "short_name": "Demo",
+      "description": "Try our AI agents live",
+      "url": "/demo",
+      "icons": [
+        {
+          "src": "/favicon-32x32.png",
+          "sizes": "32x32",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Pricing",
+      "short_name": "Pricing",
+      "description": "View pricing plans",
+      "url": "/#pricing",
+      "icons": [
+        {
+          "src": "/favicon-32x32.png",
+          "sizes": "32x32",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Features",
+      "short_name": "Features",
+      "description": "Explore AI features",
+      "url": "/features",
+      "icons": [
+        {
+          "src": "/favicon-32x32.png",
+          "sizes": "32x32",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}
