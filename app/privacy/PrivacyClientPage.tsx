@@ -519,6 +519,7 @@ export default function PrivacyClientPage() {
                       <ul className="text-gray-300 text-sm space-y-2">
                         <li>• Facebook Advertising</li>
                         <li>• Retargeting with Facebook Pixel</li>
+                        <li>• Display Network Impression Reporting</li>
                         <li>• Demographics and Interests Reporting</li>
                         <li>• Custom Audiences</li>
                       </ul>
@@ -577,9 +578,7 @@ export default function PrivacyClientPage() {
                     <p>
                       <strong className="text-white">SuccessNOW.ai Inc.</strong>
                     </p>
-                    <p>20 Genesis Close</p>
-                    <p>George Town KY1-1208</p>
-                    <p>Cayman Islands</p>
+                    <p>Toronto, Canada</p>
                     <p>📧 support@successnow.ai</p>
                     <p>
                       Website:{" "}

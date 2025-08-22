@@ -331,7 +331,7 @@ Contact Information
 If you have any questions, concerns, or comments about this Privacy Policy, please contact us at:
 
 SuccessNOW.ai Inc.
-20 Genesis Close, George Town KY1-1208, Cayman Islands
+Toronto, Canada
 📧 support@successnow.ai
 `
 
@@ -507,7 +507,7 @@ SuccessNOW.ai Inc.
         <p class="effective-date"><strong>Effective Date: March 24, 2025</strong></p>
         <div class="company-info">
             <p><strong>SuccessNOW AI INC doing business as SuccessNOW AI™</strong></p>
-            <p>20 Genesis Close, George Town KY1-1208, Cayman Islands</p>
+            <p>Toronto, Canada</p>
             <p>📧 support@successnow.ai</p>
         </div>
     </div>
@@ -567,7 +567,7 @@ SuccessNOW.ai Inc.
         <div class="contact-info">
             <h3>Contact Information</h3>
             <p><strong>SuccessNOW.ai Inc.</strong></p>
-            <p>20 Genesis Close, George Town KY1-1208, Cayman Islands</p>
+            <p>Toronto, Canada</p>
             <p>📧 support@successnow.ai</p>
             <p>🌐 <a href="https://successnow.ai" style="color: #00BFFF;">https://successnow.ai</a></p>
         </div>

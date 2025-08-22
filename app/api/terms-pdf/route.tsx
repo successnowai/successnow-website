@@ -202,7 +202,7 @@ export async function GET() {
 
         <h2>Governing Law</h2>
         <div class="section">
-            <p>This Agreement shall be governed by and construed in accordance with the laws of the Cayman Islands, where SuccessNOW.ai is incorporated.</p>
+            <p>This Agreement shall be governed by and construed in accordance with the laws of Ontario, Canada, where SuccessNOW.ai operates.</p>
         </div>
 
         <h2>2. ACCESS TO THE SERVICES</h2>
@@ -615,13 +615,13 @@ export async function GET() {
         
         <h3>17.1. Governing Law</h3>
         <div class="subsection">
-            <p>All matters relating to this Agreement, and all matters arising out of or relating to this Agreement, whether sounding in contract, tort, or statute are governed by, and construed in accordance with, International Commonwealth Business laws, without giving effect to any conflict of law principles.</p>
+            <p>All matters relating to this Agreement, and all matters arising out of or relating to this Agreement, whether sounding in contract, tort, or statute are governed by, and construed in accordance with, the laws of Ontario, Canada, without giving effect to any conflict of law principles.</p>
         </div>
 
         <h3>17.2. Dispute Resolution</h3>
         <div class="subsection">
-            <p>Any action or proceeding arising out of or related to this Agreement or the Services shall be brought only in a court of competent jurisdiction in the State Cayman Islands, although we retain the right to bring any suit, action, or proceeding against you for breach of this Agreement in your country of residence or any other relevant country. You hereby irrevocably submit to the jurisdiction of these courts and waive the defense of inconvenient forum to the maintenance of any action or proceeding in such venues.</p>
-            <p>At the Company's sole discretion, it may require any dispute, claim, or controversy arising out of or relating to this Agreement, or the breach, termination, enforcement, interpretation, or validity thereof, to be submitted to and decided by binding arbitration under the rules Arbitration in Commonwealth law. The decision of the arbitrator shall be final and binding on the parties and may be entered and enforced in any court of competent jurisdiction by either party.</p>
+            <p>Any action or proceeding arising out of or related to this Agreement or the Services shall be brought only in a court of competent jurisdiction in Ontario, Canada, although we retain the right to bring any suit, action, or proceeding against you for breach of this Agreement in your country of residence or any other relevant country. You hereby irrevocably submit to the jurisdiction of these courts and waive the defense of inconvenient forum to the maintenance of any action or proceeding in such venues.</p>
+            <p>At the Company's sole discretion, it may require any dispute, claim, or controversy arising out of or relating to this Agreement, or the breach, termination, enforcement, interpretation, or validity thereof, to be submitted to and decided by binding arbitration under the rules of arbitration in Ontario, Canada. The decision of the arbitrator shall be final and binding on the parties and may be entered and enforced in any court of competent jurisdiction by either party.</p>
             <p><strong>YOU UNDERSTAND AND AGREE THAT BY ENTERING INTO THESE TERMS, YOU ARE WAIVING THE RIGHT TO TRIAL BY JURY OR TO PARTICIPATE IN A CLASS ACTION.</strong></p>
         </div>
 
@@ -679,9 +679,7 @@ export async function GET() {
 
         <div class="contact-info">
             <h3>SuccessNOW.ai Inc.</h3>
-            <p>20 Genesis Close<br>
-            George Town KY1-1208<br>
-            Cayman Islands</p>
+            <p>Toronto, Canada</p>
             <p><strong>Email:</strong> support@successnow.ai</p>
             <p><strong>Website:</strong> https://successnow.ai</p>
         </div>

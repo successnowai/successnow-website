@@ -373,8 +373,8 @@ export default function TermsClientPage() {
                   </div>
                   <div className="bg-black/20 p-6 rounded-lg">
                     <p className="text-gray-300 text-sm">
-                      The Company is based in the Cayman Islands. Services are intended primarily for users in the
-                      United States and Canada but may be accessed internationally. Users accept full responsibility for
+                      The Company is based in Toronto, Canada. Services are intended primarily for users in the United
+                      States and Canada but may be accessed internationally. Users accept full responsibility for
                       compliance with local laws.
                     </p>
                   </div>
@@ -422,8 +422,8 @@ export default function TermsClientPage() {
                       <div>
                         <h4 className="text-white font-medium">Governing Law & Disputes</h4>
                         <p className="text-gray-300 text-sm">
-                          Agreement governed by Cayman Islands law. Disputes resolved through binding arbitration.
-                          Claims must be filed within one year.
+                          Agreement governed by Canadian law. Disputes resolved through binding arbitration. Claims must
+                          be filed within one year.
                         </p>
                       </div>
                     </div>
@@ -454,9 +454,7 @@ export default function TermsClientPage() {
                     <p>
                       <strong className="text-white">SuccessNOW.ai Inc.</strong>
                     </p>
-                    <p>20 Genesis Close</p>
-                    <p>George Town KY1-1208</p>
-                    <p>Cayman Islands</p>
+                    <p>Toronto, Canada</p>
                     <p>📧 support@successnow.ai</p>
                     <p>
                       Website:{" "}
