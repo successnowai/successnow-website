@@ -19,7 +19,7 @@
       "type": "image/png"
     },
     {
-      "src": "/images/successnow-logo.png",
+      "src": "/favicon.ico",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -29,21 +29,21 @@
   "background_color": "#0f0f23",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "start_url": "/",
+  "start_url": "/demo",
   "scope": "/",
   "lang": "en-US",
   "dir": "ltr",
   "categories": ["business", "productivity", "utilities", "ai", "automation"],
   "screenshots": [
     {
-      "src": "/images/successnow-logo.png",
+      "src": "/favicon.ico",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "SuccessNOW AI Dashboard - Wide View"
     },
     {
-      "src": "/images/successnow-logo.png",
+      "src": "/favicon.ico",
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
